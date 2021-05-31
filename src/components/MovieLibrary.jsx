@@ -21,27 +21,40 @@ export default class MovieLibrary extends Component {
 
   onSearchTextChange({ target }) {
     const { movies } = this.props;
+    const { name, value } = target;
     this.setState(() => ({
-      searchText: target.value,
-      movies: movies.filter((movie) => movie.title.includes(target.value)
-      || movie.subtitle.includes(target.value)
-      || movie.storyline.includes(target.value)),
+      [name]: value,
+      movies: movies.filter((movie) => movie.title.includes(value)
+      || movie.subtitle.includes(value)
+      || movie.storyline.includes(value)),
     }));
   }
 
   onBookmarkedChange({ target }) {
     const { movies } = this.props;
+    const { name, checked } = target;
     this.setState(() => ({
-      bookmarkedOnly: target.checked,
-      movies: movies.filter((movie) => movie.bookmarked === target.checked),
+      [name]: checked,
+      movies: movies.filter((movie) => {
+        if (checked === true) {
+          return movie.bookmarked === checked;
+        }
+        return movies;
+      }),
     }));
   }
 
   onSelectedGenreChange({ target }) {
     const { movies } = this.props;
+    const { name, value } = target;
     this.setState(() => ({
-      selectedGenre: target.value,
-      movies: movies.filter((movie) => movie.genre === target.value),
+      [name]: value,
+      movies: movies.filter((movie) => {
+        if (value) {
+          return movie.genre === value;
+        }
+        return movies;
+      }),
     }));
   }
 
