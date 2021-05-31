@@ -29,6 +29,16 @@ export default class SearchBar extends Component {
                 data-testid="text-input"
               />
             </label>
+            <label htmlFor="showFavorites" data-testid="checkbox-input-label">
+              Mostrar somente favoritos
+              <input
+                type="checkbox"
+                id="showFavorites"
+                checked={ bookmarkedOnly }
+                onChange={ onBookmarkedChange }
+                data-testid="checkbox-input"
+              />
+            </label>
           </form>
         </section>
       </div>
@@ -37,6 +47,8 @@ export default class SearchBar extends Component {
 }
 
 SearchBar.propTypes = {
-  searchText: PropTypes.string,
-  onSearchTextChange: PropTypes.string,
+  searchText: PropTypes.string.isRequired,
+  onSearchTextChange: PropTypes.string.isRequired,
+  bookmarkedOnly: PropTypes.bool.isRequired,
+  onBookmarkedChange: PropTypes.bool.isRequired,
 };
