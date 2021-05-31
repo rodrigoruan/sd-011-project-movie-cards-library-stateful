@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import Title from './CreateTitleInput';
+import Subtitle from './CreateSubtitleInput';
+import Image from './CreateImageInput';
+import Storyline from './CreateStoryLine';
+import Rating from './CreateRating';
+import Genre from './CreateGenre';
 
 export default class AddMovie extends Component {
   constructor(props) {
@@ -6,13 +12,24 @@ export default class AddMovie extends Component {
     this.state = {
       subtitle: '',
       title: '',
-      imagePatch: '',
+      imagePath: '',
       storyLine: '',
       rating: 0,
       genre: 'action',
+      element: [],
     };
     this.initialState = { ...this.state };
     this.modifyState = this.modifyState.bind(this);
+    this.resetState = this.resetState.bind(this);
+  }
+
+  handleAddInfo(ev) {
+    ev.preventDefault();
+    this.resetState();
+  }
+
+  resetState() {
+    this.setState(() => this.initialState);
   }
 
   modifyState({ target }) {
@@ -26,37 +43,27 @@ export default class AddMovie extends Component {
     const {
       subtitle,
       title,
-      // imagePatch,
-      // storyLine,
-      // rating,
-      // genre
+      imagePath,
+      storyLine,
+      rating,
+      genre,
     } = this.state;
     return (
       <div>
         <form data-testid="add-movie-form">
-          <label htmlFor="add-title" data-testid="title-input-label">
-            Título
-            <input
-              name="title"
-              type="text"
-              id="add-title"
-              value={ title }
-              data-testid="title-input"
-              onChange={ this.modifyState }
-            />
-          </label>
-
-          <label htmlFor="add-subtitle" data-testid="subtitle-input-label">
-            Subtítulo
-            <input
-              name="subtitle"
-              type="text"
-              id="add-subtitle"
-              value={ subtitle }
-              data-testid="subtitle-input"
-              onChange={ this.modifyState }
-            />
-          </label>
+          <Title title={ title } callback={ this.modifyState } />
+          <Subtitle subtitle={ subtitle } callback={ this.modifyState } />
+          <Image imagePath={ imagePath } callback={ this.modifyState } />
+          <Storyline storyLine={ storyLine } callback={ this.modifyState } />
+          <Rating rating={ rating } callback={ this.modifyState } />
+          <Genre genre={ genre } callback={ this.modifyState } />
+          <button
+            type="submit"
+            data-testid="send-button"
+            onClick={ this.handleAddInfo }
+          >
+            Adicionar filme
+          </button>
         </form>
       </div>
     );
