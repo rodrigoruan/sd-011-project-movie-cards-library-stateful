@@ -9,6 +9,7 @@ class AddMovie extends React.Component {
     this.handleChangesubTitle = this.handleChangesubTitle.bind(this);
     this.handleChangesubImagePath = this.handleChangesubImagePath.bind(this);
     this.handleChangesubStoryline = this.handleChangesubStoryline.bind(this);
+    this.handleChangeRating = this.handleChangeRating.bind(this);
 
     this.state = {
       subtitle: '',
@@ -41,6 +42,12 @@ class AddMovie extends React.Component {
   handleChangesubStoryline(event) {
     this.setState({
       storyline: event.target.value,
+    });
+  }
+
+  handleChangeRating(event) {
+    this.setState({
+      rating: event.target.value,
     });
   }
 
@@ -86,6 +93,17 @@ class AddMovie extends React.Component {
               data-testid="storyline-input"
               onChange={ this.handleChangesubStoryline }
             />
+          </label>
+          <label htmlFor="inputRating" data-testid="rating-input-label">
+            Avaliação
+            <input
+              type="number"
+              id="inputRating"
+              data-testid="rating-input"
+              value={ this.state.rating }
+              onChange={ this.handleChangeRating }
+            />
+
           </label>
         </form>
       </div>
