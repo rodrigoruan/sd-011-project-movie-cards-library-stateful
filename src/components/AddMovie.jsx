@@ -11,6 +11,7 @@ class AddMovie extends React.Component {
     this.handleChangesubStoryline = this.handleChangesubStoryline.bind(this);
     this.handleChangeRating = this.handleChangeRating.bind(this);
     this.handleChangeGenre = this.handleChangeGenre.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 
     this.state = {
       subtitle: '',
@@ -56,6 +57,20 @@ class AddMovie extends React.Component {
     this.setState({
       genre: event.target.value,
     });
+  }
+
+  handleSubmit(event) { //NAO ENTEDI ISSO DAQUI, DA UMA VOLTA INTERA PARA SER UMA FUNCAO XULÉ ?
+    event.preventDefault();
+    const { onClick } = this.props;
+    this.setState({
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+    onClick();
   }
 
   render() {
@@ -119,6 +134,7 @@ class AddMovie extends React.Component {
               <option data-testid="genre-option" value="thriller">Suspense</option>
             </select>
           </label>
+          <button type="submit" data-testid="send-button" onClick={this.handleSubmit}>Adicionar filme</button>
         </form>
       </div>
     );
