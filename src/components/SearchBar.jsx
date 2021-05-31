@@ -8,6 +8,8 @@ export default class SearchBar extends Component {
       onSearchTextChange,
       bookmarkedOnly,
       onBookmarkedChange,
+      selectedGenre,
+      onSelectedGenreChange,
     } = this.props;
     return (
       // Consulta para resolver o problema de 'for' da label https://stackoverflow.com/questions/22752116/react-ignores-for-attribute-of-the-label-element
@@ -32,6 +34,20 @@ export default class SearchBar extends Component {
             data-testid="checkbox-input"
           />
         </label>
+        <label htmlFor="searchBarFSelectInputLavel" data-testid="select-input-label">
+          <span>Filtrar por gênero</span>
+          <select
+            id="searchBarFSelectInputLavel"
+            value={ selectedGenre }
+            onChange={ onSelectedGenreChange }
+            data-testid="select-input"
+          >
+            <option data-testid="select-option" value="">Todos</option>
+            <option data-testid="select-option" value="action">Ação</option>
+            <option data-testid="select-option" value="comedy">Comédia</option>
+            <option data-testid="select-option" value="thriller">Suspense</option>
+          </select>
+        </label>
       </form>
     );
   }
@@ -42,4 +58,6 @@ SearchBar.propTypes = {
   onSearchTextChange: PropTypes.func.isRequired,
   bookmarkedOnly: PropTypes.bool.isRequired,
   onBookmarkedChange: PropTypes.func.isRequired,
+  selectedGenre: PropTypes.string.isRequired,
+  onSelectedGenreChange: PropTypes.func.isRequired,
 };
