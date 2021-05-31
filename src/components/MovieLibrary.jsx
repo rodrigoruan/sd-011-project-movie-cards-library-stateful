@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MovieList from './MovieList';
 import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
+import data from '../data';
 
 class MovieLibrary extends Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class MovieLibrary extends Component {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
-      movies: '',
+      movies: { data },
     };
   }
 
@@ -19,7 +20,7 @@ class MovieLibrary extends Component {
       <div>
         <h2 className="mt-3 text-center"> My awesome movie library </h2>
         <SearchBar />
-        <MovieList movies={this.props.movies} />
+        <MovieList movies={data} />
         <AddMovie />
       </div>
     );
