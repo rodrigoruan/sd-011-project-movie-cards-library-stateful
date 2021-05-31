@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 
 export default class SearchBar extends Component {
   render() {
-    const { searchText, onSearchTextChange } = this.props;
+    const { searchText, onSearchTextChange,bookmarkedOnly, onBookmarkedChange } = this.props;
     return (
       <form data-testid="search-bar-form">
         <label data-testid="text-input-label">
-          Inclui o texto:
+          <span>Inclui o texto:</span>
           <input
             type="text"
             value={ searchText }
@@ -16,12 +16,14 @@ export default class SearchBar extends Component {
           />
         </label>
         <label data-testid="checkbox-input-label">
-          <input 
-          type="checkbox"
-          
+          <span>Mostrar somente favoritos</span>
+          <input
+            type="checkbox"
+            checked={ bookmarkedOnly }
+            onChange={ onBookmarkedChange }
+            data-testid="checkbox-input"
+          />
         </label>
-
-
       </form>
     );
   }
