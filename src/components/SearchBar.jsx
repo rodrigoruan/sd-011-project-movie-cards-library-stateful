@@ -20,6 +20,7 @@ export class SearchBar extends Component {
         <label htmlFor="checkbox-input-label" data-testid="checkbox-input-label">
           Mostrar somente favoritos
           <input
+            type="checkbox"
             id="checkbox-input-label"
             checked={ bookmarkedOnly }
             onChange={ onBookmarkedChange }
@@ -34,10 +35,10 @@ export class SearchBar extends Component {
             onChange={ onSelectedGenreChange }
             data-testid="select-input"
           >
-            <option selected value="">Todos</option>
-            <option value="action">Ação</option>
-            <option value="comedy">Comédia</option>
-            <option value="thriller">Suspense</option>
+            <option selected value="" data-testid="select-option">Todos</option>
+            <option value="action" data-testid="select-option">Ação</option>
+            <option value="comedy" data-testid="select-option">Comédia</option>
+            <option value="thriller" data-testid="select-option">Suspense</option>
           </select>
         </label>
       </form>
@@ -46,18 +47,12 @@ export class SearchBar extends Component {
 }
 
 SearchBar.proTypes = {
-  searchText: PropTypes.string,
+  searchText: PropTypes.string.isRequired,
   onSearchTextChange: PropTypes.func.isRequired,
-  bookmarkedOnly: PropTypes.bool,
+  bookmarkedOnly: PropTypes.bool.isRequired,
   onBookmarkedChange: PropTypes.func.isRequired,
-  selectedGenre: PropTypes.string,
+  selectedGenre: PropTypes.string.isRequired,
   onSelectedGenreChange: PropTypes.func.isRequired,
-};
-
-SearchBar.defaultProps = {
-  searchText: '',
-  bookmarkedOnly: '',
-  selectedGenre: '',
 };
 
 export default SearchBar;
