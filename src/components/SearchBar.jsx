@@ -5,11 +5,8 @@ import React, { Component } from 'react';
 class SearchBar extends Component {
   constructor(props) {
     super(props);
-    // this.searchText = this.searchText.bind(this);
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
-    // this.bookmarkedOnly = this.bookmarkedOnly.bind(this);
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
-    // this.selectedGenre = this.selectedGenre.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
     this.state = this.props;
   }
@@ -59,13 +56,16 @@ class SearchBar extends Component {
           </label>
           <label htmlFor="selectedGenre" data-testid="select-input-label">
             Filtrar por gênero
-            <input
-              type="select"
-              name="selectedGenre"
+            <select
               value={ selectedGenre }
               onChange={ this.onSelectedGenreChange }
               data-testid="select-input"
-            />
+            >
+              <option value="" data-testid="select-option">Todos</option>
+              <option value="action" data-testid="select-option">Ação</option>
+              <option value="comedy" data-testid="select-option">Comédia</option>
+              <option value="thriller" data-testid="select-option">Suspense</option>
+            </select>
           </label>
         </form>
       </div>

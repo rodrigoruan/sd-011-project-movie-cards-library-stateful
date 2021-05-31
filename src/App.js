@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <SearchBar searchText="" bookmarkedOnly="false" selectedGenre="" />
+      <SearchBar searchText="" bookmarkedOnly={ false } selectedGenre="" />
     </div>
   );
 }
