@@ -34,7 +34,7 @@ export default class SearchBar extends Component {
         <label data-testid="select-input-label">
           Filtrar por gênero
           <select
-            value={selectedGenre}
+            defaultValue={selectedGenre}
             onChange={onSelectedGenreChange}
             data-testid="select-input"
           >
