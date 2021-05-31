@@ -21,7 +21,7 @@ class AddMovie extends React.Component {
     this.clickHandler = this.clickHandler.bind(this);
   }
 
-  changeHandler = ({ target }) {
+  changeHandler({ target }) {
     const { name, value } = target;
 
     this.setState({
