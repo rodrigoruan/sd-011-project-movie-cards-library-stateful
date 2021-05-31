@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import Button from './Button';
 import Label from './Label';
@@ -92,3 +93,7 @@ class AddMovie extends Component {
 }
 
 export default AddMovie;
+
+AddMovie.propType = {
+  func: PropTypes.func.isRequired,
+};

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class LabelNumber extends Component {
   render() {
@@ -17,3 +18,12 @@ export default class LabelNumber extends Component {
     );
   }
 }
+
+LabelNumber.propTypes = {
+  data: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  nameInput: PropTypes.string.isRequired,
+  dataInput: PropTypes.string.isRequired,
+  func: PropTypes.func.isRequired,
+};

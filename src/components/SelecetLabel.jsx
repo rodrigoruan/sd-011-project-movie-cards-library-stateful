@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class SelecetLabel extends Component {
   render() {
@@ -20,3 +21,8 @@ export default class SelecetLabel extends Component {
     );
   }
 }
+
+SelecetLabel.propTypes = {
+  value: PropTypes.string.isRequired,
+  func: PropTypes.func.isRequired,
+};
