@@ -44,7 +44,7 @@ class SearchBar extends Component {
           </select>
         </label>
       </form>
-    )
+    );
   }
 }
 
