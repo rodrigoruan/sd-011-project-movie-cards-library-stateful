@@ -32,7 +32,12 @@ export default class AddMovie extends Component {
         </label>
         <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
           Subtítulo
-          <input name="subtitle" type="text" data-testid="subtitle-input" onChange={ this.handleEvents } />
+          <input 
+            name="subtitle"
+            type="text"
+            data-testid="subtitle-input"
+            onChange={ this.handleEvents }
+           />
         </label>
         <label htmlFor="image-input" data-testid="image-input-label">
           Imagem
