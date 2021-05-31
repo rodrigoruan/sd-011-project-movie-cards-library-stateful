@@ -1,10 +1,12 @@
 import React from 'react';
 import SearchBar from './SearchBar';
+import MovieList from './MovieList';
 
 class MovieLibrary extends React.Component {
   constructor(props) {
     super(props);
 
+    this.filterMovies = this.filterMovies.bind(this);
     this.searchInfo = this.searchInfo.bind(this);
 
     this.state = {
@@ -13,6 +15,26 @@ class MovieLibrary extends React.Component {
       selectedGenre: '',
       movies: props.movies,
     };
+  }
+
+  filterMovies() {
+    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+    if (bookmarkedOnly) {
+      return movies.filter((movie) => movie.bookmarked === true);
+    }
+
+    if (selectedGenre !== '') {
+      return movies.filter((movie) => movie.genre === selectedGenre);
+    }
+
+    if (searchText !== '') {
+      return movies.filter((movie) => (movie.title.includes(searchText)
+        || movie.subtitle.includes(searchText)
+        || movie.storyline.includes(searchText)
+      ));
+    }
+
+    return movies;
   }
 
   searchInfo({ target }) {
@@ -40,6 +62,7 @@ class MovieLibrary extends React.Component {
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.searchInfo }
         />
+        <MovieList movies={ this.filterMovies() } />
       </div>
     );
   }
