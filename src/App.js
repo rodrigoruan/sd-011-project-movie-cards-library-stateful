@@ -5,6 +5,7 @@ import MovieList from './components/MovieList';
 import movies from './data';
 import SearchBar from './components/SearchBar';
 import AddMovie from './components/AddMovie';
+import MovieLibrary from './components/MovieLibrary';
 
 function App() {
   return (
@@ -18,8 +19,9 @@ function App() {
         onSelectedGenreChange=""
         onBookmarkedChange=""
       />
-      <AddMovie />
+      <MovieLibrary movies="um Array" />
       <MovieList movies={ movies } />
+      <AddMovie />
     </div>
   );
 }
