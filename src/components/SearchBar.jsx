@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
 
-class SearchBar extends Component {
-  constructor() {
-    super()
+// class SearchBar extends Component {
+//   constructor() {
+//     super()
 
-  }
+//   }
 
-  render() {
-    return;
-  }
-}
+//   render() {
+//     return;
+//   }
+// }
 
-// MovieCard.propTypes = {
-//   movie: PropTypes.shape({
-//     title: PropTypes.string,
-//     subtitle: PropTypes.string,
-//     storyline: PropTypes.string,
-//     rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-//     imagePath: PropTypes.string,
-//   }).isRequired,
-// };
+// // MovieCard.propTypes = {
+// //   movie: PropTypes.shape({
+// //     title: PropTypes.string,
+// //     subtitle: PropTypes.string,
+// //     storyline: PropTypes.string,
+// //     rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+// //     imagePath: PropTypes.string,
+// //   }).isRequired,
+// // };
 
-SearchBar.propTypes = {
-  
-}
+// SearchBar.propTypes = {
 
-export default SearchBar;
+// }
+
+// export default SearchBar;
