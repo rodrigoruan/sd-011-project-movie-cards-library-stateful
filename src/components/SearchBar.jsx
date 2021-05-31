@@ -22,6 +22,15 @@ export default class SearchBar extends Component {
             placeholder="Digite seu filme"
           />
         </label>
+        <label data-testid="checkbox-input-label">
+          Mostrar somente favoritos
+          <input
+            type="checkbox"
+            checked={ bookmarkedOnly }
+            data-testid="checkbox-input"
+            onChange={ onBookmarkedChange }
+          />
+        </label>
       </form>
     )
   }
