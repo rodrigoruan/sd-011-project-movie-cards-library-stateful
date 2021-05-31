@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import GenderSelect from './GenderSelect';
 
 class SearchBar extends React.Component {
   render() {
@@ -8,8 +9,8 @@ class SearchBar extends React.Component {
       onSearchTextChange,
       bookmarkedOnly,
       onBookmarkedChange,
-      // selectedGenre,
-      // onSelectedGenreChange,
+      selectedGenre,
+      onSelectedGenreChange,
     } = this.props;
 
     return (
@@ -28,10 +29,10 @@ class SearchBar extends React.Component {
             placeholder="Search..."
           />
         </label>
-
+        <br />
         <label
           data-testid="checkbox-input-label"
-          htmlFor="input"
+          htmlFor="checkbox-input"
         >
           Mostrar somente favoritos
           <input
@@ -44,6 +45,11 @@ class SearchBar extends React.Component {
             placeholder="Search..."
           />
         </label>
+        <GenderSelect
+          selectedGenre={ selectedGenre }
+          onSelectedGenreChange={ onSelectedGenreChange }
+        />
+
       </form>
     );
   }
@@ -54,8 +60,8 @@ SearchBar.propTypes = {
   onSearchTextChange: PropTypes.func.isRequired,
   bookmarkedOnly: PropTypes.bool.isRequired,
   onBookmarkedChange: PropTypes.func.isRequired,
-  // selectedGenre: PropTypes.string.isRequired,
-  // onSelectedGenreChange: PropTypes.func.isRequired,
+  selectedGenre: PropTypes.string.isRequired,
+  onSelectedGenreChange: PropTypes.func.isRequired,
 
 };
 
