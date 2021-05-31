@@ -9,13 +9,13 @@ export default class SearchBar extends Component {
       onBookmarkedChange,
       selectedGenre,
       onSelectedGenreChange } = this.props;
-
     return (
       <div>
         <form data-testid="search-bar-form">
           <label data-testid="text-input-label" htmlFor="text-input">
             Inclui o texto:
             <input
+              name="searchText"
               id="text-input"
               type="text"
               value={ searchText }
@@ -26,6 +26,7 @@ export default class SearchBar extends Component {
           <label data-testid="checkbox-input-label" htmlFor="checkbox-input">
             Mostrar somente favoritos:
             <input
+              name="bookmarkedOnly"
               id="checkbox-input"
               type="checkbox"
               onChange={ onBookmarkedChange }
