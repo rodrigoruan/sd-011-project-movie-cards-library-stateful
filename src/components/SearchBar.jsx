@@ -6,13 +6,14 @@ class SearchBar extends Component {
     const { searchText, onSearchTextChange } = this.props;
     return (
       <form data-testid="search-bar-form">
-        <label htmlFor="text">
+        <label htmlFor="text" data-testid="text-input-label">
           Inclui o texto
           <input
             type="text"
             id="text"
-            searchText={ searchText }
+            value={ searchText }
             onChange={ onSearchTextChange }
+            data-testid="text-input"
           />
         </label>
       </form>
