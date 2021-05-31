@@ -1,9 +1,9 @@
 // implement AddMovie component here
 import React from 'react';
 import PropTypes from 'prop-types';
-// import MovieList from './MovieList';
+import MovieList from './MovieList';
 import SearchBar from './SearchBar';
-// import AddMovie from './AddMovie';
+import AddMovie from './AddMovie';
 
 class MovieLibrary extends React.Component {
   // constructor(props) {
@@ -11,21 +11,21 @@ class MovieLibrary extends React.Component {
   // }
 
   render() {
-    // const { movies } = this.props;
+    const { movies } = this.props;
 
     return (
       <div>
         <h2> My awesome movie library </h2>
         <SearchBar />
-        {/* <MovieList movies={ movies } />
-        <AddMovie /> */}
+        <MovieList movies={ movies } />
+        <AddMovie />
       </div>
     );
   }
 }
 
-MovieLibrary.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
+// MovieLibrary.propTypes = {
+//   movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+// };
 
 export default MovieLibrary;
