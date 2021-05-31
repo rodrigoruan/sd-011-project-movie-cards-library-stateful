@@ -19,18 +19,15 @@ class App extends Component {
   }
 
   searchText(event) {
-    console.log('oi');
-    this.setState.text = event.target.value;
+    this.setState({ text: event.target.value });
   }
 
   searchFavorite(event) {
-    console.log('oi');
-    this.setState.favorite = event.target.checked;
+    this.setState({ favorite: event.target.checked });
   }
 
   searchGenre(event) {
-    console.log('oi');
-    this.setState.genre = event.target.value;
+    this.setState({ genre: event.target.value });
   }
 
   render() {
@@ -39,7 +36,6 @@ class App extends Component {
       <div className="App">
         <Header />
         <SearchBar
-          data-testid="search-bar-form"
           searchText={ text }
           onSearchTextChange={ this.searchText }
           bookmarkedOnly={ favorite }
