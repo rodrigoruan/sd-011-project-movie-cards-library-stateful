@@ -15,17 +15,23 @@ class App extends React.Component {
       rating: 0,
       genre: 'action',
     };
-    // this.handler = this.handler.bind(this);
+    this.handler = this.handler.bind(this);
   }
-  // handler() {
-  // }
+
+  handler({ target }) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checkbox : target.value;
+    this.setState(({
+      [name]: value,
+    }));
+  }
 
   render() {
     return (
       <div className="App">
         <Header />
         <SearchBar />
-        <AddMovie />
+        <AddMovie value={ this.state } handler={ this.handler } />
       </div>
     );
   }
