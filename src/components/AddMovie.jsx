@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Label from './Label';
 
 export class AddMovie extends Component {
   constructor() {
@@ -26,42 +27,49 @@ export class AddMovie extends Component {
     const { onClick } = this.props;
     return (
       <form data-testid="add-movie-form">
-        <label data-testid="title-input-label" htmlFor="title">
-          Título
-          <input
-            onChange={ this.changeState }
-            name="title"
-            data-testid="title-input"
-            value={ this.title }
-          />
-        </label>
-        <label data-testid="subtitle-input-label" htmlFor="title">
-          Subtítulo
-          <input
-            onChange={ this.changeState }
-            name="subtitle"
-            data-testid="subtitle-input"
-            value={ this.subtitle }
-          />
-        </label>
-        <label data-testid="image-input-label" htmlFor="title">
-          Imagem
-          <input
-            onChange={ this.changeState }
-            name="imagePath"
-            data-testid="image-input"
-            value={ this.imagePath }
-          />
-        </label>
-        <label data-testid="storyline-input-label" htmlFor="title">
+        <Label
+          labelId="-input-label"
+          name="title"
+          title="Título"
+          change={ this.changeState }
+          elementId="title-input"
+          value={ this.title }
+        />
+        <Label
+          labelId="-input-label"
+          name="subtitle"
+          title="Subtítulo"
+          change={ this.changeState }
+          elementId="subtitle-input"
+          value={ this.subtitle }
+        />
+        <Label
+          labelId="-input-label"
+          name="imagePath"
+          title="Imagem"
+          change={ this.changeState }
+          elementId="image-input"
+          value={ this.imagePath }
+        />
+        <label data-testid="storyline-input-label" htmlFor="Sinopse">
           Sinopse
           <textarea
             onChange={ this.changeState }
-            name="imagePath"
+            name="storyline"
             data-testid="storyline-input"
             value={ this.storyline }
           />
         </label>
+        <Label
+          type="number"
+          labelId="-input-label"
+          name="rating"
+          defVal="0"
+          title="Avaliação"
+          change={ this.changeState }
+          elementId="rating-input"
+          value={ this.rating }
+        />
       </form>
     );
   }
