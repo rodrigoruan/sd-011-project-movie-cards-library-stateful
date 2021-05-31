@@ -2,7 +2,7 @@ import React from 'react';
 
 class AddMovie extends React.Component {
   render() {
-    const { handler, title, subtitle, imagePath } = this.props;
+    const { handler, title, subtitle, imagePath, storyline } = this.props;
     return (
       <form data-testid="add-movie-form">
         <label data-testid="title-input-label" htmlFor="input">
@@ -28,10 +28,20 @@ class AddMovie extends React.Component {
           <input
             data-testid="image-input"
             value={ imagePath }
-            name="subtitle"
+            name="imagePath"
             onChange={ handler }
           />
         </label>
+        <label data-testid="storyline-input-label" htmlFor="area">
+          Sinopse
+          <textarea
+            data-testid="storyline-input"
+            value={ storyline }
+            name="storyline"
+            onChange={ handler }
+          />
+        </label>
+
       </form>
     );
   }
