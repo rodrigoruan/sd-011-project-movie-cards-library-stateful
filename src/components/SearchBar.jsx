@@ -10,6 +10,10 @@ export default class SearchBar extends Component {
           <label data-testid="text-input-label" htmlFor="">Inclui o texto:
             <input type="text" name="" id="" value={ searchText } onChange={onSearchTextChange} data-testid="text-input"/>
           </label>
+          <label data-testid="checkbox-input-label" htmlFor="">
+            Mostrar somente favoritos
+            <input type="checkbox" checked={bookmarkedOnly} onChange={onBookmarkedChange} data-testid="checkbox-input" />
+          </label>
         </form>
       </div>
     );
