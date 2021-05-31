@@ -15,6 +15,8 @@ class MovieLibrary extends React.Component {
     };
 
     this.handleSearchText = this.handleSearchText.bind(this);
+    this.handleBookmarkedOnly = this.handleBookmarkedOnly.bind(this);
+    this.handleSelectedGenre = this.handleSelectedGenre.bind(this);
   }
 
   handleSearchText({ target }) {
