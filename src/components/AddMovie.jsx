@@ -16,8 +16,20 @@ class AddMovie extends Component {
   }
 
   render() {
+    const { value, onChange } = this.props;
     return (
-      <form />
+      <form data-testid="add-movie-form">
+        <label htmlFor="new-title" data-testid="title-input-label">
+          Título
+          <input
+            id="new-title"
+            type="text"
+            value={ value }
+            data-testid="title-input"
+            onChange={ onChange }
+          />
+        </label>
+      </form>
     );
   }
 }
