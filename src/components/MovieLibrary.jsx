@@ -16,7 +16,12 @@ class MovieLibrary extends Component {
     return (
       <div>
         <h2> My awesome movie library </h2>
-        <SearchBar searchText="uma string" onSearchTextChange={ umaCallback } />
+        <SearchBar
+          searchText="uma string"
+          onSearchTextChange={ umaCallback }
+          bookmarkedOnly="teste"
+          onBookmarkedChange={ outraCallback }
+        />
         <MovieList movies={ movies } />
         <AddMovie />
       </div>
