@@ -8,14 +8,15 @@ class SearchBar extends React.Component {
     return (
       <form data-testid="search-bar-form">
         { /* eslint-disable-next-line jsx-a11y/label-has-associated-control */ }
-        <label data-testid="text-input-label">
+        <label data-testid="text-input-label" htmlFor="text-input">
           Inclui o texto:
+          <input
+            value={ searchText }
+            onChange={ onSearchTextChange }
+            data-testid="text-input"
+            id="text-input"
+          />
         </label>
-        <input
-          value={ searchText }
-          onChange={ onSearchTextChange }
-          data-testid="text-input"
-        />
       </form>
     );
   }
@@ -23,12 +24,12 @@ class SearchBar extends React.Component {
 
 SearchBar.propTypes = {
   searchText: PropTypes.string,
-  onSearchTextChange: PropTypes.func
+  onSearchTextChange: PropTypes.func,
 };
 
 SearchBar.defaultProps = {
   searchText: '',
-  onSearchTextChange: 'undefined'
+  onSearchTextChange: 'undefined',
 };
 
 export default SearchBar;
