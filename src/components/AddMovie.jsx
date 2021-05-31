@@ -4,6 +4,7 @@ import SubtitleInput from './AddMoviesFomrsInputs/SubtitleInput';
 import ImageInput from './AddMoviesFomrsInputs/ImageInput';
 import StoryLineInput from './AddMoviesFomrsInputs/StoryLineInput';
 import RatingInput from './AddMoviesFomrsInputs/RatingInput';
+import GenreInput from './AddMoviesFomrsInputs/GenreInput';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -42,6 +43,7 @@ class AddMovie extends React.Component {
         <ImageInput chosenMovie={ this.chosenMovie } imagePath={ imagePath } />
         <StoryLineInput chosenMovie={ this.chosenMovie } storyline={ storyline } />
         <RatingInput chosenMovie={ this.chosenMovie } rating={ rating } />
+        <GenreInput chosenMovie={ this.chosenMovie } genre={ genre } />
       </form>
     );
   }
