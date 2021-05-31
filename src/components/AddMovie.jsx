@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import InputTitle from './InputTitle';
+import InputSubtitle from './InputSubtitle';
+import InputImage from './InputImage';
+import InputRating from './InputRating';
+
 const initialState = {
   subtitle: '',
   title: '',
@@ -35,33 +40,15 @@ class AddMovie extends React.Component {
     const { onClick } = this.props;
     return (
       <form data-testid="add-movie-form">
-        <label data-testid="title-input-label" htmlFor="title-input">
-          Título
-          <input
-            type="text"
-            value={ initialState.title }
-            data-testid="title-input"
-            onChange={ this.onChangeHandler }
-          />
-        </label>
-        <label data-testid="subtitle-input-label" htmlFor="subtitle-input">
-          Subtítulo
-          <input
-            type="text"
-            value={ initialState.subtitle }
-            data-testid="subtitle-input"
-            onChange={ this.onChangeHandler }
-          />
-        </label>
-        <label data-testid="image-input-label" htmlFor="image-input">
-          Imagem
-          <input
-            type="text"
-            value={ initialState.imagePath }
-            data-testid="image-input"
-            onChange={ this.onChangeHandler }
-          />
-        </label>
+        <InputTitle value={ initialState.title } handleChange={ this.onChangeHandler } />
+        <InputSubtitle
+          value={ initialState.subtitle }
+          handleChange={ this.onChangeHandler }
+        />
+        <InputImage
+          value={ initialState.imagePath }
+          handleChange={ this.onChangeHandler }
+        />
         <label data-testid="storyline-input-label" htmlFor="storyline-input">
           Sinopse
           <textarea
@@ -70,15 +57,10 @@ class AddMovie extends React.Component {
             onChange={ this.onChangeHandler }
           />
         </label>
-        <label data-testid="rating-input-label" htmlFor="rating-input">
-          Avaliação
-          <input
-            type="number"
-            value={ initialState.rating }
-            data-testid="rating-input"
-            onChange={ this.onChangeHandler }
-          />
-        </label>
+        <InputRating
+          value={ initialState.imagePath }
+          handleChange={ this.onChangeHandler }
+        />
         <label data-testid="genre-input-label" htmlFor="genre-input">
           Gênero
           <select

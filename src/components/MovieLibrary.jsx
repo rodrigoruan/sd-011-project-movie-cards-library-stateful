@@ -19,7 +19,7 @@ class Movielibrary extends Component {
 
   render() {
     const { movies } = this.props;
-    let { searchText, bookmarkedOnly, selectedGenre } = this.state;
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <div>
         <SearchBar
@@ -36,6 +36,10 @@ class Movielibrary extends Component {
 
 Movielibrary.propTypes = {
   movies: PropTypes.arrayOf,
+};
+
+Movielibrary.defaultProps = {
+  movies: [],
 };
 
 export default Movielibrary;
