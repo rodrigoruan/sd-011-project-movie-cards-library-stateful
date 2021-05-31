@@ -10,7 +10,7 @@ function App() {
       <SearchBar
         searchText=""
         onSearchTextChange="Adicionar a logica callBack"
-        bookmarkedOnly={ false } // Adicionar a logica
+        bookmarkedOnly={ false } // Adicionar logica
         onBookmarkedChange="Adicionar a logica callBack"
         selectedGenre="Adicionar a logica"
         onSelectedGenreChange="Adicionar a logica callBack"
