@@ -13,7 +13,7 @@ class SearchBar extends React.Component {
       onBookMarkedChange } = this.props;
     return (
       <form data-testid="search-bar-form">
-        <label htmlFor="text-input">
+        <label data-testid="text-input-label" htmlFor="text-input">
           Inclui o texto:
           <input
             data-testid="text-input"
@@ -24,7 +24,6 @@ class SearchBar extends React.Component {
           />
         </label>
         <label data-testid="checkbox-input-label" htmlFor="checkbox-input">
-
           Mostrar somente favoritos
           <input
             data-testid="checkbox-input"
