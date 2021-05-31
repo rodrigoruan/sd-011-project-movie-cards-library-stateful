@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import GenderSelect from './GenderSelect';
+import CheckboxFavorite from './CheckboxFavorite';
+import InputText from './InputText';
 
 class SearchBar extends React.Component {
   render() {
@@ -15,36 +17,21 @@ class SearchBar extends React.Component {
 
     return (
       <form data-testid="search-bar-form">
-        <label
-          data-testid="text-input-label"
-          htmlFor="input"
-        >
-          Inclui o texto:
-          <input
-            type="text"
-            value={ searchText }
-            onChange={ onSearchTextChange }
-            name="searchBar"
-            data-testid="text-input"
-            placeholder="Search..."
-          />
-        </label>
+        <InputText
+          searchText={ searchText }
+          onSearchTextChange={ onSearchTextChange }
+        />
+
         <br />
-        <label
-          data-testid="checkbox-input-label"
-          htmlFor="checkbox-input"
-        >
-          Mostrar somente favoritos
-          <input
-            type="checkbox"
-            checked={ bookmarkedOnly }
-            onChange={ onBookmarkedChange }
-            value={ searchText }
-            name="searchBar"
-            data-testid="checkbox-input"
-            placeholder="Search..."
-          />
-        </label>
+
+        <CheckboxFavorite
+          bookmarkedOnly={ bookmarkedOnly }
+          onBookmarkedChange={ onBookmarkedChange }
+          searchText={ searchText }
+        />
+
+        <br />
+
         <GenderSelect
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ onSelectedGenreChange }
