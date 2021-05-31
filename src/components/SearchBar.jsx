@@ -25,8 +25,17 @@ export default class SearchBar extends Component {
               data-testid="text-input"
             />
           </label>
-          { bookmarkedOnly }
-          { onBookmarkedChange }
+
+          <label htmlFor="show-favorite" data-testid="checkbox-input-label">
+            Mostrar somente favoritos
+            <input
+              id="show-favorite"
+              type="checkbox"
+              checked={ bookmarkedOnly }
+              onChange={ onBookmarkedChange }
+              data-testid="checkbox-input"
+            />
+          </label>
           { selectedGenre }
           { onSelectedGenreChange }
         </form>
