@@ -6,78 +6,80 @@ import InputSubtitle from './InputSubtitle';
 import InputImage from './InputImage';
 import InputRating from './InputRating';
 
-const initialState = {
-  subtitle: '',
-  title: '',
-  imagePath: '',
-  storyline: '',
-  rating: 0,
-  genre: 'action',
-};
 class AddMovie extends React.Component {
   constructor(props) {
     super(props);
-    this.state = initialState;
-    this.onChangeHandler = this.onChangeHandler.bind(this);
-    this.onClickHandler = this.onClickHandler.bind(this);
+    this.state = {
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    };
+    this.changeHandler = this.changeHandler.bind(this);
+    this.clickHandler = this.clickHandler.bind(this);
   }
 
-  onChangeHandler = ({ target }) => {
-    const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+  changeHandler = ({ target }) {
+    const { name, value } = target;
 
     this.setState({
       [name]: value,
     });
   }
 
-  onClickHandler = () => {
+  clickHandler(e) {
+    e.preventDefault();
+    const { onClick } = this.props;
     onClick(this.state);
-    this.setState(INITIAL_STATE);
+    this.setState({
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
   }
 
   render() {
-    const { onClick } = this.props;
     return (
       <form data-testid="add-movie-form">
-        <InputTitle value={ initialState.title } handleChange={ this.onChangeHandler } />
+        <InputTitle value={ this.state.title } handleChange={ this.changeHandler } />
         <InputSubtitle
-          value={ initialState.subtitle }
-          handleChange={ this.onChangeHandler }
+          value={ this.state.subtitle }
+          handleChange={ this.changeHandler }
         />
         <InputImage
-          value={ initialState.imagePath }
-          handleChange={ this.onChangeHandler }
+          value={ this.state.imagePath }
+          handleChange={ this.changeHandler }
         />
         <label data-testid="storyline-input-label" htmlFor="storyline-input">
           Sinopse
           <textarea
-            value={ initialState.storyline }
+            value={ this.state.storyline }
             data-testid="storyline-input"
-            onChange={ this.onChangeHandler }
+            onChange={ this.changeHandler }
           />
         </label>
         <InputRating
-          value={ initialState.imagePath }
-          handleChange={ this.onChangeHandler }
+          value={ this.state.rating }
+          handleChange={ this.changeHandler }
         />
         <label data-testid="genre-input-label" htmlFor="genre-input">
           Gênero
           <select
-            value={ initialState.genre }
+            value={ this.state.genre }
             data-testid="genre-input"
-            onChange={ this.onChangeHandler }
+            onChange={ this.changeHandler }
           >
             <option value="action" data-testid="genre-option">Ação</option>
             <option value="comedy" data-testid="genre-option">Comédia</option>
             <option value="thriller" data-testid="genre-option">Suspense</option>
           </select>
         </label>
-        <button
-          type="button"
-          data-testid="send-button"
-          onClick={ () => this.onClickHandler(onClick) }
-        >
+        <button type="button" data-testid="send-button" onClick={ this.clickHandler }>
           Adicionar filme
         </button>
       </form>

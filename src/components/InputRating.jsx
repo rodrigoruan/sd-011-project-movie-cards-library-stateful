@@ -11,7 +11,7 @@ class InputRating extends Component {
         <input
           type="number"
           data-testid="rating-input"
-          value={ value }
+          value={ parseFloat(value) }
           onChange={ handleChange }
         />
       </label>
