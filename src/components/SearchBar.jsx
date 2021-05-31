@@ -9,7 +9,7 @@ class SearchBar extends React.Component {
       bookmarkedOnly,
       onBookmarkedChange,
       selectedGenre,
-      onSelectedGenreGange,
+      onSelectedGenreChange,
     } = this.props;
     return (
       <div>
@@ -39,7 +39,7 @@ class SearchBar extends React.Component {
             <select
               data-testid="select-input"
               value={ selectedGenre }
-              onChange={ onSelectedGenreGange }
+              onChange={ onSelectedGenreChange }
               id="select-input"
             >
               <option data-testid="select-option" value="">Todos</option>
@@ -60,7 +60,7 @@ SearchBar.propTypes = {
   bookmarkedOnly: PropTypes.bool.isRequired,
   onBookmarkedChange: PropTypes.func.isRequired,
   selectedGenre: PropTypes.string.isRequired,
-  onSelectedGenreGange: PropTypes.func.isRequired,
+  onSelectedGenreChange: PropTypes.func.isRequired,
 };
 
 export default SearchBar;
