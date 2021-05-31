@@ -4,7 +4,7 @@ import SearchBar from './SearchBar';
 import MovieList from './MovieList';
 import AddMovie from './AddMovie';
 
-class Movielibrary extends Component {
+class MovieLibrary extends Component {
   constructor(props) {
     super(props);
     const { movies } = this.props;
@@ -17,9 +17,9 @@ class Movielibrary extends Component {
     };
 
     this.handleAddMovie = this.handleAddMovie.bind(this);
-    this.handleChangeGenre = this.handleChangeGenre.bind(this);
-    this.handleChangeText = this.handleChangeText.bind(this);
-    this.handleToggleBoomarked = this.handleToggleBoomarked.bind(this);
+    this.handleGenre = this.handleGenre.bind(this);
+    this.handleText = this.handleText.bind(this);
+    this.toggleBoomark = this.toggleBoomark.bind(this);
   }
 
   handleAddMovie(newMovieData) {
@@ -31,26 +31,15 @@ class Movielibrary extends Component {
     });
   }
 
-  handleChangeGenre({ target }) {
-    this.setState({
-      selectedGenre: target.value,
-    });
-  }
+  handleGenre = ({ target }) => { this.setState({ selectedGenre: target.value }) };
 
-  handleChangeText({ target }) {
-    this.setState({
-      searchText: target.value,
-    });
-  }
+  handleText = ({ target }) => { this.setState({ searchText: target.value }) };
 
-  handleToggleBoomarked({ target }) {
-    this.setState({
-      bookmarkedOnly: target.checked,
-    });
-  }
+  toggleBoomark = ({ target }) => { this.setState({ bookmarkedOnly: target.checked }) };
 
   render() {
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+    const { movies } = this.props;
     const filters = {
       bookmarked: bookmarkedOnly,
       searchTerm: searchText,
@@ -60,11 +49,11 @@ class Movielibrary extends Component {
       <div>
         <SearchBar
           searchText={ searchText }
-          onSearchTextChange={ this.handleChangeText }
+          onSearchTextChange={ this.handleText }
           bookmarkedOnly={ bookmarkedOnly }
-          onBookmarkedChange={ this.handleToggleBoomarked }
+          onBookmarkedChange={ this.toggleBoomark }
           selectedGenre={ selectedGenre }
-          onSelectedGenreChange={ this.handleChangeGenre }
+          onSelectedGenreChange={ this.handleGenre }
         />
         <MovieList movies={ movies } filters={ filters } />
         <AddMovie onClick={ this.handleAddMovie } />
@@ -73,7 +62,7 @@ class Movielibrary extends Component {
   }
 }
 
-Movielibrary.propTypes = {
+MovieLibrary.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string,
     subtitle: PropTypes.string,
@@ -83,4 +72,4 @@ Movielibrary.propTypes = {
   })).isRequired,
 };
 
-export default Movielibrary;
+export default MovieLibrary;
