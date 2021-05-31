@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import MovieList from  './MovieList';
 import AddMovie from './AddMovie';
@@ -18,7 +18,7 @@ class Movielibrary extends Component {
   }
 
   render() {
-    const { movies } = this.props;
+    // const { movies } = this.props;
     return (
       <div>
         <SearchBar
@@ -29,12 +29,12 @@ class Movielibrary extends Component {
         <MovieList />
         <AddMovie />
       </div>
-    )
+    );
   }
 }
-
+/*
 Movielibrary.propTypes = {
   movies: PropTypes.arrayOf,
 };
-
+*/
 export default Movielibrary;

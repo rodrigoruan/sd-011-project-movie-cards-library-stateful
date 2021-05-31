@@ -37,67 +37,42 @@ class AddMovie extends React.Component {
       <form data-testid="add-movie-form">
         <label data-testid="title-input-label" htmlFor="title-input">
           Título
-          <input
-            type="text"
-            value={ initialState.title }
-            data-testid="title-input"
-            id="title-input"
-            onChange={ this.onChangeHandler }
-          />
+          <input type="text" value={ initialState.title } data-testid="title-input"
+            id="title-input" onChange={ this.onChangeHandler } />
         </label>
         <label data-testid="subtitle-input-label" htmlFor="subtitle-input">
           Subtítulo
-          <input
-            type="text"
-            value={ initialState.subtitle }
-            data-testid="subtitle-input"
-            id="subtitle-input"
-            onChange={ this.onChangeHandler }
-          />
+          <input type="text" value={ initialState.subtitle } id="subtitle-input"
+            data-testid="subtitle-input" onChange={ this.onChangeHandler } />
         </label>
         <label data-testid="image-input-label" htmlFor="image-input">
           Imagem
-          <input
-            type="text"
-            value={ initialState.imagePath }
-            data-testid="image-input"
-            id="image-input"
-            onChange={ this.onChangeHandler }
-          />
+          <input type="text" value={ initialState.imagePath } id="image-input"
+            data-testid="image-input" onChange={ this.onChangeHandler } />
         </label>
         <label data-testid="storyline-input-label" htmlFor="storyline-input">
           Sinopse
-          <textarea
-            value={ initialState.storyline }
-            data-testid="storyline-input"
-            id="storyline-input"
-            onChange={ this.onChangeHandler }
-          />
+          <textarea value={ initialState.storyline } data-testid="storyline-input"
+            id="storyline-input" onChange={ this.onChangeHandler } />
         </label>
         <label data-testid="rating-input-label" htmlFor="rating-input">
           Avaliação
-          <input
-            type="number"
-            value={ initialState.rating }
-            data-testid="rating-input"
-            id="rating-input"
-            onChange={ this.onChangeHandler }
-          />
+          <input type="number" value={ initialState.rating } id="rating-input"
+            data-testid="rating-input" onChange={ this.onChangeHandler } />
         </label>
         <label data-testid="genre-input-label" htmlFor="genre-input">
           Gênero
-          <select
-            value={ initialState.genre }
-            data-testid="genre-input"
-            id="genre-input"
-            onChange={ this.onChangeHandler }
-          >
+          <select value={ initialState.genre } data-testid="genre-input"
+            id="genre-input" onChange={ this.onChangeHandler }>
             <option value="action" data-testid="genre-option">Ação</option>
             <option value="comedy" data-testid="genre-option">Comédia</option>
             <option value="thriller" data-testid="genre-option">Suspense</option>
           </select>
         </label>
-        <button data-testid="send-button" onClick={() => this.onClickHandler(onClick) }>Adicionar filme</button>
+        <button type='button' data-testid="send-button" onClick={ () =>
+          this.onClickHandler(onClick) }>
+          Adicionar filme
+        </button>
       </form>
     );
   }
@@ -105,6 +80,10 @@ class AddMovie extends React.Component {
 
 AddMovie.propTypes = {
   onClick: PropTypes.func,
+};
+
+AddMovie.defaultProps = {
+  onClick: 'undefined',
 };
 
 export default AddMovie;
