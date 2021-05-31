@@ -3,6 +3,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class AddMovie extends React.Component {
+  constructor() {
+    super();
+      this.state = {
+       title: '',
+       subtitle: '',
+       imagePath: '',
+       storyline: '',
+       rating: 0,
+       genre: '',
+    };
+}
   render() {
     const { onClick } = this.props;
     return (
