@@ -12,6 +12,7 @@ class AddMovie extends Component {
       genre: 'action',
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange({ target }) {
@@ -19,6 +20,18 @@ class AddMovie extends Component {
     this.setState({
       [name]: value,
     });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.setState = {
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    }
   }
 
   render() {
@@ -46,12 +59,13 @@ class AddMovie extends Component {
         </label>
         <label data-testid="genre-input-label">
           Gênero
-          <select name="genre" data-testid="genre-input" onChange={ this.handleChange}>
+          <select name="genre" data-testid="genre-input" value={ this.state.genre }onChange={ this.handleChange}>
             <option value="action" data-testid="genre-option">Ação</option>
             <option value="comedy" data-testid="genre-option">Comédia</option>
             <option value="Thriller" data-testid="genre-option">Suspense</option>
           </select>
         </label>
+        <button type="submit" data-testid="send-button" onClick={ this.handleSubmit }>Adicionar filme</button>
       </form>
     );
   }
