@@ -17,7 +17,7 @@ class AddMovie extends React.Component {
   }
 
   onChangeHandler = ({ target }) => {
-    let { name } = target;
+    const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
 
     this.setState({
@@ -26,15 +26,16 @@ class AddMovie extends React.Component {
   }
 
   render() {
-    const { onClick, title } = this.props;
+    // const { onClick } = this.props;
     return (
       <form data-testid="add-movie-form">
-        <label data-testid="title-input-label" htmlFor="">
+        <label data-testid="title-input-label" htmlFor="title-input">
           Título
           <input
             type="text"
             value={ initialState.title }
             data-testid="title-input"
+            id="title-input"
             onChange={ this.onChangeHandler }
           />
         </label>
@@ -43,9 +44,8 @@ class AddMovie extends React.Component {
   }
 }
 
-AddMovie.propTypes = {
+/* AddMovie.propTypes = {
   onClick: PropTypes.func,
-  title: PropTypes.string,
 };
-
+*/
 export default AddMovie;
