@@ -4,17 +4,17 @@ import PropTypes from 'prop-types';
 import MovieCard from './MovieCard';
 
 class MovieList extends React.Component {
-  filterFunctionLibrary = {
-    searchTerm: (({ title, subtitle, storyline }, term) => {
-      const allText = title + subtitle + storyline;
-
-      return allText.toLowerCase().includes(term.toLowerCase());
-    }),
-    genre: ((movie, genre) => movie.genre === genre),
-    bookmarked: ((movie, bookmarked) => movie.bookmarked === bookmarked),
-  };
-
   filterMovies(movies, filters) {
+    const filterFunctionLibrary = {
+      searchTerm: (({ title, subtitle, storyline }, term) => {
+        const allText = title + subtitle + storyline;
+
+        return allText.toLowerCase().includes(term.toLowerCase());
+      }),
+      genre: ((movie, genre) => movie.genre === genre),
+      bookmarked: ((movie, bookmarked) => movie.bookmarked === bookmarked),
+    };
+
     if (!filters) return movies;
 
     const filterObjects = [];
@@ -23,7 +23,7 @@ class MovieList extends React.Component {
       if (filter[1]) {
         filterObjects.push({
           name: filter[0],
-          filterFunction: this.filterFunctionLibrary[filter[0]],
+          filterFunction: filterFunctionLibrary[filter[0]],
         });
       }
     });
