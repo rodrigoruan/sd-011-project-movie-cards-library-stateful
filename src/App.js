@@ -6,7 +6,14 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <SearchBar />
+      <SearchBar
+        searchText=""
+        onSearchTextChange=""
+        bookmarkedOnly=""
+        onBookmarkedChange=""
+        selectedGenre=""
+        onSelectedGenreChange=""
+      />
       <Header />
     </div>
   );
