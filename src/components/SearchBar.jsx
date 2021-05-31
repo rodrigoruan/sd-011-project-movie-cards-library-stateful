@@ -1,17 +1,10 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class SearchBar extends Component {
   render() {
-    const {
-      searchText,
-      onSearchTextChange,
-      bookmarkedOnly,
-      onBookmarkedChange,
-      selectedGenre,
-      onSelectedGenreChange,
-    } = this.props;
-
+    const { searchText, onSearchTextChange, bookmarkedOnly,
+      onBookmarkedChange, selectedGenre, onSelectedGenreChange } = this.props;
     return (
       <form data-testid="search-bar-form">
         <div>
@@ -27,11 +20,11 @@ class SearchBar extends Component {
           </label>
         </div>
         <div>
-          <label name="favorite" htmlFor="checkbox">
+          <label data-testid="checkbox-input-label" name="favorite" htmlFor="checkbox">
             Mostrar somente favoritos
             <input
-              onChange="onBookmarkedChange"
-              checked=""
+              checked={ bookmarkedOnly }
+              onChange={ onBookmarkedChange }
               type="checkbox"
               id="checkbox"
               data-testid="checkbox-input"
@@ -39,7 +32,12 @@ class SearchBar extends Component {
           </label>
         </div>
         <div>
-          <label name="genre" htmlFor="genre" data-testid="select-option">
+          <label
+            name="genre"
+            htmlFor="genre"
+            data-testid="select-option"
+            onChange={ onSelectedGenreChange }
+          >
             Filtrar por gênero
             <select data-testid="select-input" value={ selectedGenre }>
               <option selected value="" data-testid="select-option">Todos</option>
@@ -53,5 +51,14 @@ class SearchBar extends Component {
     );
   }
 }
+
+SearchBar.propTypes = {
+  searchText: PropTypes.string,
+  onSearchTextChange: PropTypes.func,
+  bookmarkedOnly: PropTypes.string,
+  onBookmarkedChange: PropTypes.func,
+  selectedGenre: PropTypes.string,
+  onSelectedGenreChange: PropTypes.func,
+}.isRequired;
 
 export default SearchBar;
