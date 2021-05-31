@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import CreateInput from './CreateInput';
+import CreateSelect from './CreateSelect';
 
 class AddMovie extends Component {
   constructor(props) {
@@ -24,49 +26,40 @@ class AddMovie extends Component {
 
   render() {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
+    const values = [subtitle, title, imagePath];
+    const userInputs = ['subtitle', 'title', 'imagePath'];
     return (
       <form data-testid="add-movie-form">
-        <label htmlFor="title" data-testid="title-input-label">
-          Título
-          <input
-            data-testid="title-input"
-            type="text"
-            name="title"
-            value={ title }
-            onChange={ this.handleUserInput }
-          />
-        </label>
-        <label htmlFor="subtitle" data-testid="subtitle-input-label">
-          Subtítulo
-          <input
-            data-testid="subtitle-input"
-            type="text"
-            name="subtitle"
-            value={ subtitle }
-            onChange={ this.handleUserInput }
-          />
-        </label>
-        <label htmlFor="imagePath" data-testid="image-input-label">
-          Imagem
-          <input
-            data-testid="image-input"
-            type="text"
-            name="imagePath"
-            value={ imagePath }
-            onChange={ this.handleUserInput }
-          />
-        </label>
+        {
+          userInputs.map((input, index) => (
+            <CreateInput
+              key={ input }
+              name={ input }
+              value={ values[index] }
+              handleUserInput={ this.handleUserInput }
+            />
+          ))
+        }
         <label htmlFor="storyline" data-testid="storyline-input-label">
           Sinopse
           <textarea
             data-testid="storyline-input"
             name="storyline"
-            cols="30"
-            rows="10"
             value={ storyline }
             onChange={ this.handleUserInput }
           />
         </label>
+        <label htmlFor="rating" data-testid="rating-input-label">
+          Avaliação
+          <input
+            data-testid="rating-input"
+            type="number"
+            name="rating"
+            value={ rating }
+            onChange={ this.handleUserInput }
+          />
+        </label>
+        <CreateSelect value={ genre } handleUserInput={ this.handleUserInput } />
       </form>
     );
   }
