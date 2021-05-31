@@ -6,10 +6,10 @@ class AddMovie extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      subtitle: '',
       title: '',
-      imagePath: '',
+      subtitle: '',
       storyline: '',
+      imagePath: '',
       rating: 0,
       genre: 'action',
     };
@@ -100,9 +100,10 @@ class AddMovie extends React.Component {
 
           <button onClick={ (event) => {
             event.preventDefault();
-            onClick(this.state);
-            this.setState(this.initialState); 
-            } }>
+            const {title, subtitle, storyline, imagePath, rating, genre} = this.state;
+            onClick(title, subtitle, storyline, imagePath, rating, genre);
+            this.setState(this.initialState);
+            } } data-testid="send-button">
             Adicionar filme
           </button>
         </form>
