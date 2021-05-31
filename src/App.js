@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from './components/Header';
+import SearchBar from './components/SearchBar';
 import './App.css';
-import MovieLobrary from './MovieLibrary'
 
 function App() {
   return (
     <div className="App">
-<MovieLibrary />
       <Header />
+      <SearchBar />
     </div>
   );
 }
