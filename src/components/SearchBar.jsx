@@ -4,14 +4,9 @@ import PropTypes from 'prop-types';
 export default class SearchBar extends Component {
   render() {
     const {
-      searchText,
-      onSearchTextChange,
-      bookmarkedOnly,
-      onBookmarkedChange,
-      selectedGenre,
-      onSelectedGenreChange,
+      searchText, onSearchTextChange, bookmarkedOnly,
+      onBookmarkedChange, selectedGenre, onSelectedGenreChange,
     } = this.props;
-
     return (
       <div>
         <form data-testid="search-bar-form">
@@ -25,7 +20,6 @@ export default class SearchBar extends Component {
               data-testid="text-input"
             />
           </label>
-
           <label htmlFor="show-favorite" data-testid="checkbox-input-label">
             Mostrar somente favoritos
             <input
@@ -36,10 +30,15 @@ export default class SearchBar extends Component {
               data-testid="checkbox-input"
             />
           </label>
-
           <label htmlFor="genre-filter" data-testid="select-input-label">
             Filtrar por gênero
-            <select name="filter" id="genre-filter" data-testid="select-input" value={ selectedGenre } onChange={ onSelectedGenreChange }>
+            <select
+              name="filter"
+              id="genre-filter"
+              data-testid="select-input"
+              value={ selectedGenre }
+              onChange={ onSelectedGenreChange }
+            >
               <option value="" data-testid="select-option">Todos</option>
               <option value="action" data-testid="select-option">Ação</option>
               <option value="comedy" data-testid="select-option">Comédia</option>
