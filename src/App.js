@@ -10,7 +10,14 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <SearchBar searchText="" onSearchTextChange="" bookmarkedOnly="" selectedGenre="" onSelectedGenreChange="" onBookmarkedChange="" />
+      <SearchBar
+        searchText=""
+        onSearchTextChange=""
+        bookmarkedOnly=""
+        selectedGenre=""
+        onSelectedGenreChange=""
+        onBookmarkedChange=""
+      />
       <AddMovie />
       <MovieList movies={ movies } />
     </div>
