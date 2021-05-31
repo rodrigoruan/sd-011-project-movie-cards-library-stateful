@@ -6,18 +6,17 @@ import InputSubtitle from './InputSubtitle';
 import InputImage from './InputImage';
 import InputRating from './InputRating';
 
-const initialState = {
-  title: '',
-  subtitle: '',
-  imagePath: '',
-  storyline: '',
-  rating: 0,
-  genre: 'action',
-};
 class AddMovie extends React.Component {
   constructor(props) {
     super(props);
-    this.state = initialState;
+    this.state = {
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    };
     this.changeHandler = this.changeHandler.bind(this);
     this.clickHandler = this.clickHandler.bind(this);
   }
@@ -30,11 +29,18 @@ class AddMovie extends React.Component {
     });
   }
 
-  clickHandler(e) {
-    e.preventDefault();
+  clickHandler(target) {
+    target.preventDefault();
     const { onClick } = this.props;
     onClick(this.state);
-    this.setState(initialState);
+    this.setState({
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
   }
 
   render() {
