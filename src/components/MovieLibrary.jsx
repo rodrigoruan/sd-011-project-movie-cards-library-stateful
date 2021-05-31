@@ -20,6 +20,24 @@ class MovieLibrary extends Component {
     this.changeState = this.changeState.bind(this);
   }
 
+  filterMovies() {
+    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+
+    let filter = movies;
+
+    if (bookmarkedOnly) filter = movies.filter(({ bookmarked }) => bookmarked);
+
+    if (selectedGenre) filter = movies.filter(({ genre }) => genre === selectedGenre);
+
+    if (searchText) {
+      filter = movies
+        .filter(({ title, subtitle, storyline }) => `${title} ${subtitle} ${storyline}`
+          .includes(searchText));
+    }
+
+    return filter;
+  }
+
   changeState({ target }) {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -30,7 +48,7 @@ class MovieLibrary extends Component {
   }
 
   render() {
-    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <div>
         <h2> My awesome movie library </h2>
@@ -42,7 +60,7 @@ class MovieLibrary extends Component {
           onSearchTextChange={ this.changeState }
           searchText={ searchText }
         />
-        <MovieList movies={ movies } />
+        <MovieList movies={ this.filterMovies() } />
         <AddMovie />
       </div>
     );
