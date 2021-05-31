@@ -12,13 +12,39 @@ class AddMovie extends React.Component {
       rating: 0,
       genre: 'action',
     };
+
+    this.hadleState = this.hadleState.bind(this);
+  }
+
+  hadleState({ target }) {
+    const { name, value } = target;
+    console.log(target);
+    this.setState(() => ({
+      [name]: value,
+    }));
   }
 
   render() {
+    const { title } = this.state;
     return (
-      <form data-testid="add-movie-form">
-        <input type="text" />
-      </form>
+      <div>
+        <form data-testid="add-movie-form">
+          <label
+            htmlFor="inputAddMovie"
+            data-testid="title-input-label"
+          >
+            Título
+            <input
+              onChange={ this.hadleState }
+              data-testid="title-input"
+              id="inputAddMovie"
+              type="text"
+              defaultValue={ title }
+              name="title"
+            />
+          </label>
+        </form>
+      </div>
     );
   }
 }
