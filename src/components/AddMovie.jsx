@@ -21,6 +21,10 @@ export default class AddMovie extends Component {
           Titulo:
           <input type="text" value="" name="Title" onChange={this.handleChangerTitle} />
         </label>
+        <label data-testid="title-input-label">
+          Subtittulo
+          <input type="text" name="subtitle" value={this.state.subtitle} />
+        </label>
       </form>
     )
   }
