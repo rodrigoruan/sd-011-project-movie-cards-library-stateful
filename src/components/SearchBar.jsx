@@ -13,11 +13,11 @@ class SearchBar extends Component {
         </label>
         <label htmlFor data-testid="checkbox-input">
           Mostrar somente favoritos
-          <input type="checkbox" value={bookmarkedOnly} onChange={onBookmarkedChange} data-testid="checkbox-input" id="checkbox-input" />
+          <input type="checkbox" value={ bookmarkedOnly } onChange={ onBookmarkedChange } data-testid="checkbox-input" id="checkbox-input" />
         </label>
         <label htmlFor="select-input">
           Filtrar por gênero
-          <select data-testid="select-input" id="select-input" value={selectedGenre} onChange={onSelectedGenreChange}>
+          <select data-testid="select-input" id="select-input" value={ selectedGenre } onChange={ onSelectedGenreChange }>
             <option data-testid="select-option" value="">Todos</option>
             <option data-testid="select-option" value="action">Ação</option>
             <option data-testid="select-option" value="comedy">Comédia</option>
