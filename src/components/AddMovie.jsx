@@ -30,20 +30,21 @@ class AddMovie extends Component {
   submitData(event) {
     const { onClick } = this.props;
     event.preventDefault();
-    this.setState(() => ({
-      subtitle: '',
+    onClick(this.state);
+    this.setState({
       title: '',
-      imagePath: '',
+      subtitle: '',
       storyline: '',
       rating: 0,
+      imagePath: '',
       genre: 'action',
-    }), onClick());
+    });
   }
 
   render() {
-    const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
-    const values = [subtitle, title, imagePath];
-    const userInputs = ['subtitle', 'title', 'imagePath'];
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
+    const values = [title, subtitle, imagePath];
+    const userInputs = ['title', 'subtitle', 'imagePath'];
     return (
       <form data-testid="add-movie-form">
         {
