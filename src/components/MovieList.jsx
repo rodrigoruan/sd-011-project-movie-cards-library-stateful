@@ -48,9 +48,13 @@ class MovieList extends React.Component {
 }
 
 MovieList.propTypes = {
-  movies: PropTypes.arrayOf(
-    PropTypes.object,
-  ).isRequired,
+  movies: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    storyline: PropTypes.string,
+    rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    imagePath: PropTypes.string,
+  })).isRequired,
   filters: PropTypes.shape({
     bookmarked: PropTypes.bool,
     searchTerm: PropTypes.string,
