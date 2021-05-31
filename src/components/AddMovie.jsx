@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Label from './Label';
+import LabelTitle from './LabelTitle';
+import LabelSubtitle from './LabelSubtitle';
+import LabelImage from './LabelImage';
+import LabelTextarea from './LabelTextarea';
+import LabelNumber from './LabelNumber';
 
 class AddMovie extends Component {
   constructor(props) {
@@ -13,6 +17,7 @@ class AddMovie extends Component {
       rating: 0,
       genre: 'action',
     };
+    this.addState = this.addState.bind(this);
   }
 
   addState({ target }) {
@@ -22,38 +27,44 @@ class AddMovie extends Component {
     }));
   }
 
+  input() {
+    return {
+
+    };
+  }
+
   render() {
-    const { onclick } = this.props;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
+    const { onClick } = this.props;
     return (
       <form data-testid="add-movie-form">
-        <Label
-          name="Título"
-          id="title-input-label"
-          idLabel="title-input-label"
-          value=""
-          idI="title-input"
-        />
-        <Label
-          name="Subtítulo"
-          id="subtitle-input-label"
-          idLabel="subtitle-input-label"
-          value=""
-          idI="subtitle-input"
-        />
-        <Label
-          name="Imagem"
-          id="image-input-label"
-          idLabel="image-input-label"
-          value=""
-          idI="subtitle-input"
-        />
+        <LabelTitle functionChange={ addState } value={ title } />
+        <LabelSubtitle functionChange={ addState } value={ subtitle } />
+        <LabelImage functionChange={ addState } value={ imagePath } />
+        <LabelTextarea functionChange={ addState } value={ storyline } />
+        <LabelNumber functionChange={ addState } value={ rating } />
+        <label htmlFor="genre-input-label" data-testid="genre-input-label">
+          Gênero
+          <select id="genre-input-label" onChange={ addState } value={ genre }>
+            <option value="action">Ação</option>
+            <option value="comedy">Comédia</option>
+            <option value="thriller">Suspense</option>
+          </select>
+        </label>
+        <button
+          type="submit"
+          data-testid="send-button"
+          onClick={ onClick }
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }
 }
 
 AddMovie.propTypes = {
-  onclick: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default AddMovie;
