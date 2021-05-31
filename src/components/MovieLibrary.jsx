@@ -13,7 +13,7 @@ class Movielibrary extends Component {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
-      movies: [],
+      movies,
     };
 
     this.handleAddMovie = this.handleAddMovie.bind(this);
