@@ -11,7 +11,18 @@ export default class SearchBar extends Component {
 
 
     return (
-      <form action=""></form>
+      <form data-testid="search-bar-form">
+          <label data-testid="text-input-label">
+          Inclui o texto:
+          <input
+            type="text"
+            value={ searchText }
+            onChange={ onSearchTextChange }
+            data-testid="text-input"
+            placeholder="Digite seu filme"
+          />
+        </label>
+      </form>
     )
   }
 }
