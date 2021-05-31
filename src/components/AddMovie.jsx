@@ -8,6 +8,7 @@ class AddMovie extends React.Component {
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
     this.handleChangesubTitle = this.handleChangesubTitle.bind(this);
     this.handleChangesubImagePath = this.handleChangesubImagePath.bind(this);
+    this.handleChangesubStoryline = this.handleChangesubStoryline.bind(this);
 
     this.state = {
       subtitle: '',
@@ -37,6 +38,12 @@ class AddMovie extends React.Component {
     });
   }
 
+  handleChangesubStoryline(event) {
+    this.setState({
+      storyline: event.target.value,
+    });
+  }
+
   render() {
     return (
       <div>
@@ -63,9 +70,22 @@ class AddMovie extends React.Component {
           </label>
           <label htmlFor="imagePath" data-testid="image-input-label">
             Imagem
-            <input type="text" 
-              data-testid="image-input" 
-              onChange={ this.handleChangesubImagePath }/>
+            <input
+              type="text"
+              data-testid="image-input"
+              onChange={ this.handleChangesubImagePath }
+            />
+          </label>
+          <label htmlFor="storyline" data-testid="storyline-input-label">
+            Sinopse
+            <textarea
+              id="storyline"
+              cols="30"
+              rows="10"
+              value={ this.state.storyline }
+              data-testid="storyline-input"
+              onChange={ this.handleChangesubStoryline }
+            />
           </label>
         </form>
       </div>
