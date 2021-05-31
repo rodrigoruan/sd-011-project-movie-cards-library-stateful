@@ -2,11 +2,23 @@
 import React from 'react';
 
 class AddMovie extends React.Component {
-  render() {
+  constructor() {
+    super()
+    this.state = {
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    }
+  }
 
+  render() {
+    const { onClick } = this.props;
     return (
       <div>
-
+        <form action="" data-testid="add-movie-form"></form>
       </div>
     )
 
