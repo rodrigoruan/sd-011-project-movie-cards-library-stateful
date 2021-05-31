@@ -25,7 +25,7 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={ outraCallBack }
         />
         <MovieList movies={ movies } />
-        <AddMovie />
+        <AddMovie onClick={ umaCallback } />
       </div>
     );
   }
