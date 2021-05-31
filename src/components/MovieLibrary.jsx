@@ -65,6 +65,16 @@ class MovieLibrary extends Component {
       });
     }
 
+    if (this.state.bookmarkedOnly) {
+      filtered = filtered.filter(({ bookmarked }) => bookmarked === true);
+    }
+
+    if (this.state.selectedGenre !== '') {
+      filtered = filtered.filter(
+        ({ genre }) => genre === this.state.selectedGenre
+      );
+    }
+
     return filtered;
   }
 
