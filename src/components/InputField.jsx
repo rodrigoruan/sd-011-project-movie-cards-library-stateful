@@ -1,10 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class InputField extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { value, onChange } = this.props;
 
@@ -22,3 +19,8 @@ export default class InputField extends Component {
     );
   }
 }
+
+InputField.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+};

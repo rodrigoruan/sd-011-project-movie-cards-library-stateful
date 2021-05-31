@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
 import AddMovie from './AddMovie';
@@ -21,16 +22,31 @@ export default class MovieLibrary extends Component {
     this.handleToggleBoomarked = this.handleToggleBoomarked.bind(this);
   }
 
-  handleChangeGenre() {
-
+  handleAddMovie(newMovieData) {
+    console.log(newMovieData);
+    this.setState((previous) => {
+      const newArray = [...previous.movies];
+      newArray.push({ ...newMovieData, boomarked: false });
+      return { movies: newArray };
+    });
   }
 
-  handleChangeText() {
-
+  handleChangeGenre(e) {
+    this.setState({
+      selectedGenre: e.target.value,
+    });
   }
 
-  handleToggleBoomarked() {
+  handleChangeText(e) {
+    this.setState({
+      searchText: e.target.value,
+    });
+  }
 
+  handleToggleBoomarked(e) {
+    this.setState({
+      bookmarkedOnly: e.target.checked,
+    });
   }
 
   render() {
@@ -42,13 +58,23 @@ export default class MovieLibrary extends Component {
           searchText={ searchText }
           onSearchTextChange={ this.handleChangeText }
           bookmarkedOnly={ bookmarkedOnly }
-          onBoomarkedChange={ this.handleToggleBoomarked }
+          onBookmarkedChange={ this.handleToggleBoomarked }
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.handleChangeGenre }
         />
         <MovieList movies={ movies } />
-        <AddMovie onClick={ handleAddMovie } />
+        <AddMovie onClick={ this.handleAddMovie } />
       </main>
     );
   }
 }
+
+MovieLibrary.propTypes = {
+  movies: PropTypes.shape({
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    storyline: PropTypes.string,
+    rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    imagePath: PropTypes.string,
+  }).isRequired,
+};

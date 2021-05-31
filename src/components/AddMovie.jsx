@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import AddMovieGenre from './AddMovieGenre';
 import AddMovieStoryline from './AddMovieStoryline';
 import AddMovieRating from './AddMovieRating';
+import AddMovieTitle from './AddMovieTitle';
 
 export default class AddMovie extends Component {
   constructor(props) {
@@ -19,7 +22,6 @@ export default class AddMovie extends Component {
   }
 
   handleChange(e) {
-    e.preventDefault();
     const { name, value } = e.target;
 
     this.setState({
@@ -30,6 +32,7 @@ export default class AddMovie extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const { onClick } = this.props;
+    onClick(this.state);
     this.setState({
       title: '',
       subtitle: '',
@@ -38,7 +41,6 @@ export default class AddMovie extends Component {
       rating: 0,
       genre: 'action',
     });
-    onClick();
   }
 
   render() {
@@ -47,21 +49,13 @@ export default class AddMovie extends Component {
     return (
       <section>
         <form data-testid="add-movie-form">
-          <label htmlFor="title-input" data-testid="title-input-label">
-            Título
-            <input
-              type="text"
-              id="title-input"
-              data-testid="title-input"
-              value={ title }
-              onChange={ this.handleChange }
-            />
-          </label>
+          <AddMovieTitle value={ title } handleChange={ this.handleChange } />
           <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
             Subtítulo
             <input
               type="text"
               id="subtitle-input"
+              name="subtitle"
               data-testid="subtitle-input"
               value={ subtitle }
               onChange={ this.handleChange }
@@ -72,6 +66,7 @@ export default class AddMovie extends Component {
             <input
               type="text"
               id="image-input"
+              name="imagePath"
               data-testid="image-input"
               value={ imagePath }
               onChange={ this.handleChange }
@@ -92,3 +87,7 @@ export default class AddMovie extends Component {
     );
   }
 }
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
