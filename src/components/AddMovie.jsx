@@ -46,6 +46,27 @@ class AddMovie extends Component {
             onChange={ this.handleUserInput }
           />
         </label>
+        <label htmlFor="imagePath" data-testid="image-input-label">
+          Imagem
+          <input
+            data-testid="image-input"
+            type="text"
+            name="imagePath"
+            value={ imagePath }
+            onChange={ this.handleUserInput }
+          />
+        </label>
+        <label htmlFor="storyline" data-testid="storyline-input-label">
+          Sinopse
+          <textarea
+            data-testid="storyline-input"
+            name="storyline"
+            cols="30"
+            rows="10"
+            value={ storyline }
+            onChange={ this.handleUserInput }
+          />
+        </label>
       </form>
     );
   }
