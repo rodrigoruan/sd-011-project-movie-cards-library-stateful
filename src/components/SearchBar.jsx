@@ -1,5 +1,6 @@
 // implement AddMovie component here
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class SearchBar extends React.Component {
   render() {
@@ -22,6 +23,15 @@ class SearchBar extends React.Component {
             onChange={ onSearchTextChange }
           />
           Inclui o texto:
+        </label>
+        <label data-testid="checkbox-input-label" htmlFor="checkbox-input">
+          <input
+            type="checkbox"
+            data-testid="checkbox-input"
+            checked={ bookmarkedOnly }
+            onChange={ onBookmarkedChange }
+          />
+          Mostrar somente favoritos
         </label>
       </form>
     );
