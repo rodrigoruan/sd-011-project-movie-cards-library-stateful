@@ -4,18 +4,17 @@ import SearchBar from './SearchBar';
 import MovieList from './MovieList';
 import AddMovie from './AddMovie';
 
-const initialState = {
-  searchText: '',
-  bookmarkedOnly: false,
-  selectedGenre: '',
-  movies: [],
-};
-
 class Movielibrary extends Component {
   constructor(props) {
     super(props);
+    const { movies } = this.props;
 
-    this.state = initialState;
+    this.state = {
+      searchText: '',
+      bookmarkedOnly: false,
+      selectedGenre: '',
+      movies: [],
+    };
 
     this.handleAddMovie = this.handleAddMovie.bind(this);
     this.handleChangeGenre = this.handleChangeGenre.bind(this);
@@ -51,7 +50,7 @@ class Movielibrary extends Component {
   }
 
   render() {
-    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+    const { searchText, bookmarkedOnly, selectedGenre} = this.state;
     const filters = {
       bookmarked: bookmarkedOnly,
       searchTerm: searchText,
