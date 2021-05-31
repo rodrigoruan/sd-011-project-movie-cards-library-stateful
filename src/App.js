@@ -8,12 +8,12 @@ function App() {
     <div className="App">
       <Header />
       <SearchBar
-        searchText=""
-        onSearchTextChange="Adicionar a logica callBack"
+        searchText="texto test"
+        onSearchTextChange={ () => 'Isso é um teste' }
         bookmarkedOnly={ false } // Adicionar logica
-        onBookmarkedChange="Adicionar a logica callBack"
-        selectedGenre="Adicionar a logica"
-        onSelectedGenreChange="Adicionar a logica callBack"
+        onBookmarkedChange={ () => 'Isso é outro teste' }
+        selectedGenre="action" // Adicionar logica
+        onSelectedGenreChange={ () => 'Isso é mais um teste' }
       />
     </div>
   );
