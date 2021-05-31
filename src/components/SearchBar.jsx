@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
 
 export default class SearchBar extends Component {
-
-
   render() {
-    const { 
+    const {
       searchText, onSearchTextChange,
-      bookmarkedOnly, onBookmarkedChange, 
+      bookmarkedOnly, onBookmarkedChange,
       selectedGenre, onSelectedGenreChange } = this.props;
-
 
     return (
       <form data-testid="search-bar-form">
-          <label data-testid="text-input-label">
+        <label data-testid="text-input-label">
           Inclui o texto:
           <input
             type="text"
@@ -45,6 +42,6 @@ export default class SearchBar extends Component {
           </select>
         </label>
       </form>
-    )
+    );
   }
 }

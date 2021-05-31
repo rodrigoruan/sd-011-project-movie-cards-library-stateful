@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Bottun from './Bottun';
 
 export default class AddMovie extends Component {
   constructor() {
@@ -47,11 +48,12 @@ export default class AddMovie extends Component {
         <label data-testid="genre-input-label">
           Gênero
           <select data-testid="genre-input" onChange={ this.handleChangerTitle } >
-            <option value="">Ação</option>
-            <option value="">Comédia</option>
-            <option value="">Suspense</option>
+            <option value="action">Ação</option>
+            <option value="comedy">Comédia</option>
+            <option value="thriller">Suspense</option>
           </select>
         </label>
+        <Bottun />
       </form>
     );
   }
