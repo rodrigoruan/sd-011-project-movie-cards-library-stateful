@@ -7,6 +7,7 @@ class AddMovie extends React.Component {
 
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
     this.handleChangesubTitle = this.handleChangesubTitle.bind(this);
+    this.handleChangesubImagePath = this.handleChangesubImagePath.bind(this);
 
     this.state = {
       subtitle: '',
@@ -27,6 +28,12 @@ class AddMovie extends React.Component {
   handleChangesubTitle(event) {
     this.setState({
       subtitle: event.target.value,
+    });
+  }
+
+  handleChangesubImagePath(event) {
+    this.setState({
+      imagePath: event.target.value,
     });
   }
 
@@ -53,6 +60,12 @@ class AddMovie extends React.Component {
               value={ this.state.subtitle }
               onChange={ this.handleChangesubTitle }
             />
+          </label>
+          <label htmlFor="imagePath" data-testid="image-input-label">
+            Imagem
+            <input type="text" 
+              data-testid="image-input" 
+              onChange={ this.handleChangesubImagePath }/>
           </label>
         </form>
       </div>
