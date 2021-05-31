@@ -6,7 +6,7 @@ class AddMovie extends React.Component {
   constructor(props) {
     super(props);
 
-    const { onClick } = this.props;
+    const { onClick } = props;
 
     this.state = {
       subtitle: '',
@@ -28,11 +28,12 @@ class AddMovie extends React.Component {
   }
 
   render() {
-    const { subtitle, title, imagePath, storyline, rating, genre } = this.props;
+    const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
         <label data-testid="title-input-label" htmlFor="title-input">
           <input
+            name="title"
             data-testid="title-input"
             value={ title }
             onChange={ this.handleChange }
@@ -41,6 +42,7 @@ class AddMovie extends React.Component {
         </label>
         <label data-testid="subtitle-input-label" htmlFor="subtitle-input">
           <input
+            name="subtitle"
             data-testid="subtitle-input"
             value={ subtitle }
             onChange={ this.handleChange }
@@ -49,6 +51,7 @@ class AddMovie extends React.Component {
         </label>
         <label data-testid="image-input-label" htmlFor="image-input">
           <input
+            name="imagePath"
             data-testid="image-input"
             value={ imagePath }
             onChange={ this.handleChange }
@@ -57,11 +60,22 @@ class AddMovie extends React.Component {
         </label>
         <label data-testid="storyline-input-label" htmlFor="storyline-input">
           <textarea
+            name="storyline"
             data-testid="storyline-input"
             value={ storyline }
             onChange={ this.handleChange }
           />
           Sinopse
+        </label>
+        <label data-testid="rating-input-label" htmlFor="rating-input">
+          <input
+            name="rating"
+            type="number"
+            data-testid="rating-input"
+            value={ rating }
+            onChange={ this.handleChange }
+          />
+          Avaliação
         </label>
       </form>
     );
@@ -69,12 +83,7 @@ class AddMovie extends React.Component {
 }
 
 AddMovie.propTypes = {
-  subtitle: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  imagePath: PropTypes.string.isRequired,
-  storyline: PropTypes.string.isRequired,
-  rating: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default AddMovie;
