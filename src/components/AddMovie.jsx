@@ -5,19 +5,21 @@ class AddMovie extends Component {
   constructor() {
     super();
 
-    this.state = {
-      subtitle: "",
-      title: "",
-      imagePath: "",
-      storyPath: "",
+    const initialState = {
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
       rating: 0,
-      genre: "action",
+      genre: 'action',
     };
+
+    this.state = initialState;
   }
 
   render() {
     return (
-      <form>
+      <form data-testid="add-movie-form">
         test
       </form>
     );
