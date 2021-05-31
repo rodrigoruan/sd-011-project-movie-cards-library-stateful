@@ -15,6 +15,7 @@ class SerarchBar extends React.Component {
     return (
       <div>
         <form data-testid="search-bar-form">
+          <label>Inclui o texto</label>
           <input type="text" />
         </form>
       </div>

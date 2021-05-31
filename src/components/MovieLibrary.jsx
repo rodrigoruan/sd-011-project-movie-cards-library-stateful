@@ -1,8 +1,8 @@
 // https://github.com/tryber/sd-011-project-movie-cards-library-stateful codigo base retirado daqui.
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import MovieList from './MovieList';
 import SearchBar from './SearchBar';
-import PropTypes from 'prop-types'
 // import AddMovie from './AddMovie';
 
 class MovieLibrary extends Component {
