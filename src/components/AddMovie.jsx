@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+// import PropTypes from 'prop-types';
 import InputText8 from './components/InputText8';
 import InputText9 from './components/InputText9';
-// import PropTypes from 'prop-types';
+import InputText10 from './components/InputText10';
 
 class AddMovie extends Component {
   constructor() {
@@ -14,7 +15,6 @@ class AddMovie extends Component {
       rating: '',
       genre: 'action',
     };
-
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -31,6 +31,8 @@ class AddMovie extends Component {
       <form data-testid="add-movie-form">
         <InputText8 srtTxt={ this.title } srcOnCh={ this.handleChange } />
         <InputText9 srtTxt={ this.subtitle } srcOnCh={ this.handleChange } />
+        <InputText10 srtTxt={ this.subtitle } srcOnCh={ this.handleChange } />
+        <p>{ this.title }</p>
       </form>
     );
   }

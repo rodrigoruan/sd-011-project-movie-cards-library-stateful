@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 // implement AddMovie component here
-class InputText8 extends Component {
+class InputText9 extends Component {
   render() {
     const { srtTxt, srcOnCh } = this.props;
     return (
-      <label htmlFor="id" data-testid="subtitle-input-label">
+      <label htmlFor="id9" data-testid="subtitle-input-label">
         Subtítulo
         <input
-          id="id"
+          id="id9"
           type="text"
           value={ srtTxt }
           onChange={ srcOnCh }
@@ -20,9 +20,9 @@ class InputText8 extends Component {
   }
 }
 
-export default InputText8;
+export default InputText9;
 
-InputText8.propTypes = {
+InputText9.propTypes = {
   srtTxt: PropTypes.string.isRequired,
   srcOnCh: PropTypes.func.isRequired,
 };

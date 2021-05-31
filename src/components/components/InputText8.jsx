@@ -6,10 +6,10 @@ class InputText8 extends Component {
   render() {
     const { srtTxt, srcOnCh } = this.props;
     return (
-      <label htmlFor="id" data-testid="title-input-label">
+      <label htmlFor="id8" data-testid="title-input-label">
         Título
         <input
-          id="id"
+          id="id8"
           type="text"
           value={ srtTxt }
           onChange={ srcOnCh }
