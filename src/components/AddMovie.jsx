@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 class AddMovie extends Component {
   constructor() {
@@ -20,7 +20,9 @@ class AddMovie extends Component {
   render() {
     return (
       <form data-testid="add-movie-form">
-        test
+        <label>
+          <input />
+        </label>
       </form>
     );
   }
