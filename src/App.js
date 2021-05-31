@@ -21,7 +21,7 @@ function App() {
       /> */}
       <MovieLibrary movies={ movies } />
       {/* <MovieList movies={ movies } /> */}
-      <AddMovie />
+      {/* <AddMovie /> */}
     </div>
   );
 }

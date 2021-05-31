@@ -3,6 +3,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
+import AddMovie from './AddMovie';
 
 class MovieLibrary extends React.Component {
   constructor(props) {
@@ -43,12 +44,13 @@ class MovieLibrary extends React.Component {
           searchText={ searchText }
           onSearchTextChange={ this.handleChanges }
           bookmarkedOnly={ bookmarkedOnly }
-          onBookMarkedChange={ this.handleChanges }
+          onBookmarkedChange={ this.handleChanges }
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.handleChanges }
           filterLibrary={ this.filterLibrary }
         />
         <MovieList movies={ moviesArray } />
+        <AddMovie />
       </fragment>
     );
   }
