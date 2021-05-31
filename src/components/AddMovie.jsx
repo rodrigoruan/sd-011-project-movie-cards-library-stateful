@@ -23,27 +23,30 @@ class AddMovie extends Component {
 
   render() {
     return (
-      <form>
+      <form data-testid="add-movie-form">
         <label data-testid="title-input-label">
           Título
-          <input data-testid="title-input" name="title" value={ this.state.title } onChange={ this.handleChange } />
+          <input type="text" data-testid="title-input" name="title" value={ this.state.title } onChange={ this.handleChange } />
         </label>
-        <label data-testid="subtitle-input-label">
+        <label type="text" data-testid="subtitle-input-label">
           Subtítulo
-          <input data-testid="subtitle-input" name="subtitle" value={ this.state.subtitle } onChange={ this.handleChange } />
+          <input type="text" data-testid="subtitle-input" name="subtitle" value={ this.state.subtitle } onChange={ this.handleChange } />
         </label>
         <label data-testid="image-input-label">
           Imagem
-          <input data-testid="image-input" name="imagePath" value={ this.state.imagePath } onChange={ this.handleChange } />
+          <input type="text" data-testid="image-input" name="imagePath" value={ this.state.imagePath } onChange={ this.handleChange } />
         </label>
         <label data-testid="storyline-input-label">
           Sinopse
-          <textarea data-testid="storyline-input" value={ this.state.storyline }>
+          <textarea data-testid="storyline-input" name="stroyline" value={ this.state.storyline }>
             <option></option>
             <option></option>
             <option></option>
           </textarea>
-
+        </label>
+        <label data-testid="rating-input-label">
+          Avaliação
+          <input type="text" name="rating" data-testid="rating-input" value={ this.state.rating } onChange={ this.handleChange } />
         </label>
       </form>
     )
