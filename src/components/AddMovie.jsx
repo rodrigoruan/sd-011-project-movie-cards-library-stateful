@@ -4,8 +4,8 @@ export default class AddMovie extends Component {
   constructor() {
     super();
     this.state = {
-      
-    }
+
+    };
   }
 
   render() {
