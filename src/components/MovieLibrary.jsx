@@ -9,9 +9,11 @@ class MovieLibrary extends Component {
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
+      selectedGenre: '',
     };
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
+    this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
   }
 
   onSearchTextChange(event) {
@@ -28,9 +30,15 @@ class MovieLibrary extends Component {
     }
   }
 
+  onSelectedGenreChange(event) {
+    this.setState({
+      selectedGenre: event.target.value,
+    });
+  }
+
   render() {
     const { movies } = this.props;
-    const { searchText, bookmarkedOnly } = this.state;
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     // apenas pelo titulo
     const filterMovies = movies.filter((movie) => movie.title.toLowerCase()
       .includes(searchText.toLowerCase()));
@@ -42,6 +50,8 @@ class MovieLibrary extends Component {
           onSearchTextChange={ this.onSearchTextChange }
           bookmarkedOnly={ bookmarkedOnly }
           onBookmarkedChange={ this.onBookmarkedChange }
+          selectedGenre={ selectedGenre }
+          onSelectedGenreChange={ this.onSelectedGenreChange }
         />
         <MovieList movies={ filterMovies } />
       </div>
