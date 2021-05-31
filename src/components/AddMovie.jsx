@@ -38,11 +38,7 @@ class AddMovie extends Component {
         </label>
         <label data-testid="storyline-input-label">
           Sinopse
-          <textarea data-testid="storyline-input" name="stroyline" value={ this.state.storyline }>
-            <option></option>
-            <option></option>
-            <option></option>
-          </textarea>
+          <textarea data-testid="storyline-input" name="stroyline" value={ this.state.storyline } />
         </label>
         <label data-testid="rating-input-label">
           Avaliação
