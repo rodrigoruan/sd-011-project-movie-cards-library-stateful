@@ -20,12 +20,12 @@ export default class AddMovie extends Component {
     const { name, value } = target;
     if (name === 'image') {
       this.setState({
-        imagePath: value, 
-      })
-    }
-      this.setState({
-        [name]: value,
+        imagePath: value,
       });
+    }
+    this.setState({
+      [name]: value,
+    });
   }
 
   // Criando os inputs dinamicamente, necessitando apenas a chamada da função com o this e os parametros necessarios. (diminuir a quantidade de linhas pro lint não reclamar)
@@ -39,7 +39,7 @@ export default class AddMovie extends Component {
       onChange={ onChange }
     />
   );
-  
+
   // Criando os textareas dinamicamente, necessitando apenas a chamada da função com o this e os parametros necessarios. (diminuir a quantidade de linhas pro lint não reclamar)
   makeTextArea = (name, value, type, onChange) => (
     <textarea
