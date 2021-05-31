@@ -1,4 +1,5 @@
 import React from 'react';
+import InputAddMovie from './InputAddMovie';
 // import PropTypes from 'prop-types';
 
 class AddMovie extends React.Component {
@@ -27,20 +28,31 @@ class AddMovie extends React.Component {
   render() {
     const { title } = this.state;
     return (
+      <InputAddMovie
+        data-testid="text-input-label"
+        htmlFor
+        {Inclui o texto:}
+        type="text"
+        value={ searchText }
+        onChange={ onSearchTextChange }
+        name="searchBar"
+        data-testid="text-input"
+        placeholder="Search..."
+      />
       <div>
         <form data-testid="add-movie-form">
           <label
-            htmlFor="inputAddMovie"
             data-testid="title-input-label"
+            htmlFor="inputAddMovie"
           >
             Título
             <input
+              type="text"
+              value={ title }
               onChange={ this.hadleState }
+              name="title"
               data-testid="title-input"
               id="inputAddMovie"
-              type="text"
-              defaultValue={ title }
-              name="title"
             />
           </label>
         </form>
