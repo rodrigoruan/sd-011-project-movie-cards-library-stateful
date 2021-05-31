@@ -1,18 +1,21 @@
 import React from 'react';
 import OtherInputs from './OtherInputs';
 
+const initialState = {
+  subtitle: '',
+  title: '',
+  imagePath: '',
+  storyline: '',
+  rating: 0,
+  genre: 'action',
+};
+
 class AddMovie extends React.Component {
   constructor() {
     super();
-    this.state = {
-      subtitle: '',
-      title: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
-    };
+    this.state = initialState;
     this.handleChanges = this.handleChanges.bind(this);
+    this.eraseState = this.eraseState.bind(this);
   }
 
   handleChanges({ target }) {
@@ -23,7 +26,12 @@ class AddMovie extends React.Component {
     });
   }
 
+  eraseState() {
+    this.setState(initialState);
+  }
+
   render() {
+    const { onClick } = this.props;
     return (
       <form data-testid="add-movie-form">
         <label htmlFor="text-input-two" data-testid="title-input-label">
@@ -60,6 +68,15 @@ class AddMovie extends React.Component {
           />
         </label>
         <OtherInputs handleChanges={ this.handleChanges } state={ this.state } />
+        <button
+          type="submit"
+          onClick={ () => {
+            onClick(this.state);
+            this.eraseState();
+          } }
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }
