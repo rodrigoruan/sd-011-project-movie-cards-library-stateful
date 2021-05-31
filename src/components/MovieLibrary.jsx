@@ -14,7 +14,6 @@ const initialState = {
 class Movielibrary extends Component {
   constructor(props) {
     super(props);
-    const { movies } = this.props;
 
     this.state = initialState;
 
