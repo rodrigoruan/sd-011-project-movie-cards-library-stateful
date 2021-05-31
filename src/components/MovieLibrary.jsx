@@ -3,7 +3,7 @@ import React from 'react';
 
 class MovieLibrary extends React.Component {
   render() {
-    return(
+    return (
       <p>Sou o movie Library</p>
     );
   }
