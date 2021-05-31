@@ -10,6 +10,7 @@ class InputText9 extends Component {
         Subtítulo
         <input
           id="id9"
+          name="subtitle"
           type="text"
           value={ srtTxt }
           onChange={ srcOnCh }

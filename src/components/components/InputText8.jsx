@@ -10,6 +10,7 @@ class InputText8 extends Component {
         Título
         <input
           id="id8"
+          name="title"
           type="text"
           value={ srtTxt }
           onChange={ srcOnCh }

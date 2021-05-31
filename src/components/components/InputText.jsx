@@ -10,6 +10,7 @@ class InputText extends Component {
         Inclui o texto:
         <input
           id="id"
+          name="search"
           type="text"
           value={ srtTxt }
           onChange={ srcOnCh }

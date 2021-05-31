@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import InputText8 from './components/InputText8';
 import InputText9 from './components/InputText9';
 import InputText10 from './components/InputText10';
+import TextArea from './components/InputText11';
+import InputText12 from './components/InputText12';
+import SelectList13 from './components/SelectList13';
 
 class AddMovie extends Component {
   constructor() {
@@ -12,27 +15,29 @@ class AddMovie extends Component {
       subtitle: '',
       imagePath: '',
       storyline: '',
-      rating: '',
+      rating: 0,
       genre: 'action',
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange({ target }) {
-    const { value } = target;
+    const { name, value } = target;
     this.setState({
-      title: value,
-      subtitle: value,
+      [name]: value,
     });
   }
 
   render() {
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <InputText8 srtTxt={ this.title } srcOnCh={ this.handleChange } />
-        <InputText9 srtTxt={ this.subtitle } srcOnCh={ this.handleChange } />
-        <InputText10 srtTxt={ this.subtitle } srcOnCh={ this.handleChange } />
-        <p>{ this.title }</p>
+        <InputText8 srtTxt={ title } srcOnCh={ this.handleChange } />
+        <InputText9 srtTxt={ subtitle } srcOnCh={ this.handleChange } />
+        <InputText10 srtTxt={ imagePath } srcOnCh={ this.handleChange } />
+        <TextArea srtTxt={ storyline } srcOnCh={ this.handleChange } />
+        <InputText12 srtTxt={ rating } srcOnCh={ this.handleChange } />
+        <SelectList13 srtTxt={ genre } srcOnCh={ this.handleChange } />
       </form>
     );
   }
