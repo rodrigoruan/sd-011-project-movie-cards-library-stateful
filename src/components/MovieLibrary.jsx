@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
-import MovieList from  './MovieList';
+import MovieList from './MovieList';
 import AddMovie from './AddMovie';
 
 const initialState = {
@@ -18,23 +18,24 @@ class Movielibrary extends Component {
   }
 
   render() {
-    // const { movies } = this.props;
+    const { movies } = this.props;
+    let { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <div>
         <SearchBar
-          searchText={ this.state.searchText }
-          bookmarkedOnly={ this.state.bookmarkedOnly }
-          selectedGenre={ this.state.selectedGenre }
+          searchText={ searchText }
+          bookmarkedOnly={ bookmarkedOnly }
+          selectedGenre={ selectedGenre }
         />
-        <MovieList />
+        <MovieList movies={ movies } />
         <AddMovie />
       </div>
     );
   }
 }
-/*
+
 Movielibrary.propTypes = {
   movies: PropTypes.arrayOf,
 };
-*/
+
 export default Movielibrary;
