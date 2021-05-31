@@ -14,7 +14,6 @@ export default class SearchBar extends Component {
           <input
             type="text"
             name="searchText"
-            
             value={ searchText }
             onChange={ onSearchTextChange }
             data-testid="text-input"
@@ -49,3 +48,12 @@ export default class SearchBar extends Component {
     );
   }
 }
+
+SearchBar.propTypes = {
+  searchText: PropTypes.string.isRequired,
+  onSearchTextChange: PropTypes.func.isRequired,
+  bookmarkedOnly: PropTypes.bool.isRequired,
+  onBookmarkedChange: PropTypes.func.isRequired,
+  selectedGenre: PropTypes.string.isRequired,
+  onSelectedGenreChange: PropTypes.func.isRequired,
+};

@@ -27,8 +27,21 @@ class AddMovie extends Component {
     });
   }
 
-  handleClear = () => {
+  handleSubmit = () => {
+    const { onClick } = this.props;
+    onClick(this.state);
+    this.restorState();
+  }
 
+  restorState = () => {
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
   }
 
   render() {
@@ -72,7 +85,7 @@ class AddMovie extends Component {
           func={ this.handleChanger }
         />
         <SelecetLabel value={ genre } func={ this.handleChanger } />
-        <Button func={ this.handleChanger } name="Adicionar filme" />
+        <Button func={ this.handleSubmit } />
       </form>
     );
   }
