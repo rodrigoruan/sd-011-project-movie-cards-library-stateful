@@ -33,6 +33,19 @@ class SearchBar extends React.Component {
           />
           Mostrar somente favoritos
         </label>
+        <label data-testid="select-input-label" htmlFor="select-input">
+          <select
+            data-testid="select-input"
+            value={ selectedGenre }
+            onChange={ onSelectedGenreChange }
+          >
+            Filtrar por gênero
+            <option value="" data-testid="select-option">Todos</option>
+            <option value="action" data-testid="select-option">Ação</option>
+            <option value="comedy" data-testid="select-option">Comédia</option>
+            <option value="thriller" data-testid="select-option">Suspense</option>
+          </select>
+        </label>
       </form>
     );
   }
