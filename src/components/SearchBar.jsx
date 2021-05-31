@@ -14,30 +14,27 @@ export default class SearchBar extends Component {
     return (
       // Consulta para resolver o problema de 'for' da label https://stackoverflow.com/questions/22752116/react-ignores-for-attribute-of-the-label-element
       <form data-testid="search-bar-form">
-        <label htmlFor="searchBarFTextInputLabel" data-testid="text-input-label">
+        <label htmlFor="text-input" data-testid="text-input-label">
           <span>Inclui o texto:</span>
           <input
-            id="searchBarFTextInputLabel"
             type="text"
             value={ searchText }
             onChange={ onSearchTextChange }
             data-testid="text-input"
           />
         </label>
-        <label htmlFor="searchBarFCheckboxInputLabel" data-testid="checkbox-input-label">
+        <label htmlFor="checkbox-input" data-testid="checkbox-input-label">
           <span>Mostrar somente favoritos</span>
           <input
-            id="searchBarFCheckboxInputLabel"
             type="checkbox"
             checked={ bookmarkedOnly }
             onChange={ onBookmarkedChange }
             data-testid="checkbox-input"
           />
         </label>
-        <label htmlFor="searchBarFSelectInputLavel" data-testid="select-input-label">
+        <label htmlFor="select-input" data-testid="select-input-label">
           <span>Filtrar por gênero</span>
           <select
-            id="searchBarFSelectInputLavel"
             value={ selectedGenre }
             onChange={ onSelectedGenreChange }
             data-testid="select-input"
