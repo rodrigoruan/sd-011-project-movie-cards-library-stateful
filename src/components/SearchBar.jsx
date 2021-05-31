@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchBarInputText from './SearchBarFormsInputs/SearchBarInputText';
+import SearchBarInputCheckbox from './SearchBarFormsInputs/SerchBarInputCheckbox';
 
 class SearchBar extends React.Component {
   render() {
@@ -17,6 +18,10 @@ class SearchBar extends React.Component {
         <SearchBarInputText
           searchText={ searchText }
           onSearchTextChange={ onSearchTextChange }
+        />
+        <SearchBarInputCheckbox
+          bookmarkedOnly={ bookmarkedOnly }
+          onBookmarkedChange={ onBookmarkedChange }
         />
       </form>
     );
