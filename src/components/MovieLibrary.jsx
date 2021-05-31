@@ -26,6 +26,11 @@ class MovieLibrary extends Component {
   }
 
   handleAddMovie(data) {
+    const param = {
+      target: {
+        value: '',
+      },
+    };
     const {
       subtitle,
       title,
@@ -44,7 +49,7 @@ class MovieLibrary extends Component {
         bookmarked: false,
         genre,
       }],
-    }));
+    }), () => this.onSelectedGenreChange(param));
   }
 
   onSearchTextChange({ target: { value } }) {
