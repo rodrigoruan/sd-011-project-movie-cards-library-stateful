@@ -2,7 +2,7 @@ import React from 'react';
 
 class SearchBar extends React.Component {
   render() {
-    return 'sou o SearchBar';
+    return 'Eu sou SearchBar!';
   }
 }
 
