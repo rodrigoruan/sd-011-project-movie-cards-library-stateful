@@ -38,6 +38,12 @@ class MovieLibrary extends Component {
     return filter;
   }
 
+  newMovie(movie) {
+    this.setState((lastMovies) => ({
+      movies: [...lastMovies.movies, movie],
+    }));
+  }
+
   changeState({ target }) {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -61,7 +67,7 @@ class MovieLibrary extends Component {
           searchText={ searchText }
         />
         <MovieList movies={ this.filterMovies() } />
-        <AddMovie />
+        <AddMovie onClick={ (movie) => this.newMovie(movie) } />
       </div>
     );
   }
