@@ -1,16 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SearchBar from './SearchBar';
+import SearchBar from './components/SearchBar';
 
 import MovieCard from './MovieCard';
 
 class MovieList extends React.Component {
-
   constructor() {
     super();
     this.state = {
-      srcText= '',
-    }
+      srcText: '',
+    };
   }
 
   render() {
