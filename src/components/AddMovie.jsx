@@ -16,15 +16,19 @@ class AddMovie extends Component {
       imagePath: '',
       storyline: '',
       rating: 0,
-      genre: '',
+      genre: 'action',
     };
   }
 
-  handleChangerTitle = ({ target }) => {
-    const { name, value } = target;
+  handleChanger = ({ target }) => {
+    let { name, value } = target;
     this.setState({
       [name]: value,
     });
+  }
+
+  handleClear = () => {
+
   }
 
   render() {
@@ -35,40 +39,40 @@ class AddMovie extends Component {
           data="title-input-label"
           value={ title }
           nameInput="title"
-          name="Titulo:"
+          name="Título"
           dataInput="title-input"
-          func={ this.handleChangerTitle }
+          func={ this.handleChanger }
         />
         <Label
           data="subtitle-input-label"
           value={ subtitle }
           nameInput="subtitle"
-          name="Subtitlo:"
+          name="Subtítulo"
           dataInput="subtitle-input"
-          func={ this.handleChangerTitle }
+          func={ this.handleChanger }
         />
         <LabelFile
           data="image-input-label"
           value={ imagePath }
-          nameInput="image"
-          name="Image:"
+          nameInput="imagePath"
+          name="Imagem"
           dataInput="image-input"
-          func={ this.handleChangerTitle }
+          func={ this.handleChanger }
         />
         <TextArea
-          func={ this.handleChangerTitle }
+          func={ this.handleChanger }
           value={ storyline }
         />
         <LabelNumber
           data="rating-input-label"
           value={ rating }
           nameInput="rating"
-          name="Avaliação:"
+          name="Avaliação"
           dataInput="rating-input"
-          func={ this.handleChangerTitle }
+          func={ this.handleChanger }
         />
-        <SelecetLabel value={ genre } func={ this.handleChangerTitle } />
-        <Button func={ this.ha } type="submit" name="Adicionar filme" />
+        <SelecetLabel value={ genre } func={ this.handleChanger } />
+        <Button func={ this.handleChanger } name="Adicionar filme" />
       </form>
     );
   }

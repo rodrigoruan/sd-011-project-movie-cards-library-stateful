@@ -14,6 +14,7 @@ export default class SearchBar extends Component {
           <input
             type="text"
             name="searchText"
+            
             value={ searchText }
             onChange={ onSearchTextChange }
             data-testid="text-input"

@@ -7,7 +7,7 @@ export default class TextArea extends Component {
       <label data-testid="storyline-input-label" htmlFor="sinopse">
         Sinopse
         <textarea
-          name="sinopse"
+          name="storyline"
           value={ value }
           data-testid="storyline-input"
           onChange={ func }

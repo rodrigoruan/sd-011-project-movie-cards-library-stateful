@@ -6,7 +6,13 @@ export default class LabelNumber extends Component {
     return (
       <label data-testid={ data } htmlFor={ nameInput }>
         {name}
-        <input type="Number" value={ value } name={ nameInput } data-testid={ dataInput } onChange={ func } />
+        <input
+          type="Number"
+          value={ value }
+          name={ nameInput }
+          data-testid={ dataInput }
+          onChange={ func }
+        />
       </label>
     );
   }

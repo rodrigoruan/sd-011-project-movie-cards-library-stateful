@@ -6,7 +6,13 @@ export default class LabelFile extends Component {
     return (
       <label data-testid={ data } htmlFor={ nameInput }>
         {name}
-        <input type="file" value={ value } name={ nameInput } data-testid={ dataInput } onChange={ func } />
+        <input
+          type="text"
+          value={ value }
+          name={ nameInput }
+          data-testid={ dataInput }
+          onChange={ func }
+        />
       </label>
     );
   }
