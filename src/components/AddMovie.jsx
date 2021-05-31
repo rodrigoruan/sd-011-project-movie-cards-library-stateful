@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import Button from './Button';
+import Label from './Label';
+import SelecetLabel from './SelecetLabel';
+import TextArea from './TextArea';
 
 class AddMovie extends Component {
   constructor() {
@@ -23,66 +26,47 @@ class AddMovie extends Component {
   }
 
   render() {
-    const {}
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <label data-testid="title-input-label" htmlFor="title">
-          Titulo:
-          <input
-            type="text"
-            value={ this.state.title }
-            name="title"
-            data-testid="title-input"
-            onChange={ this.handleChangerTitle }
-          />
-        </label>
-        <label data-testid="subtitle-input-label" htmlFor="subtitle">
-          Subtittulo
-          <input
-            type="text"
-            name="subtitle"
-            value={ this.state.subtitle }
-            data-testid="subtitle-input"
-            onChange={ this.handleChangerTitle }
-          />
-        </label>
-        <label data-testid="image-input-label" htmlFor="image">
-          Imagem
-          <input
-            type="file"
-            name="image"
-            value={ this.state.imagePath }
-            data-testid="image-input"
-            onChange={ this.handleChangerTitle }
-            data-testid="subtitle-input"
-          />
-        </label>
-        <label data-testid="storyline-input-label" htmlFor="sinopse">
-          Sinopse
-          <textarea
-            name="sinopse"
-            value={ this.state.storyline }
-            data-testid="storyline-input"
-            onChange={ this.handleChangerTitle }
-          />
-        </label>
-        <label data-testid="rating-input-label" htmlFor="textarea">
-          Avaliação
-          <input
-            type="number"
-            name="textarea"
-            data-testid="rating-input"
-            onChange={ this.handleChangerTitle }
-          />
-        </label>
-        <label data-testid="genre-input-label" htmlFor="generate">
-          Gênero
-          <select data-testid="genre-input" name="generate" onChange={ this.handleChangerTitle }>
-            <option value="action">Ação</option>
-            <option value="comedy">Comédia</option>
-            <option value="thriller">Suspense</option>
-          </select>
-        </label>
+        <Label
+          data="title-input-label"
+          value={ title }
+          nameInput="title"
+          name="Titulo:"
+          dataInput="title-input"
+          func={ this.handleChangerTitle }
+        />
+        <Label
+          data="subtitle-input-label"
+          value={ subtitle }
+          nameInput="subtitle"
+          name="Subtitlo:"
+          dataInput="subtitle-input"
+          func={ this.handleChangerTitle }
+        />
+        <Label
+          data="image-input-label"
+          type="file"
+          value={ imagePath }
+          nameInput="image"
+          name="Image:"
+          dataInput="image-input"
+          func={ this.handleChangerTitle }
+        />
+        <TextArea
+          func={ this.handleChangerTitle }
+          value={ storyline }
+        />
+        <Label
+          data="rating-input-label"
+          value={ rating }
+          nameInput="rating"
+          name="Avaliação:"
+          dataInput="rating-input"
+          func={ this.handleChangerTitle }
+        />
+        <SelecetLabel value={ genre } func={ this.handleChangerTitle } />
         <Button func={ this.ha } type="submit" name="Adicionar filme" />
       </form>
     );
