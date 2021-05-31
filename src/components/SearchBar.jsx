@@ -14,7 +14,7 @@ class SearchBar extends Component {
       <form data-testid="search-bar-form">
         <InputText srtTxt={ searchText } srcOnCh={ onSearchTextChange } />
         <InputCheckBox bkOnly={ bookmarkedOnly } srcbkOch={ onBookmarkedChange } />
-        <SelectList selecValue={ selectedGenre } changeSelect={ onSelectedGenreChange } />
+        <SelectList slVl={ selectedGenre } evSl={ onSelectedGenreChange } />
       </form>
     );
   }
