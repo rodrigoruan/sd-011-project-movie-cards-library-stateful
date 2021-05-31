@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 export class AddMovie extends Component {
   constructor() {
     super();
-
     this.state = {
       subtitle: '',
       title: '',
@@ -16,7 +15,7 @@ export class AddMovie extends Component {
 
   render() {
     const { onClick } = this.props;
-    return <div />;
+    return <form data-testid="add-movie-form" />;
   }
 }
 
