@@ -57,15 +57,40 @@ export default class AddMovie extends Component {
             />
           </label>
           <label data-testid="storyline-input-label" htmlFor="storyline-add">
-            storylinem
+            Sinopse
             <textarea
               data-testid="storyline-input"
               id="storyline-add"
               type="text"
-              name="storylinePath"
-              value={ this.state.imagePath }
+              name="storyline"
+              value={ this.state.storyline }
               onChange={ this.handleChange }
             />
+          </label>
+          <label data-testid="rating-input-label" htmlFor="rating-add">
+            Avaliação
+            <input
+              data-testid="rating-input"
+              id="rating-add"
+              type="number"
+              name="rating"
+              value={ this.state.rating }
+              onChange={ this.handleChange }
+            />
+          </label>
+          <label data-testid="genre-input-label" htmlFor="combobox">
+            Gênero
+            <select
+              data-testid="genre-input"
+              name=""
+              value={ this.setState.genre }
+              onChange={ this.handleChange }
+              id="combobox"
+            >
+              <option data-testid="genre-option" value="action">Ação</option>
+              <option data-testid="genre-option" value="comedy">Comédia</option>
+              <option data-testid="genre-option" value="thriller">Suspense</option>
+            </select>
           </label>
         </form>
       </div>
