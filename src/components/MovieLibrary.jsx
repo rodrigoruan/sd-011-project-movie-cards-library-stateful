@@ -21,6 +21,8 @@ class MovieLibrary extends Component {
           onSearchTextChange={ umaCallback }
           bookmarkedOnly="teste"
           onBookmarkedChange={ outraCallback }
+          selectedGenre="maisUmTeste"
+          onSelectedGenreChange={ outraCallBack }
         />
         <MovieList movies={ movies } />
         <AddMovie />
