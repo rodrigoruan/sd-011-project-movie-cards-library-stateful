@@ -1,15 +1,6 @@
 import React, { Component } from 'react';
 import InputField from './InputField';
 
-/*
-  searchText, uma string
-  onSearchTextChange, uma callback
-  bookmarkedOnly, um boolean
-  onBookmarkedChange, uma callback
-  selectedGenre, uma string
-  onSelectedGenreChange, uma callback
-*/
-
 export default class SearchBar extends Component {
   constructor(props) {
     super(props);
