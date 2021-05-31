@@ -38,8 +38,6 @@ export default class AddMovie extends Component {
   };
 
   render() {
-    const { dataState } = this.state;
-    const { onClick } = this.props;
     return (
       <Form onSubmit={this.handleSubmit} data-testid="add-movie-form" className="col">
         <Form.Group>
@@ -121,7 +119,7 @@ export default class AddMovie extends Component {
           </Form.Control>
         </Form.Group>
         <Form.Group>
-          <Button data-testid="send-button" type="submit" onClick={onClick}>
+          <Button data-testid="send-button" type="submit" onClick={this.handleSubmit}>
             Adicionar filme
           </Button>
         </Form.Group>
