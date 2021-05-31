@@ -26,14 +26,22 @@ export class AddMovie extends Component {
     const { onClick } = this.props;
     return (
       <form data-testid="add-movie-form">
-        <label htmlFor="title">
+        <label data-testid="title-input-label" htmlFor="title">
           Título
           <input
             onChange={ this.changeState }
             name="title"
             data-testid="title-input"
             value={ this.title }
-            id="title"
+          />
+        </label>
+        <label data-testid="subtitle-input-label" htmlFor="title">
+          Subtítulo
+          <input
+            onChange={ this.changeState }
+            name="subtitle"
+            data-testid="subtitle-input"
+            value={ this.subtitle }
           />
         </label>
       </form>
