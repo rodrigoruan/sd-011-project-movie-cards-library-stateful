@@ -20,7 +20,7 @@ class AddMovie extends React.Component {
   }
 
   render() {
-    const { title } = this.state;
+    const { title, subtitle } = this.state;
     return (
       <form data-testid="add-movie-form">
         <label htmlFor="addMovieTitleInput" data-testid="title-input-label">
@@ -32,6 +32,17 @@ class AddMovie extends React.Component {
             value={ title }
             onChange={ this.handleChange }
             data-testid="title-input"
+          />
+        </label>
+        <label htmlFor="addMovieSubtitleInput" data-testid="subtitle-input-label">
+          Subtítulo
+          <input
+            id="addMovieSubtitleInput"
+            name="subtitle"
+            type="text"
+            value={ subtitle }
+            onChange={ this.handleChange }
+            data-testid="subtitle-input"
           />
         </label>
       </form>
