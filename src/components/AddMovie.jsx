@@ -34,6 +34,12 @@ export default class AddMovie extends Component {
         <label data-testid="title-input-label">
           <textarea name='sinopse' value={ this.state.storyline } data-testid="storyline-input" />
         </label>
+        <label data-testid="title-input-label">
+          <input type="number" data-testid="subtitle-input"/>
+        </label>
+        <label data-testid="title-input-label">
+          <input type="text" data-testid="subtitle-input"/>
+        </label>
       </form>
     )
   }
