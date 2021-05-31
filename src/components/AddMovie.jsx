@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class AddMovie extends React.Component {
   render() {
-    const { handler, title, subtitle, imagePath, storyline, rating, genre } = this.props;
+    const { handler, title, subtitle,imagePath, storyline, rating, genre } = this.props;
     return (
       <form data-testid="add-movie-form">
         <label data-testid="title-input-label" htmlFor="input">
@@ -51,9 +52,12 @@ class AddMovie extends React.Component {
 }
 export default AddMovie;
 
-// subtítulo
-// título
-// caminho da imagem
-// sinopse
-// avaliação
-// gênero
+AddMovie.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  storyline: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  imagePath: PropTypes.string.isRequired,
+  genre: PropTypes.string.isRequired,
+  handler: PropTypes.func.isRequired,
+};
