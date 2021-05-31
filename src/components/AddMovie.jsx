@@ -14,6 +14,7 @@ class AddMovie extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.submit = this.submit.bind(this);
+    this.createInputs = this.createInputs.bind(this);
   }
 
   handleChange({ target }) {
@@ -36,56 +37,67 @@ class AddMovie extends React.Component {
     });
   }
 
+  createInputs() {
+    const { title, subtitle, imagePath, rating } = this.state;
+    const inputs = {
+      titulo: (
+        <input
+          type="text"
+          id="title"
+          data-testid="title-input"
+          value={ title }
+          onChange={ this.handleChange }
+        />
+      ),
+      subtitulo: (
+        <input
+          type="text"
+          id="subtitle"
+          data-testid="subtitle-input"
+          value={ subtitle }
+          onChange={ this.handleChange }
+        />
+      ),
+      imagem: (
+        <input
+          type="text"
+          id="imagePath"
+          data-testid="image-input"
+          value={ imagePath }
+          onChange={ this.handleChange }
+        />
+      ),
+      avaliacao: (
+        <input
+          type="number"
+          id="rating"
+          data-testid="rating-input"
+          value={ rating }
+          onChange={ this.handleChange }
+        />
+      ),
+    };
+    return inputs;
+  }
+
   render() {
-    const { title,
-      subtitle,
-      imagePath,
-      storyline,
-      rating,
-      genre,
-    } = this.state;
+    const { storyline, genre } = this.state;
+    const { titulo, subtitulo, imagem, avaliacao } = this.createInputs();
     return (
       <form data-testid="add-movie-form">
         <label htmlFor="title" data-testid="title-input-label">
           Título
-          <input
-            type="text"
-            id="title"
-            data-testid="title-input"
-            value={ title }
-            onChange={ this.handleChange }
-          />
+          { titulo }
         </label>
-        <label
-          htmlFor="subtitle"
-          data-testid="subtitle-input-label"
-        >
+        <label htmlFor="subtitle" data-testid="subtitle-input-label">
           Subtítulo
-          <input
-            type="text"
-            id="subtitle"
-            data-testid="subtitle-input"
-            value={ subtitle }
-            onChange={ this.handleChange }
-          />
+          { subtitulo }
         </label>
-        <label
-          htmlFor="imagePath"
-          data-testid="image-input-label"
-        >
+        <label htmlFor="imagePath" data-testid="image-input-label">
           Imagem
-          <input
-            type="text"
-            id="imagePath"
-            data-testid="image-input"
-            value={ imagePath }
-            onChange={ this.handleChange }
-          />
+          { imagem }
         </label>
-        <label
-          htmlFor="storyline"
-          data-testid="storyline-input-label"
-        >
+        <label htmlFor="storyline" data-testid="storyline-input-label">
           Sinopse
           <textarea
             type="text"
@@ -95,23 +107,11 @@ class AddMovie extends React.Component {
             onChange={ this.handleChange }
           />
         </label>
-        <label
-          htmlFor="rating"
-          data-testid="rating-input-label"
-        >
+        <label htmlFor="rating" data-testid="rating-input-label">
           Avaliação
-          <input
-            type="number"
-            id="rating"
-            data-testid="rating-input"
-            value={ rating }
-            onChange={ this.handleChange }
-          />
+          { avaliacao }
         </label>
-        <label
-          htmlFor="genre"
-          data-testid="genre-input-label"
-        >
+        <label htmlFor="genre" data-testid="genre-input-label">
           Gênero
           <select
             type="text"
@@ -125,15 +125,10 @@ class AddMovie extends React.Component {
             <option value="thriller" data-testid="genre-option">Suspense</option>
           </select>
         </label>
-        <button
-          type="button"
-          data-testid="send-button"
-          onClick={ this.submit }
-        >
+        <button type="button" data-testid="send-button" onClick={ this.submit }>
           Adicionar filme
         </button>
-      </form>
-    );
+      </form>);
   }
 }
 
