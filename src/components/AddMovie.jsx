@@ -11,9 +11,11 @@ class AddMovie extends React.Component {
       imagePath: '',
       storyline: '',
       rating: 0,
+      genre: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.renderInput = this.renderInput.bind(this);
   }
 
   handleChange({ target }) {
@@ -24,34 +26,27 @@ class AddMovie extends React.Component {
     });
   }
 
+  renderInput(labelText, id, type, inputValue) {
+    return (
+      <LabeledInput
+        labelTestId={ `${id}-input-label` }
+        labelText={ labelText }
+        id={ id !== 'image' ? id : 'imagePath' }
+        type={ type }
+        value={ inputValue }
+        onChange={ this.handleChange }
+        data-testid={ `${id}-input` }
+      />
+    );
+  }
+
   render() {
-    const { title, subtitle, imagePath, storyline, rating } = this.state;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <LabeledInput
-          labelTestId="title-input-label"
-          labelText="Título"
-          id="title"
-          value={ title }
-          onChange={ this.handleChange }
-          data-testid="title-input"
-        />
-        <LabeledInput
-          labelTestId="subtitle-input-label"
-          labelText="Subtítulo"
-          id="subtitle"
-          value={ subtitle }
-          onChange={ this.handleChange }
-          data-testid="subtitle-input"
-        />
-        <LabeledInput
-          labelTestId="image-input-label"
-          labelText="Imagem"
-          id="imagePath"
-          value={ imagePath }
-          onChange={ this.handleChange }
-          data-testid="image-input"
-        />
+        { this.renderInput('Título', 'title', 'text', title) }
+        { this.renderInput('Subtítulo', 'subtitle', 'text', subtitle) }
+        { this.renderInput('Imagem', 'image', 'text', imagePath) }
         <label htmlFor="storyline" data-testid="storyline-input-label">
           Sinopse
           <textarea
@@ -61,15 +56,21 @@ class AddMovie extends React.Component {
             data-testid="storyline-input"
           />
         </label>
-        <LabeledInput
-          labelTestId="rating-input-label"
-          labelText="Avaliação"
-          id="rating"
-          type="number"
-          value={ rating }
-          onChange={ this.handleChange }
-          data-testid="rating-input"
-        />
+        { this.renderInput('Avaliação', 'rating', 'number', rating) }
+        <label htmlFor="genre" data-testid="genre-input-label">
+          Gênero
+          <select
+            name="genre"
+            id="genre"
+            value={ genre }
+            onChange={ this.handleChange }
+            data-testid="genre-input"
+          >
+            <option value="action" data-testid="genre-option">Ação</option>
+            <option value="comedy" data-testid="genre-option">Comédia</option>
+            <option value="thriller" data-testid="genre-option">Suspense</option>
+          </select>
+        </label>
       </form>
     );
   }

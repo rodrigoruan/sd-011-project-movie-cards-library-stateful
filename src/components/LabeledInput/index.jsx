@@ -7,7 +7,7 @@ class LabeledInput extends React.Component {
     return (
       <label htmlFor={ id } data-testid={ labelTestId }>
         { labelText }
-        <input id={ id } type="text" { ...properties } />
+        <input id={ id } { ...properties } />
       </label>
     );
   }
