@@ -51,6 +51,11 @@ export default class MovieLibrary extends Component {
 
   render() {
     const { bookmarkedOnly, searchText, selectedGenre, movies } = this.state;
+    const filters = {
+      bookmarked: bookmarkedOnly,
+      searchTerm: searchText,
+      genre: selectedGenre,
+    };
 
     return (
       <main>
@@ -62,7 +67,7 @@ export default class MovieLibrary extends Component {
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.handleChangeGenre }
         />
-        <MovieList movies={ movies } />
+        <MovieList movies={ movies } filters={ filters } />
         <AddMovie onClick={ this.handleAddMovie } />
       </main>
     );
@@ -70,11 +75,11 @@ export default class MovieLibrary extends Component {
 }
 
 MovieLibrary.propTypes = {
-  movies: PropTypes.shape({
+  movies: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string,
     subtitle: PropTypes.string,
     storyline: PropTypes.string,
     rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     imagePath: PropTypes.string,
-  }).isRequired,
+  })).isRequired,
 };
