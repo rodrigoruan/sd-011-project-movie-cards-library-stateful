@@ -32,7 +32,11 @@ class AddMovie extends Component {
           Subtítulo
           <input data-testid="subtitle-input" name="subtitle" value={ this.state.subtitle } onChange={ this.handleChange } />
         </label>
-
+        <label data-testid="image-input-label">
+          Imagem
+          <input data-testid="image-input" name="imagePath" value={ this.state.imagePath } onChange={ this.handleChange } />
+        </label>
+        
       </form>
     )
   }
