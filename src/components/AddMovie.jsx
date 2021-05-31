@@ -30,19 +30,17 @@ class AddMovie extends Component {
   submitData(event) {
     const { onClick } = this.props;
     event.preventDefault();
-    this.setState({
+    this.setState(() => ({
       subtitle: '',
       title: '',
       imagePath: '',
       storyline: '',
       rating: 0,
       genre: 'action',
-    });
-    onClick();
+    }), onClick());
   }
 
   render() {
-    const { onClick } = this.props;
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
     const values = [subtitle, title, imagePath];
     const userInputs = ['subtitle', 'title', 'imagePath'];
@@ -80,7 +78,7 @@ class AddMovie extends Component {
         <CreateSelect value={ genre } handleUserInput={ this.handleUserInput } />
         <button
           data-testid="send-button"
-          onClick={ onClick }
+          onClick={ this.submitData }
           type="submit"
         >
           Adicionar filme
