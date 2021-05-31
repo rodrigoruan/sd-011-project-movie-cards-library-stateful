@@ -9,7 +9,7 @@ class SearchBar extends React.Component {
       <form data-testid="search-bar-form">
         <label
           data-testid="text-input-label"
-          name='input1'>
+          htmlFor='input1'>
             Inclui o texto:
         </label>
         <input
@@ -22,10 +22,9 @@ class SearchBar extends React.Component {
   }
 }
 
-Rating.propTypes = { rating: PropTypes.number };
-
-Rating.defaultProps = {
-  rating: 'undefined',
+SearchBar.propTypes = {
+  searchText: PropTypes.string,
+  onSearchTextChange: PropTypes.func
 };
 
 export default SearchBar;
