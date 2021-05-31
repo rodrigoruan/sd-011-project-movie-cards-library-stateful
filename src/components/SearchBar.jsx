@@ -15,8 +15,16 @@ export default class SearchBar extends Component {
     return (
       <div>
         <form data-testid="search-bar-form">
-          { searchText }
-          { onSearchTextChange }
+          <label htmlFor="search-text" data-testid="text-input-label">
+            Inclui o texto:
+            <input
+              id="search-text"
+              type="text"
+              value={ searchText }
+              onChange={ onSearchTextChange }
+              data-testid="text-input"
+            />
+          </label>
           { bookmarkedOnly }
           { onBookmarkedChange }
           { selectedGenre }
