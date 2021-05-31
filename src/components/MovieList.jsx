@@ -28,6 +28,8 @@ class MovieList extends React.Component {
       }
     });
 
+    if (!filterObjects.length) return movies;
+
     return movies.filter((movie) => (
       filterObjects.reduce((passAll, { name, filterFunction }) => (
         passAll && filterFunction(movie, filters[name])), true)));
@@ -50,10 +52,18 @@ MovieList.propTypes = {
     PropTypes.object,
   ).isRequired,
   filters: PropTypes.shape({
-    bookmarked: PropTypes.bool.isRequired,
-    searchTerm: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-  }).isRequired,
+    bookmarked: PropTypes.bool,
+    searchTerm: PropTypes.string,
+    genre: PropTypes.string,
+  }),
+};
+
+MovieList.defaultProps = {
+  filters: {
+    bookmarked: false,
+    serachTerm: '',
+    genre: '',
+  },
 };
 
 export default MovieList;

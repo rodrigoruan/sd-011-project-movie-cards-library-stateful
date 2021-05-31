@@ -45,7 +45,7 @@ export default class AddMovie extends Component {
 
   render() {
     const { title, subtitle, imagePath, storyline, genre, rating } = this.state;
-    const nRating = parseFloat(rating);
+    const nRating = rating ? parseFloat(rating) : 0;
 
     return (
       <section>
