@@ -45,6 +45,7 @@ export default class AddMovie extends Component {
 
   render() {
     const { title, subtitle, imagePath, storyline, genre, rating } = this.state;
+    const nRating = parseFloat(rating);
 
     return (
       <section>
@@ -73,7 +74,7 @@ export default class AddMovie extends Component {
             />
           </label>
           <AddMovieStoryline value={ storyline } handleChange={ this.handleChange } />
-          <AddMovieRating value={ rating } handleChange={ this.handleChange } />
+          <AddMovieRating value={ nRating } handleChange={ this.handleChange } />
           <AddMovieGenre value={ genre } handleChange={ this.handleChange } />
           <button
             type="submit"

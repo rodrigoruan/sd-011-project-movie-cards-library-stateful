@@ -23,10 +23,11 @@ export default class MovieLibrary extends Component {
   }
 
   handleAddMovie(newMovieData) {
-    console.log(newMovieData);
     this.setState((previous) => {
       const newArray = [...previous.movies];
+      newMovieData.rating = parseFloat(newMovieData.rating);
       newArray.push({ ...newMovieData, boomarked: false });
+      console.log(newMovieData);
       return { movies: newArray };
     });
   }
