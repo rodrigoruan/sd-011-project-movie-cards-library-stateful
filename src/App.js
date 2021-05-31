@@ -13,7 +13,7 @@ function App() {
         bookmarkedOnly={ false }
         onBookmarkedChange={ callback }
         selectedGenre=""
-        onSelectedGenreChabge={ callback }
+        onSelectedGenreChange={ callback }
       />
     </div>
   );
