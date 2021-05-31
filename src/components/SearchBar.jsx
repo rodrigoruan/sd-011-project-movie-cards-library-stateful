@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import InputText from './InputText';
+import InputCheckBox from './InputCheckBox';
+import SelectList from './SelectList';
 
 // implement AddMovie component here
 class SearchBar extends Component {
@@ -11,6 +13,8 @@ class SearchBar extends Component {
     return (
       <form data-testid="search-bar-form">
         <InputText srtTxt={ searchText } srcOnCh={ onSearchTextChange } />
+        <InputCheckBox bkOnly={ bookmarkedOnly } srcbkOch={ onBookmarkedChange } />
+        <SelectList slGn={ selectedGenre } srCl={ onSelectedGenreChange } />
       </form>
     );
   }
