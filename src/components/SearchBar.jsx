@@ -14,12 +14,14 @@ export default class SearchBar extends Component {
 
     return (
       <div>
-        { searchText }
-        { onSearchTextChange }
-        { bookmarkedOnly }
-        { onBookmarkedChange }
-        { selectedGenre }
-        { onSelectedGenreChange }
+        <form data-testid="search-bar-form">
+          { searchText }
+          { onSearchTextChange }
+          { bookmarkedOnly }
+          { onBookmarkedChange }
+          { selectedGenre }
+          { onSelectedGenreChange }
+        </form>
       </div>
     );
   }

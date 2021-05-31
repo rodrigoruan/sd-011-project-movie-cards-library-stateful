@@ -7,6 +7,10 @@ import AddMovie from './AddMovie';
 class MovieLibrary extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      teste: [],
+    };
+
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -16,12 +20,14 @@ class MovieLibrary extends Component {
 
   render() {
     const { movies } = this.props;
+    const { teste } = this.state;
     return (
       <div>
         <h2> My awesome movie library </h2>
         <SearchBar />
         <MovieList movies={ movies } />
         <AddMovie />
+        { teste }
       </div>
     );
   }
