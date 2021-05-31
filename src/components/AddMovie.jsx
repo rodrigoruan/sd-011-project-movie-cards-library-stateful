@@ -14,6 +14,13 @@ export default class AddMovie extends Component {
     };
   }
 
+  handleChangerTitle = ({ target }) => {
+    let { name, value } = target;
+    this.setState({
+      [name]: value,
+    });
+  }
+
   render() {
     return (
       <form data-testid="add-movie-form">
