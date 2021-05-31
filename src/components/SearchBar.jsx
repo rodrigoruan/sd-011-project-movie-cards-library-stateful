@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
 
-
-class SearchBar extends Component {
+class SearchBar extends React.Component {
   render() {
     const {
       search: {
@@ -16,12 +15,47 @@ class SearchBar extends Component {
     } = this.props;
     return (
       <form data-testid="search-bar-form">
-        <label data-testid="text-input-label">
+        <label htmlFor="control" data-testid="text-input-label">
+          Inclui o texto:
           <input
+            id="control"
             data-testid="text-input"
-            value={searchText}
-            onChange={onSearchTextChange}
-          ></input>
+            value={ searchText }
+            onChange={ onSearchTextChange }
+          />
+        </label>
+
+        <label htmlFor="control" data-testid="checkbox-input-label">
+          Mostrar somente favoritos
+          <input
+            id="control"
+            data-testid="checkbox-input"
+            checked={ bookmarkedOnly }
+            onChange={ onBookmarkedChange }
+          />
+        </label>
+
+        <label htmlFor="controlSelect" data-testid="select-input-label">
+          Filtrar por gênero
+          <select
+            id="controlSelect"
+            data-testid="select-input"
+            value={ selectedGenre }
+            onChange={ onSelectedGenreChange }
+          >
+            <option value="" data-testid="select-option">
+              Todos
+            </option>
+            <option value="action" data-testid="select-option">
+              Ação
+            </option>
+            <option value="comedy" data-testid="select-option">
+              Comédia
+            </option>
+            <option value="thriller" data-testid="select-option">
+              Suspense
+            </option>
+          </select>
         </label>
       </form>
     );
@@ -37,5 +71,5 @@ SearchBar.propTypes = {
     onBookmarkedChange: PropTypes.func,
     selectedGenre: PropTypes.string,
     onSelectedGenreChange: PropTypes.func,
-  }),
+  }).isRequired,
 };
