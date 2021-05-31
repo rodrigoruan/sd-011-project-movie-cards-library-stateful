@@ -1,19 +1,28 @@
 import React, { Component } from 'react';
 import { Label } from './Label';
+import { Select } from './Select';
+
+const initialState = {
+  subtitle: '',
+  title: '',
+  imagePath: '',
+  storyline: '',
+  rating: 0,
+  genre: 'action',
+};
 
 export class AddMovie extends Component {
   constructor() {
     super();
-    this.state = {
-      subtitle: '',
-      title: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
-    };
+    this.state = initialState;
 
+    this.activeClick = this.activeClick.bind(this);
     this.changeState = this.changeState.bind(this);
+  }
+
+  activeClick(func) {
+    func(this.state);
+    this.setState(initialState);
   }
 
   changeState({ target }) {
@@ -24,8 +33,8 @@ export class AddMovie extends Component {
   }
 
   render() {
-    const { onClick } = this.props;
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
+    const { onClick } = this.props;
     return (
       <form data-testid="add-movie-form">
         <Label
@@ -58,18 +67,15 @@ export class AddMovie extends Component {
           change={ this.changeState }
           value={ rating }
         />
-        <label data-testid="genre-input-label" htmlFor="select">
-          Gênero
-          <select
-            data-testid="genre-input"
-            onChange={ this.changeState }
-            value={ genre }
-          >
-            <option data-testid="genre-option" value="action">Ação</option>
-            <option data-testid="genre-option" value="comedy">Comédia</option>
-            <option data-testid="genre-option" value="thriller">Suspense</option>
-          </select>
-        </label>
+        <Select genre={ genre } changeState={ this.changeState } />
+        <button
+          type="button"
+          onClick={ () => this.activeClick(onClick) }
+          data-testid="send-button"
+        >
+          Adicionar filme
+        </button>
+        ;
       </form>
     );
   }
