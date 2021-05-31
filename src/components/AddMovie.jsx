@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Button from './Button';
 import Label from './Label';
+import LabelFile from './LabelFile';
+import LabelNumber from './LabelNumber';
 import SelecetLabel from './SelecetLabel';
 import TextArea from './TextArea';
 
@@ -45,9 +47,8 @@ class AddMovie extends Component {
           dataInput="subtitle-input"
           func={ this.handleChangerTitle }
         />
-        <Label
+        <LabelFile
           data="image-input-label"
-          type="file"
           value={ imagePath }
           nameInput="image"
           name="Image:"
@@ -58,7 +59,7 @@ class AddMovie extends Component {
           func={ this.handleChangerTitle }
           value={ storyline }
         />
-        <Label
+        <LabelNumber
           data="rating-input-label"
           value={ rating }
           nameInput="rating"
