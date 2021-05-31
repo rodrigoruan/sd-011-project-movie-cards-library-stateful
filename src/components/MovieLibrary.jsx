@@ -36,9 +36,9 @@ class MovieLibrary extends Component {
       title,
       imagePath,
       storyline,
-      rating,
       genre,
     } = data;
+    const rating = parseInt(data.rating, 10);
     this.setState(({ allMovies }) => ({
       allMovies: [...allMovies, {
         title,
