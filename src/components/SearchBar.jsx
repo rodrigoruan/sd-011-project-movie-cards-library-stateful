@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import GenderSelect from './GenderSelect';
 import CheckboxFavorite from './CheckboxFavorite';
 import InputText from './InputText';
+import AddMovie from './AddMovie';
 
 class SearchBar extends React.Component {
   render() {
@@ -37,6 +38,7 @@ class SearchBar extends React.Component {
           onSelectedGenreChange={ onSelectedGenreChange }
         />
 
+        <AddMovie />
       </form>
     );
   }
