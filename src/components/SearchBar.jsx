@@ -2,7 +2,11 @@ import React from 'react';
 
 class SearchBar extends React.Component {
   render() {
-    return <p>oi</p>;
+    return (
+      <form data-testid="search-bar-form">
+        <input type="text" />
+      </form>
+    );
   }
 }
 
