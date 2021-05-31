@@ -5,6 +5,8 @@ class SearchBar extends React.Component {
   render() {
     const {
       searchText,
+      onSearchTextChange,
+      bookmarkedOnly,
       onBookmarkedChange,
       selectedGenre,
       onSelectedGenreChange,
@@ -12,7 +14,15 @@ class SearchBar extends React.Component {
 
     return (
       <form data-testid="search-bar-form">
-        <h1>Meu Form</h1>
+        <label data-testid="text-input-label" htmlFor="text-input">
+          <input
+            type="text"
+            data-testid="text-input"
+            value={ searchText }
+            onChange={ onSearchTextChange }
+          />
+          Inclui o texto:
+        </label>
       </form>
     );
   }
