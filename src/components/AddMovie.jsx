@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import InputTitle from './InputTitle';
+import InputSubtitle from './InputSubtitle';
 
 class AddMovie extends Component {
   constructor() {
@@ -15,32 +17,20 @@ class AddMovie extends Component {
     };
 
     this.state = initialState;
+
+    handleChange = (event) => {
+      this.setState({
+        [event.target.name]: event.target.value,
+      });
+    };
   }
 
   render() {
     const { value, onChange } = this.props;
     return (
       <form data-testid="add-movie-form">
-        <label htmlFor="input-title" data-testid="title-input-label">
-          Título
-          <input
-            type="text"
-            id="input-title"
-            value={ value }
-            data-testid="title-input"
-            onChange={ onChange }
-          />
-        </label>
-        <label htmlFor="input-subtitle" data-testid="subtitle-input-label">
-          Subtítulo
-          <input
-            type="text"
-            id="input-subtitle"
-            value={ value }
-            data-testid="subtitle-input"
-            onChange={ onChange }
-          />
-        </label>
+        <InputTitle value={ title } onChange={ this.handleChange } />
+        <InputSubtitle value={ subtitle } onChange={ this.handleChange } />
         <label htmlFor="input-image" data-testid="image-input-label">
           Imagem
           <input
@@ -59,6 +49,16 @@ class AddMovie extends Component {
             onChange={ onChange }
           />
         </label>
+        <label htmlFor="inputt" data-testid="rating-input-label">
+          Avaliação
+          <input
+            id="inputt"
+            type="number"
+            value={ value }
+            data-testid="rating-input"
+            onChange={ onChange }
+          />
+        </label>
       </form>
     );
   }
@@ -67,6 +67,5 @@ class AddMovie extends Component {
 export default AddMovie;
 
 AddMovie.propTypes = {
-  value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 };
