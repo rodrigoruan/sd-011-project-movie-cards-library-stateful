@@ -19,7 +19,7 @@ class MovieLibrary extends Component {
     this.handleAddMovie = this.handleAddMovie.bind(this);
     this.handleGenre = this.handleGenre.bind(this);
     this.handleText = this.handleText.bind(this);
-    this.toggleBoomark = this.toggleBoomark.bind(this);
+    this.togBookmark = this.togBookmark.bind(this);
   }
 
   handleAddMovie(newMovieData) {
@@ -31,11 +31,11 @@ class MovieLibrary extends Component {
     });
   }
 
-  handleGenre = ({ target }) => { this.setState({ selectedGenre: target.value }) };
+  handleGenre = ({ target }) => { this.setState({ selectedGenre: target.value }); };
 
-  handleText = ({ target }) => { this.setState({ searchText: target.value }) };
+  handleText = ({ target }) => { this.setState({ searchText: target.value }); };
 
-  toggleBoomark = ({ target }) => { this.setState({ bookmarkedOnly: target.checked }) };
+  togBookmark = ({ target }) => { this.setState({ bookmarkedOnly: target.checked }); };
 
   render() {
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
@@ -51,7 +51,7 @@ class MovieLibrary extends Component {
           searchText={ searchText }
           onSearchTextChange={ this.handleText }
           bookmarkedOnly={ bookmarkedOnly }
-          onBookmarkedChange={ this.toggleBoomark }
+          onBookmarkedChange={ this.togBookmark }
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.handleGenre }
         />
