@@ -40,6 +40,10 @@ export default class AddMovie extends Component {
         <label data-testid="storyline-input-label" htmlFor="storyline-input">Sinopse
         <textarea value={this.state.storyline} name="storyline" id="storyline-input" data-testid="storyline-input" onChange={this.handleState}></textarea>
         </label>
+        <label data-testid="rating-input-label" htmlFor="rating-input">Avaliação
+          <input type="number" name="rating" value={this.state.rating} data-testid="rating-input" id="rating-input" onChange={this.handleState} max="5" min="0"/>
+        </label>
+        <label></label>
       </form>
     )
   }
