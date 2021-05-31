@@ -7,7 +7,7 @@ class SearchBar extends React.Component {
       searchText,
       onBookmarkedChange,
       selectedGenre,
-      onSelectedGenreChange
+      onSelectedGenreChange,
     } = this.props;
 
     return (
