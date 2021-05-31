@@ -15,6 +15,8 @@ class MovieList extends React.Component {
   };
 
   filterMovies(movies, filters) {
+    if (!filters) return movies;
+
     const filterObjects = [];
 
     Object.entries(filters).forEach((filter) => {
