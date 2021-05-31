@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 // Pedi ajuda na sala "A"
 class SearchBar extends React.Component {
   render() {
-    const { 
+    const {
       searchText,
       onSearchTextChange,
       bookmarkedOnly,
       onBookmarkedChange,
       selectedGenre,
-      onSelectGenreChange,
+      onSelectedGenreChange,
     } = this.props;
     return (
       <form data-testid="search-bar-form">
@@ -23,7 +23,7 @@ class SearchBar extends React.Component {
             data-testid="text-input"
           />
         </label>
-        <label data-testid="checkbox-input-label" htmlFor="searchBarTextInput">
+          <label data-testid="checkbox-input-label" htmlFor="searchBarTextInput">
         Mostrar somente favoritos
           <input
             type="checkbox"
