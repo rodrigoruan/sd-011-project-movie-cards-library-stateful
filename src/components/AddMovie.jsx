@@ -1,6 +1,7 @@
 import React from 'react';
 
 class AddMovie extends React.Component {
+  
   constructor() {
     super()
     this.state = {
@@ -11,7 +12,7 @@ class AddMovie extends React.Component {
       rating: 0,
       genre: 'action',
     }
-
+    
     this.handleChange = this.handleChange.bind(this)
   }
 
@@ -22,6 +23,18 @@ class AddMovie extends React.Component {
     })
   }
 
+  createMovie(callback) {
+    callback(this.state);
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
+  
   render() {
     const { onClick } = this.props;
 
@@ -122,6 +135,16 @@ class AddMovie extends React.Component {
             </select>
 
           </label>
+
+          {/* <br /> provisório */}
+          <br />
+
+          <button
+            onClick={ this.createMovie(onClick) }
+            data-testid="send-button"
+          >
+            Adicionar filme
+          </button>
 
         </form>
       </div>
