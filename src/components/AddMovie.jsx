@@ -20,8 +20,10 @@ class AddMovie extends Component {
   render() {
     return (
       <form data-testid="add-movie-form">
-        <label>
-          <input />
+        <label htmlFor="input-title">
+          <input
+            id="input-title"
+          />
         </label>
       </form>
     );
