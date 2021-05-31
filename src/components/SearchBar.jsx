@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SearchBarInputText from './SearchBarFormsInputs/SearchBarInputText';
 import SearchBarInputCheckbox from './SearchBarFormsInputs/SerchBarInputCheckbox';
+import SearchBarInputSelect from './SearchBarFormsInputs/SearchBarInputSelect';
 
 class SearchBar extends React.Component {
   render() {
@@ -23,9 +25,22 @@ class SearchBar extends React.Component {
           bookmarkedOnly={ bookmarkedOnly }
           onBookmarkedChange={ onBookmarkedChange }
         />
+        <SearchBarInputSelect
+          selectedGenre={ selectedGenre }
+          onSelectedGenreChange={ onSelectedGenreChange }
+        />
       </form>
     );
   }
 }
+
+SearchBar.propTypes = {
+  searchText: PropTypes.string.isRequired,
+  onSearchTextChange: PropTypes.func.isRequired,
+  bookmarkedOnly: PropTypes.bool.isRequired,
+  onBookmarkedChange: PropTypes.func.isRequired,
+  selectedGenre: PropTypes.string.isRequired,
+  onSelectedGenreChange: PropTypes.func.isRequired,
+};
 
 export default SearchBar;
