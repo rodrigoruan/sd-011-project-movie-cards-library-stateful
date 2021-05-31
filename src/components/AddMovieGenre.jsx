@@ -9,11 +9,12 @@ export default class AddMovieGenre extends Component {
       <label htmlFor="genre-input" data-testid="genre-input-label">
         <select
           id="genre-input"
-          data-testid="genre-input-label"
+          data-testid="genre-input"
           name="genre"
           value={ value }
           onChange={ handleChange }
         >
+          Gênero
           <option value="action" data-testid="genre-option">Ação</option>
           <option value="comedy" data-testid="genre-option">Comédia</option>
           <option value="thriller" data-testid="genre-option">Suspense</option>
