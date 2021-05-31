@@ -16,18 +16,30 @@ export default class AddMovie extends Component {
     this.state = initialState;
 
     this.handleChange = this.handleChange.bind(this);
+    this.initialState = this.initialState.bind(this);
+    this.buttonClick = this.buttonClick.bind(this);
   }
 
   handleChange({ target }) {
-    const { name, value } = target;
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
 
     this.setState({
       [name]: value,
     });
   }
 
-  render() {
+  initialState() {
+    this.setState(initialState);
+  }
+
+  buttonClick() {
     const { onClick } = this.props;
+    onClick(this.state);
+    this.initialState();
+  }
+
+  render() {
     return (
       <form data-testid="add-movie-form">
         <label data-testid="title-input-label">
@@ -84,7 +96,7 @@ export default class AddMovie extends Component {
           <select
             name="genre"
             data-testid="genre-input"
-            defaultValue={this.state.genre}
+            value={this.state.genre}
             onChange={this.handleChange}
           >
             <option data-testid="genre-option" value="action">
@@ -98,7 +110,11 @@ export default class AddMovie extends Component {
             </option>
           </select>
         </label>
-        <button data-testid="send-button" onClick={onClick}>
+        <button
+          data-testid="send-button"
+          type="button"
+          onClick={this.buttonClick}
+        >
           Adicionar filme
         </button>
       </form>
