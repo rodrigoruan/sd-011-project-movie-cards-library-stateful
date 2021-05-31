@@ -80,7 +80,13 @@ export default class AddMovie extends Component {
           <AddMovieStoryline value={ storyline } handleChange={ this.handleChange } />
           <AddMovieRating value={ rating } handleChange={ this.handleChange } />
           <AddMovieGenre value={ genre } handleChange={ this.handleChange } />
-          <button type="submit" data-testid="send-button" onClick={ this.handleSubmit }>Adicionar filme</button>
+          <button
+            type="submit"
+            data-testid="send-button"
+            onClick={ this.handleSubmit }
+          >
+            Adicionar filme
+          </button>
         </form>
       </section>
     );
