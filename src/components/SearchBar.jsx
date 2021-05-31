@@ -16,12 +16,14 @@ export default class SearchBar extends Component {
     } = this.props;
     return (
       <div>
-        
+        <section>
+          <form data-testid="search-bar-form"></form>
+        </section>
       </div>
     )
   }
 }
 
 SearchBar.propTypes = {
-  
+
 }
