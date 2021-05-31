@@ -13,12 +13,15 @@ export default class AddMovie extends Component {
       genre: 'action',
     };
   }
-  
+
   render() {
     return (
-      <div>
-        
-      </div>
+      <form >
+        <label data-testid="title-input-label">
+          Titulo:
+          <input type="text" value="" name="Title" onChange={this.handleChangerTitle} />
+        </label>
+      </form>
     )
   }
 }
