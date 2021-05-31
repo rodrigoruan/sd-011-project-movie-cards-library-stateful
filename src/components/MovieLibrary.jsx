@@ -22,7 +22,7 @@ class MovieLibrary extends React.Component {
   }
 
   filterMovies() {
-    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+    const { searchText, movies } = this.state;
 
     if (searchText !== '') {
       return movies.filter((movie) => movie.title.includes(searchText)
