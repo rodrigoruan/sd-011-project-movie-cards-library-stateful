@@ -1,4 +1,5 @@
 import React from 'react';
+import LabeledInput from './LabeledInput';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -9,66 +10,66 @@ class AddMovie extends React.Component {
       subtitle: '',
       imagePath: '',
       storyline: '',
+      rating: 0,
     };
 
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange({ target }) {
-    const { name, value } = target;
+    const { id, value } = target;
 
     this.setState({
-      [name]: value,
+      [id]: value,
     });
   }
 
   render() {
-    const { title, subtitle, imagePath, storyline } = this.state;
+    const { title, subtitle, imagePath, storyline, rating } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <label htmlFor="addMovieTitleInput" data-testid="title-input-label">
-          Título
-          <input
-            id="addMovieTitleInput"
-            name="title"
-            type="text"
-            value={ title }
-            onChange={ this.handleChange }
-            data-testid="title-input"
-          />
-        </label>
-        <label htmlFor="addMovieSubtitleInput" data-testid="subtitle-input-label">
-          Subtítulo
-          <input
-            id="addMovieSubtitleInput"
-            name="subtitle"
-            type="text"
-            value={ subtitle }
-            onChange={ this.handleChange }
-            data-testid="subtitle-input"
-          />
-        </label>
-        <label htmlFor="addMovieImageInput" data-testid="image-input-label">
-          Imagem
-          <input
-            id="addMovieImageInput"
-            name="imagePath"
-            type="text"
-            value={ imagePath }
-            onChange={ this.handleChange }
-            data-testid="image-input"
-          />
-        </label>
-        <label htmlFor="addMovieSinopseTextarea" data-testid="storyline-input-label">
+        <LabeledInput
+          labelTestId="title-input-label"
+          labelText="Título"
+          id="title"
+          value={ title }
+          onChange={ this.handleChange }
+          data-testid="title-input"
+        />
+        <LabeledInput
+          labelTestId="subtitle-input-label"
+          labelText="Subtítulo"
+          id="subtitle"
+          value={ subtitle }
+          onChange={ this.handleChange }
+          data-testid="subtitle-input"
+        />
+        <LabeledInput
+          labelTestId="image-input-label"
+          labelText="Imagem"
+          id="imagePath"
+          value={ imagePath }
+          onChange={ this.handleChange }
+          data-testid="image-input"
+        />
+        <label htmlFor="storyline" data-testid="storyline-input-label">
           Sinopse
           <textarea
-            id="addMovieSinopseTextarea"
-            name="storyline"
+            id="storyline"
             value={ storyline }
             onChange={ this.handleChange }
             data-testid="storyline-input"
           />
         </label>
+        <LabeledInput
+          labelTestId="rating-input-label"
+          labelText="Avaliação"
+          id="rating"
+          type="number"
+          value={ rating }
+          onChange={ this.handleChange }
+          data-testid="rating-input"
+        />
       </form>
     );
   }
