@@ -5,16 +5,10 @@ import React, { Component } from 'react';
 class SearchBar extends Component {
   constructor(props) {
     super(props);
+    this.state = this.props;
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
-    this.state = this.props;
-  }
-
-  onSearchTextChange(event) {
-    this.setState({
-      searchText: event.target.value,
-    });
   }
 
   onBookmarkedChange(event) {
