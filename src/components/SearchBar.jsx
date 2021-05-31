@@ -26,7 +26,7 @@ class SearchBar extends React.Component {
 
           </label>
 
-          {/* <br /> provisorio */}
+          {/* <br /> provisório */}
           <br />
 
           <label data-testid="checkbox-input-label">
@@ -38,6 +38,25 @@ class SearchBar extends React.Component {
               onChange={ onBookmarkedChange }
               data-testid="checkbox-input"
             />
+
+          </label>
+
+          {/* <br /> provisório */}
+          <br />
+
+          <label data-testid="select-input-label">
+            <span>Filtrar por gênero</span>
+
+            <select
+              value={ selectedGenre }
+              onChange={ onSelectedGenreChange }
+              data-testid="select-input"
+            >
+              <option value="" data-testid="select-option">Todos</option>
+              <option value="action" data-testid="select-option">Ação</option>
+              <option value="comedy" data-testid="select-option">Comédia</option>
+              <option value="thriller" data-testid="select-option">Suspense</option>
+            </select>
             
           </label>
         </form>
