@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import InputText from './InputText';
 import SelectGenre from './SelectGenre';
 import TextAreaStory from './TextAreaStory';
 import InputNumber from './InputNumberRating';
-import PropTypes from 'prop-types';
+import ButtonAddMovie from './ButtonAddMovie';
 
 class AddMovie extends Component {
   constructor() {
@@ -63,16 +64,10 @@ class AddMovie extends Component {
           inputValue={ imagePath }
           inputFunction={ this.changeValues }
         />
-        <TextAreaStory
-          value={ storyLine }
-          inputFunction={ this.changeValues }
-        />
-        <InputNumber
-          inputValue={ rating }
-          inputFunction={ this.changeValues }
-        />
+        <TextAreaStory value={ storyLine } inputFunction={ this.changeValues } />
+        <InputNumber inputValue={ rating } inputFunction={ this.changeValues } />
         <SelectGenre value={ genre } inputFunction={ this.changeValues } />
-        <button data-testid="send-button" onClick={ onClick }>Adicionar filme</button>
+        <ButtonAddMovie onClick={ onClick } />
       </form>
     );
   }
