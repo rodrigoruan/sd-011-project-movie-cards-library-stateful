@@ -5,7 +5,7 @@ export default class Subtitle extends React.Component {
   render() {
     const { addMovieFunction, value } = this.props;
     return (
-        <label data-testid="subtitle-input-label" htmlFor="subtitle">
+      <label data-testid="subtitle-input-label" htmlFor="subtitle">
         Subtítulo
         <input
           type="text"
@@ -14,7 +14,7 @@ export default class Subtitle extends React.Component {
           onChange={ addMovieFunction }
           value={ value }
         />
-       </label>
+      </label>
     );
   }
 }
