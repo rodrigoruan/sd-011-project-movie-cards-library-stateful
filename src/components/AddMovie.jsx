@@ -16,8 +16,9 @@ class AddMovie extends React.Component {
 
   addMovieFunction(event) {
     const { id, value } = event.target;
-    this.setState(() => { [id]: value };
-    );
+    this.setState({
+      [id]: value,
+    });
   }
 
   render() {
