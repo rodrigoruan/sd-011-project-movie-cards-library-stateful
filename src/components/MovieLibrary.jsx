@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 import MovieList from './MovieList';
 import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
-import movies from '../data';
 
 class MovieLibrary extends Component {
   constructor(props) {
@@ -13,86 +12,106 @@ class MovieLibrary extends Component {
     this.handleChangeBookmarked = this.handleChangeBookmarked.bind(this);
     this.handleGenreChange = this.handleGenreChange.bind(this);
     this.handleNewMovie = this.handleNewMovie.bind(this);
+    const { movies } = this.props;
 
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
-      movies: this.props.movies,
+      movies,
     };
   }
 
   handleChangeSearchBar({ target }) {
     const { value } = target;
-    if (value != '') {
-      const newMovies = this.props.movies.filter((movie) => {
-        return (movie.title.includes(value)
+    const { movies } = this.props;
+    if (value !== '') {
+      const newMovies = movies.filter((movie) => (movie.title.includes(value)
         || movie.subtitle.includes(value)
-        || movie.storyline.includes(value))
-      })
+        || movie.storyline.includes(value)));
       this.setState({
         searchText: value,
-        movies: newMovies
-      })
+        movies: newMovies,
+      });
     } else {
       this.setState({
         searchText: value,
-        movies:this.props.movies,
-      })
+        movies,
+      });
     }
   }
 
   handleChangeBookmarked({ target }) {
+    const { movies } = this.props;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    const newMovies = this.props.movies.filter(movie => movie.bookmarked === value)
+    const newMovies = movies.filter((movie) => movie.bookmarked === value);
     this.setState({
       bookmarkedOnly: value,
       movies: newMovies,
-    })
+    });
   }
 
   handleGenreChange({ target }) {
+    const { movies } = this.props;
     const { value } = target;
-    if (value != '') {
+    if (value !== '') {
       this.setState({
-        movies: this.props.movies.filter(movie => movie.genre === value),
-        selectedGenre: value
-      })
+        movies: movies.filter((movie) => movie.genre === value),
+        selectedGenre: value,
+      });
     } else {
       this.setState({
-        movies: this.props.movies,
-        selectedGenre: value
-      })
+        movies,
+        selectedGenre: value,
+      });
     }
   }
 
-  handleNewMovie(a) {
+  handleNewMovie(newMovie) {
     this.setState((currentState) => {
-      const newMovie = [...currentState.movies];
-      newMovie.push(a)
+      const newMovies = [...currentState.movies];
+      newMovies.push(newMovie);
       return {
-        movies: newMovie
-      }
-    })
+        movies: newMovies,
+      };
+    });
   }
 
   render() {
+    const { searchText,
+      bookmarkedOnly,
+      selectedGenre,
+      movies,
+    } = this.state;
     return (
       <div>
         <h2> My awesome movie library </h2>
         <SearchBar
-          searchText={ this.state.searchText }
+          searchText={ searchText }
           onSearchTextChange={ this.handleChangeSearchBar }
-          bookmarkedOnly={ this.state.bookmarkedOnly }
+          bookmarkedOnly={ bookmarkedOnly }
           onBookmarkedChange={ this.handleChangeBookmarked }
-          selectedGenre={ this.state.selectedGenre }
+          selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.handleGenreChange }
         />
-        <MovieList movies={ this.state.movies } />
+        <MovieList movies={ movies } />
         <AddMovie onClick={ this.handleNewMovie } />
       </div>
     );
   }
 }
+
+MovieLibrary.propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    storyline: PropTypes.string,
+    rating: PropTypes.number,
+    imagePath: PropTypes.string,
+    bookmarked: PropTypes.bool,
+    genre: PropTypes.string,
+  })).isRequired,
+
+};
 
 export default MovieLibrary;

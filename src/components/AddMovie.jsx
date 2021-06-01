@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Subtitle from './Subtitle';
 import Title from './Title';
 import Image from './Image';
@@ -6,7 +7,6 @@ import Storyline from './Storyline';
 import RatingComponent from './RatingComponent';
 import Genre from './Genre';
 import Button from './Button';
-import MovieLibrary from './MovieLibrary';
 
 const inicialState = {
   subtitle: '',
@@ -50,10 +50,18 @@ class AddMovie extends React.Component {
         <Storyline value={ storyline } handleChange={ this.handleChange } />
         <RatingComponent value={ rating } handleChange={ this.handleChange } />
         <Genre value={ genre } handleChange={ this.handleChange } />
-        <Button onClick={ onClick } cleanState={ this.cleanState } newMovie={this.state}/>
+        <Button
+          onClick={ onClick }
+          cleanState={ this.cleanState }
+          newMovie={ this.state }
+        />
       </form>
     );
   }
 }
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 export default AddMovie;

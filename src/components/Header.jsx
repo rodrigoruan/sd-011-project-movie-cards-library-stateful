@@ -10,4 +10,6 @@ class Header extends React.Component {
   }
 }
 
+Header.propTypes = {};
+
 export default Header;

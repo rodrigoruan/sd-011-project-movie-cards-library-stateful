@@ -1,11 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Storyline extends React.Component {
   render() {
     const { value, handleChange } = this.props;
     return (
       <div>
-        <label data-testid="storyline-input-label">
+        <label
+          htmlFor="storyline"
+          data-testid="storyline-input-label"
+        >
           Sinopse
           <textarea
             data-testid="storyline-input"
@@ -19,5 +23,10 @@ class Storyline extends React.Component {
     );
   }
 }
+
+Storyline.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+};
 
 export default Storyline;
