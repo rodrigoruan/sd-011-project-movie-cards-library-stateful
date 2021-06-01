@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Subtitle from './Subtitle';
 import Title from './Title';
 import Storyline from './Storyline';
@@ -88,6 +89,10 @@ class AddMovie extends React.Component {
       </form>
     );
   }
+}
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
 }
 
 export default AddMovie;
