@@ -18,7 +18,6 @@ class MovieLibrary extends Component {
       </div>
     );
   }
-
 }
 
 export default MovieLibrary;
