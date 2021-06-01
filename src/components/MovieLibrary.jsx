@@ -5,17 +5,20 @@ import MovieList from './MovieList';
 import SearchBar from './components/SearchBar';
 
 class MovieLibrary extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = this.initialState;
     this.evSearch = this.evSearch.bind(this);
+    this.resulSearch = this.resulSearch.bind(this);
   }
 
   get initialState() {
+    const { movies } = this.props;
     return {
-      search: '',
-      favorite: false,
-      gen: '',
+      searchText: '',
+      bookmarkedOnly: false,
+      selectedGenre: '',
+      movies,
     };
   }
 
@@ -26,24 +29,30 @@ class MovieLibrary extends Component {
     });
   }
 
+  resulSearch() {
+    const { movies } = this.state;
+    const { searchText, selectedGenre } = this.state;
+
+    return movies.filter(({
+      title, subtitle, storyline,
+    }) => title.includes(searchText)
+    || subtitle.includes(searchText)
+      || storyline.includes(searchText));
+  }
+
   render() {
-    const { movies } = this.props;
-    const { search, favorite, gen } = this.state;
-    const resulSrc = movies.filter(({ title, subtitle }) => title.toLowerCase()
-      .includes(search.toLowerCase())
-      || subtitle.toLowerCase().includes(search.toLowerCase()))
-      .map((result) => result);
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <>
         <SearchBar
-          searchText={ search }
+          searchText={ searchText }
           onSearchTextChange={ this.evSearch }
-          bookmarkedOnly={ favorite }
+          bookmarkedOnly={ bookmarkedOnly }
           onBookmarkedChange={ this.evSearch }
-          selectedGenre={ gen }
+          selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.evSearch }
         />
-        <MovieList movies={ resulSrc } />
+        <MovieList movies={ this.resulSearch() } />
         <AddMovie onClick={ (e) => e } />
       </>
     );

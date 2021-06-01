@@ -10,7 +10,7 @@ class SelectList extends Component {
         Filtrar por gênero
         <select
           id="slId"
-          name="gen"
+          name="selectedGenre"
           value={ slVl }
           onChange={ evSl }
           data-testid="select-input"
