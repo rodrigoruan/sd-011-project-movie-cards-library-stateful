@@ -4,51 +4,38 @@ import PropTypes from 'prop-types';
 class SearchBar extends React.Component {
   render() {
     const {
-      searchText,
-      onSearchTextChange,
-      bookmarkedOnly,
-      onBookmarkedChange,
-      selectedGenre,
-      onSelectedGenreChange,
+      searchText, onSearchTextChange,
+      bookmarkedOnly, onBookmarkedChange,
+      selectedGenre, onSelectedGenreChange,
     } = this.props;
 
     return (
       <div>
         <form data-testid="search-bar-form">
-          <label data-testid="text-input-label">
+          <label data-testid="text-input-label" htmlFor="searchTextId">
             <span>Inclui o texto:</span>
-
             <input
+              id="searchTextId"
               type="text"
               value={ searchText }
               onChange={ onSearchTextChange }
               data-testid="text-input"
             />
-
           </label>
-
-          {/* <br /> provisório */}
-          <br />
-
-          <label data-testid="checkbox-input-label">
+          <label data-testid="checkbox-input-label" htmlFor="bookmarkId">
             <span>Mostrar somente favoritos</span>
-
             <input
               type="checkbox"
+              id="bookmarkId"
               checked={ bookmarkedOnly }
               onChange={ onBookmarkedChange }
               data-testid="checkbox-input"
             />
-
           </label>
-
-          {/* <br /> provisório */}
-          <br />
-
-          <label data-testid="select-input-label">
+          <label data-testid="select-input-label" htmlFor="selectedGenreId">
             <span>Filtrar por gênero</span>
-
             <select
+              id="selectedGenreId"
               value={ selectedGenre }
               onChange={ onSelectedGenreChange }
               data-testid="select-input"
@@ -58,7 +45,6 @@ class SearchBar extends React.Component {
               <option value="comedy" data-testid="select-option">Comédia</option>
               <option value="thriller" data-testid="select-option">Suspense</option>
             </select>
-
           </label>
         </form>
       </div>
