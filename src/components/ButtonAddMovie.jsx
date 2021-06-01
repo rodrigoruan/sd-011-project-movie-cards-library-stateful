@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 
 class ButtonAddMovie extends Component {
   render() {
-    const { onClick } = this.props;
+    const { funcClick } = this.props;
     return (
       <button
         type="button"
         htmlFor="send-button"
         data-testid="send-button"
-        onClick={ onClick }
+        onClick={ funcClick }
       >
         Adicionar filme
       </button>
@@ -18,7 +18,7 @@ class ButtonAddMovie extends Component {
 }
 
 ButtonAddMovie.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  funcClick: PropTypes.func.isRequired,
 };
 
 export default ButtonAddMovie;

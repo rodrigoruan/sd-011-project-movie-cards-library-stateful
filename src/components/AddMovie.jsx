@@ -10,6 +10,7 @@ class AddMovie extends Component {
   constructor() {
     super();
     this.changeValues = this.changeValues.bind(this);
+    this.clickButton = this.clickButton.bind(this);
     this.state = {
       subtitle: '',
       title: '',
@@ -27,8 +28,20 @@ class AddMovie extends Component {
     });
   }
 
-  render() {
+  clickButton() {
     const { onClick } = this.props;
+    onClick(this.state);
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyLine: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
+
+  render() {
     const { title,
       subtitle,
       imagePath,
@@ -67,7 +80,7 @@ class AddMovie extends Component {
         <TextAreaStory value={ storyLine } inputFunction={ this.changeValues } />
         <InputNumber inputValue={ rating } inputFunction={ this.changeValues } />
         <SelectGenre value={ genre } inputFunction={ this.changeValues } />
-        <ButtonAddMovie onClick={ onClick } />
+        <ButtonAddMovie funcClick={ this.clickButton } />
       </form>
     );
   }
