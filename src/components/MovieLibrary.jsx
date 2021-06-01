@@ -13,6 +13,7 @@ class MovieLibrary extends Component {
       movies: props.movies,
     };
     this.handleChange = this.handleChange.bind(this);
+    this.filterMovies = this.filterMovies.bind(this);
   }
 
   handleChange({ target }) {
@@ -22,6 +23,22 @@ class MovieLibrary extends Component {
     this.setState({
       [name]: value,
     });
+  }
+
+  filterMovies(movies){
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+    if(bookmarkedOnly){
+      movies = movies.filter((movie)=> movie.bookmarked === true);
+    }
+    if (selectedGenre) {
+      movies = movies.filter((movie) => movie.genre.includes(this.state.selectedGenre));
+    }
+    if (searchText) {
+      movies = movies.filter((movie) => movie.title.toUpperCase().includes(searchText.toUpperCase()) 
+      || movie.subtitle.toUpperCase().includes(searchText.toUpperCase())
+      || movie.storyline.toUpperCase().includes(searchText.toUpperCase()));
+    }   
+    return movies;    
   }
 
   render() {
@@ -36,7 +53,7 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={ this.handleChange }
           onBookmarkedChange={ this.handleChange }
         />
-        <MovieList movies={ movies } />
+        <MovieList movies={ this.filterMovies(movies) } />
       </div>
     );
   }
