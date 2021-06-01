@@ -2,7 +2,7 @@ import React from 'react';
 
 class Title extends React.Component {
   render() {
-    const { value, handleChange } = this.props
+    const { value, handleChange } = this.props;
 
     return (
       <label data-testid="title-input-label" htmlFor="addMovieTitleInput">
@@ -16,8 +16,8 @@ class Title extends React.Component {
           name="title"
         />
       </label>
-    )
+    );
   }
 }
 
-export default Title
+export default Title;
