@@ -15,11 +15,15 @@ class MovieLibrary extends Component {
   }
 
   render() {
-    const { movies } = this.state;
+    const { movies, searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <div>
         <h2>My awesome movie library</h2>
-        <SearchBar />
+        <SearchBar
+          searchText={ searchText }
+          bookmarkedOnly={ bookmarkedOnly }
+          selectedGenre={ selectedGenre }
+        />
         <MovieList movies={ movies } />
         <AddMovie onClick={ (teste) => console.log(teste) } />
       </div>
@@ -27,3 +31,9 @@ class MovieLibrary extends Component {
   }
 }
 export default MovieLibrary;
+
+MovieLibrary.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.object,
+  ).isRequired,
+};
