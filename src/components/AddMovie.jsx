@@ -3,6 +3,8 @@ import InputTitleNovie from './InputTitleNovie';
 import InputSubTitleNovie from './InputSubTitleNovie';
 import InputTextArea from './InputTextArea';
 import InputImage from './InputImage';
+import InputNumber from './InputNumber';
+import InputSelect from './InputSelect';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -56,6 +58,16 @@ class AddMovie extends React.Component {
         <br />
         <InputTextArea
           storyline={ storyline }
+          hadleState={ this.hadleState }
+        />
+        <br />
+        <InputNumber
+          rating={ rating }
+          hadleState={ this.hadleState }
+        />
+        <br />
+        <InputSelect
+          genre={ genre }
           hadleState={ this.hadleState }
         />
 
