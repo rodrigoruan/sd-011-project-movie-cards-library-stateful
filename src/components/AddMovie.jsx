@@ -6,40 +6,35 @@ import LabelImage from './LabelImage';
 import LabelTextarea from './LabelTextarea';
 import LabelNumber from './LabelNumber';
 
+const initialState = {
+  subtitle: '',
+  title: '',
+  imagePath: '',
+  storyline: '',
+  rating: 0,
+  genre: 'action',
+};
+
 class AddMovie extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      subtitle: '',
-      title: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
-    };
+    this.state = initialState;
     this.addState = this.addState.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(event) {
+  handleClick() {
     const { onClick } = this.props;
-    event.preventDefault();
-    onClick(this.state);
-    this.setState(() => ({
-      subtitle: '',
-      title: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
-    }));
+    const { state } = this;
+    onClick(state);
+    this.setState(initialState);
   }
 
   addState({ target }) {
     const { name, value } = target;
-    this.setState(() => ({
+    this.setState({
       [name]: value,
-    }));
+    });
   }
 
   render() {
@@ -66,7 +61,7 @@ class AddMovie extends Component {
           </select>
         </label>
         <button
-          type="submit"
+          type="button"
           data-testid="send-button"
           onClick={ this.handleClick }
         >

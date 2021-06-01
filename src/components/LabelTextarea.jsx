@@ -9,7 +9,7 @@ class LabelTextarea extends Component {
         Sinopse
         <input
           name="storyline"
-          type="textarea"
+          type="text"
           value={ value }
           data-testid="storyline-input"
           onChange={ functionChange }
