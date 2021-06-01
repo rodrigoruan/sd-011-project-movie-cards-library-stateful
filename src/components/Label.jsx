@@ -31,9 +31,7 @@ export class Label extends Component {
             }
             onChange={ change }
             name={ name }
-            data-testid={ /* caso o name seja imagePath, vou trocar por image-input, pois é o id que o exercicio pede então não poderei usar imagePath, caso contrário dará erro. */
-              name === 'imagePath' ? 'image-input' : `${name}-input`
-            }
+            data-testid={ name === 'imagePath' ? 'image-input' : `${name}-input` /*  */ }
             value={ value }
           />
         )}
