@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import MovieLibrary from './MovieLibrary';
-// import MovieList from './MovieList';
-// import SearchBar from './SearchBar';
+import Sinopse from './Sinopse';
 
 class AddMovie extends Component {
   constructor(props) {
@@ -67,10 +65,7 @@ class AddMovie extends Component {
           Imagem
           { this.addAtributes('imagePath', 'text', imagePath)}
         </label>
-        <label data-testid="storyline-input-label" htmlFor="ctl">
-          Sinopse
-          <textarea { ...this.addAtributes('storyline', 'text', storyline) } />
-        </label>
+        <Sinopse value={ storyline } handleState={ this.handleState } />
         <label data-testid="rating-input-label" htmlFor="ctl">
           Avaliação
           { this.addAtributes('rating', 'number', rating)}
@@ -105,12 +100,6 @@ export default AddMovie;
 
 AddMovie.propTypes = {
   onClick: PropTypes.func,
-  subtitle: PropTypes.string,
-  title: PropTypes.string,
-  imagePath: PropTypes.string,
-  storyline: PropTypes.string,
-  rating: PropTypes.number,
-  genre: PropTypes.string,
 };
 
 AddMovie.defaultProps = {
