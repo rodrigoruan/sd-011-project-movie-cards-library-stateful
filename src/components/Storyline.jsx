@@ -13,7 +13,7 @@ export default class Storyline extends React.Component {
           onChange={ addMovieFunction }
           value={ value }
         />
-      </label> 
+      </label>
     );
   }
 }
