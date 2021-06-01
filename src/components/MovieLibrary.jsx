@@ -10,7 +10,8 @@ export default class MovieLibrary extends Component {
 
     this.onClick = this.onClick.bind(this);
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
-
+    this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
+    this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
     const { movies } = this.props;
 
     this.state = {
@@ -37,6 +38,18 @@ export default class MovieLibrary extends Component {
       .map((movie) => this.setState({ movies: [movie] }));
   }
 
+  onBookmarkedChange(event) {
+    this.setState({ bookmarkedOnly: event.target.checked });
+  }
+
+  onSelectedGenreChange(event) {
+    const { movies } = this.props;
+    this.setState({ selectedGenre: event.target.value });
+    const { selectedGenre } = this.state;
+    movies.filter((movie) => movie.genre.includes(selectedGenre))
+      .map((movie) => this.setState({ movies: [movie] }));
+  }
+
   render() {
     const { searchText, bookmarkedOnly, selectedGenre,
       movies } = this.state;
@@ -47,6 +60,9 @@ export default class MovieLibrary extends Component {
           bookmarkedOnly={ bookmarkedOnly }
           selectedGenre={ selectedGenre }
           onSearchTextChange={ this.onSearchTextChange }
+          onBookmarkedChange={ this.onBookmarkedChange }
+          onSelectedGenreChange={ this.onSelectedGenreChange }
+
         />
         <MovieList movies={ movies } />
         <AddMovie onClick={ (changeMovie) => this.onClick(changeMovie) } />
