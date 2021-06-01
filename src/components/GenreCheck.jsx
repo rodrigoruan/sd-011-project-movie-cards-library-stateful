@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 
 class GenreCheck extends Component {
   render() {
-    const { name, title, genre, handleState } = this.props;
+    const { genre, handleState } = this.props;
     return (
-      <label htmlFor={ name }>
-        { title }
+      <label htmlFor="genre-input" data-testid="genre-input-label">
+        Gênero
         <select
-          name={ name }
+          data-testid="genre-input"
+          type="text"
+          name="genre"
           value={ genre }
           onChange={ handleState }
         >
@@ -24,15 +26,11 @@ class GenreCheck extends Component {
 export default GenreCheck;
 
 GenreCheck.propTypes = {
-  name: PropTypes.string,
-  title: PropTypes.string,
   genre: PropTypes.string,
   handleState: PropTypes.func,
 };
 
 GenreCheck.defaultProps = {
-  name: '',
-  title: '',
   genre: '',
   handleState: () => {},
 };

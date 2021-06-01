@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 /* import PropTypes from 'prop-types'; */
-import InputTextField from './InputTextField';
+import TitleInput from './TitleInput';
+import SubTitleInput from './SubTitleInput';
+import ImagePath from './ImagePath';
 import TextareaField from './TextareaField';
+import RatingInput from './RatingInput';
 import GenreCheck from './GenreCheck';
 
 class AddMovie extends Component {
@@ -45,45 +48,29 @@ class AddMovie extends Component {
 
     return (
       <form>
-        <InputTextField
-          type="text"
-          name="title"
-          text="Título"
+        <TitleInput
           value={ title }
-          onChange={ this.handleState }
+          handleState={ this.handleState }
         />
-        <InputTextField
-          type="text"
-          name="subtitle"
-          text="Subtítulo"
+        <SubTitleInput
           value={ subtitle }
-          onChange={ this.handleState }
+          handleState={ this.handleState }
         />
-        <InputTextField
-          type="text"
-          name="imagePath"
-          text="Imagem"
+        <ImagePath
           value={ imagePath }
-          onChange={ this.handleState }
+          handleState={ this.handleState }
         />
         <TextareaField
-          name="storyline"
-          text="Sinopse"
           value={ storyline }
-          onChange={ this.handleState }
+          handleState={ this.handleState }
         />
-        <InputTextField
-          type="number"
-          name="rating"
-          text="Avaliação"
+        <RatingInput
           value={ rating }
-          onChange={ this.handleState }
+          handleState={ this.handleState }
         />
         <GenreCheck
-          name="genre"
-          text="Filtrar por gênero"
+          handleState={ this.handleState }
           value={ genre }
-          onChange={ this.handleState }
         />
       </form>
     );
