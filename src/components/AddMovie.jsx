@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import TitleInput from './TitleInput';
+import SubTitleInput from './SubTitleInput';
 import ImagePath from './ImagePath';
 import TextareaField from './TextareaField';
 import RatingInput from './RatingInput';
@@ -23,7 +24,7 @@ class AddMovie extends Component {
   }
 
   // atribui valor do input
-  handleState(target) {
+  handleState({ target }) {
     const { name, value } = target;
     this.setState({
       [name]: value,
@@ -31,10 +32,9 @@ class AddMovie extends Component {
   }
 
   // Requisito 14
-  resetBtn(event) {
+  resetBtn() {
     const { onClick } = this.props;
     onClick(this.state);
-    event.preventDefault();
     this.setState({
       subtitle: '',
       title: '',
@@ -51,34 +51,28 @@ class AddMovie extends Component {
     return (
       <form data-testid="add-movie-form">
         <TitleInput
-          value={ title }
+          title={ title }
           handleState={ this.handleState }
         />
-        <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
-          Subtítulo
-          <input
-            type="text"
-            name="subtitle"
-            data-testid="subtitle-input"
-            value={ subtitle }
-            onChange={ this.handleState }
-          />
-        </label>
+        <SubTitleInput
+          subtitle={ subtitle }
+          handleState={ this.handleState }
+        />
         <ImagePath
-          value={ imagePath }
+          imagePath={ imagePath }
           handleState={ this.handleState }
         />
         <TextareaField
-          value={ storyline }
+          storyline={ storyline }
           handleState={ this.handleState }
         />
         <RatingInput
-          value={ rating }
+          rating={ rating }
           handleState={ this.handleState }
         />
         <GenreCheck
+          genre={ genre }
           handleState={ this.handleState }
-          value={ genre }
         />
         <button
           type="button"
