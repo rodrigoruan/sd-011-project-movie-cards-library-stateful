@@ -62,7 +62,7 @@ class MovieLibrary extends Component {
       const { searchText } = this.state;
       const filterStates = ['title', 'subtitle', 'storyline'];
       return data.filter((movie) => filterStates.some((state) => movie[state]
-        .toString().toLowerCase().indexOf(searchText.toLowerCase()) >= 0));
+        .toString().toLowerCase().indexOf(searchText.toString.toLowerCase()) >= 0));
     };
 
     this.setState({
@@ -84,7 +84,7 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={ this.onSelectedGenreChange }
         />
         <MovieList movies={ movies } />
-        <AddMovie />
+        <AddMovie onClick={ this.addMovie } />
       </div>
     );
   }

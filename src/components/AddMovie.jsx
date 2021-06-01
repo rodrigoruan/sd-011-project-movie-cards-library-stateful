@@ -16,6 +16,7 @@ export default class AddMovie extends Component {
     };
 
     this.hndChg = this.hndChg.bind(this);
+    this.clearForm = this.clearForm.bind(this);
   }
 
   hndChg({ target }) {
@@ -25,6 +26,10 @@ export default class AddMovie extends Component {
     this.setState({
       [name]: value,
     });
+  }
+
+  clearForm() {
+
   }
 
   render() {
