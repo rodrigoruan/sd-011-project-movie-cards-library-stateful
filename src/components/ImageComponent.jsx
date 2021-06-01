@@ -1,28 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class Subtitle extends React.Component {
+class Image extends React.Component {
   render() {
     const { value, handleChange } = this.props;
 
     return (
-      <label data-testid="subtitle-input-label" htmlFor="subtitle-input">
-        Título
+      <label data-testid="image-input-label" htmlFor="image-input">
+        Imagem
         <input
           type="text"
-          name="subtitle"
+          name="imagePath"
           value={ value }
           onChange={ handleChange }
-          data-testid="subtitle-input"
+          data-testid="image-input"
         />
       </label>
     );
   }
 }
 
-Subtitle.propTypes = {
+Image.propTypes = {
   value: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
 };
 
-export default Subtitle;
+export default Image;
