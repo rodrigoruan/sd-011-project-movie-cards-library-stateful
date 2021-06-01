@@ -7,16 +7,16 @@ class InputTextArea extends React.Component {
 
     return (
       <label
-        data-testid="storyline-input"
+        data-testid="storyline-input-label"
         htmlFor="inputAddMovie"
       >
         Sinopse
         <input
           type="textarea"
+          data-testid="storyline-input"
           value={ storyline }
           onChange={ hadleState }
           name="storyline"
-          data-testid="storyline-input-label"
           id="inputAddMovie"
         />
       </label>

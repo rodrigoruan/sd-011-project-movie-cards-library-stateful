@@ -23,7 +23,6 @@ class AddMovie extends React.Component {
 
   hadleState({ target }) {
     const { name, value } = target;
-    // console.log(target);
     this.setState(() => ({
       [name]: value,
     }));

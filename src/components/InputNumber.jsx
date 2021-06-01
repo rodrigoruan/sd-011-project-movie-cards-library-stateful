@@ -8,7 +8,7 @@ class InputNumber extends React.Component {
     return (
       <label
         data-testid="rating-input-label"
-        htmlFor="inputAddMovie"
+        htmlFor="rating-input"
       >
         Avaliação
         <input
@@ -17,7 +17,7 @@ class InputNumber extends React.Component {
           onChange={ hadleState }
           name="rating"
           data-testid="rating-input"
-          id="inputAddMovie"
+          id="rating-input"
         />
       </label>
     );

@@ -8,7 +8,7 @@ class InputTitleNovie extends React.Component {
     return (
       <label
         data-testid="title-input-label"
-        htmlFor="inputAddMovie"
+        htmlFor="title-input"
       >
         Título
         <input
@@ -17,7 +17,7 @@ class InputTitleNovie extends React.Component {
           onChange={ hadleState }
           name="title"
           data-testid="title-input"
-          id="inputAddMovie"
+          id="title-input"
         />
       </label>
     );

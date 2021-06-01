@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 class InputSubTitleNovie extends React.Component {
   render() {
     const { subtitle, hadleState } = this.props;
-
+    // console.log(subtitle);
     return (
       <label
         data-testid="subtitle-input-label"
-        htmlFor="inputAddMovie"
+        htmlFor="subtitle-input"
       >
         Subtítulo
         <input
@@ -17,7 +17,7 @@ class InputSubTitleNovie extends React.Component {
           onChange={ hadleState }
           name="subtitle"
           data-testid="subtitle-input"
-          id="inputAddMovie"
+          id="subtitle-input"
         />
       </label>
     );
