@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class AddMovie extends React.Component {
   constructor () {
@@ -14,13 +15,14 @@ class AddMovie extends React.Component {
   }
   render() {
     const { onClick } = this.props;
-    
     return (
-      <p>
-        teste
-      </p>
+      <form data-testid="add-movie-form"></form>
     );
   }
 }
- 
+
+AddMovie.protoType = {
+  onClick: PropTypes.func,
+};
+
 export default AddMovie;
