@@ -4,7 +4,9 @@ import React, { Component } from 'react';
 export default class SearchBar extends Component {
   render() {
     return (
-      <div></div>
+      <div>
+        <form data-testid="search-bar-form"></form>
+      </div>
     )
   }
 }
