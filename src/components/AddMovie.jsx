@@ -1,8 +1,8 @@
 // implement AddMovie component here
 import React from 'react';
 import PropTypes from 'prop-types';
-import ButtonAddMovie from '../AddMovieComponents/ButtonAddMovie';
-import RatingForm from '../AddMovieComponents/AddMovie-RatingForm';
+import RatingForm from './AddMovieComponents/AddMovie-RatingForm';
+import ButtonAddMovie from './AddMovieComponents/ButtonAddMovie';
 
 const state0 = {
   subtitle: '',
