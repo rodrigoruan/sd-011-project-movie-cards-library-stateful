@@ -53,13 +53,10 @@ class MovieLibrary extends React.Component {
     });
   }
 
-  addMovie(obj) {
-    const { movies } = this.props;
-    const newMovie = [...movies, obj];
-
-    this.setState({
-      movies: newMovie,
-    });
+  addMovie(importMovie) {
+    this.setState((previusState) => ({
+      movies: [...previusState.movies, importMovie],
+    }));
   }
 
   render() {
