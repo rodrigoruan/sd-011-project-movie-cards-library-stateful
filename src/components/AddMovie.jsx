@@ -34,7 +34,7 @@ class AddMovie extends Component {
     this.restoreState();
   }
 
-  restoreState = () => { // Rodolfo me ajudou nessa 
+  restoreState = () => { // Rodolfo me ajudou nessa
     this.setState({
       subtitle: '',
       title: '',
