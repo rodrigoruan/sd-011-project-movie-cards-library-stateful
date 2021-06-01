@@ -43,4 +43,8 @@ MovieLibrary.propTypes = {
   movies: PropTypes.arrayOf,
 };
 
+MovieLibrary.defaultProps = {
+  movies: {},
+}
+
 export default MovieLibrary;
