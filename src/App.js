@@ -5,15 +5,6 @@ import MovieLibrary from './components/MovieLibrary';
 import movies from './data';
 
 class App extends React.Component {
-  constructor() {
-    super();
-    this.handleAddMovies = this.handleAddMovies.bind(this);
-  }
-
-  handleAddMovies() {
-    console.log('a');
-  }
-
   render() {
     return (
       <main>

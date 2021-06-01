@@ -24,8 +24,8 @@ class AddMovie extends React.Component {
   }
 
   handleSubmit() {
-    const newCardMovie = this.state;
     const { onClick } = this.props;
+    const newCardMovie = this.state;
     console.log(newCardMovie);
     this.setState({
       subtitle: '',
