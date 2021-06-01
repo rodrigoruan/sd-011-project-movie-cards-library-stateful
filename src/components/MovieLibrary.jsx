@@ -42,10 +42,10 @@ class MovieLibrary extends Component {
     return filter;
   }
 
-  //  Função para adicioanr um novo filme, seta o state com os filmes anteriores e o novo.
-  newMovie(event) {
+  //  Função para adicionar um novo filme, seta o state com os filmes anteriores e o novo que será recebido por parâmetro ao ativar o click no botão do componente AddMovie
+  createNewMovie(newMovie) {
     this.setState((lastMovies) => ({
-      movies: [...lastMovies.movies, event],
+      movies: [...lastMovies.movies, newMovie],
     }));
   }
 
@@ -66,7 +66,7 @@ class MovieLibrary extends Component {
       <div>
         <h2> My awesome movie library </h2>
         <SearchBar
-        //  Passado a função changeState, para todas já que ela vai pegar o name, e o value dinamicamente posso usá-la para todas.
+          //  Passado a função changeState, para todas já que ela vai pegar o name, e o value dinamicamente posso usá-la para todas.
           onSelectedGenreChange={ this.changeState }
           selectedGenre={ selectedGenre }
           onBookmarkedChange={ this.changeState }
@@ -74,8 +74,18 @@ class MovieLibrary extends Component {
           onSearchTextChange={ this.changeState }
           searchText={ searchText }
         />
-        <MovieList movies={ this.filterMovies() } />
-        <AddMovie onClick={ this.newMovie } />
+        <MovieList
+          movies={
+            /* Passando os filmes filtrados(ou não) para serem renderizados na MovieList */
+            this.filterMovies()
+          }
+        />
+        <AddMovie
+          onClick={
+            /* passando a função que vai criar um novo filme via props para o addMovie */
+            this.createNewMovie
+          }
+        />
       </div>
     );
   }

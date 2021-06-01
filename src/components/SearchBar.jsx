@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 export class SearchBar extends Component {
   render() {
+    /* desestruturado as props recebida de MovieLibrary que serão usadas */
     const { searchText, onSearchTextChange, bookmarkedOnly, onBookmarkedChange,
       selectedGenre, onSelectedGenreChange } = this.props;
     return (
