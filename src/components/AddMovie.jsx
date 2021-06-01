@@ -74,6 +74,7 @@ class AddMovie extends React.Component {
           type="number"
           name="rating"
           value={ rating }
+          onChange={ this.handleChange }
         />
       </label>
     );
