@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './components/Header';
-import Data from './data';
 import MovieLibrary from './components/MovieLibrary';
+import Data from './data';
 import './App.css';
 
 function App() {
