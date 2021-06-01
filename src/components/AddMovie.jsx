@@ -31,6 +31,7 @@ class AddMovie extends Component {
 
   addMovie() {
     const { onClick } = this.props;
+    onClick(this.state);
     this.setState({
       subtitle: '',
       title: '',
@@ -39,7 +40,6 @@ class AddMovie extends Component {
       rating: 0,
       genre: 'action',
     });
-    onClick();
   }
 
   render() {
@@ -56,7 +56,7 @@ class AddMovie extends Component {
         </form>
         <button
           data-testid="send-button"
-          type="submit"
+          type="button"
           onClick={ this.addMovie }
         >
           Adicionar filme

@@ -9,6 +9,7 @@ class MovieLibrary extends Component {
     super(props);
     const { listOfMovies } = this.props;
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
+    this.onClick = this.onClick.bind(this);
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
@@ -35,8 +36,13 @@ class MovieLibrary extends Component {
     });
   }
 
-  onClick() {
-    console.log();
+  onClick(newMovie) {
+    const { listOfMovies } = this.props;
+    const moviesCopy = [...listOfMovies];
+    moviesCopy.push(newMovie);
+    this.setState({
+      movies: moviesCopy,
+    });
   }
 
   render() {
