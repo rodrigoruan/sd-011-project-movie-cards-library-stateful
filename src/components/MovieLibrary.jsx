@@ -67,7 +67,7 @@ class MovieLibrary extends Component {
       genre,
     };
     this.setState((oldState) => ({
-      movies: oldState.movies.push(newMovie),
+      movies: [...oldState.movies, newMovie],
     }));
   }
 
