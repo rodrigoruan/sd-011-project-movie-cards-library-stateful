@@ -13,7 +13,6 @@ class MovieLibrary extends Component {
       bookmarkedOnly: false,
       selectedGenre: '',
       movies: [...movies],
-      bookmarkedMovies: movies.filter((el) => el.bookmarked === true),
     };
     this.handleTextChange = this.handleTextChange.bind(this);
     this.CheckBookMark = this.CheckBookMark.bind(this);
@@ -25,8 +24,9 @@ class MovieLibrary extends Component {
     this.setState({ searchText: target.value });
   };
 
-  CheckBookMark = () =>
-    this.setState((curr) => ({ bookmarkedOnly: !curr.bookmarkedOnly }));
+  // prettier-ignore
+  CheckBookMark = () => (
+    this.setState((curr) => ({ bookmarkedOnly: !curr.bookmarkedOnly })))
 
   handleAddMovie = (el) => {
     el.rating = parseFloat(el.rating);
@@ -37,19 +37,22 @@ class MovieLibrary extends Component {
     this.setState({ selectedGenre: target.value });
   };
 
-  filterMoviesBySearch = (movies, searchText) => {
-    return movies.filter((el) => {
+  // prettier-ignore
+  filterMoviesBySearch = (movies, searchText) => (
+    movies.filter((el) => {
       const newTerm = el.title + el.subtitle + el.storyline;
       return newTerm.includes(searchText);
-    });
-  };
+    }))
 
-  filterMoviesByGenre = (movies, genre) => {
-    return movies.filter((el) => el.genre.includes(genre));
-  };
+  // prettier-ignore
+  filterMoviesByGenre = (movies, genre) => (
+    movies.filter((el) => el.genre.includes(genre)))
 
   filterMoviesByBookMarked = (movies, bookmarked) => {
-    return bookmarked ? movies.filter((el) => el.bookmarked === bookmarked) : movies;
+    if (bookmarked) {
+      return movies.filter((el) => el.bookmarked === bookmarked);
+    }
+    return movies;
   };
 
   // prettier-ignore
@@ -57,7 +60,7 @@ class MovieLibrary extends Component {
     const { bookmarkedOnly, searchText, selectedGenre, movies } = this.state;
     let filteredMovies = this.filterMoviesByGenre(movies, selectedGenre);
     filteredMovies = this.filterMoviesBySearch(filteredMovies, searchText);
-    filteredMovies = this.filterMoviesByBookMarked(filteredMovies, bookmarkedOnly)
+    filteredMovies = this.filterMoviesByBookMarked(filteredMovies, bookmarkedOnly);
     return (
       <div>
         <h2 className="mt-3 text-center"> My awesome movie library </h2>
