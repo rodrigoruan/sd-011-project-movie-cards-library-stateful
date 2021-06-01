@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AddMovieSubtitle from './AddMovieSubtitle';
 import AddMovieImage from './AddMovieImage';
+import AddMovieStoryline from './AddMovieStoryline';
 
 export default class AddMovie extends Component {
   constructor(props) {
@@ -43,6 +44,7 @@ export default class AddMovie extends Component {
           </label>
           <AddMovieSubtitle value={ subtitle } handleChange={ this.handleChange } />
           <AddMovieImage value={ imagePath } handleChange={ this.handleChange } />
+          <AddMovieStoryline value={ storyline } handleChange={ this.handleChange } />
         </form>
 
       </section>
