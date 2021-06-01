@@ -8,25 +8,40 @@ import AddMovie from './AddMovie';
 class MovieLibrary extends Component {
   constructor(props) {
     super(props);
-    this.teste = 0;
+    const { arrayOfMovies } = this.props;
+    this.state = {
+      searchText: '',
+      bookmarkedOnly: false,
+      selectedGenre: '',
+      movies: arrayOfMovies,
+    };
+    this.newState = this.newState.bind(this);
   }
 
   misteriousFunction() {
 
   }
 
+  newState({ target }) {
+    const { name } = target;
+    const value = (target.type === 'checkbox') ? target.checked : target.value;
+    this.setState(() => ({
+      [name]: value,
+    }));
+  }
+
   render() {
-    const { movies } = this.props;
+    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
     return (
       <div>
         <h2> My awesome movie library </h2>
         <SearchBar
-          searchText="uma string"
-          onSearchTextChange={ this.misteriousFunction }
-          bookmarkedOnly="teste"
-          onBookmarkedChange={ this.misteriousFunction }
-          selectedGenre="maisUmTeste"
-          onSelectedGenreChange={ this.misteriousFunction }
+          searchText={ searchText }
+          onSearchTextChange={ this.newState }
+          bookmarkedOnly={ bookmarkedOnly }
+          onBookmarkedChange={ this.newState }
+          selectedGenre={ selectedGenre }
+          onSelectedGenreChange={ this.newState }
         />
         <MovieList movies={ movies } />
         <AddMovie onClick={ this.misteriousFunction } />
@@ -36,7 +51,7 @@ class MovieLibrary extends Component {
 }
 
 MovieLibrary.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+  arrayOfMovies: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default MovieLibrary;
