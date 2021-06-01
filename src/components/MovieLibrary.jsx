@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import AddMovie from './AddMovie';
 import MovieList from './MovieList';
 import SearchBar from './SearchBar';
-import movies from '../data';
 
 export default class MovieLibrary extends Component {
   constructor(props) {
@@ -16,14 +15,14 @@ export default class MovieLibrary extends Component {
     };
   }
 
-  handleChanger = ({ target }) => {
+  handleChange = ({ target }) => { // Albertto da turma 11 me ajudou nessa!
     const { name, value } = target;
     this.setState({
       [name]: target.type === 'checkbox' ? target.checked : value,
-    }, () => this.handleBookMarkedFilter());
+    }, () => this.handleFilter());
   }
 
-  handleBookMarkedFilter = () => {
+  handleFilter = () => {
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     const { movies } = this.props;
 
@@ -45,12 +44,12 @@ export default class MovieLibrary extends Component {
   RenderCard = (newMovie) => {
     const { movies } = this.state;
     this.setState({
-      movies: [...movies, newMovie],
+      movies: [...movies, newMovie], // Victor Santiago me ajudou nessa!
     });
   }
 
   render() {
-    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+    const { movies, searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <div>
         <h2>My awesome movie library</h2>

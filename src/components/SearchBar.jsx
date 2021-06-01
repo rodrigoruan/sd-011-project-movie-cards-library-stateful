@@ -10,7 +10,7 @@ export default class SearchBar extends Component {
 
     return (
       <form data-testid="search-bar-form">
-        <label data-testid="text-input-label" htmlFor="searchText">
+        <label data-testid="text-input-label" htmlFor="text">
           Inclui o texto:
           <input
             type="text"
@@ -34,7 +34,7 @@ export default class SearchBar extends Component {
         <label data-testid="select-input-label" htmlFor="genre">
           Filtrar por gênero
           <select
-            name="genre"
+            name="selectedGenre"
             data-testid="select-input"
             value={ selectedGenre }
             onChange={ onSelectedGenreChange }
