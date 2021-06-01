@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Select from './Select';
 
 class SerarchBar extends React.Component {
   render() {
@@ -8,10 +9,9 @@ class SerarchBar extends React.Component {
       onSearchTextChange,
       bookmarkedOnly,
       onBookmarkedChange,
-      // selectedGenre,
-      // onSelectedGenreChange,
+      selectedGenre,
+      onSelectedGenreChange,
     } = this.props;
-
     return (
       <div>
         <form data-testid="search-bar-form">
@@ -34,6 +34,10 @@ class SerarchBar extends React.Component {
               data-testid="checkbox-input"
             />
           </label>
+          <Select
+            value={ selectedGenre }
+            onChange={ onSelectedGenreChange }
+          />
         </form>
       </div>
     );
@@ -45,8 +49,8 @@ SerarchBar.propTypes = {
   onSearchTextChange: PropTypes.string.isRequired,
   bookmarkedOnly: PropTypes.string.isRequired,
   onBookmarkedChange: PropTypes.string.isRequired,
-  //   selectedGenre: PropTypes.string,
-  //   onSelectedGenreChange: PropTypes.string,
+  selectedGenre: PropTypes.string.isRequired,
+  onSelectedGenreChange: PropTypes.string.isRequired,
 };
 
 export default SerarchBar;
