@@ -5,7 +5,7 @@ export default class BtnAddMovie extends React.Component {
   render() {
     const { resetState } = this.props;
     return (
-      <button 
+      <button
         type="submit"
         onClick={ resetState }
         data-testid="send-button"
