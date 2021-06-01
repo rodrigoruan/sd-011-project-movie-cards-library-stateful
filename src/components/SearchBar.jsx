@@ -13,43 +13,41 @@ class SearchBar extends React.Component {
     } = this.props;
 
     return (
-      <form data-testid="search-bar-form">
-        <label data-testid="text-input-label" htmlFor="searchBarTextInput">
-          Inclui o texto
-          <input
-            id="searchTextInput"
-            type="text"
-            value={ searchText }
-            onChange={ onSearchTextChange }
-            data-testid="text-input"
-          />
-        </label>
-        <label data-testid="checkbox-input-label" htmlFor="bookmarkedOnly">
-          Mostrar somente favoritos
-          <input
-            id="searchCheckboxInput"
-            type="checkbox"
-            checked={ bookmarkedOnly }
-            onChange={ onBookmarkedChange }
-            data-testid="checkbox-input"
-          />
-        </label>
-        <label data-testid="select-input-label" htmlFor="selectinput">
-          Filtrar por gênero
-          <select
-            id="searchSelectInput"
-            value={ selectedGenre }
-            onChange={ onSelectedGenreChange }
-            data-testid="select-input"
-          >
-            <option data-testid="select-option" value="">Todos</option>
-            <option data-testid="select-option" value="action">ação</option>
-            <option data-testid="select-option" value="comedy">comedia</option>
-            <option data-testid="select-option" value="thriller">suspense</option>
-          </select>
-        </label>
-      </form>
-
+      <div>
+        <form data-testid="search-bar-form">
+          <label data-testid="text-input-label" htmlFor="searchBarTextInput">
+            Inclui o texto:
+            <input
+              type="text"
+              value={ searchText }
+              onChange={ onSearchTextChange }
+              data-testid="text-input"
+            />
+          </label>
+          <label data-testid="checkbox-input-label" htmlFor="bookmarkedOnly">
+            Mostrar somente favoritos
+            <input
+              type="checkbox"
+              checked={ bookmarkedOnly }
+              onChange={ onBookmarkedChange }
+              data-testid="checkbox-input"
+            />
+          </label>
+          <label data-testid="select-input-label" htmlFor="selectinput">
+            Filtrar por gênero
+            <select
+              value={ selectedGenre }
+              onChange={ onSelectedGenreChange }
+              data-testid="select-input"
+            >
+              <option data-testid="select-option" value="">Todos</option>
+              <option data-testid="select-option" value="action">Ação</option>
+              <option data-testid="select-option" value="comedy">Comédia</option>
+              <option data-testid="select-option" value="thriller">Suspense</option>
+            </select>
+          </label>
+        </form>
+      </div>
     );
   }
 }
