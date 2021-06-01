@@ -7,6 +7,8 @@ class AddMovie extends Component {
 
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
     this.handleChangeSubtitle = this.handleChangeSubtitle.bind(this);
+    this.handleChangeImage = this.handleChangeImage.bind(this);
+    this.handleChangeTextarea = this.handleChangeTextarea.bind(this);
   }
 
   handleChangeTitle() {
@@ -18,6 +20,10 @@ class AddMovie extends Component {
   }
 
   handleChangeImage() {
+
+  }
+
+  handleChangeTextarea() {
 
   }
 
@@ -47,6 +53,13 @@ class AddMovie extends Component {
             onChange={ this.handleChangeImage }
           />
         </label>
+        <label htmlFor="storyline-input" data-testid="storyline-input-label">
+          Sinopse
+          <textarea
+            data-testid="storyline-input"
+            onChange={ this.handleChangeTextarea }
+          />
+        </label>
       </form>
     );
   }
@@ -57,6 +70,7 @@ AddMovie.propTypes = {
     title: PropTypes.string,
     subtitle: PropTypes.string,
     imagePath: PropTypes.string,
+    storyline: PropTypes.string,
   }).isRequired,
 };
 
