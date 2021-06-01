@@ -19,7 +19,7 @@ export default class Title extends React.Component {
   }
 }
 
-Title.PropTypes = {
+Title.propTypes = {
   addMovieFunction: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
 }
