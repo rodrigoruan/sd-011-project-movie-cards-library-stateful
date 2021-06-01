@@ -29,25 +29,14 @@ class AddMovie extends React.Component {
 
   // Pedi ajuda na sala "A"
   render() {
-    const { title, subtitle, imagePath, storyline, rating } = this.state;
+    const { title, subtitle, imagePath, storyline, ratingChange } = this.state;
     return (
       <form data-testid="add-movie-form">
         <Title value={ this.state.title } handleChange={ this.handleChange } />
         <Subtitle value={ this.state.subtitle } handleChange={ this.handleChange } />
-        <ImagePath value={ this.state.ImagePath } handleChange={ this.handleChange } />
-        <Storyline value={ this.state.Storyline } handleChange={ this.handleChange } />
-        
-        <label data-testid="rating-input-label" htmlFor="addMovieRating">
-          Avaliação
-          <input
-            type="number"
-            value={ rating }
-            data-testid="rating-input"
-            onChange={ this.handleChange }
-            id="addMovieRating"
-            name="rating"
-          />
-        </label>
+        <ImagePath value={ this.state.imagePath } handleChange={ this.handleChange } />
+        <Storyline value={ this.state.storyline } handleChange={ this.handleChange } />
+        <RatingChange value={ this.state.ratingChange } handleChange={ this.handleChange } />
       </form>
     );
   }
