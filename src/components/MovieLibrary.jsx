@@ -8,12 +8,31 @@ class MovieLibrary extends Component {
   constructor(props) {
     super(props);
     const { listOfMovies } = this.props;
+    this.onSearchTextChange = this.onSearchTextChange.bind(this);
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
       movies: listOfMovies,
     };
+  }
+
+  onSearchTextChange(event) {
+    this.setState({
+      searchText: event.target.value,
+    });
+  }
+
+  onBookmarkedChange(event) {
+    this.setState({
+      bookmarkedOnly: event.target.checked,
+    });
+  }
+
+  onSelectedGenreChange(event) {
+    this.setState({
+      selectedGenre: event.target.value,
+    });
   }
 
   render() {
