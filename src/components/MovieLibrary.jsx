@@ -32,7 +32,7 @@ class MovieLibrary extends Component {
           bookmarkedOnly={ bookmarkedOnly }
           selectedGenre={ selectedGenre }
         />
-        <AddMovie onClick={(movie) => this.addMovies(movie) }
+        <AddMovie onClick={(movie) => this.addMovies(movie) } />
         <MovieList movies={ movies } />
       </div>
     );
