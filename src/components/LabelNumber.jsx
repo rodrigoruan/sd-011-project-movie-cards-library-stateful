@@ -10,7 +10,7 @@ class LabelNumber extends Component {
         <input
           name="rating"
           type="number"
-          value={ value }
+          value={ Number(value) }
           data-testid="rating-input"
           onChange={ functionChange }
         />
