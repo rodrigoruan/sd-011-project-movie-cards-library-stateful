@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import NewInp from './NewInputs';
+import TitleSubtitle from './TitleSubtitle';
+import Image from './Image';
+import Sinopse from './Sinopse';
 
 export default class AddMovie extends Component {
   constructor() {
@@ -15,11 +17,11 @@ export default class AddMovie extends Component {
       genre: 'action',
     };
 
-    this.hndChg = this.hndChg.bind(this);
-    this.clearForm = this.clearForm.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  hndChg({ target }) {
+  handleChange({ target }) {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
 
@@ -28,39 +30,44 @@ export default class AddMovie extends Component {
     });
   }
 
-  clearForm() {
-
+  handleSubmit() {
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
   }
 
   render() {
-    const { onClick } = this.props;
-    const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
+    const initialState = { ...this.state };
+    const { subtitle, title, imagePath, storyline, rating, genre } = initialState;
     return (
       <form data-testid="add-movie-form">
 
-        <NewInp key={ title } inTp="text" lbTx="Título" hndChg={ this.hndChg } />
+        <TitleSubtitle title={ title } subtitle={ subtitle } chg={ this.handleChange } />
+        <Image img={ imagePath } chg={ this.handleChange } />
+        <Sinopse sinopse={ storyline } chg={ this.handleChange } />
 
-        <NewInp key={ subtitle } inTp="text" lbTx="Subtítulo" hndChg={ this.hndChg } />
-
-        <NewInp key={ imagePath } inTp="text" lbTx="Imagem" hndChg={ this.hndChg } />
-
-        <label data-testid="storyline-input-label" htmlFor="storyline-input">
-          Sinopse
-          <textarea
-            data-testid="storyline-input"
-            value={ storyline }
-            onChange={ this.handlChng }
+        <label data-testid="rating-input-label" htmlFor="rating-input">
+          Avaliação
+          <input
+            name="rating"
+            type="number"
+            data-testid="rating-input"
+            value={ rating }
+            onChange={ this.handleChange }
           />
         </label>
-
-        <NewInp key={ rating } inTp="number" lbTx="Avaliação" hndChg={ this.hndChg } />
-
         <label data-testid="genre-input-label" htmlFor="genre-input">
           Gênero
           <select
+            name="genre"
             value={ genre }
             data-testid="genre-input"
-            onChange={ this.handlChng }
+            onChange={ this.handleChange }
           >
             <option data-testid="genre-option" value="action">Ação</option>
             <option data-testid="genre-option" value="comedy">Comédia</option>
@@ -71,7 +78,12 @@ export default class AddMovie extends Component {
           type="submit"
           data-testid="send-button"
           value={ this.state }
-          onClick={ () => onClick.addMovie }
+          onClick={ (e) => {
+            const { onClick } = this.props;
+            e.preventDefault();
+            onClick(this.state);
+            this.handleSubmit();
+          } }
         >
           Adicionar filme
         </button>

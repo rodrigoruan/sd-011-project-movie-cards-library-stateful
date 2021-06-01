@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import MovieList from './MovieList';
 import SearchBar from './SearchBar';
@@ -12,7 +13,7 @@ class MovieLibrary extends Component {
       searchText: '', // guarda o texto de busca por filmes;
       bookmarkedOnly: false, // um boolean que guarda se é para filtrar por filmes favoritados ou não;
       selectedGenre: '', // guarda o gênero do filme selecionado para poder fazer a filtragem;
-      movies: '', // guarda a lista de filmes.
+      movies: props.movies, // guarda a lista de filmes.
     };
 
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
@@ -22,26 +23,35 @@ class MovieLibrary extends Component {
     this.filterMovieList = this.filterMovieList.bind(this);
   }
 
-  onSearchTextChange({ target: { value } }) {
+  onSearchTextChange({ target }) {
+    const { value } = target;
+    const { movies } = this.props;
     this.setState({
       searchText: value,
+      movies: value === '' ? movies : this.filterMovieList(),
     });
   }
 
-  onBookmarkedChange({ target }) {
-    this.setState({
-      bookmarkedOnly: target.value,
-    });
+  onBookmarkedChange() {
+    const { movies } = this.props;
+    this.setState((state) => ({
+      bookmarkedOnly: !state.bookmarkedOnly,
+      movies: !state.bookmarkedOnly
+        ? movies.filter((movie) => movie.bookmarked === !state.bookmarkedOnly)
+        : movies,
+    }));
   }
 
   onSelectedGenreChange({ target: { value } }) {
+    const { movies } = this.props;
     this.setState({
       selectedGenre: value,
+      movies: !value ? movies : movies.filter((movie) => movie.genre === value),
     });
   }
 
-  addMovie({ target }) {
-    const { value } = target;
+  addMovie(value) {
+    const { movies } = this.state;
     const newMovie = {
       title: value.title,
       subtitle: value.subtitle,
@@ -51,23 +61,18 @@ class MovieLibrary extends Component {
       bookmarked: false,
       genre: value.genre,
     };
-
-    this.setState((state) => ({
-      movies: state.movies.push(newMovie),
-    }));
+    const newMovieList = [...movies];
+    newMovieList[newMovieList.length] = newMovie;
+    this.setState({
+      movies: newMovieList,
+    });
   }
 
   filterMovieList() {
-    const filteredMovies = () => {
-      const { searchText } = this.state;
-      const filterStates = ['title', 'subtitle', 'storyline'];
-      return data.filter((movie) => filterStates.some((state) => movie[state]
-        .toString().toLowerCase().indexOf(searchText.toString.toLowerCase()) >= 0));
-    };
-
-    this.setState({
-      movies: filteredMovies(),
-    });
+    const { searchText, movies } = this.state;
+    const filterStates = ['title', 'subtitle', 'storyline'];
+    return movies.filter((movie) => filterStates.some((state) => movie[state]
+      .toString().toLowerCase().includes(searchText.toString().toLowerCase())));
   }
 
   render() {
@@ -91,3 +96,7 @@ class MovieLibrary extends Component {
 }
 
 export default MovieLibrary;
+
+MovieLibrary.propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
