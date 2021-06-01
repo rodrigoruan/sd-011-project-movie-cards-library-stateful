@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import MovieList from './MovieList';
 import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
-import movies from '../data';
 
 class MovieLibrary extends Component {
   constructor(props) {
@@ -16,21 +15,22 @@ class MovieLibrary extends Component {
     };
     this.addMovies = this.addMovies.bind(this);
   }
-  addMovies(movie) {
+
+  addMovies() {
     this.setState((estadoAnterior, props) => ({
       movies: props.movies,
-    }))
+    }));
   }
 
   render() {
-    const { movies } = this.props;
+    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
     return (
       <div>
         <h2> My awesome movie library </h2>
         <SearchBar
-          searchText={ this.state.searchText }
-          bookmarkedOnly={ this.state.bookmarkedOnly }
-          selectedGenre={ this.state.selectedGenre }
+          searchText={ searchText }
+          bookmarkedOnly={ bookmarkedOnly }
+          selectedGenre={ selectedGenre }
         />
         <AddMovie onClick={ this.addMovies } />
         <MovieList movies={ movies } />
