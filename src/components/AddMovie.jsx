@@ -15,6 +15,8 @@ class AddMovie extends Component {
     };
     this.movieAdd = this.movieAdd.bind(this);
     this.setAttribute = this.setAttribute.bind(this);
+    this.rst = this.rst.bind(this);
+    this.snpse = this.snpse.bind(this);
   }
 
   setAttribute(inputName, inputType, inputValue) {
@@ -36,6 +38,29 @@ class AddMovie extends Component {
     });
   }
 
+  rst() {
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
+
+  snpse(inputName, inputType, inputValue) {
+    return (
+      <textarea
+        name={ inputName }
+        type={ inputType }
+        value={ inputValue }
+        data-testid="storyline-input"
+        onChange={ this.movieAdd }
+      />
+    );
+  }
+
   render() {
     const { onClick } = this.props;
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
@@ -54,10 +79,42 @@ class AddMovie extends Component {
             Imagem
             { this.setAttribute('imagePath', 'text', imagePath) }
           </label>
+          <label htmlFor="control" data-testid="storyline-input-label">
+            Sinopse
+            { this.snpse('storyline', 'text', storyline) }
+          </label>
+          <label htmlFor="control" data-testid="rating-input-label">
+            Avaliação
+            { this.setAttribute('rating', 'number', rating) }
+          </label>
+          <label htmlFor="control" data-testid="genre-input-label">
+            Gênero
+            <select
+              name="genre"
+              value={ genre }
+              data-testid="genre-input"
+              onChange={ this.movieAdd }
+            >
+              <option value="action" data-testid="genre-option">Ação</option>
+              <option value="comedy" data-testid="genre-option">Comédia</option>
+              <option value="thriller" data-testid="genre-option">Suspense</option>
+            </select>
+          </label>
+          <button
+            data-testid="send-button"
+            type="button"
+            onClick={ () => { onClick(this.state); this.rst(); } }
+          >
+            Adicionar filme
+          </button>
         </form>
       </div>
     );
   }
 }
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 export default AddMovie;
