@@ -2,16 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export default class SearchBar extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      searchText: '',
-      bookmarkedOnly: '',
-      selectedGenre: '',
-    };
-  }
-
   render() {
     const {
       searchText,
@@ -19,14 +9,14 @@ export default class SearchBar extends Component {
       bookmarkedOnly,
       onBookmarkedChange,
       selectedGenre,
-      onSelectedGenreChange } = this.state;
+      onSelectedGenreChange } = this.props;
     return (
       <form data-testid="search-bar-form">
         <label
           data-testid="text-input-label"
           htmlFor="SearchText"
         >
-          Inclui o texto
+          Inclui o texto:
           <input
             onChange={ onSearchTextChange }
             data-testid="text-input"

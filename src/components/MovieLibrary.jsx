@@ -27,22 +27,26 @@ export default class MovieLibrary extends Component {
   }
 
   onSearchTextChange(event) {
-    console.log('Esse aqui > ', event.target);
+    const { movies } = this.props;
     this.setState({
       searchText: event.target.value,
     });
+    const { searchText } = this.state;
+
+    movies.filter((movie) => movie.title.includes(searchText))
+      .map((movie) => this.setState({ movies: [movie] }));
   }
 
   render() {
     const { searchText, bookmarkedOnly, selectedGenre,
-      movies, onSearchTextChange } = this.state;
+      movies } = this.state;
     return (
       <>
         <SearchBar
           searchText={ searchText }
           bookmarkedOnly={ bookmarkedOnly }
           selectedGenre={ selectedGenre }
-          onSearchTextChange={ onSearchTextChange }
+          onSearchTextChange={ this.onSearchTextChange }
         />
         <MovieList movies={ movies } />
         <AddMovie onClick={ (changeMovie) => this.onClick(changeMovie) } />
