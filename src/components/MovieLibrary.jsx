@@ -1,4 +1,4 @@
-/* // implement AddMovie component here
+// implement AddMovie component here
 import React, { Component } from 'react';
 
 import MovieList from './MovieList';
@@ -22,4 +22,4 @@ class MovieLibrary extends Component {
   }
 }
 
-export default MovieLibrary; */
+export default MovieLibrary; 
