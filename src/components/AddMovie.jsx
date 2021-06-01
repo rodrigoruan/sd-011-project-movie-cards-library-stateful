@@ -5,8 +5,10 @@ class AddMovie extends React.Component {
   render() {
     return (
       <form data-testid="add-movie-form">
-        <h1>Add Movie</h1>
-
+        <label htmlFor="titleInput" data-testid="title-input-label">
+          Título:
+          <input data-testid="title-input" />
+        </label>
       </form>
     );
   }
