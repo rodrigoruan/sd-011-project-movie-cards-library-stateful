@@ -1,5 +1,6 @@
 // implement AddMovie component here
 import React from 'react';
+import propTypes from 'prop-types';
 import LastLabels from './LastLabels';
 
 class AddMovie extends React.Component {
@@ -25,6 +26,8 @@ class AddMovie extends React.Component {
   }
 
   resetState() {
+    const { onClick } = this.props;
+    onClick(this.state);
     this.setState({
       subtitle: '',
       title: '',
@@ -86,5 +89,9 @@ class AddMovie extends React.Component {
     );
   }
 }
+
+AddMovie.propTypes = {
+  onClick: propTypes.func.isRequired,
+};
 
 export default AddMovie;

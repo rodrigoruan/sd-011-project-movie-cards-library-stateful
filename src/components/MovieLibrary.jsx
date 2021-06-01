@@ -13,10 +13,11 @@ class MovieLibrary extends React.Component {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
-      moviesArray: movies,
+      movies,
     };
     this.handleChanges = this.handleChanges.bind(this);
     this.filterLibraryText = this.filterLibraryText.bind(this);
+    this.addMovie = this.addMovie.bind(this);
   }
 
   handleChanges(event) {
@@ -32,7 +33,12 @@ class MovieLibrary extends React.Component {
     }
   }
 
-  // Criar uma função para adicionar novo filme e passar como prop para AddMovie
+  addMovie(state) {
+    const { movies } = this.state;
+    this.setState({
+      movies: [...movies, state],
+    });
+  }
 
   filterLibraryGenre(array) {
     const { selectedGenre } = this.state;
@@ -45,8 +51,8 @@ class MovieLibrary extends React.Component {
   }
 
   filterLibraryText() {
-    const { moviesArray, searchText } = this.state;
-    return moviesArray.filter((movie) => {
+    const { movies, searchText } = this.state;
+    return movies.filter((movie) => {
       const totalText = `${movie.title} ${movie.subtitle} ${movie.storyline}`;
       return totalText.toLowerCase().includes(searchText.toLowerCase());
     });
@@ -80,7 +86,7 @@ class MovieLibrary extends React.Component {
         <MovieList
           movies={ filteredMovies }
         />
-        <AddMovie />
+        <AddMovie onClick={ this.addMovie } />
       </fragment>
     );
   }
