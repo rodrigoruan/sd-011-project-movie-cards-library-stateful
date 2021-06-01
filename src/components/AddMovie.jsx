@@ -43,6 +43,7 @@ class AddMovie extends React.Component {
           value={ title }
           onChange={ this.handleChange }
           data-testid="title-input"
+          className="searchbox"
         />
       </label>
     );
@@ -60,6 +61,7 @@ class AddMovie extends React.Component {
           value={ subtitle }
           onChange={ this.handleChange }
           data-testid="subtitle-input"
+          className="searchbox"
         />
       </label>
     );
@@ -77,6 +79,7 @@ class AddMovie extends React.Component {
           value={ imagePath }
           onChange={ this.handleChange }
           data-testid="image-input"
+          className="searchbox"
         />
       </label>
     );
@@ -93,6 +96,7 @@ class AddMovie extends React.Component {
           value={ storyline }
           onChange={ this.handleChange }
           data-testid="storyline-input"
+          className="searchbox"
         />
       </label>
     );
@@ -110,6 +114,7 @@ class AddMovie extends React.Component {
           value={ rating }
           onChange={ this.handleChange }
           data-testid="rating-input"
+          className="searchbox"
         />
       </label>
     );
@@ -126,6 +131,7 @@ class AddMovie extends React.Component {
           value={ genre }
           onChange={ this.handleChange }
           data-testid="genre-input"
+          className="select"
         >
           <option value="action" data-testid="genre-option">Ação</option>
           <option value="comedy" data-testid="genre-option">Comédia</option>
@@ -141,6 +147,7 @@ class AddMovie extends React.Component {
         type="button"
         data-testid="send-button"
         onClick={ this.handleClick }
+        className="btn-send"
       >
         Adicionar filme
       </button>
@@ -149,15 +156,17 @@ class AddMovie extends React.Component {
 
   render() {
     return (
-      <form data-testid="add-movie-form" className="add-movie">
-        { this.inputTitle() }
-        { this.inputSubtitle() }
-        { this.inputImage() }
-        { this.textareaSinopse() }
-        { this.inputRating() }
-        { this.selectGenre() }
+      <div className="section-movie">
+        <form data-testid="add-movie-form" className="form-movie">
+          { this.inputTitle() }
+          { this.inputSubtitle() }
+          { this.inputImage() }
+          { this.textareaSinopse() }
+          { this.inputRating() }
+          { this.selectGenre() }
+        </form>
         { this.sendButton() }
-      </form>
+      </div>
     );
   }
 }

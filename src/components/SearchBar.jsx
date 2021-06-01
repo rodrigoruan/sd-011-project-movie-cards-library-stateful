@@ -5,7 +5,7 @@ class SearchBar extends React.Component {
   renderTextInput() {
     const { searchText, onSearchTextChange } = this.props;
     return (
-      <label htmlFor="search" data-testid="text-input-label">
+      <label htmlFor="search" data-testid="text-input-label" className="section-search">
         Inclui o texto:
         <input
           id="search"
@@ -13,6 +13,7 @@ class SearchBar extends React.Component {
           value={ searchText }
           onChange={ onSearchTextChange }
           data-testid="text-input"
+          className="searchbox"
         />
       </label>
     );
@@ -21,7 +22,7 @@ class SearchBar extends React.Component {
   renderCheckboxInput() {
     const { bookmarkedOnly, onBookmarkedChange } = this.props;
     return (
-      <label htmlFor="favorite" data-testid="checkbox-input-label">
+      <label htmlFor="favorite" data-testid="checkbox-input-label" className="check">
         Mostrar somente favoritos
         <input
           id="favorite"
@@ -29,6 +30,7 @@ class SearchBar extends React.Component {
           checked={ bookmarkedOnly }
           onChange={ onBookmarkedChange }
           data-testid="checkbox-input"
+          className="checkbox"
         />
       </label>
     );
@@ -37,13 +39,14 @@ class SearchBar extends React.Component {
   renderSelectInput() {
     const { selectedGenre, onSelectedGenreChange } = this.props;
     return (
-      <label htmlFor="filter" data-testid="select-input-label">
+      <label htmlFor="filter" data-testid="select-input-label" className="section-select">
         Filtrar por gênero
         <select
           id="filter"
           value={ selectedGenre }
           onChange={ onSelectedGenreChange }
           data-testid="select-input"
+          className="select"
         >
           <option value="" data-testid="select-option">Todos</option>
           <option value="action" data-testid="select-option">Ação</option>
@@ -56,7 +59,7 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <form data-testid="search-bar-form">
+      <form data-testid="search-bar-form" className="section-form-search">
         {this.renderTextInput()}
         { this.renderCheckboxInput() }
         { this.renderSelectInput() }

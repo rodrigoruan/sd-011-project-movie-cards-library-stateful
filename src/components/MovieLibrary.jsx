@@ -4,6 +4,8 @@ import MovieList from './MovieList';
 import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
 
+import '../App.css';
+
 class MovieLibrary extends React.Component {
   constructor(props) {
     super(props);
