@@ -1,8 +1,8 @@
 import React from 'react';
 import Header from './components/Header';
 import './App.css';
-import SearchBar from './components/SearchBar';
-import AddMovie from './components/AddMovie';
+import MovieLibrary from './components/MovieLibrary';
+import movies from './data';
 
 class App extends React.Component {
   constructor() {
@@ -20,17 +20,7 @@ class App extends React.Component {
         <header className="App">
           <Header />
         </header>
-        <section>
-          <SearchBar
-            searchText=""
-            onSearchTextChange=""
-            bookmarkedOnly=""
-            onBookmarkedChange=""
-            selectedGenre=""
-            onSelectedGenreChange=""
-          />
-        </section>
-        <AddMovie onClick={ this.handleAddMovies } />
+        <MovieLibrary movies={ movies } />
       </main>
     );
   }
