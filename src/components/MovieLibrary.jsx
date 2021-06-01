@@ -5,9 +5,32 @@ import SearchBar from './SearchBar';
 // import AddMovie from './AddMovie';
 
 class MovieLibrary extends Component {
-  // constructor(props) {
-  // super(props);
-  // }
+  constructor(props) {
+  super(props);
+    this.state = {
+      searchText: '',
+      bookmarkedOnly: false,
+      selectedGenre: '',
+    }
+    
+    this.onSearchTextChange = this.onSearchTextChange.bind(this);
+    this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
+    this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
+  }
+
+  onSearchTextChange({ target }) {
+    this.setState({searchText: target.value})
+  }
+
+  onBookmarkedChange({ target }) {
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({bookmarkedOnly: value})
+  }
+
+  onSelectedGenreChange({ target }) {
+    this.setState({ selectedGenre: target.value })
+  }
+
   render() {
     return (
       <div>
