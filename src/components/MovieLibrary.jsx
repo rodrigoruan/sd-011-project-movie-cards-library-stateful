@@ -16,6 +16,24 @@ class MovieLibrary extends Component {
     };
   }
 
+  onSearchTextChange(event) {
+    this.setState({
+      searchText: event.target.value,
+    });
+  }
+
+  onBookmarkedChange(event) {
+    this.setState({
+      bookmarkedOnly: event.target.checked,
+    });
+  }
+
+  onSelectedGenreChange(event) {
+    this.setState({
+      selectedGenre: event.target.value,
+    });
+  }
+
   render() {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
     const filteredMovie = movies

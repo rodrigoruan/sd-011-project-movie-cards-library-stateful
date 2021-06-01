@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class AddMovie extends Component {
   constructor() {
@@ -25,6 +26,20 @@ export default class AddMovie extends Component {
     }
     this.setState({
       [name]: value,
+    });
+  }
+
+  // Função que serve tanto para resetar o state quanto para chamar a função onClick de callback, com o parametro passado de todos dados guardados no state (title, subtitle...) e depois reseta os campos ao ser clicar no botão de adicionar filme.
+  callbackForCreateMovie = () => {
+    const { onClick } = this.props;
+    onClick(this.state);
+    this.setState({
+      title: '',
+      subtitle: '',
+      storyline: '',
+      rating: 0,
+      imagePath: '',
+      genre: 'action',
     });
   }
 
@@ -90,8 +105,18 @@ export default class AddMovie extends Component {
             <option value="comedy" data-testid="genre-option">Comédia</option>
             <option value="thriller" data-testid="genre-option">Suspense</option>
           </select>
+          <button
+            type="button"
+            data-testid="send-button"
+            onClick={ this.callbackForCreateMovie } // Props criada para utilizar no movie Library, para criar uma nova div com o novo filme.
+          >
+            Adicionar filme
+          </button>
         </label>
       </form>
     );
   }
 }
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
