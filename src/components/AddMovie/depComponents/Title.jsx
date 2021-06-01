@@ -9,8 +9,8 @@ export default class Title extends Component {
       <label htmlFor="input-title" data-testid="subtitle-input-label">
         Título
         <input
-          id="input-title"
           name="title"
+          id="input-title"
           type="text"
           value={ value }
           data-testid="subtitle-input"

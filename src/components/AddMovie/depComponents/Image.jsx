@@ -9,6 +9,7 @@ export default class Image extends Component {
       <label htmlFor="input-url" data-testid="image-input-label">
         Imagem
         <input
+          name="imagePath"
           id="input-url"
           type="text"
           value={ value }

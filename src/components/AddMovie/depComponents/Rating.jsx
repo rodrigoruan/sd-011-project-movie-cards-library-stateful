@@ -9,6 +9,7 @@ export default class Rating extends Component {
       <label htmlFor="input-rate" data-testid="rating-input-label">
         Avaliação
         <input
+          name="rating"
           id="input-rate"
           type="number"
           value={ value }

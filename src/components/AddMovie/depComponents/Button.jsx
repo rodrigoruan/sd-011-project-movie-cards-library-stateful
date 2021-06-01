@@ -6,7 +6,7 @@ export default class Button extends Component {
     const { onClick } = this.props;
 
     return (
-      <button type="button" data-testid="send-button" onClick={ onClick }>
+      <button name="button" type="button" data-testid="send-button" onClick={ onClick }>
         Adicionar filme
       </button>
     );

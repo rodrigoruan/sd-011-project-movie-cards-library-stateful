@@ -9,6 +9,7 @@ export default class Select extends Component {
       <label htmlFor="input-select" data-testid="genre-input-label">
         Gênero
         <select
+          name="genre"
           id="input-select"
           value={ value }
           data-testid="genre-input"

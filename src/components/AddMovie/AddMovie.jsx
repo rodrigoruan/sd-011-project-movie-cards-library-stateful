@@ -63,12 +63,7 @@ export default class AddMovie extends Component {
 
           <Select value={ genre } handleChange={ this.handleChange } />
 
-          <Button
-            onClick={ () => {
-              onClick(this.state);
-              this.reset();
-            } }
-          />
+          <Button onCLick={ onClick } />
         </form>
       </div>
     );
