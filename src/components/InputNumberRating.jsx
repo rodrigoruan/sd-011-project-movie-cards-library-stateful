@@ -20,6 +20,7 @@ class InputNumber extends Component {
           value={ inputValue }
           onChange={ inputFunction }
         />
+        <br />
       </label>
     );
   }

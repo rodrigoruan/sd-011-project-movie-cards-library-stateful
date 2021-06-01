@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Inputs extends Component {
   render() {
@@ -8,14 +9,11 @@ class Inputs extends Component {
       inputData,
       inputValue,
       inputName,
-      inputFunction
+      inputFunction,
     } = this.props;
     return (
-      <label
-        data-testid={ labelData }
-        htmlFor={ inputData }
-      >
-        { labelText }
+      <label data-testid={ labelData } htmlFor={ inputData }>
+        {labelText}
         <input
           name={ inputName }
           type="text"
@@ -25,9 +23,16 @@ class Inputs extends Component {
         />
         <br />
       </label>
-
     );
   }
 }
+Inputs.propTypes = {
+  labelData: PropTypes.string.isRequired,
+  labelText: PropTypes.string.isRequired,
+  inputData: PropTypes.string.isRequired,
+  inputValue: PropTypes.string.isRequired,
+  inputName: PropTypes.string.isRequired,
+  inputFunction: PropTypes.func.isRequired,
+};
 
 export default Inputs;
