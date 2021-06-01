@@ -16,9 +16,9 @@ class MovieLibrary extends Component {
     this.addMovies = this.addMovies.bind(this);
   }
 
-  addMovies() {
+  addMovies(movie) {
     this.setState((estadoAnterior, props) => ({
-      movies: props.movies,
+      movies: [...estadoAnterior.movies, movie]
     }));
   }
 
@@ -32,7 +32,7 @@ class MovieLibrary extends Component {
           bookmarkedOnly={ bookmarkedOnly }
           selectedGenre={ selectedGenre }
         />
-        <AddMovie onClick={ this.addMovies } />
+        <AddMovie onClick={(movie) => this.addMovies(movie) }
         <MovieList movies={ movies } />
       </div>
     );
