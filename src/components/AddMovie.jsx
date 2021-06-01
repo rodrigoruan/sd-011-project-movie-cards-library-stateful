@@ -89,7 +89,7 @@ class AddMovie extends React.Component {
         <button
           type="button"
           onClick={ () => {
-            onClick();
+            onClick(this.state);
             this.reset();
           } }
           data-testid="send-button"
