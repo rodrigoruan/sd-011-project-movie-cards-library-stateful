@@ -19,6 +19,7 @@ class MovieLibrary extends React.Component {
 
     this.handleTextChange = this.handleTextChange.bind(this);
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
+    this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
   }
 
   handleTextChange(e) {
@@ -31,23 +32,28 @@ class MovieLibrary extends React.Component {
     });
   }
 
+  onSelectedGenreChange(e) {
+    this.setState({
+      selectedGenre: e.target.value,
+    });
+  }
+
   filterMovies() {
-    const { searchText, bookmarkedOnly, movies } = this.state;
+    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
 
-    if (searchText !== '') {
-      return movies.filter((movie) => movie.title.toLowerCase()
-        .includes(searchText)
-        || movie.subtitle.toLowerCase()
-          .includes(searchText)
-        || movie.storyline.toLowerCase()
-          .includes(searchText));
-    }
+    return movies
+      .filter((movie) => {
+        const titleLowerCase = movie.title.toLowerCase();
+        const subtitleLowerCase = movie.subtitle.toLowerCase();
+        const storylineLowerCase = movie.storyline.toLowerCase();
+        const searchTextLowerCase = searchText.toLowerCase();
 
-    if (bookmarkedOnly) {
-      return movies.filter((movie) => movie.bookmarked);
-    }
-
-    return movies;
+        return (titleLowerCase.includes(searchTextLowerCase)
+        || subtitleLowerCase.includes(searchTextLowerCase)
+        || storylineLowerCase.includes(searchTextLowerCase));
+      })
+      .filter((movie) => !bookmarkedOnly || movie.bookmarked)
+      .filter((movie) => selectedGenre === '' || selectedGenre === movie.genre);
   }
 
   render() {
@@ -60,6 +66,7 @@ class MovieLibrary extends React.Component {
           bookmarkedOnly={ bookmarkedOnly }
           onBookmarkedChange={ this.onBookmarkedChange }
           selectedGenre={ selectedGenre }
+          onSelectedGenreChange={ this.onSelectedGenreChange }
         />
         <MovieList movies={ this.filterMovies() } />
         {/* <AddMovie /> */}
