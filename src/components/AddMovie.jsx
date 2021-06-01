@@ -17,8 +17,8 @@ const initialState = {
 };
 
 class AddMovie extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = initialState;
   }
@@ -31,7 +31,8 @@ class AddMovie extends Component {
     });
   };
 
-  handleClick = () => {
+  handleClick = (event) => {
+    event.preventDefault();
     const { onClick } = this.props;
     onClick(this.state);
     this.setState(initialState);
