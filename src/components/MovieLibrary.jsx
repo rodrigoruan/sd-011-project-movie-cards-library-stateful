@@ -33,7 +33,6 @@ class MovieLibrary extends Component {
           searchText={ searchText }
           bookmarkedOnly={ bookmarkedOnly }
           selectedGenre={ selectedGenre }
-
         />
         <MovieList movies={ movies } />
         <AddMovie onClick={ (movie) => this.addMovies(movie) } />
@@ -42,8 +41,6 @@ class MovieLibrary extends Component {
   }
 }
 
-export default MovieLibrary;
-
 MovieLibrary.propTypes = {
   movies: PropTypes.arrayOf,
 };
@@ -51,3 +48,5 @@ MovieLibrary.propTypes = {
 MovieLibrary.defaultProps = {
   movies: {},
 };
+
+export default MovieLibrary;

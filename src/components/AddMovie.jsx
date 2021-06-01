@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Sinop from './Sinop';
 
-class AddMovie extends React.Component {
+class AddMovie extends Component {
   constructor(props) {
     super(props);
 
@@ -63,7 +63,7 @@ class AddMovie extends React.Component {
           Subtítulo
           { this.inputsAdd('subtitle', 'text', subtitle) }
         </label>
-        <label htmlFor="cont" data-testid="image-imput-label">
+        <label htmlFor="cont" data-testid="image-input-label">
           Imagem
           { this.inputsAdd('imagePath', 'text', imagePath) }
         </label>

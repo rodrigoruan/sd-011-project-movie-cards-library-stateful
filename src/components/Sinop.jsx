@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 
 class Sinop extends React.Component {
   render() {
-    const { value, handleState } = this.props;
+    const { value, handleStates } = this.props;
     return (
       <label data-testid="storyline-input-label" htmlFor="cont">
         Sinopse
         <textarea
           name="storyline"
           type="text"
-          onChange={ handleState }
+          onChange={ handleStates }
           value={ value }
           data-testid="storyline-input"
         />
@@ -23,10 +23,10 @@ export default Sinop;
 
 Sinop.propTypes = {
   value: PropTypes.string,
-  handleState: PropTypes.func,
+  handleStates: PropTypes.func,
 };
 
 Sinop.defaultProps = {
   value: '',
-  handleState: () => {},
+  handleStates: () => {},
 };
