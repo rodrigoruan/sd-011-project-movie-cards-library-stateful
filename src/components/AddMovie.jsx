@@ -12,6 +12,7 @@ class AddMovie extends React.Component {
       genre: 'action',
     };
     this.handleChange = this.handleChange.bind(this);
+    this.resetState = this.resetState.bind(this);
   }
 
   handleChange(e) {
@@ -139,6 +140,19 @@ class AddMovie extends React.Component {
     );
   }
 
+  resetState() {
+    return (
+      this.setState({
+        subtitle: '',
+        title: '',
+        imagePath: '',
+        storyline: '',
+        rating: 0,
+        genre: 'action',
+      })
+    );
+  }
+
   render() {
     return (
       <form action="" data-testid="add-movie-form">
@@ -148,6 +162,13 @@ class AddMovie extends React.Component {
         {this.textAreaSinopse()}
         {this.inputNumber()}
         {this.selectGenre()}
+        <button
+          data-testid="send-button"
+          type="button"
+          onClick={ this.resetState }
+        >
+          Adicionar Filme
+        </button>
       </form>
     );
   }
