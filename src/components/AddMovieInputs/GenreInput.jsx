@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class GenreInput extends React.Component {
   render() {
@@ -7,27 +8,32 @@ class GenreInput extends React.Component {
       handleChange,
     } = this.props;
 
-    return(
+    return (
       <div>
         <label data-testid="genre-input-label" htmlFor="genreNewMovieId">
-            <span>Gênero</span>
+          <span>Gênero</span>
 
-            <select
-              id="genreNewMovieId"
-              name="genre"
-              value={ genre }
-              onChange={ handleChange }
-              data-testid="genre-input"
-            >
-              <option value="action" data-testid="genre-option">Ação</option>
-              <option value="comedy" data-testid="genre-option">Comédia</option>
-              <option value="thriller" data-testid="genre-option">Suspense</option>
-            </select>
+          <select
+            id="genreNewMovieId"
+            name="genre"
+            value={ genre }
+            onChange={ handleChange }
+            data-testid="genre-input"
+          >
+            <option value="action" data-testid="genre-option">Ação</option>
+            <option value="comedy" data-testid="genre-option">Comédia</option>
+            <option value="thriller" data-testid="genre-option">Suspense</option>
+          </select>
 
-          </label>
+        </label>
       </div>
     );
   }
 }
+
+GenreInput.propTypes = {
+  genre: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired,
+};
 
 export default GenreInput;

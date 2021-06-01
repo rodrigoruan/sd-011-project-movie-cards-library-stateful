@@ -55,12 +55,12 @@ class AddMovie extends React.Component {
     return (
       <div>
         <form data-testid="add-movie-form">
-          <TitleInput title={title} handleChange={this.handleChange} />
-          <SubtitleInput subtitle={subtitle} handleChange={this.handleChange} />
-          <ImageInput imagePath={imagePath} handleChange={this.handleChange} />
-          <StorylineTextarea storyline={storyline} handleChange={this.handleChange} />
-          <RatingInput rating={rating} handleChange={this.handleChange} />
-          <GenreInput genre={genre} handleChange={this.handleChange} />
+          <TitleInput title={ title } handleChange={ this.handleChange } />
+          <SubtitleInput subtitle={ subtitle } handleChange={ this.handleChange } />
+          <ImageInput imagePath={ imagePath } handleChange={ this.handleChange } />
+          <StorylineTextarea storyline={ storyline } handleChange={ this.handleChange } />
+          <RatingInput rating={ rating } handleChange={ this.handleChange } />
+          <GenreInput genre={ genre } handleChange={ this.handleChange } />
           <button
             type="button"
             onClick={ () => this.createMovie(onClick) }

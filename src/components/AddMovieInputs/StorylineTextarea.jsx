@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class StorylineTextarea extends React.Component {
   render() {
@@ -6,24 +7,29 @@ class StorylineTextarea extends React.Component {
       storyline,
       handleChange,
     } = this.props;
-    
-    return(
+
+    return (
       <div>
         <label data-testid="storyline-input-label" htmlFor="storylineNewMovieId">
-            <span>Sinopse</span>
+          <span>Sinopse</span>
 
-            <textarea
-              id="storylineNewMovieId"
-              name="storyline"
-              value={ storyline }
-              onChange={ handleChange }
-              data-testid="storyline-input"
-            />
+          <textarea
+            id="storylineNewMovieId"
+            name="storyline"
+            value={ storyline }
+            onChange={ handleChange }
+            data-testid="storyline-input"
+          />
 
-          </label>
+        </label>
       </div>
     );
   }
 }
+
+StorylineTextarea.propTypes = {
+  storyline: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired,
+};
 
 export default StorylineTextarea;
