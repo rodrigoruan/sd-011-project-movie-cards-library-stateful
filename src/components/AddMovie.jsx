@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import InputText from './InputText';
+import SelectGenre from './SelectGenre';
+import TextAreaStory from './TextAreaStory';
+import InputNumber from './InputNumberRating';
 
 class AddMovie extends Component {
   constructor() {
@@ -23,51 +27,48 @@ class AddMovie extends Component {
 
   render() {
     const { onClick } = this.props;
-    const { title, subtitle, imagePath, storyLine, rating, genre } = this.state;
+    const {
+      title,
+      subtitle,
+      imagePath,
+      storyLine,
+      rating,
+      genre,
+    } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <label data-testid="title-input-label">
-          Título
-          <input
-            name="title" data-testid="title-input" type="text" value={ title } onChange={ this.changeValues }
-          />
-        </label> <br />
-        <label data-testid="subtitle-input-label">
-          Subtítulo
-          <input
-            name="subtitle"
-            data-testid="subtitle-input"
-            type="text"
-            value={ subtitle }
-            onChange={ this.changeValues }
-          />
-        </label> <br />
-        <label data-testid="image-input-label">
-          Imagem
-          <input
-            name="imagePath" data-testid="image-input" type="text" value={ imagePath } onChange={ this.changeValues }
-          />
-        </label> <br />
-        <label data-testid="storyline-input-label">
-          Sinopse
-          <textarea
-            name="storyLine" data-testid="storyline-input" value={ storyLine } onChange={ this.changeValues }
-          />
-        </label> <br />
-        <label data-testid="rating-input-label">
-          Avaliação
-          <input
-            type="number" name="rating" data-testid="rating-input" value={ rating } onChange={ this.changeValues }
-          />
-        </label> <br />
-        <label data-testid="genre-input-label">
-          Gênero
-          <select data-testid="genre-input" value={ genre } onChange={ this.changeValues }>
-            <option data-testid="genre-option" value="action">Ação</option>
-            <option data-testid="genre-option" value="comedy">Comédia</option>
-            <option data-testid="genre-option" value="thriller">Suspense</option>
-          </select>
-        </label>
+        <InputText labelData="title-input-label"
+          labelText="Título"
+          inputName="title"
+          inputData="title-input"
+          dataType="text"
+          inputValue={ title }
+          inputFunction={ this.changeValues }
+        />
+        <InputText labelData="subtitle-input-label"
+          labelText="Subtítulo"
+          inputName="subtitle"
+          inputData="subtitle-input"
+          dataType="text"
+          inputValue={ subtitle }
+          inputFunction={ this.changeValues }
+        />
+        <InputText labelData="image-input-label"
+          labelText="Imagem"
+          inputName="imagePath"
+          inputData="image-input"
+          inputValue={ imagePath }
+          inputFunction={ this.changeValues }
+        />
+        <TextAreaStory
+          value={ storyLine }
+          inputFunction={ this.changeValues }
+        />
+        <InputNumber
+          inputValue={ rating }
+          inputFunction={ this.changeValues }
+        />
+        <SelectGenre value={ genre } inputFunction={ this.changeValues } />
         <button data-testid="send-button" onClick={ onClick }>Adicionar filme</button>
       </form>
     );
