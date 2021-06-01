@@ -15,30 +15,54 @@ class MovieLibrary extends Component {
       movies,
     };
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
+    this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
+    this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
+    // this.onclick = this.onclick.bind(this);
   }
 
-  onSearchTextChange() {
-    const { movies, searchText } = this.state;
+  onSearchTextChange({ target }) {
+    const { movies } = this.props;
+    const { name, value } = target;
+    const { searchText } = this.state;
+    this.setState({
+      searchText: value,
+      movies: movies.filter((el) => el.title.includes(value)
+      || el.subtitle.includes(value)
+      || el.storyline.includes(value)),
+    });
+  }
+
+  onBookmarkedChange({ target }) {
+    const { movies } = this.props;
+    const { bookmarkedOnly } = this.state;
+    const { name } = target;
     this.setState(() => ({
-      movies: movies.filter((el) => el.title.includes(searchText)
-        || el.subtitle.includes(searchText)
-        || el.storyline.includes(searchText)),
+      [name]: bookmarkedOnly === false,
+      movies: movies.filter((el) => (!bookmarkedOnly
+        ? el.bookmarked === !bookmarkedOnly
+        : true)),
     }));
   }
 
-  onBookmarkedChange() {
-    const { movies, bookmarkedOnly } = this.state;
+  onSelectedGenreChange({ target }) {
+    const { movies } = this.props;
+    const { name, value } = target;
+    console.log(value);
     this.setState(() => ({
-      movies: movies.filter((el) => el.bookmarked === bookmarkedOnly),
+      [name]: value,
+      movies: movies.filter((el) => el.genre.includes(value)),
     }));
   }
 
-  onSelectedGenreChange() {
-    const { movies, selectedGenre } = this.state;
-    this.setState(() => ({
-      movies: movies.filter((el) => el.genre === selectedGenre),
-    }));
-  }
+  // onclick(event) {
+  //   // const { movies } = this.state;
+  //   event.preventDefault();
+  //   console.log(event.target);
+  //   // this.setState(() => ({
+  //   //   movies: [...movies.push({
+  //   //   })],
+  //   // }));
+  // }
 
   render() {
     const { movies, searchText, bookmarkedOnly, selectedGenre } = this.state;
@@ -48,12 +72,12 @@ class MovieLibrary extends Component {
           searchText={ searchText }
           bookmarkedOnly={ bookmarkedOnly }
           selectedGenre={ selectedGenre }
-          onSearchTextChange={ onSearchTextChange }
-          onBookmarkedChange={ onBookmarkedChange }
-          onSelectedGenreChange={ onSelectedGenreChange }
+          onSearchTextChange={ this.onSearchTextChange }
+          onBookmarkedChange={ this.onBookmarkedChange }
+          onSelectedGenreChange={ this.onSelectedGenreChange }
         />
         <MovieList movies={ movies } />
-        <AddMovie />
+        <AddMovie onclick={ this.onclick } />
       </div>
     );
   }

@@ -3,19 +3,15 @@ import PropTypes from 'prop-types';
 
 class SearchBar extends Component {
   render() {
-    const {
-      searchText,
-      bookmarkedOnly,
-      selectedGenre,
-      onSearchTextChange,
-      onBookmarkedChange,
-      onSelectedGenreChange,
-    } = this.props;
+    const { onSearchTextChange, onBookmarkedChange, onSelectedGenreChange } = this.props;
+    const { searchText, bookmarkedOnly, selectedGenre } = this.props;
     return (
       <form data-testid="search-bar-form">
         <label htmlFor="text-input-label" data-testid="text-input-label">
           Inclui o texto:
           <input
+            name="searchText"
+            type="text"
             id="text-input-label"
             value={ searchText }
             onChange={ onSearchTextChange }
@@ -25,6 +21,7 @@ class SearchBar extends Component {
         <label htmlFor="checkbox-input-label" data-testid="checkbox-input-label">
           Mostrar somente favoritos
           <input
+            name="bookmarkedOnly"
             type="checkbox"
             id="checkbox-input-label"
             checked={ bookmarkedOnly }
@@ -35,6 +32,7 @@ class SearchBar extends Component {
         <label htmlFor="select-input-label" data-testid="select-input-label">
           Filtrar por gênero
           <select
+            name="selectedGenre"
             id="select-input-label"
             value={ selectedGenre }
             onChange={ onSelectedGenreChange }
