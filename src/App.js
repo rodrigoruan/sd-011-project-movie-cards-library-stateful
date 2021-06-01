@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
-import SearchBar from './components/SearchBar';
-import MovieList from './components/MovieList';
-import movies from './data';
-import AddMovie from './components/AddMovie';
+import MovieLibrary from './components/MovieLibrary';
+import data from './data';
+
 import './App.css';
 
 class App extends Component {
@@ -11,9 +10,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <SearchBar />
-        <MovieList movies={ movies } />
-        <AddMovie />
+        <MovieLibrary movies={ data } />
       </div>
     );
   }
