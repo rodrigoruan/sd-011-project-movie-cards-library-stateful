@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 export default class AddMovie extends Component {
   render() {
-    const { title, subtitle, imagePath } = this.props;
+    const { title, subtitle, imagePath, storyline } = this.props;
     return (
       <form data-testid="add-movie-form">
         <label data-testid="title-input-label" htmlFor="">
@@ -19,6 +19,12 @@ export default class AddMovie extends Component {
         <label htmlFor="image-input" data-testid="image-input-label">
           Imagem
           <input type="text" data-testid="image-input" value={imagePath} />
+        </label>
+
+        <label data-testid="storyline-input-label" htmlFor="">Sinopse
+          <textarea data-testid="storyline-input" value={storyline} >
+
+          </textarea>
         </label>
       </form>
     );
