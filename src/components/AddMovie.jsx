@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AddTitle, * as title from './AddTitle';
-import AddSubtitle, * as subtitle from './AddSubtitle';
+import AddTitle from './AddTitle';
+import AddSubtitle from './AddSubtitle';
 
 class AddMovie extends React.Component {
   // constructor() {
@@ -10,6 +10,9 @@ class AddMovie extends React.Component {
   // }
 
   render() {
+    const form = this.props;
+    const title = this.props;
+    const subtitle = this.props;
     const { imagePath, handleImage } = this.props;
     const { handleSinopse, sinopse } = this.props;
     return (
@@ -46,6 +49,10 @@ class AddMovie extends React.Component {
 }
 
 AddMovie.propTypes = {
+  form: PropTypes.shape({
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+  }).isRequired,
   imagePath: PropTypes.string.isRequired,
   handleImage: PropTypes.func.isRequired,
   handleSinopse: PropTypes.func.isRequired,
