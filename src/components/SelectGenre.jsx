@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class SelectGenre extends Component {
   render() {
     const {
       value,
-      inputFunction
+      inputFunction,
     } = this.props;
     return (
       <label
@@ -32,5 +33,10 @@ class SelectGenre extends Component {
     );
   }
 }
+
+SelectGenre.propTypes = {
+  value: PropTypes.string.isRequired,
+  inputFunction: PropTypes.func.isRequired,
+};
 
 export default SelectGenre;
