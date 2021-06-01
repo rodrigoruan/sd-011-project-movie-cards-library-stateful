@@ -17,21 +17,15 @@ export default class AddMovie extends Component {
     this.handleChangeSubtitle = this.handleChangeSubtitle.bind(this);
   }
 
-  handleChangeTitle(e) {
+  handleChange(e, att) {
     this.setState({
-      title: e.target.value,
-    });
-  }
-
-  handleChangeSubtitle(e) {
-    this.setState({
-      subtitle: e.target.value,
+      [att]: e.target.value,
     });
   }
 
   render() {
     /* const { onClick } = this.props; */
-    const { title, subtitle } = this.state;
+    const { title, subtitle, imagePath } = this.state;
 
     return (
       <div>
@@ -43,7 +37,7 @@ export default class AddMovie extends Component {
               type="text"
               value={ title }
               data-testid="title-input"
-              onChange={ this.handleChangeTitle }
+              onChange={ ((e) => this.handleChange(e, "title")) }
             />
           </label>
 
@@ -54,9 +48,20 @@ export default class AddMovie extends Component {
               type="text"
               value={ subtitle }
               data-testid="subtitle-input"
-              onChange={ this.handleChangeSubtitle }
+              onChange={ ((e) => this.handleChange(e, "subtitle")) }
             />
           </label>
+
+          {/* <label htmlFor="input-subtitle" data-testid="image-input-label">
+            Imagem
+            <input
+              id="input-subtitle"
+              type="text"
+              value={ imagePath }
+              data-testid="image-input"
+              onChange={ this.handleChangeURL }
+            />
+          </label> */}
         </form>
       </div>
     );
