@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class OtherInputs extends React.Component {
   render() {
@@ -44,5 +45,10 @@ class OtherInputs extends React.Component {
     );
   }
 }
+
+OtherInputs.propTypes = {
+  state: PropTypes.objectOf(PropTypes.string).isRequired,
+  handleChanges: PropTypes.func.isRequired,
+};
 
 export default OtherInputs;
