@@ -1,6 +1,5 @@
 // implement AddMovie component here
 import React from 'react';
-import PropTypes from 'prop-types';
 import Title from './Title';
 import Subtitle from './Subtitle';
 import Image from './Image';
@@ -15,8 +14,8 @@ class AddMovie extends React.Component {
     // const { onClick } = props;
 
     this.state = {
-      subtitle: '',
       title: '',
+      subtitle: '',
       imagePath: '',
       storyline: '',
       rating: 0,
@@ -37,10 +36,18 @@ class AddMovie extends React.Component {
   handleClick() {
     const { onClick } = this.props;
     onClick(this.state);
+    this.setState({
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
   }
 
   render() {
-    const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
         <Title title={ title } handleChange={ this.handleChange } />
@@ -52,7 +59,7 @@ class AddMovie extends React.Component {
         <button
           type="button"
           data-testid="send-button"
-          onClick={ this.onClick }
+          onClick={ this.handleClick }
         >
           Adicionar filme
         </button>
