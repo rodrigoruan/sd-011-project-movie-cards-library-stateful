@@ -107,7 +107,7 @@ describe('17 - Renderize `<SearchBar />` dentro de `<MovieLibrary />`', () => {
 });
 
 describe('18 - Renderize `<MovieList />` dentro de `<MovieLibrary />`', () => {
-  xit('Renderize o componente `<MovieList />`', () => {
+  it('Renderize o componente `<MovieList />`', () => {
     const { getAllByTestId } = render(<MovieLibrary movies={ movies } />);
     const movieList = getAllByTestId('movie-list');
     expect(movieList).toHaveLength(1);
