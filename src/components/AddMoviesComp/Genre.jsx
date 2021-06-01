@@ -10,7 +10,6 @@ class Genre extends Component {
           Gênero
           <select
             data-testid="genre-input"
-            type="select"
             name="genre"
             value={ genre }
             onChange={ handleChange }

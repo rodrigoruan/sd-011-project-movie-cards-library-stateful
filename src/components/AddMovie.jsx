@@ -10,7 +10,7 @@ import Genre from './AddMoviesComp/Genre';
 class AddMovie extends Component {
   constructor(props) {
     super(props);
-    const main = {
+    this.state = {
       subtitle: '',
       title: '',
       imagePath: '',
@@ -18,8 +18,10 @@ class AddMovie extends Component {
       rating: 0,
       genre: 'action',
     };
-    this.state = main;
+
     this.handleChange = this.handleChange.bind(this);
+
+    this.sendSubmit = this.sendSubmit.bind(this);
   }
 
   handleChange({ target }) {
@@ -31,9 +33,17 @@ class AddMovie extends Component {
   }
 
   sendSubmit() {
+    console.log('oi');
     const { onClick } = this.props;
     onClick(this.state);
-    this.setState({ main });
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
   }
 
   render() {
@@ -42,19 +52,24 @@ class AddMovie extends Component {
       <div>
         <form data-testid="add-movie-form">
           <Title title={ title } handleChange={ this.handleChange } />
-          <Subtitle title={ subtitle } handleChange={ this.handleChange } />
+
+          <Subtitle subtitle={ subtitle } handleChange={ this.handleChange } />
+
           <Imagepath imagePath={ imagePath } handleChange={ this.handleChange } />
+
           <Storyline storyline={ storyline } handleChange={ this.handleChange } />
+
           <Rating rating={ rating } handleChange={ this.handleChange } />
+
           <Genre genre={ genre } handleChange={ this.handleChange } />
+          <button
+            data-testid="send-button"
+            type="button"
+            onClick={ this.sendSubmit }
+          >
+            Adicionar filme
+          </button>
         </form>
-        <button
-          data-testid="send-button"
-          type="submit"
-          onClick={ this.sendSubmit }
-        >
-          Adicionar filme
-        </button>
       </div>
 
     );

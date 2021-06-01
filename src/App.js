@@ -12,7 +12,7 @@ function App() {
       <Header />
       <SearchBar />
       <MovieList movies={ Data } />
-      <AddMovie />
+      <AddMovie onClick={ () => {} } />
     </div>
   );
 }
