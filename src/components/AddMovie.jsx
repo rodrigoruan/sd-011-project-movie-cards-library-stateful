@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SelectToAddMovies from './FormsToAddMovies/SelectToAddMovies';
+import SelectToAddMovies from './SelectToAddMovies';
 import Rating from './Rating';
 
 class AddMovies extends React.Component {
