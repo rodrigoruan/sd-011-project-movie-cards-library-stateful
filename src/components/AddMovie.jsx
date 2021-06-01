@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FisrtPart from './FisrtPart';
+import FirstPart from './FirstPart';
 import SecondPart from './SecondPart';
 // import PropTypes from 'prop-types';
 
@@ -7,7 +7,7 @@ class AddMovie extends Component {
   render() {
     return (
       <form data-testid="add-movie-form">
-        <FisrtPart />
+        <FirstPart />
         <SecondPart />
       </form>
     );
