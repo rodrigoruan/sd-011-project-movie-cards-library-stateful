@@ -8,6 +8,7 @@ class LabelImage extends React.Component {
       <label htmlFor="image-input" data-testid="image-input-label">
         Imagem
         <input
+          name="imagePath"
           type="text"
           value={ imagePath }
           onChange={ imagePath }
