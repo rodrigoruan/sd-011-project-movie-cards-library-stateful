@@ -2,6 +2,8 @@ import React from 'react';
 import Header from './components/Header';
 import './App.css';
 import SearchBar from './components/SearchBar';
+// import MovieCard from './components/MovieCard';
+import AddMovie from './components/AddMovie';
 
 class App extends React.Component {
   render() {
@@ -9,6 +11,7 @@ class App extends React.Component {
       <div className="App">
         <Header />
         <SearchBar />
+        <AddMovie />
       </div>
     );
   }
