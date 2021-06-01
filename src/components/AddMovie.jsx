@@ -1,9 +1,11 @@
 // implement AddMovie component here
 import React from 'react';
 import PropTypes from 'prop-types';
-import LabelInputs from './LabelInputs';
+import LabelInputs from './LblInputs';
 import RatingInput from './RatingInput';
 import ButtonAddMovie from './ButtonAddMovie';
+import Story from './StoryLine';
+import GenreSelect from './GenreSelector';
 
 const state0 = {
   subtitle: '',
@@ -14,8 +16,8 @@ const state0 = {
   genre: 'action',
 };
 class AddMovie extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = state0;
     this.changeHandler = this.changeHandler.bind(this);
   }
@@ -26,6 +28,7 @@ class AddMovie extends React.Component {
       [name]: value,
     });
   }
+
   submit(event) {
     event.preventDefault();
     const { onClick } = this.props;
@@ -36,9 +39,8 @@ class AddMovie extends React.Component {
 
   render() {
     const { onClick } = this.props;
-    const { title, subtitle, imagePath, rating } = this.state;
+    const { title, subtitle, genre, storyline, imagePath, rating } = this.state;
     return (
-      <div>
       <form method={ onClick } data-testid="add-movie-form">
         <LabelInputs
           labelInfo={ { labelId: 'title-input-label', labelText: 'Título' } }
@@ -63,22 +65,11 @@ class AddMovie extends React.Component {
           } }
           funcOnChange={ this.changeHandler }
         />
-        <label htmlFor="StorylineInput" data-testid="storyline-input-label">
-          Sinopse
-          <textarea id="StorylineInput" data-testid="storyline-input" />
-        </label>
+        <Story value={ storyline } funcOnChange={ this.changeHandler } />
         <RatingInput rValue={ rating } funcOnChange={ this.changeHandler } />
-        <label htmlFor="GenreInput" data-testid="genre-input-label">
-          Gênero
-          <select id="GenreInput" data-testid="genre-input">
-            <option value="action" data-testid="genre-option">Ação</option>
-            <option value="comedy" data-testid="genre-option">Comédia</option>
-            <option value="thriller" data-testid="genre-option">Suspense</option>
-          </select>
-        </label>
+        <GenreSelect value={ genre } funcOnChange={ this.changeHandler } />
         <ButtonAddMovie addOnClick={ this.submit } />
       </form>
-      </div>
     );
   }
 }
