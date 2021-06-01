@@ -22,7 +22,6 @@ class AddMovie extends React.Component {
 
     this.stateModify = this.stateModify.bind(this);
     this.addMovie = this.addMovie.bind(this);
-    // this.onClick = this.onClick.bind(this);
   }
 
   stateModify({ target }) {
@@ -58,7 +57,7 @@ class AddMovie extends React.Component {
         <SelectGenre stateModify={ this.stateModify } genre={ genre } />
         {/* Não esquecer de dar os créditos */}
         <button
-          type="submit"
+          type="button"
           data-testid="send-button"
           onClick={ this.addMovie }
         >
