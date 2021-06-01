@@ -13,14 +13,35 @@ class MovieLibrary extends Component {
   }
 
   render() {
-    const { movies } = this.state;
-    // searchText, bookmarketOnly, selectedGenre
+    const {
+      movies,
+      searchText,
+      bookmarketOnly,
+      selectedGenre,
+      subtitle,
+      title,
+      imagePath,
+      storyline,
+      rating,
+      genre,
+    } = this.state;
     return (
       <div>
         <h2> My awesome movie library </h2>
-        <SearchBar />
+        <SearchBar
+          searchText={ searchText }
+          bookmarketOnly={ bookmarketOnly }
+          selectedGenre={ selectedGenre }
+        />
         <MovieList movies={ movies } />
-        <AddMovie />
+        <AddMovie
+          subtitle={ subtitle }
+          title={ title }
+          imagePath={ imagePath }
+          storyline={ storyline }
+          rating={ rating }
+          genre={ genre }
+        />
       </div>
     );
   }
