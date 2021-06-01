@@ -19,7 +19,7 @@ class MovieLibrary extends Component {
   }
 
   changeTextState = ({ target }) => {
-    const { value, name } = target;
+    const { value } = target;
     this.setState({
       searchText: value,
     });
@@ -73,5 +73,4 @@ export default MovieLibrary;
 
 MovieLibrary.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.object).isRequired,
-  movieCard: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
