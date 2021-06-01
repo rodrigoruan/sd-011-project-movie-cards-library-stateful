@@ -8,6 +8,7 @@ class LabelImage extends Component {
       <label htmlFor="image-input-label" data-testid="image-input-label">
         Imagem
         <input
+          name="imagePath"
           type="text"
           value={ value }
           data-testid="image-input"

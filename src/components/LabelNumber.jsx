@@ -8,6 +8,7 @@ class LabelNumber extends Component {
       <label htmlFor="rating-input-label" data-testid="rating-input-label">
         Avaliação
         <input
+          name="rating"
           type="number"
           value={ value }
           data-testid="rating-input"

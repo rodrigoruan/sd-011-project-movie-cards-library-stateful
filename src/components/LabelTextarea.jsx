@@ -8,6 +8,7 @@ class LabelTextarea extends Component {
       <label htmlFor="storyline-input-label" data-testid="storyline-input-label">
         Sinopse
         <input
+          name="storyline"
           type="textarea"
           value={ value }
           data-testid="storyline-input"
