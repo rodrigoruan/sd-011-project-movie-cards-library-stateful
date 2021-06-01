@@ -2,6 +2,7 @@ import React from 'react';
 import Title from './Title';
 import Subtitle from './Subtitle';
 import ImagePath from './ImagePath';
+import Storyline from './Storyline';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -34,17 +35,8 @@ class AddMovie extends React.Component {
         <Title value={ this.state.title } handleChange={ this.handleChange } />
         <Subtitle value={ this.state.subtitle } handleChange={ this.handleChange } />
         <ImagePath value={ this.state.ImagePath } handleChange={ this.handleChange } />
+        <Storyline value={ this.state.Storyline } handleChange={ this.handleChange } />
         
-        <label data-testid="storyline-input-label" htmlFor="addMovieSinopseTextarea">
-          Sinopse
-          <textarea
-            value={ storyline }
-            data-testid="storyline-input"
-            onChange={ this.handleChange }
-            id="addMovieSinopseTextarea"
-            name="storyline"
-          />
-        </label>
         <label data-testid="rating-input-label" htmlFor="addMovieRating">
           Avaliação
           <input
