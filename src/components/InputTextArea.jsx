@@ -7,7 +7,7 @@ class InputTextArea extends React.Component {
 
     return (
       <label
-        data-testid="image-input-label"
+        data-testid="storyline-input"
         htmlFor="inputAddMovie"
       >
         Sinopse

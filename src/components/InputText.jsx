@@ -11,11 +11,11 @@ class InputText extends React.Component {
       >
         Inclui o texto:
         <input
+          data-testid="text-input"
           type="text"
           value={ searchText }
           onChange={ onSearchTextChange }
           name="searchBar"
-          data-testid="text-input"
           placeholder="Search..."
         />
       </label>

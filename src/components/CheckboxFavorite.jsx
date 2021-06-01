@@ -12,12 +12,12 @@ class checkboxFavorite extends React.Component {
       >
         Mostrar somente favoritos
         <input
+          data-testid="checkbox-input"
           type="checkbox"
           checked={ bookmarkedOnly }
           onChange={ onBookmarkedChange }
           value={ searchText }
           name="searchBar"
-          data-testid="checkbox-input"
           placeholder="Search..."
         />
       </label>

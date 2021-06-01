@@ -16,7 +16,7 @@ class InputSubTitleNovie extends React.Component {
           value={ subtitle }
           onChange={ hadleState }
           name="subtitle"
-          data-testid="title-input"
+          data-testid="subtitle-input"
           id="inputAddMovie"
         />
       </label>
