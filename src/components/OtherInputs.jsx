@@ -2,7 +2,7 @@ import React from 'react';
 
 class OtherInputs extends React.Component {
   render() {
-    const { state: { storyline, rating }, handleChanges } = this.props;
+    const { state: { storyline, rating, genre }, handleChanges } = this.props;
     return (
       <fieldset>
         <label htmlFor="textarea-input" data-testid="storyline-input-label">
@@ -32,6 +32,7 @@ class OtherInputs extends React.Component {
             name="genre"
             id="select-input"
             data-testid="genre-input"
+            value={ genre }
             onChange={ handleChanges }
           >
             <option data-testid="genre-option" value="action">Ação</option>

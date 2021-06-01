@@ -27,13 +27,14 @@ class AddMovie extends React.Component {
   }
 
   eraseState(event) {
-    const { onClick } = this.props;
     event.preventDefault();
+    const { onClick } = this.props;
     onClick(this.state);
     this.setState(initialState);
   }
 
   render() {
+    const { title, subtitle, imagePath } = this.state;
     return (
       <form data-testid="add-movie-form">
         <label htmlFor="text-input-two" data-testid="title-input-label">
@@ -42,7 +43,7 @@ class AddMovie extends React.Component {
             id="text-input-two"
             name="title"
             type="text"
-            value={ this.state.title }
+            value={ title }
             data-testid="title-input"
             onChange={ this.handleChanges }
           />
@@ -53,7 +54,7 @@ class AddMovie extends React.Component {
             id="text-input-three"
             name="subtitle"
             type="text"
-            value={ this.state.subtitle }
+            value={ subtitle }
             data-testid="subtitle-input"
             onChange={ this.handleChanges }
           />
@@ -64,7 +65,7 @@ class AddMovie extends React.Component {
             id="text-input-image"
             name="imagePath"
             type="text"
-            value={ this.state.imagePath }
+            value={ imagePath }
             data-testid="image-input"
             onChange={ this.handleChanges }
           />

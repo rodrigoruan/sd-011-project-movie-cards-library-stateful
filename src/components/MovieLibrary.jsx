@@ -4,17 +4,15 @@ import MovieList from './MovieList';
 import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
 
-const initialState = {
-  searchText: '',
-  bookmarkedOnly: false,
-  selectedGenre: '',
-  movies: '',
-};
-
 class MovieLibrary extends Component {
   constructor(props) {
     super(props);
-    this.state = initialState;
+    this.state = {
+      searchText: '',
+      bookmarkedOnly: false,
+      selectedGenre: '',
+      movies: props.movies,
+    };
     this.generateCard = this.generateCard.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
@@ -22,20 +20,18 @@ class MovieLibrary extends Component {
   handleChange({ target }) {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    console.log(target.name, target.value)
 
     this.setState({
       [name]: value,
-      movies: this.filterFunc(),
-    });
+    }, () => this.filterFunc());
   }
 
   filterFunc() {
     const { movies } = this.props;
     let result = movies;
     const { bookmarkedOnly, selectedGenre, searchText } = this.state;
-    if (bookmarkedOnly) {
-      result = result.filter((movie) => movie.bookMarked === true);
+    if (bookmarkedOnly !== false) {
+      result = result.filter((movie) => movie.bookmarked === true);
     }
     if (selectedGenre !== '') {
       result = result.filter((movie) => movie.genre === selectedGenre);
@@ -44,16 +40,21 @@ class MovieLibrary extends Component {
       result = result.filter((movie) => movie.title.includes(searchText)
       || movie.subtitle.includes(searchText) || movie.storyline.includes(searchText));
     }
-    return result;
+    this.setState({
+      movies: result,
+    });
   }
 
-  generateCard() {
-  //  const { movies } = this.props;
-    return null;
+  generateCard(object) {
+    const { movies } = this.state;
+    const newArray = movies.concat(object);
+    this.setState({
+      movies: newArray,
+    });
   }
 
   render() {
-    const { movies } = this.props;
+    const { movies } = this.state;
     const { bookmarkedOnly, searchText, selectedGenre } = this.state;
     return (
       <div>
