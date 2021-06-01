@@ -18,6 +18,7 @@ class MovieLibrary extends Component {
 
   render() {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+    const { resetState } = this.props;
     return (
       <div>
         <h2> My awesome movie library </h2>
@@ -27,7 +28,7 @@ class MovieLibrary extends Component {
           selectedGenre={ selectedGenre }
         />
         <MovieList movies={ movies } />
-        <AddMovie />
+        <AddMovie onClick={ resetState } />
       </div>
     );
   }
@@ -35,6 +36,7 @@ class MovieLibrary extends Component {
 
 MovieLibrary.propTypes = {
   movies: PropTypes.arrayOf.isRequired,
+  resetState: PropTypes.func.isRequired,
 };
 
 export default MovieLibrary;
