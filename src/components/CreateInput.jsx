@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class CreateInputText extends React.Component {
+class CreateInput extends React.Component {
   render() {
     const { type, label, id, value, change } = this.props;
     return (
@@ -20,9 +20,9 @@ class CreateInputText extends React.Component {
   }
 }
 
-export default CreateInputText;
+export default CreateInput;
 
-CreateInputText.propTypes = {
+CreateInput.propTypes = {
   type: PropTypes.string,
   label: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
@@ -34,6 +34,6 @@ CreateInputText.propTypes = {
   // https://stackoverflow.com/questions/41808428/react-proptypes-allow-different-types-of-proptypes-for-one-prop
 };
 
-CreateInputText.defaultProps = {
+CreateInput.defaultProps = {
   type: 'text',
 };

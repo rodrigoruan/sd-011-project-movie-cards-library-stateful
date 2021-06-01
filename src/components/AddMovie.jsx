@@ -1,14 +1,14 @@
 // implement AddMovie component here
 import React from 'react';
 import PropTypes from 'prop-types';
-import CreateInputText from './CreateInputText';
+import CreateInput from './CreateInput';
 
 class AddMovie extends React.Component {
   constructor(props) {
     super(props);
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.changer = this.changer.bind(this);
 
     this.state = {
       subtitle: '',
@@ -18,13 +18,6 @@ class AddMovie extends React.Component {
       rating: 0,
       genre: 'action',
     };
-  }
-
-  handleChange({ target }) { // perguntar deste target pros universitários.
-    const { name, value } = target;
-    this.setState({
-      [name]: value,
-    });
   }
 
   handleSubmit(event) {
@@ -41,35 +34,48 @@ class AddMovie extends React.Component {
     });
   }
 
+  changer({ target }) { // perguntar deste target pros universitários.
+    const { name, value } = target;
+    this.setState({
+      [name]: value,
+    });
+  }
+
   render() {
     const { title, subtitle, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <CreateInputText
-          label="Título"
-          id="title"
-          value={ title }
-          change={ this.handleChange }
+        <CreateInput label="Título" id="title" value={ title } change={ this.changer } />
+        <CreateInput
+          label="Subtítulo"
+          id="subtitle"
+          value={ subtitle }
+          change={ this.changer }
         />
-        <CreateInputText label="Subtítulo" id="subtitle" value={ subtitle } change={ this.handleChange } />
-        <CreateInputText label="Imagem" id="image" change={ this.handleChange } />
+        <CreateInput label="Imagem" id="image" change={ this.changer } />
         <label htmlFor="storyline" data-testid="storyline-input-label">
           Sinopse
           <textarea
             name="storyline"
             data-testid="storyline-input"
             value={ storyline }
-            onChange={ this.handleChange }
+            onChange={ this.changer }
           />
         </label>
-        <CreateInputText type="number" label="Avaliação" id="rating" value={ rating } change={ this.handleChange } />
+        <CreateInput
+          type="number"
+          label="Avaliação"
+          id="rating"
+          value={ rating }
+          change={ this.changer }
+        />
         <label htmlFor="genre" data-testid="genre-input-label">
           Gênero
           <select
             name="genre"
             data-testid="genre-input"
             value={ genre }
-            onChange={ this.handleChange }
+            onChange={ this.changer }
           >
             <option data-testid="genre-option" value="action">Ação</option>
             <option data-testid="genre-option" value="comedy">Comédia</option>
