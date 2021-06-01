@@ -45,6 +45,6 @@ MovieLibrary.propTypes = {
 
 MovieLibrary.defaultProps = {
   movies: {},
-}
+};
 
 export default MovieLibrary;
