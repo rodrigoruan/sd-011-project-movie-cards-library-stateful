@@ -9,6 +9,7 @@ class MovieLibrary extends Component {
     super(props);
     this.handleState = this.handleState.bind(this);
     this.moviesFilter = this.moviesFilter.bind(this);
+    this.renderCard = this.renderCard.bind(this);
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
@@ -43,6 +44,13 @@ class MovieLibrary extends Component {
     });
   }
 
+  renderCard(objeto) {
+    const { movies } = this.state;
+    this.setState({
+      movies: [...movies, objeto],
+    });
+  }
+
   render() {
     const {
       searchText,
@@ -61,7 +69,7 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={ this.handleState }
         />
         <MovieLIst movies={ movies } />
-        <AddMovies />
+        <AddMovies onClick={ this.renderCard } />
       </div>
     );
   }
