@@ -55,7 +55,7 @@ class AddMovie extends React.Component {
         <InputStoryline stateModify={ this.stateModify } storyline={ storyline } />
         <InputRating stateModify={ this.stateModify } rating={ rating } />
         <SelectGenre stateModify={ this.stateModify } genre={ genre } />
-        {/* Não esquecer de dar os créditos */}
+        {/* Não esquecer de dar os créditos a vitor carsoso */}
         <button
           type="submit"
           data-testid="send-button"
