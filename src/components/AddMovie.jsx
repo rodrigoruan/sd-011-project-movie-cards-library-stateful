@@ -1,4 +1,5 @@
 import React from 'react';
+import InputSubtitle from '../auxComponents/InputSubtitle';
 import InputTitle from '../auxComponents/InputTitle';
 
 class AddMovie extends React.Component {
@@ -29,6 +30,7 @@ class AddMovie extends React.Component {
     return (
       <form data-testid="add-movie-form">
         <InputTitle stateModify={ this.stateModify } title={ title } />
+        <InputSubtitle stateModify={ this.stateModify } subtitle={ subtitle } />
       </form>
     );
   }
