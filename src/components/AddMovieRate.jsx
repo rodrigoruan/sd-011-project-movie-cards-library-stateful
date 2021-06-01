@@ -21,6 +21,6 @@ export default class AddMovieRate extends Component {
 }
 
 AddMovieRate.propTypes = {
-  valueProp: PropTypes.string.isRequired,
+  valueProp: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   event: PropTypes.func.isRequired,
 };

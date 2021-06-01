@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
+import AddMovie from './AddMovie';
 
 export default class MovieLibrary extends Component {
   constructor(props) {
@@ -17,6 +18,7 @@ export default class MovieLibrary extends Component {
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
+    this.addNewMovie = this.addNewMovie.bind(this);
   }
 
   onSearchTextChange({ target }) {
@@ -58,6 +60,12 @@ export default class MovieLibrary extends Component {
     }));
   }
 
+  addNewMovie(info) {
+    this.setState((estadoAnterior) => ({
+      movies: [...estadoAnterior.movies, info],
+    }));
+  }
+
   render() {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
 
@@ -72,6 +80,9 @@ export default class MovieLibrary extends Component {
           onSelectedGenreChange={ this.onSelectedGenreChange }
         />
         <MovieList movies={ movies } />
+        <AddMovie onClick={ this.addNewMovie } />
+        {/* Rodrigo Ruan me ajudou a fazer a 19, de fazer a callback onClick funcionar */}
+        {/* E Tales também ajudou bastante */}
       </div>
     );
   }

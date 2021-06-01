@@ -8,6 +8,15 @@ import AddMovieRate from './AddMovieRate';
 import AddMovieSelect from './AddMovieSelect';
 import AddMovieBttn from './AddMovieBttn';
 
+const reset = {
+  subtitle: '',
+  title: '',
+  imagePath: '',
+  storyline: '',
+  rating: 0,
+  genre: 'action',
+};
+
 export default class AddMovie extends Component {
   constructor() {
     super();
@@ -22,6 +31,13 @@ export default class AddMovie extends Component {
     };
 
     this.eventHandler = this.eventHandler.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    const { onClick } = this.props;
+    onClick(this.state);
+    this.setState(reset);
   }
 
   eventHandler({ target }) {
@@ -33,8 +49,6 @@ export default class AddMovie extends Component {
   }
 
   render() {
-    // Props recebida
-    const { onClick } = this.props;
     // State destructuring
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     // Cada elemento do forms está separado em componentes diferentes
@@ -47,7 +61,7 @@ export default class AddMovie extends Component {
           <AddMovieStoryL event={ this.eventHandler } valueProp={ storyline } />
           <AddMovieRate event={ this.eventHandler } valueProp={ rating } />
           <AddMovieSelect event={ this.eventHandler } valueProp={ genre } />
-          <AddMovieBttn event={ onClick } />
+          <AddMovieBttn event={ this.handleClick } />
         </form>
       </div>
     );

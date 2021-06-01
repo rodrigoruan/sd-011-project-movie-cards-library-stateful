@@ -7,7 +7,7 @@ export default class AddMovieBttn extends Component {
     return (
       <button
         data-testid="send-button"
-        type="submit"
+        type="button"
         onClick={ event }
       >
         Adicionar filme
