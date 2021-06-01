@@ -40,7 +40,6 @@ class SearchBar extends React.Component {
             name="selectedGenre"
             value={ selectedGenre }
             onChange={ onSelectedGenreChange }
-            // onChange={ filterLibrary }
           >
             <option data-testid="select-option" value="">Todos</option>
             <option data-testid="select-option" value="action">Ação</option>

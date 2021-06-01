@@ -16,28 +16,57 @@ class MovieLibrary extends React.Component {
       moviesArray: movies,
     };
     this.handleChanges = this.handleChanges.bind(this);
-    this.filterLibrary = this.filterLibrary.bind(this);
+    this.filterLibraryText = this.filterLibraryText.bind(this);
   }
 
   handleChanges(event) {
     const tagElement = event.target.name;
-    this.setState({
-      [tagElement]: event.target.value,
+    if (tagElement !== 'bookmarkedOnly') {
+      this.setState({
+        [tagElement]: event.target.value,
+      });
+    } else {
+      this.setState({
+        [tagElement]: event.target.checked,
+      });
+    }
+  }
+
+  // Criar uma função para adicionar novo filme e passar como prop para AddMovie
+
+  filterLibraryGenre(array) {
+    const { selectedGenre } = this.state;
+    if (selectedGenre !== '') {
+      return array.filter(
+        (movie) => selectedGenre === movie.genre,
+      );
+    }
+    return array;
+  }
+
+  filterLibraryText() {
+    const { moviesArray, searchText } = this.state;
+    return moviesArray.filter((movie) => {
+      const totalText = `${movie.title} ${movie.subtitle} ${movie.storyline}`;
+      return totalText.toLowerCase().includes(searchText.toLowerCase());
     });
   }
 
-  filterLibrary() {
-    const { moviesArray, selectedGenre } = this.state;
-    const filteredMovies = moviesArray.filter(
-      (movie) => selectedGenre === movie.genre,
-    );
-    this.setState({
-      moviesArray: filteredMovies,
-    });
+  filterLibraryBookmark(array) {
+    const { bookmarkedOnly } = this.state;
+    if (bookmarkedOnly === true) {
+      return array.filter((movie) => movie.bookmarked === true);
+    }
+    return array;
+  }
+
+  filterGeneral() {
+    return this.filterLibraryBookmark(this.filterLibraryGenre(this.filterLibraryText()));
   }
 
   render() {
-    const { searchText, bookmarkedOnly, selectedGenre, moviesArray } = this.state;
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+    const filteredMovies = this.filterGeneral();
     return (
       <fragment>
         <SearchBar
@@ -47,9 +76,10 @@ class MovieLibrary extends React.Component {
           onBookmarkedChange={ this.handleChanges }
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.handleChanges }
-          filterLibrary={ this.filterLibrary }
         />
-        <MovieList movies={ moviesArray } />
+        <MovieList
+          movies={ filteredMovies }
+        />
         <AddMovie />
       </fragment>
     );
