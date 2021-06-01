@@ -40,6 +40,7 @@ class AddMovie extends Component {
         <label data-testid="subtitle-input-label">
           Subtítulo
           <input
+            name="subtitle"
             data-testid="subtitle-input"
             type="text"
             value={ subtitle }
@@ -50,6 +51,7 @@ class AddMovie extends Component {
         <label data-testid="image-input-label">
           Imagem
           <input
+            name="imagePath"
             data-testid="image-input"
             type="text"
             value={ imagePath }
@@ -60,8 +62,18 @@ class AddMovie extends Component {
         <label data-testid="storyline-input-label">
           Sinopse
           <textarea
+            name="storyLine"
             data-testid="storyline-input"
             value={ storyLine }
+            onChange={ this.changeValues() }
+          />
+        </label>
+        <label data-testid="rating-input-label">
+          Avaliação
+          <input
+            name="rating"
+            data-testid="rating-input"
+            value={ rating }
             onChange={ this.changeValues() }
           />
         </label>
