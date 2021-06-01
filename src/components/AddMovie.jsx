@@ -5,8 +5,8 @@ export default class AddMovie extends Component {
   constructor() {
     super();
     this.state = {
-      title: '',
-      subtitle: '',
+      title: "",
+      subtitle: "",
       /* imagePath: '',
       storyline: '',
       rating: 0,
@@ -18,13 +18,13 @@ export default class AddMovie extends Component {
   }
 
   handleChangeTitle(e) {
-    return setState({
+    this.setState({
       title: e.target.value,
     });
   }
 
   handleChangeSubtitle(e) {
-    return setState({
+    this.setState({
       subtitle: e.target.value,
     });
   }
