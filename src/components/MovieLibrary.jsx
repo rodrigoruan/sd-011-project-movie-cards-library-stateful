@@ -5,11 +5,36 @@ import AddMovie from './AddMovie';
 import MovieList from './MovieList';
 
 export default class MovieLibrary extends Component {
+  constructor() {
+    super();
+    this.state = {
+      searchText: '',
+      bookmarkedOnly: false,
+      selectedGenre: '',
+    };
+  }
+
+  rendleInput({ target }) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({
+      [name]: value,
+    });
+  }
+
   render() {
     const { movies } = this.props;
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <div>
-        <SearchBar />
+        <SearchBar
+          searchText={ searchText }
+          onSearchTextChange={ this.rendleInput }
+          bookmarkedOnly={ bookmarkedOnly }
+          onBookmarkedChange={ this.rendleInput }
+          selectedGenre={ selectedGenre }
+          onSelectedGenreChange={ this.rendleInput }
+        />
         <MovieList movies={ movies } />
         <AddMovie onClick={ () => {} } />
       </div>

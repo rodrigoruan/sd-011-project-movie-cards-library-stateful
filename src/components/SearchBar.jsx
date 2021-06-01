@@ -15,7 +15,6 @@ export default class SearchBar extends Component {
       selectedGenre,
       onSelectedGenreChange,
     } = this.props;
-
     return (
       <form data-testid="search-bar-form">
         <SearchBarInput value={ searchText } value2={ onSearchTextChange } />

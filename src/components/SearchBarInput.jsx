@@ -21,5 +21,5 @@ export default class SearchBarInput extends Component {
 
 SearchBarInput.propTypes = {
   value: PropTypes.string.isRequired,
-  value2: PropTypes.string.isRequired,
+  value2: PropTypes.func.isRequired,
 };
