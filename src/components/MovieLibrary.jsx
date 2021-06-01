@@ -16,28 +16,54 @@ class MovieLibrary extends Component {
       movies: props.movies,
     };
 
+    this.filter = this.filter.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange({ target }) {
-    const { name, value } = target;
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
+    }, () => this.filter(target));
+  }
+
+  filter(target) {
+    const { name, value } = target;
+    const { movies } = this.props;
+    const { bookmarkedOnly } = this.state;
+    let result = movies;
+    if (name === 'searchText') {
+      result = movies.filter((movie) => movie.title.includes(value)
+      || movie.subtitle.includes(value) || movie.storyline.includes(value));
+    }
+    if (name === 'selectedGenre') {
+      result = result.filter((movie) => movie.genre.includes(value));
+    }
+    if (bookmarkedOnly === true) {
+      result = movies.filter((movie) => movie.bookmarked === true);
+      console.log(result);
+    }
+    this.setState({
+      [name]: value,
+      movies: result,
     });
   }
 
   render() {
-    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+    const { searchText, bookmarkedOnly, selectedGenre, movies: movies2 } = this.state;
     return (
       <div>
         <h2> My awesome movie library </h2>
         <SearchBar
-          onChange={ this.handleChange }
-          bookmarkedOnly={ bookmarkedOnly }
+          onBookmarkedChange={ this.handleChange }
+          onSearchTextChange={ this.handleChange }
+          onSelectedGenreChange={ this.handleChange }
           searchText={ searchText }
+          bookmarkedOnly={ bookmarkedOnly }
           selectedGenre={ selectedGenre }
         />
-        <MovieList movies={ movies } />
+        <MovieList movies={ movies2 } />
         <AddMovie onClick={ (teste) => console.log(teste) } />
       </div>
     );
