@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import InputTitle from './InputTitle';
 import InputSubtitle from './InputSubtitle';
 import InputImage from './InputImage';
@@ -20,7 +19,6 @@ class AddMovie extends Component {
     super();
 
     this.state = initialState;
-
   }
 
   handleChange = ({ target }) => {
@@ -46,7 +44,3 @@ class AddMovie extends Component {
 }
 
 export default AddMovie;
-
-AddMovie.propTypes = {
-  onChange: PropTypes.func.isRequired,
-};
