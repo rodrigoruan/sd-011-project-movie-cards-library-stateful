@@ -8,11 +8,11 @@ class LabelRating extends Component {
       <label htmlFor="ratingInput" data-testid="rating-input-label">
         Avaliação:
         <input
-          type="number"
           name="rating"
-          value={ value }
-          onChange={ change }
+          type="number"
+          value={ Number(value) }
           data-testid="rating-input"
+          onChange={ change }
         />
       </label>
     );

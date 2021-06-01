@@ -9,9 +9,10 @@ class LabelStoryLine extends Component {
         Sinopse:
         <textarea
           name="storyline"
+          type="text"
           value={ value }
-          onChange={ change }
           data-testid="storyline-input"
+          onChange={ change }
         />
       </label>
     );

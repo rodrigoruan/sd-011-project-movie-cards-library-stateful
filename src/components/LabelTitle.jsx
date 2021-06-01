@@ -11,8 +11,8 @@ class LabelTitle extends Component {
           name="title"
           type="text"
           value={ value }
-          onChange={ change }
           data-testid="title-input"
+          onChange={ change }
         />
       </label>
     );
