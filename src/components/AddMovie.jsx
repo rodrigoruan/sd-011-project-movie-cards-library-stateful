@@ -1,6 +1,7 @@
 import React from 'react';
 import Title from './Title';
 import Subtitle from './Subtitle';
+import ImagePath from './ImagePath';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -32,17 +33,8 @@ class AddMovie extends React.Component {
       <form data-testid="add-movie-form">
         <Title value={ this.state.title } handleChange={ this.handleChange } />
         <Subtitle value={ this.state.subtitle } handleChange={ this.handleChange } />
-        <label data-testid="image-input-label" htmlFor="addMovieImageInput">
-          Imagem
-          <input
-            type="text"
-            value={ imagePath }
-            data-testid="image-input"
-            onChange={ this.handleChange }
-            id="addMovieImageInput"
-            name="imagePath"
-          />
-        </label>
+        <ImagePath value={ this.state.ImagePath } handleChange={ this.handleChange } />
+        
         <label data-testid="storyline-input-label" htmlFor="addMovieSinopseTextarea">
           Sinopse
           <textarea
