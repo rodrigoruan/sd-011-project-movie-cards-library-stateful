@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SelectToAddMovies from './SelectToAddMovies';
-import Rating from './Rating';
+import LabelRating from './LabelRating';
 
 class AddMovies extends React.Component {
   constructor(props) {
@@ -26,6 +26,19 @@ class AddMovies extends React.Component {
     });
   }
 
+  addMovie() {
+    const { onClick } = this.props;
+    onClick(this.state);
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
+
   reset() {
     this.setState({
       subtitle: '',
@@ -42,41 +55,41 @@ class AddMovies extends React.Component {
     const { onClick } = this.props;
     return (
       <form data-testid="add-movie-form">
-        <label data-testid="subtitle-input-label" htmlFor="title">
+        <label data-testid="title-input-label" htmlFor="title-input">
           Título
           <input
-            id="title"
+            name="title"
             data-testid="title-input"
             value={ title }
             onChange={ this.handleStates }
           />
         </label>
-        <label data-testid="title-input-label" htmlFor="subtitle">
+        <label data-testid="subtitle-input-label" htmlFor="subtitle-input">
           Subtítulo
           <input
-            id="subtitle"
+            name="subtitle"
             data-testid="subtitle-input"
             onChange={ subtitle }
           />
         </label>
-        <label data-testid="image-input-label" htmlFor="img">
+        <label data-testid="image-input-label" htmlFor="image-input">
           Imagem
-          <input id="img" data-testid="image-input" onChange={ imagePath } />
+          <input name="img" data-testid="image-input" onChange={ imagePath } />
         </label>
         <label data-testid="storyline-input-label" htmlFor="storyline">
           Sinopse
           <textarea
-            id="storyline"
+            name="storyline"
             data-testid="storyline-input"
             onChange={ storyline }
           />
         </label>
-        <Rating onChange={ rating } />
-        <SelectToAddMovies value={ genre } onChange={ handleStates } />
+        <LabelRating rating={ rating } handleStates={ this.handleStates } />
+        <SelectToAddMovies value={ genre } onChange={ this.handleStates } />
         <button
           type="button"
           data-testid="send-button"
-          onClick={ () => { onClick(this.state); this.reset(); } }
+          onClick={ () => onClick(this.state) }
         >
           Adicionar filme
         </button>

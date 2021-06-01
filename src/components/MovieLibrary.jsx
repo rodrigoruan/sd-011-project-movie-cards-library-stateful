@@ -12,6 +12,12 @@ class MovieLibrary extends Component {
     };
   }
 
+  addMovie(movie) {
+    this.setState((prevState) => ({
+      movies: [...prevState.movies, movie],
+    }));
+  }
+
   render() {
     const {
       movies,
