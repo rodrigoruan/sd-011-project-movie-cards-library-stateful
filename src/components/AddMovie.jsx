@@ -1,6 +1,7 @@
 import React from 'react';
 import InputTitleNovie from './InputTitleNovie';
 import InputSubTitleNovie from './InputSubTitleNovie';
+import InputTextArea from './InputTextArea';
 import InputImage from './InputImage';
 
 class AddMovie extends React.Component {
@@ -32,6 +33,9 @@ class AddMovie extends React.Component {
       title,
       subtitle,
       imagePath,
+      storyline,
+      rating,
+      genre,
     } = this.state;
     return (
       <form data-testid="add-movie-form">
@@ -44,9 +48,14 @@ class AddMovie extends React.Component {
           subtitle={ subtitle }
           hadleState={ this.hadleState }
         />
-
+        <br />
         <InputImage
           imagePath={ imagePath }
+          hadleState={ this.hadleState }
+        />
+        <br />
+        <InputTextArea
+          storyline={ storyline }
           hadleState={ this.hadleState }
         />
 
