@@ -53,6 +53,7 @@ class MovieLibrary extends Component {
       selectedGenre,
       onBookmarkedChange,
       onSelectedGenreChange,
+      filtro,
     } = this.state;
     return (
       <div>
@@ -64,7 +65,7 @@ class MovieLibrary extends Component {
           onBookmarkedChange={ onBookmarkedChange }
           onSelectedGenreChange={ onSelectedGenreChange }
         />
-        <MovieList movies={ this.filtro } />
+        <MovieList movies={ filtro } />
         <AddMovie onClick={ (movie) => this.addMovies(movie) } />
       </div>
     );
