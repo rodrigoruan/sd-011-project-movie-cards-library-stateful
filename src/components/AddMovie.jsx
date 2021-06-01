@@ -1,8 +1,7 @@
 import React from 'react';
 import InputTitleNovie from './InputTitleNovie';
 import InputSubTitleNovie from './InputSubTitleNovie';
-
-// import PropTypes from 'prop-types';
+import InputImage from './InputImage';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -29,7 +28,11 @@ class AddMovie extends React.Component {
 
   render() {
     /* Aqui recebemos as infos do searchBar e passamos para nosso state   */
-    const { title, subtitle } = this.state;
+    const {
+      title,
+      subtitle,
+      imagePath,
+    } = this.state;
     return (
       <form data-testid="add-movie-form">
         <InputTitleNovie
@@ -41,6 +44,12 @@ class AddMovie extends React.Component {
           subtitle={ subtitle }
           hadleState={ this.hadleState }
         />
+
+        <InputImage
+          imagePath={ imagePath }
+          hadleState={ this.hadleState }
+        />
+
       </form>
     );
   }
