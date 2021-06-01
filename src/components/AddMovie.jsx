@@ -6,14 +6,13 @@ import InputText10 from './components/InputText10';
 import TextArea from './components/InputText11';
 import InputText12 from './components/InputText12';
 import SelectList13 from './components/SelectList13';
-import Button14 from './components/Button14';
 
 class AddMovie extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = this.InitialState;
     this.handleChange = this.handleChange.bind(this);
-    this.btnSunmit = this.btnSunmit.bind(this);
+    this.sendButton = this.sendButton.bind(this);
   }
 
   handleChange({ target }) {
@@ -34,12 +33,15 @@ class AddMovie extends Component {
     };
   }
 
-  btnSunmit() {
-    console.log('dfwe');
+  sendButton() {
+    const { onClick } = this.props;
+    onClick(this.state);
     this.setState(this.InitialState);
   }
 
   render() {
+    console.log(this);
+
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
@@ -48,8 +50,10 @@ class AddMovie extends Component {
         <InputText10 srtTxt={ imagePath } srcOnCh={ this.handleChange } />
         <TextArea srtTxt={ storyline } srcOnCh={ this.handleChange } />
         <InputText12 srtTxt={ rating } srcOnCh={ this.handleChange } />
-        <SelectList13 srtTxt={ genre } srcOnCh={ this.handleChange } />
-        <Button14 srcOnCh={ this.btnSunmit } />
+        <SelectList13 slVl={ genre } evSl={ this.handleChange } />
+        <button type="button" data-testid="send-button" onClick={ this.sendButton }>
+          Adicionar filme
+        </button>
       </form>
     );
   }
