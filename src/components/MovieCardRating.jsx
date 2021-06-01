@@ -3,15 +3,16 @@ import PropTypes from 'prop-types';
 
 export default class MovieCardRating extends Component {
   render() {
-    const { handleEvents } = this.props;
+    const { handleEvents, value } = this.props;
     return (
       <label htmlFor="rating-input" data-testid="rating-input-label">
         Avaliação
         <input
           type="number"
           name="rating"
-          data-testid="rating-input"
+          value={ value }
           defaultValue={ 0 }
+          data-testid="rating-input"
           onChange={ handleEvents }
         />
       </label>
@@ -21,4 +22,5 @@ export default class MovieCardRating extends Component {
 
 MovieCardRating.propTypes = {
   handleEvents: PropTypes.func.isRequired,
+  value: PropTypes.number.isRequired,
 };

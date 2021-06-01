@@ -11,7 +11,7 @@ export default class MovieLibrary extends Component {
       <div>
         <SearchBar />
         <MovieList movies={ movies } />
-        <AddMovie />
+        <AddMovie onClick={ () => {} } />
       </div>
     );
   }

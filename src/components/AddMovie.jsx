@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import MovieCardGenre from './MovieCardGenre';
 import MovieCardImage from './MovieCardImage';
 import MovieCardRating from './MovieCardRating';
@@ -9,7 +10,18 @@ import MovieCardTitle from './MovieCardTitle';
 export default class AddMovie extends Component {
   constructor() {
     super();
+
+    this.state = {
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      raiting: 0,
+      genre: 'action',
+    };
+
     this.handleEvents = this.handleEvents.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleEvents({ target }) {
@@ -20,21 +32,24 @@ export default class AddMovie extends Component {
     });
   }
 
-  // handleClick({ target }) {
-  //   const {} = target;
-  // }
+  handleClick() {
+    const { onClick } = this.props;
+    onClick(this.state);
+  }
 
   render() {
+    const { title, subtitle, imagePath, storyline, raiting, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <MovieCardTitle handleEvents={ this.handleEvents } />
-        <MovieCardSubtitle handleEvents={ this.handleEvents } />
-        <MovieCardImage handleEvents={ this.handleEvents } />
-        <MovieCardSinopse handleEvents={ this.handleEvents } />
-        <MovieCardRating handleEvents={ this.handleEvents } />
-        <MovieCardGenre handleEvents={ this.handleEvents } />
+        <MovieCardTitle value={ title } handleEvents={ this.handleEvents } />
+        <MovieCardSubtitle value={ subtitle } handleEvents={ this.handleEvents } />
+        <MovieCardImage value={ imagePath } handleEvents={ this.handleEvents } />
+        <MovieCardSinopse value={ storyline } handleEvents={ this.handleEvents } />
+        <MovieCardRating value={ raiting } handleEvents={ this.handleEvents } />
+        <MovieCardGenre value={ genre } handleEvents={ this.handleEvents } />
         <button
-          type="submit"
+          name="button"
+          type="button"
           data-testid="send-button"
           onClick={ this.handleClick }
         >
@@ -44,3 +59,7 @@ export default class AddMovie extends Component {
     );
   }
 }
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
