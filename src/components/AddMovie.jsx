@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Image from './Image';
-import Rating from './Rating';
+import RatingFormItem from './RatingFormItem';
 import StoryLine from './StoryLine';
 import Subtitle from './Subtitle';
 import Title from './Titulo';
@@ -37,8 +37,8 @@ class AddMovie extends Component {
         <Subtitle value={ subtitle } handlerChange={ this.handlerChange } />
         <Image value={ imagePath } handlerChange={ this.handlerChange } />
         <StoryLine value={ storyline } handlerChange={ this.handlerChange } />
-        <Rating value={ rating } handlerChange={ this.handlerChange } />
-        <label htmlFor="image-input" data-testid="genre-input-label">
+        <RatingFormItem value={ rating } handlerChange={ this.handlerChange } />
+        <label htmlFor="genre-input" data-testid="genre-input-label">
           Gênero
           <select
             value={ genre }
