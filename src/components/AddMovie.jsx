@@ -1,8 +1,7 @@
 // implement AddMovie component here
 import React from 'react';
 import PropTypes from 'prop-types';
-import RatingForm from './AddMovieComponents/AddMovie-RatingForm';
-import ButtonAddMovie from './AddMovieComponents/ButtonAddMovie';
+import Ratinginput from './RatingInput';
 
 const state0 = {
   subtitle: '',
@@ -50,7 +49,7 @@ class AddMovie extends React.Component {
           Sinopse
           <textarea id="StorylineInput" data-testid="storyline-input" />
         </label>
-        <RatingForm />
+        <Ratinginput rValue={ rating } funcOnChange={ this.changeHandler }/>
         <label htmlFor="GenreInput" data-testid="genre-input-label">
           Gênero
           <select id="GenreInput" data-testid="genre-input">
@@ -59,7 +58,7 @@ class AddMovie extends React.Component {
             <option value="thriller" data-testid="genre-option">Suspense</option>
           </select>
         </label>
-        <ButtonAddMovie />
+        <ButtonAddMovie addOnClick={ this.submit }/>
       </form>
     );
   }

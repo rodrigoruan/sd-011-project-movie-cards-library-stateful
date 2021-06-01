@@ -4,6 +4,7 @@ import '@testing-library/jest-dom';
 import event from '@testing-library/user-event';
 import AddMovie from '../components/AddMovie';
 
+
 const initialState = {
   subtitle: '',
   title: '',
