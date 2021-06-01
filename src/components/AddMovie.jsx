@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AddTitle from './AddTitle';
-import AddSubtitle from './AddSubtitle';
+import AddTitle, * as title from './AddTitle';
+import AddSubtitle, * as subtitle from './AddSubtitle';
 
 class AddMovie extends React.Component {
   // constructor() {
@@ -14,8 +14,8 @@ class AddMovie extends React.Component {
     const { handleSinopse, sinopse } = this.props;
     return (
       <form data-testid="add-movie-form">
-        <AddTitle />
-        <AddSubtitle />
+        <AddTitle title={ title } />
+        <AddSubtitle subtitle={ subtitle } />
         <label htmlFor="imput-image" data-testid="image-input-label">
           Imagem
           <input
