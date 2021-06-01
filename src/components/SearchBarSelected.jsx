@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class SearchBarSelected extends Component {
   render() {
@@ -23,6 +24,6 @@ export default class SearchBarSelected extends Component {
 }
 
 SearchBarSelected.propTypes = {
-  value: PropTypes.string.isRequired,
-  value2: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired,
+  value2: PropTypes.number.isRequired,
 };
