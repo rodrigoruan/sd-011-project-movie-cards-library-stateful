@@ -2,7 +2,6 @@ import React from 'react';
 import Header from './components/Header';
 import './App.css';
 import SearchBar from './components/SearchBar';
-import AddMovie from './components/AddMovie';
 
 function App() {
   return (
@@ -16,7 +15,6 @@ function App() {
         selectedGenre="action" // Adicionar logica
         onSelectedGenreChange={ () => 'Isso é mais um teste' }
       />
-      <AddMovie />
     </div>
   );
 }

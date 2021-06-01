@@ -1,13 +1,15 @@
 import React from 'react';
-import InputAddMovie from './InputAddMovie';
+import InputTitleNovie from './InputTitleNovie';
+import InputSubTitleNovie from './InputSubTitleNovie';
+
 // import PropTypes from 'prop-types';
 
 class AddMovie extends React.Component {
   constructor() {
     super();
     this.state = {
-      subtitle: '',
       title: '',
+      subtitle: '',
       imagePath: '',
       storyline: '',
       rating: 0,
@@ -19,44 +21,27 @@ class AddMovie extends React.Component {
 
   hadleState({ target }) {
     const { name, value } = target;
-    console.log(target);
+    // console.log(target);
     this.setState(() => ({
       [name]: value,
     }));
   }
 
   render() {
-    const { title } = this.state;
+    /* Aqui recebemos as infos do searchBar e passamos para nosso state   */
+    const { title, subtitle } = this.state;
     return (
-      <InputAddMovie
-        data-testid="text-input-label"
-        htmlFor
-        {Inclui o texto:}
-        type="text"
-        value={ searchText }
-        onChange={ onSearchTextChange }
-        name="searchBar"
-        data-testid="text-input"
-        placeholder="Search..."
-      />
-      <div>
-        <form data-testid="add-movie-form">
-          <label
-            data-testid="title-input-label"
-            htmlFor="inputAddMovie"
-          >
-            Título
-            <input
-              type="text"
-              value={ title }
-              onChange={ this.hadleState }
-              name="title"
-              data-testid="title-input"
-              id="inputAddMovie"
-            />
-          </label>
-        </form>
-      </div>
+      <form data-testid="add-movie-form">
+        <InputTitleNovie
+          title={ title }
+          hadleState={ this.hadleState }
+        />
+        <br />
+        <InputSubTitleNovie
+          subtitle={ subtitle }
+          hadleState={ this.hadleState }
+        />
+      </form>
     );
   }
 }

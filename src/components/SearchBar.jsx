@@ -40,6 +40,8 @@ class SearchBar extends React.Component {
           />
 
         </form>
+        {/* Aqui precisamos enviar as informações dos inputs do novo filme para
+        o AddMovie mudar seu estado e criar um novo fime */}
         <AddMovie />
       </div>
     );
