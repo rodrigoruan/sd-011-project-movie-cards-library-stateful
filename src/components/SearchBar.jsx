@@ -6,20 +6,6 @@ import SearchBarCheckBox from './SearchBarCheckBox';
 import SearchBarSelected from './SearchBarSelected';
 
 export default class SearchBar extends Component {
-  constructor() {
-    super();
-
-    this.handleEvents = this.handleEvents.bind(this);
-  }
-
-  handleEvents({ target }) {
-    const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState({
-      [name]: value,
-    });
-  }
-
   render() {
     const {
       searchText,
