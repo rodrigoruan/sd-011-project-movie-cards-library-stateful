@@ -7,12 +7,16 @@ import AddMovie from './AddMovie';
 class MovieLibrary extends Component {
   constructor(props) {
     super(props);
+    const { movies } = this.props;
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
       movies,
     };
+    this.onSearchTextChangeFun = this.onSearchTextChangeFun.bind(this);
+    this.onBookmarkedChangeFun = this.onBookmarkedChangeFun.bind(this);
+    this.onSelectedGenreChangeFun = this.onSelectedGenreChangeFun.bind(this);
   }
 
   onSearchTextChangeFun(event) {
@@ -34,7 +38,7 @@ class MovieLibrary extends Component {
   }
 
   render() {
-    const { movies } = this.props;
+    const { bookmarkedOnly, searchText, selectedGenre, movies } = this.state;
     return (
       <div>
         <h2> My awesome movie library </h2>
@@ -46,7 +50,9 @@ class MovieLibrary extends Component {
           onBookmarkedChange={ this.onBookmarkedChangeFun }
           onSelectedGenreChange={ this.onSelectedGenreChangeFun }
         />
-        <MovieList movies={ movies } />
+        <MovieList
+          movies={ movies }
+        />
         <AddMovie />
       </div>
     );
@@ -56,7 +62,7 @@ class MovieLibrary extends Component {
 export default MovieLibrary;
 
 MovieLibrary.propTypes = {
-  movies: PropTypes.arrayof(PropTypes.shape({
+  movies: (PropTypes.shape({
     title: PropTypes.string,
     subtitle: PropTypes.string,
     storyline: PropTypes.string,
