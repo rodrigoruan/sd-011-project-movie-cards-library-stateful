@@ -17,6 +17,10 @@ class AddMovie extends Component {
 
   }
 
+  handleChangeImage() {
+
+  }
+
   render() {
     return (
       <form data-testid="add-movie-form">
@@ -35,6 +39,14 @@ class AddMovie extends Component {
             onChange={ this.handleChangeSubtitle }
           />
         </label>
+        <label htmlFor="image-input" data-testid="image-input-label">
+          Imagem
+          <input
+            type="text"
+            data-testid="image-input"
+            onChange={ this.handleChangeImage }
+          />
+        </label>
       </form>
     );
   }
@@ -44,6 +56,7 @@ AddMovie.propTypes = {
   state: PropTypes.shape({
     title: PropTypes.string,
     subtitle: PropTypes.string,
+    imagePath: PropTypes.string,
   }).isRequired,
 };
 
