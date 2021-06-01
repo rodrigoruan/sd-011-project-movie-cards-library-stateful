@@ -146,9 +146,9 @@ class AddMovie extends React.Component {
       <button
         data-testid="send-button"
         type="button"
-        onClick={ resetState }
+        onClick={ this.resetState }
       >
-        Adicinar filme
+        Adicionar filme
       </button>
     );
   }
