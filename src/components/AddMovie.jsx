@@ -33,7 +33,6 @@ class AddMovie extends Component {
   }
 
   sendSubmit() {
-    console.log('oi');
     const { onClick } = this.props;
     onClick(this.state);
     this.setState({
