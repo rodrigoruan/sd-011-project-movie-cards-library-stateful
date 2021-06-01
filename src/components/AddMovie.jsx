@@ -22,6 +22,14 @@ class AddMovie extends React.Component {
   }
 
   render() {
+    const {
+      title,
+      subtitle,
+      imagePath,
+      storyline,
+      rating,
+      genre,
+    } = this.state
     return (
       <form data-testid="add-movie-form">
         <label data-testid="title-input-label" htmlFor="title">
@@ -31,7 +39,7 @@ class AddMovie extends React.Component {
             data-testid="title-input"
             onChange={ this.addMovieFunction }
             id="title"
-            value={ this.state.title }
+            value={ title }
           />
         </label>
         <label data-testid="subtitle-input-label" htmlFor="subtitle">
@@ -41,7 +49,7 @@ class AddMovie extends React.Component {
             data-testid="subtitle-input"
             id="subtitle"
             onChange={ this.addMovieFunction }
-            value={ this.state.subtitle }
+            value={ subtitle }
           />
         </label>
         <label data-testid="image-input-label" htmlFor="imagePath">
@@ -51,16 +59,16 @@ class AddMovie extends React.Component {
             id="imagePath"
             data-testid="image-input"
             onChange={ this.addMovieFunction }
-            value={ this.state.imagePath }
+            value={ imagePath }
           />
         </label>
         <label data-testid="storyline-input-label" htmlFor="storyline">
           Sinopse
           <textarea
-          id="storyline"
-          data-testid="storyline-input"
-          onChange={ this.addMovieFunction }
-          value={ this.state.value }
+            id="storyline"
+            data-testid="storyline-input"
+            onChange={ this.addMovieFunction }
+            value={ storyline }
           />
         </label>
       </form>
