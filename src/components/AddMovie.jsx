@@ -29,6 +29,7 @@ class AddMovie extends React.Component {
       genre: 'action',
     });
   }
+  
   addMovieFunction(event) {
     const { id, value } = event.target;
     this.setState({
