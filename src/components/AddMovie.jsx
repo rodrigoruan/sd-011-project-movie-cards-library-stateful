@@ -78,7 +78,7 @@ class AddMovie extends React.Component {
             </select>
           </label>
           <button
-            type="submit"
+            type="button"
             onClick={ () => {
               onClick(this.state);
               this.reset();
