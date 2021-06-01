@@ -38,8 +38,8 @@ body {
 }
 
 .movie-card-image {
-  object-fit: cover;
   max-height: 150px;
+  object-fit: cover;
   width: 100%;
 }
 
