@@ -12,6 +12,7 @@ export default class AddMovie extends Component {
       genre: 'action',
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange({ target }) {
@@ -19,7 +20,21 @@ export default class AddMovie extends Component {
     this.setState({ [name]: value });
   }
 
+  handleClick() {
+    const { onClick } = this.props;
+    onClick(this.state);
+    this.setState({
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
+
   render() {
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <div>
         <form data-testid="add-movie-form" action="">
@@ -30,7 +45,7 @@ export default class AddMovie extends Component {
               id="title-add"
               type="text"
               name="title"
-              value={ this.state.title }
+              value={ title }
               onChange={ this.handleChange }
             />
           </label>
@@ -41,7 +56,7 @@ export default class AddMovie extends Component {
               id="subtitle-add"
               type="text"
               name="subtitle"
-              value={ this.state.subtitle }
+              value={ subtitle }
               onChange={ this.handleChange }
             />
           </label>
@@ -52,7 +67,7 @@ export default class AddMovie extends Component {
               id="image-add"
               type="text"
               name="imagePath"
-              value={ this.state.imagePath }
+              value={ imagePath }
               onChange={ this.handleChange }
             />
           </label>
@@ -63,7 +78,7 @@ export default class AddMovie extends Component {
               id="storyline-add"
               type="text"
               name="storyline"
-              value={ this.state.storyline }
+              value={ storyline }
               onChange={ this.handleChange }
             />
           </label>
@@ -74,7 +89,7 @@ export default class AddMovie extends Component {
               id="rating-add"
               type="number"
               name="rating"
-              value={ this.state.rating }
+              value={ rating }
               onChange={ this.handleChange }
             />
           </label>
@@ -82,8 +97,8 @@ export default class AddMovie extends Component {
             Gênero
             <select
               data-testid="genre-input"
-              name=""
-              value={ this.setState.genre }
+              name="genre"
+              value={ genre }
               onChange={ this.handleChange }
               id="combobox"
             >
@@ -92,6 +107,9 @@ export default class AddMovie extends Component {
               <option data-testid="genre-option" value="thriller">Suspense</option>
             </select>
           </label>
+          <button data-testid="send-button" onClick={ this.handleClick }>
+            Adicionar filme
+          </button>
         </form>
       </div>
     );
