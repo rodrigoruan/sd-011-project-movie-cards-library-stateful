@@ -105,6 +105,12 @@ export default AddMovie;
 
 AddMovie.propTypes = {
   onClick: PropTypes.func,
+  subtitle: PropTypes.string,
+  title: PropTypes.string,
+  imagePath: PropTypes.string,
+  storyline: PropTypes.string,
+  rating: PropTypes.number,
+  genre: PropTypes.string,
 };
 
 AddMovie.defaultProps = {
