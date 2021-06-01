@@ -2,6 +2,7 @@ import React from 'react';
 import Subtitle from './Subtitle';
 import Title from './Title';
 import Storyline from './Storyline';
+import BtnAddMovie from './BtnAddMovie';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -15,8 +16,19 @@ class AddMovie extends React.Component {
       genre: 'action',
     };
     this.addMovieFunction = this.addMovieFunction.bind(this);
+    this.resetState = this.resetState.bind(this);
   }
 
+  resetState() {
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
   addMovieFunction(event) {
     const { id, value } = event.target;
     this.setState({
@@ -71,6 +83,7 @@ class AddMovie extends React.Component {
             <option data-testid="genre-option" value="thriller">Suspense</option>
           </select>
         </label>
+        <BtnAddMovie resetState={ this.resetState } />
       </form>
     );
   }
