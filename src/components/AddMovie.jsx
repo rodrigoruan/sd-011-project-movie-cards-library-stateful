@@ -25,17 +25,6 @@ class AddMovie extends Component {
     });
   }
 
-  resetState() {
-    this.setState({
-      subtitle: '',
-      title: '',
-      imagePath: '',
-      storyLine: '',
-      rating: 0,
-      genre: 'action',
-    });
-  }
-
   render() {
     const { onClick } = this.props;
     const {

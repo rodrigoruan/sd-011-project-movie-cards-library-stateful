@@ -7,13 +7,16 @@ class InputNumber extends Component {
       inputFunction,
     } = this.props;
     return (
-      <label labelData="rating-input-label">
+      <label
+        htmlFor="rating-input"
+        labelData="rating-input-label"
+      >
         Avaliação
         <input
           name="rating"
           type="number"
           data-testid="rating-input"
-          value={ inputValue }
+          value={ Number(inputValue) }
           onChange={ inputFunction }
         />
         <br />

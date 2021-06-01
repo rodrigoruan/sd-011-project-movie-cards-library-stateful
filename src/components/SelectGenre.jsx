@@ -2,11 +2,15 @@ import React, { Component } from "react";
 
 class SelectGenre extends Component {
   render() {
-    const { value, inputFunction } = this.props;
+    const {
+      value,
+      inputFunction
+    } = this.props;
     return (
       <label data-testid="genre-input-label">
         Gênero
         <select
+          name="genre"
           data-testid="genre-input"
           value={ value }
           onChange={ inputFunction }
