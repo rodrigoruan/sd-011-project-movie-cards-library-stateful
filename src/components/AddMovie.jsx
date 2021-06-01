@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import LabelSelect from './LabelSelect';
+import LabelText from './LabelText';
+import LabelRating from './LabelRating';
 
 const inicialState = {
   subtitle: '',
@@ -36,39 +39,30 @@ export default class AddMovie extends Component {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <label htmlFor="title-input" data-testid="title-input-label">
-          Título
-          <input
-            type="text"
-            value={ title }
-            data-testid="title-input"
-            id="title-input"
-            name="title"
-            onChange={ this.handleState }
-          />
-        </label>
-        <label data-testid="subtitle-input-label" htmlFor="subtitle-input">
-          Subtítulo
-          <input
-            type="text"
-            value={ subtitle }
-            data-testid="subtitle-input"
-            id="subtitle-input"
-            name="subtitle"
-            onChange={ this.handleState }
-          />
-        </label>
-        <label data-testid="image-input-label" htmlFor="image-input">
-          Imagem
-          <input
-            type="text"
-            name="imagePath"
-            id="image-input"
-            data-testid="image-input"
-            value={ imagePath }
-            onChange={ this.handleState }
-          />
-        </label>
+        <LabelText
+          idInput="title-input"
+          inputValue={ title }
+          inputName="title"
+          handleState={ this.handleState }
+          textValue="Título"
+          labelD="title-input-label"
+        />
+        <LabelText
+          idInput="subtitle-input"
+          inputValue={ subtitle }
+          inputName="subtitle"
+          handleState={ this.handleState }
+          textValue="Subtítulo"
+          labelD="subtitle-input-label"
+        />
+        <LabelText
+          idInput="image-input"
+          inputValue={ imagePath }
+          inputName="imagePath"
+          handleState={ this.handleState }
+          textValue="Imagem"
+          labelD="image-input-label"
+        />
         <label data-testid="storyline-input-label" htmlFor="storyline-input">
           Sinopse
           <textarea
@@ -79,38 +73,9 @@ export default class AddMovie extends Component {
             onChange={ this.handleState }
           />
         </label>
-        <label data-testid="rating-input-label" htmlFor="rating-input">
-          Avaliação
-          <input
-            type="number"
-            name="rating"
-            value={ rating }
-            data-testid="rating-input"
-            id="rating-input"
-            onChange={ this.handleState }
-            max="5"
-            min="0"
-          />
-        </label>
-        <label data-testid="genre-input-label" htmlFor="genre-input">
-          Gênero
-          <select
-            value={ genre }
-            data-testid="genre-input"
-            id="genre-input"
-            name="genre"
-            onChange={ this.handleState }
-          >
-            <option value="action" data-testid="genre-option">Ação</option>
-            <option value="comedy" data-testid="genre-option">Comédia</option>
-            <option value="thriller" data-testid="genre-option">Suspense</option>
-          </select>
-        </label>
-        <button
-          data-testid="send-button"
-          onClick={ this.clearState }
-          type="submit"
-        >
+        <LabelRating rating={ rating } handleState={ this.handleState } />
+        <LabelSelect genre={ genre } handleState={ this.handleState } />
+        <button data-testid="send-button" onClick={ this.clearState } type="submit">
           Adicionar filme
         </button>
       </form>
