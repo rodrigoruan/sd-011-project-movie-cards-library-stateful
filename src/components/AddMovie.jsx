@@ -10,6 +10,7 @@ class AddMovie extends React.Component {
       imagePath: '',
       storyline: '',
       rating: 0,
+      bookmarked: false,
       genre: 'action',
     };
     this.handleChange = this.handleChange.bind(this);
