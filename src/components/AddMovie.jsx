@@ -45,8 +45,3 @@ class AddMovie extends React.Component {
 }
 
 export default AddMovie;
-
-// AddMovie.propTypes = {
-//   value: PropTypes.string.isRequired,
-//   onChange: PropTypes.func.isRequired,
-// };
