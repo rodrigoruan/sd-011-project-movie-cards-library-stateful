@@ -7,7 +7,7 @@ class AddMovie extends Component {
       subtitle: '',
       title: '',
       imagePath: '',
-      // storyline: '',
+      storyline: '',
       // rating: 0,
       // genre: 'action',
     };
@@ -21,8 +21,9 @@ class AddMovie extends Component {
     });
   }
 
+  // eslint-disable-next-line max-lines-per-function
   render() {
-    const { title, subtitle, imagePath } = this.state;
+    const { title, subtitle, imagePath, storyline } = this.state;
     return (
       <form data-testid="add-movie-form">
         <label
@@ -62,6 +63,20 @@ class AddMovie extends Component {
             data-testid="image-input"
             onChange={ this.updateState }
             name={ imagePath }
+          />
+        </label>
+        <label
+          htmlFor="storylineInput"
+          data-testid="storyline-input-label"
+        >
+          Sinopse
+          <textarea
+            id="storylineInput"
+            data-testid="storyline-input"
+            cols="30"
+            rows="10"
+            onChange={ this.updateState }
+            name={ storyline }
           />
         </label>
       </form>
