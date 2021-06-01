@@ -27,12 +27,6 @@ class AddMovie extends Component {
     }));
   }
 
-  input() {
-    return {
-
-    };
-  }
-
   render() {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     const { onClick } = this.props;

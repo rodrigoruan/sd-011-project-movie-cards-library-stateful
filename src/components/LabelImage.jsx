@@ -10,7 +10,7 @@ class LabelImage extends Component {
         <input
           type="text"
           value={ value }
-          data-testid="subtitle-input"
+          data-testid="image-input"
           onChange={ functionChange }
         />
       </label>
