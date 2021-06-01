@@ -9,15 +9,16 @@ export default class SearchBar extends Component {
       onBookmarkedChange,
       selectedGenre,
       onSelectedGenreChange } = this.props;
+
     return (
       <form data-testid="search-bar-form">
         <label htmlFor="text-input" data-testid="text-input-label">
           Inclui o texto:
           <input
-            data-testid="text-input"
-            type="text"
             value={ searchText }
             onChange={ onSearchTextChange }
+            data-testid="text-input"
+            type="text"
           />
         </label>
 
@@ -43,7 +44,6 @@ export default class SearchBar extends Component {
             <option data-testid="select-option" value="comedy">Comédia</option>
             <option data-testid="select-option" value="thriller">Suspense</option>
           </select>
-
         </label>
       </form>
     );
