@@ -13,24 +13,20 @@ export default class AddMovie extends Component {
       genre: 'action', */
     };
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChangeTitle = this.handleChangeTitle.bind(this);
+    this.handleChangeSubtitle = this.handleChangeSubtitle.bind(this);
   }
 
-  handleChange = (e, func) => {
-    switch (func) {
-    case 'title':
-      setState({
-        title: e.target.value,
-      });
-      break;
-    case 'subtitle':
-      this.setState({
-        subtitle: e.target.value,
-      });
-      break;
-    default:
-      console.log('Erro no sistema de alguém que me configurou');
-    }
+  handleChangeTitle(e) {
+    return setState({
+      title: e.target.value,
+    });
+  }
+
+  handleChangeSubtitle(e) {
+    return setState({
+      subtitle: e.target.value,
+    });
   }
 
   render() {
@@ -47,7 +43,7 @@ export default class AddMovie extends Component {
               type="text"
               value={ title }
               data-testid="title-input"
-              onChange={ (e) => this.handleChange(e, title) }
+              onChange={ this.handleChangeTitle }
             />
           </label>
 
@@ -58,7 +54,7 @@ export default class AddMovie extends Component {
               type="text"
               value={ subtitle }
               data-testid="sutitle-input"
-              onChange={ (e) => this.handleChange(e, subtitle) }
+              onChange={ this.handleChangeSubtitle }
             />
           </label>
         </form>
