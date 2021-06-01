@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import MovieList from './MovieList';
 import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
-import movies from '../data';
 
 class MovieLibrary extends Component {
   constructor(props) {
     super(props);
+    const { movies } = this.props;
     this.state = {
-      movieList: movies,
+      movies,
       bookmarkedOnly: false,
       selectedGenre: '',
       searchText: '',
@@ -28,14 +28,14 @@ class MovieLibrary extends Component {
   }
 
   filterMovies() {
-    const { bookmarkedOnly, selectedGenre, searchText, movieList } = this.state;
-    let filtered = movieList;
+    const { bookmarkedOnly, selectedGenre, searchText, movies } = this.state;
+    let filtered = movies;
     if (searchText) {
-      filtered = movieList.filter((el) => el.title.includes(searchText)
+      filtered = movies.filter((el) => el.title.includes(searchText)
       || el.subtitle.includes(searchText) || el.storyline.includes(searchText));
     }
-    if (bookmarkedOnly) filtered = movieList.filter((el) => el.bookmarked === true);
-    if (selectedGenre) filtered = movieList.filter((el) => el.genre === selectedGenre);
+    if (bookmarkedOnly) filtered = movies.filter((el) => el.bookmarked === true);
+    if (selectedGenre) filtered = movies.filter((el) => el.genre === selectedGenre);
     return filtered;
   }
 
@@ -66,5 +66,11 @@ class MovieLibrary extends Component {
     );
   }
 }
+
+MovieLibrary.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.object,
+  ).isRequired,
+};
 
 export default MovieLibrary;
