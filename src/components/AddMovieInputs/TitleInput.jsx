@@ -10,13 +10,12 @@ class TitleInput extends React.Component {
 
     return (
       <div>
-        <label data-testid="title-input-label" htmlFor="titleNewMovieId">
+        <label data-testid="title-input-label" htmlFor="title">
           <span>Título</span>
 
           <input
-            id="titleNewMovieId"
+            id="title"
             type="text"
-            name="title"
             value={ title }
             onChange={ handleChange }
             data-testid="title-input"

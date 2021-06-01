@@ -10,13 +10,12 @@ class RatingInput extends React.Component {
 
     return (
       <div>
-        <label data-testid="rating-input-label" htmlFor="ratingNewMovieId">
+        <label data-testid="rating-input-label" htmlFor="rating">
           <span>Avaliação</span>
 
           <input
-            id="ratingNewMovieId"
+            id="rating"
             type="number"
-            name="rating"
             value={ rating }
             onChange={ handleChange }
             data-testid="rating-input"

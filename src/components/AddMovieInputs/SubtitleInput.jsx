@@ -10,13 +10,12 @@ class SubtitleInput extends React.Component {
 
     return (
       <div>
-        <label data-testid="subtitle-input-label" htmlFor="subtitleNewMovieId">
+        <label data-testid="subtitle-input-label" htmlFor="subtitle">
           <span>Subtítulo</span>
 
           <input
-            id="subtitleNewMovieId"
+            id="subtitle"
             type="text"
-            name="subtitle"
             value={ subtitle }
             onChange={ handleChange }
             data-testid="subtitle-input"

@@ -10,12 +10,11 @@ class StorylineTextarea extends React.Component {
 
     return (
       <div>
-        <label data-testid="storyline-input-label" htmlFor="storylineNewMovieId">
+        <label data-testid="storyline-input-label" htmlFor="storyline">
           <span>Sinopse</span>
 
           <textarea
-            id="storylineNewMovieId"
-            name="storyline"
+            id="storyline"
             value={ storyline }
             onChange={ handleChange }
             data-testid="storyline-input"

@@ -10,13 +10,12 @@ class ImageInput extends React.Component {
 
     return (
       <div>
-        <label data-testid="image-input-label" htmlFor="imageNewMovieId">
+        <label data-testid="image-input-label" htmlFor="imagePath">
           <span>Imagem</span>
 
           <input
-            id="imageNewMovieId"
+            id="imagePath"
             type="text"
-            name="imagePath"
             value={ imagePath }
             onChange={ handleChange }
             data-testid="image-input"

@@ -10,12 +10,11 @@ class GenreInput extends React.Component {
 
     return (
       <div>
-        <label data-testid="genre-input-label" htmlFor="genreNewMovieId">
+        <label data-testid="genre-input-label" htmlFor="genre">
           <span>Gênero</span>
 
           <select
-            id="genreNewMovieId"
-            name="genre"
+            id="genre"
             value={ genre }
             onChange={ handleChange }
             data-testid="genre-input"
