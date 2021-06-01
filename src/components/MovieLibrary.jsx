@@ -27,23 +27,23 @@ class MovieLibrary extends Component {
 
   filtro() {
     const { bookmarkedOnly, searchText, selectedGenre, movies } = this.state;
-
+    let array = movies;
     if (bookmarkedOnly === true) {
-      movies.filter((movie) => movie.bookmarked === true);
+      array = array.filter((movie) => movie.bookmarked === true);
     }
 
     if (searchText !== '') {
-      movie.filter((movie) => movie.title
+      array = array.filter((movie) => movie.title
         .toLowerCase().includes(searchText)
         || movie.subtitle.toLowerCase().includes(searchText)
         || movie.storyline.toLowerCase().includes(searchText));
     }
 
     if (selectedGenre !== '') {
-      movies.filter((movie) => movie.genre === selectedGenre);
+      array = array.filter((movie) => movie.genre === selectedGenre);
     }
 
-    return movies;
+    return array;
   }
 
   render() {
