@@ -17,7 +17,6 @@ export default class AddMovie extends Component {
       storyLine: '',
       rating: 0,
       genre: 'action',
-      element: [],
     };
     this.initialState = { ...this.state };
     this.handleAddInfo = this.handleAddInfo.bind(this);
@@ -28,7 +27,8 @@ export default class AddMovie extends Component {
   handleAddInfo(ev) {
     ev.preventDefault();
     const { onClick } = this.props;
-    onClick();
+    const obj = { ...this.state };
+    onClick(obj);
     this.resetState();
   }
 
