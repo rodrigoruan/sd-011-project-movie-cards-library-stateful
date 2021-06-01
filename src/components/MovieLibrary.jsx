@@ -19,7 +19,7 @@ class MovieLibrary extends Component {
   }
 
   changeTextState = ({ target }) => {
-    const { value } = target;
+    const { value, name } = target;
     this.setState({
       searchText: value,
     });
@@ -38,18 +38,20 @@ class MovieLibrary extends Component {
     });
   }
 
-  // changeSelectedGenre = () => {
-  //   const { selectedGenre } = this.state;
+  // filterMovies = () => {
   //   const { movies } = this.props;
-  //   const filtered = movies.filter((movie) => movie.genre.includes(selectedGenre));
-  //   this.setState({
-  //     movies: filtered,
-  //   });
+  //   const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+  //   let filteredMovies = movies;
+
+  //   if (bookmarkedOnly) {
+  //     filteredMovies = filteredMovies.filter(({ bookmarked }) => bookmarked);
+  //   }
   // }
 
   render() {
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     const { movies } = this.state;
+
     return (
       <div>
         <SearchBar
