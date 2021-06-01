@@ -13,7 +13,7 @@ class SearchBar extends Component {
             type="text"
             value={ searchText }
             onChange={ onSearchTextChange }
-            data-testid="text-input"
+            data-testid="text-input-label"
             id="input-filter"
           />
         </label>
