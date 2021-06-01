@@ -18,8 +18,7 @@ export default class Storyline extends React.Component {
   }
 }
 
-Title.propTypes = {
-    addMovieFunction: PropTypes.func.isRequired,
-    value: PropTypes.string.isRequired,
-  };
-  
+Storyline.propTypes = {
+  addMovieFunction: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+};
