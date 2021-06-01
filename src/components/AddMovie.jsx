@@ -46,16 +46,16 @@ export default class AddMovie extends Component {
   };
 
   render() {
-    const { title, subtitle, imagePath, storyline, rating, gender } = this.state;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
-      <Form onSubmit={ this.handleSubmit } data-testid="add-movie-form" className="col">
-        <TitleGroup onChange={ this.handleAction } value={ title } />
-        <SubtitleGroup onChange={ this.handleAction } value={ subtitle } />
-        <ImageGroup onChange={ this.handleAction } value={ imagePath } />
-        <StorylineGroup onChange={ this.handleAction } value={ storyline } />
-        <RatingGroup onChange={ this.handleAction } value={ rating } />
-        <GenderGroup onChange={ this.handleAction } value={ gender } />
-        <SubmitButton onChange={ this.handleSubmit } />
+      <Form onSubmit={this.handleSubmit} data-testid="add-movie-form" className="col">
+        <TitleGroup onChange={this.handleAction} value={title} />
+        <SubtitleGroup onChange={this.handleAction} value={subtitle} />
+        <ImageGroup onChange={this.handleAction} value={imagePath} />
+        <StorylineGroup onChange={this.handleAction} value={storyline} />
+        <RatingGroup onChange={this.handleAction} value={rating} />
+        <GenderGroup onChange={this.handleAction} value={genre} />
+        <SubmitButton onChange={this.handleSubmit} />
       </Form>
     );
   }

@@ -21,23 +21,23 @@ export default class SearchBar extends Component {
           data-testid="text-input"
           size="lg"
           type="text"
-          value={ searchText }
-          onChange={ onSearchTextChange }
+          value={searchText}
+          onChange={onSearchTextChange}
         />
       </Form.Group>
     );
   };
 
   render() {
-    const { bookmarkedOnly, onBookmarkedChange,
-      selectedGenre, onSelectedGenreChange } = this.props;
+    const { bookmarkedOnly, onBookmarkedChange, selectedGenre, onSelectedGenreChange } =
+      this.props;
     return (
       <Form data-testid="search-bar-form" className="col">
         {this.inputText()}
-        <Form.Group as={ Row }>
+        <Form.Group as={Row}>
           <Form.Check
-            checked={ bookmarkedOnly }
-            onChange={ onBookmarkedChange }
+            checked={bookmarkedOnly}
+            onChange={onBookmarkedChange}
             data-testid="checkbox-input"
             className="ml-3"
             label=""
@@ -51,8 +51,8 @@ export default class SearchBar extends Component {
           <Form.Label data-testid="select-input-label">Filtrar por gênero: </Form.Label>
           <Form.Control
             data-testid="select-input"
-            value={ selectedGenre }
-            onChange={ onSelectedGenreChange }
+            value={selectedGenre}
+            onChange={onSelectedGenreChange}
             as="select"
           >
             <option value="" data-testid="select-option">
@@ -79,6 +79,6 @@ SearchBar.propTypes = {
   onBookmarkedChange: PropTypes.func.isRequired,
   selectedGenre: PropTypes.string.isRequired,
   onSelectedGenreChange: PropTypes.func.isRequired,
-  searchText: PropTypes.func.isRequired,
+  searchText: PropTypes.string.isRequired,
   onSearchTextChange: PropTypes.func.isRequired,
 };

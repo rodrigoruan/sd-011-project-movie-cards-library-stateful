@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 
 export default class SubmitButton extends Component {
   render() {
-    const { onClick } = this.props;
+    const { onChange } = this.props;
     return (
       <Form.Group>
-        <Button data-testid="send-button" type="submit" onClick={ onClick }>
+        <Button data-testid="send-button" type="submit" onClick={ onChange }>
           Adicionar filme
         </Button>
       </Form.Group>
@@ -17,5 +17,5 @@ export default class SubmitButton extends Component {
 }
 
 SubmitButton.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
 };

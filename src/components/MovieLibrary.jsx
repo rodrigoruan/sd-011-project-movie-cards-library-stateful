@@ -11,8 +11,8 @@ class MovieLibrary extends Component {
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
-      // selectedGenre: '',
-      movies: movies.map((el) => el),
+      selectedGenre: '',
+      movies: [...movies],
       bookmarkedMovies: movies.filter((el) => el.bookmarked === true),
     };
     this.handleTextChange = this.handleTextChange.bind(this);
@@ -22,32 +22,11 @@ class MovieLibrary extends Component {
   }
 
   handleTextChange = ({ target }) => {
-    const { movies } = this.props;
-    const filtered = movies.filter(
-      (el) => el.title.includes(target.value)
-        || el.subtitle.includes(target.value)
-        || el.storyline.includes(target.value),
-    );
-    this.setState({ searchText: target.value }, () => {
-      const { searchText } = this.state;
-      return searchText === target.value
-        ? this.setState({ movies: filtered })
-        : this.setState({ movies });
-    });
+    this.setState({ searchText: target.value });
   };
 
-  CheckBookMark = () => {
-    const { movies } = this.props;
-    this.setState(
-      (curr) => ({ bookmarkedOnly: !curr.bookmarkedOnly }),
-      () => {
-        const { bookmarkedOnly, bookmarkedMovies } = this.state;
-        return bookmarkedOnly
-          ? this.setState({ movies: bookmarkedMovies })
-          : this.setState({ movies });
-      },
-    );
-  };
+  CheckBookMark = () =>
+    this.setState((curr) => ({ bookmarkedOnly: !curr.bookmarkedOnly }));
 
   handleAddMovie = (el) => {
     el.rating = parseFloat(el.rating);
@@ -55,25 +34,42 @@ class MovieLibrary extends Component {
   };
 
   handleMovieGenre = ({ target }) => {
-    const { movies } = this.props;
-    // this.setState({ selectedGenre: target.value });
-    this.setState({ movies: movies.filter((el) => el.genre.includes(target.value)) });
+    this.setState({ selectedGenre: target.value });
+  };
+
+  filterMoviesBySearch = (movies, searchText) => {
+    return movies.filter((el) => {
+      const newTerm = el.title + el.subtitle + el.storyline;
+      return newTerm.includes(searchText);
+    });
+  };
+
+  filterMoviesByGenre = (movies, genre) => {
+    return movies.filter((el) => el.genre.includes(genre));
+  };
+
+  filterMoviesByBookMarked = (movies, bookmarked) => {
+    return bookmarked ? movies.filter((el) => el.bookmarked === bookmarked) : movies;
   };
 
   // prettier-ignore
   render() {
-    const { bookmarkedOnly, searchText, movies } = this.state;
+    const { bookmarkedOnly, searchText, selectedGenre, movies } = this.state;
+    let filteredMovies = this.filterMoviesByGenre(movies, selectedGenre);
+    filteredMovies = this.filterMoviesBySearch(filteredMovies, searchText);
+    filteredMovies = this.filterMoviesByBookMarked(filteredMovies, bookmarkedOnly)
     return (
       <div>
         <h2 className="mt-3 text-center"> My awesome movie library </h2>
         <SearchBar
+          selectedGenre={ selectedGenre }
           bookmarkedOnly={ bookmarkedOnly }
           onBookmarkedChange={ this.CheckBookMark }
           onSearchTextChange={ this.handleTextChange }
           searchText={ searchText }
           onSelectedGenreChange={ this.handleMovieGenre }
         />
-        <MovieList movies={ movies } />
+        <MovieList movies={ filteredMovies } />
         <AddMovie onClick={ this.handleAddMovie } />
       </div>
     );
@@ -83,13 +79,15 @@ class MovieLibrary extends Component {
 export default MovieLibrary;
 
 MovieLibrary.propTypes = {
-  movies: PropTypes.shape({
-    filter: PropTypes.func,
-    map: PropTypes.func,
-    title: PropTypes.string,
-    subtitle: PropTypes.string,
-    storyline: PropTypes.string,
-    rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    imagePath: PropTypes.string,
-  }).isRequired,
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      filter: PropTypes.func,
+      map: PropTypes.func,
+      title: PropTypes.string,
+      subtitle: PropTypes.string,
+      storyline: PropTypes.string,
+      rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      imagePath: PropTypes.string,
+    }),
+  ).isRequired,
 };
