@@ -9,6 +9,7 @@ class AddMovie extends Component {
     this.handleChangeSubtitle = this.handleChangeSubtitle.bind(this);
     this.handleChangeImage = this.handleChangeImage.bind(this);
     this.handleChangeTextarea = this.handleChangeTextarea.bind(this);
+    this.handleChangeRating = this.handleChangeRating.bind(this);
   }
 
   handleChangeTitle() {
@@ -24,6 +25,10 @@ class AddMovie extends Component {
   }
 
   handleChangeTextarea() {
+
+  }
+
+  handleChangeRating() {
 
   }
 
@@ -60,6 +65,15 @@ class AddMovie extends Component {
             onChange={ this.handleChangeTextarea }
           />
         </label>
+        <label htmlFor="rating-input" data-testid="rating-input-label">
+          Avaliação
+          <input
+            type="number"
+            data-testid="rating-input"
+            onChange={ this.handleChangeRating }
+            defaultValue="0"
+          />
+        </label>
       </form>
     );
   }
@@ -71,6 +85,7 @@ AddMovie.propTypes = {
     subtitle: PropTypes.string,
     imagePath: PropTypes.string,
     storyline: PropTypes.string,
+    rating: PropTypes.number,
   }).isRequired,
 };
 
