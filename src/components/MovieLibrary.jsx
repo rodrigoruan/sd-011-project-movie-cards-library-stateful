@@ -5,21 +5,28 @@ import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
 
 class MovieLibrary extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    super(props);
+    const { listOfMovies } = this.props;
+    this.state = {
+      searchText: '',
+      bookmarkedOnly: false,
+      selectedGenre: '',
+      movies: listOfMovies,
+    };
+  }
 
   render() {
-    const { movies } = this.props;
+    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
     return (
       <div>
         <h2> My awesome movie library </h2>
         <SearchBar
-          searchText="string"
+          searchText={ searchText }
           onSearchTextChange={ onSearchTextChange }
-          bookmarkedOnly="true"
+          bookmarkedOnly={ bookmarkedOnly }
           onBookmarkedChange={ onBookmarkedChange }
-          selectedGenre="string"
+          selectedGenre={ selectedGenre }
           onSelectedGenreChange={ onSelectedGenreChange }
         />
         <MovieList movies={ movies } />
@@ -30,7 +37,7 @@ class MovieLibrary extends Component {
 }
 
 MovieLibrary.propTypes = {
-  movies: ropTypes.shape({
+  listOfMovies: ropTypes.shape({
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,
     storyline: PropTypes.string.isRequired,
