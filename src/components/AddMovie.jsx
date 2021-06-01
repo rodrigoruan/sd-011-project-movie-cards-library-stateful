@@ -39,6 +39,7 @@ class AddMovie extends React.Component {
             onChange={ this.handleChange }
           />
         </label>
+
         <label htmlFor="subtitle" data-testid="subtitle-input-label">
           Subtítulo
           <input
@@ -46,6 +47,17 @@ class AddMovie extends React.Component {
             name="subtitle"
             value={ subtitle }
             data-testid="subtitle-input"
+            onChange={ this.handleChange }
+          />
+        </label>
+
+        <label htmlFor="image" data-testid="image-input-label">
+          Imagem
+          <input
+            type="text"
+            name="imagePath"
+            value={ imagePath }
+            data-testid="image-input"
             onChange={ this.handleChange }
           />
         </label>
