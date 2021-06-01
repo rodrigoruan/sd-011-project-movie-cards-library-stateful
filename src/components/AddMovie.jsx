@@ -46,8 +46,10 @@ export default class AddMovie extends Component {
               onChange={this.handleInputs} />
           </label>
 
-          <label> sinopse
-            <input />
+          <label data-testid="storyline-input-label"> "Sinopse"
+            <textarea data-testid="storyline-input" onChange={this.handleInputs}>
+              {this.state.value}
+            </textarea>
           </label>
 
           <label> avaliação
