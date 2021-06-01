@@ -28,8 +28,7 @@ class AddMovie extends Component {
     }));
   }
 
-  onClick({ target }) {
-    console.log(target);
+  onClick() {
     this.setState(({
       subtitle: '',
       title: '',
@@ -56,7 +55,7 @@ class AddMovie extends Component {
           handler={ this.handleInfo }
           text="Subtítulo"
           dataLabel="subtitle-input-label"
-          dataInput="title-input"
+          dataInput="subtitle-input"
           value={ subtitle }
           name="subtitle"
         />
@@ -69,15 +68,6 @@ class AddMovie extends Component {
           name="imagePath"
         />
         <TextArea value={ storyline } handler={ this.handleInfo } />
-        <InputNum handler={ this.handleInfo } value={ rating } />
-        <Select handler={ this.handleInfo } value={ genre } />
-        <button
-          type="reset"
-          data-testid="send-button"
-          onClick={ this.onClick }
-        >
-          Adicionar filme
-        </button>
       </form>
     );
   }

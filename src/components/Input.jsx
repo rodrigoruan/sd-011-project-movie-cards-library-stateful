@@ -5,7 +5,7 @@ class Input extends React.Component {
   render() {
     const { handler, text, dataLabel, dataInput, value, name } = this.props;
     return (
-      <label data-testid={ dataLabel } htmlFor="input">
+      <label data-testid={ dataLabel } htmlFor={ name }>
         {text}
         <input
           data-testid={ dataInput }
