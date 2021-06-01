@@ -1,25 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Select extends Component {
-  constructor() {
-    super();
-    this.state = {
-      genre: 'action',
-    };
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange({ target }) {
-    const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-
-    this.setState({
-      [name]: value,
-    });
-  }
-
   render() {
-    const { genre } = this.state;
+    const { handleChange, genre } = this.props;
     return (
       <label htmlFor="genre" data-testid="genre-input-label">
         Gênero
@@ -28,7 +12,7 @@ class Select extends Component {
           id="genre"
           value={ genre }
           data-testid="genre-input"
-          onChange={ this.handleChange }
+          onChange={ handleChange }
         >
           <option value="action" data-testid="genre-option">Ação</option>
           <option value="comedy" data-testid="genre-option">Comédia</option>
@@ -38,5 +22,10 @@ class Select extends Component {
     );
   }
 }
+
+Select.propTypes = {
+  genre: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired,
+};
 
 export default Select;

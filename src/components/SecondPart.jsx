@@ -1,27 +1,9 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class SecondPart extends Component {
-  constructor() {
-    super();
-    this.state = {
-      storyline: '',
-      rating: 0,
-    };
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange({ target }) {
-    const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-
-    this.setState({
-      [name]: value,
-    });
-  }
-
   render() {
-    const { storyline, rating } = this.state;
+    const { handleChange, storyline, rating } = this.props;
     return (
       <>
         <label htmlFor="storyline" data-testid="storyline-input-label">
@@ -31,7 +13,7 @@ class SecondPart extends Component {
             id="storyline"
             data-testid="storyline-input"
             value={ storyline }
-            onChange={ this.handleChange }
+            onChange={ handleChange }
           />
         </label>
 
@@ -43,7 +25,7 @@ class SecondPart extends Component {
             name="rating"
             type="number"
             data-testid="rating-input"
-            onChange={ this.handleChange }
+            onChange={ handleChange }
           />
         </label>
       </>
@@ -52,8 +34,9 @@ class SecondPart extends Component {
 }
 
 SecondPart.propTypes = {
-  // storyline: PropTypes.string.isRequired,
-  // rating: PropTypes.number.isRequired,
+  storyline: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  handleChange: PropTypes.func.isRequired,
 };
 
 export default SecondPart;

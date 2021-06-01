@@ -1,28 +1,9 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class FirstPart extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      subtitle: '',
-      title: '',
-      imagePath: '',
-    };
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange({ target }) {
-    const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-
-    this.setState({
-      [name]: value,
-    });
-  }
-
   render() {
-    const { title, subtitle, imagePath } = this.state;
+    const { handleChange, title, subtitle, imagePath } = this.props;
     return (
       <>
         <label htmlFor="title" data-testid="title-input-label">
@@ -33,7 +14,7 @@ class FirstPart extends React.Component {
             name="title"
             type="text"
             data-testid="title-input"
-            onChange={ this.handleChange }
+            onChange={ handleChange }
           />
         </label>
 
@@ -45,7 +26,7 @@ class FirstPart extends React.Component {
             name="subtitle"
             type="text"
             data-testid="subtitle-input"
-            onChange={ this.handleChange }
+            onChange={ handleChange }
           />
         </label>
 
@@ -57,7 +38,7 @@ class FirstPart extends React.Component {
             name="imagePath"
             type="text"
             data-testid="image-input"
-            onChange={ this.handleChange }
+            onChange={ handleChange }
           />
         </label>
       </>
@@ -66,9 +47,10 @@ class FirstPart extends React.Component {
 }
 
 FirstPart.propTypes = {
-  // title: PropTypes.string.isRequired,
-  // subtitle: PropTypes.string.isRequired,
-  // imagePath: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  imagePath: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired,
 };
 
 export default FirstPart;
