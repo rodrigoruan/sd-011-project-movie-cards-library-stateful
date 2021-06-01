@@ -5,8 +5,8 @@ export default class AddMovie extends Component {
   constructor() {
     super();
     this.state = {
-      title: "",
-      subtitle: "",
+      title: '',
+      subtitle: '',
       /* imagePath: '',
       storyline: '',
       rating: 0,
