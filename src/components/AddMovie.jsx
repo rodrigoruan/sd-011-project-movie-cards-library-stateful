@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import LabelInputs from './LabelInputs';
-import Ratinginput from './RatingInput';
+import RatingInput from './RatingInput';
 import ButtonAddMovie from './ButtonAddMovie';
 
 const state0 = {
@@ -26,10 +26,19 @@ class AddMovie extends React.Component {
       [name]: value,
     });
   }
+  submit(event) {
+    event.preventDefault();
+    const { onClick } = this.props;
+    const { title, subtitle, storyline, imagePath, rating, genre } = this.state;
+    onClick({ title, subtitle, storyline, imagePath, rating, genre });
+    this.setState(this.initialState);
+  }
 
   render() {
     const { onClick } = this.props;
+    const { title, subtitle, imagePath, rating } = this.state;
     return (
+      <div>
       <form method={ onClick } data-testid="add-movie-form">
         <LabelInputs
           labelInfo={ { labelId: 'title-input-label', labelText: 'Título' } }
@@ -58,7 +67,7 @@ class AddMovie extends React.Component {
           Sinopse
           <textarea id="StorylineInput" data-testid="storyline-input" />
         </label>
-        <Ratinginput rValue={ rating } funcOnChange={ this.changeHandler } />
+        <RatingInput rValue={ rating } funcOnChange={ this.changeHandler } />
         <label htmlFor="GenreInput" data-testid="genre-input-label">
           Gênero
           <select id="GenreInput" data-testid="genre-input">
@@ -69,6 +78,7 @@ class AddMovie extends React.Component {
         </label>
         <ButtonAddMovie addOnClick={ this.submit } />
       </form>
+      </div>
     );
   }
 }
