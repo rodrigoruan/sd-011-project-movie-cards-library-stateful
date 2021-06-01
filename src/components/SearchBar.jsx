@@ -14,23 +14,23 @@ class SearchBar extends React.Component {
 
     return (
       <form data-testid="search-bar-form">
-        <label data-testid="text-input-label" htmlFor="text-input">
+          <label data-testid="text-input-label" htmlFor="text-input">
         Inclui o texto:
-        <input
-          id="text-input"
-          type="text"
-          value= { searchText }
-          onChange={ onSearchTextChange }
-          data-testid="text-input"/>
-       </label>
-       <label data-testid="checkbox-input-label" htmlFor="checkbox-input">
+          </label>
+          <input
+            id="text-input"
+            type="text"
+            value={ searchText }
+            onChange={ onSearchTextChange }
+            data-testid="text-input" />
+        <label data-testid="checkbox-input-label" htmlFor="checkbox-input">
           Mostrar somente favoritos
-        <input type="checkbox"
-          id="checkbox-input"
-          checked={ bookmarkedOnly }
-          onChange={ onBookmarkedChange }
-          data-testid="checkbox-input" />
         </label>
+          <input type="checkbox"
+           id="checkbox-input"
+            checked={ bookmarkedOnly }
+            onChange={ onBookmarkedChange }
+            data-testid="checkbox-input" />
         <label data-testid="select-input-label" htmlFor="select-input">
           Filtrar por gênero
           <select data-testid="select-input" value={ selectedGenre } 
@@ -40,7 +40,7 @@ class SearchBar extends React.Component {
             <option data-testid="select-option" value="comedy">Comédia</option>
             <option data-testid="select-option" value="thriller">Suspense</option>
           </select>
-			  </label>
+        </label>
       </form>
     );
   }
@@ -52,7 +52,7 @@ SearchBar.propTypes = {
   bookmarkedOnly: PropTypes.bool.isRequired,
   onBookmarkedChange: PropTypes.func.isRequired,
   selectedGenre: PropTypes.string.isRequired,
-  onSelectedGenreChange: PropTypes.func.isRequired
+  onSelectedGenreChange: PropTypes.func.isRequired 
 };
 
 export default SearchBar;
