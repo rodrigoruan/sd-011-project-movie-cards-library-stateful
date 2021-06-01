@@ -16,12 +16,24 @@ class AddMovie extends Component {
     };
     this.handleState = this.handleState.bind(this);
     this.addAtributes = this.addAtributes.bind(this);
+    this.reset = this.reset.bind(this);
   }
 
   handleState({ target }) {
     const { name, value } = target;
     this.setState({
       [name]: value,
+    });
+  }
+
+  reset() {
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyLine: '',
+      rating: 0,
+      genre: 'action',
     });
   }
 
@@ -56,12 +68,7 @@ class AddMovie extends Component {
         </label>
         <label data-testid="storyline-input-label" htmlFor="ctl">
           Sinopse
-          <textarea
-            name="storyline"
-            onChange={ this.handleState }
-            data-testid="storyline-input"
-            value={ storyline }
-          />
+          <textarea { ...this.addAtributes('storyline', 'text', storyline) } />
         </label>
         <label data-testid="rating-input-label" htmlFor="ctl">
           Avaliação
@@ -81,7 +88,11 @@ class AddMovie extends Component {
             <option value="thriller" data-testid="genre-option">Suspense</option>
           </select>
         </label>
-        <button type="button" data-testid="send-button" onClick={ onClick(this.state) }>
+        <button
+          type="button"
+          data-testid="send-button"
+          onClick={ () => { onClick(this.state); this.reset(); } }
+        >
           Adicionar filme
         </button>
       </form>
@@ -92,5 +103,10 @@ class AddMovie extends Component {
 export default AddMovie;
 
 AddMovie.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
+};
+
+AddMovie.defaultProps = {
+  onClick: () => {},
+
 };
