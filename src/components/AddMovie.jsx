@@ -4,7 +4,24 @@ import React, { Component } from 'react';
 class addMovie extends Component {
   constructor() {
     super()
+    this.state = {
+      subtítulo: '',
+      título: '',
+      caminho da imagem: '',
+      sinopse: '',
+      avaliação: '',
+      gênero: 'action',
+    }
   }
-  render()
+  render() {
+    
+    return (
+      <div>
+        <form data-testid="add-movie-form">
+
+        </form>
+      </div>
+    )
+  }
 };
 export default addMovie;
