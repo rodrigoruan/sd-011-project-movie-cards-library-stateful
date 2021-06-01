@@ -1,6 +1,7 @@
 import React from 'react';
 import Subtitle from './Subtitle';
 import Title from './Title';
+import Storyline from './Storyline';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -46,15 +47,7 @@ class AddMovie extends React.Component {
             value={ imagePath }
           />
         </label>
-        <label data-testid="storyline-input-label" htmlFor="storyline">
-          Sinopse
-          <textarea
-            id="storyline"
-            data-testid="storyline-input"
-            onChange={ this.addMovieFunction }
-            value={ storyline }
-          />
-        </label>
+        <Storyline addMovieFunction={ this.addMovieFunction } value={ storyline } />
         <label data-testid="rating-input-label" htmlFor="rating">
           Avaliação
           <input
