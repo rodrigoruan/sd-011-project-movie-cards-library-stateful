@@ -1,6 +1,10 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import ButtonAddMovie from './ButtonAddMovie';
+import LabelTitle from './LabelTitle';
+import LabelSubtitle from './LabelSubtitle';
+import LabelImage from './LabelImage';
+import LabelStoryline from './LabelStoryline';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -20,33 +24,14 @@ class AddMovie extends React.Component {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <label htmlFor="title-input" data-testid="title-input-label">
-          Título
-          <input value={ title } onChange={ title } data-testid="title-input" />
-        </label>
-        <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
-          Subtítulo
-          <input
-            value={ subtitle }
-            onChange={ subtitle }
-            data-testid="subtitle-input"
-          />
-        </label>
-        <label htmlFor="image-input" data-testid="image-input-label">
-          Imagem
-          <input value={ imagePath } onChange={ imagePath } data-testid="image-input" />
-        </label>
-        <label htmlFor="storyline-input" data-testid="storyline-input-label">
-          Sinopse
-          <textarea
-            value={ storyline }
-            onChange={ storyline }
-            data-testid="storyline-input"
-          />
-        </label>
+        <LabelTitle title={ title } />
+        <LabelSubtitle subtitle={ subtitle } />
+        <LabelImage imagePath={ imagePath } />
+        <LabelStoryline storyline={ storyline } />
         <label htmlFor="rating-input" data-testid="rating-input-label">
           Avaliação
           <input
+            type="number"
             value={ rating }
             onChange={ rating }
             data-testid="rating-input"
