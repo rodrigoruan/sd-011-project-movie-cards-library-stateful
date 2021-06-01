@@ -12,35 +12,51 @@ class MovieLibrary extends Component {
       bookmarkedOnly: false,
       selectedGenre: '',
       movies: data,
+      bookmarkedMovies: data.filter((el) => el.bookmarked === true),
     };
     this.handleTextChange = this.handleTextChange.bind(this);
     this.CheckBookMark = this.CheckBookMark.bind(this);
+    this.handleAddMovie = this.handleAddMovie.bind(this);
   }
 
   handleTextChange = ({ target }) => {
-    this.setState({ searchText: target.value });
-    this.setState({ movies: data.filter((el) => el.title.includes(this.state.searchText)) });
+    const filtered = data.filter((el) => el.title.includes(target.value));
+    this.setState({ searchText: target.value }, () => {
+      this.state.searchText === target.value
+        ? this.setState({ movies: filtered })
+        : this.setState({ movies: data });
+    });
+    // this.setState({  });
   };
 
   CheckBookMark = () => {
-    this.setState((curr) => ({ bookmarkedOnly: !curr.bookmarkedOnly }));
-    this.setState({
-      movies: data.filter((el) => el.bookmarked === this.state.bookmarkedOnly),
-    });
+    this.setState(
+      (curr) => ({ bookmarkedOnly: !curr.bookmarkedOnly }),
+      () => {
+        this.state.bookmarkedOnly
+          ? this.setState({ movies: this.state.bookmarkedMovies })
+          : this.setState({ movies: data });
+      }
+    );
+  };
+
+  handleAddMovie = (el) => {
+    console.log(el);
   };
 
   render() {
+    const { bookmarkedOnly, searchText, movies } = this.state;
     return (
       <div>
         <h2 className="mt-3 text-center"> My awesome movie library </h2>
         <SearchBar
-          bookmarkedOnly={this.state.bookmarkedOnly}
+          bookmarkedOnly={bookmarkedOnly}
           onBookmarkedChange={this.CheckBookMark}
           onSearchTextChange={this.handleTextChange}
-          searchText={this.state.searchText}
+          searchText={searchText}
         />
-        <MovieList movies={this.state.movies} />
-        <AddMovie />
+        <MovieList movies={movies} />
+        <AddMovie onClick={this.handleAddMovie} />
       </div>
     );
   }

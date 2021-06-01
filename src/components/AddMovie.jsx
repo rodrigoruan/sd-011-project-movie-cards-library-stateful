@@ -20,6 +20,9 @@ export default class AddMovie extends Component {
   }
 
   handleSubmit = (event) => {
+    event.preventDefault();
+    const { onClick } = this.props;
+    onClick(this.state);
     const emptyState = {
       subtitle: '',
       title: '',
@@ -29,7 +32,6 @@ export default class AddMovie extends Component {
       genre: 'action',
     };
     this.setState(emptyState);
-    event.preventDefault();
   };
 
   handleAction = ({ target }) => {

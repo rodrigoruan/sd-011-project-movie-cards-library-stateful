@@ -5,6 +5,10 @@ import Row from 'react-bootstrap/Row';
 import '../App.css';
 
 export default class SearchBar extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     const {
       searchText,
@@ -18,6 +22,7 @@ export default class SearchBar extends Component {
       <Form data-testid="search-bar-form" className="col">
         <Form.Group>
           {/* SEARCH INPUT TEXT */}
+
           <Form.Label data-testid="text-input-label">Inclui o texto: </Form.Label>
           <Form.Control
             data-testid="text-input"
@@ -46,8 +51,6 @@ export default class SearchBar extends Component {
           <Form.Control
             data-testid="select-input"
             value={selectedGenre}
-            onChange={onSelectedGenreChange}
-            checked={bookmarkedOnly}
             onChange={onSelectedGenreChange}
             as="select"
           >
