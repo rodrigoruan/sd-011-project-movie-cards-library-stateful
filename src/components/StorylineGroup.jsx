@@ -10,8 +10,8 @@ export default class StorylineGroup extends Component {
         <Form.Label data-testid="storyline-input-label">Sinopse</Form.Label>
         <Form.Control
           name="storyline"
-          value={value}
-          onChange={onChange}
+          value={ value }
+          onChange={ onChange }
           data-testid="storyline-input"
           as="textarea"
           type="text"

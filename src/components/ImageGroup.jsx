@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
+import PropTypes from 'prop-types';
 
 export default class ImageGroup extends Component {
   render() {
@@ -10,8 +11,8 @@ export default class ImageGroup extends Component {
         <Form.Control
           className="movie-card-image"
           name="imagePath"
-          value={value}
-          onChange={onChange}
+          value={ value }
+          onChange={ onChange }
           data-testid="image-input"
           type="text"
           placeholder="ex: https://image.jpg"
@@ -20,3 +21,13 @@ export default class ImageGroup extends Component {
     );
   }
 }
+
+ImageGroup.defaultProps = {
+  value: 'value',
+  onChange: 'onChange',
+};
+
+ImageGroup.propTypes = {
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+};

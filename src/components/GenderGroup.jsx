@@ -10,8 +10,8 @@ export default class GenderGroup extends Component {
         <Form.Label data-testid="genre-input-label">Gênero</Form.Label>
         <Form.Control
           name="genre"
-          value={value}
-          onChange={onChange}
+          value={ value }
+          onChange={ onChange }
           data-testid="genre-input"
           as="select"
         >
