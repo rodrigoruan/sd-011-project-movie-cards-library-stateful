@@ -36,12 +36,12 @@ class MovieLibrary extends Component {
       <div>
         <h2> My awesome movie library </h2>
         <SearchBar
-          searchText="My Text"
-          onSearchTextChange="teste onSearchTextChange"
-          bookmarkedOnly="true"
-          onBookmarkedChange="teste onBookmarkedChange"
-          selectedGenre="teste selectedGenre"
-          onSelectedGenreChange="teste onSelectedGenreChange"
+          searchText={this.state.searchText}
+          onSearchTextChange={this.onSearchTextChange}
+          bookmarkedOnly={this.state.bookmarkedOnly}
+          onBookmarkedChange={this.onBookmarkedChange}
+          selectedGenre={this.state.selectedGenre}
+          onSelectedGenreChange={this.onSelectedGenreChange}
         />
         {/* <MovieList movies={this.props.movies} /> */}
         {/* <AddMovie /> */}
