@@ -8,21 +8,21 @@ import AddMovie from './AddMovie';
 class MovieLibrary extends Component {
   constructor(props) {
     super(props);
-    const { movies } = this.props;
     this.state = {
-      searchText: '',
+      /* searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
-      movies,
+      movies, */
     };
   }
 
   render() {
+    const { movies } = this.props;
     return (
       <div>
         <h2> My awesome movie library </h2>
         <SearchBar />
-        <MovieList movies={ this.props.movies } />
+        <MovieList movies={ movies } />
         <AddMovie />
       </div>
     );
@@ -30,7 +30,7 @@ class MovieLibrary extends Component {
 }
 
 MovieLibrary.propTypes = {
-  movies: PropTypes.arrayOf().isRequired
+  movies: PropTypes.arrayOf().isRequired,
 };
 
 export default MovieLibrary;
