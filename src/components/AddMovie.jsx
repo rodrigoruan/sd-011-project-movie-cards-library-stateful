@@ -1,26 +1,26 @@
 // implement AddMovie component here
 import React from 'react';
 import PropTypes from 'prop-types';
-import LabelInputs from './LblInputs';
-import RatingInput from './RatingInput';
-import ButtonAddMovie from './ButtonAddMovie';
-import Story from './StoryLine';
-import GenreSelect from './GenreSelector';
+import AddMovieButton from './AddMovieButton';
+import AddMovieImage from './AddMovieImage';
+import AddMovieRating from './AddMovieRating';
+import AddMovieSubtitle from './AddMovieSubtitle';
+import AddMovieGenreSelect from './AddMovieGenreSelect';
+import AddMovieStoryline from './AddMovieStoryline';
+import AddMovieTitle from './AddMovieTitle';
 
-const state0 = {
-  subtitle: '',
-  title: '',
-  imagePath: '',
-  storyline: '',
-  rating: 0,
-  genre: 'action',
-};
 class AddMovie extends React.Component {
   constructor(props) {
     super(props);
-    this.state = state0;
+    this.state = {
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    };
     this.changeHandler = this.changeHandler.bind(this);
-    this.submit = this.submit.bind(this);
   }
 
   changeHandler({ target }) {
@@ -43,33 +43,13 @@ class AddMovie extends React.Component {
     const { title, subtitle, genre, storyline, imagePath, rating } = this.state;
     return (
       <form method={ onClick } data-testid="add-movie-form">
-        <LabelInputs
-          labelInfo={ { labelId: 'title-input-label', labelText: 'Título' } }
-          rInfo={ {
-            rId: 'title-input', rValue: title, rName: 'title',
-          } }
-          funcOnChange={ this.changeHandler }
-        />
-
-        <LabelInputs
-          labelInfo={ { labelId: 'subtitle-input-label', labelText: 'Subtítulo' } }
-          rInfo={ {
-            rId: 'subtitle-input', rValue: subtitle, rName: 'subtitle',
-          } }
-          funcOnChange={ this.changeHandler }
-        />
-
-        <LabelInputs
-          labelInfo={ { labelId: 'image-input-label', labelText: 'Imagem' } }
-          rInfo={ {
-            rId: 'image-input', rValue: imagePath, rName: 'imagePath',
-          } }
-          funcOnChange={ this.changeHandler }
-        />
-        <Story value={ storyline } funcOnChange={ this.changeHandler } />
-        <RatingInput rValue={ rating } funcOnChange={ this.changeHandler } />
-        <GenreSelect value={ genre } funcOnChange={ this.changeHandler } />
-        <ButtonAddMovie addOnClick={ this.submit } />
+        <AddMovieTitle event={ this.changeHandler } valueR={ title } />
+        <AddMovieSubtitle event={ this.changeHandler } valueR={ subtitle } />
+        <AddMovieImage event={ this.changeHandler } valueR={ imagePath } />
+        <AddMovieStoryline event={ this.changeHandler } valueR={ storyline } />
+        <AddMovieRating event={ this.changeHandler } valueR={ rating } />
+        <AddMovieGenreSelect event={ this.changeHandler } valueR={ genre } />
+        <AddMovieButton addOnClick={ this.submit } />
       </form>
     );
   }
