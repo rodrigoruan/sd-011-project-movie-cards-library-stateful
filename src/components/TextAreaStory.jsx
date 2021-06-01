@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class TextAreaStory extends Component {
   render() {
     const {
       value,
-      inputFunction
+      inputFunction,
     } = this.props;
     return (
       <label
@@ -23,5 +24,10 @@ class TextAreaStory extends Component {
     );
   }
 }
+
+TextAreaStory.propTypes = {
+  value: PropTypes.string.isRequired,
+  inputFunction: PropTypes.func.isRequired,
+};
 
 export default TextAreaStory;
