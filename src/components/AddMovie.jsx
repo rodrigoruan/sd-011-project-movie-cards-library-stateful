@@ -8,7 +8,7 @@ class AddMovie extends Component {
       title: '',
       imagePath: '',
       storyline: '',
-      // rating: 0,
+      rating: 0,
       // genre: 'action',
     };
     this.updateState = this.updateState.bind(this);
@@ -23,7 +23,7 @@ class AddMovie extends Component {
 
   // eslint-disable-next-line max-lines-per-function
   render() {
-    const { title, subtitle, imagePath, storyline } = this.state;
+    const { title, subtitle, imagePath, rating, storyline } = this.state;
     return (
       <form data-testid="add-movie-form">
         <label
@@ -77,6 +77,20 @@ class AddMovie extends Component {
             rows="10"
             onChange={ this.updateState }
             name={ storyline }
+          />
+        </label>
+        <label
+          htmlFor="ratingInput"
+          data-testid="rating-input-label"
+        >
+          Avaliação
+          <input
+            type="number"
+            id="ratingInput"
+            data-testid="rating-input"
+            onChange={ this.updateState }
+            name="rating"
+            value={ rating }
           />
         </label>
       </form>
