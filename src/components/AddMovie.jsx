@@ -26,12 +26,14 @@ class AddMovie extends React.Component {
     });
   }
 
-  eraseState() {
+  eraseState(event) {
+    const { onClick } = this.props;
+    event.preventDefault();
+    onClick(this.state);
     this.setState(initialState);
   }
 
   render() {
-    const { onClick } = this.props;
     return (
       <form data-testid="add-movie-form">
         <label htmlFor="text-input-two" data-testid="title-input-label">
@@ -71,10 +73,7 @@ class AddMovie extends React.Component {
         <button
           data-testid="send-button"
           type="submit"
-          onClick={ () => {
-            onClick(this.state);
-            this.eraseState();
-          } }
+          onClick={ this.eraseState }
         >
           Adicionar filme
         </button>

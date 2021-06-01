@@ -28,7 +28,12 @@ class OtherInputs extends React.Component {
         </label>
         <label htmlFor="select-input" data-testid="genre-input-label">
           Gênero
-          <select name="genre" id="select-input" data-testid="genre-input" onChange={ handleChanges }>
+          <select
+            name="genre"
+            id="select-input"
+            data-testid="genre-input"
+            onChange={ handleChanges }
+          >
             <option data-testid="genre-option" value="action">Ação</option>
             <option data-testid="genre-option" value="comedy">Comédia</option>
             <option data-testid="genre-option" value="thriller">Suspense</option>
