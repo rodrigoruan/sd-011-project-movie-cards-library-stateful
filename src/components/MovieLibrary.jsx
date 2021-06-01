@@ -15,11 +15,13 @@ class MovieLibrary extends Component {
       movies: props.movies,
     };
 
-    this.onClick = this.onClick.bind(this);
+    this.addMovies = this.addMovies.bind(this);
   }
 
-  onClick() {
-
+  addMovies(movie) {
+    this.setState((stateBefore) => ({
+      movies: [...stateBefore.movies, movie],
+    }));
   }
 
   render() {
@@ -34,7 +36,7 @@ class MovieLibrary extends Component {
 
         />
         <MovieList movies={ movies } />
-        <AddMovie fun={ this.onClick } />
+        <AddMovie onClick={ (movie) => this.addMovies(movie) } />
       </div>
     );
   }
