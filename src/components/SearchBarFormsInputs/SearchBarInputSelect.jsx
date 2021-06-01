@@ -6,7 +6,11 @@ class SearchBarInputSelect extends React.Component {
     const { selectedGenre, onSelectedGenreChange } = this.props;
 
     return (
-      <label htmlFor="search-bar-input-select" data-testid="select-input-label">
+      <label
+        htmlFor="search-bar-input-select"
+        className="search-bar-input"
+        data-testid="select-input-label"
+      >
         Filtrar por gênero
         <select
           id="search-bar-input-select"

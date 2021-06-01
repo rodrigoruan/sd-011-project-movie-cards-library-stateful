@@ -19,9 +19,42 @@ body {
   text-align: center;
 }
 
+.search-bar-form {
+  display: flex;
+  flex-direction: column;
+  padding: 0 30px;
+}
+
+.search-bar-input {
+  display: flex;
+  padding: 10px 0;
+  margin: 0;
+}
+
+.search-bar-input select {
+  padding: 5px;
+}
+
+.search-bar-form h3 {
+  padding-top: 15px;
+}
+
+.search-bar-form :nth-child(2) {
+  flex-direction: column;
+}
+
+.search-bar-form :nth-child(3) {
+  align-items: center;
+}
+
+.search-bar-form :nth-child(4) {
+  flex-direction: column;
+}
+
 .movie-list {
   display: flex;
   flex-flow: row wrap;
+  justify-content: space-evenly;
   padding: 48px 30px;
 }
 
@@ -31,14 +64,14 @@ body {
   border-radius: 3px;
   display: flex;
   flex-direction: column;
-  height: 450px;
+  height: 620px;
   margin: 5px;
   overflow: hidden;
-  width: 300px;
+  width: 350px;
 }
 
-
 .movie-card-image {
+  height: 190px;
   width: 100%;
 }
 
@@ -80,4 +113,26 @@ body {
   display: flex;
   justify-content: flex-end;
   padding: 12px 20px;
+}
+
+.add-movie-form {
+  display: flex;
+  flex-direction: column;
+  padding: 0 30px;
+}
+
+.add-movie-form select {
+  padding: 5px;
+}
+
+.add-movie-form :nth-child(8) {
+  align-self: center;
+  padding: 5px;
+  border-radius: 8px;
+  max-width: 200px;
+}
+
+.add-movie-labels {
+  display: flex;
+  flex-direction: column;
 }

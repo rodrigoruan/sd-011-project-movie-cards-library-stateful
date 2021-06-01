@@ -6,7 +6,11 @@ class ImageInput extends React.Component {
     const { imagePath, chosenMovie } = this.props;
 
     return (
-      <label htmlFor="image-input" data-testid="image-input-label">
+      <label
+        className="add-movie-labels"
+        htmlFor="image-input"
+        data-testid="image-input-label"
+      >
         Imagem
         <input
           id="image-input"

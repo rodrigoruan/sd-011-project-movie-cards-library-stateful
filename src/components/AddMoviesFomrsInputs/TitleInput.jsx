@@ -6,7 +6,11 @@ class TitleInput extends React.Component {
     const { title, chosenMovie } = this.props;
 
     return (
-      <label htmlFor="title-input" data-testid="title-input-label">
+      <label
+        className="add-movie-labels"
+        htmlFor="title-input"
+        data-testid="title-input-label"
+      >
         Título
         <input
           id="title-input"

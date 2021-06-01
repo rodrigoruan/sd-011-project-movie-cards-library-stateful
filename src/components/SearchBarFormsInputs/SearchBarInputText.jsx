@@ -6,7 +6,11 @@ class SearchBarInputText extends React.Component {
     const { searchText, onSearchTextChange } = this.props;
 
     return (
-      <label htmlFor="search-bar-input-text" data-testid="text-input-label">
+      <label
+        htmlFor="search-bar-input-text"
+        className="search-bar-input"
+        data-testid="text-input-label"
+      >
         Inclui o texto:
         <input
           id="search-bar-input-text"

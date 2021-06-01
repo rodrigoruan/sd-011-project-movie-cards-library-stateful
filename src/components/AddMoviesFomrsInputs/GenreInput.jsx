@@ -6,7 +6,11 @@ class GenreInput extends React.Component {
     const { genre, chosenMovie } = this.props;
 
     return (
-      <label htmlFor="genre-input" data-testid="genre-input-label">
+      <label
+        className="add-movie-labels"
+        htmlFor="genre-input"
+        data-testid="genre-input-label"
+      >
         Gênero
         <select
           id="genre-input"

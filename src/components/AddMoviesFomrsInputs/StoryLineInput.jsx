@@ -6,7 +6,11 @@ class StoryLineInput extends React.Component {
     const { storyline, chosenMovie } = this.props;
 
     return (
-      <label htmlFor="storyline-input" data-testid="storyline-input-label">
+      <label
+        className="add-movie-labels"
+        htmlFor="storyline-input"
+        data-testid="storyline-input-label"
+      >
         Sinopse
         <textarea
           id="storyline-input"

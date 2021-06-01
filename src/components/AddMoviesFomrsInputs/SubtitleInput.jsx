@@ -6,7 +6,11 @@ class SubtitleInput extends React.Component {
     const { subtitle, chosenMovie } = this.props;
 
     return (
-      <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
+      <label
+        className="add-movie-labels"
+        htmlFor="subtitle-input"
+        data-testid="subtitle-input-label"
+      >
         Subtítulo
         <input
           id="subtitle-input"
