@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Form from 'react-bootstrap/Form';
+// import Form from 'react-bootstrap/Form';
 import TitleGroup from './TitleGroup';
 import SubtitleGroup from './SubtitleGroup';
 import ImageGroup from './ImageGroup';
@@ -49,7 +49,7 @@ export default class AddMovie extends Component {
   render() {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
-      <Form onSubmit={ this.handleSubmit } data-testid="add-movie-form" className="col">
+      <form onSubmit={ this.handleSubmit } data-testid="add-movie-form" className="col">
         <TitleGroup onChange={ this.handleAction } value={ title } />
         <SubtitleGroup onChange={ this.handleAction } value={ subtitle } />
         <ImageGroup onChange={ this.handleAction } value={ imagePath } />
@@ -57,7 +57,7 @@ export default class AddMovie extends Component {
         <RatingGroup onChange={ this.handleAction } value={ rating } />
         <GenderGroup onChange={ this.handleAction } value={ genre } />
         <SubmitButton onChange={ this.handleSubmit } />
-      </Form>
+      </form>
     );
   }
 }
