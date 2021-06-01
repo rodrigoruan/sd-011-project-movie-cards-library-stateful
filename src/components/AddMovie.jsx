@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import Input from './Input';
 import TextArea from './TextArea';
-import Rating from './Rating';
+import InputNum from './InputNum';
 import Select from './Select';
 
 class AddMovie extends Component {
@@ -69,7 +69,7 @@ class AddMovie extends Component {
           name="imagePath"
         />
         <TextArea value={ storyline } onChange={ this.handleInfo } />
-        <Rating handler={ this.handleInfo } value={ rating } />
+        <InputNum handler={ this.handleInfo } value={ rating } />
         <Select handler={ this.handleInfo } value={ genre } />
         <button
           type="reset"
