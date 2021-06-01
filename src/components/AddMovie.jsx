@@ -2,18 +2,26 @@
 import React, { Component } from 'react'
 
 export default class AddMovie extends Component {
-  // constructor(props) {
-  //   super(props)
+  constructor(props) {
+    super(props)
 
-  //   this.state = {
-  //     subtitle: '',
-  //     title: '',
-  //     imagePath: '',
-  //     storyline: '',
-  //     rating: 0,
-  //     genre: 'action'
-  //   }
-  // }
+    this.state = {
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action'
+    }
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({
+      title: event.target.value
+    })
+  }
 
 
   render() {
@@ -24,8 +32,10 @@ export default class AddMovie extends Component {
             <input />
           </label>
 
-          <label> título
-            <input />
+          <label data-testid="title-input-label"> "Título"
+            <input type='text' data-testid="title-input" value={this.state.title}
+              onChange={this.handleChange}
+            />
           </label>
 
           <label> caminho da imagem
