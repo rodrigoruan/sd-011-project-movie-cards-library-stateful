@@ -44,12 +44,12 @@ class AddMovie extends Component {
     return (
       <div>
         <form data-testid="add-movie-form">
-          <AddMovieTitle title={ title } onChange={ this.handleChange } />
-          <AddMovieSubtitle subtitle={ subtitle } onChange={ this.handleChange } />
-          <AddMovieImage imagePath={ imagePath } onChange={ this.handleChange } />
-          <AddMovieStoryline storyline={ storyline } onChange={ this.handleChange } />
-          <AddMovieRating rating={ rating } onChange={ this.handleChange } />
-          <AddMovieGenre genre={ genre } onChange={ this.handleChange } />
+          <AddMovieTitle title={ title } handleChange={ this.handleChange } />
+          <AddMovieSubtitle subtitle={ subtitle } handleChange={ this.handleChange } />
+          <AddMovieImage imagePath={ imagePath } handleChange={ this.handleChange } />
+          <AddMovieStoryline storyline={ storyline } handleChange={ this.handleChange } />
+          <AddMovieRating rating={ rating } handleChange={ this.handleChange } />
+          <AddMovieGenre genre={ genre } handleChange={ this.handleChange } />
         </form>
         <button
           data-testid="send-button"
