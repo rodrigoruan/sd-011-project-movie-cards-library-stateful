@@ -5,9 +5,15 @@ import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
 
 class MovieLibrary extends Component {
-  /* constructor(props) {
+  constructor(props) {
     super(props);
-  } */
+    this.state = {
+      searchText: '',
+      bookmarkedOnly: false,
+      selectedGenre: '',
+      movies,
+    };
+  }
 
   render() {
     const { movies } = this.props;
@@ -25,5 +31,11 @@ class MovieLibrary extends Component {
 export default MovieLibrary;
 
 MovieLibrary.propTypes = {
-  movies: PropTypes.string.isRequired,
+  movies: PropTypes.arrayof(PropTypes.shape({
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    storyline: PropTypes.string,
+    rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    imagePath: PropTypes.string,
+  })).isRequired,
 };
