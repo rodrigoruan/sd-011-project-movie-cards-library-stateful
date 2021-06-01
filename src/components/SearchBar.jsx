@@ -24,7 +24,7 @@ export default class SearchBar extends React.Component {
           />
         </label>
         <label htmlFor="checkboxFavortes" data-testid="checkbox-input-label">
-          Mostrar somente favorit.skipos
+          Mostrar somente favoritos
           <input
             id="checkboxFavortes"
             type="checkbox"

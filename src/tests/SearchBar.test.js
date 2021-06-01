@@ -84,7 +84,7 @@ describe('3 - Renderize um input do tipo texto dentro do formulário em `<Search
 });
 
 describe('4 - Renderize um input do tipo checkbox dentro do formulário em `<SearchBar />`', () => {
-  beforeEach(() => beforeEachUnitTest());
+  // beforeEach(() => beforeEachUnit.skipTest());
 
   it('Renderize uma checkbox dentro do form', () => {
     const { getAllByTestId } = searchBar();
@@ -115,7 +115,7 @@ describe('4 - Renderize um input do tipo checkbox dentro do formulário em `<Sea
 });
 
 describe('5 - Renderize um select dentro do formulário em `<SearchBar />`', () => {
-  beforeEach(() => beforeEachUnitTest());
+  // beforeEach(() => beforeEachUnitTest());
 
   it('Renderize um select dentro do form', () => {
     const { getAllByTestId } = searchBar();
@@ -133,7 +133,6 @@ describe('5 - Renderize um select dentro do formulário em `<SearchBar />`', () 
   it('Passe a prop `selectedGenre` como valor do select', () => {
     const { getByTestId } = searchBar();
     const selectInput = getByTestId(selectTestId);
-
     expect(selectInput).toHaveValue(props.selectedGenre);
   });
 
@@ -141,7 +140,6 @@ describe('5 - Renderize um select dentro do formulário em `<SearchBar />`', () 
     const { getByTestId } = searchBar();
     const selectInput = getByTestId(selectTestId);
     event.selectOptions(selectInput, 'comedy');
-
     expect(props.onSelectedGenreChange).toHaveBeenCalledTimes(1);
   });
 
