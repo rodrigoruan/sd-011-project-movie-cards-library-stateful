@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import LabelInput from './LabelInput';
 import LabelSelect from './LabelSelect';
 import LabelTextArea from './LabelTextArea';
-import LabelNumber from './LabelNumber';
+import labelNumber from './LabelNumber';
 import Button from './Button';
 
 const objeto = {
@@ -73,7 +73,7 @@ class AddMovie extends Component {
           valueInput={ storyline }
           func={ this.handleChange }
         />
-        <LabelNumber
+        <labelNumber
           id="rating-input-label"
           name="Avaliação"
           idInput="rating-input"
