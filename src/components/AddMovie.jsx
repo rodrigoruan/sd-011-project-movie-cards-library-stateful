@@ -68,7 +68,7 @@ class AddMovie extends Component {
           value={ imagePath }
           name="imagePath"
         />
-        <TextArea value={ storyline } onChange={ this.handleInfo } />
+        <TextArea value={ storyline } handler={ this.handleInfo } />
         <InputNum handler={ this.handleInfo } value={ rating } />
         <Select handler={ this.handleInfo } value={ genre } />
         <button
