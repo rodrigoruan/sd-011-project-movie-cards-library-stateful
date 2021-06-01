@@ -1,4 +1,5 @@
 import React from 'react';
+import Subtitle from './Subtitle';
 import Title from './Title';
 
 class AddMovie extends React.Component {
@@ -34,16 +35,7 @@ class AddMovie extends React.Component {
     return (
       <form data-testid="add-movie-form">
         <Title addMovieFunction={ this.addMovieFunction } value={ title } />
-        <label data-testid="subtitle-input-label" htmlFor="subtitle">
-          Subtítulo
-          <input
-            type="text"
-            data-testid="subtitle-input"
-            id="subtitle"
-            onChange={ this.addMovieFunction }
-            value={ subtitle }
-          />
-        </label>
+        <Subtitle addMovieFunction={ this.addMovieFunction } value={ subtitle } />
         <label data-testid="image-input-label" htmlFor="imagePath">
           Imagem
           <input
