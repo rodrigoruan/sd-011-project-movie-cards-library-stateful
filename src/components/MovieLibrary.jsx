@@ -23,15 +23,14 @@ class MovieLibrary extends Component {
     const { name, value } = target;
     this.setState({
       [name]: target.type === 'checkbox' ? target.checked : value,
-      movies: this.filterArrMovies(target),
-    });
+    }, () => this.filterArrMovies());
   }
 
-  filterArrMovies(target) {
-    const { searchText } = this.state;
+  filterArrMovies() {
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     const { movies } = this.props;
     let newArrMovies = movies;
-    if (target.checked) {
+    if (bookmarkedOnly) {
       newArrMovies = newArrMovies
         .filter((movie) => movie.bookmarked === true);
     }
@@ -41,11 +40,13 @@ class MovieLibrary extends Component {
         || movie.subtitle.includes(searchText)
         || movie.storyline.includes(searchText));
     }
-    if (target.name === 'selectedGenre' && target.value !== '') {
+    if (selectedGenre !== '') {
       newArrMovies = newArrMovies
-        .filter((movie) => movie.genre === target.value);
+        .filter((movie) => movie.genre === selectedGenre);
     }
-    return newArrMovies;
+    this.setState({
+      movies: newArrMovies,
+    });
   }
 
   addCardMovie(objNewMovie) {
