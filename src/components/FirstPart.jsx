@@ -1,4 +1,5 @@
 import React from 'react';
+// import PropTypes from 'prop-types';
 
 class FirstPart extends React.Component {
   constructor() {
@@ -63,5 +64,11 @@ class FirstPart extends React.Component {
     );
   }
 }
+
+FirstPart.propTypes = {
+  // title: PropTypes.string.isRequired,
+  // subtitle: PropTypes.string.isRequired,
+  // imagePath: PropTypes.string.isRequired,
+};
 
 export default FirstPart;

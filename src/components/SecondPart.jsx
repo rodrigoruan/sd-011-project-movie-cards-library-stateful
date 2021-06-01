@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import PropTypes from 'prop-types';
 
 class SecondPart extends Component {
   constructor() {
@@ -6,7 +7,6 @@ class SecondPart extends Component {
     this.state = {
       storyline: '',
       rating: 0,
-      // genre: 'action',
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -50,5 +50,10 @@ class SecondPart extends Component {
     );
   }
 }
+
+SecondPart.propTypes = {
+  // storyline: PropTypes.string.isRequired,
+  // rating: PropTypes.number.isRequired,
+};
 
 export default SecondPart;
