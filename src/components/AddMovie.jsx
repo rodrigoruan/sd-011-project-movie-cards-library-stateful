@@ -4,7 +4,10 @@ import React from 'react';
 class AddMovie extends React.Component {
   render() {
     return (
-      <h1>Add Movie</h1>
+      <form data-testid="add-movie-form">
+        <h1>Add Movie</h1>
+
+      </form>
     );
   }
 }
