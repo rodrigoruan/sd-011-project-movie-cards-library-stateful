@@ -22,8 +22,7 @@ class MovieLibrary extends Component {
 
   onSearchTextChange({ target }) {
     const { movies } = this.props;
-    const { name, value } = target;
-    const { searchText } = this.state;
+    const { value } = target;
     this.setState({
       searchText: value,
       movies: movies.filter((el) => el.title.includes(value)
