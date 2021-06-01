@@ -1,34 +1,18 @@
 // implement AddMovie component here
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Input from './Input';
+import TextArea from './TextArea';
 
 class AddMovie extends Component {
   render() {
     const { func, title, subtitle, imagePath, storyline, rating, genre, onClick } = this.props;
     return (
       <form data-testid="add-movie-form">
-        <label htmlFor="i2" data-testid="title-input-label">
-          Título
-          <input data-testid="title-input" value={ title } onChange={ func } name="title" />
-        </label>
-        <label htmlFor="i2" data-testid="subtitle-input-label">
-          Subtítulo
-          <input data-testid="subtitle-input" value={ subtitle } onChange={ func } name="subtitle" />
-        </label>
-        <label htmlFor="i2" data-testid="image-input-label">
-          Imagem
-          <input data-testid="image-input" value={ imagePath } onChange={ func } name="imagePath" />
-        </label>
-        <label htmlFor="i2" data-testid="storyline-input-label">
-          Sinopse
-          <input
-            type="textarea"
-            data-testid="storyline-input"
-            value={ storyline }
-            onChange={ func }
-            name="storyline"
-          />
-        </label>
+        <Input handler={ func } text="Título" dataLabel="title-input-label" dataInput="title-input" value={ title } name="title" />
+        <Input handler={ func } text="Subtítulo" dataLabel="subtitle-input-label" dataInput="title-input" value={ subtitle } name="subtitle" />
+        <Input handler={ func } text="Imagem" dataLabel="image-input-label" dataInput="image-input" value={ imagePath } name="imagePath" />
+        <TextArea value={ storyline } onChange={ func } />
         <label htmlFor="i2" data-testid="rating-input-label">
           Avaliação
           <input

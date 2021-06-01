@@ -44,7 +44,11 @@ class App extends React.Component {
       <div className="App">
         <Header />
         <SearchBar />
-        <AddMovie func={ this.handleInfo } value={ this.state } onClick={ this.onClick } />
+        <AddMovie
+          func={ this.handleInfo }
+          value={ this.state }
+          onClick={ this.onClick }
+        />
       </div>
     );
   }
