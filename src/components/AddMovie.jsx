@@ -1,8 +1,8 @@
 // implement AddMovie component here
 import React from 'react';
 import PropTypes from 'prop-types';
-import ButtonAddMovie from '../addmoviecomponents/ButtonAddMovie';
-import RatingAddMovie from '../addmoviecomponents/RatingAddMovie';
+import ButtonAddMovie from '../AddMovieComponents/ButtonAddMovie';
+import RatingForm from '../AddMovieComponents/AddMovie-RatingForm';
 
 const state0 = {
   subtitle: '',
@@ -50,7 +50,7 @@ class AddMovie extends React.Component {
           Sinopse
           <textarea id="StorylineInput" data-testid="storyline-input" />
         </label>
-        <RatingAddMovie />
+        <RatingForm />
         <label htmlFor="GenreInput" data-testid="genre-input-label">
           Gênero
           <select id="GenreInput" data-testid="genre-input">
