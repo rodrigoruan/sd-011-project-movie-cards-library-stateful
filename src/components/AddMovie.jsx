@@ -69,6 +69,7 @@ class AddMovie extends React.Component {
         </label>
         <OtherInputs handleChanges={ this.handleChanges } state={ this.state } />
         <button
+          data-testid="send-button"
           type="submit"
           onClick={ () => {
             onClick(this.state);
