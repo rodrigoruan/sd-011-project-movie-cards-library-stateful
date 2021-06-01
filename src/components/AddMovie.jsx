@@ -15,8 +15,8 @@ class AddMovie extends React.Component {
   }
 
   handleChange(e) {
-    const { name } = e.target;
-    const { value } = e.target;
+    const { name, value } = e.target;
+
     this.setState({
       [name]: value,
     });
@@ -31,6 +31,7 @@ class AddMovie extends React.Component {
       >
         Título
         <input
+          data-testid="title-input"
           type="text"
           name="title"
           value={ title }
@@ -49,10 +50,29 @@ class AddMovie extends React.Component {
       >
         Subtítulo
         <input
+          data-testid="subtitle-input"
           type="text"
           name="subtitle"
           value={ subtitle }
-          data-testid="subtitle-input"
+          onChange={ this.handleChange }
+        />
+      </label>
+    );
+  }
+
+  inputImage() {
+    const { imagePath } = this.state;
+    return (
+      <label
+        htmlFor="imagePath"
+        data-testid="image-input-label"
+      >
+        Imagem
+        <input
+          data-testid="image-input"
+          type="text"
+          name="imagePath"
+          value={ imagePath }
           onChange={ this.handleChange }
         />
       </label>
@@ -60,12 +80,12 @@ class AddMovie extends React.Component {
   }
 
   render() {
-    const { imagePath, storyline, rating, genre } = this.state;
+    const { storyline, rating, genre } = this.state;
     return (
       <form action="" data-testid="add-movie-form">
         {this.inputTitle()}
         {this.inputSubtitle()}
-        <div>{ imagePath }</div>
+        {this.inputImage()}
         <div>{ storyline }</div>
         <div>{ rating }</div>
         <div>{ genre }</div>
