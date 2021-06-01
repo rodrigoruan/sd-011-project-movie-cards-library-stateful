@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import MovieList from './MovieList';
 import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
+import AddMovie from './AddMovie';
 
 class MovieLibrary extends Component {
   constructor(props) {
@@ -17,6 +18,8 @@ class MovieLibrary extends Component {
     };
 
     this.handleSearchText = this.handleSearchText.bind(this);
+    this.handleBookMarkedOnly = this.handleBookMarkedOnly.bind(this);
+    this.handleSelectedGenre = this.handleSelectedGenre.bind(this);
   }
 
   handleSearchText({ target }) {
@@ -50,11 +53,11 @@ class MovieLibrary extends Component {
       <div>
        <SearchBar
         searchText={ searchText }
-        searchTextChange={ this.handleSearchText }
+        onSearchTextChange={ this.handleSearchText }
         bookmarkedOnly= { bookmarkedOnly }
-        bookmarkedOnlyChange={ this.handleBookMarkedOnly }
+        onBookmarkedChange={ this.handleBookMarkedOnly }
         selectedGenre={ selectedGenre }
-        selectedGenreChange={ this.handleSelectedGenre }
+        onSelectedGenreChange={ this.handleSelectedGenre }
         />
         <MovieList movies={ movies } />    
       </div>
