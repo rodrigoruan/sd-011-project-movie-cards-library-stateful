@@ -39,8 +39,8 @@ body {
 
 
 .movie-card-image {
-  max-width:290px;
-  max-height:167px;
+  max-height: 167px;
+  max-width: 290px;
 }
 
 .movie-card-body {
