@@ -17,16 +17,21 @@ class MovieLibrary extends Component {
     this.handleTextChange = this.handleTextChange.bind(this);
     this.CheckBookMark = this.CheckBookMark.bind(this);
     this.handleAddMovie = this.handleAddMovie.bind(this);
+    this.handleMovieGenre = this.handleMovieGenre.bind(this);
   }
 
   handleTextChange = ({ target }) => {
-    const filtered = data.filter((el) => el.title.includes(target.value));
+    const filtered = data.filter(
+      (el) =>
+        el.title.includes(target.value) ||
+        el.subtitle.includes(target.value) ||
+        el.storyline.includes(target.value)
+    );
     this.setState({ searchText: target.value }, () => {
       this.state.searchText === target.value
         ? this.setState({ movies: filtered })
         : this.setState({ movies: data });
     });
-    // this.setState({  });
   };
 
   CheckBookMark = () => {
@@ -44,6 +49,11 @@ class MovieLibrary extends Component {
     console.log(el);
   };
 
+  handleMovieGenre = ({ target }) => {
+    this.setState({ selectedGenre: target.value });
+    this.setState({ movies: data.filter((el) => el.genre.includes(target.value)) });
+  };
+
   render() {
     const { bookmarkedOnly, searchText, movies } = this.state;
     return (
@@ -54,6 +64,7 @@ class MovieLibrary extends Component {
           onBookmarkedChange={this.CheckBookMark}
           onSearchTextChange={this.handleTextChange}
           searchText={searchText}
+          onSelectedGenreChange={this.handleMovieGenre}
         />
         <MovieList movies={movies} />
         <AddMovie onClick={this.handleAddMovie} />
