@@ -11,6 +11,10 @@ class MovieLibrary extends Component {
     this.teste = 0;
   }
 
+  misteriousFunction() {
+
+  }
+
   render() {
     const { movies } = this.props;
     return (
@@ -18,21 +22,21 @@ class MovieLibrary extends Component {
         <h2> My awesome movie library </h2>
         <SearchBar
           searchText="uma string"
-          onSearchTextChange={ umaCallback }
+          onSearchTextChange={ this.misteriousFunction }
           bookmarkedOnly="teste"
-          onBookmarkedChange={ outraCallback }
+          onBookmarkedChange={ this.misteriousFunction }
           selectedGenre="maisUmTeste"
-          onSelectedGenreChange={ outraCallBack }
+          onSelectedGenreChange={ this.misteriousFunction }
         />
         <MovieList movies={ movies } />
-        <AddMovie onClick={ umaCallback } />
+        <AddMovie onClick={ this.misteriousFunction } />
       </div>
     );
   }
 }
 
 MovieLibrary.propTypes = {
-  movies: PropTypes.isRequired,
+  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default MovieLibrary;
