@@ -1,6 +1,5 @@
 // implement AddMovie component here
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
 
 class AddMovie extends Component {
   constructor() {
@@ -107,7 +106,7 @@ class AddMovie extends Component {
     return (
       <label htmlFor="rating" data-testid="rating-input-label">
         Avaliação
-        <textarea
+        <input
           name="rating"
           type="number"
           data-testid="rating-input"
@@ -153,6 +152,7 @@ class AddMovie extends Component {
 
   render() {
     // const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
+    // const { rating } = this.props;
     return (
       <form data-testid="add-movie-form">
         { this.renderTitleInput() }
@@ -166,14 +166,5 @@ class AddMovie extends Component {
     );
   }
 }
-
-// AddMovie.propTypes = {
-//   subtitle: PropTypes.string.isRequired,
-//   title: PropTypes.func.isRequired,
-//   imagePath: PropTypes.bool.isRequired,
-//   storyline: PropTypes.func.isRequired,
-//   rating: PropTypes.number.isRequired,
-//   genre: PropTypes.func.isRequired,
-// };
 
 export default AddMovie;
