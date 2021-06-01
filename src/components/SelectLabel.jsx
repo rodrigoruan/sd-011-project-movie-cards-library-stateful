@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-export default class SelecetLabel extends Component {
+export default class SelectLabel extends Component {
   render() {
     const { func, value } = this.props;
     return (
@@ -22,7 +22,7 @@ export default class SelecetLabel extends Component {
   }
 }
 
-SelecetLabel.propTypes = {
+SelectLabel.propTypes = {
   value: PropTypes.string.isRequired,
   func: PropTypes.func.isRequired,
 };

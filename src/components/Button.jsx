@@ -6,7 +6,7 @@ export default class Button extends Component {
     const { func } = this.props;
     return (
       <button
-        type="submit"
+        type="button"
         data-testid="send-button"
         onClick={ func }
       >

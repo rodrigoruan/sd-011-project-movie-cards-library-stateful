@@ -5,7 +5,7 @@ export default class TextArea extends Component {
   render() {
     const { func, value } = this.props;
     return (
-      <label data-testid="storyline-input-label" htmlFor="sinopse">
+      <label data-testid="storyline-input-label" htmlFor="storyline">
         Sinopse
         <textarea
           name="storyline"

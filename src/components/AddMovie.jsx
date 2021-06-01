@@ -4,7 +4,7 @@ import Button from './Button';
 import Label from './Label';
 import LabelFile from './LabelFile';
 import LabelNumber from './LabelNumber';
-import SelecetLabel from './SelecetLabel';
+import SelectLabel from './SelectLabel';
 import TextArea from './TextArea';
 
 class AddMovie extends Component {
@@ -31,10 +31,10 @@ class AddMovie extends Component {
   handleSubmit = () => {
     const { onClick } = this.props;
     onClick(this.state);
-    this.restorState();
+    this.restoreState();
   }
 
-  restorState = () => {
+  restoreState = () => {
     this.setState({
       subtitle: '',
       title: '',
@@ -85,7 +85,7 @@ class AddMovie extends Component {
           dataInput="rating-input"
           func={ this.handleChanger }
         />
-        <SelecetLabel value={ genre } func={ this.handleChanger } />
+        <SelectLabel value={ genre } func={ this.handleChanger } />
         <Button func={ this.handleSubmit } />
       </form>
     );

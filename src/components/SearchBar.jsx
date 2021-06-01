@@ -21,20 +21,20 @@ export default class SearchBar extends Component {
             placeholder="Digite seu filme"
           />
         </label>
-        <label data-testid="checkbox-input-label" htmlFor="checkbox">
+        <label data-testid="checkbox-input-label" htmlFor="checked">
           Mostrar somente favoritos
           <input
             type="checkbox"
-            name="checkbox"
+            name="bookmarkedOnly"
             checked={ bookmarkedOnly }
             data-testid="checkbox-input"
             onChange={ onBookmarkedChange }
           />
         </label>
-        <label data-testid="select-input-label" htmlFor="generete1">
+        <label data-testid="select-input-label" htmlFor="genre">
           Filtrar por gênero
           <select
-            name="generete1"
+            name="genre"
             data-testid="select-input"
             value={ selectedGenre }
             onChange={ onSelectedGenreChange }
