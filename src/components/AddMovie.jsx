@@ -1,6 +1,11 @@
 // implement AddMovie component here
 import React from 'react';
 import PropTypes from 'prop-types';
+import GenericInput from './AddMovieComponents/AddMovie-GenericInput';
+import RatingInput from './AddMovieComponents/AddMovie-RatingInput';
+import GenreSelect from './AddMovieComponents/AddMovie-Select';
+import StoryTextArea from './AddMovieComponents/AddMovie-Textarea';
+import BtnNewMovie from './AddMovieComponents/AddMovie-Button';
 
 class AddMovie extends React.Component {
   constructor(props) {
@@ -16,6 +21,7 @@ class AddMovie extends React.Component {
     this.initialState = this.state;
 
     this.changeHandler = this.changeHandler.bind(this);
+    this.submitMovieData = this.submitMovieData.bind(this);
   }
 
   changeHandler({ target }) {
@@ -25,87 +31,50 @@ class AddMovie extends React.Component {
     });
   }
 
-  render() {
+  submitMovieData(event) {
+    event.preventDefault();
     const { onClick } = this.props;
+    const { title, subtitle, storyline, imagePath, rating, genre } = this.state;
+    onClick({ title, subtitle, storyline, imagePath, rating, genre });
+    this.setState(this.initialState);
+  }
+
+  render() {
+    const { title, subtitle, storyline, imagePath, rating, genre } = this.state;
     return (
       <div>
         <form data-testid="add-movie-form">
-          <label htmlFor="title-input" data-testid="title-input-label">
-            Título
-            <input
-              type="text"
-              value={ this.state.title }
-              name='title'
-              onChange={this.changeHandler}
-              data-testid="title-input"
-            />
-          </label>
+          <GenericInput
+            lblInfo={ { lblId: 'title-input-label', lblText: 'Título' } }
+            inInfo={ {
+              inId: 'title-input', inVal: title, inName: 'title',
+            } }
+            funcOnChange={ this.changeHandler }
+          />
 
-          <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
-            Subtítulo
-            <input
-              type="text"
-              value={ this.state.subtitle }
-              name='subtitle'
-              onChange={this.changeHandler}
-              data-testid="subtitle-input"
-            />
-          </label>
+          <GenericInput
+            lblInfo={ { lblId: 'subtitle-input-label', lblText: 'Subtítulo' } }
+            inInfo={ {
+              inId: 'subtitle-input', inVal: subtitle, inName: 'subtitle',
+            } }
+            funcOnChange={ this.changeHandler }
+          />
 
-          <label htmlFor="image-input" data-testid="image-input-label">
-            Imagem
-            <input
-              type="text"
-              value={ this.state.imagePath }
-              name='imagePath'
-              onChange={this.changeHandler}
-              data-testid="image-input"
-            />
-          </label>
+          <GenericInput
+            lblInfo={ { lblId: 'image-input-label', lblText: 'Imagem' } }
+            inInfo={ {
+              inId: 'image-input', inVal: imagePath, inName: 'imagePath',
+            } }
+            funcOnChange={ this.changeHandler }
+          />
 
-          <label htmlFor="storyline-input" data-testid="storyline-input-label">
-            Sinopse
-            <textarea
-              value={ this.state.storyline }
-              name='storyline'
-              onChange={this.changeHandler}
-              data-testid="storyline-input"
-            />
-          </label>
+          <StoryTextArea value={ storyline } funcOnChange={ this.changeHandler } />
 
-          <label htmlFor="rating-input" data-testid="rating-input-label">
-            Avaliação
-            <input
-              type="number"
-              value={ this.state.rating }
-              name="rating"
-              onChange={this.changeHandler}
-              data-testid="rating-input"
-            />
-          </label>
+          <RatingInput inVal={ rating } funcOnChange={ this.changeHandler } />
 
-          <label htmlFor="genre-input" data-testid="genre-input-label">
-            Gênero
-            <select
-              value={ this.state.genre }
-              name='genre'
-              onChange={ this.changeHandler }
-              data-testid="genre-input"
-            >
-              <option value="action" data-testid="genre-option">Ação</option>
-              <option value="comedy" data-testid="genre-option">Comédia</option>
-              <option value="thriller" data-testid="genre-option">Suspense</option>
-            </select>
-          </label>
+          <GenreSelect value={ genre } funcOnChange={ this.changeHandler } />
 
-          <button onClick={ (event) => {
-            event.preventDefault();
-            const {title, subtitle, storyline, imagePath, rating, genre} = this.state;
-            onClick(title, subtitle, storyline, imagePath, rating, genre);
-            this.setState(this.initialState);
-            } } data-testid="send-button">
-            Adicionar filme
-          </button>
+          <BtnNewMovie funcOnClick={ this.submitMovieData } />
         </form>
       </div>
     );
