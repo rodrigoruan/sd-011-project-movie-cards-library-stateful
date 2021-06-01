@@ -9,10 +9,6 @@ import MovieCardTitle from './MovieCardTitle';
 export default class AddMovie extends Component {
   constructor() {
     super();
-
-    this.state = {
-    };
-
     this.handleEvents = this.handleEvents.bind(this);
   }
 

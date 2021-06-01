@@ -1,13 +1,29 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import SearchBarInput from './SearchBarInput';
+import SearchBarCheckBox from './SearchBarCheckBox';
 
 export default class SearchBar extends Component {
+  constructor() {
+    super();
+
+    this.handleEvents = this.handleEvents.bind(this);
+  }
+
+  handleEvents({ target }) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({
+      [name]: value,
+    });
+  }
+
   render() {
     const {
       searchText,
       onSearchTextChange,
-      // bookmarkedOnly,
+      bookmarkedOnly,
       onBookmarkedChange,
       selectedGenre,
       onSelectedGenreChange,
@@ -15,27 +31,12 @@ export default class SearchBar extends Component {
 
     return (
       <form data-testid="search-bar-form">
-        <label htmlFor="text-input" data-testid="text-input-label">
-          Inclui o texto:
-          <input
-            data-testid="text-input"
-            type="text"
-            value={ searchText }
-            onChange={ onSearchTextChange }
-          />
-        </label>
-        <label htmlFor="checkbox-input" data-testid="checkbox-input-label">
-          Mostrar somente favoritos
-          <input
-            data-testid="checkbox-input"
-            type="checkbox"
-            checked="bookmarkedOnly"
-            onChange={ onBookmarkedChange }
-          />
-        </label>
+        <SearchBarInput value={ searchText } value2={ onSearchTextChange } />
+        <SearchBarCheckBox value={ onBookmarkedChange } value2={ bookmarkedOnly } />
         <label htmlFor="select-input" data-testid="select-input-label">
           Filtrar por gênero
           <select
+            name="select"
             data-testid="select-input"
             value={ selectedGenre }
             onChange={ onSelectedGenreChange }
@@ -56,5 +57,6 @@ SearchBar.propTypes = {
   onSearchTextChange: PropTypes.string.isRequired,
   onBookmarkedChange: PropTypes.bool.isRequired,
   selectedGenre: PropTypes.string.isRequired,
+  bookmarkedOnly: PropTypes.bool.isRequired,
   onSelectedGenreChange: PropTypes.string.isRequired,
 };
