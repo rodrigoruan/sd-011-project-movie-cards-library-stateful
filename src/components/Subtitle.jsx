@@ -5,16 +5,16 @@ export default class Subtitle extends React.Component {
   render() {
     const { addMovieFunction, value } = this.props;
     return (
-      <label data-testid="subtitle-input-label" htmlFor="subtitle">
-      Subtítulo
-      <input
-        type="text"
-        data-testid="subtitle-input"
-        id="subtitle"
-        onChange={ addMovieFunction }
-        value={ subtitle }
-      />
-    </label>
+        <label data-testid="subtitle-input-label" htmlFor="subtitle">
+        Subtítulo
+        <input
+          type="text"
+          data-testid="subtitle-input"
+          id="subtitle"
+          onChange={ addMovieFunction }
+          value={ value }
+        />
+       </label>
     );
   }
 }
