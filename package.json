@@ -2,10 +2,6 @@
   "name": "sd-0x-project-movie-cards-library-stateful",
   "version": "0.1.0",
   "private": true,
-  "moduleDirectories": [
-    "node_modules",
-    "src"
-],
   "dependencies": {
     "acorn": "7.1.1",
     "eslint-config-trybe-frontend": "1.1.0",
