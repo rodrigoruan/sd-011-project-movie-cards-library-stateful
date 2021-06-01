@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+/* import PropTypes from 'prop-types'; */
 import InputTextField from './InputTextField';
 import TextareaField from './TextareaField';
 import GenreCheck from './GenreCheck';
@@ -40,7 +40,7 @@ class AddMovie extends Component {
   }
 
   render() {
-    const { onClick } = this.props;
+    /* const { onClick } = this.props; */
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
 
     return (
@@ -91,10 +91,10 @@ class AddMovie extends Component {
 }
 export default AddMovie;
 
-AddMovie.propTypes = {
+/* AddMovie.propTypes = {
   onClick: PropTypes.func,
 };
 
 AddMovie.defaultProps = {
   onClick: () => { },
-};
+}; */
