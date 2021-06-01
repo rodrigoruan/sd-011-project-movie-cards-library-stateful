@@ -29,8 +29,6 @@ export default class SearchBar extends Component {
           <input
             data-testid="checkbox-input"
             type="checkbox"
-            name=""
-            id=""
             checked={bookmarkedOnly}
             onChange={onBookmarkedChange}
           />
