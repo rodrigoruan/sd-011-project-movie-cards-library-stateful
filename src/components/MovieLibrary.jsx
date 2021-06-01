@@ -30,14 +30,19 @@ class MovieLibrary extends Component {
   }
 
   resulSearch() {
-    const { movies } = this.state;
-    const { searchText, selectedGenre } = this.state;
+    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+    let resultSch = movies;
 
-    return movies.filter(({
-      title, subtitle, storyline,
-    }) => title.includes(searchText)
-    || subtitle.includes(searchText)
-      || storyline.includes(searchText));
+    if (bookmarkedOnly) resultSch = movies.filter(({ bookmarked }) => bookmarked);
+    if (selectedGenre) resultSch = movies.filter(({ genre }) => genre === selectedGenre);
+    if (searchText) {
+      resultSch = movies.filter(({
+        title, subtitle, storyline,
+      }) => title.includes(searchText)
+      || subtitle.includes(searchText)
+        || storyline.includes(searchText));
+    }
+    return resultSch;
   }
 
   render() {
