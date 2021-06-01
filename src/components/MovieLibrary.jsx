@@ -13,10 +13,25 @@ class MovieLibrary extends Component {
       selectedGenre: '',
       movies: props.movies,
     };
+
+    this.handleChangeSearchBar = this.handleChangeSearchBar.bind(this);
+  }
+
+  // Requisito 17
+  handleChangeSearchBar({ target }) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({
+      [name]: value,
+    });
   }
 
   render() {
-    const { movies, searchText, bookmarkedOnly, selectedGenre } = this.state;
+    const { movies,
+      searchText,
+      bookmarkedOnly,
+      selectedGenre,
+    } = this.state;
     return (
       <div>
         <h2> My awesome movie library </h2>
@@ -24,6 +39,9 @@ class MovieLibrary extends Component {
           searchText={ searchText }
           bookmarkedOnly={ bookmarkedOnly }
           selectedGenre={ selectedGenre }
+          onSearchTextChange={ this.handleChangeSearchBar }
+          onBookmarkedChange={ this.handleChangeSearchBar }
+          onSelectedGenreChange={ this.handleChangeSearchBar }
         />
         <MovieList movies={ movies } />
         <AddMovie onCLick={ this.addMovies } />
