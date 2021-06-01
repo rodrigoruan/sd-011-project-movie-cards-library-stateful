@@ -7,14 +7,16 @@ import AddMovie from './AddMovie';
 class MovieLibrary extends Component {
   constructor(props) {
     super(props);
-    const { listOfMovies } = this.props;
+    const { movies } = this.props;
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
+    this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
+    this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
     this.onClick = this.onClick.bind(this);
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
-      movies: listOfMovies,
+      movies,
     };
   }
 
@@ -37,8 +39,8 @@ class MovieLibrary extends Component {
   }
 
   onClick(newMovie) {
-    const { listOfMovies } = this.props;
-    const moviesCopy = [...listOfMovies];
+    const { movies } = this.props;
+    const moviesCopy = [...movies];
     moviesCopy.push(newMovie);
     this.setState({
       movies: moviesCopy,
@@ -66,7 +68,7 @@ class MovieLibrary extends Component {
 }
 
 MovieLibrary.propTypes = {
-  listOfMovies: PropTypes.shape({
+  movies: PropTypes.shape({
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,
     storyline: PropTypes.string.isRequired,
