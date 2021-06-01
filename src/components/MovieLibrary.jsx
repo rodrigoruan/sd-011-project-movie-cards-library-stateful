@@ -49,6 +49,37 @@ export default class MovieLibrary extends Component {
     });
   }
 
+  filterMovies(movies, filters) {
+    const filterFunctionLibrary = {
+      searchTerm: (({ title, subtitle, storyline }, term) => {
+        const allText = title + subtitle + storyline;
+
+        return allText.toLowerCase().includes(term.toLowerCase());
+      }),
+      genre: ((movie, genre) => movie.genre === genre),
+      bookmarked: ((movie, bookmarked) => movie.bookmarked === bookmarked),
+    };
+
+    if (!filters) return movies;
+
+    const filterObjects = [];
+
+    Object.entries(filters).forEach((filter) => {
+      if (filter[1]) {
+        filterObjects.push({
+          name: filter[0],
+          filterFunction: filterFunctionLibrary[filter[0]],
+        });
+      }
+    });
+
+    if (!filterObjects.length) return movies;
+
+    return movies.filter((movie) => (
+      filterObjects.reduce((passAll, { name, filterFunction }) => (
+        passAll && filterFunction(movie, filters[name])), true)));
+  }
+
   render() {
     const { bookmarkedOnly, searchText, selectedGenre, movies } = this.state;
     const filters = {
@@ -56,6 +87,8 @@ export default class MovieLibrary extends Component {
       searchTerm: searchText,
       genre: selectedGenre,
     };
+
+    const filteredMovies = this.filterMovies(movies, filters);
 
     return (
       <main>
@@ -67,7 +100,7 @@ export default class MovieLibrary extends Component {
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.handleChangeGenre }
         />
-        <MovieList movies={ movies } filters={ filters } />
+        <MovieList movies={ filteredMovies } />
         <AddMovie onClick={ this.handleAddMovie } />
       </main>
     );
