@@ -13,26 +13,15 @@ export default class MovieLibrary extends Component {
       selectedGenre: '',
       movies: props.movies,
     };
-    this.onSearchTextChange = this.onSearchTextChange.bind(this);
-    this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
-    this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.filterMovies = this.filterMovies.bind(this);
     this.newMovie = this.newMovie.bind(this);
   }
 
-  onSearchTextChange({ target }) {
-    const { value } = target;
-    this.setState({ searchText: value });
-  }
-
-  onBookmarkedChange({ target }) {
-    const { checked } = target;
-    this.setState({ bookmarkedOnly: checked });
-  }
-
-  onSelectedGenreChange({ target }) {
-    const { value } = target;
-    this.setState({ selectedGenre: value });
+  handleChange({ target }) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value
+    this.setState({ [name]: value })
   }
 
   filterMovies() {
@@ -71,11 +60,11 @@ export default class MovieLibrary extends Component {
       <div>
         <SearchBar
           searchText={ searchText }
-          onSearchTextChange={ this.onSearchTextChange }
+          onSearchTextChange={ this.handleChange }
           bookmarkedOnly={ bookmarkedOnly }
-          onBookmarkedChange={ this.onBookmarkedChange }
+          onBookmarkedChange={ this.handleChange }
           selectedGenre={ selectedGenre }
-          onSelectedGenreChange={ this.onSelectedGenreChange }
+          onSelectedGenreChange={ this.handleChange }
         />
         <AddMovie onClick={ (movieData) => this.newMovie(movieData) } />
         <MovieList movies={ filteredMovies } />
