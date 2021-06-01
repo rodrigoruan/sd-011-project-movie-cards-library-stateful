@@ -18,6 +18,7 @@ class MovieLibrary extends Component {
 
     this.filter = this.filter.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.newMovie = this.newMovie.bind(this);
   }
 
   handleChange({ target }) {
@@ -42,11 +43,17 @@ class MovieLibrary extends Component {
     }
     if (bookmarkedOnly === true) {
       result = movies.filter((movie) => movie.bookmarked === true);
-      console.log(result);
     }
     this.setState({
       [name]: value,
       movies: result,
+    });
+  }
+
+  newMovie(addMovie) {
+    const { movies } = this.state;
+    this.setState({
+      movies: [...movies, addMovie],
     });
   }
 
@@ -64,7 +71,7 @@ class MovieLibrary extends Component {
           selectedGenre={ selectedGenre }
         />
         <MovieList movies={ movies2 } />
-        <AddMovie onClick={ (teste) => console.log(teste) } />
+        <AddMovie onClick={ this.newMovie } />
       </div>
     );
   }
