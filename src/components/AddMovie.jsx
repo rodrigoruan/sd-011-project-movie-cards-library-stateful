@@ -3,8 +3,7 @@ import React from 'react';
 import Input from './input';
 import Textarea from './textarea';
 import Select from './select';
-import Avaliation from './avaliation';
-import Button from './button';
+import Rating from './rating';
 
 const initialState = {
   subtitle: '',
@@ -19,12 +18,9 @@ class AddMovie extends React.Component {
   constructor() {
     super();
     this.state = initialState;
-    this.handler = this.handler.bind(this);
-    this.submit = this.submit.bind(this);
-    this.reset = this.reset.bind(this);
   }
 
-  handler({ target }) {
+  handler = ({ target }) => {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checkbox : target.value;
     this.setState(({
@@ -32,14 +28,9 @@ class AddMovie extends React.Component {
     }));
   }
 
-  submit() {
+  handleClick = () => {
     const { onClick } = this.props;
     onClick(this.state);
-    this.setState(initialState);
-    this.reset();
-  }
-
-  reset() {
     this.setState(initialState);
   }
 
@@ -72,7 +63,7 @@ class AddMovie extends React.Component {
           name="imagePath"
         />
         <Textarea handler={ this.handler } value={ storyline } name="storyline" />
-        <Avaliation handler={ this.handler } value={ rating } />
+        <Rating handler={ this.handler } value={ rating } />
         <Select
           handler={ this.handler }
           text="Gênero"
@@ -81,7 +72,13 @@ class AddMovie extends React.Component {
           genre={ genre }
           name="genre"
         />
-        <Button submit={ this.submit } />
+        <button
+          data-testid="send-button"
+          type="submit"
+          onClick={ this.handleClick }
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }
