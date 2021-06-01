@@ -40,7 +40,7 @@ class MovieList extends React.Component {
     const filtMovies = this.filterMovies(movies, filters);
 
     return (
-      <div data-testid="movie-list" className="movie-list">
+      <div data-testid="movie-list">
         { filtMovies.map((movie) => <MovieCard key={ movie.title } movie={ movie } />) }
       </div>
     );
