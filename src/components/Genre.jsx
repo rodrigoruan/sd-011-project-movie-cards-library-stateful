@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default class Genre extends Component {
   render() {
-    const { initialValue } = this.props;
+    const { initialValue, genre } = this.props;
     return (
       <label htmlFor="genre-input" data-testid="genre-input-label">
         Gênero
@@ -11,6 +11,7 @@ export default class Genre extends Component {
           type="text"
           name="genre"
           oncChange={ initialValue }
+          value={ genre }
           data-testid="genre-input"
         >
           <option value="action" data-testid="select-option">Ação</option>
@@ -24,8 +25,10 @@ export default class Genre extends Component {
 
 Genre.propTypes = {
   initialValue: PropTypes.func,
+  genre: PropTypes.string,
 };
 
 Genre.defaultProps = {
   initialValue: 'undefined',
+  genre: '',
 };

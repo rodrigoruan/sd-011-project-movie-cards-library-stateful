@@ -1,7 +1,8 @@
 import React from 'react';
-/* import PropTypes from 'prop-types'; */
+import PropTypes from 'prop-types';
 import Genre from './Genre';
 import Storyline from './Storyline';
+import Imagem from './Imagem';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -16,6 +17,7 @@ class AddMovie extends React.Component {
     };
 
     this.initialValue = this.initialValue.bind(this);
+    this.resetButton = this.resetButton.bind(this);
   }
 
   initialValue(evento) {
@@ -23,6 +25,19 @@ class AddMovie extends React.Component {
     const { name } = target;
     this.setState({
       [name]: target.value,
+    });
+  }
+
+  resetButton() {
+    const { onClick } = this.props;
+    onClick(this.state);
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
     });
   }
 
@@ -37,6 +52,7 @@ class AddMovie extends React.Component {
             name="title"
             value={ title }
             data-testid="title-input"
+            onChange={ this.initialValue }
           />
         </label>
         <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
@@ -46,17 +62,11 @@ class AddMovie extends React.Component {
             name="subtitle"
             value={ subtitle }
             data-testid="subtitle-input"
+            onChange={ this.initialValue }
           />
         </label>
-        <label htmlFor="image-input" data-testid="image-input-label">
-          Imagem
-          <input
-            type="text"
-            name="imagePath"
-            value={ imagePath }
-            data-testid="image-input"
-          />
-        </label>
+        <Imagem initialValue={ this.initialValue } value={ imagePath } />
+
         <Storyline initialValue={ this.initialValue } value={ storyline } />
         <label htmlFor="rating-input" data-testid="rating-input-label">
           Avaliação
@@ -65,20 +75,24 @@ class AddMovie extends React.Component {
             name="rating"
             value={ rating }
             data-testid="rating-input"
+            onChange={ this.initialValue }
           />
         </label>
         <Genre initialValue={ this.initialValue } value={ genre } />
+        <button
+          data-testid="send-button"
+          onClick={ this.resetButton }
+          type="submit"
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }
 }
 
-/* AddMovie.propTypes = {
-  onClick: PropTypes.func,
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
 };
 
-AddMovie.defaultProps = {
-  onClick: 'undefined',
-};
- */
 export default AddMovie;
