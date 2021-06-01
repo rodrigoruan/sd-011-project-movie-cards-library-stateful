@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import InputText8 from './components/InputText8';
 import InputText9 from './components/InputText9';
 import InputText10 from './components/InputText10';
@@ -40,8 +40,6 @@ class AddMovie extends Component {
   }
 
   render() {
-    console.log(this);
-
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
@@ -61,7 +59,6 @@ class AddMovie extends Component {
 
 export default AddMovie;
 
-// AddMovie.propTypes = {
-//   slVl: PropTypes.string.isRequired,
-//   evSl: PropTypes.func.isRequired,
-// };
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};

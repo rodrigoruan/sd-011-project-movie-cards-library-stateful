@@ -8,7 +8,13 @@ class SelectList extends Component {
     return (
       <label htmlFor="slId" data-testid="select-input-label">
         Filtrar por gênero
-        <select id="slId" value={ slVl } onChange={ evSl } data-testid="select-input">
+        <select
+          id="slId"
+          name="gen"
+          value={ slVl }
+          onChange={ evSl }
+          data-testid="select-input"
+        >
           <option value="" data-testid="select-option">Todos</option>
           <option value="action" data-testid="select-option">Ação</option>
           <option value="comedy" data-testid="select-option">Comédia</option>

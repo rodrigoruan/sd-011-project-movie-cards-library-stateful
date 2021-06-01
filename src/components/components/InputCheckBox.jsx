@@ -11,6 +11,7 @@ class InputCheckBox extends Component {
         <input
           id="idckb"
           type="checkbox"
+          name="favorite"
           value={ bkOnly }
           onChange={ srcbkOch }
           data-testid="checkbox-input"
