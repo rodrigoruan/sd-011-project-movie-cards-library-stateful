@@ -1,6 +1,7 @@
 import React from 'react';
 import InputSubtitle from '../auxComponents/InputSubtitle';
 import InputTitle from '../auxComponents/InputTitle';
+import InputImage from '../auxComponents/InputImage';
 
 class AddMovie extends React.Component {
   constructor(props) {
@@ -31,6 +32,7 @@ class AddMovie extends React.Component {
       <form data-testid="add-movie-form">
         <InputTitle stateModify={ this.stateModify } title={ title } />
         <InputSubtitle stateModify={ this.stateModify } subtitle={ subtitle } />
+        <InputImage stateModify={ this.stateModify } imagePath={ imagePath } />
       </form>
     );
   }
