@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import LabelInput from './LabelInput';
 import LabelSelect from './LabelSelect';
 import LabelTextArea from './LabelTextArea';
