@@ -6,6 +6,7 @@ import Storyline from './Storyline';
 import RatingComponent from './RatingComponent';
 import Genre from './Genre';
 import Button from './Button';
+import MovieLibrary from './MovieLibrary';
 
 const inicialState = {
   subtitle: '',
@@ -42,15 +43,15 @@ class AddMovie extends React.Component {
       title, subtitle, imagePath, storyline, rating, genre,
     } = this.state;
     return (
-      <form data-testid="add-movie-form">
-        <Title value={ title } handleChange={ this.handleChange } />
-        <Subtitle value={ subtitle } handleChange={ this.handleChange } />
-        <Image value={ imagePath } handleChange={ this.handleChange } />
-        <Storyline value={ storyline } handleChange={ this.handleChange } />
-        <RatingComponent value={ rating } handleChange={ this.handleChange } />
-        <Genre value={ genre } handleChange={ this.handleChange } />
-        <Button onClick={ onClick } cleanState={ this.cleanState } />
-      </form>
+        <form data-testid="add-movie-form">
+          <Title value={ title } handleChange={ this.handleChange } />
+          <Subtitle value={ subtitle } handleChange={ this.handleChange } />
+          <Image value={ imagePath } handleChange={ this.handleChange } />
+          <Storyline value={ storyline } handleChange={ this.handleChange } />
+          <RatingComponent value={ rating } handleChange={ this.handleChange } />
+          <Genre value={ genre } handleChange={ this.handleChange } />
+          <Button onClick={ onClick } cleanState={ this.cleanState } />
+        </form>
     );
   }
 }

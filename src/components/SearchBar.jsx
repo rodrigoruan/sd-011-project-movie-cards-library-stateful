@@ -48,12 +48,4 @@ class SearchBar extends React.Component {
 // FAZER O PROPTYPES NA DECLARACAO DAS CALLBACKS
 // https://reactjs.org/docs/typechecking-with-proptypes.html
 
-SearchBar.propTypes = {
-  movie: PropTypes.shape({
-    searchText: PropTypes.string,
-    bookmarkedOnly: PropTypes.bool,
-    selectedGenre: PropTypes.string,
-  }).isRequired,
-};
-
 export default SearchBar;

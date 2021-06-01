@@ -7,7 +7,8 @@ class Button extends React.Component {
       <button
         data-testid="send-button"
         onClick={ () => {
-          onClick(), cleanState();
+          onClick();
+          cleanState();
         } }
         type="button"
       >

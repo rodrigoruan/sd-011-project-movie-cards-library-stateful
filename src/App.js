@@ -2,21 +2,14 @@ import React from 'react';
 import Header from './components/Header';
 import './App.css';
 import SearchBar from './components/SearchBar';
-import AddMovie from './components/AddMovie';
+import MovieLibrary from './components/MovieLibrary';
+import movies from './data';
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <SearchBar
-        searchText=""
-        onSearchTextChange={ callback }
-        bookmarkedOnly={ false }
-        onBookmarkedChange={ callback }
-        selectedGenre=""
-        onSelectedGenreChange={ callback }
-      />
-      <AddMovie onClick={ onClick } />
+      <MovieLibrary movies ={this.props.movies} />
     </div>
   );
 }
