@@ -1,11 +1,10 @@
-// implement AddMovie component here
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import MovieList from './MovieList';
 import SearchBar from './SearchBar';
+import MovieList from './MovieList';
 import AddMovie from './AddMovie';
 
-class MovieLibrary extends Component {
+export default class MovieLibrary extends Component {
   constructor(props) {
     super(props);
     const { movies } = this.props;
@@ -15,45 +14,75 @@ class MovieLibrary extends Component {
       selectedGenre: '',
       movies,
     };
+    this.handleAddMovie = this.handleAddMovie.bind(this);
+    this.handleChangeGenre = this.handleChangeGenre.bind(this);
+    this.handleChangeText = this.handleChangeText.bind(this);
+    this.handleToggleBoomarked = this.handleToggleBoomarked.bind(this);
+  }
+
+  handleAddMovie(newMovieData) {
+    this.setState((previous) => {
+      const newArray = [...previous.movies];
+      newMovieData.rating = parseFloat(newMovieData.rating);
+      newArray.push({ ...newMovieData, boomarked: false });
+      console.log(newMovieData);
+      return { movies: newArray };
+    });
+  }
+
+  handleChangeGenre({ target }) {
+    const { value } = target;
+    this.setState({
+      selectedGenre: value,
+    });
+  }
+
+  handleChangeText({ target }) {
+    const { value } = target;
+    this.setState({
+      searchText: value,
+    });
+  }
+
+  handleToggleBoomarked({ target }) {
+    const { checked } = target;
+    this.setState({
+      bookmarkedOnly: checked,
+    });
   }
 
   render() {
-    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
-    const filteredMovie = movies.filter((movie) => (
-      movie.title.includes(searchText)
-      || movie.subtitle.includes(searchText)
-      || movie.storyline.includes(searchText)
-    ));
-    const bookmarkedFiltered = filteredMovie
-      .filter((movie) => ((bookmarkedOnly === false) ? true : movie.bookmarked));
-    const genreFilter = bookmarkedFiltered
-      .filter((movie) => movie.genre.includes(selectedGenre));
+    const { bookmarkedOnly, searchText, selectedGenre, movies } = this.state;
+    const filters = {
+      bookmarked: bookmarkedOnly,
+      searchTerm: searchText,
+      genre: selectedGenre,
+    };
     return (
-      <div>
-        <h2> My awesome movie library </h2>
+      <main>
         <SearchBar
           searchText={ searchText }
+          onSearchTextChange={ this.handleChangeText }
           bookmarkedOnly={ bookmarkedOnly }
+          onBookmarkedChange={ this.handleToggleBoomarked }
           selectedGenre={ selectedGenre }
-          onSearchTextChange={ this.onSearchTextChange }
-          onBookmarkedChange={ this.onBookmarkedChange }
-          onSelectedGenreChange={ this.onSelectedGenreChange }
+          onSelectedGenreChange={ this.handleChangeGenre }
         />
-        <MovieList movies={ genreFilter } />
-        <AddMovie onClick={ this.createMovie } />
-      </div>
+        <MovieList movies={ movies } filters={ filters } />
+        <AddMovie onClick={ this.handleAddMovie } />
+      </main>
     );
   }
 }
+
 MovieLibrary.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string,
-    subtitle: PropTypes.string,
-    storyline: PropTypes.string,
-    rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    imagePath: PropTypes.string,
-    bookmarked: PropTypes.bool,
-    genre: PropTypes.string,
-  })).isRequired,
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      subtitle: PropTypes.string,
+      storyline: PropTypes.string,
+      rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      imagePath: PropTypes.string,
+    }),
+  ).isRequired,
 };
-export default MovieLibrary;
