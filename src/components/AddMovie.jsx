@@ -33,7 +33,13 @@ export default class AddMovie extends Component {
         <MovieCardSinopse handleEvents={ this.handleEvents } />
         <MovieCardRating handleEvents={ this.handleEvents } />
         <MovieCardGenre handleEvents={ this.handleEvents } />
-        <button type="submit" data-testid="send-button" onClick={ this.handleEvents }>Adicionar filme</button>
+        <button
+          type="submit"
+          data-testid="send-button"
+          onClick={ this.handleEvents }
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }
