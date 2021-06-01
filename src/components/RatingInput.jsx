@@ -27,6 +27,6 @@ RatingInput.propTypes = {
 };
 
 RatingInput.defaultProps = {
-  rating: '',
+  rating: 0,
   handleState: () => {},
 };

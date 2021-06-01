@@ -14,9 +14,9 @@ class GenreCheck extends Component {
           value={ genre }
           onChange={ handleState }
         >
-          <option data-testid="select-option" value="action">Ação</option>
-          <option data-testid="select-option" value="comedy">Comédia</option>
-          <option data-testid="select-option" value="thrille">Suspense</option>
+          <option data-testid="genre-option" value="action">Ação</option>
+          <option data-testid="genre-option" value="comedy">Comédia</option>
+          <option data-testid="genre-option" value="thriller">Suspense</option>
         </select>
       </label>
     );
@@ -31,6 +31,6 @@ GenreCheck.propTypes = {
 };
 
 GenreCheck.defaultProps = {
-  genre: '',
+  genre: 'action',
   handleState: () => {},
 };

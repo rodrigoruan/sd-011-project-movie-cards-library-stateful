@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-/* import PropTypes from 'prop-types'; */
+import PropTypes from 'prop-types';
 import TitleInput from './TitleInput';
 import ImagePath from './ImagePath';
 import TextareaField from './TextareaField';
@@ -19,6 +19,7 @@ class AddMovie extends Component {
     };
 
     this.handleState = this.handleState.bind(this);
+    this.resetBtn = this.resetBtn.bind(this);
   }
 
   // atribui valor do input
@@ -29,12 +30,26 @@ class AddMovie extends Component {
     });
   }
 
+  // Requisito 14
+  resetBtn(event) {
+    const { onClick } = this.props;
+    onClick(this.state);
+    event.preventDefault();
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
+
   render() {
-    /* const { onClick } = this.props; */
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
 
     return (
-      <form>
+      <form data-testid="add-movie-form">
         <TitleInput
           value={ title }
           handleState={ this.handleState }
@@ -46,7 +61,7 @@ class AddMovie extends Component {
             name="subtitle"
             data-testid="subtitle-input"
             value={ subtitle }
-            onChange={ handleState }
+            onChange={ this.handleState }
           />
         </label>
         <ImagePath
@@ -65,16 +80,23 @@ class AddMovie extends Component {
           handleState={ this.handleState }
           value={ genre }
         />
+        <button
+          type="button"
+          data-testid="send-button"
+          onClick={ this.resetBtn }
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }
 }
 export default AddMovie;
 
-/* AddMovie.propTypes = {
+AddMovie.propTypes = {
   onClick: PropTypes.func,
 };
 
 AddMovie.defaultProps = {
   onClick: () => { },
-}; */
+};

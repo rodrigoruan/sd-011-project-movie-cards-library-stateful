@@ -5,7 +5,7 @@ class ImagePath extends Component {
   render() {
     const { imagePath, handleState } = this.props;
     return (
-      <label htmlFor="image-input">
+      <label htmlFor="image-input" data-testid="image-input-label">
         Imagem
         <input
           type="text"
