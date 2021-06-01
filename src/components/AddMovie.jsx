@@ -57,7 +57,7 @@ class AddMovie extends React.Component {
         <SelectGenre stateModify={ this.stateModify } genre={ genre } />
         {/* Não esquecer de dar os créditos */}
         <button
-          type="button"
+          type="submit"
           data-testid="send-button"
           onClick={ this.addMovie }
         >
