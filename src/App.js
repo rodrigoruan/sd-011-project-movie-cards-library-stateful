@@ -3,6 +3,7 @@ import Header from './components/Header';
 import './App.css';
 import MovieList from './components/MovieList'
 import data from './data'
+import AddMovie from './components/AddMovie'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <SearchBar searchText={} onSearchTextChange={} bookmarkedOnly={}
         onBookmarkedChange={} selectedGenre={} onSelectedGenreChange={} />
       <MovieList movies={data} />
+      <AddMovie onClick={} />
     </div>
   );
 }
