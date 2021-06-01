@@ -20,6 +20,7 @@ class AddMovie extends React.Component {
     super(props);
     this.state = state0;
     this.changeHandler = this.changeHandler.bind(this);
+    this.submit = this.submit.bind(this);
   }
 
   changeHandler({ target }) {
