@@ -10,8 +10,8 @@ export default class CreateStoryLine extends Component {
         <textarea
           name="storyLine"
           id="add-storyline"
-          cols="30"
-          rows="10"
+          // cols="30"
+          // rows="10"
           value={ storyLine }
           data-testid="storyline-input"
           onChange={ callback }

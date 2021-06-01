@@ -11,11 +11,10 @@ class MovieLibrary extends Component {
     this.state = {
       teste: [],
     };
-
-    this.handleChange = this.handleChange.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
 
-  handleChange() {
+  onClick() {
     console.log(this);
   }
 
@@ -27,7 +26,7 @@ class MovieLibrary extends Component {
         <h2> My awesome movie library </h2>
         <SearchBar />
         <MovieList movies={ movies } />
-        <AddMovie />
+        <AddMovie onClick={ this.onClick } />
         { teste }
       </div>
     );
