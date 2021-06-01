@@ -22,7 +22,7 @@ class AddMovie extends Component {
   }
 
   handleChanger = ({ target }) => {
-    let { name, value } = target;
+    const { name, value } = target;
     this.setState({
       [name]: value,
     });
@@ -94,6 +94,7 @@ class AddMovie extends Component {
 
 export default AddMovie;
 
-AddMovie.propType = {
-  func: PropTypes.func.isRequired,
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  // func: PropTypes.func.isRequired,
 };
