@@ -6,9 +6,14 @@ class AddMovie extends Component {
     super(props);
 
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
+    this.handleChangeSubtitle = this.handleChangeSubtitle.bind(this);
   }
 
   handleChangeTitle() {
+
+  }
+
+  handleChangeSubtitle() {
 
   }
 
@@ -23,6 +28,13 @@ class AddMovie extends Component {
             onChange={ this.handleChangeTitle }
           />
         </label>
+        <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
+          Subtítulo
+          <input
+            data-testid="subtitle-input"
+            onChange={ this.handleChangeSubtitle }
+          />
+        </label>
       </form>
     );
   }
@@ -31,6 +43,7 @@ class AddMovie extends Component {
 AddMovie.propTypes = {
   state: PropTypes.shape({
     title: PropTypes.string,
+    subtitle: PropTypes.string,
   }).isRequired,
 };
 
