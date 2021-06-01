@@ -52,7 +52,7 @@ class LastLabels extends React.Component {
 
 LastLabels.propTypes = {
   storyline: propTypes.string.isRequired,
-  rating: propTypes.number.isRequired,
+  rating: propTypes.oneOfType([propTypes.string, propTypes.number]).isRequired,
   genre: propTypes.string.isRequired,
   handleChange: propTypes.func.isRequired,
 };
