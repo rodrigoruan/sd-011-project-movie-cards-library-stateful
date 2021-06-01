@@ -3,6 +3,8 @@ import React from 'react';
 import Title from './TitleComponent';
 import Subtitle from './SubtitleComponent';
 import Image from './ImageComponent';
+import TextArea from './TextAreaComponent';
+import Rating from './RatingComponent';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -13,6 +15,7 @@ class AddMovie extends React.Component {
       subtitle: '',
       imagePath: '',
       storyline: '',
+      rating: 0,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -27,22 +30,14 @@ class AddMovie extends React.Component {
   }
 
   render() {
-    const { title, subtitle, imagePath, storyline } = this.state;
+    const { title, subtitle, imagePath, storyline, rating } = this.state;
     return (
       <form data-testid="add-movie-form">
         <Title value={ title } handleChange={ this.handleChange } />
         <Subtitle value={ subtitle } handleChange={ this.handleChange } />
         <Image value={ imagePath } handleChange={ this.handleChange } />
-        <label data-testid="storyline-input-label" htmlFor="storyline-input">
-          Sinopse
-          <textarea
-            data-testid="storyline-input"
-            name="storyline"
-            type="text"
-            value={ storyline }
-            onChange={ this.handleChange }
-          />
-        </label>
+        <TextArea value={ storyline } handleChange={ this.handleChange } />
+        <Rating value={ rating } handleChange={ this.handleChange } />
       </form>
     );
   }
