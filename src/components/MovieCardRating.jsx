@@ -11,7 +11,6 @@ export default class MovieCardRating extends Component {
           type="number"
           name="rating"
           value={ value }
-          defaultValue={ 0 }
           data-testid="rating-input"
           onChange={ handleEvents }
         />

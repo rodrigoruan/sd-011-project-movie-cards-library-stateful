@@ -16,7 +16,7 @@ export default class AddMovie extends Component {
       title: '',
       imagePath: '',
       storyline: '',
-      raiting: 0,
+      rating: 0,
       genre: 'action',
     };
 
@@ -25,8 +25,7 @@ export default class AddMovie extends Component {
   }
 
   handleEvents({ target }) {
-    const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const { name, value } = target;
     this.setState({
       [name]: value,
     });
@@ -35,17 +34,25 @@ export default class AddMovie extends Component {
   handleClick() {
     const { onClick } = this.props;
     onClick(this.state);
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
   }
 
   render() {
-    const { title, subtitle, imagePath, storyline, raiting, genre } = this.state;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
         <MovieCardTitle value={ title } handleEvents={ this.handleEvents } />
         <MovieCardSubtitle value={ subtitle } handleEvents={ this.handleEvents } />
         <MovieCardImage value={ imagePath } handleEvents={ this.handleEvents } />
         <MovieCardSinopse value={ storyline } handleEvents={ this.handleEvents } />
-        <MovieCardRating value={ raiting } handleEvents={ this.handleEvents } />
+        <MovieCardRating value={ rating } handleEvents={ this.handleEvents } />
         <MovieCardGenre value={ genre } handleEvents={ this.handleEvents } />
         <button
           name="button"
