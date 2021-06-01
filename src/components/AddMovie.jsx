@@ -45,9 +45,9 @@ class AddMovie extends Component {
             onChange={ this.addState }
             value={ genre }
           >
-            <option value="action">Ação</option>
-            <option value="comedy">Comédia</option>
-            <option value="thriller">Suspense</option>
+            <option value="action" data-testid="genre-input">Ação</option>
+            <option value="comedy" data-testid="genre-input">Comédia</option>
+            <option value="thriller" data-testid="genre-input">Suspense</option>
           </select>
         </label>
         <button
