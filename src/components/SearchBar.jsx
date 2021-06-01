@@ -29,7 +29,8 @@ export default class SearchBar extends Component {
   };
 
   render() {
-    const { bookmarkedOnly, onBookmarkedChange, selectedGenre, onSelectedGenreChange } = this.props;
+    const { bookmarkedOnly, onBookmarkedChange,
+      selectedGenre, onSelectedGenreChange } = this.props;
     return (
       <Form data-testid="search-bar-form" className="col">
         {this.inputText()}
