@@ -25,16 +25,18 @@ class SearchBar extends React.Component {
         </label>
         <label data-testid="checkbox-input-label" htmlFor="checkbox-input">
           Mostrar somente favoritos
-        </label>
           <input type="checkbox"
-           id="checkbox-input"
+            id="checkbox-input"
             checked={ bookmarkedOnly }
             onChange={ onBookmarkedChange }
             data-testid="checkbox-input" />
+        </label>
         <label data-testid="select-input-label" htmlFor="select-input">
           Filtrar por gênero
-          <select data-testid="select-input" value={ selectedGenre } 
-          onChange={ onSelectedGenreChange } id="select-input">
+          <select data-testid="select-input"
+          value={ selectedGenre }
+          onChange={ onSelectedGenreChange }
+          id="select-input">
             <option data-testid="select-option" value="">Todos</option>
             <option data-testid="select-option" value="action">Ação</option>
             <option data-testid="select-option" value="comedy">Comédia</option>
