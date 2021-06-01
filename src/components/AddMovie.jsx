@@ -1,9 +1,10 @@
 import React from 'react';
 import Title from './Title';
+import Subtitle from './Subtitle';
 
 class AddMovie extends React.Component {
   constructor() {
-    super()
+    super();
 
     this.state = {
       title: '',
@@ -26,21 +27,11 @@ class AddMovie extends React.Component {
 
   // Pedi ajuda na sala "A"
   render() {
-
+    const { title, subtitle, imagePath, storyline, rating } = this.state;
     return (
       <form data-testid="add-movie-form">
         <Title value={ this.state.title } handleChange={ this.handleChange } />
-        <label data-testid="subtitle-input-label" htmlFor="addMovieSubtitleInput">
-          Subtítulo
-          <input
-            type="text"
-            value={ subtitle }
-            data-testid="subtitle-input"
-            onChange={ this.handleChange }
-            id="addMovieSubtitleInput"
-            name="subtitle"
-          />
-        </label>
+        <Subtitle value={ this.state.subtitle } handleChange={ this.handleChange } />
         <label data-testid="image-input-label" htmlFor="addMovieImageInput">
           Imagem
           <input
