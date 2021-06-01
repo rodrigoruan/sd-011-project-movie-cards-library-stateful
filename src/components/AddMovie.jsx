@@ -8,7 +8,8 @@ class AddMovie extends React.Component {
   // }
 
   render() {
-    const { handleTitle, handleSubtitle } = this.props;
+    const { handleTitle, title } = this.props;
+    const { handleSubtitle, subtitle } = this.props;
     return (
       <form data-testid="add-movie-form">
         <label htmlFor="input-title" data-testid="title-input-label">
@@ -17,6 +18,7 @@ class AddMovie extends React.Component {
             type="text"
             name=""
             id=""
+            value={ title }
             data-testid="title-input"
             onChange={ handleTitle }
           />
@@ -27,7 +29,7 @@ class AddMovie extends React.Component {
             type="text"
             name=""
             id=""
-            value=""
+            value={ subtitle }
             data-testid="subtitle-input"
             onChange={ handleSubtitle }
           />
@@ -39,7 +41,9 @@ class AddMovie extends React.Component {
 
 AddMovie.propTypes = {
   handleTitle: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
   handleSubtitle: PropTypes.func.isRequired,
+  subtitle: PropTypes.string.isRequired,
 };
 
 export default AddMovie;
