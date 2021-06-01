@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class Title extends React.Component {
   render() {
     const { addMovieFunction, value } = this.props;
-    return(
+    return (
       <label data-testid="title-input-label" htmlFor="title">
         Título
         <input
@@ -16,4 +17,9 @@ export default class Title extends React.Component {
       </label>
     );
   }
+}
+
+Title.PropTypes = {
+  addMovieFunction: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
 }
