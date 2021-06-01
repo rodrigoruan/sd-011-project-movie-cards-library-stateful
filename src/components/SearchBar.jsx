@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 class SearchBar extends Component {
   render() {
     const { searchText, onSearchTextChange, bookmarkedOnly,
-      onBookmarkedChange } = this.props;
+      onBookmarkedChange, selectedGenre, onSelectedGenreChange } = this.props;
     return (
       <div>
         <form data-testid="search-bar-form">
@@ -29,8 +29,13 @@ class SearchBar extends Component {
             />
           </label>
           <label htmlFor="selectOption" data-testid="select-input-label">
-            Filtrar po gênero:
-            <select id="selectOption" value="selectedGenre" data-testid="select-input">
+            Filtrar por gênero:
+            <select
+              id="selectOption"
+              value={ selectedGenre }
+              onChange={ onSelectedGenreChange }
+              data-testid="select-input"
+            >
               <option value="" data-testid="select-option">Todos</option>
               <option value="action" data-testid="select-option">Ação</option>
               <option value="comedy" data-testid="select-option">Comédia</option>
@@ -48,8 +53,8 @@ SearchBar.propTypes = {
   onSearchTextChange: PropTypes.func.isRequired,
   bookmarkedOnly: PropTypes.bool.isRequired,
   onBookmarkedChange: PropTypes.func.isRequired,
-  // selectedGenre: PropTypes.string.isRequired,
-  // onSelectedGenreChange: PropTypes.func.isRequired,
+  selectedGenre: PropTypes.string.isRequired,
+  onSelectedGenreChange: PropTypes.func.isRequired,
 };
 
 export default SearchBar;
