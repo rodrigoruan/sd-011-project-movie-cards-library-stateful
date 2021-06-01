@@ -128,8 +128,8 @@ body {
 .add-movie-form :nth-child( 8 ) {
   align-self: center;
   border-radius: 8px;
-  padding: 5px;
   max-width: 200px;
+  padding: 5px;
 }
 
 .add-movie-labels {
