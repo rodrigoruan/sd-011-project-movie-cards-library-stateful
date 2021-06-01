@@ -1,19 +1,51 @@
 // implement AddMovie component here
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import Input from './Input';
 import TextArea from './TextArea';
 import Rating from './Rating';
 import Select from './Select';
 
 class AddMovie extends Component {
+  constructor() {
+    super();
+    this.state = {
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    };
+    this.handleInfo = this.handleInfo.bind(this);
+    this.onClick = this.onClick.bind(this);
+  }
+
+  handleInfo({ target }) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState(({
+      [name]: value,
+    }));
+  }
+
+  onClick({ target }) {
+    console.log(target);
+    this.setState(({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    }));
+  }
+
   render() {
-    const { func, title, subtitle, imagePath,
-      storyline, rating, genre, onClick } = this.props;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
         <Input
-          handler={ func }
+          handler={ this.handleInfo }
           text="Título"
           dataLabel="title-input-label"
           dataInput="title-input"
@@ -21,7 +53,7 @@ class AddMovie extends Component {
           name="title"
         />
         <Input
-          handler={ func }
+          handler={ this.handleInfo }
           text="Subtítulo"
           dataLabel="subtitle-input-label"
           dataInput="title-input"
@@ -29,20 +61,20 @@ class AddMovie extends Component {
           name="subtitle"
         />
         <Input
-          handler={ func }
+          handler={ this.handleInfo }
           text="Imagem"
           dataLabel="image-input-label"
           dataInput="image-input"
           value={ imagePath }
           name="imagePath"
         />
-        <TextArea value={ storyline } onChange={ func } />
-        <Rating handler={ func } value={ rating } />
-        <Select handler={ func } value={ genre } />
+        <TextArea value={ storyline } onChange={ this.handleInfo } />
+        <Rating handler={ this.handleInfo } value={ rating } />
+        <Select handler={ this.handleInfo } value={ genre } />
         <button
           type="reset"
           data-testid="send-button"
-          onClick={ onClick }
+          onClick={ this.onClick }
         >
           Adicionar filme
         </button>
@@ -51,14 +83,3 @@ class AddMovie extends Component {
   }
 }
 export default AddMovie;
-
-AddMovie.propTypes = {
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
-  storyline: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
-  imagePath: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  func: PropTypes.func.isRequired,
-  onClick: PropTypes.func.isRequired,
-};
