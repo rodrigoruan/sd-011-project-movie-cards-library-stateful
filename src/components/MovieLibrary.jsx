@@ -15,6 +15,7 @@ class MovieLibrary extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleFilter = this.handleFilter.bind(this);
+    this.renderCardMovie = this.renderCardMovie.bind(this);
   }
 
   handleChange({ target }) {
@@ -44,6 +45,13 @@ class MovieLibrary extends Component {
     });
   }
 
+  renderCardMovie(newMovie) {
+    const { movies } = this.state;
+    this.setState({
+      movies: [...movies, newMovie],
+    });
+  }
+
   render() {
     const { movies, searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
@@ -58,7 +66,7 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={ this.handleChange }
         />
         <MovieList movies={ movies } />
-        <AddMovie onClick={ (teste) => console.log(teste) } />
+        <AddMovie onClick={ this.renderCardMovie } />
       </div>
     );
   }
