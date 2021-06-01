@@ -29,7 +29,7 @@ class AddMovie extends React.Component {
       genre: 'action',
     });
   }
-  
+
   addMovieFunction(event) {
     const { id, value } = event.target;
     this.setState({
@@ -38,9 +38,7 @@ class AddMovie extends React.Component {
   }
 
   render() {
-    const {
-      title,
-      subtitle,
+    const { title, subtitle,
       imagePath,
       storyline,
       rating,
