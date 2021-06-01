@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class AddMovieTitle extends Component {
+class AddMovieSubtitle extends Component {
   constructor() {
     super();
 
@@ -11,7 +11,7 @@ class AddMovieTitle extends Component {
     this.createSubtitle = this.createSubtitle.bind(this);
   }
 
-  createSubsubtitle(event) {
+  createSubtitle(event) {
     this.setState({ subtitle: event.target.value });
   }
 
@@ -32,4 +32,4 @@ class AddMovieTitle extends Component {
   }
 }
 
-export default AddMovieTitle;
+export default AddMovieSubtitle;

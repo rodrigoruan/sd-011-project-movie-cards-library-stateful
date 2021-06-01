@@ -8,7 +8,22 @@ import AddMovieImage from './AddMovieImage';
 import AddMovieGenre from './AddMovieGenre';
 
 class AddMovie extends React.Component {
+  constructor() {
+    super();
+
+    this.createANewMovie = this.createANewMovie.bind(this);
+
+    this.state = {
+      button: '',
+    };
+  }
+
+  createANewMovie() {
+    this.setState({ button: 'Oi clicaram em mim' });
+  }
+
   render() {
+    const { button } = this.state;
     return (
       <form data-testid="add-movie-form">
         <AddMovieTitle />
@@ -17,6 +32,13 @@ class AddMovie extends React.Component {
         <AddMovieRating />
         <AddMovieGenre />
         <AddMovieImage />
+        <button
+          type="button"
+          data-testid="send-button"
+          onClick={ this.createANewMovie }
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class AddMovieTitle extends Component {
+class AddMovieStoryline extends Component {
   constructor() {
     super();
 
@@ -31,4 +31,4 @@ class AddMovieTitle extends Component {
   }
 }
 
-export default AddMovieTitle;
+export default AddMovieStoryline;
