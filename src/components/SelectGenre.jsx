@@ -7,7 +7,10 @@ class SelectGenre extends Component {
       inputFunction
     } = this.props;
     return (
-      <label data-testid="genre-input-label">
+      <label
+        data-testid="genre-input-label"
+        htmlFor="genre-input"
+      >
         Gênero
         <select
           name="genre"

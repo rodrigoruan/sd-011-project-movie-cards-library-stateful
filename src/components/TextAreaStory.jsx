@@ -2,9 +2,15 @@ import React, { Component } from "react";
 
 class TextAreaStory extends Component {
   render() {
-    const { value, inputFunction } = this.props;
+    const {
+      value,
+      inputFunction
+    } = this.props;
     return (
-      <label data-testid="storyline-input-label">
+      <label
+        data-testid="storyline-input-label"
+        htmlFor="storyline-input"
+      >
         Sinopse
         <textarea
           name="storyLine"

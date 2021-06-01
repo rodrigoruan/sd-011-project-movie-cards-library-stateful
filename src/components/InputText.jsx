@@ -11,7 +11,10 @@ class Inputs extends Component {
       inputFunction
     } = this.props;
     return (
-      <label data-testid={ labelData }>
+      <label
+        data-testid={ labelData }
+        htmlFor={ inputData }
+      >
         { labelText }
         <input
           name={ inputName }
