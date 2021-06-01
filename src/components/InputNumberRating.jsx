@@ -10,7 +10,7 @@ class InputNumber extends Component {
     return (
       <label
         htmlFor="rating-input"
-        labelData="rating-input-label"
+        data-testid="rating-input-label"
       >
         Avaliação
         <input
@@ -20,7 +20,6 @@ class InputNumber extends Component {
           value={ inputValue }
           onChange={ inputFunction }
         />
-        <br />
       </label>
     );
   }

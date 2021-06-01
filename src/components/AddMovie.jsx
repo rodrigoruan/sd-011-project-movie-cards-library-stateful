@@ -3,6 +3,7 @@ import InputText from './InputText';
 import SelectGenre from './SelectGenre';
 import TextAreaStory from './TextAreaStory';
 import InputNumber from './InputNumberRating';
+import PropTypes from 'prop-types';
 
 class AddMovie extends Component {
   constructor() {
@@ -76,5 +77,9 @@ class AddMovie extends Component {
     );
   }
 }
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 export default AddMovie;
