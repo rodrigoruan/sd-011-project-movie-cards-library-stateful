@@ -37,6 +37,12 @@ export default class MovieLibrary extends Component {
     return filteredM;
   }
 
+  newMovie(e) {
+    this.setState((lastMovies) => ({
+      movies: [...lastMovies.movies, e],
+    }));
+  }
+
   changeState({ target }) {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -60,7 +66,7 @@ export default class MovieLibrary extends Component {
           searchText={ searchText }
         />
         <MovieList movies={ this.filterMovies() } />
-        <AddMovie />
+        <AddMovie onClick={ this.newMovie } />
       </div>
     );
   }
