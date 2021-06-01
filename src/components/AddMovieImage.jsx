@@ -9,7 +9,7 @@ class AddMovieImage extends Component {
         Imagem:
         <input
           data-testid="image-input"
-          name="image"
+          name="imagePath"
           type="text"
           value={ imagePath }
           onChange={ handleChange }
