@@ -1,14 +1,28 @@
 import React, { Component } from 'react';
 
 export default class AddMovie extends Component {
+  // constructor() {
+  //   super();
+
+  //   this.state = {
+  //     subtitle: '',
+  //     title: '',
+  //     imagePath: '',
+  //     storyline: '',
+  //     rating: 0,
+  //     genre: 'action',
+  //   };
+  // }
+
   render() {
     return (
-      <form data-test-id="add-movie-form">
+      <form data-testid="add-movie-form">
         <label htmlFor="title-input" data-testid="title-input-label">
           Título
           <input
             type="text"
             data-testid="title-input"
+            value=""
           />
         </label>
         <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
@@ -24,6 +38,7 @@ export default class AddMovie extends Component {
           <textarea data-testid="storyline-input" />
         </label>
         <label htmlFor="rating-input" data-testid="rating-input-label">
+          Avaliação
           <input
             type="number"
             data-testid="rating-input"
@@ -32,8 +47,8 @@ export default class AddMovie extends Component {
         <label htmlFor="genre-input" data-testid="genre-input-label">
           Gênero
           <select
-            value={ selectedGenre }
-            onChange={ onSelectedGenreChange }
+            value=""
+            onChange=""
             data-testid="genre-input"
           >
             <option data-testid="genre-option" value="">Todos</option>
