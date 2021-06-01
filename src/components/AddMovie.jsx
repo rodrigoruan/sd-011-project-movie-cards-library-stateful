@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MovieCardTitle from './MovieCardTitle';
 
 export default class AddMovie extends Component {
   constructor() {
@@ -21,23 +22,10 @@ export default class AddMovie extends Component {
   render() {
     return (
       <form data-testid="add-movie-form">
-        <label htmlFor="title-input" data-testid="title-input-label">
-          Título
-          <input
-            name="title"
-            type="text"
-            data-testid="title-input"
-            onChange={ this.handleEvents }
-          />
-        </label>
+        <MovieCardTitle handleEvents={ this.handleEvents } />
         <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
           Subtítulo
-          <input 
-            name="subtitle"
-            type="text"
-            data-testid="subtitle-input"
-            onChange={ this.handleEvents }
-           />
+          <input name="subtitle" type="text" data-testid="subtitle-input" onChange={ this.handleEvents } />
         </label>
         <label htmlFor="image-input" data-testid="image-input-label">
           Imagem
