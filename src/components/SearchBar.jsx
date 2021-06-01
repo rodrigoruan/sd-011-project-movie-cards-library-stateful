@@ -6,8 +6,8 @@ class SerarchBar extends React.Component {
     const {
       searchText,
       onSearchTextChange,
-      // bookmarkedOnly,
-      // onBookmarkedChange,
+      bookmarkedOnly,
+      onBookmarkedChange,
       // selectedGenre,
       // onSelectedGenreChange,
     } = this.props;
@@ -24,6 +24,16 @@ class SerarchBar extends React.Component {
               value={ searchText }
             />
           </label>
+          <label htmlFor="checkbox" data-testid="checkbox-input-label">
+            Mostrar somente favoritos
+            <input
+              type="checkbox"
+              id="checkbox"
+              onChange={ onBookmarkedChange }
+              checked={ bookmarkedOnly }
+              data-testid="checkbox-input"
+            />
+          </label>
         </form>
       </div>
     );
@@ -33,10 +43,10 @@ class SerarchBar extends React.Component {
 SerarchBar.propTypes = {
   searchText: PropTypes.string.isRequired,
   onSearchTextChange: PropTypes.string.isRequired,
-//   bookmarkedOnly: PropTypes.string,
-//   onBookmarkedChange: PropTypes.string,
-//   selectedGenre: PropTypes.string,
-//   onSelectedGenreChange: PropTypes.string,
+  bookmarkedOnly: PropTypes.string.isRequired,
+  onBookmarkedChange: PropTypes.string.isRequired,
+  //   selectedGenre: PropTypes.string,
+  //   onSelectedGenreChange: PropTypes.string,
 };
 
 export default SerarchBar;
