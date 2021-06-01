@@ -6,6 +6,7 @@ import ImageInput from './ImageInput';
 import GenreInput from './GenreInput';
 import RatingInput from './RatingInput';
 import StoryLineInput from './StoryLineInput';
+import SubmitInput from './SubmitInput';
 
 class AddMovie extends React.Component {
   constructor(props) {
@@ -22,8 +23,17 @@ class AddMovie extends React.Component {
     };
   }
 
-  handleSubmit({ target }) {
-    console.log(target);
+  handleSubmit() {
+    const newCardMovie = this.state;
+    console.log(newCardMovie);
+    this.setState({
+      subtitle: 'teste',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
   }
 
   handleInput({ target }) {
@@ -44,16 +54,7 @@ class AddMovie extends React.Component {
         <StoryLineInput handleInput={ handleInput } storyline={ storyline } />
         <RatingInput handleInput={ handleInput } rating={ rating } />
         <GenreInput handleInput={ handleInput } genre={ genre } />
-        <div>
-          <label htmlFor="send-button">
-            <input
-              type="submit"
-              value="Adicionar Filme"
-              data-testid="send-button"
-              onClick={ handleSubmit }
-            />
-          </label>
-        </div>
+        <SubmitInput handleSubmit={ handleSubmit } />
       </form>
     );
   }
