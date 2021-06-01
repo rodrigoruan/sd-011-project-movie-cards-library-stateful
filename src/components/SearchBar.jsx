@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 
 class SearchBar extends Component {
   render() {
-    const { searchText,
-      onSearchTextChange, bookmarkedOnly, onBookmarkedChange } = this.props;
+    const { searchText, onSearchTextChange, bookmarkedOnly,
+      onBookmarkedChange } = this.props;
     return (
       <div>
         <form data-testid="search-bar-form">
           <label htmlFor="textInput" data-testid="text-input-label">
-            Inclui o texto
+            Inclui o texto:
             <input
               id="textInput"
               value={ searchText }
@@ -19,17 +19,17 @@ class SearchBar extends Component {
             />
           </label>
           <label htmlFor="checkboxInput" data-testid="checkbox-input-label">
-            Mostrar somente favoritos
+            Mostrar somente favoritos:
             <input
               id="checkboxInput"
               type="checkbox"
-              value={ bookmarkedOnly }
+              checked={ bookmarkedOnly }
               onChange={ onBookmarkedChange }
               data-testid="checkbox-input"
             />
           </label>
           <label htmlFor="selectOption" data-testid="select-input-label">
-            Filtrar po gênero
+            Filtrar po gênero:
             <select id="selectOption" value="selectedGenre" data-testid="select-input">
               <option value="" data-testid="select-option">Todos</option>
               <option value="action" data-testid="select-option">Ação</option>
