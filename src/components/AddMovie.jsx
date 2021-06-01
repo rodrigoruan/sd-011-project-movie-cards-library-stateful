@@ -1,7 +1,13 @@
-// implement AddMovie component here
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import TitleGroup from './TitleGroup';
+import SubtitleGroup from './SubtitleGroup';
+import ImageGroup from './ImageGroup';
+import StorylineGroup from './StorylineGroup';
+import RatingGroup from './RatingGroup';
+import GenderGroup from './GenderGroup';
+import SubmitButton from './SubmitButton';
 
 export default class AddMovie extends Component {
   constructor(props) {
@@ -40,92 +46,21 @@ export default class AddMovie extends Component {
   };
 
   render() {
+    const { title, subtitle, imagePath, storyline, rating, gender } = this.state;
     return (
-      <Form onSubmit={this.handleSubmit} data-testid="add-movie-form" className="col">
-        <Form.Group>
-          <Form.Label data-testid="title-input-label">Título</Form.Label>
-          <Form.Control
-            name="title"
-            onChange={this.handleAction}
-            value={this.state.title}
-            data-testid="title-input"
-            type="text"
-            placeholder="ex: A volta dos que não foram"
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label data-testid="subtitle-input-label">Subtítulo</Form.Label>
-          <Form.Control
-            name="subtitle"
-            value={this.state.subtitle}
-            onChange={this.handleAction}
-            data-testid="subtitle-input"
-            type="text"
-            placeholder="ex: O desenrolar dos enrolado"
-          />
-        </Form.Group>{' '}
-        <Form.Group>
-          <Form.Label data-testid="image-input-label">Imagem</Form.Label>
-          <Form.Control
-            name="imagePath"
-            value={this.state.imagePath}
-            onChange={this.handleAction}
-            data-testid="image-input"
-            type="text"
-            placeholder="ex: https://image.jpg"
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label data-testid="storyline-input-label">Sinopse</Form.Label>
-          <Form.Control
-            name="storyline"
-            value={this.state.storyline}
-            onChange={this.handleAction}
-            data-testid="storyline-input"
-            as="textarea"
-            type="text"
-          />
-        </Form.Group>{' '}
-        <Form.Group>
-          <Form.Label data-testid="rating-input-label">Avaliação</Form.Label>
-          <Form.Control
-            name="rating"
-            value={this.state.rating}
-            onChange={this.handleAction}
-            data-testid="rating-input"
-            className="movieRating"
-            step="0.1"
-            type="number"
-            min="0"
-            max="5"
-          />
-        </Form.Group>
-        <Form.Group className="genderMovieInput">
-          <Form.Label data-testid="genre-input-label">Gênero</Form.Label>
-          <Form.Control
-            name="genre"
-            value={this.state.genre}
-            onChange={this.handleAction}
-            data-testid="genre-input"
-            as="select"
-          >
-            <option value="action" data-testid="genre-option">
-              Ação
-            </option>
-            <option value="comedy" data-testid="genre-option">
-              Comédia
-            </option>
-            <option value="thriller" data-testid="genre-option">
-              Suspense
-            </option>
-          </Form.Control>
-        </Form.Group>
-        <Form.Group>
-          <Button data-testid="send-button" type="submit" onClick={this.handleSubmit}>
-            Adicionar filme
-          </Button>
-        </Form.Group>
+      <Form onSubmit={ this.handleSubmit } data-testid="add-movie-form" className="col">
+        <TitleGroup onChange={ this.handleAction } value={ title } />
+        <SubtitleGroup onChange={ this.handleAction } value={ subtitle } />
+        <ImageGroup onChange={ this.handleAction } value={ imagePath } />
+        <StorylineGroup onChange={ this.handleAction } value={ storyline } />
+        <RatingGroup onChange={ this.handleAction } value={ rating } />
+        <GenderGroup onChange={ this.handleAction } value={ gender } />
+        <SubmitButton onChange={ this.handleSubmit } />
       </Form>
     );
   }
 }
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
