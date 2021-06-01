@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import AddTitle from './AddTitle';
+import AddSubtitle from './AddSubtitle';
 
 class AddMovie extends React.Component {
   // constructor() {
@@ -8,33 +10,12 @@ class AddMovie extends React.Component {
   // }
 
   render() {
-    const { handleTitle, title } = this.props;
-    const { handleSubtitle, subtitle } = this.props;
     const { imagePath, handleImage } = this.props;
+    const { handleSinopse, sinopse } = this.props;
     return (
       <form data-testid="add-movie-form">
-        <label htmlFor="input-title" data-testid="title-input-label">
-          Título
-          <input
-            type="text"
-            name=""
-            id=""
-            value={ title }
-            data-testid="title-input"
-            onChange={ handleTitle }
-          />
-        </label>
-        <label htmlFor="input-subtitle" data-testid="subtitle-input-label">
-          Subtítulo
-          <input
-            type="text"
-            name=""
-            id=""
-            value={ subtitle }
-            data-testid="subtitle-input"
-            onChange={ handleSubtitle }
-          />
-        </label>
+        <AddTitle />
+        <AddSubtitle />
         <label htmlFor="imput-image" data-testid="image-input-label">
           Imagem
           <input
@@ -46,18 +27,29 @@ class AddMovie extends React.Component {
             onChange={ handleImage }
           />
         </label>
+        <label htmlFor="textarea" data-testid="storyline-input-label">
+          Sinopse
+          <textarea
+            name=""
+            id=""
+            cols="30"
+            rows="10"
+            data-testid="storyline-input"
+            onChange={ handleSinopse }
+          >
+            { sinopse }
+          </textarea>
+        </label>
       </form>
     );
   }
 }
 
 AddMovie.propTypes = {
-  handleTitle: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
-  handleSubtitle: PropTypes.func.isRequired,
-  subtitle: PropTypes.string.isRequired,
   imagePath: PropTypes.string.isRequired,
   handleImage: PropTypes.func.isRequired,
+  handleSinopse: PropTypes.func.isRequired,
+  sinopse: PropTypes.string.isRequired,
 };
 
 export default AddMovie;
