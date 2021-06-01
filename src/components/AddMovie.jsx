@@ -2,8 +2,8 @@
 import React from 'react';
 
 class AddMovie extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
     this.handleChangesubTitle = this.handleChangesubTitle.bind(this);
@@ -59,9 +59,10 @@ class AddMovie extends React.Component {
     });
   }
 
-  handleSubmit(event) { //NAO ENTEDI ISSO DAQUI, DA UMA VOLTA INTERA PARA SER UMA FUNCAO XULÉ ?
+  handleSubmit(event) {
     event.preventDefault();
     const { onClick } = this.props;
+    onClick(this.state);
     this.setState({
       title: '',
       subtitle: '',
@@ -70,7 +71,6 @@ class AddMovie extends React.Component {
       rating: 0,
       genre: 'action',
     });
-    onClick();
   }
 
   render() {
@@ -109,8 +109,8 @@ class AddMovie extends React.Component {
             Sinopse
             <textarea
               id="storyline"
-              cols="30"
-              rows="10"
+              cols="25"
+              rows="1"
               value={ this.state.storyline }
               data-testid="storyline-input"
               onChange={ this.handleChangesubStoryline }
@@ -134,7 +134,7 @@ class AddMovie extends React.Component {
               <option data-testid="genre-option" value="thriller">Suspense</option>
             </select>
           </label>
-          <button type="submit" data-testid="send-button" onClick={this.handleSubmit}>Adicionar filme</button>
+          <button type="submit" data-testid="send-button" onClick={ this.handleSubmit }>Adicionar filme</button>
         </form>
       </div>
     );
