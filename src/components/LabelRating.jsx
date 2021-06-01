@@ -20,7 +20,7 @@ class LabelRating extends Component {
 }
 
 LabelRating.propTypes = {
-  value: PropTypes.number.isRequired,
+  value: PropTypes.string.isRequired,
   change: PropTypes.func.isRequired,
 };
 

@@ -1,5 +1,6 @@
 // implement AddMovie component here
 import React from 'react';
+// import PropTypes from 'prop-types';
 import LabelImagePath from './LabelImagePath';
 import LabelRating from './LabelRating';
 import LabelStoryLine from './LabelStoryline';
@@ -16,7 +17,7 @@ class AddMovie extends React.Component {
       imagePath: '',
       storyline: '',
       rating: 0,
-      // genre: 'action',
+      genre: 'action',
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -30,7 +31,7 @@ class AddMovie extends React.Component {
   }
 
   render() {
-    const { title, subtitle, imagePath, storyline, rating } = this.state;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
         <LabelTitle change={ this.handleChange } value={ title } />
@@ -38,6 +39,20 @@ class AddMovie extends React.Component {
         <LabelImagePath change={ this.handleChange } value={ imagePath } />
         <LabelStoryLine change={ this.handleChange } value={ storyline } />
         <LabelRating change={ this.handleChange } value={ rating } />
+        <label htmlFor="genreOption" data-testid="genre-input-label">
+          Gênero:
+          <select
+            name="genre"
+            id="genre-input"
+            value={ genre }
+            onChange={ this.handleChange }
+            data-testid="genre-input"
+          >
+            <option value="action" data-testid="genre-option">Ação</option>
+            <option value="comedy" data-testid="genre-option">Comédia</option>
+            <option value="thriller" data-testid="genre-option">Suspense</option>
+          </select>
+        </label>
       </form>
     );
   }
