@@ -20,8 +20,8 @@ class NumberRating extends React.Component {
 }
 
 NumberRating.propTypes = {
-  changeState: PropTypes.isRequired,
-  rating: PropTypes.isRequired,
+  changeState: PropTypes.func.isRequired,
+  rating: PropTypes.number.isRequired,
 };
 
 export default NumberRating;
