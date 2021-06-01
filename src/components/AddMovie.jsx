@@ -49,7 +49,7 @@ class AddMovie extends React.Component {
   render() {
     const { title, subtitle, storyline, rating, imagePath, genre } = this.state;
     return (
-      <div>
+      <form data-testid="add-movie-form">
         <label htmlFor="title">
           <input
             type="text"
@@ -93,7 +93,7 @@ class AddMovie extends React.Component {
             onChange={ this.createGenre }
           />
         </label>
-      </div>
+      </form>
     );
   }
 }

@@ -31,6 +31,10 @@ class App extends Component {
     this.setState({ genre: event.target.value });
   }
 
+  createNewMovieItem() {
+    console.log('Clicaram em mim =D');
+  }
+
   render() {
     const { text, favorite, genre } = this.state;
     return (
@@ -44,7 +48,7 @@ class App extends Component {
           selectedGenre={ genre }
           onSelectedGenreChange={ this.searchGenre }
         />
-        <AddMovie onClick={ console.log('oi') } />
+        <AddMovie onChange={ this.createNewMovieItem } />
       </div>
     );
   }
