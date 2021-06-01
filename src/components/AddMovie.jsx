@@ -5,6 +5,7 @@ import RatingFormItem from './RatingFormItem';
 import StoryLine from './StoryLine';
 import Subtitle from './Subtitle';
 import Title from './Titulo';
+import MovieGenre from './MovieGenre';
 
 class AddMovie extends Component {
   constructor() {
@@ -28,6 +29,17 @@ class AddMovie extends Component {
     });
   }
 
+  reset() {
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyLine: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
+
   render() {
     const { onClick } = this.props;
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
@@ -38,18 +50,7 @@ class AddMovie extends Component {
         <Image value={ imagePath } handlerChange={ this.handlerChange } />
         <StoryLine value={ storyline } handlerChange={ this.handlerChange } />
         <RatingFormItem value={ rating } handlerChange={ this.handlerChange } />
-        <label htmlFor="genre-input" data-testid="genre-input-label">
-          Gênero
-          <select
-            value={ genre }
-            data-testid="genre-input"
-            onChange={ this.handlerChange }
-          >
-            <option value="action" data-testid="genre-option">Ação</option>
-            <option value="comedy" data-testid="genre-option">Comédia</option>
-            <option value="thriller" data-testid="genre-option">Suspense</option>
-          </select>
-        </label>
+        <MovieGenre value={ genre } handlerChange={ this.handlerChange } />
         <button
           type="button"
           data-testid="send-button"
