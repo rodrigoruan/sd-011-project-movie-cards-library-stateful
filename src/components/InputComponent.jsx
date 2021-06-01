@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class InputComponent extends Component {
   render() {
     const { info, subtitle, title, imagePath, rating, handleChange } = this.props;
-    const value = [subtitle, title, imagePath, rating];
+    const value = { subtitle, title, imagePath, rating };
     return (
       <div>
         { info.map((input) => (
