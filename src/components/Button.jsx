@@ -2,12 +2,12 @@ import React from 'react';
 
 class Button extends React.Component {
   render() {
-    const { onClick, cleanState } = this.props;
+    const { onClick, cleanState, newMovie} = this.props;
     return (
       <button
         data-testid="send-button"
         onClick={ () => {
-          onClick();
+          onClick(newMovie);
           cleanState();
         } }
         type="button"

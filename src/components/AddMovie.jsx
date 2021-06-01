@@ -50,7 +50,7 @@ class AddMovie extends React.Component {
         <Storyline value={ storyline } handleChange={ this.handleChange } />
         <RatingComponent value={ rating } handleChange={ this.handleChange } />
         <Genre value={ genre } handleChange={ this.handleChange } />
-        <Button onClick={ onClick } cleanState={ this.cleanState } />
+        <Button onClick={ onClick } cleanState={ this.cleanState } newMovie={this.state}/>
       </form>
     );
   }
