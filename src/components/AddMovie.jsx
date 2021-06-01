@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import AddMovieSubtitle from './AddMovieSubtitle';
 
 export default class AddMovie extends Component {
   constructor(props) {
@@ -39,6 +40,7 @@ export default class AddMovie extends Component {
               data-testid="title-input"
             />
           </label>
+          <AddMovieSubtitle value={ subtitle } handleChange={ this.handleChange } />
         </form>
 
       </section>
