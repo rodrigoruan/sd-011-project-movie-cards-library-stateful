@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 class AddMovie extends Component {
   constructor(props) {
@@ -8,9 +7,9 @@ class AddMovie extends Component {
       subtitle: '',
       title: '',
       imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
+      // storyline: '',
+      // rating: 0,
+      // genre: 'action',
     };
     this.updateState = this.updateState.bind(this);
   }
@@ -23,8 +22,7 @@ class AddMovie extends Component {
   }
 
   render() {
-    const { title, subtitle } = this.state;
-    // const { onClick } = this.props;
+    const { title, subtitle, imagePath } = this.state;
     return (
       <form data-testid="add-movie-form">
         <label
@@ -53,17 +51,22 @@ class AddMovie extends Component {
             name={ subtitle }
           />
         </label>
+        <label
+          htmlFor="imageInput"
+          data-testid="image-input-label"
+        >
+          Imagem
+          <input
+            type="text"
+            id="imageInput"
+            data-testid="image-input"
+            onChange={ this.updateState }
+            name={ imagePath }
+          />
+        </label>
       </form>
     );
   }
 }
-
-AddMovie.defaultProps = {
-  onClick: () => {},
-};
-
-AddMovie.propTypes = {
-  onClick: PropTypes.func,
-};
 
 export default AddMovie;
