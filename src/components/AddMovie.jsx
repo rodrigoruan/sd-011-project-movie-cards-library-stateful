@@ -1,5 +1,6 @@
 // implement AddMovie component here
 import React from 'react';
+import PropTypes from 'prop-types';
 import Title from './Title';
 import Subtitle from './Subtitle';
 import Image from './Image';
@@ -10,8 +11,6 @@ import Rating from './Note';
 class AddMovie extends React.Component {
   constructor(props) {
     super(props);
-
-    // const { onClick } = props;
 
     this.state = {
       title: '',

@@ -4,17 +4,16 @@ import PropTypes from 'prop-types';
 import MovieList from './MovieList';
 import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
-import movie from '../data';
 
 class MovieLibrary extends Component {
   constructor(props) {
     super(props);
 
-    this.props = {
+    this.state = {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
-      movies: movie,
+      movies: props.movies,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -28,11 +27,16 @@ class MovieLibrary extends Component {
   }
 
   render() {
-    const { movies } = this.props;
+    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
     return (
       <div>
         <h2> My awesome movie library </h2>
-        <SearchBar onChange={ this.handleChange } />
+        <SearchBar
+          onChange={ this.handleChange }
+          bookmarkedOnly={ bookmarkedOnly }
+          searchText={ searchText }
+          selectedGenre={ selectedGenre }
+        />
         <MovieList movies={ movies } />
         <AddMovie onClick={ (teste) => console.log(teste) } />
       </div>
