@@ -1,5 +1,6 @@
 // implement AddMovie component here
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class AddMovie extends Component {
   constructor() {
@@ -14,12 +15,26 @@ export default class AddMovie extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.btnClick = this.btnClick.bind(this);
   }
 
   handleChange({ target }) {
     const { name, value } = target;
     this.setState({
       [name]: value,
+    });
+  }
+
+  btnClick() {
+    const { onClick } = this.props;
+    onClick(this.state);
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
     });
   }
 
@@ -35,8 +50,24 @@ export default class AddMovie extends Component {
     );
   }
 
+  renderSelect() {
+    const { genre } = this.state;
+    return (
+      <select
+        name="genre"
+        value={ genre }
+        data-testid="genre-input"
+        onChange={ this.handleChange }
+      >
+        <option data-testid="genre-option" value="action">Ação</option>
+        <option data-testid="genre-option" value="comedy">Comédia</option>
+        <option data-testid="genre-option" value="thriller">Suspense</option>
+      </select>
+    );
+  }
+
   render() {
-    const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
+    const { subtitle, title, imagePath, storyline, rating } = this.state;
     return (
       <form data-testid="add-movie-form">
         <label htmlFor="title-input" data-testid="title-input-label">
@@ -53,7 +84,12 @@ export default class AddMovie extends Component {
         </label>
         <label htmlFor="storyline-input" data-testid="storyline-input-label">
           <span>Sinopse</span>
-          { this.renderInputAtributte('storyline', 'textarea', storyline)}
+          <textarea
+            name="storyline"
+            value={ storyline }
+            data-testid="storyline-input"
+            onChange={ this.handleChange }
+          />
         </label>
         <label htmlFor="rating-input" data-testid="rating-input-label">
           <span>Avaliação</span>
@@ -61,18 +97,20 @@ export default class AddMovie extends Component {
         </label>
         <label htmlFor="genre-input" data-testid="genre-input-label">
           <span>Gênero</span>
-          <select
-            name="genre"
-            value={ genre }
-            data-testid="genre-input"
-            onChange={ this.handleChange }
-          >
-            <option data-testid="genre-option" value="action">Ação</option>
-            <option data-testid="genre-option" value="comedy">Comédia</option>
-            <option data-testid="genre-option" value="thriller">Suspense</option>
-          </select>
+          { this.renderSelect() }
         </label>
+        <button
+          type="button"
+          data-testid="send-button"
+          onClick={ this.btnClick }
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }
 }
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
