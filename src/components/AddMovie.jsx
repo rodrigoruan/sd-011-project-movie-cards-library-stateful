@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -20,7 +21,7 @@ class AddMovie extends React.Component {
     const { name } = target;
     const { value } = target;
     this.setState({
-      [name]: value,
+      [name]: target.type === 'checkbox' ? target.checked : value,
     });
   }
 
@@ -70,6 +71,39 @@ class AddMovie extends React.Component {
             data-testid="storyline-input"
             onChange={ this.handleChange }
           />
+        </label>
+
+        <label htmlFor="rating" data-testid="rating-input-label">
+          Avaliação
+          <input
+            type="number"
+            name="rating"
+            value={ rating }
+            data-testid="rating-input"
+            onChange={ this.handleChange }
+            max="10"
+            min="0"
+          />
+        </label>
+
+        <label htmlFor="select-genre" data-testid="genre-input-label">
+          Gênero
+          <select
+            value={ genre }
+            data-testid="genre-input"
+            onChange={ this.handleChange }
+            name="genre"
+          >
+            <option value="action" data-testid="genre-option">
+              Ação
+            </option>
+            <option value="comedy" data-testid="genre-option">
+              Comédia
+            </option>
+            <option value="thriller" data-testid="genre-option">
+              Suspense
+            </option>
+          </select>
         </label>
       </form>
     );
