@@ -24,6 +24,10 @@ export default class AddMovie extends Component {
     });
   }
 
+  // handleClick({ target }) {
+  //   const {} = target;
+  // }
+
   render() {
     return (
       <form data-testid="add-movie-form">
@@ -36,7 +40,7 @@ export default class AddMovie extends Component {
         <button
           type="submit"
           data-testid="send-button"
-          onClick={ this.handleEvents }
+          onClick={ this.handleClick }
         >
           Adicionar filme
         </button>
