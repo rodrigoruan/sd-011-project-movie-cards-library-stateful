@@ -1,9 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-class MovieLibrary extends Component {
+class MovieLibrary extends React.Component {
   render() {
-    return (<h1> Minha lista de filmes</h1>);
+    const { movies } = this.props;
+    return (
+      <h1>
+        { movies[0].title }
+      </h1>
+    );
   }
 }
 
 export default MovieLibrary;
+
+MovieLibrary.propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
