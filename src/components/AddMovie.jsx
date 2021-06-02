@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const initialState = {
+  subtitle: '',
+  title: '',
+  imagePath: '',
+  storyline: '',
+  rating: 0,
+  genre: 'action',
+};
 class AddMovie extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      subtitle: '',
-      title: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
-    };
+    this.state = initialState;
     this.handleChange = this.handleChange.bind(this);
     this.resetStateAddNewMovie = this.resetStateAddNewMovie.bind(this);
   }
@@ -146,14 +147,7 @@ class AddMovie extends React.Component {
     e.preventDefault();
     const { onClick } = this.props;
     onClick(this.state);
-    this.setState({
-      subtitle: '',
-      title: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
-    });
+    this.setState(initialState);
   }
 
   buttonAddMovie() {
