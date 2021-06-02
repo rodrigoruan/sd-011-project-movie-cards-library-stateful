@@ -11,7 +11,7 @@ class SearchBar extends Component {
       selectedGenre, onSelectedGenreChange } = this.props;
     return (
       <form data-testid="search-bar-form">
-        <InputText srtTxt={ searchText } srcOnCh={ onSearchTextChange } />
+        <InputText searchText={ searchText } srcOnCh={ onSearchTextChange } />
         <InputCheckBox bkOnly={ bookmarkedOnly } srcbkOch={ onBookmarkedChange } />
         <SelectList slVl={ selectedGenre } evSl={ onSelectedGenreChange } />
       </form>
