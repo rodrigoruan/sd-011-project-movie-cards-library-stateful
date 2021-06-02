@@ -1,4 +1,3 @@
-// implement AddMovie component here
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Input from './Input';
@@ -40,7 +39,7 @@ class AddMovie extends Component {
     return (
       <form data-testid="add-movie-form">
         <Input
-          handler={ this.handleInfo }
+          onChange={ this.handleInfo }
           text="Título"
           dataLabel="title-input-label"
           dataInput="title-input"
@@ -48,7 +47,7 @@ class AddMovie extends Component {
           name="title"
         />
         <Input
-          handler={ this.handleInfo }
+          onChange={ this.handleInfo }
           text="Subtítulo"
           dataLabel="subtitle-input-label"
           dataInput="subtitle-input"
@@ -56,19 +55,19 @@ class AddMovie extends Component {
           name="subtitle"
         />
         <Input
-          handler={ this.handleInfo }
+          onChange={ this.handleInfo }
           text="Imagem"
           dataLabel="image-input-label"
           dataInput="image-input"
           value={ imagePath }
           name="imagePath"
         />
-        <TextArea value={ storyline } handler={ this.handleInfo } />
-        <InputNum value={ rating } handler={ this.handleInfo } />
-        <Select value={ genre } handler={ this.handleInfo } />
+        <TextArea value={ storyline } onChange={ this.handleInfo } />
+        <InputNum value={ rating } onChange={ this.handleInfo } />
+        <Select value={ genre } onChange={ this.handleInfo } />
         <button
-          data-testid="send-button"
           type="submit"
+          data-testid="send-button"
           onClick={ this.handleClick }
         >
           Adicionar filme
