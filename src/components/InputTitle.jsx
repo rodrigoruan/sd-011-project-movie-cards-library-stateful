@@ -21,7 +21,7 @@ class InputTitle extends React.Component {
 
 InputTitle.propTypes = {
   state: PropTypes.string,
-  func: PropTypes.func,
+  func: PropTypes.objectOf(),
 };
 
 InputTitle.defaultProps = {

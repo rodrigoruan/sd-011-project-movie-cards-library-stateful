@@ -17,6 +17,7 @@ class MovieLibrary extends Component {
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
+    this.createMovie = this.createMovie.bind(this);
   }
 
   async onSearchTextChange({ target }) {
@@ -40,7 +41,11 @@ class MovieLibrary extends Component {
     });
   }
 
-  createMovie() {
+  createMovie(objeto) {
+    const { movies } = this.state;
+    this.setState({
+      movies: movies.concat(objeto),
+    });
   }
 
   render() {
@@ -68,7 +73,7 @@ class MovieLibrary extends Component {
 }
 
 MovieLibrary.propTypes = {
-  movies: PropTypes.arrayOf(),
+  movies: PropTypes.arrayOf(PropTypes.object),
 };
 
 MovieLibrary.defaultProps = {

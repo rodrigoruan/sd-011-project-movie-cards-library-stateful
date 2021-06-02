@@ -21,7 +21,7 @@ class InputSubtitle extends React.Component {
 
 InputSubtitle.propTypes = {
   state: PropTypes.string,
-  func: PropTypes.func,
+  func: PropTypes.objectOf(),
 };
 
 InputSubtitle.defaultProps = {

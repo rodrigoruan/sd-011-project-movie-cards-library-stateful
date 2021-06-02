@@ -22,7 +22,7 @@ class InputStoryline extends React.Component {
 
 InputStoryline.propTypes = {
   state: PropTypes.string,
-  func: PropTypes.func,
+  func: PropTypes.objectOf(),
 };
 
 InputStoryline.defaultProps = {

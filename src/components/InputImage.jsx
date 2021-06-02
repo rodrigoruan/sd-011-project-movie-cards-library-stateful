@@ -21,7 +21,7 @@ class InputImage extends React.Component {
 
 InputImage.propTypes = {
   state: PropTypes.string,
-  func: PropTypes.func,
+  func: PropTypes.objectOf(),
 };
 
 InputImage.defaultProps = {

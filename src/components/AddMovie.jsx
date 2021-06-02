@@ -30,6 +30,16 @@ class AddMovie extends React.Component {
   }
 
   addMovie() {
+    const { onClick } = this.props;
+    onClick(this.state);
+    this.setState({
+      title: '',
+      subtitle: '',
+      storyline: '',
+      rating: 0,
+      imagePath: '',
+      genre: '',
+    });
   }
 
   render() {
@@ -80,5 +90,13 @@ class AddMovie extends React.Component {
     );
   }
 }
+
+AddMovie.propTypes = {
+  onClick: PropType.objectOf(),
+};
+
+AddMovie.defaultProps = {
+  onClick: '',
+};
 
 export default AddMovie;
