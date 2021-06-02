@@ -20,12 +20,12 @@ class InputRating extends React.Component {
 }
 
 InputRating.propTypes = {
-  state: PropTypes.string,
+  state: PropTypes.number,
   func: PropTypes.func,
 };
 
 InputRating.defaultProps = {
-  state: '',
+  state: 0,
   func: '',
 };
 
