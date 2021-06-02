@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Title from './Title';
-import Subtitle from './Subtitle';
-import ImagePath from './ImagePath';
-import Storyline from './Storyline';
+import Title from './components/Title';
+import Subtitle from './components/Subtitle';
+import ImagePath from './components/ImagePath';
+import Storyline from './components/Storyline';
 
 const emptyState = {
   title: '',
