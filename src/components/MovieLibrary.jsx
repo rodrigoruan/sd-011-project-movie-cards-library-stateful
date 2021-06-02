@@ -29,6 +29,7 @@ class MovieLibrary extends Component {
     }, () => this.filter(target));
   }
 
+  /* Filter e includes da primeira verificação resolvido com a ajuda do Tales Coelho */
   filter(target) {
     const { name, value } = target;
     const { movies } = this.props;
@@ -50,6 +51,7 @@ class MovieLibrary extends Component {
     });
   }
 
+  /* Função newMovie resolvida com a ajuda do Victor Santiago */
   newMovie(addMovie) {
     const { movies } = this.state;
     this.setState({
@@ -58,7 +60,7 @@ class MovieLibrary extends Component {
   }
 
   render() {
-    const { searchText, bookmarkedOnly, selectedGenre, movies: movies2 } = this.state;
+    const { searchText, bookmarkedOnly, selectedGenre, movies: movie } = this.state;
     return (
       <div>
         <h2> My awesome movie library </h2>
@@ -70,7 +72,7 @@ class MovieLibrary extends Component {
           bookmarkedOnly={ bookmarkedOnly }
           selectedGenre={ selectedGenre }
         />
-        <MovieList movies={ movies2 } />
+        <MovieList movies={ movie } />
         <AddMovie onClick={ this.newMovie } />
       </div>
     );
