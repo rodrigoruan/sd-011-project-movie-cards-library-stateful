@@ -33,7 +33,6 @@ class MovieLibrary extends Component {
   resulSearch() {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
     let resultSch = movies;
-
     if (bookmarkedOnly) resultSch = movies.filter(({ bookmarked }) => bookmarked);
     if (selectedGenre) resultSch = movies.filter(({ genre }) => genre === selectedGenre);
     if (searchText) {
@@ -46,9 +45,9 @@ class MovieLibrary extends Component {
     return resultSch;
   }
 
-  AddMoiveList(event) {
+  AddMoiveList(moviAdd) {
     const { movies } = this.state;
-    movies.push(event);
+    this.setState({ movies: [...movies, moviAdd] });
   }
 
   render() {
