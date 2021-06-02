@@ -7,13 +7,13 @@ class SearchBar extends Component {
       onBookmarkedChange, selectedGenre, onSelectedGenreChange } = this.props;
     return (
       <form data-testid="search-bar-form">
-        <label name="search" htmlFor="input-filter">
+        <label name="search" htmlFor="input-filter" data-testid="text-input-label">
           Inclui o texto:
           <input
             type="text"
             value={ searchText }
             onChange={ onSearchTextChange }
-            data-testid="text-input-label"
+            data-testid="text-input"
             id="input-filter"
           />
         </label>
