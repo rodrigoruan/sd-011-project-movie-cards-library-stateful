@@ -16,25 +16,29 @@ class AddMovie extends React.Component {
     const { imagePath, handleImage } = this.props;
     const { handleSinopse, sinopse } = this.props;
     return (
-      <form data-testid="add-movie-form">
+      <form data-testid="add-movie-form" id="add-movie-form">
         <AddTitle title={ title } />
         <AddSubtitle subtitle={ subtitle } />
-        <label htmlFor="imput-image" data-testid="image-input-label">
+        <label id="image-input-label" htmlFor="image" data-testid="image-input-label">
           Imagem
           <input
             type="text"
             name=""
-            id=""
+            id="image-input"
             value={ imagePath }
             data-testid="image-input"
             onChange={ handleImage }
           />
         </label>
-        <label htmlFor="textarea" data-testid="storyline-input-label">
+        <label
+          id="storyline-input-label"
+          htmlFor="textarea"
+          data-testid="storyline-input-label"
+        >
           Sinopse
           <textarea
             name=""
-            id=""
+            id="storyline-input'"
             cols="30"
             rows="10"
             data-testid="storyline-input"
@@ -49,10 +53,6 @@ class AddMovie extends React.Component {
 }
 
 AddMovie.propTypes = {
-  form: PropTypes.shape({
-    title: PropTypes.string,
-    subtitle: PropTypes.string,
-  }).isRequired,
   imagePath: PropTypes.string.isRequired,
   handleImage: PropTypes.func.isRequired,
   handleSinopse: PropTypes.func.isRequired,
