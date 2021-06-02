@@ -5,13 +5,16 @@ import AddMovie from './AddMovie';
 import MovieList from './MovieList';
 
 export default class MovieLibrary extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
+      movies: props.movies,
     };
+    this.rendleInput = this.rendleInput.bind(this);
+    this.filter = this.filter.bind(this);
   }
 
   rendleInput({ target }) {
@@ -22,8 +25,25 @@ export default class MovieLibrary extends Component {
     });
   }
 
+  filter() {
+    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+    let filteredMovies = movies;
+    if (searchText) {
+      filteredMovies = movies.filter(({
+        title,
+        subtitle,
+        storyline }) => `${title}${subtitle}${storyline}`.includes(searchText));
+    }
+    if (bookmarkedOnly) {
+      filteredMovies = filteredMovies.filter(({ bookmarked }) => bookmarked);
+    }
+    if (selectedGenre) {
+      filteredMovies = filteredMovies.filter(({ genre }) => genre === selectedGenre);
+    }
+    return filteredMovies;
+  }
+
   render() {
-    const { movies } = this.props;
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <div>
@@ -35,7 +55,7 @@ export default class MovieLibrary extends Component {
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.rendleInput }
         />
-        <MovieList movies={ movies } />
+        <MovieList movies={ this.filter() } />
         <AddMovie onClick={ () => {} } />
       </div>
     );

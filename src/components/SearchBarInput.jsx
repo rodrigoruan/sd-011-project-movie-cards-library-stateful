@@ -8,7 +8,7 @@ export default class SearchBarInput extends Component {
       <label htmlFor="text-input" data-testid="text-input-label">
         Inclui o texto:
         <input
-          name="text-input"
+          name="searchText"
           data-testid="text-input"
           type="text"
           value={ value }

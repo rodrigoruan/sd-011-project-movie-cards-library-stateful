@@ -8,7 +8,7 @@ export default class SearchBarCheckBox extends Component {
       <label htmlFor="checkbox-input" data-testid="checkbox-input-label">
         Mostrar somente favoritos
         <input
-          name="checkbox"
+          name="bookmarkedOnly"
           data-testid="checkbox-input"
           type="checkbox"
           checked={ value2 }
