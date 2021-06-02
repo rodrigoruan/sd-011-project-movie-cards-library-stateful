@@ -4,6 +4,7 @@ import Subtitle from './Subtitle';
 import ImagePath from './ImagePath';
 import Storyline from './Storyline';
 import RatingChange from './RatingChange';
+import Genre from './Genre';
 
 const data = {
   title: '',
@@ -11,6 +12,7 @@ const data = {
   imagePath: '',
   storyline: '',
   rating: 0,
+  genre: '',
 };
 
 class AddMovie extends React.Component {
@@ -24,6 +26,7 @@ class AddMovie extends React.Component {
 
   handleChange({ target }) {
     const { name, value } = target;
+    // const genre = target.type === 'checkbox' ? target.checked : target.value;
 
     this.setState({
       [name]: value,
@@ -32,7 +35,7 @@ class AddMovie extends React.Component {
 
   // Pedi ajuda na sala "A"
   render() {
-    const { title, subtitle, imagePath, storyline, rating } = this.state;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
         <Title value={ title } handleChange={ this.handleChange } />
@@ -40,6 +43,7 @@ class AddMovie extends React.Component {
         <ImagePath value={ imagePath } handleChange={ this.handleChange } />
         <Storyline value={ storyline } handleChange={ this.handleChange } />
         <RatingChange rating={ rating } handleChange={ this.handleChange } />
+        <Genre genre={ genre } handleChange={ this.handleChange } />
       </form>
     );
   }
