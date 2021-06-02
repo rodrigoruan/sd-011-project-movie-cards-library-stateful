@@ -1,7 +1,7 @@
 // implement AddMovie component here.
 import React, { Component } from 'react';
 // import data from '../data';
-// import SearchBar from './SearchBar';
+import SearchBar from './SearchBar';
 // import AddMovie from './AddMovie';
 
 class MovieLibrary extends Component {
@@ -11,15 +11,16 @@ class MovieLibrary extends Component {
       // searchText: '',
       // bookmarkedOnly: false,
       // selectedGenre: '',
-      // movies
     };
   }
 
   render() {
     // const { [ movies ] } = this.props;
+    // const { searchText, onSearchTextChange, bookmarkedOnly,
+    //   onBookmarkedChange, selectedGenre, onSelectedGenreChange } = this.state;
     return (
       <div>
-        teste
+        <SearchBar />
         {/* <MovieLibrary movies={ data } /> */}
       </div>
     );
