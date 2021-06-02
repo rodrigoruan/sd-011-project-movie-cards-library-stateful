@@ -10,6 +10,7 @@ class MovieLibrary extends Component {
     this.state = this.initialState;
     this.evSearch = this.evSearch.bind(this);
     this.resulSearch = this.resulSearch.bind(this);
+    this.AddMoiveList = this.AddMoiveList.bind(this);
   }
 
   get initialState() {
@@ -45,6 +46,11 @@ class MovieLibrary extends Component {
     return resultSch;
   }
 
+  AddMoiveList(event) {
+    const { movies } = this.state;
+    movies.push(event);
+  }
+
   render() {
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
@@ -58,7 +64,7 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={ this.evSearch }
         />
         <MovieList movies={ this.resulSearch() } />
-        <AddMovie onClick={ (e) => e } />
+        <AddMovie onClick={ this.AddMoiveList } />
       </>
     );
   }
