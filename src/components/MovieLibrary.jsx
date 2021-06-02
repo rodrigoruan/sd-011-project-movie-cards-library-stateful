@@ -14,6 +14,8 @@ class MovieLibrary extends Component {
       selectedGenre: '',
       movies,
     };
+    this.filterBySearchText = this.filterBySearchText.bind(this);
+    this.filterByBookmark = this.filterByBookmark.bind(this);
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
@@ -25,6 +27,7 @@ class MovieLibrary extends Component {
     await this.setState({
       searchText: value,
     });
+    this.filterBySearchText();
   }
 
   async onBookmarkedChange({ target }) {
@@ -32,6 +35,7 @@ class MovieLibrary extends Component {
     await this.setState({
       bookmarkedOnly: checked,
     });
+    this.filterByBookmark();
   }
 
   async onSelectedGenreChange({ target }) {
@@ -39,6 +43,35 @@ class MovieLibrary extends Component {
     await this.setState({
       selectedGenre: value,
     });
+  }
+
+  filterByBookmark() {
+    const { bookmarkedOnly, movies } = this.state;
+    if (bookmarkedOnly === true) {
+      const filtred = movies.filter((movie) => movie.bookmarked === true);
+      this.setState((previous) => ({
+        movies: filtred,
+        moviesBackup: previous.movies,
+      }));
+    } else {
+      this.setState((previous) => ({
+        movies: previous.moviesBackup,
+      }));
+    }
+  }
+
+  filterBySearchText() {
+    const { searchText, movies } = this.state;
+    if (searchText) {
+      const filtred = (movies.filter((movie) => (
+        (movie.title.toLowerCase().includes(searchText.toLowerCase()))
+        || (movie.subtitle.toLowerCase().includes(searchText.toLowerCase()))
+        || (movie.storyline.toLowerCase().includes(searchText.toLowerCase()))
+      )));
+      this.setState({
+        movies: filtred,
+      });
+    }
   }
 
   createMovie(objeto) {
