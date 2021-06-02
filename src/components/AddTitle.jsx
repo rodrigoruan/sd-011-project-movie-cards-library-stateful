@@ -6,6 +6,7 @@ class AddTitle extends React.Component {
     const { handleTitle, title } = this.props;
     return (
       <label htmlFor="title-input" data-testid="title-input-label">
+        Título
         <input
           type="text"
           name=""
