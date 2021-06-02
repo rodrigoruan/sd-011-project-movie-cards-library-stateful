@@ -10,8 +10,8 @@ import Select from './depComponents/Select';
 import Button from './depComponents/Button';
 
 export default class AddMovie extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       title: '',
@@ -23,6 +23,7 @@ export default class AddMovie extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.reset = this.reset.bind(this);
   }
 
   handleChange({ target }) {
