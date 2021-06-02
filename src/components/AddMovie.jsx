@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import InputText from './InputText';
 
 export default class AddMovie extends React.Component {
@@ -12,6 +14,7 @@ export default class AddMovie extends React.Component {
       storyline: '',
       rating: 0,
       genre: 'action',
+      movies: props.movies,
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -23,10 +26,11 @@ export default class AddMovie extends React.Component {
   }
 
   handleFormClick(event) {
-    this.props.movies.push(this.state)
+    const { movies } = this.props;
+    movies.push(this.state);
+    // console.log(movies);
+    // console.log(this.state);
     event.preventDefault();
-    console.log(this.props.movies)
-
   }
 
   render() {
@@ -75,3 +79,8 @@ export default class AddMovie extends React.Component {
     );
   }
 }
+AddMovie.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.object,
+  ).isRequired,
+};
