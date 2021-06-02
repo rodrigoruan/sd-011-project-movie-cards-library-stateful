@@ -30,6 +30,7 @@ class MovieLibrary extends Component {
     });
   }
 
+  // Ajuda de Rodrigo Ruan na sala (A)
   resulSearch() {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
     let resultSch = movies;
@@ -45,8 +46,10 @@ class MovieLibrary extends Component {
     return resultSch;
   }
 
+  // Ajuda de Julio Fillizola
   AddMoiveList(moviAdd) {
     const { movies } = this.state;
+    // Reatribuindo ao meu objeto movies um novo card
     this.setState({ movies: [...movies, moviAdd] });
   }
 
