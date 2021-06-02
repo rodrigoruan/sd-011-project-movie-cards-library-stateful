@@ -21,10 +21,6 @@ class MovieLibrary extends Component {
   //   console.log('By Text');
   // }
 
-  // filterByFav() {
-  //   console.log('By Fav');
-  // }
-
   // filterByGen() {
   //   console.log('By Gen');
   // }
@@ -37,8 +33,25 @@ class MovieLibrary extends Component {
     }));
   }
 
+  filter() {
+    const { movies, bookmarkedOnly, searchText, selectedGenre } = this.state;
+    let moviesToRender = movies;
+    if (bookmarkedOnly) {
+      moviesToRender = moviesToRender.filter((movie) => movie.bookmarked);
+    }
+    if (selectedGenre) {
+      moviesToRender = moviesToRender.filter((movie) => movie.genre === selectedGenre);
+    }
+    if (searchText) {
+      moviesToRender = moviesToRender
+        .filter(({ title, subtitle, storyline }) => (title).includes(searchText)
+        || subtitle.includes(searchText)
+        || storyline.includes(searchText));
+    }
+    return moviesToRender;
+  }
+
   render() {
-    const { movies } = this.state;
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <div>
@@ -50,7 +63,7 @@ class MovieLibrary extends Component {
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.handleInfo }
         />
-        <MovieList movies={ movies } />
+        <MovieList movies={ this.filter() } />
         <AddMovie />
       </div>
     );
