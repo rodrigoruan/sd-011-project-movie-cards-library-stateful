@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 export default class InputText extends React.Component {
@@ -43,7 +43,7 @@ export default class InputText extends React.Component {
             data-testid="storyline-input"
             name="storyline"
             cols="30"
-            rows="10"
+            rows="3"
             onChange={ handleInputChange }
             value={ storyline }
           />
