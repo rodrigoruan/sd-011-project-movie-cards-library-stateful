@@ -1,5 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import AddMovieGenre from './AddMovieGenre';
+import AddMovieStoryline from './AddMovieStoryline';
+import AddMovieRating from './AddMovieRating'
 
 class AddMovie extends React.Component {
   constructor() {
@@ -72,41 +75,16 @@ class AddMovie extends React.Component {
             value={ imagePath }
           />
         </label>
-        <label htmlFor="storyline-input" data-testid="storyline-input-label">
-          Sinopse
-          <textarea
-            name="storyline"
-            cols="30"
-            rows="10"
-            data-testid="storyline-input"
-            onChange={ this.handlerChange }
-            value={ storyline }
-          />
-        </label>
-        <label htmlFor="rating-input" data-testid="rating-input-label">
-          Avaliação
-          <input
-            type="number"
-            data-testid="rating-input"
-            name="rating"
-            onChange={ this.handlerChange }
-            value={ rating }
-          />
-        </label>
-        <label htmlFor="genre-input" data-testid="genre-input-label">
-          Gênero
-          <select
-            name="genre"
-            data-testid="genre-input"
-            onChange={ this.handlerChange }
-            value={ genre }
-          >
-            <option data-testid="genre-option" value="action">Ação</option>
-            <option data-testid="genre-option" value="comedy">Comédia</option>
-            <option data-testid="genre-option" value="thriller">Suspense</option>
-          </select>
-        </label>
-        <button type="submit" data-testid="send-button" onClick={ () => { this.handlerSend(onClick); } }>Adicionar filme</button>
+        <AddMovieStoryline storyline={ storyline } handler={ this.handlerChange } />
+        <AddMovieGenre genre={ genre } handler={ this.handlerChange } />
+        <AddMovieRating rating={ rating } handler={ this.handlerChange } />
+        <button
+          type="submit"
+          data-testid="send-button"
+          onClick={ () => { this.handlerSend(onClick); } }
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }
