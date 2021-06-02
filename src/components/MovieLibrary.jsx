@@ -82,10 +82,10 @@ class MovieLibrary extends Component {
           onSearchTextChange={ this.handlerChanges }
           onBookmarkedChange={ this.handlerChanges }
           onSelectedGenreChange={ this.handlerChanges }
+          bookmarkedOnly={ bookmarkedOnly }
         />
         <MovieList
           movies={ movies }
-          bookmarkedOnly={ bookmarkedOnly }
         />
         <AddMovie onClick={ this.insertMovie } />
       </div>
