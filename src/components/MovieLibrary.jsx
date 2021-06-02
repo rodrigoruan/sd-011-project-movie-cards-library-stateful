@@ -1,23 +1,13 @@
-// import React, { Component } from 'react';
-// import movies from '../data';
-// import Data from "../data";
+import React, { Component } from 'react';
 
-// class MovieLibrary extends Component {
-//   constructor {
-//     super()
-//     this.state={
-//       searchText: "",
-//       bookmarkedOnly: false,
-//       selectedGenre: "",
-//       movies: movies,
-//     }
-//   };
-//   render() {
-//     return (
-//       <div>
-//       </div>
-//     )
-//   }
-// }
+class MovieLibrary extends Component {
+  render() {
+    return (
+      <div>
+        this.props;
+      </div>
+    );
+  }
+}
 
-// export default MovieLibrary;
+export default MovieLibrary;
