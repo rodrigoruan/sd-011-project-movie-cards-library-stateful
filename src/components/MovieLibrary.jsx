@@ -40,6 +40,9 @@ class MovieLibrary extends Component {
     });
   }
 
+  createMovie() {
+  }
+
   render() {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
     return (
