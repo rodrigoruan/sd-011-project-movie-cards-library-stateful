@@ -55,7 +55,7 @@ class MovieLibrary extends Component {
 
     let filtered = movies;
 
-    if (searchText !== '') {
+    if (searchText) {
       const searchToLower = searchText.toLowerCase();
       filtered = filtered.filter(({ title, subtitle, storyline }) => {
         const filteredTitle = title.toLowerCase().includes(searchToLower);
@@ -71,7 +71,7 @@ class MovieLibrary extends Component {
       filtered = filtered.filter(({ bookmarked }) => bookmarked === true);
     }
 
-    if (selectedGenre !== '') {
+    if (selectedGenre) {
       filtered = filtered.filter(
         ({ genre }) => genre === selectedGenre,
       );
