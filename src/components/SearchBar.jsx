@@ -17,6 +17,7 @@ class SearchBar extends Component {
           <label htmlFor="control" data-testid="text-input-label">
             Inclui o texto:
             <input
+              name="searchText"
               onChange={ onSearchTextChange }
               data-testid="text-input"
               type="text"
@@ -26,6 +27,7 @@ class SearchBar extends Component {
           <label htmlFor="control" data-testid="checkbox-input-label">
             Mostrar somente favoritos
             <input
+              name="bookmarkedOnly"
               onChange={ onBookmarkedChange }
               type="checkbox"
               checked={ bookmarkedOnly }
@@ -35,6 +37,7 @@ class SearchBar extends Component {
           <label htmlFor="control" data-testid="select-input-label">
             Filtrar por gênero
             <select
+              name="selectedGenre"
               onChange={ onSelectedGenreChange }
               value={ selectedGenre }
               data-testid="select-input"

@@ -15,7 +15,7 @@ class AddMovie extends Component {
     };
     this.movieAdd = this.movieAdd.bind(this);
     this.setAttribute = this.setAttribute.bind(this);
-    this.rst = this.rst.bind(this);
+    this.addedMovie = this.addedMovie.bind(this);
     this.snpse = this.snpse.bind(this);
   }
 
@@ -38,7 +38,9 @@ class AddMovie extends Component {
     });
   }
 
-  rst() {
+  addedMovie() {
+    const { onClick } = this.props;
+    onClick(this.state);
     this.setState({
       subtitle: '',
       title: '',
@@ -62,8 +64,8 @@ class AddMovie extends Component {
   }
 
   render() {
-    const { onClick } = this.props;
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
+
     return (
       <div>
         <form data-testid="add-movie-form">
@@ -103,7 +105,7 @@ class AddMovie extends Component {
           <button
             data-testid="send-button"
             type="button"
-            onClick={ () => { onClick(this.state); this.rst(); } }
+            onClick={ this.addedMovie }
           >
             Adicionar filme
           </button>
