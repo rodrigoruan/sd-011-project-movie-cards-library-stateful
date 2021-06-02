@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Title from './components/Title';
-import Subtitle from './components/Subtitle';
-import ImagePath from './components/ImagePath';
-import Storyline from './components/Storyline';
+import Title from './Title';
+import Subtitle from './Subtitle';
+import ImagePath from './ImagePath';
+import Storyline from './Storyline';
 
 const emptyState = {
   title: '',
@@ -14,8 +14,8 @@ const emptyState = {
   genre: 'action',
 };
 class AddMovie extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = emptyState;
     this.handleChange = this.handleChange.bind(this);
@@ -47,7 +47,7 @@ class AddMovie extends React.Component {
           <input
             className="addMovie-inputs"
             name="rating"
-            value={ rating }
+            rating={ rating }
             type="number"
             max="5"
             step="0.1"
@@ -60,7 +60,7 @@ class AddMovie extends React.Component {
           <select
             data-testid="genre-input"
             name="genre"
-            value={ genre }
+            genre={ genre }
             onChange={ this.handleChange }
           >
             <option value="action" data-testid="genre-option">Ação</option>
