@@ -42,7 +42,7 @@ body {
 
 .movie-card-image {
   width: auto;
-  max-height: 170px;
+  height: 168px;
 }
 
 .movie-card-body {
