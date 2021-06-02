@@ -24,7 +24,8 @@ class AddMovie extends Component {
     this.resetState = this.resetState.bind(this);
   }
 
-  handleSubmit() {
+  handleSubmit(event) {
+    event.preventDefault();
     const { onClick } = this.props;
     onClick(this.state);
     this.resetState();
