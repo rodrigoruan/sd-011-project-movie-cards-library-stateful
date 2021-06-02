@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 // implement AddMovie component here
-class InputText10 extends Component {
+class InputText12 extends Component {
   render() {
     const { srtTxt, srcOnCh } = this.props;
     return (
@@ -21,9 +21,9 @@ class InputText10 extends Component {
   }
 }
 
-export default InputText10;
+export default InputText12;
 
-InputText10.propTypes = {
-  srtTxt: PropTypes.string.isRequired,
+InputText12.propTypes = {
+  srtTxt: PropTypes.number.isRequired,
   srcOnCh: PropTypes.func.isRequired,
 };
