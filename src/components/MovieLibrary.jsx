@@ -28,29 +28,32 @@ export default class MovieLibrary extends Component {
     case 'text':
       this.setState({
         searchText: target.value,
-      });
+      }, () => this.filterMovies());
       break;
 
     case 'checkbox':
       this.setState({
         bookmarkedOnly: target.checked,
-      });
+      }, () => this.filterMovies());
       break;
 
     default:
       this.setState({
         selectedGenre: target.value,
-      });
+      }, () => this.filterMovies());
       break;
     }
   }
 
   filterMovies() {
-    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+    const { movies } = this.props;
 
     let filteredMovies = movies;
 
-    if (bookmarkedOnly) { filterededMovies.filter((m) => m.bookmarked); }
+    if (bookmarkedOnly) {
+      filteredMovies.filter((m) => m.bookmarked);
+    }
 
     if (selectedGenre) {
       filteredMovies = filteredMovies.filter((m) => m.genre === selectedGenre);
@@ -58,11 +61,13 @@ export default class MovieLibrary extends Component {
 
     if (searchText) {
       filteredMovies = filteredMovies.filter((m) => m.title
-        .toLowerCase().includes(searchText)
-        || m.subtitle.toLowerCase().includes(searchText)
-        || m.storyline.toLowerCase().includes(searchText));
+        .toLowerCase().includes(searchText.toLowerCase())
+        || m.subtitle.toLowerCase().includes(searchText.toLowerCase())
+        || m.storyline.toLowerCase().includes(searchText.toLowerCase()));
     }
-    return filteredMovies;
+    return this.setState({
+      movies: filteredMovies,
+    });
   }
 
   addMovie(newMovie) {
@@ -80,7 +85,7 @@ export default class MovieLibrary extends Component {
 
         <SearchBar
           searchText={ searchText }
-          bokmarkedOnly={ bookmarkedOnly }
+          bookmarkedOnly={ bookmarkedOnly }
           selectedGenre={ selectedGenre }
           onSearchTextChange={ this.handleChange }
           onBookmarkedChange={ this.handleChange }

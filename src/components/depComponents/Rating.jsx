@@ -22,7 +22,7 @@ export default class Rating extends Component {
 }
 
 Rating.propTypes = {
-  value: PropTypes.number,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   handleChange: PropTypes.func,
 };
 

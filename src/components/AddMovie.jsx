@@ -67,7 +67,7 @@ export default class AddMovie extends Component {
           <Button
             onCLick={ () => {
               onClick(this.state);
-              this.reset();
+              this.reset(this.state);
             } }
           />
         </form>
