@@ -1,0 +1,34 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+class InputLabel extends Component {
+  render() {
+    const {
+      data, value, name, inputName, inputData, inputType, functionCall,
+    } = this.props;
+    return (
+      <label data-testid={ data } htmlFor={ inputName }>
+        {name}
+        <input
+          type={ inputType }
+          value={ value }
+          name={ inputName }
+          data-testid={ inputData }
+          onChange={ functionCall }
+        />
+      </label>
+    );
+  }
+}
+
+export default InputLabel;
+
+InputLabel.propTypes = {
+  data: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  inputType: PropTypes.string.isRequired,
+  inputName: PropTypes.string.isRequired,
+  inputData: PropTypes.string.isRequired,
+  functionCall: PropTypes.func.isRequired,
+};
