@@ -13,15 +13,14 @@ class AddMovie extends React.Component {
       genre: 'action',
     };
     this.handleChange = this.handleChange.bind(this);
-    this.resetState = this.resetState.bind(this);
+    this.resetStateAddNewMovie = this.resetStateAddNewMovie.bind(this);
   }
 
   handleChange(e) {
-    const { name, value } = e.target.type === 'checkbox'
-      ? e.target.checked : e.target.value;
-
+    const { name, value, type } = e.target;
+    const newValue = type === 'number' ? +value : value;
     this.setState({
-      [name]: value,
+      [name]: newValue,
     });
   }
 
@@ -143,9 +142,10 @@ class AddMovie extends React.Component {
     );
   }
 
-  resetState(e) {
+  resetStateAddNewMovie(e) {
     e.preventDefault();
     const { onClick } = this.props;
+    onClick(this.state);
     this.setState({
       subtitle: '',
       title: '',
@@ -154,7 +154,18 @@ class AddMovie extends React.Component {
       rating: 0,
       genre: 'action',
     });
-    onClick(this.state);
+  }
+
+  buttonAddMovie() {
+    return (
+      <button
+        data-testid="send-button"
+        type="button"
+        onClick={ this.resetStateAddNewMovie }
+      >
+        Adicionar filme
+      </button>
+    );
   }
 
   render() {
@@ -166,13 +177,7 @@ class AddMovie extends React.Component {
         {this.textAreaSinopse()}
         {this.inputNumber()}
         {this.selectGenre()}
-        <button
-          data-testid="send-button"
-          type="button"
-          onClick={ this.resetState }
-        >
-          Adicionar filme
-        </button>
+        {this.buttonAddMovie()}
       </form>
     );
   }
