@@ -21,6 +21,6 @@ export default class CreateRating extends Component {
 }
 
 CreateRating.propTypes = {
-  rating: PropTypes.number.isRequired,
+  rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   callback: PropTypes.func.isRequired,
 };
