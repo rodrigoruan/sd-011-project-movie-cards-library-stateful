@@ -22,4 +22,4 @@ export default class Subtitle extends Component {
 Subtitle.propTypes = {
   subtitle: PropTypes.string.isRequired,
   handleAddMovie: PropTypes.func.isRequired,
-};
+}.isRequired;
