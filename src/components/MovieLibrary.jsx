@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MovieList from './MovieList';
 import SearchBar from './SearchBar';
+import AddMovie from './AddMovie';
 
 class MovieLibrary extends React.Component {
   constructor(props) {
@@ -23,8 +24,30 @@ class MovieLibrary extends React.Component {
     });
   }
 
+  filter = () => {
+    const { movies, bookmarkedOnly, selectedGenre, searchText } = this.state;
+    let objeto = movies;
+    if (bookmarkedOnly) objeto = movies.filter(({ bookmarked }) => bookmarked === true);
+    if (selectedGenre) {
+      objeto = movies.filter(({ genre }) => genre.includes(selectedGenre));
+    }
+    if (searchText) {
+      objeto = movies
+        .filter(({ title, subtitle, storyline }) => title.includes(searchText)
+        || subtitle.includes(searchText) || storyline.includes(searchText));
+    }
+
+    return objeto;
+  }
+
+  renderCard= (newCard) => {
+    this.setState((previous) => ({
+      movies: [...previous.movies, newCard],
+    }));
+  }
+
   render() {
-    const { movies, searchText, bookmarkedOnly, selectedGenre } = this.state;
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <div>
         <SearchBar
@@ -35,7 +58,8 @@ class MovieLibrary extends React.Component {
           onSearchTextChange={ this.handleStates }
           onSelectedGenreChange={ this.handleStates }
         />
-        <MovieList movies={ movies } />
+        <MovieList movies={ this.filter() } />
+        <AddMovie onClick={ this.renderCard } />
       </div>
     );
   }
