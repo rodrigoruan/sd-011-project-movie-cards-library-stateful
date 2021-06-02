@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/is-prop-valid": "^1.1.0",
     "acorn": "7.1.1",
     "eslint-config-trybe-frontend": "1.1.0",
     "minimist": "1.2.3",

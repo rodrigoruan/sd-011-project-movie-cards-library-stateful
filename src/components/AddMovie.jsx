@@ -16,15 +16,14 @@ class AddMovie extends React.Component {
       genre: 'action',
     };
 
-    this.initialValue = this.initialValue.bind(this);
+    this.handleInitialValue = this.handleInitialValue.bind(this);
     this.resetButton = this.resetButton.bind(this);
   }
 
-  initialValue(evento) {
-    const { target } = evento;
-    const { name } = target;
+  handleInitialValue(evento) {
+    const { name, value } = evento.target;
     this.setState({
-      [name]: target.value,
+      [name]: value,
     });
   }
 
@@ -44,49 +43,51 @@ class AddMovie extends React.Component {
   render() {
     const { subtitle, title, imagePath, rating, storyline, genre } = this.state;
     return (
-      <form data-testid="add-movie-form">
-        <label htmlFor="title-input" data-testid="title-input-label">
-          Título
-          <input
-            type="text"
-            name="title"
-            value={ title }
-            data-testid="title-input"
-            onChange={ this.initialValue }
-          />
-        </label>
-        <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
-          Subtítulo
-          <input
-            type="text"
-            name="subtitle"
-            value={ subtitle }
-            data-testid="subtitle-input"
-            onChange={ this.initialValue }
-          />
-        </label>
-        <Imagem initialValue={ this.initialValue } value={ imagePath } />
+      <section>
+        <form data-testid="add-movie-form">
+          <label htmlFor="title-input" data-testid="title-input-label">
+            Título
+            <input
+              type="text"
+              name="title"
+              value={ title }
+              data-testid="title-input"
+              onChange={ this.handleInitialValue }
+            />
+          </label>
+          <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
+            Subtítulo
+            <input
+              type="text"
+              name="subtitle"
+              value={ subtitle }
+              data-testid="subtitle-input"
+              onChange={ this.handleInitialValue }
+            />
+          </label>
+          <Imagem handleInitialValue={ this.handleInitialValue } value={ imagePath } />
 
-        <Storyline initialValue={ this.initialValue } value={ storyline } />
-        <label htmlFor="rating-input" data-testid="rating-input-label">
-          Avaliação
-          <input
-            type="text"
-            name="rating"
-            value={ rating }
-            data-testid="rating-input"
-            onChange={ this.initialValue }
-          />
-        </label>
-        <Genre initialValue={ this.initialValue } value={ genre } />
-        <button
-          data-testid="send-button"
-          onClick={ this.resetButton }
-          type="submit"
-        >
-          Adicionar filme
-        </button>
-      </form>
+          <Storyline handleInitialValue={ this.handleInitialValue } value={ storyline } />
+          <label htmlFor="rating-input" data-testid="rating-input-label">
+            Avaliação
+            <input
+              type="number"
+              name="rating"
+              value={ rating }
+              data-testid="rating-input"
+              onChange={ this.handleInitialValue }
+            />
+          </label>
+          <Genre handleInitialValue={ this.handleInitialValue } value={ genre } />
+          <button
+            type="button"
+            data-testid="send-button"
+            onClick={ this.resetButton }
+          >
+            Adicionar filme
+          </button>
+        </form>
+      </section>
     );
   }
 }
