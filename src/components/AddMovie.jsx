@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Input from './Input';
-import TextArea from './TextArea';
+import InputStoryline from './InputStoryline';
 import InputNum from './InputNum';
 import Select from './Select';
 
@@ -62,9 +62,9 @@ class AddMovie extends Component {
           value={ imagePath }
           name="imagePath"
         />
-        <TextArea value={ storyline } onChange={ this.handleInfo } />
+        <InputStoryline value={ storyline } onChange={ this.handleInfo } />
         <InputNum value={ rating } onChange={ this.handleInfo } />
-        <Select value={ genre } onChange={ this.handleInfo } />
+        <Select genre={ genre } onChange={ this.handleInfo } name="genre" />
         <button
           type="submit"
           data-testid="send-button"
