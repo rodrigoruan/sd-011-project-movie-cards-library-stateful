@@ -51,7 +51,7 @@ class MovieLibrary extends Component {
           bookmarkedOnly={ bookmarkedOnly }
           movies={ movies }
         />
-        <AddMovie movies={ movies }/>
+        <AddMovie movies={ movies } />
       </div>
     );
   }
