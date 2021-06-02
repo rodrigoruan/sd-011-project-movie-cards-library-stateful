@@ -14,9 +14,10 @@ export default class MovieLibrary extends Component {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
-      movies: props.movies,
+      movies,
     };
     this.changeState = this.changeState.bind(this);
+    this.newMovie = this.newMovie.bind(this);
   }
 
   filterMovies() {

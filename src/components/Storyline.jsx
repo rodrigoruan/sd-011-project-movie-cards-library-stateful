@@ -6,7 +6,7 @@ export default class StoryLine extends React.Component {
     const { value, changeState } = this.props;
 
     return (
-      <label data-testid="storyline-input-label" htmlFor="storyline">
+      <label data-testid="storyline-input-label" htmlFor="storyline-input">
         Sinopse
         <textarea
           name="storyLine"

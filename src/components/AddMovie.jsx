@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Title from './Title';
 import SubTitle from './SubTitle';
 import ImagePath from './ImagePath';
-import StoryLine from './Storyline';
 
 const initialState = {
   subtitle: '',
@@ -29,20 +28,28 @@ export default class AddMovie extends Component {
     });
   }
 
-  activeClick(e) {
-    e(this.state);
+  activeClick() {
+    const { onClick } = this.props;
+    onClick(this.state);
     this.setState(initialState);
   }
 
   render() {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
-    const { onClick } = this.props;
     return (
       <form data-testid="add-movie-form">
         <Title value={ title } changeState={ this.changeState } />
         <SubTitle value={ subtitle } changeState={ this.changeState } />
         <ImagePath value={ imagePath } changeState={ this.changeState } />
-        <StoryLine value={ storyline } changeState={ this.changeState } />
+        <label data-testid="storyline-input-label" htmlFor="storyline">
+          Sinopse
+          <textarea
+            name="storyLine"
+            value={ storyline }
+            onChange={ this.changeState }
+            data-testid="storyline-input"
+          />
+        </label>
         <label data-testid="rating-input-label" htmlFor="rating">
           Avaliação
           <input
@@ -68,7 +75,7 @@ export default class AddMovie extends Component {
         </label>
         <button
           type="button"
-          onClick={ () => this.activeClick(onClick) }
+          onClick={ this.activeClick }
           data-testid="send-button"
         >
           Adicionar filme
