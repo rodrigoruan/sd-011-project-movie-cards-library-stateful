@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Title from './Title';
 import SubTitle from './SubTitle';
 import ImagePath from './ImagePath';
+import Storyline from './Storyline';
 
 const initialState = {
   subtitle: '',
@@ -41,15 +42,7 @@ export default class AddMovie extends Component {
         <Title value={ title } changeState={ this.changeState } />
         <SubTitle value={ subtitle } changeState={ this.changeState } />
         <ImagePath value={ imagePath } changeState={ this.changeState } />
-        <label data-testid="storyline-input-label" htmlFor="storyline">
-          Sinopse
-          <textarea
-            name="storyLine"
-            value={ storyline }
-            onChange={ this.changeState }
-            data-testid="storyline-input"
-          />
-        </label>
+        <Storyline value={ storyline } changeState={ this.changeState } />
         <label data-testid="rating-input-label" htmlFor="rating">
           Avaliação
           <input

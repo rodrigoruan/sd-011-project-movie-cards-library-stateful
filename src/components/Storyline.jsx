@@ -6,10 +6,10 @@ export default class StoryLine extends React.Component {
     const { value, changeState } = this.props;
 
     return (
-      <label data-testid="storyline-input-label" htmlFor="storyline-input">
+      <label data-testid="storyline-input-label" htmlFor="storyline">
         Sinopse
         <textarea
-          name="storyLine"
+          name="storyline"
           value={ value }
           onChange={ changeState }
           data-testid="storyline-input"
