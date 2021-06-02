@@ -13,6 +13,7 @@ class SearchBar extends Component {
           Inclui o texto:
           <input
             type="text"
+            name="searchText"
             onChange={ onSearchTextChange }
             data-testid="text-input"
             value={ searchText }
@@ -22,6 +23,7 @@ class SearchBar extends Component {
           Mostrar somente favoritos
           <input
             type="checkbox"
+            name="bookmarkedOnly"
             checked={ bookmarkedOnly }
             onChange={ onBookmarkedChange }
             data-testid="checkbox-input"
@@ -31,6 +33,7 @@ class SearchBar extends Component {
           Filtrar por gênero
           <select
             data-testid="select-input"
+            name="selectedGenre"
             onChange={ onSelectedGenreChange }
             value={ selectedGenre }
           >
@@ -48,14 +51,16 @@ class SearchBar extends Component {
 export default SearchBar;
 
 SearchBar.propTypes = {
-  searchText: PropTypes.string.isRequired,
+  searchText: PropTypes.string,
   onSearchTextChange: PropTypes.func.isRequired,
-  bookmarkedOnly: PropTypes.bool.isRequired,
+  bookmarkedOnly: PropTypes.bool,
   onBookmarkedChange: PropTypes.func.isRequired,
-  selectedGenre: PropTypes.string.isRequired,
+  selectedGenre: PropTypes.string,
   onSelectedGenreChange: PropTypes.func.isRequired,
 };
 
-SearchBar.defautProps = {
+SearchBar.defaultProps = {
+  searchText: '',
   bookmarkedOnly: false,
+  selectedGenre: '',
 };
