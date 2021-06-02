@@ -28,10 +28,10 @@ class SearchBar extends Component {
           />
         </label>
         <label
-          name="genre"
           htmlFor="genre"
-          data-testid="select-option-label"
+          data-testid="select-input-label"
           onChange={ onSelectedGenreChange }
+          name="genre"
         >
           Filtrar por gênero
           <select data-testid="select-input" value={ selectedGenre }>
