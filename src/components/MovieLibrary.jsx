@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
+import AddMovie from './AddMovie';
 
 class MovieLibrary extends Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class MovieLibrary extends Component {
     };
 
     this.handleGeneric = this.handleGeneric.bind(this);
+    this.addMovies = this.addMovies.bind(this);
   }
 
   handleGeneric({ target }) {
@@ -23,6 +25,12 @@ class MovieLibrary extends Component {
     this.setState({
       [name]: value,
     });
+  }
+
+  addMovies(movie) {
+    this.setState((previous) => ({
+      movies: [...previous.movies, movie],
+    }));
   }
 
   render() {
@@ -38,7 +46,12 @@ class MovieLibrary extends Component {
           onBookmarkedChange={ this.handleGeneric }
           onSelectedGenreChange={ this.handleGeneric }
         />
-        <MovieList movies={ movies } />
+        <div>
+          <MovieList movies={ movies } />
+        </div>
+        <div>
+          <AddMovie onClick={ this.addMovies } />
+        </div>
       </div>
     );
   }
