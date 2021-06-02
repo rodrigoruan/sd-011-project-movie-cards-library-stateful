@@ -24,8 +24,7 @@ class AddMovie extends Component {
     this.resetState = this.resetState.bind(this);
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
+  handleSubmit() {
     const { onClick } = this.props;
     onClick(this.state);
     this.resetState();
@@ -63,7 +62,7 @@ class AddMovie extends Component {
           handleChange={ this.handleChange }
         />
         <Button
-          sendFunction={ this.handleSubmit }
+          onClick={ this.handleSubmit }
         />
       </form>
     );
