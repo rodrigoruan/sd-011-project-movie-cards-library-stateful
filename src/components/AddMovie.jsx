@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Genre from './Genre';
 import Storyline from './Storyline';
 import Imagem from './Imagem';
+import Subtitle from './Subtitle';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -55,16 +56,7 @@ class AddMovie extends React.Component {
               onChange={ this.handleInitialValue }
             />
           </label>
-          <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
-            Subtítulo
-            <input
-              type="text"
-              name="subtitle"
-              value={ subtitle }
-              data-testid="subtitle-input"
-              onChange={ this.handleInitialValue }
-            />
-          </label>
+          <Subtitle handleInitialValue={ this.handleInitialValue } value={ subtitle } />
           <Imagem handleInitialValue={ this.handleInitialValue } value={ imagePath } />
 
           <Storyline handleInitialValue={ this.handleInitialValue } value={ storyline } />

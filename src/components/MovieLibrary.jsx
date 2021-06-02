@@ -16,7 +16,7 @@ export default class MovieLibrary extends Component {
     };
 
     this.handleSearchText = this.handleSearchText.bind(this);
-    this.handlebookmarkedOnly = this.handleBookmarkedOnly.bind(this);
+    this.handleBookmarkedOnly = this.handleBookmarkedOnly.bind(this);
     this.handleSelectedGenre = this.handleSelectedGenre.bind(this);
   }
 
@@ -27,9 +27,8 @@ export default class MovieLibrary extends Component {
   }
 
   handleBookmarkedOnly({ target }) {
-    const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
-      bookmarkedOnly: value,
+      bookmarkedOnly: target.checked,
     });
   }
 
