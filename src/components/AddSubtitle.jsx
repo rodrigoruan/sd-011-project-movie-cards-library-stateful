@@ -5,8 +5,8 @@ class AddSubtitle extends React.Component {
   render() {
     const { handleSubtitle, subtitle } = this.props;
     return (
-      <label id="subtitle-input-label" htmlFor="subtitle" data-testid="title-input-label">
-        Título
+      <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
+        Subtítulo
         <input
           type="text"
           name=""

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AddTitle from './AddTitle';
-// import AddSubtitle from './AddSubtitle';
+import AddSubtitle from './AddSubtitle';
 
 class AddMovie extends React.Component {
   constructor(props) {
@@ -14,12 +14,18 @@ class AddMovie extends React.Component {
     return (
       <form data-testid="add-movie-form">
         <AddTitle />
+        <AddSubtitle />
       </form>
     );
   }
 }
 
 AddMovie.propTypes = PropTypes.component;
+
+AddMovie.propTypes = {
+  // title: PropTypes.string.isRequired,
+  // subtitle: PropTypes.string.isRequired,
+};
 
 /**
  * Consultei o repositório do Bruno Duarte para resolver esse ProTypes.component
