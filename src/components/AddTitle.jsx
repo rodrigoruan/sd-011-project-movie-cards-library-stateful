@@ -5,19 +5,16 @@ class AddTitle extends React.Component {
   render() {
     const { handleTitle, title } = this.props;
     return (
-      <div>
-        <label htmlFor="title-input" data-testid="title-input-label">
-          Título
-          <input
-            type="text"
-            name=""
-            id="title-input"
-            value={ title }
-            data-testid="title-input"
-            onChange={ handleTitle }
-          />
-        </label>
-      </div>
+      <label htmlFor="title-input" data-testid="title-input-label">
+        <input
+          type="text"
+          name=""
+          id="title-input"
+          value={ title }
+          data-testid="title-input"
+          onChange={ handleTitle }
+        />
+      </label>
     );
   }
 }
