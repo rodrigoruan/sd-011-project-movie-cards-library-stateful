@@ -5,6 +5,7 @@ import ImagePath from './ImagePath';
 import Storyline from './Storyline';
 import RatingChange from './RatingChange';
 import Genre from './Genre';
+import Button from './Button';
 
 const data = {
   title: '',
@@ -35,7 +36,7 @@ class AddMovie extends React.Component {
 
   // Pedi ajuda na sala "A"
   render() {
-    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
+    const { title, subtitle, imagePath, storyline, rating, genre, button } = this.state;
     return (
       <form data-testid="add-movie-form">
         <Title value={ title } handleChange={ this.handleChange } />
@@ -44,6 +45,7 @@ class AddMovie extends React.Component {
         <Storyline value={ storyline } handleChange={ this.handleChange } />
         <RatingChange rating={ rating } handleChange={ this.handleChange } />
         <Genre genre={ genre } handleChange={ this.handleChange } />
+        <Button value={ button } handleChange={ this.handleChange } />
       </form>
     );
   }
