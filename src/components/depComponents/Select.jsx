@@ -25,6 +25,11 @@ export default class Select extends Component {
 }
 
 Select.propTypes = {
-  value: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired,
+  value: PropTypes.string,
+  handleChange: PropTypes.func,
+};
+
+Select.defaultProps = {
+  value: '',
+  handleChange: () => {},
 };

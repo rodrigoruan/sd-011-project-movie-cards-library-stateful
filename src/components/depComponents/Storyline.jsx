@@ -22,6 +22,11 @@ export default class Storyline extends Component {
 }
 
 Storyline.propTypes = {
-  value: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired,
+  value: PropTypes.string,
+  handleChange: PropTypes.func,
+};
+
+Storyline.defaultProps = {
+  value: '',
+  handleChange: () => {},
 };

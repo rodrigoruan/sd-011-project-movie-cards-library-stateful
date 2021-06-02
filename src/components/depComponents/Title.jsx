@@ -22,6 +22,11 @@ export default class Title extends Component {
 }
 
 Title.propTypes = {
-  value: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired,
+  value: PropTypes.string,
+  handleChange: PropTypes.func,
+};
+
+Title.defaultProps = {
+  value: '',
+  handleChange: () => {},
 };

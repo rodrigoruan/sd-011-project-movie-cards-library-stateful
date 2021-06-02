@@ -22,6 +22,11 @@ export default class Subtitle extends Component {
 }
 
 Subtitle.propTypes = {
-  value: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired,
+  value: PropTypes.string,
+  handleChange: PropTypes.func,
+};
+
+Subtitle.defaultProps = {
+  value: '',
+  handleChange: () => {},
 };

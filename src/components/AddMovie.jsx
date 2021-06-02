@@ -10,8 +10,8 @@ import Select from './depComponents/Select';
 import Button from './depComponents/Button';
 
 export default class AddMovie extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       title: '',
@@ -64,7 +64,12 @@ export default class AddMovie extends Component {
 
           <Select value={ genre } handleChange={ this.handleChange } />
 
-          <Button onCLick={ onClick } />
+          <Button
+            onCLick={ () => {
+              onClick(this.state);
+              this.reset();
+            } }
+          />
         </form>
       </div>
     );
@@ -72,5 +77,9 @@ export default class AddMovie extends Component {
 }
 
 AddMovie.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
+};
+
+AddMovie.defaultProps = {
+  onClick: () => {},
 };

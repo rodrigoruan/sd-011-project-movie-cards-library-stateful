@@ -22,6 +22,11 @@ export default class Rating extends Component {
 }
 
 Rating.propTypes = {
-  value: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired,
+  value: PropTypes.number,
+  handleChange: PropTypes.func,
+};
+
+Rating.defaultProps = {
+  value: 0,
+  handleChange: () => {},
 };
