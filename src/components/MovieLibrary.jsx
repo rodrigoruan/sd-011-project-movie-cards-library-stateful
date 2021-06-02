@@ -24,7 +24,6 @@ class MovieLibrary extends React.Component {
   }
 
   handleAddMovie(movieData) {
-    console.log(movieData);
     const { movies } = this.state;
     this.setState({
       movies: [...movies, movieData],
