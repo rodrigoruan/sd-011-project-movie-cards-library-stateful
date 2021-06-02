@@ -6,11 +6,12 @@ import MovieList from './MovieList';
 class MovieLibrary extends React.Component {
   constructor(props) {
     super(props);
+    // const { movies } = this.props;
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
-      movies: this.props.movies,
+      movies: props.movies,
     };
 
     this.filterTextMovies = this.filterTextMovies.bind(this);
@@ -30,25 +31,26 @@ class MovieLibrary extends React.Component {
 
   filterTextMovies(arrayMovies) {
     const { searchText } = this.state;
-    const filteredMovies = arrayMovies.filter((movie) => (
-      (movie.title.includes(searchText)) || (movie.subtitle.includes(searchText)) || (movie.storyline.includes(searchText)))
-      );
-    return filteredMovies;
+    return arrayMovies.filter((movie) => (
+      (movie.title.includes(searchText))
+      || (movie.subtitle.includes(searchText))
+      || (movie.storyline.includes(searchText))));
   }
 
   filterBookmark(arrayMovies) {
     const { bookmarkedOnly } = this.state;
     if (bookmarkedOnly === true) {
-     const filteredBookmarked = arrayMovies.filter((movie) => (movie.bookmarked === true));
-     return filteredBookmarked;
+      const filteredBookmark = arrayMovies.filter((movie) => (movie.bookmarked === true));
+      return filteredBookmark;
     }
     return arrayMovies;
   }
 
   filterGenre(arrayMovies) {
     const { selectedGenre } = this.state;
-    const fileterdGenre = arrayMovies.filter((movie) => (movie.genre.includes(selectedGenre)));
-    return fileterdGenre;
+    const filterGenre = arrayMovies.filter((movie) => (
+      (movie.genre.includes(selectedGenre))));
+    return filterGenre;
   }
 
   filterMovie(arrayMovies) {
@@ -59,7 +61,6 @@ class MovieLibrary extends React.Component {
   }
 
   render() {
-    // const  = this.props;
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
     return (
       <div>
