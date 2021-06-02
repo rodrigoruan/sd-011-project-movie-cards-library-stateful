@@ -21,23 +21,26 @@ class MovieLibrary extends React.Component {
   }
 
   handlerChange({ target }) {
-    const { name, value } = target;
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
     });
-
   }
 
   filterTextMovies(arrayMovies) {
     const { searchText } = this.state;
-    const filteredMovies = arrayMovies.filter((movie) => ((movie.title.includes(searchText)) || (movie.subtitle.includes(searchText))));
+    const filteredMovies = arrayMovies.filter((movie) => (
+      (movie.title.includes(searchText)) || (movie.subtitle.includes(searchText)) || (movie.storyline.includes(searchText)))
+      );
     return filteredMovies;
   }
 
   filterBookmark(arrayMovies) {
     const { bookmarkedOnly } = this.state;
     if (bookmarkedOnly === true) {
-      arrayMovies.filter((movie) => (movie.bookmarked === true));
+     const filteredBookmarked = arrayMovies.filter((movie) => (movie.bookmarked === true));
+     return filteredBookmarked;
     }
     return arrayMovies;
   }
