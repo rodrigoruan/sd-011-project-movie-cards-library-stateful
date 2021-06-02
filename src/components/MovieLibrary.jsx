@@ -15,6 +15,7 @@ class MovieLibrary extends React.Component {
     };
 
     this.handlerChange = this.handlerChange.bind(this);
+    this.filter = this.filter.bind(this);
   }
 
   handlerChange({ target }) {
@@ -25,15 +26,36 @@ class MovieLibrary extends React.Component {
     });
   }
 
+  filter() {
+    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+    let filteredMovies = movies;
+    if (searchText) {
+      filteredMovies = movies.filter(({ title,
+        subtitle,
+        storyline }) => title.includes(searchText)
+        || subtitle.includes(searchText)
+        || storyline.includes(searchText));
+    }
+
+    if (bookmarkedOnly) {
+      filteredMovies = filteredMovies.filter(({ bookmarked }) => bookmarked);
+    }
+
+    if (selectedGenre) {
+      filteredMovies = filteredMovies.filter(({ genre }) => genre === selectedGenre);
+    }
+    return filteredMovies;
+  }
+
   render() {
     // Esta desestruturação abaixo refere-se ao uso da prop no componente <MovieList>
-    const { movies } = this.props;
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
-      // Adicionar créditos a alberto candido: me ajudou a entender o que o requisito pedia
+      // Lembrar de adicionar créditos a alberto candido: me ajudou a entender o que o requisito pedia
       <div>
-        <h1>Minha maravilhosa biblioteca de filmes</h1>
+        <h1>Filminho e pipoquinha, ui ui ui</h1>
         <SearchBar
+          filter={ this.filter }
           searchText={ searchText }
           bookmarkedOnly={ bookmarkedOnly }
           selectedGenre={ selectedGenre }
@@ -42,7 +64,7 @@ class MovieLibrary extends React.Component {
           onSelectedGenreChange={ this.handlerChange }
         />
 
-        <MovieList movies={ movies } />
+        <MovieList movies={ this.filter() } />
         <AddMovie />
       </div>
     );
