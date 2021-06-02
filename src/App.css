@@ -2,6 +2,8 @@ body {
   background-color: whitesmoke;
   box-sizing: border-box;
   font-size: 16px;
+  display: flex;
+  justify-content: center;
 }
 
 .movie-card-header {
@@ -80,4 +82,30 @@ body {
   display: flex;
   justify-content: flex-end;
   padding: 12px 20px;
+}
+
+#root > div > div > form:nth-child(1), #root > div > div > form:nth-child(3) {
+  padding-top: 1%;
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid rgb(228, 228, 228);
+  border-radius: 5%;
+  background-color: #faf4f4;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#root > div > div > div {
+  display: flex;
+  justify-content: center;
+}
+
+input, select {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+#root > div > div > form:nth-child(3) > label:nth-child(4) {
+  display: flex;
+  align-items: center;
 }
