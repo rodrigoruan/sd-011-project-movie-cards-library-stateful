@@ -97,11 +97,11 @@ body {
 
 .btn-adicionar {
   background-color: #007bff;
+  border: #007bff solid;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
-  border: #007bff solid;
   color: white;
-  border-radius: 5px;
   margin: 10px;
   padding: 5px;
 }
