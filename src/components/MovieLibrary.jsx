@@ -14,6 +14,15 @@ class MovieLibrary extends Component {
       bookmarkedOnly: false,
       selectedGenre: '',
     };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange({ target }) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({
+      [name]: value,
+    });
   }
 
   render() {
@@ -26,9 +35,9 @@ class MovieLibrary extends Component {
           searchText={ searchText }
           bookmarkedOnly={ bookmarkedOnly }
           selectedGenre={ selectedGenre }
-          onSearchTextChange
-          onBookmarkedChange
-          onSelectedGenreChange
+          onSearchTextChange={ this.handleChange }
+          onBookmarkedChange={ this.handleChange }
+          onSelectedGenreChange={ this.handleChange }
         />
         <MovieList movies={ movies } />
         {/* <AddMovie /> */}

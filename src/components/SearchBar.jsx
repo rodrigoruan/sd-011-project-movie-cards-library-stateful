@@ -16,6 +16,7 @@ export default class SearchBar extends Component {
         <label htmlFor="inputText" data-testid="text-input-label">
           Inclui o texto:
           <input
+            name="searchText"
             data-testid="text-input"
             value={ searchText }
             onChange={ onSearchTextChange }
@@ -25,15 +26,6 @@ export default class SearchBar extends Component {
     );
   }
 }
-
-SearchBar.defaultProps = {
-  searchText: '',
-  selectedGenre: '',
-  bookmarkedOnly: false,
-  onBookmarkedChange: () => {},
-  onSearchTextChange: () => {},
-  onSelectedGenreChange: () => {},
-};
 
 SearchBar.propTypes = {
   searchText: PropTypes.string.isRequired,
