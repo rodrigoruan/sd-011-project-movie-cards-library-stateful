@@ -17,14 +17,6 @@ class MovieLibrary extends Component {
     };
   }
 
-  // filterByText() {
-  //   console.log('By Text');
-  // }
-
-  // filterByGen() {
-  //   console.log('By Gen');
-  // }
-
   handleInfo = ({ target }) => {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -51,6 +43,12 @@ class MovieLibrary extends Component {
     return moviesToRender;
   }
 
+  renderCard = (card) => {
+    this.setState((previus) => ({
+      movies: [...previus.movies, card],
+    }));
+  }
+
   render() {
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
@@ -64,7 +62,7 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={ this.handleInfo }
         />
         <MovieList movies={ this.filter() } />
-        <AddMovie />
+        <AddMovie onClick={ this.renderCard } />
       </div>
     );
   }
