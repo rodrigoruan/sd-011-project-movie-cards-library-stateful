@@ -22,34 +22,7 @@ class MovieLibrary extends Component {
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
-    this.handleAddMovie = this.handleAddMovie.bind(this);
-  }
-
-  handleAddMovie(data) {
-    const param = {
-      target: {
-        value: '',
-      },
-    };
-    const {
-      subtitle,
-      title,
-      imagePath,
-      storyline,
-      genre,
-    } = data;
-    const rating = parseInt(data.rating, 10);
-    this.setState(({ allMovies }) => ({
-      allMovies: [...allMovies, {
-        title,
-        subtitle,
-        storyline,
-        rating,
-        imagePath,
-        bookmarked: false,
-        genre,
-      }],
-    }), () => this.onSelectedGenreChange(param));
+    this.insertMovie = this.insertMovie.bind(this);
   }
 
   onSearchTextChange({ target: { value } }) {
@@ -59,20 +32,21 @@ class MovieLibrary extends Component {
       || movie.subtitle.includes(value)
       || movie.storyline.includes(value)
     ));
-    this.setState({
-      searchText: value,
-      filteredMovies: filtered,
-    });
+    if (value === '') this.setState({ searchText: '', filteredMovies: allMovies });
+    else {
+      this.setState({
+        searchText: value,
+        filteredMovies: filtered,
+      });
+    }
   }
 
-  onBookmarkedChange() {
-    const { allMovies, bookmarkedOnly } = this.state;
+  onBookmarkedChange({ target: { checked } }) {
+    const { allMovies } = this.state;
     const filtered = allMovies.filter((movie) => (movie.bookmarked));
-    if (bookmarkedOnly) {
-      this.setState({ bookmarkedOnly: false, filteredMovies: allMovies });
-    } else {
-      this.setState({ bookmarkedOnly: true, filteredMovies: filtered });
-    }
+
+    if (checked) this.setState({ bookmarkedOnly: true, filteredMovies: filtered });
+    else this.setState({ bookmarkedOnly: false, filteredMovies: allMovies });
   }
 
   onSelectedGenreChange({ target: { value } }) {
@@ -80,6 +54,16 @@ class MovieLibrary extends Component {
     const filtered = allMovies.filter((movie) => (movie.genre === value));
     if (value === '') this.setState({ selectedGenre: '', filteredMovies: allMovies });
     else this.setState({ selectedGenre: value, filteredMovies: filtered });
+  }
+
+  insertMovie(data) {
+    this.setState(({ allMovies }) => ({
+      searchText: '',
+      bookmarkedOnly: false,
+      selectedGenre: '',
+      filteredMovies: [...allMovies, data],
+      allMovies: [...allMovies, data],
+    }));
   }
 
   render() {
@@ -100,7 +84,7 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={ this.onSelectedGenreChange }
         />
         <MovieList movies={ filteredMovies } />
-        <AddMovie onClick={ this.handleAddMovie } />
+        <AddMovie onClick={ this.insertMovie } />
       </div>
     );
   }

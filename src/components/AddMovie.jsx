@@ -15,21 +15,25 @@ class AddMovie extends Component {
       storyline: '',
       rating: 0,
       genre: 'action',
+      bookmarked: false,
     };
 
     this.handleUserInput = this.handleUserInput.bind(this);
     this.submitData = this.submitData.bind(this);
   }
 
-  handleUserInput({ target: { name, value } }) {
+  handleUserInput({ target }) {
+    const { name } = target;
+    let { value } = target;
+    if (name === 'rating') value = parseFloat(value) || 0;
     this.setState({
       [name]: value,
     });
   }
 
   submitData(event) {
-    const { onClick } = this.props;
     event.preventDefault();
+    const { onClick } = this.props;
     onClick(this.state);
     this.setState({
       title: '',
@@ -38,6 +42,7 @@ class AddMovie extends Component {
       rating: 0,
       imagePath: '',
       genre: 'action',
+      bookmarked: false,
     });
   }
 
