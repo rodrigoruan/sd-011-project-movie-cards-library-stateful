@@ -11,7 +11,7 @@ class MovieLibrary extends Component {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
-      movies: this.props.movies,
+      movies: props.movies,
     };
     this.addMovies = this.addMovies.bind(this);
     this.filtro = this.filtro.bind(this);
@@ -58,8 +58,6 @@ class MovieLibrary extends Component {
       searchText,
       bookmarkedOnly,
       selectedGenre,
-      movies,
-      filtro
     } = this.state;
     return (
       <div>
