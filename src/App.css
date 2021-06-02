@@ -41,7 +41,8 @@ body {
 
 
 .movie-card-image {
-  width: 100%;
+  width: auto;
+  max-height: 170px;
 }
 
 .movie-card-body {
@@ -108,4 +109,13 @@ input, select {
 #root > div > div > form:nth-child(3) > label:nth-child(4) {
   display: flex;
   align-items: center;
+}
+
+label {
+  font-weight: 500;
+}
+
+button {
+  border-radius: 6%;
+  font-weight: 500;
 }
