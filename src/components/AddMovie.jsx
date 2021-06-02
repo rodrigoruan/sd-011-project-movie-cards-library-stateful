@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ButtonAddMovie from './ButtonAddMovie';
-import LabelTitle from './LabelTitle';
-import LabelSubtitle from './LabelSubtitle';
-import LabelImage from './LabelImage';
-import LabelStoryline from './LabelStoryline';
+import LabelTitle from './Labels/LabelTitle';
+import LabelSubtitle from './Labels/LabelSubtitle';
+import LabelImage from './Labels/LabelImage';
+import LabelStoryline from './Labels/LabelStoryline';
+import LabelRating from './Labels/LabelRating';
+import LabelGenre from './Labels/LabelGenre';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -50,29 +52,8 @@ class AddMovie extends React.Component {
         <LabelSubtitle subtitle={ subtitle } handleChange={ this.handleChange } />
         <LabelImage imagePath={ imagePath } handleChange={ this.handleChange } />
         <LabelStoryline storyline={ storyline } handleChange={ this.handleChange } />
-        <label htmlFor="rating-input" data-testid="rating-input-label">
-          Avaliação
-          <input
-            name="rating"
-            type="number"
-            value={ rating }
-            onChange={ this.handleChange }
-            data-testid="rating-input"
-          />
-        </label>
-        <label htmlFor="genre-input" data-testid="genre-input-label">
-          Gênero
-          <select
-            name="genre"
-            value={ genre }
-            onChange={ this.handleChange }
-            data-testid="genre-input"
-          >
-            <option value="action" data-testid="genre-option">Ação</option>
-            <option value="comedy" data-testid="genre-option">Comédia</option>
-            <option value="thriller" data-testid="genre-option">Suspense</option>
-          </select>
-        </label>
+        <LabelRating rating={ rating } handleChange={ this.handleChange } />
+        <LabelGenre genre={ genre } handleChange={ this.handleChange } />
         <ButtonAddMovie onClick={ () => this.createMovie(onClick) } />
       </form>
     );
@@ -81,6 +62,9 @@ class AddMovie extends React.Component {
 
 // https://www.pluralsight.com/guides/how-to-send-state-of-current-component-as-a-parameter-to-another-external-method-using-react
 // https://forum.betrybe.com/t/projeto-movie-cards-library-stateful-requisito-14/879
+// https://www.aaron-powell.com/posts/2020-12-10-dynamic-forms-with-react-hooks/
+// https://javascript.plainenglish.io/creating-a-generic-text-input-component-with-react-886e0cf90016
+// https://css-tricks.com/demonstrating-reusable-react-components-in-a-form/
 
 AddMovie.propTypes = {
   onClick: PropTypes.func.isRequired,

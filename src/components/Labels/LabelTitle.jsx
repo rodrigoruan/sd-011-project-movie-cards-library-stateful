@@ -13,6 +13,7 @@ class LabelTitle extends React.Component {
           value={ title }
           onChange={ handleChange }
           data-testid="title-input"
+          className="input-box"
         />
       </label>
     );

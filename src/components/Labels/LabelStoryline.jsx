@@ -12,6 +12,7 @@ class LabelStoryline extends React.Component {
           value={ storyline }
           onChange={ handleChange }
           data-testid="storyline-input"
+          className="input-box"
         />
       </label>
     );

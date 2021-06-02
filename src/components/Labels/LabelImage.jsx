@@ -13,6 +13,7 @@ class LabelImage extends React.Component {
           value={ imagePath }
           onChange={ handleChange }
           data-testid="image-input"
+          className="input-box"
         />
       </label>
     );
