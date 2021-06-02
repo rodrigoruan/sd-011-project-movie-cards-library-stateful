@@ -9,43 +9,43 @@ export default class MoviesInputOthers extends Component {
       <>
         <label htmlFor="storyline" data-testid="storyline-input-label">
           Sinopse
+          <textarea
+            id="storyline"
+            name="storyline"
+            value={ storylineValue }
+            data-testid="storyline-input"
+            onChange={ onchange }
+          />
         </label>
-        <textarea
-          id="storyline"
-          name="storyline"
-          value={ storylineValue }
-          data-testid="storyline-input"
-          onChange={ onchange }
-        />
         <label htmlFor="rating" data-testid="rating-input-label">
           Avaliação
+          <input
+            name="rating"
+            type="number"
+            value={ ratingValue }
+            data-testid="rating-input"
+            onChange={ onchange }
+          />
         </label>
-        <input
-          name="rating"
-          type="number"
-          value={ ratingValue }
-          data-testid="rating-input"
-          onChange={ onchange }
-        />
         <label htmlFor="genre" data-testid="genre-input-label">
           Gênero
+          <select
+            name="genre"
+            value={ genreValue }
+            onChange={ onchange }
+            data-testid="genre-input"
+          >
+            <option value="action" data-testid="genre-option">
+              Ação
+            </option>
+            <option value="comedy" data-testid="genre-option">
+              Comédia
+            </option>
+            <option value="thriller" data-testid="genre-option">
+              Suspense
+            </option>
+          </select>
         </label>
-        <select
-          name="genre"
-          value={ genreValue }
-          onChange={ onchange }
-          data-testid="genre-input"
-        >
-          <option value="action" data-testid="genre-option">
-            Ação
-          </option>
-          <option value="comedy" data-testid="genre-option">
-            Comédia
-          </option>
-          <option value="thriller" data-testid="genre-option">
-            Suspense
-          </option>
-        </select>
       </>
     );
   }

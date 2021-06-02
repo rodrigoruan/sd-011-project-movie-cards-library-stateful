@@ -6,10 +6,8 @@ export default class SearchInputSelect extends Component {
     const { genreValue, onchange } = this.props;
 
     return (
-      <>
-        <label htmlFor="selectedGenre" data-testid="select-input-label">
-          Filtrar por gênero
-        </label>
+      <label htmlFor="selectedGenre" data-testid="select-input-label">
+        Filtrar por gênero
         <select
           name="selectedGenre"
           value={ genreValue }
@@ -29,7 +27,7 @@ export default class SearchInputSelect extends Component {
             Suspense
           </option>
         </select>
-      </>
+      </label>
     );
   }
 }

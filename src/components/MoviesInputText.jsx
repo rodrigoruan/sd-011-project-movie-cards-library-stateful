@@ -8,35 +8,37 @@ export default class MoviesInputText extends Component {
       <>
         <label htmlFor="title" data-testid="title-input-label">
           Título
+          <input
+            id="title"
+            name="title"
+            type="text"
+            value={ titleValue }
+            data-testid="title-input"
+            onChange={ onchange }
+          />
         </label>
-        <input
-          id="title"
-          name="title"
-          type="text"
-          value={ titleValue }
-          data-testid="title-input"
-          onChange={ onchange }
-        />
         <label htmlFor="subtitle" data-testid="subtitle-input-label">
           Subtítulo
+          <input
+            id="subtitle"
+            name="subtitle"
+            type="text"
+            value={ subtitleValue }
+            data-testid="subtitle-input"
+            onChange={ onchange }
+          />
         </label>
-        <input
-          id="subtitle"
-          name="subtitle"
-          type="text"
-          value={ subtitleValue }
-          data-testid="subtitle-input"
-          onChange={ onchange }
-        />
-        <label htmlFor="imagePath" data-testid="image-input-label">Imagem</label>
-        <input
-          id="imagePath"
-          name="imagePath"
-          type="text"
-          value={ imageValue }
-          data-testid="image-input"
-          onChange={ onchange }
-        />
+        <label htmlFor="imagePath" data-testid="image-input-label">
+          Imagem
+          <input
+            id="imagePath"
+            name="imagePath"
+            type="text"
+            value={ imageValue }
+            data-testid="image-input"
+            onChange={ onchange }
+          />
+        </label>
       </>
     );
   }
