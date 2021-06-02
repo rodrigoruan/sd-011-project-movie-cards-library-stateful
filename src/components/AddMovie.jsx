@@ -16,7 +16,7 @@ class AddMovies extends React.Component {
       genre: 'action',
     };
     this.handleStates = this.handleStates.bind(this);
-    this.reset = this.reset.bind(this);
+    this.buttonAddMovies = this.buttonAddMovies.bind(this);
   }
 
   handleStates({ target }) {
@@ -26,7 +26,7 @@ class AddMovies extends React.Component {
     });
   }
 
-  addMovie() {
+  buttonAddMovies() {
     const { onClick } = this.props;
     onClick(this.state);
     this.setState({
@@ -39,20 +39,20 @@ class AddMovies extends React.Component {
     });
   }
 
-  reset() {
-    this.setState({
-      subtitle: '',
-      title: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
-    });
-  }
+  // addAtributes(inputName, inputType, inputValue) {
+  //   return (
+  //     <input
+  //       name={ inputName }
+  //       type={ inputType }
+  //       value={ inputValue }
+  //       data-testId={ inputName === 'imagePath' ? 'image-input' : `${inputName}-input` }
+  //       onChange={ this.handleStates }
+  //     />
+  //   );
+  // }
 
   render() {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
-    const { onClick } = this.props;
     return (
       <form data-testid="add-movie-form">
         <label data-testid="title-input-label" htmlFor="title-input">

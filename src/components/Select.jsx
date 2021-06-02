@@ -8,6 +8,7 @@ class Select extends React.Component {
       <label data-testid="select-input-label" htmlFor="select-input">
         Filtrar por gênero
         <select
+          name="select-input"
           data-testid="select-input"
           type="select"
           value={ value }
