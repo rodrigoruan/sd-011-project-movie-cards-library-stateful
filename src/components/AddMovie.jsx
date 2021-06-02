@@ -19,7 +19,7 @@ class AddMovie extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.reset = this.reset.bind(this);
+    this.createMovie = this.createMovie.bind(this);
   }
 
   handleChange(event) {
@@ -29,15 +29,16 @@ class AddMovie extends React.Component {
     });
   }
 
-  reset() {
-    this.setState = {
-      title: 'olá',
+  createMovie(callback) {
+    callback(this.state);
+    this.setState({
+      title: '',
       subtitle: '',
       imagePath: '',
       storyline: '',
       rating: 0,
       genre: 'action',
-    };
+    });
   }
 
   render() {
@@ -72,11 +73,14 @@ class AddMovie extends React.Component {
             <option value="thriller" data-testid="genre-option">Suspense</option>
           </select>
         </label>
-        <ButtonAddMovie onClick={ onClick } />
+        <ButtonAddMovie onClick={ () => this.createMovie(onClick) } />
       </form>
     );
   }
 }
+
+// https://www.pluralsight.com/guides/how-to-send-state-of-current-component-as-a-parameter-to-another-external-method-using-react
+// https://forum.betrybe.com/t/projeto-movie-cards-library-stateful-requisito-14/879
 
 AddMovie.propTypes = {
   onClick: PropTypes.func.isRequired,
