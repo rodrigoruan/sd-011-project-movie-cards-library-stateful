@@ -20,6 +20,15 @@ class MovieLibrary extends React.Component {
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
     this.filterMovies = this.filterMovies.bind(this);
+    this.handleAddMovie = this.handleAddMovie.bind(this);
+  }
+
+  handleAddMovie(movieData) {
+    console.log(movieData);
+    const { movies } = this.state;
+    this.setState({
+      movies: [...movies, movieData],
+    });
   }
 
   onSearchTextChange(event) {
@@ -41,8 +50,7 @@ class MovieLibrary extends React.Component {
   }
 
   filterMovies() {
-    const { movies } = this.props;
-    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
 
     return movies
       .filter(({ genre }) => genre.includes(selectedGenre))
@@ -72,10 +80,22 @@ class MovieLibrary extends React.Component {
           movies={ this.filterMovies() }
         />
 
-        <AddMovie />
+        <AddMovie onClick={ this.handleAddMovie } />
       </>
     );
   }
 }
+
+MovieLibrary.propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    storyline: PropTypes.string,
+    rating: PropTypes.number,
+    imagePath: PropTypes.string,
+    bookmarked: PropTypes.bool,
+    genre: PropTypes.string,
+  })).isRequired,
+};
 
 export default MovieLibrary;

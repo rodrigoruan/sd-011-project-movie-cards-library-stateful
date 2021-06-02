@@ -20,9 +20,9 @@ class AddMovie extends React.Component {
   }
 
   handleInputChange(event) {
-    const { name, value } = event.target;
+    const { name, value, type } = event.target;
     this.setState({
-      [name]: value,
+      [name]: type === 'number' ? Number(value) : value,
     });
   }
 
