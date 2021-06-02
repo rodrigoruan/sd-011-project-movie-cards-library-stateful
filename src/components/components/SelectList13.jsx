@@ -27,6 +27,6 @@ class SelectList13 extends Component {
 export default SelectList13;
 
 SelectList13.propTypes = {
-  slVl: PropTypes.number.isRequired,
+  slVl: PropTypes.string.isRequired,
   evSl: PropTypes.func.isRequired,
 };

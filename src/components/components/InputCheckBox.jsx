@@ -25,6 +25,6 @@ class InputCheckBox extends Component {
 export default InputCheckBox;
 
 InputCheckBox.propTypes = {
-  bkOnly: PropTypes.string.isRequired,
+  bkOnly: PropTypes.bool.isRequired,
   srcbkOch: PropTypes.func.isRequired,
 };
