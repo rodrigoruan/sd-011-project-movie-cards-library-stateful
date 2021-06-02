@@ -1,1 +1,1 @@
-/* implement AddMovie component here */
+// Precisa ter estado a ser gerenciado
