@@ -26,7 +26,6 @@ class AddMovie extends Component {
 
   resetState(event) {
     event.preventDefault();
-    const { onClick } = this.props;
     this.setState({
       subtitle: '',
       title: '',
@@ -35,7 +34,10 @@ class AddMovie extends Component {
       rating: 0,
       genre: 'action',
     });
-    onClick(event);
+
+    const { onClick } = this.props;
+    onClick(this.state);
+    console.log(onClick);
   }
 
   inputTitle() {
@@ -136,7 +138,11 @@ class AddMovie extends Component {
 
   buttonAddFilm() {
     return (
-      <button type="button" data-testid="send-button" onClick={ this.resetState }>
+      <button
+        type="button"
+        data-testid="send-button"
+        onClick={ this.resetState }
+      >
         Adicionar filme
       </button>
     );
