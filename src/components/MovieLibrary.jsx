@@ -16,6 +16,7 @@ class MovieLibrary extends React.Component {
 
     this.handlerChange = this.handlerChange.bind(this);
     this.filter = this.filter.bind(this);
+    this.movieAdded = this.movieAdded.bind(this);
   }
 
   handlerChange({ target }) {
@@ -47,6 +48,15 @@ class MovieLibrary extends React.Component {
     return filteredMovies;
   }
 
+  // Lembrar de referenciar Thyago Pessoa
+  movieAdded(anyMovie) {
+    const { movies } = this.state;
+    this.setState({
+      movies: [...movies, anyMovie],
+    });
+    console.log(anyMovie);
+  }
+
   render() {
     // Esta desestruturação abaixo refere-se ao uso da prop no componente <MovieList>
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
@@ -65,7 +75,7 @@ class MovieLibrary extends React.Component {
         />
 
         <MovieList movies={ this.filter() } />
-        <AddMovie />
+        <AddMovie onClick={ this.movieAdded } />
       </div>
     );
   }
