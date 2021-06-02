@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AddMovieGenre from './AddMovieGenre';
 import AddMovieStoryline from './AddMovieStoryline';
-import AddMovieRating from './AddMovieRating'
+import AddMovieRating from './AddMovieRating';
 
 class AddMovie extends React.Component {
   constructor() {
