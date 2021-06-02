@@ -1,5 +1,7 @@
 // implement AddMovie component here
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import Genre from './Genre';
 import ImagePath from './ImagePath';
 import RatingForm from './RatingForm';
@@ -30,7 +32,10 @@ export default class AddMovie extends Component {
     });
   }
 
-  handleClearState() {
+  handleClearState(e) {
+    e.preventDefault();
+    const { onClick } = this.props;
+    onClick(this.state);
     this.setState({
       title: '',
       subtitle: '',
@@ -56,3 +61,7 @@ export default class AddMovie extends Component {
     );
   }
 }
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
+}.isRequired;

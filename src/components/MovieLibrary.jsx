@@ -18,6 +18,7 @@ class MovieLibrary extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleFiltredMovies = this.handleFiltredMovies.bind(this);
+    this.AddMovie = this.addMovie.bind(this);
   }
 
   handleChange({ target }) {
@@ -39,6 +40,16 @@ class MovieLibrary extends Component {
     return filtredResult;
   }
 
+  addMovie({ title, subtitle, imagePath, storyline, rating, genre }) {
+    const { movies } = this.state;
+    let updatedMovies = movies;
+    const obj = { title, subtitle, imagePath, storyline, rating, genre };
+    obj.rating = parseFloat(obj.rating);
+
+    updatedMovies = updatedMovies.concat([obj]);
+    this.setState({ movies: updatedMovies });
+  }
+
   render() {
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
@@ -53,7 +64,7 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={ this.handleChange }
         />
         <MovieList movies={ this.handleFiltredMovies() } />
-        <AddMovie />
+        <AddMovie onClick={ this.addMovie } />
       </div>
     );
   }
