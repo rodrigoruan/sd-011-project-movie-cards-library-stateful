@@ -47,6 +47,10 @@ class MovieLibrary extends Component {
     return filteredMovies;
   }
 
+  // addNewMovie = () => {
+    
+  // }
+
   render = () => {
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
 
