@@ -2,11 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class SearchBar extends React.Component {
-  // constructor() {
-  //   super();
-  //   // segue o jogo dois dos vídeos!!! Quebrou a página aqui!!!
-  // }
-
   render() {
     const { searchText, onSearchTextChange } = this.props;
     const { bookmarkedOnly, onBookmarkedChange } = this.props;
