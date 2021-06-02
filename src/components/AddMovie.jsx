@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import InputText8 from './components/InputText8';
-import InputText9 from './components/InputText9';
-import InputText10 from './components/InputText10';
-import TextArea from './components/InputText11';
-import InputText12 from './components/InputText12';
-import SelectList13 from './components/SelectList13';
+import InputText8 from './InputText8';
+import InputText9 from './InputText9';
+import InputText10 from './InputText10';
+import TextArea from './InputText11';
+import InputText12 from './InputText12';
+import SelectList13 from './SelectList13';
 
 class AddMovie extends Component {
   constructor(props) {
