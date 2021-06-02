@@ -6,6 +6,7 @@ import RatingForm from './RatingForm';
 import Subtitle from './Subtitle';
 import TextArea from './TextArea';
 import Title from './Title';
+import Button from './Button';
 
 export default class AddMovie extends Component {
   constructor(props) {
@@ -19,12 +20,24 @@ export default class AddMovie extends Component {
       genre: 'action',
     };
     this.handleAddMovie = this.handleAddMovie.bind(this);
+    this.handleClearState = this.handleClearState.bind(this);
   }
 
   handleAddMovie({ target }) {
     const { name, value } = target;
     this.setState({
       [name]: value,
+    });
+  }
+
+  handleClearState() {
+    this.setState({
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
     });
   }
 
@@ -38,6 +51,7 @@ export default class AddMovie extends Component {
         <TextArea storyline={ storyline } handleAddMovie={ this.handleAddMovie } />
         <RatingForm rating={ rating } handleAddMovie={ this.handleAddMovie } />
         <Genre genre={ genre } handleAddMovie={ this.handleAddMovie } />
+        <Button handleClearState={ this.handleClearState } />
       </form>
     );
   }
