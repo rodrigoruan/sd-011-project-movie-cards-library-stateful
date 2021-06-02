@@ -23,10 +23,9 @@ class MovieLibrary extends React.Component {
   }
 
   handleAddMovies(newMovie) {
-    const { movies } = this.props;
-    this.setState({
+    this.setState(({ movies }) => ({
       movies: [...movies, newMovie],
-    });
+    }));
   }
 
   onSearchTextChange({ target }) {
