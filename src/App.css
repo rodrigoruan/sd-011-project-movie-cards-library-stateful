@@ -91,16 +91,16 @@ body {
 .addMovie-inputs {
   display: flex;
   flex-direction: column;
-  width: 98%;
   margin: 10px;
+  width: 98%;
 }
 
 .btn-adicionar {
+  background-color: #007bff;
   display: flex;
   flex-direction: column;
-  background-color: #007bff;
-  color: white;
   border: #007bff solid;
+  color: white;
   border-radius: 5px;
   margin: 10px;
   padding: 5px;
