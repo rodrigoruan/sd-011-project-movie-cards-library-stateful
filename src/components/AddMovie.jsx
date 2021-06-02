@@ -16,7 +16,7 @@ const initialState = {
   genre: 'action',
 };
 
-class AddMovie extends Component {
+export class AddMovie extends Component {
   constructor(props) {
     super(props);
 

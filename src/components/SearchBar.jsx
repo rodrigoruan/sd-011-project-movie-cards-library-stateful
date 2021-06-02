@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class SearchBar extends Component {
+export class SearchBar extends Component {
   render() {
     const { searchText, onSearchTextChange, bookmarkedOnly,
       onBookmarkedChange, selectedGenre, onSelectedGenreChange } = this.props;
@@ -18,11 +18,11 @@ class SearchBar extends Component {
             data-testid="text-input"
           />
         </label>
-        <label htmlFor="favorites-area" data-testid="checkbox-input-label">
+        <label htmlFor="bookmarkedOnly" data-testid="checkbox-input-label">
           Mostrar somente favoritos
           <input
-            id="favorites-area"
-            name="favorites-area"
+            id="bookmarkedOnly"
+            name="bookmarkedOnly"
             type="checkbox"
             checked={ bookmarkedOnly }
             onChange={ onBookmarkedChange }
