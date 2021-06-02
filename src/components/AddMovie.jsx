@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import ImagePath from './ImagePath';
 import Subtitle from './Subtitle';
+import TextArea from './TextArea';
 import Title from './Title';
 
 export default class AddMovie extends Component {
@@ -26,12 +27,13 @@ export default class AddMovie extends Component {
   }
 
   render() {
-    const { title, subtitle, imagePath } = this.state;
+    const { title, subtitle, imagePath, storyline } = this.state;
     return (
       <form data-testid="add-movie-form">
         <Title title={ title } handleAddMovie={ this.handleAddMovie } />
         <Subtitle subtitle={ subtitle } handleAddMovie={ this.handleAddMovie } />
         <ImagePath imagePath={ imagePath } handleAddMovie={ this.handleAddMovie } />
+        <TextArea storyline={ storyline } handleAddMovie={ this.handleAddMovie } />
       </form>
     );
   }
