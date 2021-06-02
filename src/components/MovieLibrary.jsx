@@ -11,10 +11,10 @@ class MovieLibrary extends Component {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
-      movies: props.movies,
+      movies: this.props.movies,
     };
     this.addMovies = this.addMovies.bind(this);
-    // this.filtro = this.filtro.bind(this);
+    this.filtro = this.filtro.bind(this);
     this.handleSeachBar = this.handleSeachBar.bind(this);
   }
 
@@ -32,26 +32,26 @@ class MovieLibrary extends Component {
     }));
   }
 
-  // filtro() {
-  //   const { bookmarkedOnly, searchText, selectedGenre } = this.state;
+  filtro() {
+    const { bookmarkedOnly, searchText, selectedGenre, movies } = this.state;
+    let newArray = movies;
+    if (bookmarkedOnly === true) {
+      newArray = movies.filter((movie) => movie.bookmarked === true);
+    }
 
-  //   if (bookmarkedOnly === true) {
-  //     movies.filter((movie) => movie.bookmarked === true);
-  //   }
+    if (searchText !== '') {
+      newArray = movies.filter((movie) => movie.title
+        .toLowerCase().includes(searchText)
+        || movie.subtitle.toLowerCase().includes(searchText)
+        || movie.storyline.toLowerCase().includes(searchText));
+    }
 
-  //   if (searchText !== '') {
-  //     movies.filter((movie) => movie.title
-  //       .toLowerCase().includes(searchText)
-  //       || movie.subtitle.toLowerCase().includes(searchText)
-  //       || movie.storyline.toLowerCase().includes(searchText));
-  //   }
+    if (selectedGenre !== '') {
+      newArray = movies.filter((movie) => movie.genre === selectedGenre);
+    }
 
-  //   if (selectedGenre !== '') {
-  //     movies.filter((movie) => movie.genre === selectedGenre);
-  //   }
-
-  //   return movies;
-  // }
+    return newArray;
+  }
 
   render() {
     const {
@@ -59,7 +59,7 @@ class MovieLibrary extends Component {
       bookmarkedOnly,
       selectedGenre,
       movies,
-      // filtro
+      filtro
     } = this.state;
     return (
       <div>
@@ -72,7 +72,7 @@ class MovieLibrary extends Component {
           onBookmarkedChange={ this.handleSeachBar }
           onSelectedGenreChange={ this.handleSeachBar }
         />
-        <MovieList movies={ movies } />
+        <MovieList movies={ this.filtro() } />
         <AddMovie onClick={ this.addMovies } />
       </div>
     );
