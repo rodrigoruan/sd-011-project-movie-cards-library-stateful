@@ -10,9 +10,9 @@ class InputTitle extends React.Component {
         <input
           type="text"
           name="title"
-          value={ state.title }
+          value={ state }
           data-testid="title-input"
-          onChange={ func.changeValue }
+          onChange={ func }
         />
       </label>
     );

@@ -10,9 +10,9 @@ class InputSubtitle extends React.Component {
         <input
           type="text"
           name="subtitle"
-          value={ state.subtitle }
+          value={ state }
           data-testid="subtitle-input"
-          onChange={ func.changeValue }
+          onChange={ func }
         />
       </label>
     );

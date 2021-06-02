@@ -11,9 +11,9 @@ class InputStoryline extends React.Component {
           cols="30"
           rows="10"
           name="storyline"
-          value={ state.storyline }
+          value={ state }
           data-testid="storyline-input"
-          onChange={ func.changeValue }
+          onChange={ func }
         />
       </label>
     );

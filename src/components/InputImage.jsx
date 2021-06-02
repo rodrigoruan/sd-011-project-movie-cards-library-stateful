@@ -10,9 +10,9 @@ class InputImage extends React.Component {
         <input
           type="text"
           name="imagePath"
-          value={ state.imagePath }
+          value={ state }
           data-testid="image-input"
-          onChange={ func.changeValue }
+          onChange={ func }
         />
       </label>
     );
