@@ -17,9 +17,10 @@ export default class AddMovie extends Component {
   }
 
   changeState({ target }) {
-    const { value } = target;
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
-      title: value,
+      [name]: value,
     });
     console.log('Abaixo temos o this');
     console.log(this);
@@ -36,7 +37,7 @@ export default class AddMovie extends Component {
               type="text"
               data-testid="title-input"
               name="title"
-              value={ title }
+              defaultValue={ title }
               onChange={ this.changeState }
             />
           </label>
