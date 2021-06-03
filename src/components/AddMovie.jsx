@@ -21,8 +21,8 @@ class AddMovie extends React.Component {
     this.resetButton = this.resetButton.bind(this);
   }
 
-  handleInitialValue(evento) {
-    const { name, value } = evento.target;
+  handleInitialValue(event) {
+    const { name, value } = event.target;
     this.setState({
       [name]: value,
     });
