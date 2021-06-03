@@ -6,7 +6,7 @@ class MovieContent extends React.Component {
   render() {
     const {
       storyLine,
-      evChange,
+      handleChange,
     } = this.props;
 
     return (
@@ -18,7 +18,18 @@ class MovieContent extends React.Component {
             id="storyline-input"
             value={ storyLine }
             data-testid="storyline-input"
-            onChange={ evChange }
+            onChange={ handleChange }
+          />
+        </label>
+        <label htmlFor="rating-input" data-testid="rating-input-label">
+          Avaliação
+          <input
+            type="number"
+            name="rating"
+            id="rating-input"
+            value={ rating }
+            data-testid="rating-input"
+            onChange={ handleChange }
           />
         </label>
       </fieldset>

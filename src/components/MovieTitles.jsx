@@ -7,7 +7,7 @@ class MovieTitles extends React.Component {
       subtitle,
       title,
       imagePath,
-      evChange,
+      handleChange,
     } = this.props;
 
     return (
@@ -20,7 +20,7 @@ class MovieTitles extends React.Component {
             id="title-input"
             value={ title }
             data-testid="title-input"
-            onChange={ evChange }
+            onChange={ handleChange }
           />
         </label>
         <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
@@ -31,7 +31,7 @@ class MovieTitles extends React.Component {
             id="subtitle-input"
             value={ subtitle }
             data-testid="subtitle-input"
-            onChange={ evChange }
+            onChange={ handleChange }
           />
         </label>
         <label htmlFor="image-input" data-testid="image-input-label">
@@ -42,7 +42,7 @@ class MovieTitles extends React.Component {
             id="image-input"
             value={ imagePath }
             data-testid="image-input"
-            onChange={ evChange }
+            onChange={ handleChange }
           />
         </label>
       </fieldset>
@@ -54,7 +54,7 @@ MovieTitles.propTypes = {
   subtitle: PropTypes.string,
   title: PropTypes.string,
   imagePath: PropTypes.string,
-  evChange: PropTypes.func,
+  handleChange: PropTypes.func,
 }.isRequired;
 
 export default MovieTitles;

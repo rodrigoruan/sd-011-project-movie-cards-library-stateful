@@ -16,8 +16,13 @@ class AddMovie extends React.Component {
       genre: 'action',
     };
 
+    this.handleChange = this.handleChange.bind(this);
     this.evClick = this.evClick.bind(this);
-    this.evChange = this.evChange.bind(this);
+  }
+
+  handleChange({ target }) {
+    const { name, value } = target;
+    this.setState({ [name]: value });
   }
 
   evClick(event) {
@@ -34,18 +39,13 @@ class AddMovie extends React.Component {
     }));
   }
 
-  evChange({ target }) {
-    const { name, value } = target;
-    this.setState({ [name]: value });
-  }
-
   render() {
     const {
       subtitle,
       title,
       imagePath,
       storyLine,
-      // rating,
+      rating,
       // genre,
     } = this.state;
 
@@ -55,10 +55,11 @@ class AddMovie extends React.Component {
           subtitle={ subtitle }
           title={ title }
           imagePath={ imagePath }
-          handleChange={ this.evChange }
+          handleChange={ this.handleChange }
         />
         <MovieContent
           storyLine={ storyLine }
+          rating={ rating }
         />
         <button
           data-testid="send-button"
