@@ -5,8 +5,8 @@ class MovieTitles extends React.Component {
   // render
   render() {
     const {
-      subtitle,
       title,
+      subtitle,
       imagePath,
       handleChange,
     } = this.props;
@@ -53,8 +53,8 @@ class MovieTitles extends React.Component {
 
 // propTypes
 MovieTitles.propTypes = {
-  subtitle: PropTypes.string,
   title: PropTypes.string,
+  subtitle: PropTypes.string,
   imagePath: PropTypes.string,
   handleChange: PropTypes.func,
 }.isRequired;

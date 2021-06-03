@@ -17,8 +17,8 @@ class AddMovie extends React.Component {
     super(props);
 
     this.state = {
-      subtitle: '',
       title: '',
+      subtitle: '',
       imagePath: '',
       storyLine: '',
       rating: 0,
@@ -39,9 +39,10 @@ class AddMovie extends React.Component {
     event.preventDefault();
     const { onClick } = this.props;
     onClick(this.state);
+
     this.setState(() => ({
-      subtitle: '',
       title: '',
+      subtitle: '',
       imagePath: '',
       storyLine: '',
       rating: 0,
@@ -52,8 +53,8 @@ class AddMovie extends React.Component {
   // render
   render() {
     const {
-      subtitle,
       title,
+      subtitle,
       imagePath,
       storyLine,
       rating,
@@ -63,8 +64,8 @@ class AddMovie extends React.Component {
     return (
       <form data-testid="add-movie-form">
         <MovieTitles
-          subtitle={ subtitle }
           title={ title }
+          subtitle={ subtitle }
           imagePath={ imagePath }
           handleChange={ this.handleChange }
         />
