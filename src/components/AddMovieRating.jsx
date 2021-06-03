@@ -21,10 +21,11 @@ class AddMovieRating extends Component {
       <label htmlFor="rating" data-testid="rating-input-label">
         Avaliação
         <input
-          type="text"
+          type="number"
           value={ rating }
           onChange={ this.createRating }
           data-testid="rating-input"
+          id="rating"
         />
       </label>
     );
