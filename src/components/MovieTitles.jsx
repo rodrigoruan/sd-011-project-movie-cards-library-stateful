@@ -13,7 +13,7 @@ class MovieTitles extends React.Component {
     return (
       <fieldset>
         <label htmlFor="title-input" data-testid="title-input-label">
-          Título
+          Title
           <input
             type="text"
             name="title"
@@ -24,7 +24,7 @@ class MovieTitles extends React.Component {
           />
         </label>
         <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
-          Subtítulo
+          Subtitle
           <input
             type="text"
             name="subtitle"
@@ -35,7 +35,7 @@ class MovieTitles extends React.Component {
           />
         </label>
         <label htmlFor="image-input" data-testid="image-input-label">
-          Imagem
+          Image
           <input
             type="text"
             name="imagePath"

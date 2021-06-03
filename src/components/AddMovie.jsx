@@ -1,7 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+// importing aditional files
 import MovieTitles from './MovieTitles';
 import MovieContent from './MovieContent';
+
+// References
+// handleChange: https://reactjs.org/docs/forms.html
+// onClick: https://blog.logrocket.com/a-guide-to-react-onclick-event-handlers-d411943b14dd/
+// https://blog.matheuscastiglioni.com.br/mantendo-estados-de-componentes-no-react-com-state/
 
 class AddMovie extends React.Component {
   constructor(props) {
@@ -46,7 +53,7 @@ class AddMovie extends React.Component {
       imagePath,
       storyLine,
       rating,
-      // genre,
+      genre,
     } = this.state;
 
     return (
@@ -60,6 +67,8 @@ class AddMovie extends React.Component {
         <MovieContent
           storyLine={ storyLine }
           rating={ rating }
+          genre={ genre }
+          handleChange={ this.handleChange }
         />
         <button
           data-testid="send-button"
