@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import MovieList from './MovieList';
 import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
-
-// import PropTypes from 'prop-types';
 
 class MovieLibrary extends Component {
   constructor(props) {
@@ -39,7 +38,7 @@ class MovieLibrary extends Component {
       genre,
     };
     this.setState((items) => ({
-      movies: [...items.movies, movieAdd],
+      movies: [items.movies, movieAdd],
     }));
   }
 
@@ -61,7 +60,7 @@ class MovieLibrary extends Component {
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.handleChange }
         />
-        <MovieList />
+        <MovieList movies={ this.props.movies } />
         <AddMovie onClick={ this.addMovie } />
       </div>
     );
