@@ -1,15 +1,32 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+
+import MovieList from './MovieList';
+import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
+
+// import PropTypes from 'prop-types';
 
 class MovieLibrary extends Component {
   constructor(props) {
     super(props);
-    const { movies } = this.props;
+    // const { movies } = this.props;
 
-    this.state = {
+    /* this.state = {
+      searchText: '',
+      bookmarkedOnly: false,
+      selectedGenre: '',
       movies,
-    };
+    }; */
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange({ target }) {
+    const { name, type } = target;
+    const value = type === 'checkbox' ? target.checked : target.value;
+    this.setState(() => ({
+      [name]: value,
+    }));
   }
 
   addMovie({ title, subtitle, imagePath, storyLine, rating, genre }) {
@@ -27,8 +44,19 @@ class MovieLibrary extends Component {
   }
 
   render() {
+    /* const {
+      searchText,
+      bookmarkedOnly,
+      selectedGenre,
+    } = this.state; */
+
     return (
-      <div><AddMovie onClick={ this.addMovie } /></div>
+      <div>
+        <h2> My awesome movie library </h2>
+        <SearchBar />
+        <MovieList />
+        <AddMovie onClick={ this.addMovie } />
+      </div>
     );
   }
 }
