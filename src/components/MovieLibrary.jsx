@@ -59,9 +59,9 @@ class MovieLibrary extends React.Component {
     if (searchText.length !== 0) {
       return movies.filter((items) => {
         const { title, subtitle, storyLine } = items;
-        const auxTitle = title.filter(searchText);
-        const auxSubtitle = subtitle.filter(searchText);
-        const auxStoryLine = storyLine.filter(searchText);
+        const auxTitle = title.includes(searchText);
+        const auxSubtitle = subtitle.includes(searchText);
+        const auxStoryLine = storyLine.includes(searchText);
         return (auxTitle || auxSubtitle || auxStoryLine);
       });
     }
