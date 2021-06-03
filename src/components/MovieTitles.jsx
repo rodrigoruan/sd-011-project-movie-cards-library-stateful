@@ -5,8 +5,8 @@ class MovieTitles extends React.Component {
   // render
   render() {
     const {
-      title,
       subtitle,
+      title,
       imagePath,
       handleChange,
     } = this.props;

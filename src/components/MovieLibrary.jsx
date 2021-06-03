@@ -27,22 +27,9 @@ class MovieLibrary extends React.Component {
   // functions
   handleChange({ target }) {
     const { name, type } = target;
-    const value = (type === 'checkbox') ? (target.checked) : (target.value);
+    const value = type === 'checkbox' ? target.checked : target.value;
 
     this.setState(() => ({ [name]: value }));
-  }
-
-  addMovie({ title, subtitle, imagePath, storyLine, rating, genre }) {
-    const movieAdd = {
-      title,
-      subtitle,
-      imagePath,
-      storyLine,
-      rating,
-      genre,
-    };
-
-    this.setState((items) => ({ movies: [...items.movies, movieAdd] }));
   }
 
   filterLibrary() {
@@ -53,17 +40,6 @@ class MovieLibrary extends React.Component {
       movies,
     } = this.state;
 
-    if (searchText.length !== 0) {
-      return movies.filter((items) => {
-        const { title, subtitle, storyLine } = items;
-        const auxTitle = title.includes(searchText);
-        const auxSubtitle = subtitle.includes(searchText);
-        const auxStoryLine = storyLine.includes(searchText);
-
-        return (auxTitle || auxSubtitle || auxStoryLine);
-      });
-    }
-
     if (bookmarkedOnly) {
       return movies.filter((items) => items.bookmarked);
     }
@@ -72,7 +48,31 @@ class MovieLibrary extends React.Component {
       return movies.filter((items) => items.genre === selectedGenre);
     }
 
+    if (searchText.length !== 0) {
+      return movies.filter((items) => {
+        const { title, subtitle, storyline } = items;
+        const auxTitle = title.includes(searchText);
+        const auxSubtitle = subtitle.includes(searchText);
+        const auxStoryline = storyline.includes(searchText);
+
+        return (auxTitle || auxSubtitle || auxStoryline);
+      });
+    }
+
     return movies;
+  }
+
+  addMovie({ subtitle, title, imagePath, storyLine, rating, genre }) {
+    const movieAdd = {
+      subtitle,
+      title,
+      imagePath,
+      storyLine,
+      rating,
+      genre,
+    };
+
+    this.setState((items) => ({ movies: [...items.movies, movieAdd] }));
   }
 
   // render
