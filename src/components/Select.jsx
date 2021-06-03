@@ -7,7 +7,11 @@ class Select extends Component {
     return (
       <label htmlFor="genre-input" data-testid="genre-input-label">
         <p>Gênero</p>
-        <select data-testid="genre-input" onChange={ handleChange } name="genre" value={ genre }>
+        <select
+          data-testid="genre-input"
+          onChange={ handleChange }
+          name="genre" value={ genre }
+        >
           <option value="action" data-testid="genre-option">Ação</option>
           <option value="comedy" data-testid="genre-option">Comédia</option>
           <option value="thriller" data-testid="genre-option">Suspense</option>
