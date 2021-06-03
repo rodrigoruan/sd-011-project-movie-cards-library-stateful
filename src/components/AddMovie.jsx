@@ -41,8 +41,8 @@ class AddMovie extends React.Component {
     onClick(this.state);
 
     this.setState(() => ({
-      title: '',
       subtitle: '',
+      title: '',
       imagePath: '',
       storyLine: '',
       rating: 0,
