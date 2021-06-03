@@ -5,7 +5,11 @@ class LabelRating extends React.Component {
   render() {
     const { rating, handleChange } = this.props;
     return (
-      <label htmlFor="rating-input" data-testid="rating-input-label">
+      <label
+        htmlFor="rating-input"
+        data-testid="rating-input-label"
+        className="label-box"
+      >
         Avaliação
         <input
           name="rating"

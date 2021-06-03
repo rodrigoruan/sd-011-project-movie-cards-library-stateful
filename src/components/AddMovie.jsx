@@ -1,12 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ButtonAddMovie from './ButtonAddMovie';
-import LabelTitle from './Labels/LabelTitle';
-import LabelSubtitle from './Labels/LabelSubtitle';
-import LabelImage from './Labels/LabelImage';
-import LabelStoryline from './Labels/LabelStoryline';
 import LabelRating from './Labels/LabelRating';
 import LabelGenre from './Labels/LabelGenre';
+import Label from './Labels/Label';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -21,7 +18,7 @@ class AddMovie extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.createMovie = this.createMovie.bind(this);
+    this.addMovieToList = this.addMovieToList.bind(this);
   }
 
   handleChange(event) {
@@ -31,12 +28,12 @@ class AddMovie extends React.Component {
     });
   }
 
-  createMovie(callback) {
+  addMovieToList(callback) {
     callback(this.state);
     this.setState({
       title: '',
       subtitle: '',
-      imagePath: '',
+      image: '',
       storyline: '',
       rating: 0,
       genre: 'action',
@@ -45,16 +42,36 @@ class AddMovie extends React.Component {
 
   render() {
     const { onClick } = this.props;
-    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
+    const { title, subtitle, image, storyline, rating, genre } = this.state;
     return (
-      <form data-testid="add-movie-form">
-        <LabelTitle title={ title } handleChange={ this.handleChange } />
-        <LabelSubtitle subtitle={ subtitle } handleChange={ this.handleChange } />
-        <LabelImage imagePath={ imagePath } handleChange={ this.handleChange } />
-        <LabelStoryline storyline={ storyline } handleChange={ this.handleChange } />
+      <form data-testid="add-movie-form" className="form-box">
+        <Label
+          textcall="Título"
+          inputName="title"
+          value={ title }
+          handleChange={ this.handleChange }
+        />
+        <Label
+          textcall="Subtítulo"
+          inputName="subtitle"
+          value={ subtitle }
+          handleChange={ this.handleChange }
+        />
+        <Label
+          textcall="Sinopse"
+          inputName="storyline"
+          value={ storyline }
+          handleChange={ this.handleChange }
+        />
+        <Label
+          textcall="Imagem"
+          inputName="image"
+          value={ image }
+          handleChange={ this.handleChange }
+        />
         <LabelRating rating={ rating } handleChange={ this.handleChange } />
         <LabelGenre genre={ genre } handleChange={ this.handleChange } />
-        <ButtonAddMovie onClick={ () => this.createMovie(onClick) } />
+        <ButtonAddMovie onClick={ () => this.addMovieToList(onClick) } />
       </form>
     );
   }

@@ -81,3 +81,26 @@ body {
   justify-content: flex-end;
   padding: 12px 20px;
 }
+
+.form-box {
+  padding: 48px 30px;
+}
+
+.input-box {
+  margin: 5px 0;
+  width: 100%;
+}
+
+.label-box {
+  margin: 5px 0;
+  width: 100%;
+}
+
+.button {
+  margin: 10px 0;
+}
+
+.label-checkbox {
+  margin: 0 5px 0 0;
+  padding-right: 10px;
+}
