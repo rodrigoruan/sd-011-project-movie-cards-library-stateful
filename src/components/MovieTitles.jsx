@@ -14,7 +14,7 @@ class MovieTitles extends React.Component {
 
     return (
       // forms with Movie's data
-      <fieldset id="firstfield">
+      <fieldset>
         <label htmlFor="title-input" data-testid="title-input-label">
           Título
           <input
