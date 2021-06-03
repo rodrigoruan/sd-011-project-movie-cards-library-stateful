@@ -14,19 +14,18 @@ export default class Block extends Component {
         {title}
         {(type === 'textarea')
           ? (<textarea
-            data-testid={ `${name}-input` }
-            onChange={ change }
-            name={ name }
-            value={ value }
+              data-testid={ `${name}-input` }
+              onChange={ change }
+              name={ name }
+              value={ value }
           />)
           : (<input
-            type={ name === 'rating' ? 'number' : 'text' }
-            data-testid={ name === 'imagePath' ? 'image-input' : `${name}-input` }
-            onChange={ change }
-            name={ name }
-            value={ value }
-          />)
-        }
+              type={ name === 'rating' ? 'number' : 'text' }
+              data-testid={ name === 'imagePath' ? 'image-input' : `${name}-input` }
+              onChange={ change }
+              name={ name }
+              value={ value }
+          /> )}
       </label>
     );
   }
