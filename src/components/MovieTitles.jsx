@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class MovieData extends React.Component {
+class MovieTitles extends React.Component {
   render() {
     const {
       subtitle,
       title,
       imagePath,
-      handleChange,
+      evChange,
     } = this.props;
 
     return (
       <fieldset>
-        <label data-testid="title-input-label" htmlFor="title-input">
+        <label htmlFor="title-input" data-testid="title-input-label">
           Título
           <input
             type="text"
@@ -20,10 +20,10 @@ class MovieData extends React.Component {
             id="title-input"
             value={ title }
             data-testid="title-input"
-            onChange={ handleChange }
+            onChange={ evChange }
           />
         </label>
-        <label data-testid="subtitle-input-label" htmlFor="subtitle-input">
+        <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
           Subtítulo
           <input
             type="text"
@@ -31,10 +31,10 @@ class MovieData extends React.Component {
             id="subtitle-input"
             value={ subtitle }
             data-testid="subtitle-input"
-            onChange={ handleChange }
+            onChange={ evChange }
           />
         </label>
-        <label data-testid="image-input-label" htmlFor="image-input">
+        <label htmlFor="image-input" data-testid="image-input-label">
           Imagem
           <input
             type="text"
@@ -42,7 +42,7 @@ class MovieData extends React.Component {
             id="image-input"
             value={ imagePath }
             data-testid="image-input"
-            onChange={ handleChange }
+            onChange={ evChange }
           />
         </label>
       </fieldset>
@@ -50,11 +50,11 @@ class MovieData extends React.Component {
   }
 }
 
-MovieData.propTypes = {
+MovieTitles.propTypes = {
   subtitle: PropTypes.string,
   title: PropTypes.string,
   imagePath: PropTypes.string,
-  handleChange: PropTypes.func,
+  evChange: PropTypes.func,
 }.isRequired;
 
-export default MovieData;
+export default MovieTitles;

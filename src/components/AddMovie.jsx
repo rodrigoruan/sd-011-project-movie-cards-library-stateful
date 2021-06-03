@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MovieData from './MovieData';
+import MovieTitles from './MovieTitles';
+import MovieContent from './MovieContent';
 
 class AddMovie extends React.Component {
   constructor(props) {
@@ -15,13 +16,8 @@ class AddMovie extends React.Component {
       genre: 'action',
     };
 
-    this.evChange = this.evChange.bind(this);
     this.evClick = this.evClick.bind(this);
-  }
-
-  evChange({ target }) {
-    const { name, value } = target;
-    this.setState({ [name]: value });
+    this.evChange = this.evChange.bind(this);
   }
 
   evClick(event) {
@@ -38,23 +34,31 @@ class AddMovie extends React.Component {
     }));
   }
 
+  evChange({ target }) {
+    const { name, value } = target;
+    this.setState({ [name]: value });
+  }
+
   render() {
     const {
       subtitle,
       title,
       imagePath,
-      // storyLine,
+      storyLine,
       // rating,
       // genre,
     } = this.state;
 
     return (
       <form data-testid="add-movie-form">
-        <MovieData
+        <MovieTitles
           subtitle={ subtitle }
           title={ title }
           imagePath={ imagePath }
           handleChange={ this.evChange }
+        />
+        <MovieContent
+          storyLine={ storyLine }
         />
         <button
           data-testid="send-button"
