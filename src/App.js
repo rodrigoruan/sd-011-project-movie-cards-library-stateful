@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import Header from './components/Header';
 import MovieList from './components/MovieList';
 import SearchBar from './components/SearchBar';
@@ -13,7 +13,7 @@ class App extends React.Component {
         <Header />
         <SearchBar />
         <MovieList movies={ movies } />
-        <AddMovie onclick={ useCallback } />
+        <AddMovie onclick={ (() => {}) } />
       </div>
     );
   }

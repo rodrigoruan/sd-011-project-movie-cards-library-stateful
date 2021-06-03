@@ -1,31 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import AddTitle from './AddTitle';
-import AddSubtitle from './AddSubtitle';
+// import PropTypes from 'prop-types';
+import AddInputsToForm from './AddInputsToForm';
 
 class AddMovie extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
-
   render() {
     return (
       <form data-testid="add-movie-form">
-        <AddTitle />
-        <AddSubtitle />
+        <AddInputsToForm />
       </form>
     );
   }
 }
-
-AddMovie.propTypes = PropTypes.component;
-
-AddMovie.propTypes = {
-  // title: PropTypes.string.isRequired,
-  // subtitle: PropTypes.string.isRequired,
-};
 
 /**
  * Consultei o repositório do Bruno Duarte para resolver esse ProTypes.component
