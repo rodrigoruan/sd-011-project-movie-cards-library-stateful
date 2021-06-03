@@ -26,11 +26,12 @@ class MovieLibrary extends Component {
   // functions
   handleChange({ target }) {
     const { name, type } = target;
-    const value = type === 'checkbox' ? target.checked : target.value;
 
-    this.setState(() => ({
-      [name]: value,
-    }));
+    let value;
+    if (type === 'checkbox') value = target.checked;
+    else value = target.value;
+
+    this.setState(() => ({ [name]: value }));
   }
 
   addMovie({ title, subtitle, imagePath, storyLine, rating, genre }) {
@@ -48,7 +49,7 @@ class MovieLibrary extends Component {
     }));
   }
 
-  filter() {
+  filterLibrary() {
     const {
       searchText,
       bookmarkedOnly,
@@ -95,7 +96,7 @@ class MovieLibrary extends Component {
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.handleChange }
         />
-        <MovieList movies={ this.filter() } />
+        <MovieList movies={ this.filterLibrary() } />
         <AddMovie onClick={ this.addMovie } />
       </div>
     );
