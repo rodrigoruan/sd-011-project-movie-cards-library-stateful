@@ -12,6 +12,7 @@ import MovieContent from './MovieContent';
 // https://blog.matheuscastiglioni.com.br/mantendo-estados-de-componentes-no-react-com-state/
 
 class AddMovie extends React.Component {
+  // super
   constructor(props) {
     super(props);
 
@@ -28,6 +29,7 @@ class AddMovie extends React.Component {
     this.evClick = this.evClick.bind(this);
   }
 
+  // functions
   handleChange({ target }) {
     const { name, value } = target;
     this.setState({ [name]: value });
@@ -47,6 +49,7 @@ class AddMovie extends React.Component {
     }));
   }
 
+  // render
   render() {
     const {
       subtitle,
@@ -83,8 +86,10 @@ class AddMovie extends React.Component {
   }
 }
 
+// propTypes
 AddMovie.propTypes = {
   onClick: PropTypes.func,
 }.isRequired;
 
+// exports
 export default AddMovie;

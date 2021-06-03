@@ -1,8 +1,9 @@
+// I had to make two files to complete Movie's informations cause Lint limit about 50 lines
 import React from 'react';
 import PropTypes from 'prop-types';
-// I had to make two files to complete Movie's informations cause Lint limit about 50 lines
 
 class MovieContent extends React.Component {
+  // render
   render() {
     const {
       storyLine,
@@ -53,6 +54,7 @@ class MovieContent extends React.Component {
   }
 }
 
+// propTypes
 MovieContent.propTypes = {
   storyLine: PropTypes.string,
   rating: PropTypes.number,
@@ -60,4 +62,5 @@ MovieContent.propTypes = {
   handleChange: PropTypes.func,
 }.isRequired;
 
+// exports
 export default MovieContent;

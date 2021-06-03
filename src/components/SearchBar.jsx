@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class SearchBar extends React.Component {
+  // render
   render() {
     const {
       searchText,
@@ -54,6 +55,7 @@ class SearchBar extends React.Component {
   }
 }
 
+// propTypes
 SearchBar.propTypes = {
   searchText: PropTypes.string,
   onSearchTextChange: PropTypes.func,
@@ -63,4 +65,5 @@ SearchBar.propTypes = {
   onSelectedGenreChange: PropTypes.func,
 }.isRequired;
 
+// exports
 export default SearchBar;

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class MovieTitles extends React.Component {
+  // render
   render() {
     const {
       subtitle,
@@ -50,6 +51,7 @@ class MovieTitles extends React.Component {
   }
 }
 
+// propTypes
 MovieTitles.propTypes = {
   subtitle: PropTypes.string,
   title: PropTypes.string,
@@ -57,4 +59,5 @@ MovieTitles.propTypes = {
   handleChange: PropTypes.func,
 }.isRequired;
 
+// exports
 export default MovieTitles;
