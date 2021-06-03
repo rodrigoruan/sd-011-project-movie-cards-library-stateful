@@ -10,7 +10,8 @@ class Select extends Component {
         <select
           data-testid="genre-input"
           onChange={ handleChange }
-          name="genre" value={ genre }
+          name="genre"
+          value={ genre }
         >
           <option value="action" data-testid="genre-option">Ação</option>
           <option value="comedy" data-testid="genre-option">Comédia</option>
