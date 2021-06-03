@@ -12,10 +12,9 @@ class MovieContent extends React.Component {
       genre,
       handleChange,
     } = this.props;
-
     return (
       // forms with Movie's data
-      <fieldset>
+      <fieldset id="secondfield">
         <label htmlFor="storyline-input" data-testid="storyline-input-label">
           Sinopse
           <textarea

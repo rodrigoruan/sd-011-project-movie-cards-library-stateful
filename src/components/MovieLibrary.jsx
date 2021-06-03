@@ -12,6 +12,7 @@ class MovieLibrary extends React.Component {
     super(props);
     const { movies } = this.props;
 
+    // initial info
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
@@ -19,6 +20,7 @@ class MovieLibrary extends React.Component {
       movies,
     };
 
+    // bindings
     this.handleChange = this.handleChange.bind(this);
     this.filterLibrary = this.filterLibrary.bind(this);
     this.addMovie = this.addMovie.bind(this);
@@ -28,6 +30,7 @@ class MovieLibrary extends React.Component {
   handleChange({ target }) {
     const { name, type } = target;
 
+    // checkbox validation
     let value;
     if (type === 'checkbox') {
       value = target.checked;
@@ -38,6 +41,7 @@ class MovieLibrary extends React.Component {
     this.setState(() => ({ [name]: value }));
   }
 
+  // filter library's movies
   filterLibrary() {
     const {
       searchText,
@@ -46,14 +50,17 @@ class MovieLibrary extends React.Component {
       movies,
     } = this.state;
 
+    // if bookmarked
     if (bookmarkedOnly) {
       return movies.filter((items) => items.bookmarked);
     }
 
+    // if empty selected genre validation
     if (selectedGenre.length !== 0) {
       return movies.filter((items) => items.genre === selectedGenre);
     }
 
+    // if empty search text validation
     if (searchText.length !== 0) {
       return movies.filter((items) => {
         const { title, subtitle, storyline } = items;
@@ -68,6 +75,7 @@ class MovieLibrary extends React.Component {
     return movies;
   }
 
+  // set movies
   addMovie({ subtitle, title, imagePath, storyLine, rating, genre }) {
     const movieAdd = {
       subtitle,
@@ -83,6 +91,7 @@ class MovieLibrary extends React.Component {
 
   // render
   render() {
+    // initial info
     const {
       searchText,
       bookmarkedOnly,
@@ -90,8 +99,11 @@ class MovieLibrary extends React.Component {
     } = this.state;
 
     return (
+      // html structure, SearchBar, MovieList and AddMovie
       <div>
-        <h2> My awesome movie library </h2>
+        <br />
+        <center><h2> My awesome movie library </h2></center>
+        <br />
         <SearchBar
           searchText={ searchText }
           onSearchTextChange={ this.handleChange }

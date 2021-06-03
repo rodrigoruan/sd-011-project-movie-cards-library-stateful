@@ -83,13 +83,15 @@ class AddMovie extends React.Component {
           genre={ genre }
           handleChange={ this.handleChange }
         />
-        <button
-          data-testid="send-button"
-          type="submit"
-          onClick={ this.evClick }
-        >
-          Adicionar filme
-        </button>
+        <center>
+          <button
+            data-testid="send-button"
+            type="submit"
+            onClick={ this.evClick }
+          >
+            Adicionar filme
+          </button>
+        </center>
       </form>
     );
   }
