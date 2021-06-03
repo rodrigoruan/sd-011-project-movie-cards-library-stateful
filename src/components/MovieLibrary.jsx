@@ -36,7 +36,7 @@ export default class MovieLibrary extends Component {
     let filteredMovies = movies;
 
     if (bookmarkedOnly) {
-      filteredMovies.filter((m) => m.bookmarked);
+      filteredMovies = filteredMovies.filter((m) => m.bookmarked);
     }
 
     if (selectedGenre) {
