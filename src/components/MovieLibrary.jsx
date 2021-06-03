@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 // external files imports
@@ -6,7 +6,7 @@ import MovieList from './MovieList';
 import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
 
-class MovieLibrary extends Component {
+class MovieLibrary extends React.Component {
   // super
   constructor(props) {
     super(props);
