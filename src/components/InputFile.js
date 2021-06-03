@@ -3,16 +3,16 @@ import propTypes from 'prop-types';
 
 class InputFile extends React.Component {
   render() {
-    const { title, targetValue } = this.props;
-
+    const { label, name, value, onChange, type } = this.props;
     return (
-      <label data-testid="title-input-label" htmlFor="title-label">
-        Título
+      <label data-testid={ `${name}-input-label` } htmlFor={ `${name}-label` }>
+        { label }
         <input
-          name="title"
-          type="text"
-          value={ title }
-          onChange={ targetValue }
+          type={ type }
+          name={ name }
+          value={ value }
+          onChange={ onChange }
+          data-testid={ `${name}-input` }
         />
       </label>
     );
@@ -21,7 +21,6 @@ class InputFile extends React.Component {
 
 export default InputFile;
 
-InputFile.propTypes = {
-  title: propTypes.string.isRequired,
-  targetValue: propTypes.string.isRequired,
-};
+InputFile.propTypes = ({
+  label: propTypes.string,
+}).isRequired;
