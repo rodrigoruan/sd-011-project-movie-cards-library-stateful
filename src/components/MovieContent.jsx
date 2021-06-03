@@ -14,7 +14,7 @@ class MovieContent extends React.Component {
     return (
       <fieldset>
         <label htmlFor="storyline-input" data-testid="storyline-input-label">
-          Storyline
+          Sinopse
           <textarea
             name="storyLine"
             id="storyline-input"
@@ -24,7 +24,7 @@ class MovieContent extends React.Component {
           />
         </label>
         <label htmlFor="rating-input" data-testid="rating-input-label">
-          Rating
+          Avaliação
           <input
             type="number"
             name="rating"
@@ -35,7 +35,7 @@ class MovieContent extends React.Component {
           />
         </label>
         <label htmlFor="genre-input" data-testid="genre-input-label">
-          Gender
+          Gênero
           <select
             name="genre"
             id="genre-input"
@@ -43,9 +43,9 @@ class MovieContent extends React.Component {
             data-testid="genre-input"
             onChange={ handleChange }
           >
-            <option value="action" data-testid="genre-option">Action</option>
-            <option value="comedy" data-testid="genre-option">Comedy</option>
-            <option value="thriller" data-testid="genre-option">Thriller</option>
+            <option value="action" data-testid="genre-option">Ação</option>
+            <option value="comedy" data-testid="genre-option">Comédia</option>
+            <option value="thriller" data-testid="genre-option">Suspense</option>
           </select>
         </label>
       </fieldset>
