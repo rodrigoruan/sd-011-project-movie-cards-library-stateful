@@ -20,8 +20,8 @@ class MovieLibrary extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.addMovie = this.addMovie.bind(this);
     this.filterLibrary = this.filterLibrary.bind(this);
+    this.addMovie = this.addMovie.bind(this);
   }
 
   // functions
