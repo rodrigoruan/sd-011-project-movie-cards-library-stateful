@@ -21,6 +21,7 @@ class MovieLibrary extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.addMovie = this.addMovie.bind(this);
+    this.filterLibrary = this.filterLibrary.bind(this);
   }
 
   // functions
@@ -57,10 +58,11 @@ class MovieLibrary extends React.Component {
 
     if (searchText.length !== 0) {
       return movies.filter((items) => {
-        const { title, subtitle } = items;
+        const { title, subtitle, storyLine } = items;
         const auxTitle = title.filter(searchText);
         const auxSubtitle = subtitle.filter(searchText);
-        return (auxTitle || auxSubtitle);
+        const auxStoryLine = storyLine.filter(searchText);
+        return (auxTitle || auxSubtitle || auxStoryLine);
       });
     }
 
