@@ -44,9 +44,7 @@ class MovieLibrary extends Component {
       genre,
     };
 
-    this.setState((items) => ({
-      movies: [items.movies, movieAdd],
-    }));
+    this.setState((items) => ({ movies: [items.movies, movieAdd] }));
   }
 
   filterLibrary() {
