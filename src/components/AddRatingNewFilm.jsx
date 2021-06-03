@@ -13,6 +13,9 @@ class AddRatingNewFilm extends Component {
         <input
           name="rating"
           type="number"
+          min="0"
+          max="10"
+          step={ 0.1 }
           value={ rating }
           onChange={ handleChange }
           data-testid="rating-input"

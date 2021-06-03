@@ -51,14 +51,6 @@ class MovieLibrary extends Component {
     });
   }
 
-  // handleChange({ target }) {
-  //   const { name } = target;
-  //   const { value } = target.type === 'checkbox' ? target.checked : target.value;
-  //   this.setState({
-  //     [name]: value,
-  //   });
-  // }
-
   filteredMovies() {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
     let arrayFilteredMovies = movies.filter((movie) => (
@@ -78,11 +70,6 @@ class MovieLibrary extends Component {
       ));
     }
 
-    // const arrayFilteredMovies = movies.filter((movie) => (
-    //   (movie.title.toLowerCase().includes(searchText.toLowerCase()))
-    //   || (movie.subtitle.toLowerCase().includes(searchText.toLowerCase()))
-    // ));
-
     return arrayFilteredMovies;
   }
 
@@ -95,7 +82,7 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={ this.onSelectedGenreChange }
         />
         <MovieList
-          dataMovies={ this.filteredMovies() }
+          movies={ this.filteredMovies() }
         />
         <AddMovie onClick={ this.onClick } />
       </>
@@ -105,8 +92,18 @@ class MovieLibrary extends Component {
 
 MovieLibrary.propTypes = {
   movies: PropTypes.arrayOf(
-    PropTypes.object,
-  ).isRequired,
+    PropTypes.shape({
+      title: PropTypes.string,
+      subtitle: PropTypes.string,
+      storyline: PropTypes.string,
+      rating: PropTypes.number,
+      imagePath: PropTypes.string,
+    }),
+  ),
+};
+
+MovieLibrary.defaultProps = {
+  movies: [],
 };
 
 export default MovieLibrary;

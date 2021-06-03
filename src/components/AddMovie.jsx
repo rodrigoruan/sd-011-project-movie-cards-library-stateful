@@ -34,7 +34,7 @@ class AddMovie extends Component {
     this.setState({
       title: '',
       subtitle: '',
-      image: '',
+      imagePath: '',
       storyline: '',
       rating: 0,
       genre: 'action',
@@ -48,13 +48,13 @@ class AddMovie extends Component {
     return (
       <form data-testid="add-movie-form">
         <Label
-          textcall="Titulo"
+          textcall="Título"
           inputName="title"
           value={ title }
           handleChange={ this.handleChange }
         />
         <Label
-          textcall="Subtitulo"
+          textcall="Subtítulo"
           inputName="subtitle"
           value={ subtitle }
           handleChange={ this.handleChange }
