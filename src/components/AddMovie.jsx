@@ -35,6 +35,15 @@ export default class AddMovie extends Component {
     });
   }
 
+  handleClick(e) {
+    e.preventDefault();
+
+    const { onClick } = this.props;
+    onClick(this.state);
+
+    this.reset();
+  }
+
   reset() {
     this.setState({
       title: '',
@@ -44,15 +53,6 @@ export default class AddMovie extends Component {
       rating: 0,
       genre: 'action',
     });
-  }
-
-  handleClick(e) {
-    e.preventDefault();
-
-    const { onClick } = this.props;
-    onClick(this.state);
-
-    this.reset();
   }
 
   render() {
