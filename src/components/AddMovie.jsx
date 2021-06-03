@@ -23,6 +23,7 @@ export default class AddMovie extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.reset = this.reset.bind(this);
   }
 
@@ -45,8 +46,16 @@ export default class AddMovie extends Component {
     });
   }
 
-  render() {
+  handleClick(e) {
+    e.preventDefault();
+
     const { onClick } = this.props;
+    onClick(this.state);
+
+    this.reset();
+  }
+
+  render() {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
 
     return (
@@ -64,12 +73,7 @@ export default class AddMovie extends Component {
 
           <Select value={ genre } handleChange={ this.handleChange } />
 
-          <Button
-            onCLick={ () => {
-              onClick(this.state);
-              this.reset(this.state);
-            } }
-          />
+          <Button handleClick={ this.handleClick } />
         </form>
       </div>
     );
