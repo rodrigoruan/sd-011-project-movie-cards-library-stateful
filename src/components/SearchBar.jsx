@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 class SearchBar extends React.Component {
   // render
+  // initial information
   render() {
     const {
       searchText,
@@ -12,8 +13,8 @@ class SearchBar extends React.Component {
       selectedGenre,
       onSelectedGenreChange,
     } = this.props;
-
     return (
+      // forms
       <form data-testid="search-bar-form">
         <label htmlFor="input-text" data-testid="text-input-label">
           Inclui o texto:

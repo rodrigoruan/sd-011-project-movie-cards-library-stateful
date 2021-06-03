@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // external files imports
-import MovieList from './MovieList';
 import SearchBar from './SearchBar';
+import MovieList from './MovieList';
 import AddMovie from './AddMovie';
 
 class MovieLibrary extends React.Component {
@@ -27,7 +27,13 @@ class MovieLibrary extends React.Component {
   // functions
   handleChange({ target }) {
     const { name, type } = target;
-    const value = type === 'checkbox' ? target.checked : target.value;
+
+    let value;
+    if (type === 'checkbox') {
+      value = target.checked;
+    } else {
+      value = target.value;
+    }
 
     this.setState(() => ({ [name]: value }));
   }

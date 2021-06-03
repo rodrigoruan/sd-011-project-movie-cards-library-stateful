@@ -9,6 +9,7 @@ import MovieContent from './MovieContent';
 // handleChange: https://reactjs.org/docs/forms.html
 // onClick(): https://blog.logrocket.com/a-guide-to-react-onclick-event-handlers-d411943b14dd/
 // setState(): https://css-tricks.com/understanding-react-setstate/
+// this.state: https://www.iamtimsmith.com/blog/this-state-how-to-use-state-in-react
 // https://blog.matheuscastiglioni.com.br/mantendo-estados-de-componentes-no-react-com-state/
 
 class AddMovie extends React.Component {
@@ -16,6 +17,7 @@ class AddMovie extends React.Component {
   constructor(props) {
     super(props);
 
+    // initial info
     this.state = {
       subtitle: '',
       title: '',
@@ -25,16 +27,20 @@ class AddMovie extends React.Component {
       genre: 'action',
     };
 
+    // bindings
     this.handleChange = this.handleChange.bind(this);
     this.evClick = this.evClick.bind(this);
   }
 
   // functions
+  // get name and value of the target and set it
+  // Event Target in React: https://stackoverflow.com/questions/37639122/using-event-target-with-react-components
   handleChange({ target }) {
     const { name, value } = target;
     this.setState({ [name]: value });
   }
 
+  // event Click function
   evClick(event) {
     event.preventDefault();
     const { onClick } = this.props;
@@ -52,6 +58,7 @@ class AddMovie extends React.Component {
 
   // render
   render() {
+    // declaring initial info
     const {
       subtitle,
       title,
@@ -62,10 +69,11 @@ class AddMovie extends React.Component {
     } = this.state;
 
     return (
+      // form with Movie's data and Button
       <form data-testid="add-movie-form">
         <MovieTitles
-          subtitle={ subtitle }
           title={ title }
+          subtitle={ subtitle }
           imagePath={ imagePath }
           handleChange={ this.handleChange }
         />

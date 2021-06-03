@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 class MovieTitles extends React.Component {
   // render
   render() {
+    // declaring initial info
     const {
       subtitle,
       title,
@@ -12,6 +13,7 @@ class MovieTitles extends React.Component {
     } = this.props;
 
     return (
+      // forms with Movie's data
       <fieldset>
         <label htmlFor="title-input" data-testid="title-input-label">
           Título

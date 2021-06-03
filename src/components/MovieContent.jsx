@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 class MovieContent extends React.Component {
   // render
   render() {
+    // declaring initial info
     const {
       storyLine,
       rating,
@@ -13,6 +14,7 @@ class MovieContent extends React.Component {
     } = this.props;
 
     return (
+      // forms with Movie's data
       <fieldset>
         <label htmlFor="storyline-input" data-testid="storyline-input-label">
           Sinopse
