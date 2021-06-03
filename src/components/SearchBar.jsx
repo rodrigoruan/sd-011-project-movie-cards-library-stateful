@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import GenderSelect from './GenderSelect';
 import CheckboxFavorite from './CheckboxFavorite';
 import InputText from './InputText';
-import AddMovie from './AddMovie';
 
 class SearchBar extends React.Component {
   render() {
+    // tem que receber essas props
     const {
       searchText,
       onSearchTextChange,
@@ -40,9 +40,6 @@ class SearchBar extends React.Component {
           />
 
         </form>
-        {/* Aqui precisamos enviar as informações dos inputs do novo filme para
-        o AddMovie mudar seu estado e criar um novo fime */}
-        <AddMovie />
       </div>
     );
   }
