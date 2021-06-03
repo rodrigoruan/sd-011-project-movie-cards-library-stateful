@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class GenreSearch extends React.Component {
   render() {
-    const { selectedGenre, onSelectedGenreChange } = this.props;
+    const { selectedGenre, functionSelecGenre } = this.props;
     return (
       <label
         htmlFor="select-input"
@@ -13,9 +13,10 @@ class GenreSearch extends React.Component {
         Filtrar por gênero
         <select
           value={ selectedGenre }
-          onChange={ onSelectedGenreChange }
+          onChange={ functionSelecGenre }
           data-testid="select-input"
           className="input-box"
+          name="selectedGenre"
         >
           <option value="" data-testid="select-option">Todos</option>
           <option value="action" data-testid="select-option">Ação</option>
@@ -29,12 +30,12 @@ class GenreSearch extends React.Component {
 
 GenreSearch.propTypes = {
   selectedGenre: PropTypes.string,
-  onSelectedGenreChange: PropTypes.func,
+  functionSelecGenre: PropTypes.func,
 };
 
 GenreSearch.defaultProps = {
-  selectedGenre: 'action',
-  onSelectedGenreChange: () => {},
+  selectedGenre: '',
+  functionSelecGenre: () => {},
 };
 
 export default GenreSearch;
