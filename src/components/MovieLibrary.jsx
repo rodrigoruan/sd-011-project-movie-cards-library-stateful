@@ -27,10 +27,7 @@ class MovieLibrary extends React.Component {
   // functions
   handleChange({ target }) {
     const { name, type } = target;
-
-    let value;
-    if (type === 'checkbox') value = target.checked;
-    else value = target.value;
+    const value = (type === 'checkbox') ? (target.checked) : (target.value);
 
     this.setState(() => ({ [name]: value }));
   }
@@ -45,7 +42,7 @@ class MovieLibrary extends React.Component {
       genre,
     };
 
-    this.setState((items) => ({ movies: [items.movies, movieAdd] }));
+    this.setState((items) => ({ movies: [...items.movies, movieAdd] }));
   }
 
   filterLibrary() {
@@ -62,6 +59,7 @@ class MovieLibrary extends React.Component {
         const auxTitle = title.includes(searchText);
         const auxSubtitle = subtitle.includes(searchText);
         const auxStoryLine = storyLine.includes(searchText);
+
         return (auxTitle || auxSubtitle || auxStoryLine);
       });
     }
