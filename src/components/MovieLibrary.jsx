@@ -9,14 +9,14 @@ import AddMovie from './AddMovie';
 class MovieLibrary extends Component {
   constructor(props) {
     super(props);
-    // const { movies } = this.props;
+    const { movies } = this.props;
 
-    /* this.state = {
+    this.state = {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
       movies,
-    }; */
+    };
 
     this.handleChange = this.handleChange.bind(this);
   }
@@ -44,16 +44,23 @@ class MovieLibrary extends Component {
   }
 
   render() {
-    /* const {
+    const {
       searchText,
       bookmarkedOnly,
       selectedGenre,
-    } = this.state; */
+    } = this.state;
 
     return (
       <div>
         <h2> My awesome movie library </h2>
-        <SearchBar />
+        <SearchBar
+          searchText={ searchText }
+          onSearchTextChange={ this.handleChange }
+          bookmarkedOnly={ bookmarkedOnly }
+          onBookmarkedChange={ this.handleChange }
+          selectedGenre={ selectedGenre }
+          onSelectedGenreChange={ this.handleChange }
+        />
         <MovieList />
         <AddMovie onClick={ this.addMovie } />
       </div>
