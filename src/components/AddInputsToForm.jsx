@@ -24,7 +24,7 @@ class AddInputsToForm extends React.Component {
             name="subtitle"
             id="subtitle"
             value={ subtitle }
-            data-testid="title-input"
+            data-testid="subtitle-input"
             onChange={ handleChange }
           />
         </label>
@@ -34,9 +34,15 @@ class AddInputsToForm extends React.Component {
 }
 
 AddInputsToForm.propTypes = {
-  handleChange: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
+  handleChange: PropTypes.func,
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+};
+
+AddInputsToForm.defaultProps = {
+  handleChange: 'undefined',
+  title: 'undefined',
+  subtitle: 'undefined',
 };
 
 export default AddInputsToForm;
