@@ -14,6 +14,7 @@ export default class SearchBar extends React.Component {
     return (
       <div>
         <input type="text" />
+        <form data-testid="search-bar-form" />
       </div>
     );
   }
