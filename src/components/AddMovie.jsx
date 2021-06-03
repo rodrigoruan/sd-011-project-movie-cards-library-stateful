@@ -6,11 +6,11 @@ class AddMovie extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      subtitle: '',
       title: '',
-      imagePath: '',
+      subtitle: '',
       storyline: '',
       rating: 0,
+      imagePath: '',
       genre: 'action',
     };
     this.updateState = this.updateState.bind(this);
@@ -22,11 +22,11 @@ class AddMovie extends Component {
     const { onClick } = this.props;
     onClick(this.state);
     this.setState({
-      subtitle: '',
       title: '',
-      imagePath: '',
+      subtitle: '',
       storyline: '',
       rating: 0,
+      imagePath: '',
       genre: 'action',
     });
   }

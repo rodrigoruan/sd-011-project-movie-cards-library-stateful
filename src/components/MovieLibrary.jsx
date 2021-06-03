@@ -2,24 +2,34 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
+import AddMovie from './AddMovie';
 
 class MovieLibrary extends Component {
   constructor(props) {
     super(props);
+    const { movies } = this.props;
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
+      movies,
     };
     this.updateBookmarked = this.updateBookmarked.bind(this);
     this.updateGenre = this.updateGenre.bind(this);
     this.updateText = this.updateText.bind(this);
     this.filteringMovies = this.filteringMovies.bind(this);
+    this.handler = this.handler.bind(this);
+  }
+
+  handler(newMovie) {
+    const { movies } = this.state;
+    const updatedMovies = [...movies, newMovie];
+    this.setState({ movies: updatedMovies });
+    console.log(this.state);
   }
 
   filteringMovies() {
-    const { movies } = this.props;
-    console.log(movies);
+    const { movies } = this.state;
     const {
       searchText,
       bookmarkedOnly,
@@ -91,6 +101,7 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={ this.updateGenre }
         />
         <MovieList movies={ this.filteringMovies() } />
+        <AddMovie onClick={ this.handler } />
       </div>
     );
   }
