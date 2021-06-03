@@ -5,24 +5,20 @@ import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
 
 class MovieLibrary extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
   render() {
     return (
       <div>
         <h2> My awesome movie library </h2>
         <SearchBar />
         <AddMovie />
-        <MovieList movies={ this.props.movies } />
+        <MovieList />
       </div>
     );
   }
 }
 
-// MovieLibrary.propTypes = {
-//   movies: PropTypes.object,
-// };
+MovieLibrary.propTypes = {
+  movies: PropTypes.exact({ }).isRequired,
+};
 
 export default MovieLibrary;
