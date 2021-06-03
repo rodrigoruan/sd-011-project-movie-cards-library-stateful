@@ -23,7 +23,7 @@ class SearchBar extends Component {
             id="search-bar"
           />
         </label>
-        <label htmlFor="checkBox" data-testid="checkbox-input-label">
+        <label htmlFor="checkbox-input" data-testid="checkbox-input-label">
           Mostrar somente favoritos
           <input
             type="checkbox"
@@ -32,7 +32,7 @@ class SearchBar extends Component {
             data-testid="checkbox-input"
           />
         </label>
-        <label htmlFor="select-gender" data-testid="select-input-label">
+        <label htmlFor="select-input" data-testid="select-input-label">
           Filtrar por gênero
           <select
             value={ selectedGenre }
