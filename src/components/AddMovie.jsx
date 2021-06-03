@@ -7,7 +7,8 @@ import MovieContent from './MovieContent';
 
 // References
 // handleChange: https://reactjs.org/docs/forms.html
-// onClick: https://blog.logrocket.com/a-guide-to-react-onclick-event-handlers-d411943b14dd/
+// onClick(): https://blog.logrocket.com/a-guide-to-react-onclick-event-handlers-d411943b14dd/
+// setState(): https://css-tricks.com/understanding-react-setstate/
 // https://blog.matheuscastiglioni.com.br/mantendo-estados-de-componentes-no-react-com-state/
 
 class AddMovie extends React.Component {

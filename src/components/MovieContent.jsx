@@ -1,6 +1,6 @@
-// I had to make two files to complete Movie's informations cause Lint limit about 50 lines
 import React from 'react';
 import PropTypes from 'prop-types';
+// I had to make two files to complete Movie's informations cause Lint limit about 50 lines
 
 class MovieContent extends React.Component {
   render() {
@@ -13,7 +13,7 @@ class MovieContent extends React.Component {
 
     return (
       <fieldset>
-        <label htmlFor="storyline-input" data-testid="storyline">
+        <label htmlFor="storyline-input" data-testid="storyline-input-label">
           Storyline
           <textarea
             name="storyLine"
