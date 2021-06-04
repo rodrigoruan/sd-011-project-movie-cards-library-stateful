@@ -5,11 +5,12 @@ import AddMovie from './AddMovie';
 export default class MovieLibrary extends React.Component {
   // constructor(props) {
   //   super(props);
+  //  const { data } = this.props;
   //   this.state = {
   //     searchText: '',
   //     bookmarkedOnly: false,
   //     selectedGenre: '',
-  //     movies: this.props.data,
+  //     movies: data,
   //   };
   // }
 
