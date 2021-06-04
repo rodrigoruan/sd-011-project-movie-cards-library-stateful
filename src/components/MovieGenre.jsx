@@ -12,6 +12,7 @@ class MovieGenre extends Component {
       <label htmlFor="genre-input" data-testid="genre-input-label">
         Gênero
         <select
+          name="genre"
           value={ value }
           data-testid="genre-input"
           onChange={ handlerChange }

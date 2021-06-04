@@ -12,6 +12,7 @@ class StoryLine extends Component {
       <label htmlFor="storyline-input" data-testid="storyline-input-label">
         Sinopse
         <textarea
+          name="storyLine"
           value={ value }
           data-testid="storyline-input"
           onChange={ handlerChange }

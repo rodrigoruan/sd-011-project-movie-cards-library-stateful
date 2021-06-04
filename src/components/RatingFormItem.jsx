@@ -12,6 +12,7 @@ class RatingFormItem extends Component {
       <label htmlFor="rating-input" data-testid="rating-input-label">
         Avaliação
         <input
+          name="rating"
           type="number"
           value={ value }
           data-testid="rating-input"

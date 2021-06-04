@@ -10,11 +10,12 @@ import MovieGenre from './MovieGenre';
 class AddMovie extends Component {
   constructor() {
     super();
+
     this.state = {
       subtitle: '',
       title: '',
       imagePath: '',
-      storyline: '',
+      storyLine: '',
       rating: 0,
       genre: 'action',
     };
@@ -24,8 +25,7 @@ class AddMovie extends Component {
   }
 
   handlerChange({ target }) {
-    const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const { name, value } = target;
 
     this.setState({
       [name]: value,
@@ -45,13 +45,13 @@ class AddMovie extends Component {
 
   render() {
     const { onClick } = this.props;
-    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
+    const { title, subtitle, imagePath, storyLine, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
         <Title value={ title } handlerChange={ this.handlerChange } />
         <Subtitle value={ subtitle } handlerChange={ this.handlerChange } />
         <Image value={ imagePath } handlerChange={ this.handlerChange } />
-        <StoryLine value={ storyline } handlerChange={ this.handlerChange } />
+        <StoryLine value={ storyLine } handlerChange={ this.handlerChange } />
         <RatingFormItem value={ rating } handlerChange={ this.handlerChange } />
         <MovieGenre value={ genre } handlerChange={ this.handlerChange } />
         <button
