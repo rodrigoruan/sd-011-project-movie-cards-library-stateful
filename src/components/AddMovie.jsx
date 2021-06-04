@@ -62,8 +62,12 @@ class AddMovie extends React.Component {
   }
 }
 
-AddMovie.propType = {
-  onClick: PropTypes.func.isRequired,
+AddMovie.propTypes = {
+  onClick: PropTypes.func,
+};
+
+AddMovie.defaultProps = {
+  onClick: () => {},
 };
 
 export default AddMovie;

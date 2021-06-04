@@ -24,12 +24,12 @@ class Genre extends React.Component {
 
 Genre.propTypes = {
   genre: PropTypes.string,
-  AddMyMovies: PropTypes.func,
+  addMyMovies: PropTypes.func,
 };
 
 Genre.defaultProps = {
   genre: '',
-  AddMyMovies: () => {},
+  addMyMovies: () => {},
 };
 
 export default Genre;
