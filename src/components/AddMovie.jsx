@@ -1,17 +1,24 @@
 // implement AddMovie component here
 import React, { Component } from 'react';
+import Input from './AddMovieComponets/Input';
 
 export default class AddMovie extends Component {
   constructor() {
     super();
 
+    // this.state = {
+    //   subtitle: '',
+    //   title: '',
+    //   imagePath: '',
+    //   storyline: '',
+    //   rating: 0,
+    //   genre: 'action',
+    // };
+
     this.state = {
       subtitle: '',
-      title: '',
       imagePath: '',
       storyline: '',
-      rating: 0,
-      genre: 'action',
     };
     this.changeState = this.changeState.bind(this);
   }
@@ -27,11 +34,12 @@ export default class AddMovie extends Component {
   }
 
   render() {
-    const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
+    // const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
+    const { subtitle, imagePath, storyline } = this.state;
     return (
       <div>
         <form action="" data-testid="add-movie-form">
-          <label data-testid="title-input-label" htmlFor="title-input">
+          {/* <label data-testid="title-input-label" htmlFor="title-input">
             Título
             <input
               type="text"
@@ -50,36 +58,8 @@ export default class AddMovie extends Component {
               defaultValue={ subtitle }
               onChange={ this.changeState }
             />
-          </label>
-          <label data-testid="image-input-label" htmlFor="image-input-label">
-            Imagem
-            <input
-              type="text"
-              data-testid="image-input"
-              name="image"
-              defaultValue={ imagePath }
-              onChange={ this.changeState }
-            />
-          </label>
-          <label data-testid="storyline-input-label" htmlFor="storyline-inpu">
-            Sinopse
-            <textarea
-              type="text"
-              data-testid="storyline-input"
-              name="storyline"
-              defaultValue={ storyline }
-              onChange={ this.changeState }
-            />
-          </label>
-          <span>
-            Só pra não deixar o form vazio vou puxar os states aqui tb:
-            { subtitle }
-            { title }
-            { imagePath }
-            { storyline }
-            { rating }
-            { genre }
-          </span>
+          </label> */}
+          <Input defaultValue={ imagePath } onChange={ this.changeState } />
         </form>
       </div>
     );
