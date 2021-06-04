@@ -41,16 +41,6 @@ export default class AddMovie extends Component {
     return (
       <div>
         <form action="" data-testid="add-movie-form">
-          {/* <label data-testid="title-input-label" htmlFor="title-input">
-            Título
-            <input
-              type="text"
-              data-testid="title-input"
-              name="title"
-              defaultValue={ subtitle }
-              onChange={ this.changeState }
-            />
-          </label> */}
           <Title defaultValue={ title } onChange={ this.changeState } />
           <SubTitle defaultValue={ subtitle } onChange={ this.changeState } />
           <Image defaultValue={ imagePath } onChange={ this.changeState } />
