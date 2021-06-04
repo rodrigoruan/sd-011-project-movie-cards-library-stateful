@@ -8,6 +8,7 @@ class SelectGenre extends React.Component {
       <label htmlFor="genre" data-testid="genre-input-label">
         Gênero
         <select
+          id="genre"
           name="genre"
           value={ genre }
           onChange={ stateModify }
