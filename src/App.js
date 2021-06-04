@@ -11,7 +11,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header />
-        <SearchBar movies={ movies } />
+        <SearchBar />
         <MovieList movies={ movies } />
         <AddMovie onclick={ (() => {}) } />
       </div>
