@@ -15,6 +15,7 @@ export default class MovieLibrary extends Component {
     };
     this.rendleInput = this.rendleInput.bind(this);
     this.filter = this.filter.bind(this);
+    this.movieAdd = this.movieAdd.bind(this);
   }
 
   rendleInput({ target }) {
@@ -43,6 +44,13 @@ export default class MovieLibrary extends Component {
     return filteredMovies;
   }
 
+  movieAdd(newMovie) {
+    const { movies } = this.state;
+    this.setState({
+      movies: [...movies, newMovie],
+    });
+  }
+
   render() {
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
@@ -56,7 +64,7 @@ export default class MovieLibrary extends Component {
           onSelectedGenreChange={ this.rendleInput }
         />
         <MovieList movies={ this.filter() } />
-        <AddMovie onClick={ () => {} } />
+        <AddMovie onClick={ this.movieAdd } />
       </div>
     );
   }
