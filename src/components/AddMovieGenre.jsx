@@ -28,5 +28,9 @@ export default AddMovieGenre;
 
 AddMovieGenre.propTypes = {
   handler: PropTypes.func.isRequired,
-  genre: PropTypes.string.isRequired,
+  genre: PropTypes.string,
+};
+
+AddMovieGenre.defaultProps = {
+  genre: 'none',
 };

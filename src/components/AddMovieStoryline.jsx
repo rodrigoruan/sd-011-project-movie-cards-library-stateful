@@ -10,7 +10,7 @@ class AddMovieStoryline extends React.Component {
         <textarea
           name="storyline"
           cols="30"
-          rows="10"
+          rows="1"
           data-testid="storyline-input"
           onChange={ handler }
           value={ storyline }
@@ -23,6 +23,10 @@ class AddMovieStoryline extends React.Component {
 export default AddMovieStoryline;
 
 AddMovieStoryline.propTypes = {
-  storyline: PropTypes.string.isRequired,
+  storyline: PropTypes.string,
   handler: PropTypes.func.isRequired,
+};
+
+AddMovieStoryline.defaultProps = {
+  storyline: 'none',
 };

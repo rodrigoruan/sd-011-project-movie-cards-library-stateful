@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
+import AddMovie from './AddMovie';
 
 class MovieLibrary extends React.Component {
   constructor(props) {
     super(props);
-    // const { movies } = this.props;
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
@@ -19,6 +19,7 @@ class MovieLibrary extends React.Component {
     this.filterGenre = this.filterGenre.bind(this);
     this.filterMovie = this.filterMovie.bind(this);
     this.handlerChange = this.handlerChange.bind(this);
+    this.insertNewMovie = this.insertNewMovie.bind(this);
   }
 
   handlerChange({ target }) {
@@ -29,26 +30,26 @@ class MovieLibrary extends React.Component {
     });
   }
 
-  filterTextMovies(arrayMovies) {
+  filterTextMovies(arrayTextMovies) {
     const { searchText } = this.state;
-    return arrayMovies.filter((movie) => (
+    return arrayTextMovies.filter((movie) => (
       (movie.title.includes(searchText))
       || (movie.subtitle.includes(searchText))
       || (movie.storyline.includes(searchText))));
   }
 
-  filterBookmark(arrayMovies) {
+  filterBookmark(arrayBMovies) {
     const { bookmarkedOnly } = this.state;
     if (bookmarkedOnly === true) {
-      const filteredBookmark = arrayMovies.filter((movie) => (movie.bookmarked === true));
-      return filteredBookmark;
+      const filterBookmark = arrayBMovies.filter((movie) => (movie.bookmarked === true));
+      return filterBookmark;
     }
-    return arrayMovies;
+    return arrayBMovies;
   }
 
-  filterGenre(arrayMovies) {
+  filterGenre(arrayGenreMovies) {
     const { selectedGenre } = this.state;
-    const filterGenre = arrayMovies.filter((movie) => (
+    const filterGenre = arrayGenreMovies.filter((movie) => (
       (movie.genre.includes(selectedGenre))));
     return filterGenre;
   }
@@ -58,6 +59,15 @@ class MovieLibrary extends React.Component {
     const arrayFilteredGenre = this.filterGenre(arrayFilteredText);
     const arrayFilteredBookmarked = this.filterBookmark(arrayFilteredGenre);
     return arrayFilteredBookmarked;
+  }
+
+  insertNewMovie(newMovie) {
+    const { movies } = this.state;
+    const newArrayMovies = movies;
+    newArrayMovies.push(newMovie);
+    this.setState({
+      movies: newArrayMovies,
+    });
   }
 
   render() {
@@ -73,6 +83,7 @@ class MovieLibrary extends React.Component {
           onSelectedGenreChange={ this.handlerChange }
         />
         <MovieList movies={ this.filterMovie(movies) } />
+        <AddMovie onClick={ this.insertNewMovie } />
       </div>
     );
   }

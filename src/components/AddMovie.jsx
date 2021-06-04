@@ -18,7 +18,6 @@ class AddMovie extends React.Component {
 
     this.handlerChange = this.handlerChange.bind(this);
     this.handlerSend = this.handlerSend.bind(this);
-    // this.resetDefaultState = this.resetDefaultState.bind(this);
   }
 
   handlerChange({ target }) {
@@ -29,7 +28,8 @@ class AddMovie extends React.Component {
   }
 
   handlerSend(callback) {
-    callback(this.state);
+    const newMovie = this.state;
+    callback(newMovie);
     this.setState({
       subtitle: '',
       title: '',
@@ -79,7 +79,7 @@ class AddMovie extends React.Component {
         <AddMovieGenre genre={ genre } handler={ this.handlerChange } />
         <AddMovieRating rating={ rating } handler={ this.handlerChange } />
         <button
-          type="submit"
+          type="button"
           data-testid="send-button"
           onClick={ () => { this.handlerSend(onClick); } }
         >
@@ -93,21 +93,9 @@ class AddMovie extends React.Component {
 export default AddMovie;
 
 AddMovie.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  // title: PropTypes.string.isRequired,
-  // subtitle: PropTypes.string.isRequired,
-  // imagePath: PropTypes.string.isRequired,
-  // storyline: PropTypes.string.isRequired,
-  // rating: PropTypes.number.isRequired,
-  // genre: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
 };
 
-// AddMovie.defaultProps = {
-//   onClick: () => {},
-//   // title: '',
-//   // subtitle: '',
-//   // imagePath: '',
-//   // storyline: '',
-//   // rating: 0,
-//   // genre: 'action',
-// };
+AddMovie.defaultProps = {
+  onClick: () => {},
+};
