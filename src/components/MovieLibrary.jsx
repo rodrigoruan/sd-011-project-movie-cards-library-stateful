@@ -3,7 +3,7 @@ import AddMovie from './AddMovie';
 
 class MovieLibrary extends Component {
   render() {
-    const { movies } = this.props;
+    // const { movies } = this.props;
     return (
       <div>
         <AddMovie />
