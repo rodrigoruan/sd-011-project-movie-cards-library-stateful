@@ -15,6 +15,7 @@ class AddMovie extends React.Component {
       title: '',
       imagePath: '',
       storyline: '',
+      bookmarked: false,
       rating: 0,
       genre: 'action',
     };
@@ -31,6 +32,7 @@ class AddMovie extends React.Component {
 
   resetState() {
     const { onClick } = this.props;
+    onClick(this.state);
     this.setState({
       subtitle: '',
       title: '',
@@ -61,11 +63,7 @@ class AddMovie extends React.Component {
 }
 
 AddMovie.propType = {
-  onClick: PropTypes.func,
-};
-
-AddMovie.defaultProps = {
-  onClick: () => {},
+  onClick: PropTypes.func.isRequired,
 };
 
 export default AddMovie;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class Rating extends React.Component {
   render() {
-    const { rating } = this.props;
+    const { rating, addMyMovies } = this.props;
     return (
       <label htmlFor="rating" data-testid="rating-input-label">
         Avaliação
@@ -12,6 +12,7 @@ class Rating extends React.Component {
           type="number"
           data-testid="rating-input"
           value={ rating }
+          onChange={ addMyMovies }
         />
       </label>
     );
@@ -20,9 +21,11 @@ class Rating extends React.Component {
 
 Rating.propTypes = {
   rating: PropTypes.number,
+  addMyMovies: PropTypes.func,
 };
 Rating.defaultProps = {
   rating: 0,
+  addMyMovies: () => {},
 };
 
 export default Rating;
