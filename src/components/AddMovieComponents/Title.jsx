@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-export default class SubTitle extends Component {
+export default class Title extends Component {
   render() {
     const { onChange, defaultValue } = this.props;
     return (
-      <label data-testid="subtitle-input-label" htmlFor="subtitle-input">
-        Subtítulo
+      <label data-testid="title-input-label" htmlFor="title-input">
+        Título
         <input
           type="text"
-          data-testid="subtitle-input"
-          name="subtitle"
+          data-testid="title-input"
+          name="title"
           defaultValue={ defaultValue }
           onChange={ onChange }
         />
@@ -19,12 +19,12 @@ export default class SubTitle extends Component {
   }
 }
 
-SubTitle.defaultProps = {
+Title.defaultProps = {
   onChange: PropTypes.function,
   defaultValue: 'Stranger',
 };
 
-SubTitle.propTypes = {
+Title.propTypes = {
   onChange: PropTypes.func,
   defaultValue: PropTypes.string,
 };

@@ -15,7 +15,6 @@ export default class Input extends Component {
           onChange={ onChange }
         />
       </label>
-
     // <label data-testid="storyline-input-label" htmlFor="storyline-inpu">
     //   Sinopse
     //   <textarea
@@ -26,7 +25,6 @@ export default class Input extends Component {
     //     onChange={ this.changeState }
     //   />
     // </label>
-
     );
   }
 }

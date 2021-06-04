@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import Image from './AddMovieComponents/Image';
 import SubTitle from './AddMovieComponents/SubTitle';
+import Title from './AddMovieComponents/Title';
 
 export default class AddMovie extends Component {
   constructor() {
@@ -18,8 +19,8 @@ export default class AddMovie extends Component {
 
     this.state = {
       subtitle: '',
+      title: '',
       imagePath: '',
-      storyline: '',
     };
     this.changeState = this.changeState.bind(this);
   }
@@ -36,7 +37,7 @@ export default class AddMovie extends Component {
 
   render() {
     // const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
-    const { subtitle, imagePath, storyline } = this.state;
+    const { subtitle, title, imagePath } = this.state;
     return (
       <div>
         <form action="" data-testid="add-movie-form">
@@ -50,8 +51,9 @@ export default class AddMovie extends Component {
               onChange={ this.changeState }
             />
           </label> */}
-          <Image defaultValue={ imagePath } onChange={ this.changeState } />
+          <Title defaultValue={ title } onChange={ this.changeState } />
           <SubTitle defaultValue={ subtitle } onChange={ this.changeState } />
+          <Image defaultValue={ imagePath } onChange={ this.changeState } />
         </form>
       </div>
     );
