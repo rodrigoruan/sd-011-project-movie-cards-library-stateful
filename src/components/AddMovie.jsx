@@ -1,6 +1,59 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Input from './Input';
+import TextArea from './TextArea';
+
+function renderCheckBox(genre, handleInput) {
+  return (
+    <label htmlFor="select" data-testid="genre-input-label">
+      Gênero
+      <select
+        name="genre"
+        onChange={ handleInput }
+        value={ genre }
+        data-testid="genre-input"
+      >
+        <option data-testid="genre-option" value="action">
+          Ação
+        </option>
+        <option data-testid="genre-option" value="comedy">
+          Comédia
+        </option>
+        <option data-testid="genre-option" value="thriller">
+          Suspense
+        </option>
+      </select>
+    </label>
+  );
+}
+
+function makeTitleInput(title, handleInput) {
+  return (
+    <Input
+      htmlFor="title-input"
+      dataTestidLabel="title-input-label"
+      valueLabel="Título"
+      dataTestidInput="title-input"
+      handleInput={ handleInput }
+      valueInput={ title }
+      name="title"
+    />
+  );
+}
+
+function makeLalaInput(subtitle, handleInput) {
+  return (
+    <Input
+      htmlFor="subtitle-input"
+      dataTestidLabel="subtitle-input-label"
+      valueLabel="Subtítulo"
+      dataTestidInput="subtitle-input"
+      handleInput={ handleInput }
+      valueInput={ subtitle }
+      name="subtitle"
+    />
+  );
+}
 
 class AddMovie extends React.Component {
   constructor(props) {
@@ -16,8 +69,6 @@ class AddMovie extends React.Component {
 
     this.handleInput = this.handleInput.bind(this);
     // https://forum.betrybe.com/t/projeto-movie-cards-library-stateful-metodo-render-com-muitas-linhas/468/2
-    this.renderTextArea = this.renderTextArea.bind(this);
-    this.renderCheckBox = this.renderCheckBox.bind(this);
   }
 
   handleInput(event) {
@@ -28,71 +79,13 @@ class AddMovie extends React.Component {
     });
   }
 
-  renderTextArea() {
-    const { storyline } = this.state;
-    return (
-      <label htmlFor="storyline-input" data-testid="storyline-input-label">
-        Sinopse
-        <textarea
-          rows="5"
-          cols="33"
-          data-testid="storyline-input"
-          onChange={ this.handleInput }
-          name="storyline"
-          value={ storyline }
-        />
-      </label>
-    );
-  }
-
-  renderCheckBox() {
-    const { genre } = this.state;
-    return (
-      <label htmlFor="select" data-testid="genre-input-label">
-        Gênero
-        <select
-          name="genre"
-          onChange={ this.handleInput }
-          value={ genre }
-          data-testid="genre-input"
-        >
-          <option data-testid="genre-option" value="action">
-            Ação
-          </option>
-          <option data-testid="genre-option" value="comedy">
-            Comédia
-          </option>
-          <option data-testid="genre-option" value="thriller">
-            Suspense
-          </option>
-        </select>
-      </label>
-    );
-  }
-
   render() {
     const { onClick } = this.props;
-    const { title, subtitle, imagePath, rating } = this.state;
+    const { title, subtitle, imagePath, rating, storyline, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <Input
-          htmlFor="title-input"
-          dataTestidLabel="title-input-label"
-          valueLabel="Título"
-          dataTestidInput="title-input"
-          handleInput={ this.handleInput }
-          valueInput={ title }
-          name="title"
-        />
-        <Input
-          htmlFor="subtitle-input"
-          dataTestidLabel="subtitle-input-label"
-          valueLabel="Subtítulo"
-          dataTestidInput="subtitle-input"
-          handleInput={ this.handleInput }
-          valueInput={ subtitle }
-          name="subtitle"
-        />
+        {makeTitleInput(title, this.handleInput)}
+        {makeLalaInput(subtitle, this.handleInput)}
         <Input
           htmlFor="image-input"
           dataTestidLabel="image-input-label"
@@ -112,8 +105,8 @@ class AddMovie extends React.Component {
           valueInput={ rating }
           name="rating"
         />
-        {this.renderTextArea}
-        {this.renderCheckBox}
+        <TextArea storyline={ storyline } handleInput={ this.handleInput } />
+        {renderCheckBox(genre, this.handleInput)}
         <button type="submit" onClick={ onClick } data-testid="send-button">
           Adicionar filme
         </button>
