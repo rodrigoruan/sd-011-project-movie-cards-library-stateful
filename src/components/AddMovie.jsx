@@ -1,6 +1,6 @@
 // implement AddMovie component here
 import React, { Component } from 'react';
-import Input from './AddMovieComponets/Input';
+import Input from './AddMovieComponents/Image';
 
 export default class AddMovie extends Component {
   constructor() {
