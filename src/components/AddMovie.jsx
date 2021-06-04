@@ -29,10 +29,6 @@ class AddMovie extends React.Component {
   }
 }
 
-// AddMovie.propType = {
-//   movies: {},
-// };
-
 /**
  * Consultei o repositório do Bruno Duarte para resolver esse ProTypes.component (alterado postriormente)
  * Link: https://github.com/tryber/sd-011-project-movie-cards-library-stateful/pull/100/commits/6514823095a37669dc42b1e756b04f2527fcf8fc
