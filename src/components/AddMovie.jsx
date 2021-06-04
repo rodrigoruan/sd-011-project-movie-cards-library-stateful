@@ -24,6 +24,8 @@ class AddMovie extends React.Component {
     this.addMovie = this.addMovie.bind(this);
   }
 
+  /** Esta função abaixo é responsável por mudar o estado de acordo com o
+   * conteúdo digitado */
   stateModify({ target }) {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
