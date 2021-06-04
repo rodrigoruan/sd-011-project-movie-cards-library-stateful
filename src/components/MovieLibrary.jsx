@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import AddMovie from './AddMovie';
 
 class MovieLibrary extends Component {
   render() {
+    const { movies } = this.props;
     return (
       <div>
-        this.props;
+        <AddMovie />
       </div>
     );
   }
