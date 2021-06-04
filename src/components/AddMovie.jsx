@@ -1,6 +1,6 @@
 // implement AddMovie component here
 import React, { Component } from 'react';
-import Input from './AddMovieComponents/Image';
+import Image from './AddMovieComponents/Image';
 
 export default class AddMovie extends Component {
   constructor() {
@@ -59,7 +59,7 @@ export default class AddMovie extends Component {
               onChange={ this.changeState }
             />
           </label> */}
-          <Input defaultValue={ imagePath } onChange={ this.changeState } />
+          <Image defaultValue={ imagePath } onChange={ this.changeState } />
         </form>
       </div>
     );
