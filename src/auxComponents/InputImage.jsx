@@ -8,6 +8,7 @@ class InputImage extends React.Component {
       <label htmlFor="image" data-testid="image-input-label">
         Imagem
         <input
+          id="image"
           name="imagePath"
           type="text"
           value={ imagePath }
