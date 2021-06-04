@@ -1,6 +1,7 @@
 // implement AddMovie component here
 import React, { Component } from 'react';
 import Image from './AddMovieComponents/Image';
+import SubTitle from './AddMovieComponents/SubTitle';
 
 export default class AddMovie extends Component {
   constructor() {
@@ -48,18 +49,9 @@ export default class AddMovie extends Component {
               defaultValue={ subtitle }
               onChange={ this.changeState }
             />
-          </label>
-          <label data-testid="subtitle-input-label" htmlFor="subtitle-input">
-            Subtítulo
-            <input
-              type="text"
-              data-testid="subtitle-input"
-              name="subtitle"
-              defaultValue={ subtitle }
-              onChange={ this.changeState }
-            />
           </label> */}
           <Image defaultValue={ imagePath } onChange={ this.changeState } />
+          <SubTitle defaultValue={ subtitle } onChange={ this.changeState } />
         </form>
       </div>
     );
