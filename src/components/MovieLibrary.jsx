@@ -3,12 +3,34 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import MovieList from './MovieList';
 import SearchBar from './SearchBar';
-// import AddMovie from './AddMovie';
+import AddMovie from './AddMovie';
 
 class MovieLibrary extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(event) {
+    const { target } = event;
+    const { name } = target;
+    const value = '';
+    if (name === 'genre') {
+      this.setState({
+        [name]: 'action',
+      });
+    } else if (name === 'rating') {
+      this.setState({
+        [name]: 0,
+      });
+    } else {
+      this.setState({
+        [name]: value,
+      });
+    }
+
+    console.log('123', event);
+  }
 
   render() {
     const { movies } = this.props;
@@ -24,14 +46,17 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={ () => {} }
         />
         <MovieList movies={ movies } />
-        {/* <AddMovie /> */}
+        <AddMovie onClick={ this.handleClick } />
       </div>
     );
   }
 }
 
 MovieLibrary.propTypes = {
-  movies: PropTypes.objectOf(PropTypes.string).isRequired,
+  movies: PropTypes.arrayOf(PropTypes.string),
+};
+MovieLibrary.defaultProps = {
+  movies: [],
 };
 
 export default MovieLibrary;

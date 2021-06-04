@@ -37,6 +37,8 @@ class SerarchBar extends React.Component {
           <Select
             value={ selectedGenre }
             onChange={ onSelectedGenreChange }
+            dataTestid="select-input"
+            labelValue="Filtrar por gênero"
           />
         </form>
       </div>
@@ -46,11 +48,11 @@ class SerarchBar extends React.Component {
 
 SerarchBar.propTypes = {
   searchText: PropTypes.string.isRequired,
-  onSearchTextChange: PropTypes.string.isRequired,
-  bookmarkedOnly: PropTypes.string.isRequired,
-  onBookmarkedChange: PropTypes.string.isRequired,
+  onSearchTextChange: PropTypes.func.isRequired,
+  bookmarkedOnly: PropTypes.bool.isRequired,
+  onBookmarkedChange: PropTypes.func.isRequired,
   selectedGenre: PropTypes.string.isRequired,
-  onSelectedGenreChange: PropTypes.string.isRequired,
+  onSelectedGenreChange: PropTypes.func.isRequired,
 };
 
 export default SerarchBar;
