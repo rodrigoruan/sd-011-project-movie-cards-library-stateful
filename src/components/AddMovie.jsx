@@ -18,6 +18,9 @@ class AddMovie extends Component {
       rating: 0,
       genre: 'action',
     };
+
+    this.reset = this.reset.bind(this);
+    this.handlerChange = this.handlerChange.bind(this);
   }
 
   handlerChange({ target }) {
