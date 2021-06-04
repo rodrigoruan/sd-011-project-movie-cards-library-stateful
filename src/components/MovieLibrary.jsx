@@ -63,10 +63,8 @@ class MovieLibrary extends React.Component {
 
   insertNewMovie(newMovie) {
     const { movies } = this.state;
-    const newArrayMovies = movies;
-    newArrayMovies.push(newMovie);
     this.setState({
-      movies: newArrayMovies,
+      movies: [...movies, newMovie],
     });
   }
 
