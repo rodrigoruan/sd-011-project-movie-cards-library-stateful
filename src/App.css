@@ -81,3 +81,44 @@ body {
   justify-content: flex-end;
   padding: 12px 20px;
 }
+
+/* O CSS abaixo refere-se ao formulário de filtro */
+
+.movie-lib h1 {
+  text-align: center;
+  padding: 10px 0;
+  text-shadow: 5px 5px 15px #343a4067;
+}
+
+.up-side-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 0px 0px;
+  font-size: large;
+  box-shadow: 5px 5px 1em rgba(0, 0, 0, 0.507);
+  border-radius: 5px;
+  margin: 0 20vh;
+  background-color: rgba(0, 0, 0, 0.397);
+}
+
+.up-side-form label {
+  padding: 0 20px;
+}
+
+.up-side-form [name="searchText"] {
+  border-radius: 10px;
+  height: 35px;
+  margin-left: 10px;
+  border-style: none;
+}
+
+.up-side-form [name="bookmarkedOnly"] {
+  margin-left: 10px;
+}
+
+.up-side-form [name="selectedGenre"] {
+margin-left: 10px;
+border-radius: 5px;
+border-style: none;
+}

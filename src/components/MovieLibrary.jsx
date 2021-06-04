@@ -69,8 +69,14 @@ class MovieLibrary extends React.Component {
       /* Às vezes, alguns requisitos passam despercebidos do meu entendimento, é aí onde eu busco ajuda
        * para entender melhor o que alguns estão requerindo!
        * Agradeçõ a ALberto Candido por me ajudar a entender o que o requisito pedia! */
-      <div>
-        <h1>Filminho e pipoquinha, ui ui ui</h1>
+      <div className="movie-lib">
+        <h1>
+          Prepare sua
+          <strong> pipoca </strong>
+          e o
+          <strong> refri </strong>
+          😋🥤🍿
+        </h1>
         <SearchBar
           filter={ this.filter }
           searchText={ searchText }
