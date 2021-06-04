@@ -61,6 +61,16 @@ export default class AddMovie extends Component {
               onChange={ this.changeState }
             />
           </label>
+          <label data-testid="storyline-input-label" htmlFor="storyline-inpu">
+            Sinopse
+            <textarea
+              type="text"
+              data-testid="storyline-input"
+              name="storyline"
+              defaultValue={ storyline }
+              onChange={ this.changeState }
+            />
+          </label>
           <span>
             Só pra não deixar o form vazio vou puxar os states aqui tb:
             { subtitle }
