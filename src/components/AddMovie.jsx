@@ -1,5 +1,6 @@
 import React from 'react';
 import Input from './InputFile';
+import Select from './SelectFile';
 
 class AddMovie extends React.Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class AddMovie extends React.Component {
       image: '',
       storyline: '',
       rating: 0,
+      genre: ['ação', 'comédio', 'suspense'],
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -23,7 +25,7 @@ class AddMovie extends React.Component {
   }
 
   render() {
-    const { title, subtitle, image, storyline, rating } = this.state;
+    const { title, subtitle, image, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
         <Input
@@ -56,6 +58,11 @@ class AddMovie extends React.Component {
           type="number"
           name="rating"
           value={ rating }
+          onChange={ this.handleChange }
+        />
+        <Select
+          label="Gênero"
+          value={ genre }
           onChange={ this.handleChange }
         />
       </form>
