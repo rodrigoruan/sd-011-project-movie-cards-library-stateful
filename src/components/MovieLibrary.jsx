@@ -1,4 +1,3 @@
-// implement AddMovie component here
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import MovieList from './MovieList';
@@ -23,8 +22,9 @@ export default class MovieLibrary extends Component {
     this.setState({
       [name]: value,
     });
-    console.log('Abaixo temos o this vinfo de MovieLibrary');
+    console.log('Abaixo temos o this do MovieLibrary');
     console.log(this);
+    // console.log('Entrou no changeState de MovieLibrary');
   }
 
   render() {

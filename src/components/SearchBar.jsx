@@ -14,6 +14,7 @@ export default class SearchBar extends React.Component {
             <input
               type="text"
               data-testid="text-input"
+              name="searchText"
               id="text-input"
               value={ searchText }
               onChange={ onSearchTextChange }
