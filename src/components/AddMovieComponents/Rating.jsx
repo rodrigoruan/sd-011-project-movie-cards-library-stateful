@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-export default class Input extends Component {
+export default class Rating extends Component {
   render() {
     const { onChange, defaultValue } = this.props;
     return (
-      <label data-testid="image-input-label" htmlFor="image-input">
-        Imagem
+      <label data-testid="rating-input-label" htmlFor="rating-input">
+        Avaliação
         <input
-          type="text"
-          data-testid="image-input"
-          name="imagePath"
+          type="number"
+          data-testid="rating-input"
+          name="rating"
           defaultValue={ defaultValue }
           onChange={ onChange }
         />
@@ -19,12 +19,12 @@ export default class Input extends Component {
   }
 }
 
-Input.defaultProps = {
+Rating.defaultProps = {
   onChange: PropTypes.function,
-  defaultValue: 'Stranger',
+  defaultValue: 0,
 };
 
-Input.propTypes = {
+Rating.propTypes = {
   onChange: PropTypes.func,
-  defaultValue: PropTypes.string,
+  defaultValue: PropTypes.number,
 };
