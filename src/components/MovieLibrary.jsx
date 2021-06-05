@@ -12,6 +12,7 @@ export default class MovieLibrary extends Component {
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
+    this.filteredChanges = this.filteredChanges.bind(this);
     const { movies } = this.props;
 
     this.state = {
@@ -28,14 +29,11 @@ export default class MovieLibrary extends Component {
   }
 
   onSearchTextChange(event) {
-    const { movies } = this.props;
+    const { value } = event.target;
     this.setState({
-      searchText: event.target.value,
+      searchText: value,
     });
-    const { searchText } = this.state;
-
-    movies.filter((movie) => movie.title.includes(searchText))
-      .map((movie) => this.setState({ movies: [movie] }));
+    console.log(this.state);
   }
 
   onBookmarkedChange(event) {
@@ -43,16 +41,31 @@ export default class MovieLibrary extends Component {
   }
 
   onSelectedGenreChange(event) {
-    const { movies } = this.props;
-    this.setState({ selectedGenre: event.target.value });
-    const { selectedGenre } = this.state;
-    movies.filter((movie) => movie.genre.includes(selectedGenre))
-      .map((movie) => this.setState({ movies: [movie] }));
+    const { value } = event.target;
+    this.setState({ selectedGenre: value });
+  }
+
+  filteredChanges() {
+    const { selectedGenre, bookmarkedOnly, searchText, movies } = this.state;
+
+    let moviesClone = movies;
+
+    moviesClone = moviesClone.filter((movie) => movie.title.includes(searchText)
+    || movie.subtitle.includes(searchText)
+    || movie.storyline.includes(searchText));
+
+    moviesClone = moviesClone.filter((movie) => movie.genre.includes(selectedGenre));
+
+    if (bookmarkedOnly) {
+      return moviesClone.filter((movie) => movie.bookmarked);
+    }
+
+    return moviesClone;
   }
 
   render() {
-    const { searchText, bookmarkedOnly, selectedGenre,
-      movies } = this.state;
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+
     return (
       <>
         <SearchBar
@@ -64,7 +77,7 @@ export default class MovieLibrary extends Component {
           onSelectedGenreChange={ this.onSelectedGenreChange }
 
         />
-        <MovieList movies={ movies } />
+        <MovieList movies={ this.filteredChanges() } />
         <AddMovie onClick={ (changeMovie) => this.onClick(changeMovie) } />
       </>
     );
