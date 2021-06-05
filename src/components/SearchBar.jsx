@@ -6,8 +6,8 @@ class SearchBar extends React.Component {
   render() {
     const { searchText, onSearchTextChange, bookmarkedOnly} = this.props;
     const { onBookmarkedChange, selectedGenre, onSelectedGenreChange} = this.props;
-    return(
-        <h1></h1>
+    return (
+      <h1>d</h1>
     );
   }
 }
@@ -22,12 +22,12 @@ SearchBar.prototype = {
 };
 
 SearchBar.defaultProps = {
-    searchText: '',
-    onSearchTextChange: () => {},
-    bookmarkedOnly: false,
-    onBookmarkedChange: () => {},
-    selectedGenre: '',
-    onSelectedGenreChange: () => {},
-  };
+  searchText: '',
+  onSearchTextChange: () => {},
+  bookmarkedOnly: false,
+  onBookmarkedChange: () => {},
+  selectedGenre: '',
+  onSelectedGenreChange: () => {},
+};
 
 export default SearchBar;
