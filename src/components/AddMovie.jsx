@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import AddTitle from './AddTitle';
 import AddSubtitle from './AddSubtitle';
 import AddImage from './AddImage';
+import AddTextarea from './AddTextarea';
 
 class AddMovie extends React.Component {
   // constructor(props) {
@@ -23,12 +24,13 @@ class AddMovie extends React.Component {
 
   render() {
     // const { handleChange } = this.props;
-    const { title, subtitle, imagePath } = this.props;
+    const { title, subtitle, imagePath, sinopse } = this.props;
     return (
       <form data-testid="add-movie-form">
         <AddTitle onclick={ () => {} } title={ title } />
         <AddSubtitle onclick={ () => {} } subtitle={ subtitle } />
         <AddImage onclick={ () => {} } imagePath={ imagePath } />
+        <AddTextarea onclick={ () => {} } sinopse={ sinopse } />
       </form>
     );
   }
@@ -39,6 +41,7 @@ AddMovie.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
   imagePath: PropTypes.string.isRequired,
+  sinopse: PropTypes.string.isRequired,
 };
 
 /**
