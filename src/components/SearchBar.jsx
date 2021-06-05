@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class SearchBar extends React.Component {
+class SearchBar extends Component {
   render() {
     const {
       searchText,
@@ -24,7 +24,29 @@ class SearchBar extends React.Component {
           />
         </label>
 
-        <label htmlFor="checkbox" data-testid="checkbox-input-label" />
+        <label htmlFor="checkbox" data-testid="checkbox-input-label">
+          <input
+            type="checkbox"
+            name="checkbox"
+            checked={ bookmarkedOnly }
+            data-testid="checkbox-input"
+            onChange={ onBookmarkedOnly }
+          />
+        </label>
+
+        <label htmlFor="select" data-testid="select-input-label">
+          <select
+            name="select"
+            value={ selectedGenre }
+            data-testid="select-input"
+            onChange={ onSelectedGenreChange }
+          >
+            <option value="" data-testid="select-option">Todos</option>
+            <option value="action" data-testid="select-option">Ação</option>
+            <option value="comedy" data-testid="select-option">Comédia</option>
+            <option value="thriller" data-testid="select-option">Suspense</option>
+          </select>
+        </label>
       </form>
     );
   }
