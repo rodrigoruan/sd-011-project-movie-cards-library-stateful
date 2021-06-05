@@ -26,14 +26,33 @@ class MovieLibrary extends Component {
     });
   }
 
+  // filterMovie() {
+  //   const { movies } = this.state;
+  //   const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+  //   let resultMovies = movies;
+  //   if (searchText !== '') {
+  //     resultMovies = movies.filter((film) => (film.title.includes(searchText)
+
+  //     || film.subtitle.includes(searchText)
+  //     || film.storyline.includes(searchText)));
+  //   }
+  //   if (bookmarkedOnly) {
+  //     resultMovies = movies.filter((film) => film.bookmarked === true);
+  //   }
+  //   if (selectedGenre !== '') {
+  //     resultMovies = movies.filter((film) => film.genre === selectedGenre);
+  //   }
+  //   return resultMovies;
   filterMovie() {
     const { movies } = this.state;
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
 
     return movies.filter((film) => film.title.includes(searchText)
-      || film.subtitle.includes(searchText)
-      || film.storyline.includes(searchText))
+    || film.subtitle.includes(searchText)
+    || film.storyline.includes(searchText))
+
       .filter((film) => film.bookmarked || !bookmarkedOnly)
+
       .filter((film) => selectedGenre === '' || film.genre === selectedGenre);
   }
 
