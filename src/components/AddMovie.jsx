@@ -31,11 +31,11 @@ class AddMovie extends Component {
     const { onClick } = this.props;
     onClick(this.state);
     this.setState({
-      subtitle: '',
       title: '',
-      imagePath: '',
+      subtitle: '',
       storyline: '',
       rating: 0,
+      imagePath: '',
       genre: 'action',
     });
   }

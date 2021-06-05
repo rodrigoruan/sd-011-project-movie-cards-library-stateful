@@ -5,13 +5,14 @@ import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
 
 class MovieLibrary extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    const { movies } = this.props;
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
-      addMovieValue: 0,
+      movies,
     };
 
     this.searchChange = this.searchChange.bind(this);
@@ -27,15 +28,13 @@ class MovieLibrary extends Component {
   }
 
   addMovieForm(newMovie) {
-    const { movies } = this.props;
     this.setState((estadoAnterior) => ({
-      addMovieValue: estadoAnterior.addMovieValue + 1,
+      movies: [...estadoAnterior.movies, newMovie],
     }));
-    movies.push(newMovie);
   }
 
   render() {
-    const { movies } = this.props;
+    const { movies } = this.state;
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     let filterMovies = movies.filter((movie) => (
       movie.title.toLowerCase().includes(searchText.toLowerCase())
