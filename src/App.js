@@ -1,17 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import AddMovie from './components/AddMovie';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <Header />
-      <SearchBar />
-      <AddMovie />
-    </div>
-  );
-}
+export default class App extends Component {
+  constructor() {
+    super();
+    this.onClickEvent = this.onClickEvent.bind(this);
+  }
 
-export default App;
+  onClickEvent(event) {
+    console.log(event);
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Header />
+        <SearchBar />
+        <AddMovie onClick={ this.onClickEvent } />
+      </div>
+    );
+  }
+}
