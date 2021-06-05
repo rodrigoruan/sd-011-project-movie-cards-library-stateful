@@ -16,9 +16,10 @@ export default class AddMovie extends Component {
     this.onChangeHandler = this.onChangeHandler.bind(this);
   }
 
-  onChangeHandler(event) {
+  onChangeHandler({ target }) {
+    const { name, value } = target;
     this.setState({
-      title: event.target.value,
+      [name]: value,
     });
   }
 
@@ -31,10 +32,31 @@ export default class AddMovie extends Component {
         <label htmlFor="title" data-testid="title-input-label">
           Título
           <input
+            name="title"
             type="text"
             onChange={ this.onChangeHandler }
             value={ title }
             data-testid="title-input"
+          />
+        </label>
+        <label htmlFor="subtitle" data-testid="subtitle-input-label">
+          Subtítulo
+          <input
+            name="subtitle"
+            type="text"
+            onChange={ this.onChangeHandler }
+            value={ subtitle }
+            data-testid="subtitle-input"
+          />
+        </label>
+        <label htmlFor="imagePath" data-testid="image-input-label">
+          Imagem
+          <input
+            name="imagePath"
+            type="text"
+            onChange={ this.onChangeHandler }
+            value={ imagePath }
+            data-testid="image-input"
           />
         </label>
       </form>
