@@ -6,6 +6,7 @@ import AddImagePath from './AddImagePath';
 import AddStoryline from './AddStoryline';
 import AddRating from './AddRating';
 import AddGenre from './AddGenre';
+import AddMovieButton from './AddMovieButton';
 
 class AddMovie extends React.Component {
   // constructor(props) {
@@ -35,6 +36,7 @@ class AddMovie extends React.Component {
         <AddStoryline onclick={ () => {} } storyline={ storyline } />
         <AddRating onclick={ () => {} } rating={ rating } />
         <AddGenre onclick={ () => {} } rating={ rating } />
+        <AddMovieButton onclick={ () => {} } />
       </form>
     );
   }
