@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import FormGenre from './FormGenre';
 
 // implement AddMovie component here
 class addMovie extends Component {
@@ -16,6 +15,7 @@ class addMovie extends Component {
   }
 
   render() {
+    const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
         <label data-testid="title-input-label" htmlFor="title-input">
@@ -54,7 +54,14 @@ class addMovie extends Component {
             onChange={ rating }
           />
         </label>
-        <FormGenre />
+        <label data-testid="genre-input-label" htmlFor="genre-input">
+          Gênero
+          <select data-testid="genre-input" onChange={ genre }>
+            <option data-testid="genre-option" value="action">Ação</option>
+            <option data-testid="genre-option" value="comedy">Comédia</option>
+            <option data-testid="genre-option" value="thriller">Suspense</option>
+          </select>
+        </label>
         <button data-testid="send-button" onClick={  }>Adicionar filme</button>
       </form>
     );
