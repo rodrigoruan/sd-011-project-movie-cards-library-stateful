@@ -20,7 +20,6 @@ class AddMovie extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-
     this.sendSubmit = this.sendSubmit.bind(this);
   }
 
