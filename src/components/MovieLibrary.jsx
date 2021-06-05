@@ -61,7 +61,6 @@ class MovieLibrary extends Component {
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <div>
-        <h2>Movie library</h2>
         <SearchBar
           searchText={ searchText }
           bookmarkedOnly={ bookmarkedOnly }
@@ -70,11 +69,25 @@ class MovieLibrary extends Component {
           onBookmarkedChange={ this.handleGeneric }
           onSelectedGenreChange={ this.handleGeneric }
         />
-        <div>
-          <MovieList movies={ this.filtered() } />
-        </div>
-        <div>
-          <AddMovie onClick={ this.addMovies } />
+        <div className="container-movie">
+          <div>
+            <MovieList movies={ this.filtered() } />
+          </div>
+          <button
+            className="btn btn-primary"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseExample"
+            aria-expanded="false"
+            aria-controls="collapseExample"
+          >
+            Adicionar Filme a Lista
+          </button>
+          <div className="collapse" id="collapseExample">
+            <div className="card card-body">
+              <AddMovie onClick={ this.addMovies } />
+            </div>
+          </div>
         </div>
       </div>
     );
