@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
@@ -67,6 +68,16 @@ export default class AddMovie extends Component {
             onChange={ this.onChangeHandler }
             value={ storyline }
             data-testid="storyline-input"
+          />
+        </label>
+        <label htmlFor="rating" data-testid="rating-input-label">
+          Avaliação
+          <input
+            name="rating"
+            type="number"
+            onChange={ this.onChangeHandler }
+            value={ rating }
+            data-testid="rating-input"
           />
         </label>
       </form>
