@@ -12,14 +12,31 @@ export default class AddMovie extends Component {
       rating: 0,
       genre: 'action',
     };
+
+    this.onChangeHandler = this.onChangeHandler.bind(this);
+  }
+
+  onChangeHandler(event) {
+    this.setState({
+      title: event.target.value,
+    });
   }
 
   // prettier-ignore
   render() {
     const { onClick } = this.props;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <h1>ola</h1>
+        <label htmlFor="title" data-testid="title-input-label">
+          Título
+          <input
+            type="text"
+            onChange={ this.onChangeHandler }
+            value={ title }
+            data-testid="title-input"
+          />
+        </label>
       </form>
     );
   }
