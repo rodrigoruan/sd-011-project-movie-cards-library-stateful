@@ -15,7 +15,7 @@ class SearchBar extends Component {
     return (
       <form data-testid="search-bar-form">
         <label htmlFor="text-input" data-testid="text-input-label">
-          <p>Adiciona o texto</p>
+          <p>Inclui o texto</p>
           <input
             type="search"
             name="searchText"
@@ -26,7 +26,7 @@ class SearchBar extends Component {
         </label>
 
         <label htmlFor="checkbox" data-testid="checkbox-input-label">
-          <p>Os favoritos</p>
+          <p>Mostrar somente favoritos</p>
           <input
             type="checkbox"
             name="bookmarkedOnly"
