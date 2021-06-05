@@ -1,7 +1,6 @@
 // implement AddMovie component here
 import React, { Component } from 'react';
-//import PropTypes from 'prop-type';
-import MovieLibrary from './components/MovieLibrary';
+import PropTypes from 'prop-types';
 
 class SearchBar extends Component {
   render() {
@@ -30,6 +29,7 @@ class SearchBar extends Component {
           <input
             data-testid="checkbox-input"
             type="checkbox"
+            value={ bookmarkedOnly }
             onChange={ onBookmarkedChange }
           />
         </label>
@@ -53,13 +53,22 @@ class SearchBar extends Component {
   }
 }
 
-// SearchBar.propTypes = {
-//   serachText: PropTypes.string,
-//   onSearchTextChange: PropTypes.string,
-//   bookmarkedOnly: PropTypes.bool,
-//   onBookmarkedChange: PropTypes.string,
-//   selectedGenre: PropTypes.string,
-//   onSelectedGenreChange: PropTypes.string,
-// }.isRequired;
+SearchBar.defaultProps = {
+  searchText: '',
+  onSearchTextChange: PropTypes.function,
+  bookmarkedOnly: false,
+  onBookmarkedChange: PropTypes.function,
+  selectedGenre: '',
+  onSelectedGenreChange: PropTypes.function,
+};
+
+SearchBar.propTypes = {
+  searchText: PropTypes.string,
+  onSearchTextChange: PropTypes.func,
+  bookmarkedOnly: PropTypes.bool,
+  onBookmarkedChange: PropTypes.string,
+  selectedGenre: PropTypes.string,
+  onSelectedGenreChange: PropTypes.string,
+};
 
 export default SearchBar;
