@@ -2,27 +2,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const stateInitial = {
+  subtitle: '',
+  title: '',
+  imagePath: '',
+  storyline: '',
+  rating: 0,
+  genre: 'action',
+};
+
 class AddMovie extends React.Component {
   constructor() {
     super();
-    this.state = {
-      subtitle: '',
-      title: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
-    };
+
+    this.state = stateInitial;
 
     this.handleChange = this.handleChange.bind(this);
+
+    this.resetState = this.resetState.bind(this);
   }
 
   handleChange = ({ target }) => {
-    const { name } = target;
-    const { value } = target;
+    const { name, value } = target;
     this.setState({
       [name]: target.type === 'checkbox' ? target.checked : value,
     });
+  }
+
+  resetState = () => {
+    this.setState(stateInitial);
   }
 
   render() {
@@ -105,6 +113,17 @@ class AddMovie extends React.Component {
             </option>
           </select>
         </label>
+
+        <button
+          data-testid="send-button"
+          type="button"
+          onClick={ () => {
+            onClick();
+            this.resetState();
+          } }
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }
