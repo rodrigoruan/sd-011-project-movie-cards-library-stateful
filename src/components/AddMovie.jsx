@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import InputComponent from './InputComponent';
 import dataInputs from '../dataInputs';
 
@@ -15,6 +16,7 @@ class AddMovie extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.refreshState = this.refreshState.bind(this);
   }
 
   handleChange({ target }) {
@@ -22,6 +24,19 @@ class AddMovie extends Component {
     const value = target.type === 'number' ? parseFloat(target.value) : target.value;
     this.setState({
       [name]: value,
+    });
+  }
+
+  refreshState() {
+    const { onClick } = this.props;
+    onClick(this.state);
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
     });
   }
 
@@ -64,7 +79,13 @@ class AddMovie extends Component {
           </select>
         </label>
 
-        <button type="submit" data-testid="send-button">Adicionar filme</button>
+        <button
+          type="button"
+          data-testid="send-button"
+          onClick={ this.refreshState }
+        >
+          Adicionar filme
+        </button>
 
       </form>
     );
@@ -73,5 +94,10 @@ class AddMovie extends Component {
 
 export default AddMovie;
 
-// Reduzir funcoes e criar novos componentes para reduzir o codigo
-// Ate aqui, tudo rodando ok
+AddMovie.propTypes = {
+  onClick: PropTypes.func,
+};
+
+AddMovie.defaultProps = {
+  onClick: undefined,
+};

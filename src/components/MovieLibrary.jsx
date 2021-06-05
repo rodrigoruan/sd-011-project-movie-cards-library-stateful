@@ -11,9 +11,11 @@ class MovieLibrary extends Component {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
+      addMovieValue: 0,
     };
 
     this.searchChange = this.searchChange.bind(this);
+    this.addMovieForm = this.addMovieForm.bind(this);
   }
 
   searchChange({ target }) {
@@ -24,10 +26,17 @@ class MovieLibrary extends Component {
     });
   }
 
+  addMovieForm(newMovie) {
+    const { movies } = this.props;
+    this.setState((estadoAnterior) => ({
+      addMovieValue: estadoAnterior.addMovieValue + 1,
+    }));
+    movies.push(newMovie);
+  }
+
   render() {
     const { movies } = this.props;
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
-    // apenas pelo titulo
     let filterMovies = movies.filter((movie) => (
       movie.title.toLowerCase().includes(searchText.toLowerCase())
       || movie.subtitle.toLowerCase().includes(searchText.toLowerCase())
@@ -55,7 +64,7 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={ this.searchChange }
         />
         <MovieList movies={ filterMovies } />
-        <AddMovie />
+        <AddMovie onClick={ this.addMovieForm } />
       </div>
     );
   }
@@ -71,7 +80,8 @@ MovieLibrary.propTypes = {
       subtitle: PropTypes.string,
       rating: PropTypes.number,
       storyline: PropTypes.string,
-    }),
+      genre: PropTypes.string,
+    }).isRequired,
   ),
 };
 
