@@ -1,33 +1,42 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import AddTitle from './AddTitle';
+import AddSubtitle from './AddSubtitle';
 
 class AddMovie extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      title: '',
-    };
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     title: ' ',
+  //     subtitle: '',
+  //   };
+  //   // this.handleChange = this.handleChange.bind(this);
+  // }
 
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange({ target }) {
-    const { name, value } = target;
-    this.state({
-      [name]: value,
-    });
-  }
+  // handleChange({ target }) {
+  //   const { name, value } = target;
+  //   this.state({
+  //     [name]: value,
+  //   });
+  // }
 
   render() {
-    const { handleChange } = this;
-    const { title } = this.state;
+    // const { handleChange } = this.props;
+    const { title, subtitle } = this.props;
     return (
       <form data-testid="add-movie-form">
-        <AddTitle onclick={ handleChange } title={ title } />
+        <AddTitle onclick={ () => {}} title={ title } />
+        <AddSubtitle onclick={ () => {} } subtitle={ subtitle } />
       </form>
     );
   }
 }
+
+AddMovie.propTypes = {
+  // handleTitle: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+};
 
 /**
  * Consultei o repositório do Bruno Duarte para resolver esse ProTypes.component (alterado postriormente)

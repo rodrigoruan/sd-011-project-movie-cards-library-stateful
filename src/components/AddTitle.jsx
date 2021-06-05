@@ -9,7 +9,7 @@ class AddTitle extends React.Component {
         Título
         <input
           type="text"
-          name="title"
+          name="title-input"
           id="title"
           value={ title }
           data-testid="title-input"
