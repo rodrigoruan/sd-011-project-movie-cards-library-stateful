@@ -1,5 +1,5 @@
 import React from 'react';
-import data from './data';
+import movies from './data';
 import Header from './components/Header';
 import MovieLibrary from './components/MovieLibrary';
 
@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <MovieLibrary movies={ data } />
+      <MovieLibrary movies={ movies } />
 
     </div>
   );
