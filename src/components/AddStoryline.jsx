@@ -3,19 +3,19 @@ import PropTypes from 'prop-types';
 
 class AddTextarea extends React.Component {
   render() {
-    const { handleChange, sinopse } = this.props;
+    const { handleChange, storyline } = this.props;
     return (
-      <label htmlFor="textarea" data-testid="storyline-input-label">
+      <label htmlFor="storyline" data-testid="storyline-input-label">
         Sinopse
         <textarea
           name=""
-          id=""
+          id="storyline"
           cols="30"
           rows="10"
           data-testid="storyline-input"
           onChange={ handleChange }
         >
-          { sinopse }
+          { storyline }
         </textarea>
       </label>
     );
@@ -23,7 +23,7 @@ class AddTextarea extends React.Component {
 }
 
 AddTextarea.propTypes = {
-  sinopse: PropTypes.string,
+  storyline: PropTypes.string,
   handleChange: PropTypes.func,
 }.isRequired;
 

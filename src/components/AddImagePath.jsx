@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class AddImage extends React.Component {
+class AddImagePath extends React.Component {
   render() {
     const { handleChange, ImagePath } = this.props;
     return (
@@ -20,9 +20,9 @@ class AddImage extends React.Component {
   }
 }
 
-AddImage.propTypes = {
+AddImagePath.propTypes = {
   ImagePath: PropTypes.string,
   handleChange: PropTypes.func,
 }.isRequired;
 
-export default AddImage;
+export default AddImagePath;
