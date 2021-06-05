@@ -8,8 +8,8 @@ class SearchBar extends React.Component {
     const { onBookmarkedChange, selectedGenre, onSelectedGenreChange } = this.props;
     return (
       <div>
-        <h1>{ {searchText, onSearchTextChange, bookmarkedOnly} }</h1>
-        <h2>{ {onBookmarkedChange, selectedGenre, onSelectedGenreChange} }</h2>
+        <h1>{ { searchText, onSearchTextChange, bookmarkedOnly } }</h1>
+        <h2>{ { onBookmarkedChange, selectedGenre, onSelectedGenreChange } }</h2>
       </div>
     );
   }
