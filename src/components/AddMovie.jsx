@@ -50,15 +50,22 @@ class AddMovie extends React.Component {
   render() {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
     return (
-      <form data-testid="add-movie-form">
-        <InputTitle stateModify={ this.stateModify } title={ title } />
-        <InputSubtitle stateModify={ this.stateModify } subtitle={ subtitle } />
-        <InputImage stateModify={ this.stateModify } imagePath={ imagePath } />
-        <InputStoryline stateModify={ this.stateModify } storyline={ storyline } />
-        <InputRating stateModify={ this.stateModify } rating={ rating } />
-        <SelectGenre stateModify={ this.stateModify } genre={ genre } />
-        {/* Não esquecer de dar os créditos a vitor carsoso */}
+      <form data-testid="add-movie-form" className="down-side-form">
+        <div className="main-div">
+          <div className="first-line">
+            <InputTitle stateModify={ this.stateModify } title={ title } />
+            <InputSubtitle stateModify={ this.stateModify } subtitle={ subtitle } />
+          </div>
+
+          <div className="second-line">
+            <InputStoryline stateModify={ this.stateModify } storyline={ storyline } />
+            <InputImage stateModify={ this.stateModify } imagePath={ imagePath } />
+          </div>
+          <InputRating stateModify={ this.stateModify } rating={ rating } />
+          <SelectGenre stateModify={ this.stateModify } genre={ genre } />
+        </div>
         <button
+          className="add-button"
           type="button"
           data-testid="send-button"
           onClick={ this.addMovie }
