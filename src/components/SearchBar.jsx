@@ -4,12 +4,10 @@ import PropTypes from 'prop-types';
 
 class SearchBar extends React.Component {
   render() {
-    const { searchText, onSearchTextChange, bookmarkedOnly } = this.props;
-    const { onBookmarkedChange, selectedGenre, onSelectedGenreChange } = this.props;
     return (
       <div>
-        <h1>{ { searchText, onSearchTextChange, bookmarkedOnly } }</h1>
-        <h2>{ { onBookmarkedChange, selectedGenre, onSelectedGenreChange } }</h2>
+        <form action=""></form>
+          <input type="text" />
       </div>
     );
   }
