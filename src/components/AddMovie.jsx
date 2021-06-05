@@ -25,7 +25,7 @@ class AddMovie extends React.Component {
     const { title, subtitle } = this.props;
     return (
       <form data-testid="add-movie-form">
-        <AddTitle onclick={ () => {}} title={ title } />
+        <AddTitle onclick={ () => {} } title={ title } />
         <AddSubtitle onclick={ () => {} } subtitle={ subtitle } />
       </form>
     );
