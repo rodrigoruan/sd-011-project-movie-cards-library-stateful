@@ -44,8 +44,8 @@ export default class AddMovie extends Component {
     const { onClick } = this.props;
     onClick(this.state);
 
-  // pushMovie(umaCallback) { // Outra maneira de fazer com button comentado em return
-  //   umaCallback(this.state);
+    // pushMovie(umaCallback) { // Outra maneira de fazer com button comentado em return
+    //   umaCallback(this.state);
 
     // this.setState({ // Só pra teste de estado
     //   title: 'teste',
@@ -60,7 +60,7 @@ export default class AddMovie extends Component {
 
   render() {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
-    const { onClick } = this.props; // Outra forma de executar a callback passando ao Button comentado abaixo
+    // const { onClick } = this.props; // Outra forma de executar a callback passando ao Button comentado abaixo
     return (
       <div>
         <form action="" data-testid="add-movie-form">
