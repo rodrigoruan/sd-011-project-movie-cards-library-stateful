@@ -14,16 +14,14 @@ class AddMovie extends React.Component {
       rating: '0',
       genre: 'action',
     };
-this.changeTitle = this.changeTitle.bind(this);
-  };
-
-changeTitle({ target }) {
-  this.setState(() =>{ 
-  return {
-    [target.name]: target.value,
+    this.changeTitle = this.changeTitle.bind(this);
   }
-})
-}
+
+  changeTitle({ target }) {
+    this.setState({
+        [target.name]: target.value
+    })
+  }
 
   render() {
     const { subtitle, title, imagePath, storyLine, rating, genre } = this.state;
