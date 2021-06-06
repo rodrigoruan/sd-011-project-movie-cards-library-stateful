@@ -9,7 +9,7 @@ class AddImagePath extends React.Component {
         Imagem
         <input
           type="text"
-          name="image"
+          name="imagePath"
           id="image"
           value={ imagePath }
           data-testid="image-input"
