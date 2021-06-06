@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import AddTitle from './AddTitle';
 import AddSubtitle from './AddSubtitle';
 import AddImagePath from './AddImagePath';
@@ -9,47 +9,53 @@ import AddGenre from './AddGenre';
 import AddMovieButton from './AddMovieButton';
 
 class AddMovie extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     title: ' ',
-  //     subtitle: '',
-  //   };
-  //   // this.handleChange = this.handleChange.bind(this);
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: '',
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
 
-  // handleChange({ target }) {
-  //   const { name, value } = target;
-  //   this.state({
-  //     [name]: value,
-  //   });
-  // }
+  handleChange({ target }) {
+    const { name, value } = target;
+    this.state({
+      [name]: value,
+    });
+  }
 
   render() {
-    // const { handleChange } = this.props;
-    const { title, subtitle, imagePath, storyline, rating } = this.props;
+    const { handleChange } = this;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <AddTitle onclick={ () => {} } title={ title } />
-        <AddSubtitle onclick={ () => {} } subtitle={ subtitle } />
-        <AddImagePath onclick={ () => {} } imagePath={ imagePath } />
-        <AddStoryline onclick={ () => {} } storyline={ storyline } />
-        <AddRating onclick={ () => {} } rating={ rating } />
-        <AddGenre onclick={ () => {} } rating={ rating } />
+        <AddTitle handleChange={ handleChange } title={ title } />
+        <AddSubtitle handleChange={ handleChange } subtitle={ subtitle } />
+        <AddImagePath handleChange={ handleChange } imagePath={ imagePath } />
+        <AddStoryline handleChange={ handleChange } storyline={ storyline } />
+        <AddRating handleChange={ handleChange } rating={ rating } />
+        <AddGenre handleChange={ handleChange } genre={ genre } />
         <AddMovieButton onclick={ () => {} } />
       </form>
     );
   }
 }
 
-AddMovie.propTypes = {
-  // handleTitle: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
-  imagePath: PropTypes.string.isRequired,
-  storyline: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
-};
+// AddMovie.propTypes = {
+//   // handleTitle: PropTypes.func.isRequired,
+//   title: PropTypes.string.isRequired,
+//   subtitle: PropTypes.string.isRequired,
+//   imagePath: PropTypes.string.isRequired,
+//   storyline: PropTypes.string.isRequired,
+//   rating: PropTypes.number.isRequired,
+//   genre: PropTypes.string.isRequired,
+//   handleChange: PropTypes.func.isRequired,
+// };
 
 /**
  * Consultei o repositório do Bruno Duarte para resolver esse ProTypes.component (alterado postriormente)
