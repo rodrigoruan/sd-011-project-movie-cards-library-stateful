@@ -14,12 +14,31 @@ class AddMovie extends React.Component {
       rating: '0',
       genre: 'action',
     };
+this.changeTitle = this.changeTitle.bind(this);
+  };
+
+changeTitle({ target }) {
+  this.setState(() =>{ 
+  return {
+    [target.name]: target.value,
   }
+})
+}
 
   render() {
     const { subtitle, title, imagePath, storyLine, rating, genre } = this.state;
     return (
       <form action="" data-testid="add-movie-form">
+        <label htmlFor="" data-testid="title-input-label">
+          Título
+          <input 
+            type="text"
+            name="title"
+            value={title}
+            data-testid="title-input"
+            onChange= {this.changeTitle}  
+          />
+        </label>
         <p>{subtitle}</p>
         <p>{title}</p>
         <p>{imagePath}</p>
