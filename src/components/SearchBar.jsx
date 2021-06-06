@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import InputText from './InputText';
+import BookmarkHandler from './BookmarkHandler';
+import GenreSelector from './GenreSelector';
 
 class SearchBar extends Component {
   render() {
@@ -13,19 +16,26 @@ class SearchBar extends Component {
     } = this.props;
     return (
       <form data-testid="search-bar-form">
-        <label
-          htmlFor="searchText"
-          data-testid="text-input-label"
-        >
-          Inclui o texto:
-          <input
-            name="searchText"
-            type="text"
-            value={ searchText }
-            onChange={ onSearchTextChange }
-            data-testid="text-input"
-          />
-        </label>
+        <InputText
+          name="input-text"
+          label="Inclui o texto:"
+          inputTestId="text-input"
+          labelTestId="text-input-label"
+          value={ searchText }
+          onChange={ onSearchTextChange }
+          className="searchText"
+        />
+
+        <BookmarkHandler
+          checked={ bookmarkedOnly }
+          onChange={ onBookmarkedChange }
+        />
+
+        <GenreSelector
+          value={ selectedGenre }
+          onChange={ onSelectedGenreChance }
+        />
+
       </form>
     );
   }
