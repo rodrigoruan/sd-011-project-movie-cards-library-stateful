@@ -81,3 +81,11 @@ body {
   justify-content: flex-end;
   padding: 12px 20px;
 }
+
+.bodySearchBar {
+  align-items: center;
+  background-color: #0e4e8d;
+  display: flex;
+  height: 100px;
+  justify-content: center;
+}
