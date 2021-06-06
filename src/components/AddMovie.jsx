@@ -34,6 +34,14 @@ class AddMovie extends Component {
           name="Título"
           data="title-input-label"
         />
+        <InputText
+          value={ subtitle }
+          nameInput={ subtitle }
+          dataInput="subtitle-input"
+          func={ this.subtmit }
+          name="Subtítulo"
+          data="subtitle-input-label"
+        />
       </form>
     );
   }
