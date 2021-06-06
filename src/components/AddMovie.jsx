@@ -45,16 +45,16 @@ class AddMovie extends React.Component {
 
   render() {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
-// Recebe uma callback no onClik que é enviada por searchBar. 
-// Esse componente vai criar campos de input para um novo filme. Esses valores ficarão no state do Addmovie., ou seja, todos os inouts devem alterar o state do AddMovie
-//Quando clicacr no botão o mesmo deve adicionar uma nova tag de filme na lista de filmes que fica no state no searchbar para que searche bar mande para a biblioteca renderizar.
+    // Recebe uma callback no onClik que é enviada por searchBar. 
+    // Esse componente vai criar campos de input para um novo filme. Esses valores ficarão no state do Addmovie., ou seja, todos os inouts devem alterar o state do AddMovie
+    // Quando clicacr no botão o mesmo deve adicionar uma nova tag de filme na lista de filmes que fica no state no searchbar para que searche bar mande para a biblioteca renderizar.
     return (
       <form data-testid="add-movie-form">
         <InputTitleNovie
           title={ title }
           hadleState={ this.hadleState }
         />
-        
+
         <br />
         <InputSubTitleNovie
           subtitle={ subtitle }
