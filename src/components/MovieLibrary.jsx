@@ -18,6 +18,7 @@ class MovieLibrary extends Component {
     this.onSearchTextChange = this.onSearchTextChange.bind(this); // callbacks que alteram state
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
+    this.searchMovies = this.searchMovies.bind(this);
   }
 
   onSearchTextChange(event) {
@@ -25,16 +26,6 @@ class MovieLibrary extends Component {
     this.setState({
       searchText: target.value,
     });
-
-    const { searchText, movies } = this.state;
-    let researchedMovies = movies;
-    if (searchText !== '') {
-      researchedMovies = researchedMovies
-        .filter((movie) => (movie.title.includes(searchText))
-      || (movie.subtitle.includes(searchText))
-      || (movie.storyline.includes(searchText)));
-    }
-    return researchedMovies;
   }
 
   onBookmarkedChange(event) {
@@ -42,13 +33,6 @@ class MovieLibrary extends Component {
     this.setState({
       bookmarkedOnly: target.checked,
     });
-
-    const { bookmarkedOnly, movies } = this.state; // para acessar os valores e conseguir filtrar
-    if (bookmarkedOnly === target.checked) {
-      this.setState({
-        movies: movies.filter((movie) => movie.bookmarked === true),
-      });
-    }
   }
 
   onSelectedGenreChange(event) {
@@ -56,13 +40,30 @@ class MovieLibrary extends Component {
     this.setState({
       selectedGenre: target.value,
     });
+  }
 
-    const { selectedGenre, movies } = this.state;
-    if (selectedGenre !== '') {
-      this.setState({
-        movies: movies.filter((movie) => movie.genre === selectedGenre),
-      });
+  searchMovies() { // função unica para filtrar
+    const { bookmarkedOnly, selectedGenre, searchText, movies } = this.state; // para acessar os valores para conseguir filtrar
+    let researchedMovies = movies;
+
+    if (bookmarkedOnly === true) {
+      researchedMovies = researchedMovies
+        .filter((movie) => movie.bookmarked === true);
     }
+
+    if (selectedGenre !== '') {
+      researchedMovies = researchedMovies
+        .filter((movie) => movie.genre === selectedGenre);
+    }
+
+    if (searchText !== '') {
+      researchedMovies = researchedMovies
+        .filter((movie) => (movie.title.includes(searchText))
+      || (movie.subtitle.includes(searchText))
+      || (movie.storyline.includes(searchText)));
+    }
+
+    return researchedMovies;
   }
 
   render() {
