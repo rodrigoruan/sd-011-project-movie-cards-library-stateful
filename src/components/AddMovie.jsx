@@ -1,66 +1,46 @@
 // implement AddMovie component here
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Form from './Form.jsx';
+
+const initialState = {
+  subtitle: '',
+  title: '',
+  imagePath: '',
+  storyline: '',
+  rating: 0,
+  genre: 'action',
+};
 
 export default class AddMovie extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
-    this.state = {
-      subtitle: '',
-      title: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action'
-    }
+    this.state = {...initialState};
 
     this.handleInputs = this.handleInputs.bind(this);
+    this.addMovie = this.addMovie.bind(this);
   }
 
-  handleInputs(event) {
-    const { target } = event;
+  handleInputs({ target }) {
     const { name, value } = target;
 
     this.setState({
-      [name]: value
-    })
+      [name]: value,
+    });
   }
 
+  addMovie(event) {
+    event.preventDefault();
+    const { onClick } = this.props;
+    onClick(this.state);
+    this.setState(initialState);
+  }
 
   render() {
     return (
       <div>
-        <form data-testid="add-movie-form">
-          <label data-testid="title-input-label"> "Título"
-            <input type='text' data-testid="title-input" value={this.state.value}
-              onChange={this.handleInputs} />
-          </label>
-          
-          <label data-testid="subtitle-input-label"> "Subtítulo"
-            <input type='text' data-testid="subtitle-input" value={this.state.value}
-              onChange={this.handleInputs} />
-          </label>
-
-          <label data-testid="image-input-label"> "Imagem"
-            <input type='text' data-testid="image-input" value={this.state.value}
-              onChange={this.handleInputs} />
-          </label>
-
-          <label data-testid="storyline-input-label"> "Sinopse"
-            <textarea data-testid="storyline-input" onChange={this.handleInputs}>
-              {this.state.value}
-            </textarea>
-          </label>
-
-          <label> avaliação
-            <input />
-          </label>
-
-          <label> gênero
-            <input />
-          </label>
-        </form>
+        <Form state={this.state} func={this.handleInputs} addMovie={this.addMovie} />
       </div>
-    )
+    );
   }
 }
