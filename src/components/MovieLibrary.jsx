@@ -32,19 +32,15 @@ class MovieLibrary extends Component {
   filteredContent() {
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     const { movies } = this.props;
-  
     const filterMovie = movies.filter((movie) => movie.title.includes(searchText)
       || movie.subtitle.includes(searchText)
-      || movie.storyline.includes(searchText)
-    );
-
+      || movie.storyline.includes(searchText));
     if (bookmarkedOnly === true) {
       const favoriteArray = filterMovie.filter((movie) => movie.bookmarked === true);
       return this.setState({
         movies: favoriteArray.filter((movie) => movie.genre.includes(selectedGenre)),
       });
     }
-    
     return this.setState({
       movies: filterMovie.filter((movie) => movie.genre.includes(selectedGenre)),
     });
@@ -59,16 +55,17 @@ class MovieLibrary extends Component {
 
   render() {
     const { movies } = this.props;
+    const { searchText, bookmarkedOnly } = this.state;
     return (
       <div>
         <h2> My awesome movie library </h2>
         <SearchBar
-        searchText={ this.state.searchText }
-        onSearchTextChange={ this.onHandleChange }
-        bookmarkedOnly={ this.state.bookmarkedOnly }
-        onBookmarkedChange={ this.onHandleChange }
-        selectedGenre={ this.selectedGenre }
-        onSelectedGenreChange={ this.onHandleChange }
+          searchText={ searchText }
+          onSearchTextChange={ this.onHandleChange }
+          bookmarkedOnly={ bookmarkedOnly }
+          onBookmarkedChange={ this.onHandleChange }
+          selectedGenre={ this.selectedGenre }
+          onSelectedGenreChange={ this.onHandleChange }
         />
         <MovieList movies={ movies } />
         <AddMovie onClick={ this.showTime } />
