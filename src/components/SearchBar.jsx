@@ -1,25 +1,26 @@
 // implement AddMovie component here
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class SearchBar extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      searchText: '',
-      onSearchTextChange: '',
+      teste: '',
+      teste2: '',
     };
   }
 
   handleChange = (event) => {
     this.setState({
-      searchText: event.target.value,
-      onSearchTextChange: event.target.value,
+      teste: event.target.value,
+      teste2: event.target.value,
     });
   }
 
   render() {
-    const { searchText, onSearchTextChange } = this.state;
+    const { teste, teste2 } = this.state;
     // const { movie: {
     //   searchText,
     //   onSearchTextChange,
@@ -35,24 +36,24 @@ class SearchBar extends React.Component {
       <div>
 
         <form data-testid="search-bar-form">
-          <label htmlFor="searchText">
+          <label htmlFor="onSearchTextChange" data-testid="text-input-label">
             Inclui o texto:
             <input
               data-testid="text-input-label"
               type="text"
-              value={ searchText }
+              value={ teste }
               onChange={ this.handleChange }
-              name="searchText"
-              id="searchText"
+              name="onSearchTextChange"
+              id="onSearchTextChange"
             />
           </label>
 
-          <label htmlFor="onSearchTextChange">
+          <label htmlFor="onSearchTextChange" data-testid="checkbox-input-label">
             Mostrar somente favoritos
             <input
-              data-testid="checkbox-input-label"
+              data-testid="checkbox-input"
               type="checkbox"
-              value={ onSearchTextChange }
+              value={ teste2 }
               onChange={ this.handleChange }
               name="onSearchTextChange"
               id="onSearchTextChange"
@@ -65,27 +66,27 @@ class SearchBar extends React.Component {
   }
 }
 
-// SearchBar.propTypes = {
-//   movie: PropTypes.shape({
-//     searchText: PropTypes.string,
-//     onSearchTextChange: PropTypes.func,
-//     bookmarkedOnly: PropTypes.bool,
-//     onBookmarkedChange: PropTypes.func,
-//     selectedGenre: PropTypes.string,
-//     onSelectedGenreChange: PropTypes.func,
+SearchBar.propTypes = {
+  teste: PropTypes.shape({
+    searchText: PropTypes.string,
+    onSearchTextChange: PropTypes.func,
+    bookmarkedOnly: PropTypes.bool,
+    onBookmarkedChange: PropTypes.func,
+    selectedGenre: PropTypes.string,
+    onSelectedGenreChange: PropTypes.func,
 
-//   }),
-// };
+  }),
+};
 
-// SearchBar.defaultProps = {
-//   movie: {
-//     searchText: '',
-//     onSearchTextChange: '',
-//     bookmarkedOnly: '',
-//     onBookmarkedChange: '',
-//     selectedGenre: '',
-//     onSelectedGenreChange: '',
-//   },
-// };
+SearchBar.defaultProps = {
+  teste: {
+    searchText: '',
+    onSearchTextChange: '',
+    bookmarkedOnly: '',
+    onBookmarkedChange: '',
+    selectedGenre: '',
+    onSelectedGenreChange: '',
+  },
+};
 
 export default SearchBar;
