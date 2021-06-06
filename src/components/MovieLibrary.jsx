@@ -30,7 +30,6 @@ export default class MovieLibrary extends Component {
 
   MoviesFiltered() {
     const { movies, searchText, bookmarkedOnly, selectedGenre } = this.state;
-
     let arrayMovies = movies.filter((item) => (
       (item.title.includes(searchText))
       || (item.subtitle.includes(searchText))
@@ -40,7 +39,12 @@ export default class MovieLibrary extends Component {
       arrayMovies = movies.filter((item) => (
         (item.genre === selectedGenre)));
     }
-    console.log('Abaixo o "arrayMovies" da func "MoviesFeltered" do "MovieLibrary.js" ')
+
+    if (searchText === '' && selectedGenre === '' && bookmarkedOnly) {
+      arrayMovies = movies.filter((item) => (
+        (item.bookmarked === true)));
+    }
+    console.log('Abaixo o "arrayMovies" da func "MoviesFeltered" do "MovieLibrary.js" ');
     console.log(arrayMovies);
     return arrayMovies;
   }
