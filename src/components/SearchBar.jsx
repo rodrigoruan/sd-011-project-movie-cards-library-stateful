@@ -4,10 +4,10 @@ import React from 'react';
 
 class SearchBar extends React.Component {
   render() {
-    return (      
-        <form action="" data-testid="search-bar-form">
-          <input type="text" />
-        </form>       
+    return (
+      <form action="" data-testid="search-bar-form">
+      <input type="text" />
+      </form>
     );
   }
 }
