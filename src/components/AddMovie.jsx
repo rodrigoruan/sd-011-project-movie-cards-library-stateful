@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import InputComp from './InputComp';
 import ImputText from './ImputText';
 import SelectComp from './SelectComp';
+import RatingComp from './RatingComp';
 
 class AddMovie extends Component {
   constructor() {
@@ -18,6 +19,8 @@ class AddMovie extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+
+    this.resetState = this.resetState.bind(this);
   }
 
   handleChange({ target }) {
@@ -41,8 +44,9 @@ class AddMovie extends Component {
   }
 
   render() {
+    const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
     return (
-      <form action="">
+      <form action="" data-testid="add-movie-form">
         <InputComp
           data="title-input-label"
           value={ title }
@@ -72,7 +76,7 @@ class AddMovie extends Component {
         />
         <ImputText value={ storyline } func={ this.handleChange } />
         <SelectComp label="Gênero" value={ genre } onChange={ this.handleChange } />
-        <InputComp
+        <RatingComp
           data="rating-input-label"
           value={ rating }
           name="Avaliação"
