@@ -40,12 +40,12 @@ export default class AddMovie extends Component {
     // console.log(this);
   }
 
-  // pushMovie() {
-  //   const { onClick } = this.props;
-  //   onClick(this.state);
+  pushMovie() {
+    const { onClick } = this.props;
+    onClick(this.state);
 
-  pushMovie(umaCallback) { // Outra maneira de fazer com button comentado em return
-    umaCallback(this.state);
+  // pushMovie(umaCallback) { // Outra maneira de fazer com button comentado em return
+  //   umaCallback(this.state);
 
     // this.setState({ // Só pra teste de estado
     //   title: 'teste',
@@ -70,20 +70,20 @@ export default class AddMovie extends Component {
           <Storyline defaultValue={ storyline } onChange={ this.changeState } />
           <Rating defaultValue={ rating } onChange={ this.changeState } />
           <Genre defaultValue={ genre } onChange={ this.changeState } />
-          {/* <button
+          <button
             type="button"
             data-testid="send-button"
             onClick={ this.pushMovie }
           >
             Adicionar filme
-          </button> */}
-          <button
+          </button>
+          {/* <button
             type="button"
             data-testid="send-button"
             onClick={ () => this.pushMovie(onClick) }
           >
             Adicionar filme
-          </button>
+          </button> */}
         </form>
       </div>
     );
