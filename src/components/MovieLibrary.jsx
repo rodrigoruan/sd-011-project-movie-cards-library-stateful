@@ -13,8 +13,9 @@ class MovieLibrary extends Component {
       selectedGenre: '',
       movies: props.movies,
     };
-
+    this.addMovies = this.addMovies.bind(this);
     this.handleChangeSearchBar = this.handleChangeSearchBar.bind(this);
+    this.moviesFilter = this.moviesFilter.bind(this);
   }
 
   // Requisito 17
@@ -26,9 +27,41 @@ class MovieLibrary extends Component {
     });
   }
 
-  render() {
+  addMovies(movie) {
+    this.setState((previousState) => ({
+      movies: [...previousState.movies, movie],
+    }));
+  }
+
+  // Requisito 18
+  moviesFilter() {
     const { movies,
+      bookmarkedOnly,
+      selectedGenre,
       searchText,
+    } = this.state;
+
+    let filterMovies = movies;
+    if (bookmarkedOnly === true) {
+      filterMovies = movies.filter((movie) => movie.bookmarked === true);
+    }
+
+    if (selectedGenre !== '') {
+      filterMovies = movies.filter((movie) => movie.genre === selectedGenre);
+    }
+
+    if (searchText !== '') {
+      filterMovies = movies.filter((movie) => (
+        (movie.title.includes(searchText))
+        || (movie.subtitle.includes(searchText))
+        || (movie.storyline.includes(searchText))
+      ));
+    }
+    return filterMovies;
+  }
+
+  render() {
+    const { searchText,
       bookmarkedOnly,
       selectedGenre,
     } = this.state;
@@ -43,7 +76,7 @@ class MovieLibrary extends Component {
           onBookmarkedChange={ this.handleChangeSearchBar }
           onSelectedGenreChange={ this.handleChangeSearchBar }
         />
-        <MovieList movies={ movies } />
+        <MovieList movies={ this.moviesFilter() } />
         <AddMovie onCLick={ this.addMovies } />
       </div>
     );

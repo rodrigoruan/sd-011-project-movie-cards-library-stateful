@@ -5,10 +5,9 @@ class BookmarkedOnly extends Component {
   render() {
     const { bookmarkedOnly, onBookmarkedChange } = this.props;
     return (
-      <label htmlFor="input-checkbox" data-testid="checkbox-input-label">
+      <label htmlFor="bookmarkedOnly" data-testid="checkbox-input-label">
         Mostrar somente favoritos
         <input
-          id="input-checkbox"
           data-testid="checkbox-input"
           type="checkbox"
           name="bookmarkedOnly"

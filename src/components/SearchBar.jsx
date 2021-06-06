@@ -57,10 +57,10 @@ SearchBar.propTypes = {
 
 SearchBar.defaultProps = {
   searchText: '',
-  onSearchTextChange: () => { },
+  onSearchTextChange: () => {},
   bookmarkedOnly: PropTypes.false,
-  onBookmarkedChange: () => { },
+  onBookmarkedChange: () => {},
   selectedGenre: '',
-  onSelectedGenreChange: () => { },
+  onSelectedGenreChange: () => {},
 
 };

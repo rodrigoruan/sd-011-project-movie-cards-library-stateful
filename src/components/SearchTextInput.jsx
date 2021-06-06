@@ -5,10 +5,9 @@ class SearchTextInput extends Component {
   render() {
     const { searchText, onSearchTextChange } = this.props;
     return (
-      <label htmlFor="input-text" data-testid="text-input-label">
+      <label htmlFor="searchText" data-testid="text-input-label">
         Inclui o texto:
         <input
-          id="input-text"
           data-testid="text-input"
           type="text"
           name="searchText"

@@ -4,7 +4,6 @@ import TitleInput from './TitleInput';
 import SubTitleInput from './SubTitleInput';
 import ImagePath from './ImagePath';
 import TextareaField from './TextareaField';
-import RatingInput from './RatingInput';
 import GenreCheck from './GenreCheck';
 
 class AddMovie extends Component {
@@ -66,10 +65,16 @@ class AddMovie extends Component {
           storyline={ storyline }
           handleState={ this.handleState }
         />
-        <RatingInput
-          rating={ rating }
-          handleState={ this.handleState }
-        />
+        <label htmlFor="rating-input" data-testid="rating-input-label">
+          Avaliação
+          <input
+            type="number"
+            name="rating"
+            data-testid="rating-input"
+            value={ rating }
+            onChange={ this.handleState }
+          />
+        </label>
         <GenreCheck
           genre={ genre }
           handleState={ this.handleState }
@@ -85,6 +90,7 @@ class AddMovie extends Component {
     );
   }
 }
+
 export default AddMovie;
 
 AddMovie.propTypes = {
@@ -92,5 +98,5 @@ AddMovie.propTypes = {
 };
 
 AddMovie.defaultProps = {
-  onClick: () => { },
+  onClick: () => {},
 };
