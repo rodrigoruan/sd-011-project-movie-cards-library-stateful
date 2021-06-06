@@ -14,10 +14,11 @@ export class SearchBar extends Component {
       <form data-testid="search-bar-form">
         <label htmlFor="text" data-testid="text-input-label">
           Inclui o texto:
-          <input type="text" value={ searchText } />
+          <input type="text" value={ searchText } onChange={ onSearchTextChange } data-testid="text-input" />
         </label>
         <label htmlFor="checkbox">
-          <input type="checkbox" />
+          Mostrar somente favoritos
+          <input type="checkbox" checked={ bookmarkedOnly } onChange={ onBookmarkedChange } data-testid="checkbox-input" />
         </label>
         <label htmlFor="text">
           <select>
