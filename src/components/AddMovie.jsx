@@ -62,11 +62,6 @@ class AddMovie extends React.Component {
           />
         </label>
         <TextArea change={this.changeTitle} storyLine={storyLine}/>
-
-        <p>{subtitle}</p>
-        <p>{title}</p>
-        <p>{imagePath}</p>
-        <p>{storyLine}</p>
         <p>{rating}</p>
         <p>{genre}</p>
       </form>
