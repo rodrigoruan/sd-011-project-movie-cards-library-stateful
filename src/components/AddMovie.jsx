@@ -42,6 +42,14 @@ class AddMovie extends Component {
           name="Subtítulo"
           data="subtitle-input-label"
         />
+        <InputText
+          value={ imagePath }
+          nameInput={ imagePath }
+          dataInput="image-input"
+          func={ this.subtmit }
+          name="Imagem"
+          data="image-input-label"
+        />
       </form>
     );
   }
