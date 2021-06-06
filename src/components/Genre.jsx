@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class Genre extends Component {
   render() {
@@ -9,6 +10,7 @@ export default class Genre extends Component {
         <select
           data-testid="genre-input"
           name="genre"
+          value={ value }
           onChange={ handlerChange }
         >
           <option data-testid="genre-option" value="action" selected>Ação</option>
@@ -19,3 +21,8 @@ export default class Genre extends Component {
     );
   }
 }
+
+Genre.propTypes = {
+  value: PropTypes.string,
+  handlerChange: PropTypes.func,
+}.isRequired;

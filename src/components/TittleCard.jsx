@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class TittleCard extends Component {
   render() {
@@ -19,3 +20,8 @@ class TittleCard extends Component {
 }
 
 export default TittleCard;
+
+TittleCard.propTypes = {
+  value: PropTypes.string,
+  handlerChange: PropTypes.func,
+}.isRequired;

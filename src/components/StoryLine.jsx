@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class StoryLine extends Component {
   render() {
@@ -17,3 +18,8 @@ export default class StoryLine extends Component {
     );
   }
 }
+
+StoryLine.propTypes = {
+  value: PropTypes.string,
+  handlerChange: PropTypes.func,
+}.isRequired;

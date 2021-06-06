@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class Assessment extends Component {
   render() {
@@ -17,3 +18,8 @@ export default class Assessment extends Component {
     );
   }
 }
+
+Assessment.propTypes = {
+  value: PropTypes.number,
+  handlerChange: PropTypes.func,
+}.isRequired;
