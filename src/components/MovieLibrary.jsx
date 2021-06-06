@@ -1,110 +1,83 @@
-// implement MovieLibrary component here
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import SearchBar from './SearchBar';
 import MovieList from './MovieList';
+import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
 
-export default class MovieLibrary extends Component {
+class MovieLibrary extends Component {
   constructor(props) {
     super(props);
-
-    const { movies } = this.props;
 
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
-      movies,
+      movies: props.movies,
     };
 
-    this.onSearchTextChange = this.onSearchTextChange.bind(this);
-    this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
-    this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
-    this.newMovie = this.newMovie.bind(this);
+    this.onHandleChange = this.onHandleChange.bind(this);
+    this.filteredContent = this.filteredContent.bind(this);
+    this.showTime = this.showTime.bind(this);
   }
 
-  onSearchTextChange({ target }) {
-    const searchString = target.value;
-    const { movies } = this.state;
-    let updatedMovies = movies;
+  onHandleChange({ target }) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
 
-    this.setState({ searchText: searchString });
+    this.setState({
+      [name]: value,
+    }, () => this.filteredContent());
+  }
 
-    updatedMovies = movies.filter((movie) => {
-      if (
-        movie.storyline.toLowerCase().includes(searchString.toLowerCase())
-        || movie.title.toLowerCase().includes(searchString.toLowerCase())
-        || movie.subtitle.toLowerCase().includes(searchString.toLowerCase())
-      ) {
-        return movie;
-      }
-      return false;
+  filteredContent() {
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+    const { movies } = this.props;
+  
+    const filterMovie = movies.filter((movie) => movie.title.includes(searchText)
+      || movie.subtitle.includes(searchText)
+      || movie.storyline.includes(searchText)
+    );
+
+    if (bookmarkedOnly === true) {
+      const favoriteArray = filterMovie.filter((movie) => movie.bookmarked === true);
+      return this.setState({
+        movies: favoriteArray.filter((movie) => movie.genre.includes(selectedGenre)),
+      });
+    }
+    
+    return this.setState({
+      movies: filterMovie.filter((movie) => movie.genre.includes(selectedGenre)),
     });
-    this.setState({ movies: updatedMovies });
   }
 
-  onBookmarkedChange({ target }) {
-    this.setState({ bookmarkedOnly: target.checked });
+  showTime(addMov) {
     const { movies } = this.state;
-    let updatedMovies = movies;
-    const { bookmarkedOnly } = this.state;
-
-    if (!bookmarkedOnly) {
-      updatedMovies = movies.filter((movie) => {
-        if (movie.bookmarked) {
-          return movie;
-        }
-        return false;
-      });
-    }
-    this.setState({ movies: updatedMovies });
-  }
-
-  onSelectedGenreChange({ target }) {
-    const { movies } = this.state;
-    let updatedMovies = movies;
-    this.setState({ selectedGenre: target.value });
-
-    if (target.value !== '') {
-      updatedMovies = movies.filter((movie) => {
-        if (movie.genre === target.value) {
-          return movie;
-        }
-        return false;
-      });
-    }
-    this.setState({ movies: updatedMovies });
-  }
-
-  newMovie({ title, subtitle, imagePath, storyline, rating, genre }) {
-    const { movies } = this.state;
-    let updatedMovies = movies;
-    const obj = { title, subtitle, imagePath, storyline, rating, genre };
-    obj.rating = parseFloat(obj.rating);
-
-    updatedMovies = updatedMovies.concat([obj]);
-    this.setState({ movies: updatedMovies });
+    this.setState({
+      movies: [...movies, addMov],
+    });
   }
 
   render() {
-    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+    const { movies } = this.props;
     return (
       <div>
+        <h2> My awesome movie library </h2>
         <SearchBar
-          searchText={ searchText }
-          onSearchTextChange={ this.onSearchTextChange }
-          bookmarkedOnly={ bookmarkedOnly }
-          onBookmarkedChange={ this.onBookmarkedChange }
-          selectedGenre={ selectedGenre }
-          onSelectedGenreChange={ this.onSelectedGenreChange }
+        searchText={ this.state.searchText }
+        onSearchTextChange={ this.onHandleChange }
+        bookmarkedOnly={ this.state.bookmarkedOnly }
+        onBookmarkedChange={ this.onHandleChange }
+        selectedGenre={ this.selectedGenre }
+        onSelectedGenreChange={ this.onHandleChange }
         />
         <MovieList movies={ movies } />
-        <AddMovie onClick={ this.newMovie } />
+        <AddMovie onClick={ this.showTime } />
       </div>
     );
   }
 }
+
+export default MovieLibrary;
 
 MovieLibrary.propTypes = {
   movies: PropTypes.arrayOf(
