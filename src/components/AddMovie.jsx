@@ -1,7 +1,7 @@
 // implement AddMovie component here
 import React from 'react';
 // import PropTypes from 'prop-types';
-import TextArea from './addMovieComponents/textArea'
+import TextArea from './addMovieComponents/textArea.jsx'
 
 class AddMovie extends React.Component {
   constructor(props) {
@@ -61,7 +61,7 @@ class AddMovie extends React.Component {
             onChange={ this.changeTitle }
           />
         </label>
-        <TextArea change={this.changeTitle} storyLine={storyLine}/>
+        <TextArea change={ this.changeTitle } storyLine={ storyLine } />
         <p>{rating}</p>
         <p>{genre}</p>
       </form>
