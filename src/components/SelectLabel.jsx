@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default class SelectLabel extends Component {
   render() {
-    const { functionCall, value } = this.props;
+    const { func, value } = this.props;
     return (
       <label data-testid="genre-input-label" htmlFor="genre">
         Gênero
@@ -11,7 +11,7 @@ export default class SelectLabel extends Component {
           value={ value }
           data-testid="genre-input"
           name="genre"
-          onChange={ functionCall }
+          onChange={ func }
         >
           <option value="action" data-testid="genre-option">Ação</option>
           <option value="comedy" data-testid="genre-option">Comédia</option>
@@ -24,5 +24,5 @@ export default class SelectLabel extends Component {
 
 SelectLabel.propTypes = {
   value: PropTypes.string.isRequired,
-  functionCall: PropTypes.func.isRequired,
+  func: PropTypes.func.isRequired,
 };

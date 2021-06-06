@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class InputLabel extends Component {
   render() {
     const {
-      data, value, name, inputName, inputData, inputType, functionCall,
+      data, value, name, inputName, inputData, inputType, func,
     } = this.props;
     return (
       <label data-testid={ data } htmlFor={ inputName }>
@@ -14,7 +14,7 @@ class InputLabel extends Component {
           value={ value }
           name={ inputName }
           data-testid={ inputData }
-          onChange={ functionCall }
+          onChange={ func }
         />
       </label>
     );
@@ -30,5 +30,5 @@ InputLabel.propTypes = {
   inputType: PropTypes.string.isRequired,
   inputName: PropTypes.string.isRequired,
   inputData: PropTypes.string.isRequired,
-  functionCall: PropTypes.func.isRequired,
+  func: PropTypes.func.isRequired,
 };

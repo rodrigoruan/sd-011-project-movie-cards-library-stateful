@@ -54,7 +54,7 @@ export default class AddMovie extends Component {
           inputName="title"
           inputData="title-input"
           inputType="text"
-          functionCall={ this.handleChange }
+          func={ this.handleChange }
         />
         <InputLabel
           data="subtitle-input-label"
@@ -63,7 +63,7 @@ export default class AddMovie extends Component {
           inputName="subtitle"
           inputData="subtitle-input"
           inputType="text"
-          functionCall={ this.handleChange }
+          func={ this.handleChange }
         />
         <InputLabel
           data="image-input-label"
@@ -72,9 +72,9 @@ export default class AddMovie extends Component {
           inputName="imagePath"
           inputData="image-input"
           inputType="text"
-          functionCall={ this.handleChange }
+          func={ this.handleChange }
         />
-        <TextLabel value={ storyline } functionCall={ this.handleChange } />
+        <TextLabel value={ storyline } func={ this.handleChange } />
         <InputLabel
           data="rating-input-label"
           value={ rating }
@@ -82,10 +82,10 @@ export default class AddMovie extends Component {
           inputName="rating"
           inputData="rating-input"
           inputType="number"
-          functionCall={ this.handleChange }
+          func={ this.handleChange }
         />
-        <SelectLabel functionCall={ this.handleChange } value={ genre } />
-        <ButtonLabel functionCall={ this.handleButton } />
+        <SelectLabel func={ this.handleChange } value={ genre } />
+        <ButtonLabel func={ this.handleButton } />
       </form>
     );
   }

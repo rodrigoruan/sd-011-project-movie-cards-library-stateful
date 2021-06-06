@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default class TextLabel extends Component {
   render() {
-    const { functionCall, value } = this.props;
+    const { func, value } = this.props;
     return (
       <label
         data-testid="storyline-input-label"
@@ -14,7 +14,7 @@ export default class TextLabel extends Component {
           name="storyline"
           value={ value }
           data-testid="storyline-input"
-          onChange={ functionCall }
+          onChange={ func }
         />
       </label>
     );
@@ -23,5 +23,5 @@ export default class TextLabel extends Component {
 
 TextLabel.propTypes = {
   value: PropTypes.string.isRequired,
-  functionCall: PropTypes.func.isRequired,
+  func: PropTypes.func.isRequired,
 };
