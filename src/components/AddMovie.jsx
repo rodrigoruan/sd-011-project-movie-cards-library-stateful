@@ -6,29 +6,37 @@ class AddMovie extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state= {
+    this.state = {
       subtitle: '',
       title: '',
       imagePath: '',
       storyLine: '',
       rating: '0',
       genre: 'action',
-    }
-  } 
+    };
+  }
+
   render() {
-    const { onClick } = this.props; 
+    const { subtitle, title, imagePath, storyLine, rating, genre } = this.state;
     return (
       <form action="">
+        <p>{subtitle}</p>
+        <p>{title}</p>
+        <p>{imagePath}</p>
+        <p>{storyLine}</p>
+        <p>{rating}</p>
+        <p>{genre}</p>
       </form>
     );
   }
 }
 
 AddMovie.propTypes = {
-    onClick: PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 AddMovie.defaultProps = {
-    onClick: () => {},
-}
+  onClick: () => {},
+};
+
 export default AddMovie;
