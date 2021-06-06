@@ -26,9 +26,9 @@ class MovieLibrary extends Component {
     });
   }
 
-  addMovies(filmes) {
-    this.setState((estadoAterior) => ({
-      movies: [...estadoAterior.movies, filmes],
+  addMovies(movie) {
+    this.setState((previousState) => ({
+      movies: [...previousState.movies, movie],
     }));
   }
 
