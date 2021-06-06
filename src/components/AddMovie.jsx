@@ -6,6 +6,7 @@ import Image from './AddMovie/Image';
 import Sinopse from './AddMovie/Sinopse';
 import RatingInput from './AddMovie/RatingInput';
 import Genre from './AddMovie/Genre';
+import ButtonInput from './AddMovie/ButtonInput';
 
 class AddMovie extends Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class AddMovie extends Component {
     this.handleChangeSinopse = this.handleChangeSinopse.bind(this);
     this.handleChangeRating = this.handleChangeRating.bind(this);
     this.handleChangeGenre = this.handleChangeGenre.bind(this);
+    this.functionOnClick = this.functionOnClick.bind(this);
   }
 
   handleChangeTitle(event) {
@@ -69,7 +71,21 @@ class AddMovie extends Component {
     });
   }
 
+  functionOnClick(currentState) {
+    currentState(this.state); // callback que recebe como parâmetro o estado atual de movieCard
+
+    this.setState({ // lógica para reset do estado de movieCard
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
+
   render() {
+    const { onClick } = this.props; // props criada para passar a callback como parâmetro da functionOnclick
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
 
     return (
@@ -81,11 +97,14 @@ class AddMovie extends Component {
           <Sinopse value={ storyline } handleChange={ this.handleChangeSinopse } />
           <RatingInput value={ rating } handleChange={ this.handleChangeRating } />
           <Genre value={ genre } handleChange={ this.handleChangeGenre } />
+          <ButtonInput onClick={ () => this.functionOnClick(onClick) } />
         </form>
       </div>
     );
   }
 }
+
+// Referência para buttonInput: https://www.w3schools.com/react/react_events.asp
 
 AddMovie.propTypes = {
   state: PropTypes.shape({
@@ -96,10 +115,12 @@ AddMovie.propTypes = {
     rating: PropTypes.number,
     genre: PropTypes.string,
   }),
+  onClick: PropTypes.func,
 };
 
 AddMovie.defaultProps = {
   state: {},
+  onClick: () => {},
 };
 
 export default AddMovie;
