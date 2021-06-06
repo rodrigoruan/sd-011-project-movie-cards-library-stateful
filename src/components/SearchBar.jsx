@@ -6,20 +6,20 @@ class SearchBar extends React.Component {
     super();
 
     this.state = {
-      teste: '',
-      teste2: '',
+      searchText: '',
+      onSearchTextChange: '',
     };
   }
 
   handleChange = (event) => {
     this.setState({
-      teste: event.target.value,
-      teste2: event.target.value,
+      searchText: event.target.value,
+      onSearchTextChange: event.target.value,
     });
   }
 
   render() {
-    const { teste, teste2 } = this.state;
+    const { searchText, onSearchTextChange } = this.state;
     // const { movie: {
     //   searchText,
     //   onSearchTextChange,
@@ -35,26 +35,27 @@ class SearchBar extends React.Component {
       <div>
 
         <form data-testid="search-bar-form">
-          <label htmlFor="teste">
+          <label htmlFor="searchText">
             Inclui o texto:
             <input
               data-testid="text-input-label"
               type="text"
-              value={ teste }
+              value={ searchText }
               onChange={ this.handleChange }
-              name="teste"
-              id="teste"
+              name="searchText"
+              id="searchText"
             />
           </label>
 
-          <label htmlFor="teste">
-            Input Teste 2:
+          <label htmlFor="onSearchTextChange">
+            Mostrar somente favoritos
             <input
-              type="text"
-              value={ teste2 }
+              data-testid="checkbox-input-label"
+              type="checkbox"
+              value={ onSearchTextChange }
               onChange={ this.handleChange }
-              name="teste2"
-              id="teste2"
+              name="onSearchTextChange"
+              id="onSearchTextChange"
             />
           </label>
         </form>
