@@ -14,6 +14,7 @@ export default class MovieLibrary extends Component {
       movies: props.movies,
     };
     this.changeState = this.changeState.bind(this);
+    this.MoviesFiltered = this.MoviesFiltered.bind(this);
   }
 
   changeState({ target }) {
@@ -25,6 +26,23 @@ export default class MovieLibrary extends Component {
     console.log('Abaixo temos o this do MovieLibrary');
     console.log(this);
     // console.log('Entrou no changeState de MovieLibrary');
+  }
+
+  MoviesFiltered() {
+    const { movies, searchText, bookmarkedOnly, selectedGenre } = this.state;
+
+    let arrayMovies = movies.filter((item) => (
+      (item.title.includes(searchText))
+      || (item.subtitle.includes(searchText))
+      || (item.storyline.includes(searchText))));
+
+    if (searchText === '' && selectedGenre !== '') {
+      arrayMovies = movies.filter((item) => (
+        (item.genre === selectedGenre)));
+    }
+    console.log('Abaixo o "arrayMovies" da func "MoviesFeltered" do "MovieLibrary.js" ')
+    console.log(arrayMovies);
+    return arrayMovies;
   }
 
   render() {
@@ -41,7 +59,8 @@ export default class MovieLibrary extends Component {
           onSelectedGenreChange={ this.changeState }
         />
         <AddMovie />
-        <MovieList movies={ movies } />
+        {/* <MovieList movies={ movies } /> */}
+        <MovieList movies={ this.MoviesFiltered() } />
       </div>
     );
   }
