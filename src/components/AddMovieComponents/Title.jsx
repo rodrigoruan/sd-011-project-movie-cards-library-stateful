@@ -11,7 +11,8 @@ export default class Title extends Component {
           type="text"
           data-testid="title-input"
           name="title"
-          defaultValue={ defaultValue }
+          // defaultValue={ defaultValue }
+          value={ defaultValue }
           onChange={ onChange }
         />
       </label>

@@ -7,14 +7,17 @@ import AddMovie from './AddMovie';
 export default class MovieLibrary extends Component {
   constructor(props) {
     super(props);
+    const { movies } = this.props;
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
-      movies: props.movies,
+      // movies: props.movies, // Assim não rola
+      movies,
     };
     this.changeState = this.changeState.bind(this);
     this.MoviesFiltered = this.MoviesFiltered.bind(this);
+    this.updateDataMovies = this.updateDataMovies.bind(this);
   }
 
   changeState({ target }) {
@@ -49,6 +52,13 @@ export default class MovieLibrary extends Component {
     return arrayMovies;
   }
 
+  updateDataMovies(sonState) {
+    const { movies } = this.state;
+    this.setState({
+      movies: [...movies, sonState],
+    });
+  }
+
   render() {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
     return (
@@ -62,7 +72,7 @@ export default class MovieLibrary extends Component {
           onBookmarkedChange={ this.changeState }
           onSelectedGenreChange={ this.changeState }
         />
-        <AddMovie />
+        <AddMovie onClick={ this.updateDataMovies } />
         {/* <MovieList movies={ movies } /> */}
         <MovieList movies={ this.MoviesFiltered() } />
       </div>

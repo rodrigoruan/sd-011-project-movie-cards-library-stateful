@@ -11,7 +11,8 @@ export default class Storyline extends Component {
           type="text"
           data-testid="storyline-input"
           name="storyline"
-          defaultValue={ defaultValue }
+          // defaultValue={ defaultValue }
+          value={ defaultValue }
           onChange={ onChange }
         />
       </label>

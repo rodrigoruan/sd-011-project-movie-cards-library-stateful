@@ -8,9 +8,10 @@ export default class Genre extends Component {
       <label data-testid="genre-input-label" htmlFor="select-input">
         Gênero
         <select
-          name="genre"
           data-testid="genre-input"
-          defaultValue={ defaultValue }
+          name="genre"
+          // defaultValue={ defaultValue }
+          value={ defaultValue }
           onChange={ onChange }
         >
           <option value="action" data-testid="genre-option">Ação</option>

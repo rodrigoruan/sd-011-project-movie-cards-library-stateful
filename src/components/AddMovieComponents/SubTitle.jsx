@@ -11,7 +11,8 @@ export default class SubTitle extends Component {
           type="text"
           data-testid="subtitle-input"
           name="subtitle"
-          defaultValue={ defaultValue }
+          // defaultValue={ defaultValue }
+          value={ defaultValue }
           onChange={ onChange }
         />
       </label>

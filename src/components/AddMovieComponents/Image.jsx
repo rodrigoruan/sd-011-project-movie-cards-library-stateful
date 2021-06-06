@@ -11,7 +11,8 @@ export default class Input extends Component {
           type="text"
           data-testid="image-input"
           name="imagePath"
-          defaultValue={ defaultValue }
+          // defaultValue={ defaultValue }
+          value={ defaultValue }
           onChange={ onChange }
         />
       </label>
