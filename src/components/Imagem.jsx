@@ -13,7 +13,7 @@ class Imagem extends Component {
         <input
           type="text"
           name="imagePath"
-          data-testid="image-input-label"
+          data-testid="image-input"
           value={ value }
           onChange={ handlerChange }
         />

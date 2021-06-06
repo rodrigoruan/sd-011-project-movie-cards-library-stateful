@@ -10,7 +10,7 @@ export default class Assessment extends Component {
         <input
           type="number"
           name="rating"
-          data-testid="rating-input-label"
+          data-testid="rating-input"
           value={ value }
           onChange={ handlerChange }
         />

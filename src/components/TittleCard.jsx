@@ -10,7 +10,7 @@ class TittleCard extends Component {
         <input
           type="text"
           name="title"
-          data-testid="title-input-label"
+          data-testid="title-input"
           value={ value }
           onChange={ handlerChange }
         />

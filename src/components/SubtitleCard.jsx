@@ -10,7 +10,7 @@ class SubtitleCard extends Component {
         <input
           type="text"
           name="subtitle"
-          data-testid="subtitle-input-label"
+          data-testid="subtitle-input"
           value={ value }
           onChange={ handlerChange }
         />
