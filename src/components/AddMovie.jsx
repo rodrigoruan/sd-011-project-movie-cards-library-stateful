@@ -1,7 +1,7 @@
 // implement AddMovie component here
 import React from 'react';
 // import PropTypes from 'prop-types';
-import TextArea from './addMovieComponents/textArea.jsx';
+import TextArea from './textArea';
 
 class AddMovie extends React.Component {
   constructor(props) {
