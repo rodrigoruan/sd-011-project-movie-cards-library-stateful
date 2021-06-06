@@ -17,14 +17,14 @@ class AddMovie extends React.Component {
       imagePath: '',
       storyline: '',
       rating: 0,
-      genre: '',
+      genre: 'action',
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange({ target }) {
-    const { name, value } = target;
-    this.state({
+  handleChange(event) {
+    const { name, value } = event.target;
+    this.setState({
       [name]: value,
     });
   }
@@ -34,12 +34,12 @@ class AddMovie extends React.Component {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <AddTitle handleChange={ handleChange } title={ title } />
-        <AddSubtitle handleChange={ handleChange } subtitle={ subtitle } />
-        <AddImagePath handleChange={ handleChange } imagePath={ imagePath } />
-        <AddStoryline handleChange={ handleChange } storyline={ storyline } />
-        <AddRating handleChange={ handleChange } rating={ rating } />
-        <AddGenre handleChange={ handleChange } genre={ genre } />
+        <AddTitle handleChange={ this.handleChange } title={ title } />
+        <AddSubtitle handleChange={ this.handleChange } subtitle={ subtitle } />
+        <AddImagePath handleChange={ this.handleChange } imagePath={ imagePath } />
+        <AddStoryline handleChange={ this.handleChange } storyline={ storyline } />
+        <AddRating handleChange={ this.handleChange } rating={ rating } />
+        <AddGenre handleChange={ this.handleChange } genre={ genre } />
         <AddMovieButton onclick={ () => {} } />
       </form>
     );

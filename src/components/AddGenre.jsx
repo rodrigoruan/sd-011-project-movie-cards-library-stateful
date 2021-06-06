@@ -16,7 +16,7 @@ class AddGenre extends React.Component {
         Gênero
         <select
           data-testid="genre-input"
-          name="genre-input"
+          name="genre"
           id="genre"
           value={ genre }
           onChange={ handleChange }

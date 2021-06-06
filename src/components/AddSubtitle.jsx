@@ -9,7 +9,7 @@ class AddSubtitle extends React.Component {
         Subtítulo
         <input
           type="text"
-          name="subtitle-input"
+          name="subtitle"
           id="subtitle"
           value={ subtitle }
           data-testid="subtitle-input"

@@ -8,7 +8,7 @@ class AddTextarea extends React.Component {
       <label htmlFor="storyline" data-testid="storyline-input-label">
         Sinopse
         <textarea
-          name=""
+          name="storyline"
           id="storyline"
           cols="30"
           rows="10"
