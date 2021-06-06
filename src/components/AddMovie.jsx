@@ -41,7 +41,7 @@ function makeTitleInput(title, handleInput) {
   );
 }
 
-function makeLalaInput(subtitle, handleInput) {
+function makeSubtitleInput(subtitle, handleInput) {
   return (
     <Input
       htmlFor="subtitle-input"
@@ -68,7 +68,6 @@ class AddMovie extends React.Component {
     };
 
     this.handleInput = this.handleInput.bind(this);
-    // https://forum.betrybe.com/t/projeto-movie-cards-library-stateful-metodo-render-com-muitas-linhas/468/2
   }
 
   handleInput(event) {
@@ -85,7 +84,7 @@ class AddMovie extends React.Component {
     return (
       <form data-testid="add-movie-form">
         {makeTitleInput(title, this.handleInput)}
-        {makeLalaInput(subtitle, this.handleInput)}
+        {makeSubtitleInput(subtitle, this.handleInput)}
         <Input
           htmlFor="image-input"
           dataTestidLabel="image-input-label"

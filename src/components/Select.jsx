@@ -13,6 +13,7 @@ class Select extends React.Component {
           value={ value }
           onChange={ onChange }
           data-testid={ dataTestid }
+          name="selectedGenre"
         >
           <option data-testid="select-option" value="">
             Todos

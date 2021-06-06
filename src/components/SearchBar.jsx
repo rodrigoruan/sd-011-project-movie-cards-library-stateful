@@ -11,6 +11,7 @@ class SerarchBar extends React.Component {
       onBookmarkedChange,
       selectedGenre,
       onSelectedGenreChange,
+
     } = this.props;
     return (
       <div>
@@ -22,6 +23,7 @@ class SerarchBar extends React.Component {
               data-testid="text-input"
               type="text"
               value={ searchText }
+              name="searchText"
             />
           </label>
           <label htmlFor="checkbox" data-testid="checkbox-input-label">
@@ -32,6 +34,7 @@ class SerarchBar extends React.Component {
               onChange={ onBookmarkedChange }
               checked={ bookmarkedOnly }
               data-testid="checkbox-input"
+              name="bookmarkedOnly"
             />
           </label>
           <Select

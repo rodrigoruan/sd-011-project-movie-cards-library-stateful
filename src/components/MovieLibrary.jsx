@@ -4,13 +4,22 @@ import PropTypes from 'prop-types';
 import MovieList from './MovieList';
 import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
+import MovieCard from './MovieCard';
 
 class MovieLibrary extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      searchText: '',
+      bookmarkedOnly: false,
+      selectedGenre: '',
+    };
     this.handleClick = this.handleClick.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+    this.handleOnSelectedGenreChange = this.handleOnSelectedGenreChange.bind(this);
   }
 
+  // handleClick ainda não funciona
   handleClick(event) {
     const { target } = event;
     const { name } = target;
@@ -28,22 +37,46 @@ class MovieLibrary extends Component {
         [name]: value,
       });
     }
+  }
 
-    console.log('123', event);
+  handleInput({ target }) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+
+    this.setState({
+      [name]: value,
+    });
+  }
+
+  handleOnSelectedGenreChange({ target }) {
+    const { name, value } = target;
+    const { movies } = this.props;
+    const { selectedGenre } = this.state;
+    this.setState({
+      [name]: value,
+    });
+
+    const filterSelecteds = (movie) => movie.genre.includes(selectedGenre);
+    const movieToCards = (movie) => <MovieCard key={ movie.title } movie={ movie } />;
+
+    movies
+      .filter(filterSelecteds)
+      .map(movieToCards);
   }
 
   render() {
     const { movies } = this.props;
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <div>
         <h2> My awesome movie library </h2>
         <SearchBar
-          searchText=""
-          onSearchTextChange={ () => {} }
-          bookmarkedOnly={ false }
-          onBookmarkedChange={ () => {} }
-          selectedGenre=""
-          onSelectedGenreChange={ () => {} }
+          searchText={ searchText }
+          onSearchTextChange={ this.handleInput }
+          bookmarkedOnly={ bookmarkedOnly }
+          onBookmarkedChange={ this.handleInput }
+          selectedGenre={ selectedGenre }
+          onSelectedGenreChange={ this.handleOnSelectedGenreChange }
         />
         <MovieList movies={ movies } />
         <AddMovie onClick={ this.handleClick } />
@@ -53,7 +86,7 @@ class MovieLibrary extends Component {
 }
 
 MovieLibrary.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.string),
+  movies: PropTypes.arrayOf(PropTypes.object),
 };
 MovieLibrary.defaultProps = {
   movies: [],
