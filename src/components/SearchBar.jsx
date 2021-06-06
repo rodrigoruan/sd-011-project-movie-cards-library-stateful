@@ -74,4 +74,3 @@ SearchBar.defaultProps = {
   selectedGenre: '',
   onSelectedGenreChange: () => {},
 };
-
