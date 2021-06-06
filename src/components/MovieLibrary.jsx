@@ -16,8 +16,8 @@ class MovieLibrary extends Component {
     };
 
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
-    // this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
-    // this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
+    this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
+    this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
   }
 
   onSearchTextChange({ target }) {
@@ -26,17 +26,24 @@ class MovieLibrary extends Component {
     });
   }
 
-  // onBookmarkedChange() {
-  //   this.setState({
+  onBookmarkedChange() {
+    const { bookmarkedOnly } = this.state;
+    if (bookmarkedOnly === false) {
+      this.setState({
+        bookmarkedOnly: true,
+      });
+    } else {
+      this.setState({
+        bookmarkedOnly: false,
+      });
+    }
+  }
 
-  //   });
-  // }
-
-  // onSelectedGenreChange() {
-  //   this.setState({
-
-  //   });
-  // }
+  onSelectedGenreChange({ target }) {
+    this.setState({
+      selectedGenre: target.value,
+    });
+  }
 
   // filtersMovies() {
   //   movies = { movies };
