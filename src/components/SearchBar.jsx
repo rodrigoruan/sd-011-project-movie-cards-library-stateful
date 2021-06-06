@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+// O componente searchBar (filho de movie library) tem os requisitos bem guaidos e tem como função criar uma baraa de besquisa acima do render dos filmes com o intuito de filtrar os filmes
+// -> recebe via props de MovieLibrary alguns valores e funçoes(handleChange da MovieLibrary)
+// -> possui um form bem simples com algumas informações onde eu chamo informo dados e chamo funçoes afim de validar as informações contidas nele
+
 class SearchBar extends Component {
   render() {
     const { searchText, onSearchTextChange, bookmarkedOnly,
@@ -48,7 +52,7 @@ class SearchBar extends Component {
     );
   }
 }
-
+// mais uma vez faço as validações das props via proptypes
 export default SearchBar;
 
 SearchBar.propTypes = {

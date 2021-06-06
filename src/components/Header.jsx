@@ -1,5 +1,7 @@
 import React from 'react';
 
+// componente Header que é renderizado no App -> nada demais aqui so possui as tags e o class name para passar nos testes
+
 class Header extends React.Component {
   render() {
     return (
