@@ -13,6 +13,7 @@ class AddTextarea extends React.Component {
           cols="30"
           rows="10"
           data-testid="storyline-input"
+          value={ storyline }
           onChange={ handleChange }
         >
           { storyline }
