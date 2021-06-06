@@ -55,7 +55,7 @@ class SearchBar extends React.Component {
 export default SearchBar;
 
 // Para esta parte eu consultei o Repositório de Islene Gomes
-//  fonte:/* https://github.com/tryber/sd-011-project-movie-cards-library-stateful/pull/15/files
+//  source:/* https://github.com/tryber/sd-011-project-movie-cards-library-stateful/pull/15/files
 
 SearchBar.propTypes = {
   searchText: PropTypes.string,
