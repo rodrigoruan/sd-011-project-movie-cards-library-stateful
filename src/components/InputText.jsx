@@ -10,7 +10,7 @@ class InputText extends Component {
       labelTestId,
       value,
       onChange,
-      className
+      className,
     } = this.props;
     return (
       <label
