@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class InputTitleNovie extends React.Component {
+class InputTitlemovie extends React.Component {
   render() {
     const { title, hadleState } = this.props;
 
@@ -24,9 +24,9 @@ class InputTitleNovie extends React.Component {
   }
 }
 
-export default InputTitleNovie;
+export default InputTitlemovie;
 
-InputTitleNovie.propTypes = {
+InputTitlemovie.propTypes = {
   title: PropTypes.string.isRequired,
   hadleState: PropTypes.func.isRequired,
 };

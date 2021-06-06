@@ -12,6 +12,7 @@ class GenderSelect extends React.Component {
           data-testid="select-input"
           value={ selectedGenre }
           onChange={ onSelectedGenreChange }
+          name="selectedGenre"
         >
           <option data-testid="select-option" value="">Todos</option>
           <option data-testid="select-option" value="action">Ação</option>

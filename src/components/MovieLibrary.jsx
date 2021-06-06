@@ -16,39 +16,33 @@ class MovieLibrary extends React.Component {
       movies,
     };
 
-    this.onSearchTextChange = this.onSearchTextChange.bind(this);
-    this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
+    this.hadleState = this.hadleState.bind(this);
+    // this.addMovie = this.addMovie.bind(this);
   }
 
-  onSearchTextChange({ target }) {
-    const { value } = target;
-    this.setState({
-      searchText: value,
-    });
+  hadleState({ target }) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState(() => ({ [name]: value }));
   }
 
-  onBookmarkedChange({ target }) {
-    const { value } = target;
-    this.setState({
-      bookmarkedOnly: value,
-    });
-  }
+  // addMovie(newMovie) {
+  //   this.setState(() => ({ movies: movies.push(newMovie) }));
+  // }
 
   render() {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
-
     return (
       <div className="MovieLibrary">
         <SearchBar
           searchText={ searchText }
-          onSearchTextChange={ this.onSearchTextChange }
+          onSearchTextChange={ this.hadleState }
           bookmarkedOnly={ bookmarkedOnly }
-          onBookmarkedChange={ this.onSearchTextChange }
+          onBookmarkedChange={ this.hadleState }
           selectedGenre={ selectedGenre }
-          onSelectedGenreChange={ () => 'Isso é mais um teste' }
+          onSelectedGenreChange={ this.hadleState }
         />
-        {movies.map((movie) => movie.title)}
-        <MovieList movies={ () => 'Todos os filmes filtrados vem aqui' } />
+        <MovieList movies={ movies } />
         <AddMovie />
       </div>
     );
@@ -63,7 +57,7 @@ MovieLibrary.propTypes = {
     subtitle: PropTypes.string,
     storyline: PropTypes.string,
     rating: PropTypes.number,
-    imagePath: PropTypes,
+    imagePath: PropTypes.string,
     bookmarked: PropTypes.bool,
     genre: PropTypes.string,
   }).isRequired,

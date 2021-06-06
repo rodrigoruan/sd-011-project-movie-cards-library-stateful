@@ -15,7 +15,7 @@ class InputText extends React.Component {
           type="text"
           value={ searchText }
           onChange={ onSearchTextChange }
-          name="searchBar"
+          name="searchText"
           placeholder="Search..."
         />
       </label>

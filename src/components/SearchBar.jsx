@@ -6,7 +6,6 @@ import InputText from './InputText';
 
 class SearchBar extends React.Component {
   render() {
-    // tem que receber essas props
     const {
       searchText,
       onSearchTextChange,
