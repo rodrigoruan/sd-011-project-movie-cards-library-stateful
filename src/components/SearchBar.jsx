@@ -1,10 +1,11 @@
 // implement AddMovie component here
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'; 
 
 class SearchBar extends React.Component {
   render() {
     const { searchText, onSearchTextChange } = this.props;
+    const { bookmarkedOnly, onBookmarkedChange } = this.props;
     return (
       <form action="" data-testid="search-bar-form">
         <label htmlFor="search" data-testid="text-input-label">
@@ -15,6 +16,15 @@ class SearchBar extends React.Component {
             value={ searchText }
             onChange={ onSearchTextChange }
             data-testid="text-input"
+          />
+        </label>
+        <label htmlFor="check" data-testid="checkbox-input-label">
+          <input 
+            id="check"
+            type= "checkbox"
+            checked= { bookmarkedOnly }
+            onChange= { onBookmarkedChange }
+            data-testid="checkbox-input"
           />
         </label>
       </form>
