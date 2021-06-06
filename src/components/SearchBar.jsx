@@ -1,33 +1,27 @@
 // implement AddMovie component here
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class SearchBar extends React.Component {
   render() {
+    const { searchText, onSearchTextChange, } = this.props;
     return (
       <form action="" data-testid="search-bar-form">
-        <input type="text" />
+        <label htmlFor="" data-testid="text-input-label">Inclui o texto:</label>
+        <input type="text" value={searchText} onChange={onSearchTextChange} data-testid="text-input" />
       </form>
     );
   }
 }
 
-/* SearchBar.propTypes = {
+SearchBar.propTypes = {
   searchText: PropTypes.string,
-  onSearchTextChange: PropTypes.func,
-  bookmarkedOnly: PropTypes.bool,
-  onBookmarkedChange: PropTypes.func,
-  selectedGenre: PropTypes.string,
-  onSelectedGenreChange: PropTypes.func,
+  onSearchTextChange: PropTypes.func
 };
 
 SearchBar.defaultProps = {
   searchText: '',
   onSearchTextChange: () => {},
-  bookmarkedOnly: false,
-  onBookmarkedChange: () => {},
-  selectedGenre: '',
-  onSelectedGenreChange: () => {},
-}; */
+};
 
 export default SearchBar;
