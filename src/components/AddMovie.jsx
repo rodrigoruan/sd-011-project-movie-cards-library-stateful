@@ -2,6 +2,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import InputText from './InputText';
+import InputTextArea from './InputTextArea';
+import InputNumber from './InputNumber';
+import SelectLabel from './SelectLabel';
 
 class AddMovie extends Component {
   constructor() {
@@ -49,6 +52,22 @@ class AddMovie extends Component {
           func={ this.subtmit }
           name="Imagem"
           data="image-input-label"
+        />
+        <InputTextArea
+          value={ storyLine }
+          func={ this.subtmit }
+        />
+        <InputNumber
+          value={ rating }
+          nameInput={ rating }
+          dataInput="rating-input"
+          func={ this.submit }
+          name="Avaliação"
+          data="rating-input-label"
+        />
+        <SelectLabel
+          value={ genre }
+          func={ this.submit }
         />
       </form>
     );
