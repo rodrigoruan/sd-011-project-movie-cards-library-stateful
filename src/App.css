@@ -81,3 +81,35 @@ body {
   justify-content: flex-end;
   padding: 12px 20px;
 }
+
+.search-bar {
+  align-items: center;
+  background-color: #6f7174;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 12px 20px;
+  border-radius: 25px;
+  width: fit-content;
+}
+
+.title {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.addMovie {
+  align-items: center;
+  background-color: #6f7174;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 12px 20px;
+  border-radius: 25px;
+  width: fit-content;
+}
