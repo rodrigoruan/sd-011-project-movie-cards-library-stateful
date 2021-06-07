@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import InputRating from './InputRating';
 import InputSelect from './InputSelect';
+import InputStoryline from './InputStoryline';
 
 class AddMovie extends Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class AddMovie extends Component {
       subtitle: '',
       title: '',
       imagePath: '',
-      // storyline: '',
+      storyline: '',
       rating: 0,
       genre: 'action',
     };
@@ -28,7 +29,7 @@ class AddMovie extends Component {
   }
 
   render() {
-    const { title, subtitle, imagePath, rating, genre } = this.state;
+    const { title, subtitle, imagePath, rating, genre, storyline } = this.state;
     return (
       <form data-testid="add-movie-form">
         <label htmlFor="title" data-testid="title-input-label">
@@ -64,6 +65,7 @@ class AddMovie extends Component {
             onChange={ this.handleChange }
           />
         </label>
+        <InputStoryline value={ storyline } handleChange={ this.handleChange } />
         <InputRating value={ rating } handleChange={ this.handleChange } />
         <InputSelect value={ genre } handleChange={ this.handleChange } />
       </form>
