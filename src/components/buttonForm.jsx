@@ -8,7 +8,7 @@ class Button extends React.Component {
       <button
         type="submit"
         data-testid="send-button"
-        onClick={resetState}
+        onClick={ resetState }
       >
         Adicionar filme
       </button>
