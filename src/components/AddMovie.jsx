@@ -15,14 +15,26 @@ class addMovie extends Component {
       title: '',
       imagePath: '',
       storyline: '',
-      rating: '',
+      rating: 1,
       genre: 'action',
     };
     this.submitClick = this.submitClick.bind(this);
+    this.changeState = this.changeState.bind(this);
+    this.firstState = this.state;
   }
 
-  submitClick(state) {
-    this.setState = state.props;
+  changeState({ target }) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({
+      [name]: value,
+    });
+  }
+
+  submitClick() {
+    const { onClick } = this.props;
+    onClick(this.state);
+    this.setState(this.firstState);
   }
 
   render() {
@@ -36,7 +48,7 @@ class addMovie extends Component {
         <RatingComponent value={ rating } onChange={ this.changeState } />
         <Genre value={ genre } onChange={ this.changeState } />
         <button
-          type="submit"
+          type="button"
           data-testid="send-button"
           onClick={ this.submitClick }
         >
