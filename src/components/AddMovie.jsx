@@ -18,8 +18,14 @@ class AddMovie extends React.Component {
     };
   }
 
-  createANewMovie() {
-    this.setState({ button: 'Oi clicaram em mim' });
+  createANewMovie(e) {
+    e.preventDefault();
+    const { name, value } = e.target;
+
+    this.setState({
+      [name]: value,
+    });
+  }
   }
 
   render() {
