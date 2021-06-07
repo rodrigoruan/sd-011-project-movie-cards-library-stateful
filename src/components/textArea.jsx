@@ -13,8 +13,8 @@ class TextArea extends React.Component {
           value={ storyLine }
           data-testid="storyline-input"
           onChange={ change }
-          cols="30"
-          rows="10"
+          cols="20"
+          rows="5"
         />
       </label>
     );

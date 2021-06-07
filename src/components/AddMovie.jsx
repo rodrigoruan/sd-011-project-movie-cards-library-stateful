@@ -1,6 +1,7 @@
 // implement AddMovie component here
 import React from 'react';
 import Rating from './rating';
+import Select from './select';
 // import PropTypes from 'prop-types';
 import TextArea from './textArea';
 
@@ -64,7 +65,8 @@ class AddMovie extends React.Component {
         </label>
         <TextArea change={ this.changeTitle } storyLine={ storyLine } />
         <Rating change={ this.changeTitle } valorRating={ rating } />
-        <p>{genre}</p>
+        <Select change={ this.changeTitle } genre={ genre } />
+
       </form>
     );
   }
