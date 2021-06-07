@@ -4,8 +4,8 @@ import './App.css';
 import SearchBar from './components/SearchBar';
 import AddMovie from './components/AddMovie';
 
-function onClick() {
-  this.state = {
+function onClick(estado) {
+  estado = {
     subtitle: '',
     title: '',
     imagePath: '',
