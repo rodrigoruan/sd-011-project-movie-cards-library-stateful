@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import Proptypes from 'prop-types';
 
-class ImagePath extends Component {
+class Image extends Component {
   render() {
     const { onChange, value } = this.props;
     return (
       <label data-testid="image-input-label" htmlFor="image-input">
         Imagem
         <input
+          type="text"
           name="ImagePath"
           data-testid="image-input"
           value={ value }
@@ -18,14 +19,14 @@ class ImagePath extends Component {
   }
 }
 
-ImagePath.defaultProps = {
+Image.defaultProps = {
   onChange: Proptypes.function,
   value: Proptypes.string,
 };
 
-ImagePath.propTypes = {
+Image.propTypes = {
   onChange: Proptypes.func,
   value: Proptypes.string,
 };
 
-export default ImagePath;
+export default Image;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Genre from './Genre';
-import ImagePath from './ImagePath';
+import Image from './Image';
 import RatingComponent from './RatingComponent';
 import Storyline from './Storyline';
 import Subtitle from './Subtitle';
@@ -15,7 +15,7 @@ class addMovie extends Component {
       title: '',
       imagePath: '',
       storyline: '',
-      rating: 1,
+      rating: 0,
       genre: 'action',
     };
     this.submitClick = this.submitClick.bind(this);
@@ -43,7 +43,7 @@ class addMovie extends Component {
       <form data-testid="add-movie-form">
         <Title value={ title } onChange={ this.changeState } />
         <Subtitle value={ subtitle } onChange={ this.changeState } />
-        <ImagePath value={ imagePath } onChange={ this.changeState } />
+        <Image value={ imagePath } onChange={ this.changeState } />
         <Storyline value={ storyline } onChange={ this.changeState } />
         <RatingComponent value={ rating } onChange={ this.changeState } />
         <Genre value={ genre } onChange={ this.changeState } />
