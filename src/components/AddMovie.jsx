@@ -69,6 +69,7 @@ class AddMovie extends Component {
           value={ genre }
           func={ this.submit }
         />
+        <button></button>
       </form>
     );
   }
