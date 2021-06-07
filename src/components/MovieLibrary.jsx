@@ -46,7 +46,6 @@ class MovieLibrary extends Component {
   onClickAddMovie(currentState) {
     const { movies } = this.state;
     // incluir os dados armazenados pela callback como um elemento do array movies
-    // alterando no state
     this.setState({
       movies: [...movies, currentState], // spread operator
     });

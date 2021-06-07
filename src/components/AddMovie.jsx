@@ -72,7 +72,7 @@ class AddMovie extends Component {
   }
 
   functionOnClick(currentState) {
-    currentState(this.state); // callback que recebe como parâmetro o estado atual de movieCard
+    currentState(this.state); // callback que recebe como parâmetro e armazena o estado atual de movieCard
 
     this.setState({ // lógica para reset do estado de movieCard
       title: '',
@@ -105,21 +105,13 @@ class AddMovie extends Component {
 }
 
 // Referência para buttonInput: https://www.w3schools.com/react/react_events.asp
+// Linha 100: a props do ButtonInput é a callback parâmetro da função que captura os dados do estado e reseta eles depois.
 
 AddMovie.propTypes = {
-  state: PropTypes.shape({
-    title: PropTypes.string,
-    subtitle: PropTypes.string,
-    imagePath: PropTypes.string,
-    storyline: PropTypes.string,
-    rating: PropTypes.number,
-    genre: PropTypes.string,
-  }),
   onClick: PropTypes.func,
 };
 
 AddMovie.defaultProps = {
-  state: {},
   onClick: () => {},
 };
 

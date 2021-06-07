@@ -20,12 +20,12 @@ class RatingInput extends Component {
 }
 
 RatingInput.propTypes = {
-  value: PropTypes.number,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   handleChange: PropTypes.func,
 };
 
 RatingInput.defaultProps = {
-  value: 0,
+  value: 'undefined', // não é zero porque pode nao conter avaliação
   handleChange: () => {},
 };
 
