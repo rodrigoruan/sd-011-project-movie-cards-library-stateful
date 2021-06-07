@@ -8,21 +8,24 @@ class MovieLibrary extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchText: '',
-      onSearchTextChange: () => {},
-      bookmarkedOnly: false,
-      onBookmarkedChange: () => {},
-      selectedGenre: '',
-      onSelectedGenreChange: () => {},
+      filter: {
+        searchText: '',
+        onSearchTextChange: () => {},
+        bookmarkedOnly: false,
+        onBookmarkedChange: () => {},
+        selectedGenre: '',
+        onSelectedGenreChange: () => {},
+      },
     };
   }
 
   render() {
     const { movies } = this.props;
+    const { filter } = this.state;
     return (
       <div>
         <h2> My awesome movie library </h2>
-        <SearchBar filter={ this.state } />
+        <SearchBar filter={ filter } />
         <MovieList movies={ movies } />
         <AddMovie />
       </div>
