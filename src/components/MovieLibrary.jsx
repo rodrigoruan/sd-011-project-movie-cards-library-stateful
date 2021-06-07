@@ -17,7 +17,7 @@ class MovieLibrary extends React.Component {
     };
 
     this.hadleState = this.hadleState.bind(this);
-    // this.addMovie = this.addMovie.bind(this);
+    this.filteredList = this.filteredList.bind(this);
   }
 
   hadleState({ target }) {
@@ -26,10 +26,16 @@ class MovieLibrary extends React.Component {
     this.setState(() => ({ [name]: value }));
   }
 
-  // addMovie(newMovie) {
-  //   this.setState(() => ({ movies: movies.push(newMovie) }));
-  // }
+  filteredList() {
+    const { searchText, movies } = this.state;
+    return movies.filter((movie) => (
+      (movie.title.includes(searchText))
+      || (movie.subtitle.includes(searchText))
+      || (movie.storyline.includes(searchText))
+    ));
+  }
 
+  // Em movieListe a prop movie deve passar nao a lista movie e sim a filtragem da emsma.
   render() {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
     return (
@@ -42,7 +48,7 @@ class MovieLibrary extends React.Component {
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.hadleState }
         />
-        <MovieList movies={ movies } />
+        <MovieList movies={ this.filteredList() } />
         <AddMovie />
       </div>
     );
