@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 
 export default class InputTextArea extends Component {
   render() {
-    const { value, func } = this.props;
+    const { func, value } = this.props;
     return (
-      <label data-testid="storyline-input-label" htmlFor="stortyLine">
+      <label data-testid="storyline-input-label" htmlFor="storyline">
         Sinopse
         <textarea
-          name="storyLine"
+          name="storyline"
+          value={ value }
           data-testid="storyline-input"
           onChange={ func }
-          value={ value }
         />
       </label>
     );

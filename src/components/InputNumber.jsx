@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 
 export default class InputNumber extends Component {
   render() {
-    const { value, name, data, nameInput, func, dataInput } = this.props;
+    const { data, name, value, nameInput, func, dataInput } = this.props;
     return (
-      <label data-testeid={ data } htmlFor={ nameInput }>
-        { name }
+      <label data-testid={ data } htmlFor={ nameInput }>
+        {name}
         <input
           type="number"
           value={ value }
           name={ nameInput }
-          data-testeid={ dataInput }
+          data-testid={ dataInput }
           onChange={ func }
         />
       </label>

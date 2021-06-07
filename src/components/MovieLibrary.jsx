@@ -16,7 +16,7 @@ class MovieLibrary extends Component {
     };
   }
 
-  toChange = ({ target }) => {
+  toChange = ({ target }) => { // Albertto da turma 11 me ajudou nessa!
     const { name, value } = target;
     this.setState({
       [name]: target.type === 'checkbox' ? target.checked : value,
@@ -27,7 +27,9 @@ class MovieLibrary extends Component {
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     const { movies } = this.props;
 
-    const filteredMovies = movies.filter((movie) => movie.title.includes(searchText) || movie.subtitle.includes(searchText) || movie.storyline.includes(searchText));
+    const filteredMovies = movies.filter((movie) => movie.title.includes(searchText)
+    || movie.subtitle.includes(searchText)
+    || movie.storyline.includes(searchText));
 
     if (bookmarkedOnly === true) {
       const favoriteMovie = filteredMovies.filter((movie) => movie.bookmarked === true);
@@ -40,10 +42,10 @@ class MovieLibrary extends Component {
     });
   }
 
-  renderCard = (newMovie) => {
+  RenderCard = (newMovie) => {
     const { movies } = this.state;
     this.setState({
-      movies: [...movies, newMovie],
+      movies: [...movies, newMovie], // Victor Santiago me ajudou nessa!
     });
   }
 
@@ -51,7 +53,7 @@ class MovieLibrary extends Component {
     const { movies, searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <div>
-        <h2> My awesome movie library </h2>
+        <h2>My awesome movie library</h2>
         <SearchBar
           searchText={ searchText }
           onSearchTextChange={ this.toChange }
@@ -61,7 +63,7 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={ this.toChange }
         />
         <MovieList movies={ movies } />
-        <AddMovie onClick={ this.renderCard } />
+        <AddMovie onClick={ this.RenderCard } />
       </div>
     );
   }

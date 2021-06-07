@@ -1,6 +1,6 @@
 // implement AddMovie component here
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import Button from './Button';
 import InputText from './InputText';
 import InputImage from './InputImage';
@@ -16,7 +16,7 @@ class AddMovie extends Component {
       subtitle: '',
       title: '',
       imagePath: '',
-      storyLine: '',
+      storyline: '',
       rating: 0,
       genre: 'action',
     };
@@ -29,42 +29,42 @@ class AddMovie extends Component {
     });
   }
 
-  restoreState = () => {
-    this.setState({
-      subtitle: '',
-      title: '',
-      imagePath: '',
-      storyLine: '',
-      rating: 0,
-      genre: 'action',
-    });
-  }
-
-  submit() {
+  submit = () => {
     const { onClick } = this.props;
     onClick(this.state);
     this.restoreState();
   }
 
+  restoreState = () => { // Rodolfo me ajudou nessa
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
+
   render() {
-    const { subtitle, title, imagePath, storyLine, rating, genre } = this.state;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
         <InputText
+          data="title-input-label"
           value={ title }
           nameInput="title"
+          name="Título"
           dataInput="title-input"
           func={ this.toChange }
-          name="Título"
-          data="title-input-label"
         />
         <InputText
+          data="subtitle-input-label"
           value={ subtitle }
           nameInput="subtitle"
+          name="Subtítulo"
           dataInput="subtitle-input"
           func={ this.toChange }
-          name="Subtítulo"
-          data="subtitle-input-label"
         />
         <InputImage
           data="image-input-label"
@@ -75,29 +75,26 @@ class AddMovie extends Component {
           func={ this.toChange }
         />
         <InputTextArea
-          value={ storyLine }
           func={ this.toChange }
+          value={ storyline }
         />
         <InputNumber
+          data="rating-input-label"
           value={ rating }
           nameInput="rating"
+          name="Avaliação"
           dataInput="rating-input"
           func={ this.toChange }
-          name="Avaliação"
-          data="rating-input-label"
         />
-        <SelectLabel
-          value={ genre }
-          func={ this.toChange }
-        />
+        <SelectLabel value={ genre } func={ this.toChange } />
         <Button func={ this.submit } />
       </form>
     );
   }
 }
 
+export default AddMovie;
+
 AddMovie.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
-
-export default AddMovie;

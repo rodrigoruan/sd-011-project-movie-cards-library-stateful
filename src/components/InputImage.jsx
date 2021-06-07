@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default class InputImage extends Component {
   render() {
-    const {data, value, name, nameInput, dataInput, func } = this.props;
+    const { data, value, name, nameInput, dataInput, func } = this.props;
     return (
       <label data-testid={ data } htmlFor={ nameInput }>
         {name}
@@ -11,7 +11,7 @@ export default class InputImage extends Component {
           type="text"
           value={ value }
           name={ nameInput }
-          data-testeid={ dataInput }
+          data-testid={ dataInput }
           onChange={ func }
         />
       </label>

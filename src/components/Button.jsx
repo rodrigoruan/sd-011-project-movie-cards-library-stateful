@@ -7,7 +7,7 @@ export default class Button extends Component {
     return (
       <button
         type="button"
-        data-testeid="send-button"
+        data-testid="send-button"
         onClick={ func }
       >
         Adicionar filme
