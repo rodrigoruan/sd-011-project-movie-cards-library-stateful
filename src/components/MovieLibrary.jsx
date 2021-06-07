@@ -8,19 +8,61 @@ class MovieLibrary extends Component {
   constructor(props) {
     super(props);
 
-    this.aleatorio = this.aleatorio.bind(this);
+    this.state = {
+      searchText: '',
+      bookmarkedOnly: true,
+      selectedGenre: '',
+      // movies: props.movies,
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.filteredMovies = this.filteredMovies.bind(this);
   }
 
-  aleatorio() {
+  handleChange({ target }) {
+    const { name, value } = target;
+    this.setState({
+      [name]: target.type === 'checkbox' ? target.checked : value,
+    });
+  }
 
+  filteredMovies() {
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+    const array = movies;
+    if (searchText) {
+      array.filter((movie) => movie.title.includes(searchText)
+      || movie.subtitle.includes(searchText)
+      || movie.storyline.includes(searchText));
+      return array;
+    }
+
+    if (bookmarkedOnly) {
+      array.filter((movie) => movie.bookmarked === true);
+      return array;
+    }
+
+    if (selectedGenre) {
+      array.filter((movie) => movie.genre === selectedGenre);
+      return array;
+    }
   }
 
   render() {
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+    // const { movies } = this.props;
+
     return (
       <div>
         <h2> My awesome movie library </h2>
-        <SearchBar />
-        <MovieList movies={ this.props.movies } />
+        <SearchBar
+          searchText={ searchText }
+          onSearchTextChange={ this.handleChange }
+          bookmarkedOnly={ bookmarkedOnly }
+          onBookmarkedChange={ this.handleChange }
+          selectedGenre={ selectedGenre }
+          onSelectedGenreChange={ this.handleChange }
+        />
+        <MovieList movies={ this.filteredMovies() } />
         <AddMovie onClick={ this.aleatorio } />
       </div>
     );
