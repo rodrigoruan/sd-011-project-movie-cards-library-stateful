@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import InputRatingStory from './InputRatingStory';
 // import PropTypes from 'prop-types';
 
 class AddMovie extends Component {
@@ -61,6 +62,7 @@ class AddMovie extends Component {
             onChange={ this.handleChange }
           />
         </label>
+        <InputRatingStory />
       </form>
 
     );
