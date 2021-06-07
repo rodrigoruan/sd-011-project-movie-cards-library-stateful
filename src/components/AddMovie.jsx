@@ -4,7 +4,6 @@ import Rating from './rating';
 // import PropTypes from 'prop-types';
 import TextArea from './textArea';
 
-
 class AddMovie extends React.Component {
   constructor(props) {
     super(props);

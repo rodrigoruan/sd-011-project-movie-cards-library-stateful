@@ -20,12 +20,12 @@ class Rating extends React.Component {
 }
 
 Rating.propTypes = {
-  Rating: PropTypes.number,
+  valorRating: PropTypes.number,
   change: PropTypes.func,
 };
 
 Rating.defaultProps = {
-  Rating: '',
+  valorRating: '',
   change: () => {},
 };
 
