@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class Button extends React.Component {
   render() {
-    const { button, handleChang } = this.props;
+    const { handleChang } = this.props;
 
     return (
       <button
@@ -19,7 +19,7 @@ class Button extends React.Component {
 
 Button.propTypes = {
   handleChang: PropTypes.func.isRequired,
-  button: PropTypes.func.isRequired,
+  // button: PropTypes.func.isRequired,
 };
 
 export default Button;
