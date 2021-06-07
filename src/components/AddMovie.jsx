@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import InputRatingStory from './InputRatingStory';
-// import PropTypes from 'prop-types';
+
+import PropTypes from 'prop-types';
+import InputRating from './InputRating';
 
 class AddMovie extends Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class AddMovie extends Component {
       title: '',
       imagePath: '',
       // storyline: '',
-      // rating: 0,
+      rating: 0,
       // genre: 'action',
     };
     this.handleChange = this.handleChange.bind(this);
@@ -26,7 +27,7 @@ class AddMovie extends Component {
   }
 
   render() {
-    const { title, subtitle, imagePath } = this.state;
+    const { title, subtitle, imagePath, rating } = this.state;
     return (
       <form data-testid="add-movie-form">
         <label htmlFor="title" data-testid="title-input-label">
@@ -62,15 +63,13 @@ class AddMovie extends Component {
             onChange={ this.handleChange }
           />
         </label>
-        <InputRatingStory />
+        <InputRating value={ rating } handleChange={ handleChange } />
       </form>
 
     );
   }
 }
 
-AddMovie.propTypes = {
-  // title: PropTypes.string.isRequired,
-  // subtitle: PropTypes.string.isRequired,
-};
+AddMovie.propTypes = PropTypes.Component;
+
 export default AddMovie;
