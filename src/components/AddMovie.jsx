@@ -1,5 +1,6 @@
 // implement AddMovie component here
 import React from 'react';
+import Button from './buttonForm';
 import Rating from './rating';
 import Select from './select';
 // import PropTypes from 'prop-types';
@@ -18,12 +19,17 @@ class AddMovie extends React.Component {
       genre: 'action',
     };
     this.changeTitle = this.changeTitle.bind(this);
+    this.resetState = this.resetState.bind(this);
   }
 
   changeTitle({ target }) {
     this.setState({
       [target.name]: target.value,
     });
+  }
+  resetState() {
+    const { onClick } = this.props;
+    onClick()  
   }
 
   render() {
@@ -66,6 +72,7 @@ class AddMovie extends React.Component {
         <TextArea change={ this.changeTitle } storyLine={ storyLine } />
         <Rating change={ this.changeTitle } valorRating={ rating } />
         <Select change={ this.changeTitle } genre={ genre } />
+        <Button resetState={this.resetState} />
 
       </form>
     );
