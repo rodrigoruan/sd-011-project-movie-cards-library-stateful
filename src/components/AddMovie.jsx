@@ -33,7 +33,7 @@ class AddMovie extends React.Component {
         <AddMovieGenre />
         <AddMovieImage />
         <button
-          type="button"
+          type="submit"
           data-testid="send-button"
           onClick={ this.createANewMovie }
         >
