@@ -1,7 +1,7 @@
 // implement AddMovie component here
 import React from 'react';
 import Rating from './rating';
-import Select from './select.jsx';
+import Select from './select';
 // import PropTypes from 'prop-types';
 import TextArea from './textArea';
 
