@@ -40,8 +40,7 @@ export default class MovieLibrary extends React.Component {
       selectedGenre: value,
     });
   }
-  // && (value.genre === selectedGenre)
-  // && (value.bookmarked === bookmarkedOnly)
+
   filtredMovies() {
     const { searchText, movies, selectedGenre, bookmarkedOnly } = this.state;
     const array = movies.filter((value) => (value.title.includes(searchText))
@@ -61,16 +60,24 @@ export default class MovieLibrary extends React.Component {
           bookmarkedOnly={ bookmarkedOnly }
           selectedGenre={ selectedGenre }
           onSearchTextChange={ this.onSearchTextChange }
-          onBookmarkedChange= { this.onBookmarkedChange }
+          onBookmarkedChange={ this.onBookmarkedChange }
           onSelectedGenreChange={ this.onSelectedGenreChange }
         />
         <AddMovie />
-        <MovieList movies={ this.filtredMovies() }/>
+        <MovieList movies={ this.filtredMovies() } />
       </div>
     );
   }
 }
 
 MovieLibrary.propTypes = {
-  data: PropTypes.array.isRequired,
-}
+  data: PropTypes.shape({
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    storyline: PropTypes.string,
+    rating: PropTypes.number,
+    imagePath: PropTypes.string,
+    bookmarked: PropTypes.bool,
+    genre: PropTypes.string,
+  }).isRequired,
+};
