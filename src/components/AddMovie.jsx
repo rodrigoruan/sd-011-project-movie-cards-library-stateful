@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from './buttonForm';
-import Rating from './rating';
+import Rating from './Rranting';
 import Select from './select';
 import TextArea from './textArea';
 
@@ -20,6 +20,8 @@ class AddMovie extends React.Component {
     };
     this.changeTitle = this.changeTitle.bind(this);
     this.resetState = this.resetState.bind(this);
+    this.reset = this.reset.bind(this);
+
   }
 
   changeTitle({ target }) {
@@ -28,11 +30,22 @@ class AddMovie extends React.Component {
     });
   }
 
-  resetState(event) {
-    event.preventDefault();
+  resetState(e) {
+    e.preventDefault();
     const { onClick } = this.props;
-    const estado = this.state;
-    onClick(estado);
+    onClick(this.state);
+    this.reset();
+  }
+
+  reset() {
+    this.setState({
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      storyLine: '',
+      rating: 0,
+      genre: 'action',
+    });
   }
 
   render() {

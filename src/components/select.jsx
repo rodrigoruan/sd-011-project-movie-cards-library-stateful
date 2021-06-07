@@ -25,12 +25,12 @@ class Select extends React.Component {
 }
 
 Select.propTypes = {
-  genre: PropTypes.number,
+  genre: PropTypes.string,
   change: PropTypes.func,
 };
 
 Select.defaultProps = {
-  genre: 0,
+  genre: '',
   change: () => {},
 };
 
