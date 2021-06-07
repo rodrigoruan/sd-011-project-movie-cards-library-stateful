@@ -62,6 +62,10 @@ class MovieLibrary extends Component {
     return result;
   }
 
+  // addMoviesInThePage() {
+
+  // }
+
   render() {
     const {
       onSearchTextChange,
