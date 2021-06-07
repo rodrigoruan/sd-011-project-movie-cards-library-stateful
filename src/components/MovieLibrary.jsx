@@ -71,5 +71,13 @@ export default class MovieLibrary extends React.Component {
 }
 
 MovieLibrary.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.shape({
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    storyline: PropTypes.string,
+    rating: PropTypes.number,
+    imagePath: PropTypes.string,
+    bookmarked: PropTypes.bool,
+    genre: PropTypes.string,
+  }).isRequired,
 };
