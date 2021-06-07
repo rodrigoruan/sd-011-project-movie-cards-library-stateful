@@ -27,8 +27,7 @@ Genre.defaultProps = {
   value: Proptypes.string,
 };
 
-// eslint-disable-next-line react/no-typos
-Genre.proptypes = {
+Genre.propTypes = {
   onChange: Proptypes.func,
   value: Proptypes.string,
 };

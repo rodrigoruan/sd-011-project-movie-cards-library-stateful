@@ -24,8 +24,7 @@ Subtitle.defaultProps = {
   value: Proptypes.string,
 };
 
-// eslint-disable-next-line react/no-typos
-Subtitle.proptypes = {
+Subtitle.propTypes = {
   onChange: Proptypes.func,
   value: Proptypes.string,
 };

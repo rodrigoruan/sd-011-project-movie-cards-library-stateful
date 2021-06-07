@@ -59,8 +59,7 @@ class addMovie extends Component {
   }
 }
 
-// eslint-disable-next-line react/no-typos
-addMovie.proptypes = {
+addMovie.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
 

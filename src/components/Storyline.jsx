@@ -24,8 +24,7 @@ Storyline.defaultProps = {
   value: Proptypes.string,
 };
 
-// eslint-disable-next-line react/no-typos
-Storyline.proptypes = {
+Storyline.propTypes = {
   onChange: Proptypes.func,
   value: Proptypes.string,
 };
