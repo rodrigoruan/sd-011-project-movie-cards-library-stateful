@@ -18,8 +18,8 @@ class AddMovie extends React.Component {
     };
   }
 
-  createANewMovie() {
-    this.setState({ button: 'Oi clicaram em mim' });
+  createANewMovie(e) {
+    e.preventDefault();
   }
 
   render() {
@@ -33,7 +33,7 @@ class AddMovie extends React.Component {
         <AddMovieGenre />
         <AddMovieImage />
         <button
-          type="button"
+          type="submit"
           data-testid="send-button"
           onClick={ this.createANewMovie }
         >
