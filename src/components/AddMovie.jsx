@@ -1,17 +1,36 @@
 // implement AddMovie component here
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Button from './Button';
 import InputText from './InputText';
-import InputTextArea from './InputTextArea';
+import InputImage from './InputImage';
 import InputNumber from './InputNumber';
 import SelectLabel from './SelectLabel';
-import Button from './Button';
+import InputTextArea from './InputTextArea';
 
 class AddMovie extends Component {
   constructor() {
     super();
-    this.submit = this.submit.bind(this);
-    this.state({
+
+    this.state = {
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyLine: '',
+      rating: 0,
+      genre: 'action',
+    };
+  }
+
+  toChange = ({ target }) => {
+    const { name, value } = target;
+    this.setState({
+      [name]: value,
+    });
+  }
+
+  restoreState = () => {
+    this.setState({
       subtitle: '',
       title: '',
       imagePath: '',
@@ -23,7 +42,8 @@ class AddMovie extends Component {
 
   submit() {
     const { onClick } = this.props;
-    onClick();
+    onClick(this.state);
+    this.restoreState();
   }
 
   render() {
@@ -32,43 +52,43 @@ class AddMovie extends Component {
       <form data-testid="add-movie-form">
         <InputText
           value={ title }
-          nameInput={ title }
+          nameInput="title"
           dataInput="title-input"
-          func={ this.submit }
+          func={ this.toChange }
           name="Título"
           data="title-input-label"
         />
         <InputText
           value={ subtitle }
-          nameInput={ subtitle }
+          nameInput="subtitle"
           dataInput="subtitle-input"
-          func={ this.subtmit }
+          func={ this.toChange }
           name="Subtítulo"
           data="subtitle-input-label"
         />
-        <InputText
-          value={ imagePath }
-          nameInput={ imagePath }
-          dataInput="image-input"
-          func={ this.subtmit }
-          name="Imagem"
+        <InputImage
           data="image-input-label"
+          value={ imagePath }
+          nameInput="imagePath"
+          name="Imagem"
+          dataInput="image-input"
+          func={ this.toChange }
         />
         <InputTextArea
           value={ storyLine }
-          func={ this.subtmit }
+          func={ this.toChange }
         />
         <InputNumber
           value={ rating }
-          nameInput={ rating }
+          nameInput="rating"
           dataInput="rating-input"
-          func={ this.submit }
+          func={ this.toChange }
           name="Avaliação"
           data="rating-input-label"
         />
         <SelectLabel
           value={ genre }
-          func={ this.submit }
+          func={ this.toChange }
         />
         <Button func={ this.submit } />
       </form>
