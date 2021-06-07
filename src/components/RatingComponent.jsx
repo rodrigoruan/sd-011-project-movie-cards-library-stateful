@@ -24,6 +24,7 @@ RatingComponent.defaultProps = {
   value: Proptypes.string,
 };
 
+// eslint-disable-next-line react/no-typos
 RatingComponent.proptypes = {
   onChange: Proptypes.func,
   value: Proptypes.string,

@@ -2,15 +2,17 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
+import MovieList from './MovieList';
 
 class MovieLibrary extends Component {
-  constructor() {
-    super();
-    const {
+  constructor(props) {
+    super(props);
+    const { movies } = this.props
+    this.state = {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
-      movies: props.movies,
+      movies,
     };
 }
 
@@ -19,6 +21,7 @@ class MovieLibrary extends Component {
       <div>
         <SearchBar />
         <AddMovie />
+        <MovieList />
       </div>
     );
   }

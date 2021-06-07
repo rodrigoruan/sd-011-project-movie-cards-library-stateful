@@ -23,6 +23,7 @@ ImagePath.defaultProps = {
   value: Proptypes.string,
 };
 
+// eslint-disable-next-line react/no-typos
 ImagePath.proptypes = {
   onChange: Proptypes.func,
   value: Proptypes.string,
