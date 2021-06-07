@@ -19,6 +19,7 @@ class MovieLibrary extends Component {
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
     this.searchMovies = this.searchMovies.bind(this);
+    this.onClickAddMovie = this.onClickAddMovie.bind(this);
   }
 
   onSearchTextChange(event) {
@@ -42,8 +43,17 @@ class MovieLibrary extends Component {
     });
   }
 
+  onClickAddMovie(currentState) {
+    const { movies } = this.state;
+    // incluir os dados armazenados pela callback como um elemento do array movies
+    // alterando no state
+    this.setState({
+      movies: [...movies, currentState], // spread operator
+    });
+  }
+
   searchMovies() { // função unica para filtrar
-    const { bookmarkedOnly, selectedGenre, searchText, movies } = this.state; // para acessar os valores para conseguir filtrar
+    const { bookmarkedOnly, selectedGenre, searchText, movies } = this.state; // para acessar os valores e conseguir filtrar
     let researchedMovies = movies;
 
     if (bookmarkedOnly === true) {
@@ -81,7 +91,7 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={ this.onSelectedGenreChange }
         />
         <MovieList movies={ this.searchMovies() } />
-        <AddMovie />
+        <AddMovie onClick={ this.onClickAddMovie } />
       </div>
     );
   }
