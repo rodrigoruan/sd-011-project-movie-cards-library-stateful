@@ -5,7 +5,8 @@ class Button extends React.Component {
   render() {
     const { resetState } = this.props;
     return (
-      <button 
+      <button
+        type="submit"
         data-testid="send-button"
         onClick={resetState}
       >

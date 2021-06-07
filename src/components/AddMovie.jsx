@@ -3,7 +3,7 @@ import React from 'react';
 import Button from './buttonForm';
 import Rating from './rating';
 import Select from './select';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import TextArea from './textArea';
 
 class AddMovie extends React.Component {
@@ -27,9 +27,11 @@ class AddMovie extends React.Component {
       [target.name]: target.value,
     });
   }
-  resetState() {
+
+  resetState(event) {
+    event.preventDefault();
     const { onClick } = this.props;
-    onClick()  
+    onClick();
   }
 
   render() {
@@ -72,19 +74,19 @@ class AddMovie extends React.Component {
         <TextArea change={ this.changeTitle } storyLine={ storyLine } />
         <Rating change={ this.changeTitle } valorRating={ rating } />
         <Select change={ this.changeTitle } genre={ genre } />
-        <Button resetState={this.resetState} />
+        <Button resetState={ this.resetState } />
 
       </form>
     );
   }
 }
 
-/* AddMovie.propTypes = {
+AddMovie.propTypes = {
   onClick: PropTypes.func,
 };
 
 AddMovie.defaultProps = {
   onClick: () => {},
 };
- */
+
 export default AddMovie;

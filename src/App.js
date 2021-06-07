@@ -4,7 +4,7 @@ import './App.css';
 import SearchBar from './components/SearchBar';
 import AddMovie from './components/AddMovie';
 
-function onClick(state){
+function onClick() {
   this.state = {
     subtitle: '',
     title: '',
@@ -15,13 +15,12 @@ function onClick(state){
   };
 }
 
-
 function App() {
   return (
     <div className="App">
       <Header />
       <SearchBar />
-      <AddMovie onClick= {onClick} />
+      <AddMovie onClick={ onClick } />
     </div>
   );
 }
