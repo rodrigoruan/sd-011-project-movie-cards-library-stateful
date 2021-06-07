@@ -13,7 +13,7 @@ class AddMovie extends React.Component {
       title: '',
       imagePath: '',
       storyLine: '',
-      rating: '0',
+      rating: 0,
       genre: 'action',
     };
     this.changeTitle = this.changeTitle.bind(this);
