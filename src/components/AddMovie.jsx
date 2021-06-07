@@ -59,7 +59,7 @@ class AddMovie extends React.Component {
         <StoryLine handlerChange={ this.handlerChange } value={ storyLine } />
         <Assessment handlerChange={ this.handlerChange } value={ rating } />
         <Genre handlerChange={ this.handlerChange } value={ genre } />
-        <Button onClick={ this.onClick } />
+        <Button handlerClick={ this.handlerClick } />
       </form>
     );
   }
