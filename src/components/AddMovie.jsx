@@ -43,10 +43,7 @@ class AddMovie extends Component {
     const { onClick } = this.props;
     const { state } = this;
     return (
-      <form
-        data-testid="add-movie-form"
-        className="input-form"
-      >
+      <form data-testid="add-movie-form" className="input-form">
         <InputText
           name="input-title"
           label="Título"
@@ -80,7 +77,11 @@ class AddMovie extends Component {
         />
         <InputRating value={ state.rating } onChange={ this.handleChanges('rating') } />
         <GenreSelector value={ state.genre } onChange={ this.handleChanges('rating') } />
-        <button type="submit" data-testid="send-button" onClick={ this.submitHandler(onClick) }>
+        <button
+          type="submit"
+          data-testid="send-button"
+          onClick={ this.submitHandler(onClick) }
+        >
           Adicionar filme
         </button>
       </form>
