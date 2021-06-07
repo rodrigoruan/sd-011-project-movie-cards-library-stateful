@@ -18,6 +18,7 @@ class MovieLibrary extends Component {
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
+    this.filtersMovies = this.filtersMovies.bind(this);
   }
 
   onSearchTextChange({ target }) {
@@ -45,13 +46,30 @@ class MovieLibrary extends Component {
     });
   }
 
-  // filtersMovies() {
-  //   movies = { movies };
-  // }
+  filtersMovies() {
+    const { movies, searchText, bookmarkedOnly, selectedGenre } = this.state;
+    let result = movies.filter(({ title, subtitle, storyline }) => (
+      title.includes(searchText)
+      || subtitle.includes(searchText)
+      || storyline.includes(searchText)
+    ));
+    if (bookmarkedOnly) {
+      result = result.filter(({ bookmarked }) => bookmarked);
+    }
+    if (selectedGenre !== '') {
+      result = result.filter(({ genre }) => genre === selectedGenre);
+    }
+    return result;
+  }
 
   render() {
-    const { onSearchTextChange, onBookmarkedChange, onSelectedGenreChange } = this;
-    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+    const {
+      onSearchTextChange,
+      onBookmarkedChange,
+      onSelectedGenreChange,
+      filtersMovies,
+    } = this;
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <div>
         <h2> Minha incrível biblioteca de filmes </h2>
@@ -63,7 +81,7 @@ class MovieLibrary extends Component {
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ onSelectedGenreChange }
         />
-        <MovieList movies={ movies } />
+        <MovieList movies={ filtersMovies() } />
         <AddMovie onclick={ () => {} } />
       </div>
     );
