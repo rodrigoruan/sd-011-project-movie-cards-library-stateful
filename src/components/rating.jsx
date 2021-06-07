@@ -9,6 +9,7 @@ class Rating extends React.Component {
         Avaliação
         <input
           name="Rating"
+          type= "number"
           id="inputRating"
           value={ valorRating }
           data-testid="rating-input"
@@ -25,7 +26,7 @@ Rating.propTypes = {
 };
 
 Rating.defaultProps = {
-  valorRating: '',
+  valorRating: 0,
   change: () => {},
 };
 
