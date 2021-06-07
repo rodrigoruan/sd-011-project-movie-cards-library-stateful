@@ -7,49 +7,50 @@ import PropTypes from 'prop-types';
 class SearchBar extends React.Component {
   render() {
     // Aqui eu fiz o destructuring das propriedades
-    const {
-      searchText,
-      onSearchTextChange,
-      bookmarkedOnly,
-      onBookmarkedChange,
-      selectedGenre,
-      onSelectedGenreChange,
-    } = this.props;
+    const { searchText, onSearchTextChange, bookmarkedOnly,
+      onBookmarkedChange, selectedGenre, onSelectedGenreChange } = this.props;
     return (
-      <div
-        searchText={ searchText }
-        onSearchTextChange={ onSearchTextChange }
-        bookmarkedOnly={ bookmarkedOnly }
-        onBookmarkedChange={ onBookmarkedChange }
-        selectedGenre={ selectedGenre }
-        onSelectedGenreChange={ onSelectedGenreChange }
-      >
+      <div>
         {/* 2 - Renderize um formulário dentro de <SearchBar /> */}
         <form data-testid="search-bar-form">
-          {/* 3 - Renderize um input tipo texto dentro do formulário em <SearchBar /> */}
-          <label data-testid="text-input-label" htmlFor="">Inclui o texto:</label>
-          <input type="text" value={ searchText } onChange={ onSearchTextChange } />
-          {/* 4 - Renderize um input do tipo checkbox no formulário em <SearchBar /> */}
-          <label data-testid="checkbox-input-label" htmlFor="">
-            Mostrar somente favoritos
+
+          {/* 3 - Renderize um input do tipo texto dentro do formulário */}
+          <label data-testid="text-input-label" htmlFor="searchText">
+            Inclui o texto:
+            <input
+              name="searchText"
+              type="text"
+              value={ searchText }
+              onChange={ onSearchTextChange }
+              data-testid="text-input"
+            />
           </label>
-          <input
-            type="text"
-            data-testid="checkbox-input"
-            checked={ bookmarkedOnly }
-            onChange={ onBookmarkedChange }
-          />
+          {/* 4 - Renderize um input do tipo checkbox dentro do formulário */}
+          <label data-testid="checkbox-input-label" htmlFor="bookmarkedOnly">
+            Mostrar somente favoritos
+            <input
+              name="bookmarkedOnly"
+              type="checkbox"
+              data-testid="checkbox-input"
+              checked={ bookmarkedOnly }
+              onChange={ onBookmarkedChange }
+            />
+          </label>
           {/* 5 - Renderize um select dentro do formulário em <SearchBar /> */}
-          <label data-testid="select-input-label" htmlFor="">Filtrar por gênero</label>
-          <select
-            data-testid="select-input"
-            value={ selectedGenre }
-            onChange={ onSelectedGenreChange }
-          />
-          <option data-testid="select-option" value="">Todos</option>
-          <option data-testid="select-option" value="action">Ação</option>
-          <option data-testid="select-option" value="comedy">Comédia</option>
-          <option data-testid="select-option" value="thriller">Suspense</option>
+          <label data-testid="select-input-label" htmlFor="selectedGenre">
+            Filtrar por gênero
+            <select
+              name="selectedGenre"
+              data-testid="select-input"
+              value={ selectedGenre }
+              onChange={ onSelectedGenreChange }
+            >
+              <option data-testid="select-option" value="">Todos</option>
+              <option data-testid="select-option" value="action">Ação</option>
+              <option data-testid="select-option" value="comedy">Comédia</option>
+              <option data-testid="select-option" value="thriller">Suspense</option>
+            </select>
+          </label>
         </form>
       </div>
     );
