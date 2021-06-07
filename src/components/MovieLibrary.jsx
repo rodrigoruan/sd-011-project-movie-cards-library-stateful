@@ -1,20 +1,18 @@
 // implement AddMovie component here
 import React from 'react';
-//import PropTypes from 'prop-types';
-
+// import PropTypes from 'prop-types';
 
 class MovieLibrary extends React.Component {
-  
+
   render() {
     // const { movies } = this.props;
     return (
-      <div>
+    <div>
           eeeeeeeeee
       </div>
 
-    )
+    );
   }
-
 }
 
 /* MovieLibrary.propTypes = {
@@ -22,10 +20,9 @@ class MovieLibrary extends React.Component {
       PropTypes.object,
     ),
   };
-  
+
   MovieLibrary.defaultProps = {
     movies: [{}],
   }; */
-  
 
 export default MovieLibrary;

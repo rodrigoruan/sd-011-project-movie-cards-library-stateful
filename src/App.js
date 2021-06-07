@@ -6,7 +6,7 @@ import AddMovie from './components/AddMovie';
 import MovieLibrary from './components/MovieLibrary';
 
 function onClick(x) {
-  console.log(x)
+  console.log(x);
 }
 
 function App() {
