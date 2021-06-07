@@ -5,6 +5,7 @@ import InputText from './InputText';
 import InputTextArea from './InputTextArea';
 import InputNumber from './InputNumber';
 import SelectLabel from './SelectLabel';
+import Button from './Button';
 
 class AddMovie extends Component {
   constructor() {
@@ -69,7 +70,7 @@ class AddMovie extends Component {
           value={ genre }
           func={ this.submit }
         />
-        <button></button>
+        <Button func={ this.submit } />
       </form>
     );
   }
