@@ -14,6 +14,7 @@ export default class Movielibrary extends Component {
     this.handleBookmark = this.handleBookmark.bind(this);
     this.handleGenre = this.handleGenre.bind(this);
     this.searchedMovies = this.searchedMovies.bind(this);
+    this.newMovie = this.newMovie.bind(this);
 
     this.state = {
       searchText: '',
@@ -50,15 +51,31 @@ export default class Movielibrary extends Component {
   searchedMovies() {
     const { searchText, movies, bookmarkedOnly, selectedGenre } = this.state;
 
-    const filteredMovies = movies.filter((movie) => (
-      (movie.title.toLowerCase().includes(searchText.toLowerCase()))
-      || (movie.subtitle.toLowerCase().includes(searchText.toLowerCase()))
-      || (movie.storyline.toLowerCase().includes(searchText.toLowerCase()))
-      || (movie.bookmarked === bookmarkedOnly)
-      || (movie.genre === selectedGenre)
-    ));
+    if (bookmarkedOnly) {
+      return movies.filter((movie) => movie.bookmarked === true);
+    }
 
-    return filteredMovies;
+    if (selectedGenre !== '') {
+      return movies.filter((movie) => movie.genre === selectedGenre);
+    }
+
+    if (movies.searchText !== '') {
+      return movies.filter((movie) => (
+        (movie.title.toLowerCase().includes(searchText.toLowerCase()))
+          || (movie.subtitle.toLowerCase().includes(searchText.toLowerCase()))
+          || (movie.storyline.toLowerCase().includes(searchText.toLowerCase()))
+      ));
+    }
+
+    return movies;
+  }
+
+  newMovie(newMovie) {
+    const { movies } = this.props;
+
+    this.setState({
+      movies: [...movies, newMovie],
+    });
   }
 
   render() {
@@ -73,7 +90,7 @@ export default class Movielibrary extends Component {
           onSelectedGenreChange={ this.handleGenre }
         />
         <MovieList movies={ this.searchedMovies() } />
-        <AddMovie />
+        <AddMovie onClick={ this.newMovie } />
       </div>
     );
   }
