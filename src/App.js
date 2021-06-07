@@ -49,8 +49,7 @@ class App extends Component {
           selectedGenre={ genre }
           onSelectedGenreChange={ this.searchGenre }
         />
-        <MovieLibrary />
-        <AddMovie onChange={ this.createNewMovieItem } />
+        <MovieLibrary movies={ [] } />
       </div>
     );
   }
