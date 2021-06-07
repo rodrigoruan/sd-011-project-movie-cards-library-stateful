@@ -12,6 +12,10 @@ class MovieLibrary extends Component {
     };
   }
 
+  addMovies() {
+    console.log(movies);
+  }
+
   render() {
     const { movies } = this.state;
     return (
@@ -19,7 +23,7 @@ class MovieLibrary extends Component {
         <h2> My awesome movie library </h2>
         <SearchBar />
         <MovieList movies={ movies } />
-        <AddMovie />
+        <AddMovie onClick={ this.addMovies } />
       </div>
     );
   }

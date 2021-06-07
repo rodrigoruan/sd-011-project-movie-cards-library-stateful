@@ -20,8 +20,11 @@ class InputStoryline extends Component {
   }
 }
 InputStoryline.propTypes = {
-  storyline: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired,
+  storyline: PropTypes.string,
+  handleChange: PropTypes.func,
 };
-
+InputStoryline.defaultProps = {
+  storyline: '',
+  handleChange: () => {},
+};
 export default InputStoryline;
