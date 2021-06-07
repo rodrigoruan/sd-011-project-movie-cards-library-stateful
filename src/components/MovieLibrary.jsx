@@ -25,7 +25,7 @@ class MovieLibrary extends Component {
     const { name, value } = target;
     this.setState({
       [name]: target.type === 'checkbox' ? target.checked : value,
-    });
+    }, () => this.filteredMovies());
   }
 
   filteredMovies() {
@@ -63,7 +63,7 @@ class MovieLibrary extends Component {
   }
 
   render() {
-    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
 
     return (
       <div>
@@ -76,7 +76,7 @@ class MovieLibrary extends Component {
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.handleChange }
         />
-        <MovieList movies={ this.filteredMovies() } />
+        <MovieList movies={ movies } />
         <AddMovie onClick={ this.newMovie } />
       </div>
     );
