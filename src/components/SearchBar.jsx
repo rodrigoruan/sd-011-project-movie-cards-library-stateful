@@ -1,63 +1,52 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class SearchBar extends React.Component {
+class SearchBar extends Component {
   render() {
-    const {
-      searchText, onSearchTextChange,
-      bookmarkedOnly, onBookmarkedChange,
-      selectedGenre, onSelectedGenreChange,
+    const { searchText,
+      onSearchTextChange,
+      bookmarkedOnly,
+      onBookmarkedChange,
+      selectedGenre,
+      onSelectedGenreChange,
     } = this.props;
     return (
+
       <form data-testid="search-bar-form">
-
-        <fieldset>
-          <label
-            htmlFor="textInput" data-testid="text-input-label"
-          >Inclui o texto:</label>
+        <label htmlFor="text-input" data-testid="text-input-label">
+          Inclui o texto:
           <input
+            id="text-input"
             type="text"
-            id="textInput"
-            name="searchText"
+            value={ searchText }
+            onChange={ onSearchTextChange }
             data-testid="text-input"
-            value={searchText}
-            onChange={onSearchTextChange}
           />
-        </fieldset>
-
-        <fieldset>
-          <label
-            htmlFor="checkboxInput" data-testid="checkbox-input-label"
-          >Mostrar somente favoritos</label>
+        </label>
+        <label htmlFor="checkbox-input" data-testid="checkbox-input-label">
+          Mostrar somente favoritos:
           <input
+            id="checkbox-input"
             type="checkbox"
-            id="checkboxInput"
-            name="bookmarkedOnly"
+            checked={ bookmarkedOnly }
+            onChange={ onBookmarkedChange }
             data-testid="checkbox-input"
-            checked={bookmarkedOnly}
-            onChange={onBookmarkedChange}
           />
-        </fieldset>
-
-        <fieldset>
-          <label
-            htmlFor="selectInput" data-testid="select-input-label"
-          >Filtrar por gênero</label>
+        </label>
+        <label htmlFor="select-input" data-testid="select-input-label">
+          Filtrar por gênero:
           <select
-            type="select"
-            id="selectInput"
-            name="selectedGenre"
+            id="select-input"
+            value={ selectedGenre }
+            onChange={ onSelectedGenreChange }
             data-testid="select-input"
-            value={selectedGenre}
-            onChange={onSelectedGenreChange}
           >
-            <option data-testid="select-option" value="">Todos</option>
-            <option data-testid="select-option" value="action">Ação</option>
-            <option data-testid="select-option" value="comedy">Comédia</option>
-            <option data-testid="select-option" value="thriller">Suspense</option>
+            <option value="" data-testid="select-option">Todos</option>
+            <option value="action" data-testid="select-option">Ação</option>
+            <option value="comedy" data-testid="select-option">Comédia</option>
+            <option value="thriller" data-testid="select-option">Suspense</option>
           </select>
-        </fieldset>
-
+        </label>
       </form>
     );
   }
