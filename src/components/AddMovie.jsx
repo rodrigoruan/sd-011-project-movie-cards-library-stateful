@@ -26,7 +26,6 @@ class AddMovie extends React.Component {
       [name]: value,
     });
   }
-  }
 
   render() {
     const { button } = this.state;
