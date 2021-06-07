@@ -21,7 +21,6 @@ class AddMovie extends React.Component {
     this.changeTitle = this.changeTitle.bind(this);
     this.resetState = this.resetState.bind(this);
     this.reset = this.reset.bind(this);
-
   }
 
   changeTitle({ target }) {

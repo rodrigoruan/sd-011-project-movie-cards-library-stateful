@@ -5,7 +5,7 @@ import SearchBar from './components/SearchBar';
 import AddMovie from './components/AddMovie';
 
 function onClick(x) {
-  console.log(x)
+  console.log(x);
 }
 
 function App() {
