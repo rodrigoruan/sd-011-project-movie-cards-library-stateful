@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 
 class InputSelect extends Component {
   render() {
-    const { genre, handleChange } = this.props;
+    const { value, handleChange } = this.props;
     return (
       <label htmlFor="genre" data-testid="genre-input-label">
         Gênero
         <select
           name="genre"
           id="genre"
-          value={ genre }
+          value={ value }
           data-testid="genre-input"
           onChange={ handleChange }
         >
@@ -24,10 +24,10 @@ class InputSelect extends Component {
 }
 InputSelect.propTypes = {
   handleChange: PropTypes.func,
-  genre: PropTypes.string,
+  value: PropTypes.string,
 };
 InputSelect.defaultProps = {
   handleChange: () => {},
-  genre: 'action',
+  value: 'action',
 };
 export default InputSelect;

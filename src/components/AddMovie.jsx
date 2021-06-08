@@ -78,8 +78,8 @@ class AddMovie extends Component {
             onChange={ this.handleChange }
           />
         </label>
-        <InputStoryline value={ storyline } handleChange={ this.handleChange } />
-        <InputRating value={ rating } handleChange={ this.handleChange } />
+        <InputStoryline storyline={ storyline } handleChange={ this.handleChange } />
+        <InputRating rating={ rating } handleChange={ this.handleChange } />
         <InputSelect value={ genre } handleChange={ this.handleChange } />
         <InputButton onClick={ onClick } returnStateInit={ this.returnStateInit } />
       </form>
