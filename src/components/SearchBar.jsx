@@ -1,59 +1,41 @@
 // implement AddMovie component here
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
-class SearchBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = this.props;
-    this.onSearchTextChange = this.onSearchTextChange.bind(this);
-    this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
-    this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
-  }
+import InputField from './InputField';
 
-  onBookmarkedChange(event) {
-    this.setState({
-      bookmarkedOnly: event.target.checked,
-    });
-  }
-
-  onSelectedGenreChange(event) {
-    this.setState({
-      selectedGenre: event.target.value,
-    });
-  }
-
+export default class SearchBar extends Component {
   render() {
-    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+    const {
+      searchText,
+      onSearchTextChange,
+      bookmarkedOnly,
+      onBookmarkedChange,
+      selectedGenre,
+      onSelectedGenreChange,
+    } = this.props;
+
     return (
-      <div>
+      <section>
         <form data-testid="search-bar-form">
-          <label htmlFor="searchText" data-testid="text-input-label">
-            Inclui o texto
-            <input
-              type="text"
-              name="searchText"
-              value={ searchText }
-              onChange={ this.onSearchTextChange }
-              data-testid="text-input"
-            />
-          </label>
-          <label htmlFor="bookmarkedOnly" data-testid="checkbox-input-label">
+          <InputField value={ searchText } onChange={ onSearchTextChange } />
+          <label htmlFor="checkbox-input" data-testid="checkbox-input-label">
             Mostrar somente favoritos
             <input
+              id="checkbox-input"
               type="checkbox"
-              name="bookmarkedOnly"
-              checked={ bookmarkedOnly }
-              onChange={ this.onBookmarkedChange }
               data-testid="checkbox-input"
+              checked={ bookmarkedOnly }
+              onChange={ onBookmarkedChange }
             />
           </label>
-          <label htmlFor="selectedGenre" data-testid="select-input-label">
+          <label htmlFor="select-input" data-testid="select-input-label">
             Filtrar por gênero
             <select
-              value={ selectedGenre }
-              onChange={ this.onSelectedGenreChange }
+              id="select-input"
               data-testid="select-input"
+              value={ selectedGenre }
+              onChange={ onSelectedGenreChange }
             >
               <option value="" data-testid="select-option">Todos</option>
               <option value="action" data-testid="select-option">Ação</option>
@@ -62,13 +44,16 @@ class SearchBar extends Component {
             </select>
           </label>
         </form>
-      </div>
+      </section>
     );
   }
 }
 
 SearchBar.propTypes = {
-
+  searchText: PropTypes.string.isRequired,
+  onSearchTextChange: PropTypes.func.isRequired,
+  bookmarkedOnly: PropTypes.bool.isRequired,
+  onBookmarkedChange: PropTypes.func.isRequired,
+  selectedGenre: PropTypes.string.isRequired,
+  onSelectedGenreChange: PropTypes.func.isRequired,
 };
-
-export default SearchBar;
