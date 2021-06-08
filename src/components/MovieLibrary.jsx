@@ -43,7 +43,7 @@ class MovieLibrary extends Component {
         });
       } else {
         this.setState({
-          movies: movies,
+          movies,
         });
       }
     });
@@ -105,7 +105,7 @@ class MovieLibrary extends Component {
 
 export default MovieLibrary;
 
-MovieLibrary.PropTypes = {
+MovieLibrary.propTypes = {
   movies: PropTypes.arrayOf({
     title: PropTypes.string,
     subtitle: PropTypes.string,
@@ -114,5 +114,5 @@ MovieLibrary.PropTypes = {
     imagePath: PropTypes.string,
     bookmarkedOnly: PropTypes.bool,
     genre: PropTypes.string,
-  }),
+  }).isRequired,
 };
