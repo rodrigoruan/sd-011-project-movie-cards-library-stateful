@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import FormInput from './FormInput';
 
 class AddMovie extends Component {
@@ -16,6 +17,7 @@ class AddMovie extends Component {
 
     this.onChangeHandle = this.onChangeHandle.bind(this);
     this.renderFormInput = this.renderFormInput.bind(this);
+    this.submit = this.submit.bind(this);
   }
 
   onChangeHandle({ target }) {
@@ -23,6 +25,21 @@ class AddMovie extends Component {
 
     this.setState({
       [id]: value,
+    });
+  }
+
+  submit() {
+    const { onClick } = this.props;
+
+    onClick(this.state);
+
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
     });
   }
 
@@ -75,10 +92,22 @@ class AddMovie extends Component {
               <option data-testid="genre-option" value="thriller">Suspense</option>
             </select>
           </label>
+
+          <button
+            type="button"
+            data-testid="send-button"
+            onClick={ this.submit }
+          >
+            Adicionar filme
+          </button>
         </form>
       </div>
     );
   }
 }
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 export default AddMovie;

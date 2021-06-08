@@ -35,7 +35,7 @@ FormInput.propTypes = {
   labelText: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.node.isRequired,
   onChangeCallback: PropTypes.func.isRequired,
   inputTestId: PropTypes.string.isRequired,
 };
