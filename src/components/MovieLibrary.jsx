@@ -35,7 +35,7 @@ class MovieLibrary extends React.Component {
     if (searchText) {
       filtro = filtro.filter((filme) => filme.title
         .toLowerCase().includes(searchText.toLowerCase())
-        || filme.subtitle.toLowerCase().includes(searchText.toLowerCase()) 
+        || filme.subtitle.toLowerCase().includes(searchText.toLowerCase())
         || filme.storyline.toLowerCase().includes(searchText.toLowerCase()));
     }
     if (bookmarkedOnly) {
