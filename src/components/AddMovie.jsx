@@ -1,7 +1,8 @@
 import React from 'react';
-import InputText from './InputText';
+import Input from './Input';
 import Textarea from './Textarea';
-import InputNumber from './InputNumber';
+import Select from './Select';
+import filterOptions from '../data2';
 
 class AddMovie extends React.Component {
   constructor(props) {
@@ -25,36 +26,23 @@ class AddMovie extends React.Component {
   }
 
   render() {
-    const {
-      subtitle,
-      title,
-      imagePath,
-      storyline,
-      rating,
-      genre,
-    } = this.state;
+    const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
+    const newMovieOptions = filterOptions.slice(1, 4);
     return (
       <form data-testid="add-movie-form">
-        <InputText
-          labelText="Título"
-          dataTestId="title-input"
-          name="title"
-          value={ title }
-          onChange={ this.handleChange }
-        />
-        <InputText
-          labelText="Subtítulo"
-          dataTestId="subtitle-input"
+        <Input text="Título" name="title" value={ title } change={ this.handleChange } />
+        <Input
+          text="Subtítulo"
           name="subtitle"
           value={ subtitle }
-          onChange={ this.handleChange }
+          change={ this.handleChange }
         />
-        <InputText
-          labelText="Imagem"
-          dataTestId="image-input"
+        <Input
+          text="Imagem"
+          test="image-input"
           name="imagePath"
           value={ imagePath }
-          onChange={ this.handleChange }
+          change={ this.handleChange }
         />
         <Textarea
           labelText="Sinopse"
@@ -63,14 +51,22 @@ class AddMovie extends React.Component {
           value={ storyline }
           onChange={ this.handleChange }
         />
-        <InputNumber
-          labelText="Avaliação"
-          dataTestId="rating-input"
+        <Input
+          type="number"
+          text="Avaliação"
           name="rating"
           value={ rating }
-          onChange={ this.handleChange }
+          change={ this.handleChange }
         />
-        { genre }
+        <Select
+          labelText="Gênero"
+          labelDataTestId="genre-input-label"
+          name="genre"
+          value={ genre }
+          onChange={ this.handleChange }
+          selectDataTestId="genre-input"
+          options={ newMovieOptions }
+        />
       </form>
     );
   }
