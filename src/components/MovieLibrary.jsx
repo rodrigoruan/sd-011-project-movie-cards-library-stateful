@@ -33,7 +33,10 @@ class MovieLibrary extends Component {
     const { value } = target;
     this.setState({
       searchText: value,
-      movies: moviesL.filter((movie) => `${movie.title} ${movie.subtitle} ${movie.storyline}`.includes(value)),
+      movies: moviesL.filter((movie) => {
+        const { title, subtitle, storyline } = movie;
+        return `${title} ${subtitle} ${storyline}`.includes(value);
+      }),
     });
   }
 
