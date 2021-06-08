@@ -7,12 +7,12 @@ import MovieList from './MovieList';
 export default class MovieLibrary extends React.Component {
   constructor(props) {
     super(props);
-    const { movies } = this.props;
+    const movieslist = this.props.movies;
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
-      movies: movies,
+      movies: movieslist,
     };
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
