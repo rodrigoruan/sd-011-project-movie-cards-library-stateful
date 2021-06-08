@@ -22,6 +22,7 @@ export default class SearchBar extends Component {
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ onSelectedGenreChange }
         />
+        <form data-testid="search-bar-form" />
       </div>
     );
   }
