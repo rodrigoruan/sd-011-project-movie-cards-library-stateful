@@ -11,10 +11,16 @@ class AddMovie extends Component {
       rating: 0,
       genre: 'action',
     };
+    this.handleMovie = this.handleMovie.bind(this);
   }
-  onClick = this.props;
+
+  handleMovie({ e }) {
+    const { name, value } = e;
+    this.setState({ [name]: value, });
+  }
+
   render() {
-    const { 
+    const {
       title,
       subtitle,
       imagePath,
@@ -24,10 +30,16 @@ class AddMovie extends Component {
 
     return (
       <form data-testid="add-movie-form">
-
+        <label htmlFor="titleId" data-testid="title-input-label">
+          Título
+          <input
+            data-testid="title-input"
+            id="titleId"
+          />
+        </label>
       </form>
     );
   }
-
+}
 
 export default AddMovie;
