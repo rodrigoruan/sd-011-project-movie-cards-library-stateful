@@ -15,13 +15,14 @@ export default class AddMovie extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {...initialState};
+    this.state = initialState;
 
     this.handleInputs = this.handleInputs.bind(this);
-    this.addMovie = this.addMovie.bind(this);
+    this.addMovieBtn = this.addMovieBtn.bind(this);
   }
 
   handleInputs({ target }) {
+    
     const { name, value } = target;
 
     this.setState({
@@ -29,8 +30,7 @@ export default class AddMovie extends Component {
     });
   }
 
-  addMovie(event) {
-    event.preventDefault();
+  addMovieBtn() {
     const { onClick } = this.props;
     onClick(this.state);
     this.setState(initialState);
@@ -39,7 +39,7 @@ export default class AddMovie extends Component {
   render() {
     return (
       <div>
-        <Form state={this.state} func={this.handleInputs} addMovie={this.addMovie} />
+        <Form state={this.state} func={this.handleInputs} addMovie={this.addMovieBtn} />
       </div>
     );
   }

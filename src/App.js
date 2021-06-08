@@ -5,15 +5,17 @@ import './App.css';
 import MovieList from './components/MovieList'
 import data from './data'
 import AddMovie from './components/AddMovie'
+import MovieLibrary from './components/MovieLibrary'
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <SearchBar searchText='' onSearchTextChange='' bookmarkedOnly=''
-        onBookmarkedChange='' selectedGenre='' onSelectedGenreChange='' />
-      <MovieList movies={data} />
-      <AddMovie onClick='' />
+      <MovieLibrary movies={data} />
+      {/* <SearchBar searchText='' onSearchTextChange='' bookmarkedOnly=''
+        onBookmarkedChange='' selectedGenre='' onSelectedGenreChange='' /> */}
+      {/* <MovieList movies={data} /> */}
+      {/* <AddMovie onClick='' /> */}
     </div>
   );
 }

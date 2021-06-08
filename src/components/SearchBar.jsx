@@ -7,7 +7,7 @@ export default class SearchBar extends Component {
       <div>
         <form data-testid="search-bar-form">
           <label data-testid="text-input-label"> "Inclui o texto:"
-            <input type='text' data-testid="text-input" value={this.props.searchText}
+            <input type='text' name="searchText" data-testid="text-input" value={this.props.searchText}
             onChange={this.props.onSearchTextChange} />
           </label>
 
