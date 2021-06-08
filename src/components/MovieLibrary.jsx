@@ -7,12 +7,12 @@ import MovieList from './MovieList';
 export default class MovieLibrary extends React.Component {
   constructor(props) {
     super(props);
-    const { data } = this.props;
+    const { movies } = this.props;
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
-      movies: data,
+      movies: movies,
     };
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
@@ -48,11 +48,11 @@ export default class MovieLibrary extends React.Component {
      || (value.storyline.includes(searchText)));
     const array2 = array.filter((value2) => (value2.genre.includes(selectedGenre)));
     const array3 = array2.filter((value3) => (value3.bookmarked === bookmarkedOnly));
-    return array3;
+    return bookmarkedOnly ? array3 : array2;
   }
 
   render() {
-    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
     return (
       <div>
         <SearchBar
