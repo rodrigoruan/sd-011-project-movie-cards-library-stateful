@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import Label from './Label';
 
 const defaultState = {
-  title: '',
   subtitle: '',
+  title: '',
   imagePath: '',
   storyline: '',
   rating: 0,
