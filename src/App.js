@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <SearchBar searchText="sim" />
+      <SearchBar />
     </div>
   );
 }
