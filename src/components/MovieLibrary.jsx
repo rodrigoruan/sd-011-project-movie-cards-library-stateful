@@ -9,7 +9,9 @@ class MovieLibrary extends Component {
       <div>
         <SearchBar
           searchText="Final Fantasy"
-          onSearchTextChange={ () => console.log('Teste ok') }
+          onSearchTextChange={ () => console.log('onSearchTextChange callback') }
+          bookmarkedOnly="false"
+          onBookmarkedChange={ () => console.log('onBookmarkedChange callback') }
         />
       </div>
     );
