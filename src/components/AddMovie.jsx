@@ -1,36 +1,29 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Label from './Label';
-// import PropTypes from 'prop-types';
+
+const defaultState = {
+  title: '',
+  subtitle: '',
+  imagePath: '',
+  storyline: '',
+  rating: 0,
+  genre: 'action',
+};
 
 class AddMovie extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      title: '',
-      subtitle: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
-    };
-
-    this.handleImage = this.handleImage.bind(this);
-    this.handleStoryline = this.handleStoryline.bind(this);
-    this.handleRating = this.handleRating.bind(this);
+    this.state = defaultState;
     this.handleGenre = this.handleGenre.bind(this);
     this.handleState = this.handleState.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleImage({ target }) {
-    this.setState({ imagePath: target.value });
-  }
-
-  handleStoryline({ target }) {
-    this.setState({ storyline: target.innerText });
-  }
-
-  handleRating({ target }) {
-    this.setState({ rating: target.value });
+  handleClick() {
+    const { onClick } = this.props;
+    onClick(this.state);
+    this.setState(defaultState);
   }
 
   handleGenre({ target }) {
@@ -64,7 +57,7 @@ class AddMovie extends React.Component {
           Sinopse
           <textarea
             data-testid="storyline-input"
-            onChange={ this.handleStoryline }
+            onChange={ this.handleState }
           >
             { storyline }
           </textarea>
@@ -73,7 +66,7 @@ class AddMovie extends React.Component {
           alias="rating"
           text="Avaliação"
           value={ rating }
-          func={ this.handleRating }
+          func={ this.handleState }
         />
         <label data-testid="genre-input-label" htmlFor="genre-input">
           Gênero
@@ -83,10 +76,20 @@ class AddMovie extends React.Component {
             <option data-testid="genre-option" value="thriller">Suspense</option>
           </select>
         </label>
-        <button type="button" data-testid="send-button">Adicionar filme</button>
+        <button
+          type="button"
+          data-testid="send-button"
+          onClick={ this.handleClick }
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }
 }
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 export default AddMovie;
