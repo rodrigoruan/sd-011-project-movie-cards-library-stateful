@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class AddMovieBtn extends Component {
   render() {
@@ -16,3 +17,7 @@ class AddMovieBtn extends Component {
 }
 
 export default AddMovieBtn;
+
+AddMovieBtn.propTypes = {
+  funcOnClick: PropTypes.func.isRequired,
+};

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class AddMovieStoryLine extends Component {
   render() {
@@ -19,3 +20,8 @@ class AddMovieStoryLine extends Component {
 }
 
 export default AddMovieStoryLine;
+
+AddMovieStoryLine.propTypes = {
+  story: PropTypes.string.isRequired,
+  onStoryTextChange: PropTypes.func.isRequired,
+};

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class AddMovieTitle extends Component {
   render() {
@@ -19,3 +20,8 @@ class AddMovieTitle extends Component {
 }
 
 export default AddMovieTitle;
+
+AddMovieTitle.propTypes = {
+  title: PropTypes.string.isRequired,
+  onTitleTextChange: PropTypes.func.isRequired,
+};

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class AddMovieImage extends Component {
   render() {
@@ -19,3 +20,8 @@ class AddMovieImage extends Component {
 }
 
 export default AddMovieImage;
+
+AddMovieImage.propTypes = {
+  image: PropTypes.string.isRequired,
+  onImageTextChange: PropTypes.func.isRequired,
+};
