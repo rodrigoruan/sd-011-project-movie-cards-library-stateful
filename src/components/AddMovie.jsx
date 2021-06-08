@@ -39,6 +39,10 @@ class AddMovie extends React.Component {
           Sinopse
           <textarea data-testid="storyline-input" />
         </label>
+        <label htmlFor="rating-input" data-testid="rating-input-label">
+          Avaliação
+          <input type="number" data-testid="rating-input" />
+        </label>
         <label htmlFor="storyline-input" data-testid="genre-input-label">
           Gênero
           <select data-testid="genre-input">
@@ -47,6 +51,7 @@ class AddMovie extends React.Component {
             <option value="thriller" data-testid="genre-option">Suspense</option>
           </select>
         </label>
+        <button type="button" data-testid="send-button">Adicionar filme</button>
       </form>
     );
   }
