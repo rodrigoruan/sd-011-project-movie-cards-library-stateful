@@ -34,15 +34,15 @@ class MovieLibrary extends React.Component {
     let filtro = movies;
     if (searchText) {
       filtro = filtro.filter((filme) => filme.title
-        .toLowerCase().includes(searchText.toLowerCase()) ||
-        filme.subtitle.toLowerCase().includes(searchText.toLowerCase() )||
-        filme.storyline.toLowerCase().includes(searchText.toLowerCase()));
+        .toLowerCase().includes(searchText.toLowerCase())
+        || filme.subtitle.toLowerCase().includes(searchText.toLowerCase()) 
+        || filme.storyline.toLowerCase().includes(searchText.toLowerCase()));
     }
     if (bookmarkedOnly) {
       filtro = filtro.filter((filme) => filme.bookmarked);
     }
     if (selectedGenre) {
-        filtro = filtro.filter((filme) => filme.genre === selectedGenre);
+      filtro = filtro.filter((filme) => filme.genre === selectedGenre);
     }
     return filtro;
   }
