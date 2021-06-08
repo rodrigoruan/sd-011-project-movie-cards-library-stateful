@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import addMovieImage from './addMovieImage';
+import addMovieRating from './addMovieRating';
+import addMovieStoryline from './addMovieStoryline';
+import addMovieSubtitle from './addMovieSubtitle';
+import addMovieTitle from './addMovieTitle';
 
 class AddMovie extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       subtitle: '',
       title: '',
@@ -30,36 +35,11 @@ class AddMovie extends Component {
 
     return (
       <form data-testid="add-movie-form">
-        <label htmlFor="titleId" data-testid="title-input-label">
-          Título
-          <input
-            data-testid="title-input"
-            id="titleId"
-            type="text"
-            value={ title }
-            onChange={ this.handleMovie }
-          />
-        </label>
-        <label htmlFor="subId" data-testid="subtitle-input-label">
-          Subtítulo
-          <input
-            data-testid="subtitle-input"
-            id="subId"
-            type="text"
-            value={ subtitle }
-            onChange={ this.handleMovie }
-          />
-        </label>
-        <label htmlFor="imageId" data-testid="image-input-label">
-          Imagem
-          <input
-            data-testid="image-input"
-            id="imageId"
-            type="text"
-            value={ imagePath }
-            onChange={ this.handleMovie }
-          />
-        </label>
+        <addMovieTitle title={ title } handleMovie={ this.handleMovie } />
+        <addMovieSubtitle subtitle={ subtitle } handleMovie={ this.handleMovie } />
+        <addMovieImage imagePath={ imagePath } handleMovie={ this.handleMovie } />
+        <addMovieStoryline storyline={ storyline } handleMovie={ this.handleMovie } />
+        <addMovieRating rating={ rating } handleMovie={ this.handleMovie } />
       </form>
     );
   }
