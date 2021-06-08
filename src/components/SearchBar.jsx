@@ -13,22 +13,24 @@ class SearchBar extends React.Component {
       } = this.props;
     return (
       <form data-testid="search-bar-form">
-        <label htmlFor="inpInclude" data-testid="text-input">
+        <label htmlFor="inpInclude" data-testid="text-input-label">
           Inclui o texto:
           <input
             type="text"
             value={ searchText }
             onChange={ onSearchTextChange }
             id="inpInclude"
+            data-testid="text-input"
           />
         </label>
-        <label htmlFor="favCheck" data-testid="checkbox-input">
+        <label htmlFor="favCheck" data-testid="checkbox-input-label">
           Mostrar somente favoritos
           <input
             type="checkbox"
             id="favCheck"
             checked={ bookmarkedOnly }
             onChange={ onBookmarkedChange }
+            data-testid="checkbox-input"
           />
         </label>
         <label htmlFor="genFil" data-testid="select-input-label">
@@ -37,11 +39,12 @@ class SearchBar extends React.Component {
             id="genFil"
             value={ selectedGenre }
             onChange={ onSelectedGenreChange }
+            data-testid="select-input"
           >
-            <option value="">Todos</option>
-            <option value="action">Ação</option>
-            <option value="comedy">Comédia</option>
-            <option value="Suspense">Suspense</option>
+            <option value="" data-testid="select-option">Todos</option>
+            <option value="action" data-testid="select-option">Ação</option>
+            <option value="comedy" data-testid="select-option">Comédia</option>
+            <option value="Suspense" data-testid="select-option">Suspense</option>
           </select>
         </label>
       </form>
