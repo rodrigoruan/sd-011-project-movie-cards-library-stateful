@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import Inputs from './Inputs';
 import Options from './Options';
 import Button from './Button';
-
-
 class AddMovie extends React.Component {
   constructor() {
     super();
