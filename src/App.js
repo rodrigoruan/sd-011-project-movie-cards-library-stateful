@@ -4,6 +4,7 @@ import './App.css';
 import SearchBar from './components/SearchBar';
 import AddMovie from './components/AddMovie';
 import MovieLibrary from './components/MovieLibrary';
+import movies from './data';
 
 function onClick(x) {
   console.log(x);
@@ -15,7 +16,7 @@ function App() {
       <Header />
       <SearchBar />
       <AddMovie onClick={ onClick } />
-      <MovieLibrary />
+      <MovieLibrary movies={movies}/>
     </div>
   );
 }
