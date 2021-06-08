@@ -3,6 +3,7 @@ import Header from './components/Header';
 import './App.css';
 import SearchBar from './components/SearchBar';
 import AddMovie from './components/AddMovie';
+import MovieLibrary from './components/MovieLibrary';
 // import MovieCard from './components/MovieCard';
 
 class App extends React.Component {
@@ -12,6 +13,7 @@ class App extends React.Component {
         <Header />
         <SearchBar />
         <AddMovie />
+        <MovieLibrary />
       </div>
     );
   }
