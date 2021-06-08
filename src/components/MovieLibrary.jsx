@@ -41,8 +41,10 @@ class MovieLibrary extends Component {
     if (bookmarkedOnly) return movies.filter(({ bookmarked }) => bookmarked);
     if (searchText) {
       return movies
-        .filter(({ title, subtitle, storyline }) => `${title} ${subtitle} ${storyline}`
-          .includes(searchText));
+        .filter(({ title, subtitle, storyline }) => {
+          const textToSearchFor = `${title}${subtitle}${storyline}`.toLowerCase();
+          return textToSearchFor.includes(searchText.toLowerCase())
+        });
     }
     return movies;
   }
