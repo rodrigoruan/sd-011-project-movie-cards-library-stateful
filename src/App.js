@@ -16,7 +16,7 @@ function App() {
       <Header />
       <SearchBar />
       <AddMovie onClick={ onClick } />
-      <MovieLibrary movies={movies}/>
+      <MovieLibrary movies={ movies } />
     </div>
   );
 }

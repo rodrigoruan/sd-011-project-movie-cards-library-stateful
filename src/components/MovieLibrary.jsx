@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 
 class MovieLibrary extends React.Component {
   constructor(props) {
-      super(props);
+    super(props);
 
-      this.state = {
-        searchText: '',
-        bookmarkedOnly: false,
-        selectedGenre: '',
-        movies: this.movies,
-      };
+    this.state = {
+      searchText: '',
+      bookmarkedOnly: false,
+      selectedGenre: '',
+      movies: this.movies,
+    };
   }
   render() {
     return (
@@ -23,13 +23,13 @@ class MovieLibrary extends React.Component {
 }
 
 MovieLibrary.propTypes = {
-    movies: PropTypes.arrayOf(
-      PropTypes.object,
-    ),
-  };
+  movies: PropTypes.arrayOf(
+  PropTypes.object,
+  ),
+};
 
-  MovieLibrary.defaultProps = {
-    movies: [{}],
-  };
+MovieLibrary.defaultProps = {
+  movies: [{}],
+};
 
 export default MovieLibrary;
