@@ -19,6 +19,7 @@ export default class MovieLibrary extends React.Component {
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
     this.filtredMovies = this.filtredMovies.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
 
   onSearchTextChange(event) {
@@ -52,6 +53,27 @@ export default class MovieLibrary extends React.Component {
     return bookmarkedOnly ? array3 : array2;
   }
 
+  onClick(object) {
+    const { movies } = this.state;
+    const {title, subtitle, rating, storyline, imagePath, genre } = object;
+    const newObject = {
+      title: title,
+      subtitle: subtitle,
+      rating: rating,
+      storyline: storyline,
+      imagePath: imagePath,
+      genre: genre,
+      bookmarked: false,
+    }
+    const newArray = movies;
+    newArray.push(newObject);
+    console.log(newArray)
+    alert(`O filme ${newObject.title} foi adicionado`);
+    this.setState({     
+      movies: newArray,
+    })
+  }
+
   render() {
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
@@ -64,7 +86,7 @@ export default class MovieLibrary extends React.Component {
           onBookmarkedChange={ this.onBookmarkedChange }
           onSelectedGenreChange={ this.onSelectedGenreChange }
         />
-        <AddMovie />
+        <AddMovie onClick={ this.onClick } />
         <MovieList movies={ this.filtredMovies() } />
       </div>
     );
