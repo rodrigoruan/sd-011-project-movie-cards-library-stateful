@@ -34,7 +34,7 @@ class MovieLibrary extends Component {
           onSearchTextChange={ this.handleChange }
           bookmarkedOnly={ bookmarkedOnly }
           onBookmarkedChange={ this.handleChange }
-          selectGenre={ selectedGenre }
+          selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.handleChange }
         />
         <MovieList movies={ movies } />
