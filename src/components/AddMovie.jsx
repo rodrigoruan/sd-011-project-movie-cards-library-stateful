@@ -1,12 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import SelectToAddMovies from './SelectToAddMovies';
-import LabelRating from './LabelRating';
+import Sinopse from './Sinopse';
 
-class AddMovies extends React.Component {
+class AddMovie extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       subtitle: '',
       title: '',
@@ -15,18 +13,19 @@ class AddMovies extends React.Component {
       rating: 0,
       genre: 'action',
     };
-    this.handleStates = this.handleStates.bind(this);
-    this.buttonAddMovies = this.buttonAddMovies.bind(this);
+    this.handleState = this.handleState.bind(this);
+    this.addAtributes = this.addAtributes.bind(this);
+    this.fusion = this.fusion.bind(this);
   }
 
-  handleStates({ target }) {
+  handleState({ target }) {
     const { name, value } = target;
     this.setState({
       [name]: value,
     });
   }
 
-  buttonAddMovies() {
+  fusion() {
     const { onClick } = this.props;
     onClick(this.state);
     this.setState({
@@ -39,57 +38,57 @@ class AddMovies extends React.Component {
     });
   }
 
-  // addAtributes(inputName, inputType, inputValue) {
-  //   return (
-  //     <input
-  //       name={ inputName }
-  //       type={ inputType }
-  //       value={ inputValue }
-  //       data-testId={ inputName === 'imagePath' ? 'image-input' : `${inputName}-input` }
-  //       onChange={ this.handleStates }
-  //     />
-  //   );
-  // }
+  addAtributes(inputName, inputType, inputValue) {
+    return (
+      <input
+        name={ inputName }
+        type={ inputType }
+        value={ inputValue }
+        data-testid={ inputName === 'imagePath' ? 'image-input' : `${inputName}-input` }
+        onChange={ this.handleState }
+      />
+    );
+  }
 
   render() {
-    const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <label data-testid="title-input-label" htmlFor="title-input">
+        <label data-testid="title-input-label" htmlFor="ctl">
           Título
-          <input
-            name="title"
-            data-testid="title-input"
-            value={ title }
-            onChange={ this.handleStates }
-          />
+          { this.addAtributes('title', 'text', title) }
         </label>
-        <label data-testid="subtitle-input-label" htmlFor="subtitle-input">
+        <label data-testid="subtitle-input-label" htmlFor="ctl">
           Subtítulo
-          <input
-            name="subtitle"
-            data-testid="subtitle-input"
-            onChange={ subtitle }
-          />
+          { this.addAtributes('subtitle', 'text', subtitle)}
         </label>
-        <label data-testid="image-input-label" htmlFor="image-input">
+        <label data-testid="image-input-label" htmlFor="ctl">
           Imagem
-          <input name="img" data-testid="image-input" onChange={ imagePath } />
+          { this.addAtributes('imagePath', 'text', imagePath)}
         </label>
-        <label data-testid="storyline-input-label" htmlFor="storyline">
-          Sinopse
-          <textarea
-            name="storyline"
-            data-testid="storyline-input"
-            onChange={ storyline }
-          />
+        <Sinopse value={ storyline } handleState={ this.handleState } />
+        <label data-testid="rating-input-label" htmlFor="ctl">
+          Avaliação
+          { this.addAtributes('rating', 'number', rating)}
         </label>
-        <LabelRating rating={ rating } handleStates={ this.handleStates } />
-        <SelectToAddMovies value={ genre } onChange={ this.handleStates } />
+        <label data-testid="genre-input-label" htmlFor="ctl">
+          Gênero
+          <select
+            name="genre"
+            data-testid="genre-input"
+            type="text"
+            value={ genre }
+            onChange={ this.handleState }
+          >
+            <option value="action" data-testid="genre-option">Ação</option>
+            <option value="comedy" data-testid="genre-option">Comédia</option>
+            <option value="thriller" data-testid="genre-option">Suspense</option>
+          </select>
+        </label>
         <button
           type="button"
           data-testid="send-button"
-          onClick={ () => onClick(this.state) }
+          onClick={ this.fusion }
         >
           Adicionar filme
         </button>
@@ -98,11 +97,12 @@ class AddMovies extends React.Component {
   }
 }
 
-export default AddMovies;
+export default AddMovie;
 
-AddMovies.propTypes = {
+AddMovie.propTypes = {
   onClick: PropTypes.func,
 };
-AddMovies.defaultProps = {
+
+AddMovie.defaultProps = {
   onClick: () => {},
 };
