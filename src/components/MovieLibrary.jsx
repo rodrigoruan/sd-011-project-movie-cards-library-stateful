@@ -3,7 +3,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 
-
 class MovieLibrary extends React.Component {
   constructor(props) {
     super(props);
@@ -18,25 +17,27 @@ class MovieLibrary extends React.Component {
   }
 
   changeCall({ target }) {
-    const { name, value } = target
-    if(name === 'bookmarkedOnly') {
+    const { name, value } = target;
+    if (name === 'bookmarkedOnly') {
       this.setState({ [name]: target.checked });
     } else {
       this.setState({
-        [name]: value
+        [name]: value,
       });
     }
   }
 
+
   render() {
+      const { searchText, bookmarkedOnly, selectedGenre} = this.setState;
     return (
       <div>
-        <SearchBar 
-          searchText={ this.state.searchText } 
+        <SearchBar
+          searchText={ searchText } 
           onSearchTextChange={ this.changeCall }
-          bookmarkedOnly={ this.state.bookmarkedOnly }
+          bookmarkedOnly={ bookmarkedOnly }
           onBookmarkedChange={ this.changeCall }
-          selectedGenre={ this.state.selectedGenre }
+          selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.changeCall }
         />
       </div>

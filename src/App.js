@@ -6,14 +6,14 @@ import MovieLibrary from './components/MovieLibrary';
 import movies from './data';
 
 function create(n) {
-  return [...movies,n];  
+  return [...movies, n];
 }
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <AddMovie onClick={(n) => create(n) } />
+      <AddMovie onClick={ (n) => create(n) } />
       <MovieLibrary movies={ movies } />
     </div>
   );
