@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
 
-// implement AddMovie component here
-
 class MovieLibrary extends Component {
   render() {
     return (
