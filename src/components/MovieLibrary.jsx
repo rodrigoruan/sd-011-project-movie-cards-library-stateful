@@ -28,6 +28,7 @@ class MovieLibrary extends Component {
       [name]: value,
     });
   }
+
   addNewMovie(e) {
     this.setState((previousState) => ({
       movies: [...previousState.movies, e],
@@ -36,8 +37,8 @@ class MovieLibrary extends Component {
 
   filterMovies() {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
-    if (bookmarkedOnly) return movies.filter(({ bookmarked }) => bookmarked);
     if (selectedGenre) return movies.filter(({ genre }) => genre === selectedGenre);
+    if (bookmarkedOnly) return movies.filter(({ bookmarked }) => bookmarked);
     if (searchText) {
       return movies
         .filter(({ title, subtitle, storyline }) => `${title} ${subtitle} ${storyline}`
