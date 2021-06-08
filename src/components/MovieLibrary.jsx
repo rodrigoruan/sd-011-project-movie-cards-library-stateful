@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar';
+import AddMovie from './AddMovie';
 
 // implement AddMovie component here
 
@@ -10,11 +11,13 @@ class MovieLibrary extends Component {
         <SearchBar
           searchText="Final Fantasy"
           onSearchTextChange={ () => console.log('onSearchTextChange callback') }
-          bookmarkedOnly="false"
+          bookmarkedOnly={ true }
           onBookmarkedChange={ () => console.log('onBookmarkedChange callback') }
           selectedGenre="comedy"
           onSelectedGenreChange={ () => console.log('onSelectedGenreChange callback') }
         />
+
+        <AddMovie />
       </div>
     );
   }
