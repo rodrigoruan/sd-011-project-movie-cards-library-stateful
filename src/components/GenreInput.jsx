@@ -6,12 +6,12 @@ class GenreInput extends Component {
     const { value, handler } = this.props;
     return (
       <label
-        htmlFor="genreInput"
+        htmlFor="genre"
         data-testid="genre-input-label"
       >
         Gênero
         <select
-          name="genreInput"
+          name="genre"
           value={ value }
           onChange={ handler }
           data-testid="genre-input"
