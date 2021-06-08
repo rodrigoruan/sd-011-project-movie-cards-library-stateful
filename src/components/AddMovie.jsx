@@ -8,8 +8,8 @@ import AddSubtitle from './AddSubtitle';
 import AddTitle from './AddTitle';
 
 const stateInitial = {
-  subtitle: '',
   title: '',
+  subtitle: '',
   imagePath: '',
   storyline: '',
   rating: 0,

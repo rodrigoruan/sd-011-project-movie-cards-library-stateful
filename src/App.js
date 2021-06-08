@@ -1,16 +1,15 @@
 import React from 'react';
 import Header from './components/Header';
 import './App.css';
-import SearchBar from './components/SearchBar';
-import AddMovie from './components/AddMovie';
+import MovieLibrary from './components/MovieLibrary';
+import Movies from './data';
 
 function App() {
-  const onClick = () => console.log('Tá on');
+  // const onClick = () => console.log('Tá on');
   return (
     <div className="App">
       <Header />
-      <SearchBar />
-      <AddMovie onClick={ onClick } />
+      <MovieLibrary movies={ Movies } />
     </div>
   );
 }
