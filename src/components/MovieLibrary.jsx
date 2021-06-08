@@ -15,6 +15,7 @@ class MovieLibrary extends Component {
       movies,
     };
     this.addMovies = this.addMovies.bind(this);
+    this.handleSearchBar = this.handleSearchBar.bind(this);
     this.movies = this.movies.bind(this);
   }
 
@@ -28,7 +29,6 @@ class MovieLibrary extends Component {
     const { movies,
       bookmarkedOnly,
       selectedGenre,
-      searchText,
     } = this.state;
 
     let filterMovies = movies;
@@ -40,13 +40,6 @@ class MovieLibrary extends Component {
       filterMovies = movies.filter((movie) => movie.genre === selectedGenre);
     }
 
-    if (searchText !== '') {
-      filterMovies = movies.filter((movie) => (
-        (movie.title.includes(searchText))
-        || (movie.subtitle.includes(searchText))
-        || (movie.storyline.includes(searchText))
-      ));
-    }
     return filterMovies;
   }
 

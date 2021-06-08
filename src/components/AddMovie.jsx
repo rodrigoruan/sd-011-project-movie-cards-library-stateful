@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import addMovieTitle from './addMovieTitle';
-import addMovieGenre from './addMovieGenre';
-import addMovieImage from './addMovieImage';
-import addMovieRating from './addMovieRating';
-import addMovieStoryline from './addMovieStoryline';
-import addMovieSubtitle from './addMovieSubtitle';
+import AddMovieTitle from './AddMovieTitle';
+import AddMovieGenre from './AddMovieGenre';
+import AddMovieImage from './AddMovieImage';
+import AddMovieRating from './AddMovieRating';
+import AddMovieStoryline from './AddMovieStoryline';
+import AddMovieSubtitle from './AddMovieSubtitle';
 
 class AddMovie extends Component {
   constructor() {
@@ -52,12 +52,12 @@ class AddMovie extends Component {
 
     return (
       <form data-testid="add-movie-form">
-        <addMovieTitle title={ title } handleMovie={ this.handleMovie } />
-        <addMovieSubtitle subtitle={ subtitle } handleMovie={ this.handleMovie } />
-        <addMovieImage imagePath={ imagePath } handleMovie={ this.handleMovie } />
-        <addMovieStoryline storyline={ storyline } handleMovie={ this.handleMovie } />
-        <addMovieRating rating={ rating } handleMovie={ this.handleMovie } />
-        <addMovieGenre genre={ genre } handleMovie={ this.handleMovie } />
+        <AddMovieTitle title={ title } handleMovie={ this.handleMovie } />
+        <AddMovieSubtitle subtitle={ subtitle } handleMovie={ this.handleMovie } />
+        <AddMovieImage imagePath={ imagePath } handleMovie={ this.handleMovie } />
+        <AddMovieStoryline storyline={ storyline } handleMovie={ this.handleMovie } />
+        <AddMovieRating rating={ rating } handleMovie={ this.handleMovie } />
+        <AddMovieGenre genre={ genre } handleMovie={ this.handleMovie } />
         <button type="button" data-testid="send-button" onClick={ this.resetButton }>
           Adicionar filme
         </button>

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class addMovieStoryline extends Component {
+class AddMovieStoryline extends Component {
   render() {
     const { storyline, handleMovie } = this.props;
     return (
       <label htmlFor="storylineId" data-testid="storyline-input-label">
-        Imagem
+        Sinopse
         <textarea
           data-testid="storyline-input"
           id="storylineId"
@@ -20,9 +20,9 @@ class addMovieStoryline extends Component {
   }
 }
 
-export default addMovieStoryline;
+export default AddMovieStoryline;
 
-addMovieStoryline.propTypes = {
+AddMovieStoryline.propTypes = {
   storyline: PropTypes.string.isRequired,
   handleMovie: PropTypes.func.isRequired,
 };

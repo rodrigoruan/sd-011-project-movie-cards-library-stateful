@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class addMovieImage extends Component {
+class AddMovieImage extends Component {
   render() {
     const { imagePath, handleMovie } = this.props;
     return (
@@ -20,9 +20,9 @@ class addMovieImage extends Component {
   }
 }
 
-export default addMovieImage;
+export default AddMovieImage;
 
-addMovieImage.propTypes = {
+AddMovieImage.propTypes = {
   imagePath: PropTypes.string.isRequired,
   handleMovie: PropTypes.func.isRequired,
 };

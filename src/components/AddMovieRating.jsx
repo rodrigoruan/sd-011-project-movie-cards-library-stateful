@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class addMovieRating extends Component {
+class AddMovieRating extends Component {
   render() {
-    const { rating } = this.props;
+    const { rating, handleMovie } = this.props;
     return (
       <label htmlFor="rating-input" data-testid="rating-input-label">
         Avaliação
@@ -12,15 +12,16 @@ class addMovieRating extends Component {
           name="rating"
           data-testid="rating-input"
           value={ rating }
-          onChange={ this.handleMovie }
+          onChange={ handleMovie }
         />
       </label>
     );
   }
 }
 
-export default addMovieRating;
+export default AddMovieRating;
 
-addMovieRating.propTypes = {
+AddMovieRating.propTypes = {
   rating: PropTypes.number.isRequired,
+  handleMovie: PropTypes.func.isRequired,
 };

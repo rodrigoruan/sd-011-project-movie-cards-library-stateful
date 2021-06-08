@@ -64,7 +64,7 @@ describe('7 - Renderize um formulário dentro de `<AddMovie />`', () => {
     expect(form).toHaveLength(1);
   });
 });
-
+// eslint-disable-next-line max-len
 describe('8 - Renderize um input do tipo texto dentro do formulário em `<AddMovie />` para obter o título do novo filme', () => {
   it('Renderize um input de texto para quem usa escrever o titulo do filme', () => {
     expect(titleInput).toBeInTheDocument();
@@ -85,7 +85,7 @@ describe('8 - Renderize um input do tipo texto dentro do formulário em `<AddMov
     expect(titleInput).toHaveValue('my awesome movie title');
   });
 });
-
+// eslint-disable-next-line max-len
 describe('9 - Renderize um input do tipo texto dentro do formulário em `<AddMovie />` para obter o subtítulo do novo filme', () => {
   it('Renderize um input de texto para quem usa escrever o subtítulo do filme', () => {
     expect(subtitleInput).toBeInTheDocument();
@@ -106,7 +106,7 @@ describe('9 - Renderize um input do tipo texto dentro do formulário em `<AddMov
     expect(subtitleInput).toHaveValue('my awesome movie subtitle');
   });
 });
-
+// eslint-disable-next-line max-len
 describe('10 - Renderize um input do tipo texto dentro do formulário em `<AddMovie />` para obter o caminho da imagem do novo filme', () => {
   it('Renderize um input de texto para quem usa inserir a url da imagem do filme', () => {
     expect(imageInput).toBeInTheDocument();
@@ -116,7 +116,7 @@ describe('10 - Renderize um input do tipo texto dentro do formulário em `<AddMo
     expect(imageInputLabel).toBeInTheDocument();
     expect(imageInputLabel).toHaveTextContent('Imagem');
   });
-
+  // eslint-disable-next-line max-len
   it('Defina o estado inicial do input de imagem como "", ou seja, uma string vazia', () => {
     expect(imageInput).toHaveValue(initialState.imagePath);
   });
@@ -126,7 +126,7 @@ describe('10 - Renderize um input do tipo texto dentro do formulário em `<AddMo
     expect(imageInput).toHaveValue('http://localhost:3000/images/Appleseed_Alpha.jpg');
   });
 });
-
+// eslint-disable-next-line max-len
 describe('11 - Renderize uma `textarea` dentro do formulário em `<AddMovie />` para obter a sinopse do novo filme', () => {
   it('Renderize um input de texto para quem usa escrever a sinopse do filme', () => {
     expect(storylineInput).toBeInTheDocument();
@@ -136,7 +136,7 @@ describe('11 - Renderize uma `textarea` dentro do formulário em `<AddMovie />` 
     expect(storylineInputLabel).toBeInTheDocument();
     expect(storylineInputLabel).toHaveTextContent('Sinopse');
   });
-
+  // eslint-disable-next-line max-len
   it('Defina o estado inicial do input de sinopse como "", ou seja, uma string vazia', () => {
     expect(storylineInput).toHaveValue(initialState.storyline);
   });
@@ -147,7 +147,7 @@ describe('11 - Renderize uma `textarea` dentro do formulário em `<AddMovie />` 
     expect(storylineInput).toHaveValue(message);
   });
 });
-
+// eslint-disable-next-line max-len
 describe('12 - Renderize um `input` do tipo `number` dentro do formulário em `<AddMovie />` para obter a avaliação do novo filme', () => {
   it('Renderize um input de texto para quem usa escrever a avaliação do filme', () => {
     expect(ratingInput).toBeInTheDocument();
@@ -169,7 +169,7 @@ describe('12 - Renderize um `input` do tipo `number` dentro do formulário em `<
     expect(ratingInput).toHaveValue(expectedValue);
   });
 });
-
+// eslint-disable-next-line max-len
 describe('13 - Renderize um `select` do formulário em `<AddMovie />` para selecionar o gênero do novo filme', () => {
   const options = [
     { value: 'action', text: 'Ação' },
@@ -181,12 +181,12 @@ describe('13 - Renderize um `select` do formulário em `<AddMovie />` para selec
     expect(genreInput).toBeInTheDocument();
     expect(genreOptions).toHaveLength(options.length);
   });
-
+  // eslint-disable-next-line max-len
   it('Será validado se o component renderiza a label "Gênero" para o select de gênero', () => {
     expect(genreInputLabel).toBeInTheDocument();
     expect(genreInputLabel).toHaveTextContent('Gênero');
   });
-
+  // eslint-disable-next-line max-len
   it('Será validado se todas as opções no select tem o texto e o valor esperados, que são, respectivamente: Ação e action, Comédia e comedy, Suspense e thriller', () => {
     genreOptions.forEach((option, index) => {
       expect(option).toHaveTextContent(options[index].text);
@@ -203,7 +203,7 @@ describe('13 - Renderize um `select` do formulário em `<AddMovie />` para selec
     expect(genreInput).toHaveValue(genreOptions[1].value);
   });
 });
-
+// eslint-disable-next-line max-len
 describe('14 - Renderize um botão do formulário em `<AddMovie />` para fazer uso dos dados do novo filme, contidos no estado de `<AddMovie />`', () => {
   it('Será validado se o texto do botão é "Adicionar filme"', () => {
     expect(sendButton).toHaveTextContent('Adicionar filme');
@@ -221,6 +221,7 @@ describe('14 - Renderize um botão do formulário em `<AddMovie />` para fazer u
     expect(onClick).toHaveBeenCalled();
   });
 
+  // eslint-disable-next-line max-len
   it('Será validado se o estado dos inputs volta ao inicial depois que o botão de adicionar é clicado.', () => {
     const expectedRating = 3.5;
     event.type(titleInput, movieHarryPotter);
