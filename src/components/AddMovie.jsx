@@ -20,50 +20,50 @@ class AddMovie extends React.Component {
 
   handleChange({ target }) {
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState({
-      [target.name]: value,
-    });
+    this.setState({ [target.name]: value });
   }
 
   render() {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
-    const newMovieOptions = filterOptions.slice(1, 4);
+    const newMovieOptions = [];
+    const handle = this.handleChange;
+    filterOptions.forEach((option) => {
+      const { text, value } = option;
+      if (text !== 'Todos') {
+        newMovieOptions.push({ text, value, dataTestId: 'genre-option' });
+      }
+    });
     return (
       <form data-testid="add-movie-form">
-        <Input text="Título" name="title" value={ title } change={ this.handleChange } />
-        <Input
-          text="Subtítulo"
-          name="subtitle"
-          value={ subtitle }
-          change={ this.handleChange }
-        />
+        <Input text="Título" name="title" value={ title } change={ handle } />
+        <Input text="Subtítulo" name="subtitle" value={ subtitle } change={ handle } />
         <Input
           text="Imagem"
           test="image-input"
           name="imagePath"
           value={ imagePath }
-          change={ this.handleChange }
+          change={ handle }
         />
         <Textarea
           labelText="Sinopse"
           dataTestId="storyline-input"
           name="storyline"
           value={ storyline }
-          onChange={ this.handleChange }
+          onChange={ handle }
         />
         <Input
           type="number"
           text="Avaliação"
           name="rating"
           value={ rating }
-          change={ this.handleChange }
+          change={ handle }
         />
         <Select
           labelText="Gênero"
           labelDataTestId="genre-input-label"
           name="genre"
           value={ genre }
-          onChange={ this.handleChange }
+          onChange={ handle }
           selectDataTestId="genre-input"
           options={ newMovieOptions }
         />
