@@ -11,7 +11,8 @@ class AddMovie extends Component {
       rating: 0,
       genre: 'action',
     };
-    onClick = this.props;
+  }
+  onClick = this.props;
   render() {
     const { 
       title,
@@ -21,8 +22,12 @@ class AddMovie extends Component {
       rating,
       genre } = this.state;
 
-    return ();
+    return (
+      <form data-testid="add-movie-form">
+
+      </form>
+    );
   }
-}
+
 
 export default AddMovie;
