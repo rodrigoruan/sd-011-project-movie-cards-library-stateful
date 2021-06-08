@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AddMovieGenre from './AddMovieComponents/AddMovieGenre';
 import AddMovieImage from './AddMovieComponents/AddMovieImage';
 import AddMovieRating from './AddMovieComponents/AddMovieRating';
 import AddMovieStoryLine from './AddMovieComponents/AddMovieStoryLine';
@@ -14,6 +15,7 @@ class AddMovie extends Component {
         <AddMovieImage />
         <AddMovieStoryLine />
         <AddMovieRating />
+        <AddMovieGenre />
 
       </form>
     );
