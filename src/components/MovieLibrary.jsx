@@ -53,7 +53,7 @@ export default class MovieLibrary extends React.Component {
       storyline,
       imagePath,
       genre,
-      false,
+      bookmarked: false,
     };
     const newArray = movies;
     newArray.push(newObject);
