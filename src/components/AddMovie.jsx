@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import addMovieTitle from './addMovieTitle';
 import addMovieGenre from './addMovieGenre';
 import addMovieImage from './addMovieImage';
 import addMovieRating from './addMovieRating';
 import addMovieStoryline from './addMovieStoryline';
 import addMovieSubtitle from './addMovieSubtitle';
-import addMovieTitle from './addMovieTitle';
 
 class AddMovie extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       subtitle: '',
       title: '',
@@ -17,12 +18,13 @@ class AddMovie extends Component {
       rating: 0,
       genre: 'action',
     };
+
     this.handleMovie = this.handleMovie.bind(this);
     this.resetButton = this.resetButton.bind(this);
   }
 
-  handleMovie({ e }) {
-    const { name, value } = e;
+  handleMovie({ target }) {
+    const { name, value } = target;
     this.setState({ [name]: value });
   }
 
@@ -65,3 +67,11 @@ class AddMovie extends Component {
 }
 
 export default AddMovie;
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func,
+};
+
+AddMovie.defaultProps = {
+  onClick: () => {},
+};

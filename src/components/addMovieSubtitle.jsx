@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class addMovieSubtitle extends Component {
   render() {
@@ -20,3 +21,8 @@ class addMovieSubtitle extends Component {
 }
 
 export default addMovieSubtitle;
+
+addMovieSubtitle.propTypes = {
+  subtitle: PropTypes.string.isRequired,
+  handleMovie: PropTypes.func.isRequired,
+};
