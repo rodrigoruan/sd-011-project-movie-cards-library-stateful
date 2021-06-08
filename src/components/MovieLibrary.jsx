@@ -16,7 +16,14 @@ class MovieLibrary extends Component {
     };
     this.addMovies = this.addMovies.bind(this);
     this.handleSearchBar = this.handleSearchBar.bind(this);
-    this.movies = this.movies.bind(this);
+  }
+
+  handleSearchBar({ target }) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({
+      [name]: value,
+    });
   }
 
   addMovies(movie) {
@@ -25,29 +32,12 @@ class MovieLibrary extends Component {
     }));
   }
 
-  movies() {
-    const { movies,
-      bookmarkedOnly,
-      selectedGenre,
-    } = this.state;
-
-    let filterMovies = movies;
-    if (bookmarkedOnly === true) {
-      filterMovies = movies.filter((movie) => movie.bookmarked === true);
-    }
-
-    if (selectedGenre !== '') {
-      filterMovies = movies.filter((movie) => movie.genre === selectedGenre);
-    }
-
-    return filterMovies;
-  }
-
   render() {
     const {
       searchText,
       bookmarkedOnly,
-      selectedGenre } = this.state;
+      selectedGenre,
+      movies } = this.state;
     return (
       <div>
         <h2> My awesome movie library </h2>
@@ -55,8 +45,11 @@ class MovieLibrary extends Component {
           searchText={ searchText }
           bookmarkedOnly={ bookmarkedOnly }
           selectedGenre={ selectedGenre }
+          onSearchTextChange={ this.handleSearchBar }
+          onBookmarkedChange={ this.handleSearchBar }
+          onSelectedGenreChange={ this.handleSearchBar }
         />
-        <MovieList movies={ this.movies() } />
+        <MovieList movies={ movies } />
         <AddMovie onCLick={ this.addMovies } />
       </div>
     );
