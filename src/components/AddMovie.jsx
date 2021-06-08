@@ -1,9 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import MovieTitle from './MovieTitle';
+import MovieSubtitle from './MovieSubtitle';
+import MovieImage from './MovieImage';
+import MovieStoryline from './MovieStoryline';
+import MovieRating from './MovieRating';
+import MovieGenre from './MovieGenre';
+
 class AddMovie extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       title: '',
@@ -15,6 +22,14 @@ class AddMovie extends React.Component {
     };
 
     this.reset = this.reset.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange({ target }) {
+    const { name, value } = target;
+    this.setState = {
+      [name]: value,
+    };
   }
 
   reset() {
@@ -34,38 +49,36 @@ class AddMovie extends React.Component {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <label htmlFor data-testid="title-input-label">
-          Título
-          <input type="text" data-testid="title-input" defaultValue={ title } />
-        </label>
-        <label htmlFor data-testid="subtitle-input-label">
-          Subtítulo
-          <input type="text" data-testid="subtitle-input" defaultValue={ subtitle } />
-        </label>
-        <label htmlFor data-testid="image-input-label">
-          Imagem
-          <input type="text" data-testid="image-input" defaultValue={ imagePath } />
-        </label>
-        <label htmlFor data-testid="storyline-input-label">
-          Sinopse
-          <input
-            type="textarea"
-            data-testid="storyline-input"
-            defaultValue={ storyline }
-          />
-        </label>
-        <label htmlFor data-testid="rating-input-label">
-          Avaliação
-          <input type="number" data-testid="rating-input" defaultValue={ rating } />
-        </label>
-        <label htmlFor data-testid="genre-input-label">
-          Gênero
-          <select data-testid="genre-input" defaultValue={ genre }>
-            <option value="action" data-testid="genre-option">Ação</option>
-            <option value="comedy" data-testid="genre-option">Comédia</option>
-            <option value="thriller" data-testid="genre-option">Suspense</option>
-          </select>
-        </label>
+        <MovieTitle
+          value={ title }
+          name="title"
+          OnChange={ this.handleChange }
+        />
+        <MovieSubtitle
+          value={ subtitle }
+          name="subtitle"
+          OnChange={ this.handleChange }
+        />
+        <MovieImage
+          value={ imagePath }
+          name="imagePath"
+          OnChange={ this.handleChange }
+        />
+        <MovieStoryline
+          value={ storyline }
+          name="storyline"
+          OnChange={ this.handleChange }
+        />
+        <MovieRating
+          value={ rating }
+          name="rating"
+          OnChange={ this.handleChange }
+        />
+        <MovieGenre
+          value={ genre }
+          name="genre"
+          OnChange={ this.handleChange }
+        />
         <button
           type="button"
           data-testid="send-button"
