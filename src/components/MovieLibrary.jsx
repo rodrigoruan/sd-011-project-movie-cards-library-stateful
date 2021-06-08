@@ -10,25 +10,29 @@ class MovieLibrary extends Component {
     const { movies } = this.props;
     this.state = {
       searchText: '',
+      bookmarkedOnly: false,
       movies,
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange({ target }) {
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
-      [target.name]: target.value,
+      [target.name]: value,
     });
   }
 
   render() {
-    const { searchText, movies } = this.state;
+    const { searchText, bookmarkedOnly, movies } = this.state;
     return (
       <div>
         <h2> My awesome movie library </h2>
         <SearchBar
           searchText={ searchText }
           onSearchTextChange={ this.handleChange }
+          bookmarkedOnly={ bookmarkedOnly }
+          onBookmarkedChange={ this.handleChange }
         />
         <MovieList movies={ movies } />
         <AddMovie />
