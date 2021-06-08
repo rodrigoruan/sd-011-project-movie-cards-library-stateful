@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import FilterGenre from './FilterGenre';
 
 class SearchBar extends React.Component {
   render() {
@@ -23,6 +24,7 @@ class SearchBar extends React.Component {
             data-testid="text-input"
           />
         </label>
+
         <label htmlFor="input-check" data-testid="checkbox-input-label">
           Mostrar somente favoritos
           <input
@@ -32,29 +34,17 @@ class SearchBar extends React.Component {
             data-testid="checkbox-input"
           />
         </label>
-        <label htmlFor="select-genre" data-testid="select-input-label">
-          Filtrar por gênero
-          <select value={ selectedGenre } onChange={ onSelectedGenreChange } data-testid="select-input">
-            <option value="" data-testid="select-option">
-              Todos
-            </option>
-            <option value="action" data-testid="select-option">
-              Ação
-            </option>
-            <option value="comedy" data-testid="select-option">
-              Comédia
-            </option>
-            <option value="thriller" data-testid="select-option">
-              Suspense
-            </option>
-          </select>
-        </label>
+
+        <FilterGenre
+          selectedGenre={ selectedGenre }
+          onSelectedGenreChange={ onSelectedGenreChange }
+        />
       </form>
     );
   }
 }
 
-SearchBar.protoType = {
+SearchBar.propTypes = {
   searchText: PropTypes.string.isRequired,
   onSearchTextChange: PropTypes.func.isRequired,
   bookmarkedOnly: PropTypes.bool.isRequired,
