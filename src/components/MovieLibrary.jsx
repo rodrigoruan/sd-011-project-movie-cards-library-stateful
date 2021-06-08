@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
+import MovieList from './MovieList';
 
 class MovieLibrary extends React.Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class MovieLibrary extends React.Component {
       movies: props.movies,
     };
     this.changeCall = this.changeCall.bind(this);
+    this.filterCall = this.filterCall.bind(this);
   }
 
   changeCall({ target }) {
@@ -25,6 +27,24 @@ class MovieLibrary extends React.Component {
         [name]: value,
       });
     }
+  }
+
+  filterCall() {
+    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+    let filtro = movies;
+    if (searchText) {
+      filtro = filtro.filter((filme) => filme.title
+        .toLowerCase().includes(searchText.toLowerCase()) ||
+        filme.subtitle.toLowerCase().includes(searchText.toLowerCase() )||
+        filme.storyline.toLowerCase().includes(searchText.toLowerCase()));
+    }
+    if (bookmarkedOnly) {
+      filtro = filtro.filter((filme) => filme.bookmarked);
+    }
+    if (selectedGenre) {
+        filtro = filtro.filter((filme) => filme.genre === selectedGenre);
+    }
+    return filtro;
   }
 
   render() {
@@ -39,6 +59,7 @@ class MovieLibrary extends React.Component {
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.changeCall }
         />
+        <MovieList movies={ this.filterCall() } />
       </div>
     );
   }
