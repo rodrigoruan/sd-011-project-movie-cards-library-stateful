@@ -25,6 +25,19 @@ class AddMovie extends Component {
     this.setState({ [name]: value });
   }
 
+  resetButton() {
+    const { onClick } = this.props;
+    onClick(this.state);
+    this.setState({
+      title: '',
+      subtitle: '',
+      storyline: '',
+      rating: 0,
+      imagePath: '',
+      genre: 'action',
+    });
+  }
+
   render() {
     const {
       title,
@@ -42,6 +55,9 @@ class AddMovie extends Component {
         <addMovieStoryline storyline={ storyline } handleMovie={ this.handleMovie } />
         <addMovieRating rating={ rating } handleMovie={ this.handleMovie } />
         <addMovieGenre genre={ genre } handleMovie={ this.handleMovie } />
+        <button type="button" data-testid="send-button" onClick={ this.resetButton }>
+          Adicionar filme
+        </button>
       </form>
     );
   }
