@@ -26,7 +26,7 @@ export default class SearchBar extends Component {
         <label data-testid="text-input-label" htmlFor="input">
           Inclui o texto:
           <input
-            type="checkbox"
+            type="text"
             value={ searchText }
             onChange={ onSearchTextChange }
             data-testid="text-input"
