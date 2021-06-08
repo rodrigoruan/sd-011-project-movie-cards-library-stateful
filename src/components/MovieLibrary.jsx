@@ -47,7 +47,7 @@ export default class MovieLibrary extends React.Component {
     const { movies } = this.state;
     const { title, subtitle, rating, storyline, imagePath, genre } = object;
     const newObject = {
-      title: title,
+      title: object.title,
       subtitle: subtitle,
       rating: rating,
       storyline: storyline,
