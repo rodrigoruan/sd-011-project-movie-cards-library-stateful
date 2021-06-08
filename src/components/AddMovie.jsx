@@ -72,7 +72,7 @@ class AddMovie extends Component {
               id="storyline"
             />
           </label>
-          { this.renderInput('Avalia??o', 'rating', 'number', rating) }
+          { this.renderInput('Avaliação', 'rating', 'number', rating) }
           <label data-testid="genre-input-label" htmlFor="genre">
             Gênero
             <select
