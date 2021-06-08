@@ -5,7 +5,6 @@ import MovieLibrary from './components/MovieLibrary';
 import Movies from './data';
 
 function App() {
-  // const onClick = () => console.log('Tá on');
   return (
     <div className="App">
       <Header />

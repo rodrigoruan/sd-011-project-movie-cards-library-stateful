@@ -40,7 +40,7 @@ class AddMovie extends React.Component {
 
   render() {
     const { onClick } = this.props;
-    const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
 
@@ -60,7 +60,7 @@ class AddMovie extends React.Component {
           data-testid="send-button"
           type="button"
           onClick={ () => {
-            onClick();
+            onClick(this.state);
             this.resetState();
           } }
         >

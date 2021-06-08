@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
+import AddMovie from './AddMovie';
 
 class MovieLibrary extends React.Component {
   constructor(props) {
@@ -16,6 +17,8 @@ class MovieLibrary extends React.Component {
     this.searchText = this.searchText.bind(this);
 
     this.filteredMovies = this.filteredMovies.bind(this);
+
+    this.pushNewMovie = this.pushNewMovie.bind(this);
   }
 
   searchText = ({ target }) => {
@@ -45,6 +48,12 @@ class MovieLibrary extends React.Component {
     return arrayMovies;
   }
 
+  pushNewMovie = (newMovie) => {
+    this.setState((previousState) => ({
+      movies: [...previousState.movies, newMovie],
+    }));
+  }
+
   render() {
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
@@ -59,6 +68,8 @@ class MovieLibrary extends React.Component {
         />
 
         <MovieList movies={ this.filteredMovies() } />
+
+        <AddMovie onClick={ this.pushNewMovie } />
       </div>
     );
   }
