@@ -1,5 +1,6 @@
 import React from 'react';
-import Input from './Input';
+import InputText from './InputText';
+import Textarea from './Textarea';
 
 class AddMovie extends React.Component {
   constructor(props) {
@@ -33,35 +34,36 @@ class AddMovie extends React.Component {
     } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <Input
+        <InputText
           labelText="Título"
-          labelDataTestId="title-input-label"
-          inputType="text"
-          inputName="title"
-          inputValue={ title }
-          inputOnChange={ this.handleChange }
-          inputDataTestId="title-input"
+          dataTestId="title-input"
+          name="title"
+          value={ title }
+          onChange={ this.handleChange }
         />
-        <Input
+        <InputText
           labelText="Subtítulo"
-          labelDataTestId="subtitle-input-label"
-          inputType="text"
-          inputName="subtitle"
-          inputValue={ subtitle }
-          inputOnChange={ this.handleChange }
-          inputDataTestId="subtitle-input"
+          dataTestId="subtitle-input"
+          name="subtitle"
+          value={ subtitle }
+          onChange={ this.handleChange }
         />
-        <Input
+        <InputText
           labelText="Imagem"
-          labelDataTestId="image-input-label"
-          inputType="text"
-          inputName="imagePath"
-          inputValue={ imagePath }
-          inputOnChange={ this.handleChange }
-          inputDataTestId="image-input"
+          dataTestId="image-input"
+          name="imagePath"
+          value={ imagePath }
+          onChange={ this.handleChange }
+        />
+        <Textarea
+          labelText="Sinopse"
+          dataTestId="storyline-input"
+          name="imagePath"
+          value={ storyline }
+          onChange={ this.handleChange }
         />
         {
-          storyline + rating + genre
+          rating + genre
         }
       </form>
     );
