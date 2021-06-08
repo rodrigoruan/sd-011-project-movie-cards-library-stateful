@@ -12,6 +12,8 @@ class MovieLibrary extends Component {
           onSearchTextChange={ () => console.log('onSearchTextChange callback') }
           bookmarkedOnly="false"
           onBookmarkedChange={ () => console.log('onBookmarkedChange callback') }
+          selectedGenre="comedy"
+          onSelectedGenreChange={ () => console.log('onSelectedGenreChange callback') }
         />
       </div>
     );
