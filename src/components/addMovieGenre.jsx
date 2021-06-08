@@ -9,6 +9,7 @@ class addMovieGenre extends Component {
         <select
           data-testid="genreId"
           type="text"
+          name="genre"
           value={ genre }
           onChange={ handleMovie }
         >

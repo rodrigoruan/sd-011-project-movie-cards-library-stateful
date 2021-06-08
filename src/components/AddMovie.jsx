@@ -18,6 +18,7 @@ class AddMovie extends Component {
       genre: 'action',
     };
     this.handleMovie = this.handleMovie.bind(this);
+    this.resetButton = this.resetButton.bind(this);
   }
 
   handleMovie({ e }) {

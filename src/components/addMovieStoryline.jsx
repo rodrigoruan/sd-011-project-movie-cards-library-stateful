@@ -10,6 +10,7 @@ class addMovieStoryline extends Component {
           data-testid="storyline-input"
           id="storylineId"
           type="text"
+          name="storyline"
           value={ storyline }
           onChange={ handleMovie }
         />
