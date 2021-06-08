@@ -48,7 +48,7 @@ class AddMovie extends Component {
         id={ id !== 'image' ? id : 'imagePath' }
         type={ type }
         value={ inputValue }
-        onChange={ this.handleChange }
+        onChange={ this.handleChangeInput }
         data-testid={ `${id}-input` }
       />
     );
