@@ -20,16 +20,13 @@ class MovieLibrary extends Component {
     this.handleState = this.handleState.bind(this);
   }
 
-  filterMovies() {
-    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
-    if (bookmarkedOnly) return movies.filter(({ bookmarked }) => bookmarked);
-    if (selectedGenre) return movies.filter(({ genre }) => genre === selectedGenre);
-    if (searchText) {
-      return movies
-        .filter(({ title, subtitle, storyline }) => `${title} ${subtitle} ${storyline}`
-        .includes(searchText));
-    }
-    return movies;
+  handleState({ target }) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+
+    this.setState({
+      [name]: value,
+    });
   }
 
   addNewMovie(e) {
@@ -38,13 +35,16 @@ class MovieLibrary extends Component {
     }));
   }
 
-  handleState({ target }) {
-    const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-
-    this.setState({
-      [name]: value,
-    });
+  filterMovies() {
+    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+    if (bookmarkedOnly) return movies.filter(({ bookmarked }) => bookmarked);
+    if (selectedGenre) return movies.filter(({ genre }) => genre === selectedGenre);
+    if (searchText) {
+      return movies
+        .filter(({ title, subtitle, storyline }) => `${title} ${subtitle} ${storyline}`
+          .includes(searchText));
+    }
+    return movies;
   }
 
   render() {
