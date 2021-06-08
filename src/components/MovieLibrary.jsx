@@ -42,6 +42,25 @@ export default class MovieLibrary extends React.Component {
       selectedGenre: value,
     });
   }
+  onClick(object) {
+    const { movies } = this.state;
+    const {title, subtitle, rating, storyline, imagePath, genre } = object;
+    const newObject = { 
+      title: title,
+      subtitle: subtitle,
+      rating: rating,
+      storyline: storyline,
+      imagePath: imagePath,
+      genre: genre,
+      bookmarked: false,
+    };
+    const newArray = movies;
+    newArray.push(newObject);
+    alert(`O filme ${newObject.title} foi adicionado`);
+    this.setState({
+      movies:newArray,
+    });
+  };
 
   filtredMovies() {
     const { searchText, movies, selectedGenre, bookmarkedOnly } = this.state;
@@ -51,27 +70,6 @@ export default class MovieLibrary extends React.Component {
     const array2 = array.filter((value2) => (value2.genre.includes(selectedGenre)));
     const array3 = array2.filter((value3) => (value3.bookmarked === bookmarkedOnly));
     return bookmarkedOnly ? array3 : array2;
-  }
-
-  onClick(object) {
-    const { movies } = this.state;
-    const {title, subtitle, rating, storyline, imagePath, genre } = object;
-    const newObject = {
-      title: title,
-      subtitle: subtitle,
-      rating: rating,
-      storyline: storyline,
-      imagePath: imagePath,
-      genre: genre,
-      bookmarked: false,
-    }
-    const newArray = movies;
-    newArray.push(newObject);
-    console.log(newArray)
-    alert(`O filme ${newObject.title} foi adicionado`);
-    this.setState({     
-      movies: newArray,
-    })
   }
 
   render() {
