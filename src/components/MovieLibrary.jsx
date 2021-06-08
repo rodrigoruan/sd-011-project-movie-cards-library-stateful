@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 import MovieList from './MovieList';
 import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
@@ -29,22 +29,22 @@ class MovieLibrary extends Component {
       [name]: value,
     }, () => {
       const { movies } = this.props;
-      if (name === "searchText") {
+      if (name === 'searchText') {
         this.setState({
-          movies: this.filterMoviesList()
-        })
-      } else if (name === "bookmarkedOnly") {
+          movies: this.filterMoviesList(),
+        });
+      } else if (name === 'bookmarkedOnly') {
         this.setState({
-          movies: this.filterBookmarkedOnly()
-        })
-      } else if (name === "selectedGenre") {
+          movies: this.filterBookmarkedOnly(),
+        });
+      } else if (name === 'selectedGenre') {
         this.setState({
-          movies: this.filterSelectedGenre()
-        })
+          movies: this.filterSelectedGenre(),
+        });
       } else {
         this.setState({
-          movies: movies
-        })
+          movies: movies,
+        });
       }
     });
   }
@@ -52,10 +52,10 @@ class MovieLibrary extends Component {
   filterMoviesList() {
     const { searchText } = this.state;
     const { movies } = this.props;
-    let searchMovies = movies.filter((movie) => ((movie.title.includes(searchText))
+    const searchMovies = movies.filter((movie) => ((movie.title.includes(searchText))
     || (movie.subtitle.includes(searchText))
     || (movie.storyline.includes(searchText))
-    ))
+    ));
     return searchMovies;
   }
 
@@ -63,7 +63,7 @@ class MovieLibrary extends Component {
     const { bookmarkedOnly } = this.state;
     const { movies } = this.props;
     if (bookmarkedOnly === true) {
-      return movies.filter((movie) => movie.bookmarked === true)
+      return movies.filter((movie) => movie.bookmarked === true);
     }
     return movies;
   }
@@ -72,7 +72,7 @@ class MovieLibrary extends Component {
     const { selectedGenre } = this.state;
     const { movies } = this.props;
     if (selectedGenre !== '') {
-      return movies.filter((movie) => movie.genre === selectedGenre)
+      return movies.filter((movie) => movie.genre === selectedGenre);
     }
     return movies;
   }
@@ -104,3 +104,15 @@ class MovieLibrary extends Component {
 }
 
 export default MovieLibrary;
+
+MovieLibrary.PropTypes = {
+  movies: PropTypes.arrayOf({
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    storyline: PropTypes.string,
+    rating: PropTypes.number,
+    imagePath: PropTypes.string,
+    bookmarkedOnly: PropTypes.bool,
+    genre: PropTypes.string,
+  }),
+};

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class LabelStoryline extends Component {
   render() {
@@ -18,3 +19,12 @@ class LabelStoryline extends Component {
 }
 
 export default LabelStoryline;
+
+LabelStoryline.propTypes = {
+  storyline: PropTypes.string.isRequired,
+  handleStates: PropTypes.func,
+};
+
+LabelStoryline.defaultProps = {
+  handleStates: 'Insert handleStates Function',
+};

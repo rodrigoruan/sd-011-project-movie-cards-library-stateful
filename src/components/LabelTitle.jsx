@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class LabelTitle extends Component {
   render() {
@@ -19,3 +20,12 @@ class LabelTitle extends Component {
 }
 
 export default LabelTitle;
+
+LabelTitle.propTypes = {
+  title: PropTypes.string.isRequired,
+  handleStates: PropTypes.func,
+};
+
+LabelTitle.defaultProps = {
+  handleStates: 'Insert handleStates Function',
+};

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class LabelImage extends Component {
   render() {
@@ -19,3 +20,12 @@ class LabelImage extends Component {
 }
 
 export default LabelImage;
+
+LabelImage.propTypes = {
+  imagePath: PropTypes.string.isRequired,
+  handleStates: PropTypes.func,
+};
+
+LabelImage.defaultProps = {
+  handleStates: 'Insert handleStates Function',
+};

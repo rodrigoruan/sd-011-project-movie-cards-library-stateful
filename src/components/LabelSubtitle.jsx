@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class LabelSubtitle extends Component {
   render() {
@@ -19,3 +20,12 @@ class LabelSubtitle extends Component {
 }
 
 export default LabelSubtitle;
+
+LabelSubtitle.propTypes = {
+  subtitle: PropTypes.string.isRequired,
+  handleStates: PropTypes.func,
+};
+
+LabelSubtitle.defaultProps = {
+  handleStates: 'Insert handleStates Function',
+};

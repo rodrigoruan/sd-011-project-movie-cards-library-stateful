@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import LabelImage from './LabelImage';
 import LabelRating from './LabelRating';
 import LabelStoryline from './LabelStoryline';

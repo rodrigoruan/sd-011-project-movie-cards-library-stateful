@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class LabelRating extends Component {
   render() {
@@ -19,3 +20,12 @@ class LabelRating extends Component {
 }
 
 export default LabelRating;
+
+LabelRating.propTypes = {
+  rating: PropTypes.number.isRequired,
+  handleStates: PropTypes.func,
+};
+
+LabelRating.defaultProps = {
+  handleStates: 'Insert handleStates Function',
+};
