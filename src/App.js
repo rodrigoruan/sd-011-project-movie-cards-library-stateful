@@ -5,6 +5,7 @@ import SearchBar from './components/SearchBar';
 import AddMovie from './components/AddMovie';
 
 function App() {
+  const onClick = () => console.log('Tá on');
   return (
     <div className="App">
       <Header />
