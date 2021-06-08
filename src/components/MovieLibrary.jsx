@@ -7,7 +7,8 @@ import MovieList from './MovieList';
 export default class MovieLibrary extends React.Component {
   constructor(props) {
     super(props);
-    const movieslist = this.props.movies;
+    const { movies } = this.props;
+    const movieslist = movies;
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
