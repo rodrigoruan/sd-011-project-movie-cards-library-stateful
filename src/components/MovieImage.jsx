@@ -5,13 +5,13 @@ class MovieImage extends React.Component {
   render() {
     const { value, name, onChange } = this.props;
     return (
-      <label htmlFor data-testid="image-input-label">
+      <label htmlFor="image-input-label" data-testid="image-input-label">
         Imagem
         <input
           type="text"
           data-testid="image-input"
           name={ name }
-          defaultValue={ value }
+          value={ value }
           onChange={ onChange }
         />
       </label>

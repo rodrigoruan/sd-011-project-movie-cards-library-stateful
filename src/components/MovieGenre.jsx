@@ -5,12 +5,12 @@ class MovieGenre extends React.Component {
   render() {
     const { value, name, onChange } = this.props;
     return (
-      <label htmlFor data-testid="genre-input-label">
+      <label htmlFor="genre-input" data-testid="genre-input-label">
         Gênero
         <select
           data-testid="genre-input"
           name={ name }
-          defaultValue={ value }
+          value={ value }
           onChange={ onChange }
         >
           <option value="action" data-testid="genre-option">Ação</option>

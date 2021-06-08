@@ -5,11 +5,11 @@ class MovieSubtitle extends React.Component {
   render() {
     const { value, name, onChange } = this.props;
     return (
-      <label htmlFor="subtitle-input-label" data-testid="subtitle-input-label">
+      <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
         Subtítulo
         <input
           type="text"
-          defaultValue={ value }
+          value={ value }
           name={ name }
           onChange={ onChange }
           data-testid="subtitle-input"

@@ -8,8 +8,8 @@ import MovieRating from './MovieRating';
 import MovieGenre from './MovieGenre';
 
 class AddMovie extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       title: '',
@@ -26,9 +26,9 @@ class AddMovie extends React.Component {
 
   handleChange({ target }) {
     const { name, value } = target;
-    this.setState = {
+    this.setState({
       [name]: value,
-    };
+    });
   }
 
   reset() {
@@ -51,32 +51,32 @@ class AddMovie extends React.Component {
         <MovieTitle
           value={ title }
           name="title"
-          OnChange={ this.handleChange }
+          onChange={ this.handleChange }
         />
         <MovieSubtitle
           value={ subtitle }
           name="subtitle"
-          OnChange={ this.handleChange }
+          onChange={ this.handleChange }
         />
         <MovieImage
           value={ imagePath }
           name="imagePath"
-          OnChange={ this.handleChange }
+          onChange={ this.handleChange }
         />
         <MovieStoryline
           value={ storyline }
           name="storyline"
-          OnChange={ this.handleChange }
+          onChange={ this.handleChange }
         />
         <MovieRating
           value={ rating }
           name="rating"
-          OnChange={ this.handleChange }
+          onChange={ this.handleChange }
         />
         <MovieGenre
           value={ genre }
           name="genre"
-          OnChange={ this.handleChange }
+          onChange={ this.handleChange }
         />
         <button
           type="button"
@@ -91,7 +91,11 @@ class AddMovie extends React.Component {
 }
 
 AddMovie.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
+};
+
+AddMovie.defaultProps = {
+  onClick: () => {},
 };
 
 export default AddMovie;

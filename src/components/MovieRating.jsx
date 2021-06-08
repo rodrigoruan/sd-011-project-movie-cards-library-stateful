@@ -5,12 +5,12 @@ class MovieRating extends React.Component {
   render() {
     const { value, name, onChange } = this.props;
     return (
-      <label htmlFor data-testid="rating-input-label">
+      <label htmlFor="true" data-testid="rating-input-label">
         Avaliação
         <input
           type="number"
           data-testid="rating-input"
-          defaultValue={ value }
+          value={ value }
           name={ name }
           onChange={ onChange }
         />
