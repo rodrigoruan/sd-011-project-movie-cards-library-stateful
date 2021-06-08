@@ -17,7 +17,7 @@ class SearchBar extends Component {
     return (
       <form data-testid="search-bar-form">
         <InputText
-          name="input-text"
+          name="searchText"
           label="Inclui o texto:"
           inputTestId="text-input"
           labelTestId="text-input-label"
@@ -27,7 +27,7 @@ class SearchBar extends Component {
         />
 
         <BookmarkHandler
-          checked={ bookmarkedOnly }
+          bookmarkedOnly={ bookmarkedOnly }
           onChange={ onBookmarkedChange }
         />
 

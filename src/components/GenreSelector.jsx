@@ -11,9 +11,9 @@ class GenreSelector extends Component {
       >
         Filtrar por gênero
         <select
-          name="genreSelector"
+          name="selectedGenre"
           value={ value }
-          onChange={ handler }
+          onChange={ (event) => handler(event) }
           data-testid="select-input"
         >
           <option

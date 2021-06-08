@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class BookmarkHandler extends Component {
   render() {
-    const { checked, onChange } = this.props;
+    const { bookmarkedOnly, onChange } = this.props;
 
     return (
       <label
@@ -15,9 +15,9 @@ class BookmarkHandler extends Component {
         <input
           type="checkbox"
           name="bookmarkedOnly"
-          checked={ checked }
+          checked={ bookmarkedOnly }
           data-testid="checkbox-input"
-          onChange={ onChange }
+          onChange={ (event) => onChange(event) }
           className="bookmark"
         />
       </label>
@@ -26,7 +26,7 @@ class BookmarkHandler extends Component {
 }
 
 BookmarkHandler.propTypes = {
-  checked: PropTypes.bool.isRequired,
+  bookmarkedOnly: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
 };
 
