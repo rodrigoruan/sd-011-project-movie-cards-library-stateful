@@ -22,7 +22,7 @@ class SearchBar extends React.Component {
             type="text"
           />
         </label>
-        <label data-testid="select-input-label">
+        <label data-testid="select-input-label" htmlFor="select">
           Filtrar por gênero:
           <select
             value={ selectedGenre }
