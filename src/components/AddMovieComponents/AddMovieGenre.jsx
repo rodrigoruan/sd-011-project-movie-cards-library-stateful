@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 class AddMovieGenre extends Component {
   render() {
+    const { genre, onGenreChange } = this.props;
     return (
       <label
         htmlFor="genre"
@@ -11,6 +12,8 @@ class AddMovieGenre extends Component {
         <select
           data-testid="genre-input"
           name="genre"
+          value={ genre }
+          onChange={ onGenreChange }
         >
           <option data-testid="genre-option" value="action">Ação</option>
           <option data-testid="genre-option" value="comedy">Comédia</option>
