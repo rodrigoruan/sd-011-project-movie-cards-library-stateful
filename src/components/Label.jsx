@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 
 class Label extends React.Component {
   render() {
-    const { alias, text, value, func } = this.props;
+    const { alias, text, value, cb } = this.props;
     return (
       <label data-testid={ `${alias}-input-label` } htmlFor={ alias }>
         { text }
         <input
           data-testid={ `${alias}-input` }
           type={ alias === 'rating' ? 'number' : 'text' }
-          name={ alias }
+          name={ alias === 'image' ? 'imagePath' : alias }
           value={ value }
-          onChange={ func }
+          onChange={ cb }
         />
       </label>
     );
@@ -23,7 +23,7 @@ Label.propTypes = {
   alias: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  func: PropTypes.func.isRequired,
+  cb: PropTypes.func.isRequired,
 };
 
 export default Label;

@@ -15,7 +15,6 @@ class AddMovie extends React.Component {
   constructor(props) {
     super(props);
     this.state = defaultState;
-    this.handleGenre = this.handleGenre.bind(this);
     this.handleState = this.handleState.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
@@ -24,11 +23,6 @@ class AddMovie extends React.Component {
     const { onClick } = this.props;
     onClick(this.state);
     this.setState(defaultState);
-  }
-
-  handleGenre({ target }) {
-    console.log(target.value);
-    this.setState({ genre: target.value });
   }
 
   handleState(e) {
@@ -40,37 +34,34 @@ class AddMovie extends React.Component {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form" action="">
-        <Label alias="title" text="Título" value={ title } func={ this.handleState } />
+        <Label alias="title" text="Título" value={ title } cb={ this.handleState } />
         <Label
           alias="subtitle"
           text="Subtítulo"
           value={ subtitle }
-          func={ this.handleState }
+          cb={ this.handleState }
         />
-        <Label
-          alias="image"
-          text="Imagem"
-          value={ imagePath }
-          func={ this.handleState }
-        />
+        <Label alias="image" text="Imagem" value={ imagePath } cb={ this.handleState } />
         <label data-testid="storyline-input-label" htmlFor="storyline-input">
           Sinopse
           <textarea
             data-testid="storyline-input"
             onChange={ this.handleState }
+            value={ storyline }
+            name="storyline"
           >
             { storyline }
           </textarea>
         </label>
-        <Label
-          alias="rating"
-          text="Avaliação"
-          value={ rating }
-          func={ this.handleState }
-        />
+        <Label alias="rating" text="Avaliação" value={ rating } cb={ this.handleState } />
         <label data-testid="genre-input-label" htmlFor="genre-input">
           Gênero
-          <select data-testid="genre-input" value={ genre } onChange={ this.handleGenre }>
+          <select
+            data-testid="genre-input"
+            value={ genre }
+            name="genre"
+            onChange={ this.handleState }
+          >
             <option data-testid="genre-option" value="action">Ação</option>
             <option data-testid="genre-option" value="comedy">Comédia</option>
             <option data-testid="genre-option" value="thriller">Suspense</option>
