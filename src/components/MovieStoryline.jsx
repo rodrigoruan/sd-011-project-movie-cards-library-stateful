@@ -5,7 +5,7 @@ class MovieStoryline extends React.Component {
   render() {
     const { value, name, onChange } = this.props;
     return (
-      <label htmlFor="true" data-testid="storyline-input-label">
+      <label htmlFor="storyline-input" data-testid="storyline-input-label">
         Sinopse
         <input
           type="textarea"
