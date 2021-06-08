@@ -43,7 +43,7 @@ class MovieLibrary extends Component {
       return movies
         .filter(({ title, subtitle, storyline }) => {
           const textToSearchFor = `${title}${subtitle}${storyline}`.toLowerCase();
-          return textToSearchFor.includes(searchText.toLowerCase())
+          return textToSearchFor.includes(searchText.toLowerCase());
         });
     }
     return movies;
