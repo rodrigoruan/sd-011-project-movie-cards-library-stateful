@@ -3,15 +3,15 @@ import React, { Component } from 'react';
 
 class AddMovie extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
-      subtitle: '',
+      // subtitle: '',
       title: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
+      // imagePath: '',
+      // storyline: '',
+      // rating: 0,
+      // genre: 'action',
     };
 
     this.onChangeHandle = this.onChangeHandle.bind(this);
@@ -22,7 +22,7 @@ class AddMovie extends Component {
 
     this.setState({
       title: value,
-    })
+    });
   }
 
   render() {
@@ -31,7 +31,8 @@ class AddMovie extends Component {
     return (
       <div>
         <form data-testid="add-movie-form">
-          <label htmlFor="title-input" data-testid="title-input-label">Título
+          <label htmlFor="title-input" data-testid="title-input-label">
+            Título
             <input
               id="title-input"
               type="text"
