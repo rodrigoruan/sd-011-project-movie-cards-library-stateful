@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Label from './Label';
+import Input from './Input';
 
 const defaultState = {
   subtitle: '',
@@ -34,14 +34,14 @@ class AddMovie extends React.Component {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form" action="">
-        <Label alias="title" text="Título" value={ title } cb={ this.handleState } />
-        <Label
+        <Input alias="title" text="Título" value={ title } cb={ this.handleState } />
+        <Input
           alias="subtitle"
           text="Subtítulo"
           value={ subtitle }
           cb={ this.handleState }
         />
-        <Label alias="image" text="Imagem" value={ imagePath } cb={ this.handleState } />
+        <Input alias="image" text="Imagem" value={ imagePath } cb={ this.handleState } />
         <label data-testid="storyline-input-label" htmlFor="storyline-input">
           Sinopse
           <textarea
@@ -53,7 +53,7 @@ class AddMovie extends React.Component {
             { storyline }
           </textarea>
         </label>
-        <Label alias="rating" text="Avaliação" value={ rating } cb={ this.handleState } />
+        <Input alias="rating" text="Avaliação" value={ rating } cb={ this.handleState } />
         <label data-testid="genre-input-label" htmlFor="genre-input">
           Gênero
           <select

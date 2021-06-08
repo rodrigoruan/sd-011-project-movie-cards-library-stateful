@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class Label extends React.Component {
+class Input extends React.Component {
   render() {
     const { alias, text, value, cb } = this.props;
     return (
@@ -19,11 +19,11 @@ class Label extends React.Component {
   }
 }
 
-Label.propTypes = {
+Input.propTypes = {
   alias: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   cb: PropTypes.func.isRequired,
 };
 
-export default Label;
+export default Input;
