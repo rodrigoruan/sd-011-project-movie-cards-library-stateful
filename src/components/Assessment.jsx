@@ -5,7 +5,7 @@ export default class Assessment extends Component {
   render() {
     const { handlerChange, value } = this.props;
     return (
-      <label htmlFor="rating-input-label" data-testid="rating-input-label">
+      <label htmlFor="rating-input" data-testid="rating-input-label">
         Avaliação
         <input
           type="number"

@@ -5,7 +5,7 @@ class TittleCard extends Component {
   render() {
     const { handlerChange, value } = this.props;
     return (
-      <label htmlFor="title-input-label" data-testid="title-input-label">
+      <label htmlFor="title-input" data-testid="title-input-label">
         Título
         <input
           type="text"

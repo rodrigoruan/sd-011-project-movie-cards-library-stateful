@@ -5,7 +5,7 @@ export default class StoryLine extends Component {
   render() {
     const { handlerChange, value } = this.props;
     return (
-      <label htmlFor="storyline-input-label" data-testid="storyline-input-label">
+      <label htmlFor="storyline-input" data-testid="storyline-input-label">
         Sinopse
         <input
           type="textarea"

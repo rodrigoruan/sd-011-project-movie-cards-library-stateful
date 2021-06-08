@@ -6,7 +6,7 @@ class Imagem extends Component {
     const { handlerChange, value } = this.props;
     return (
       <label
-        htmlFor="image-input-label"
+        htmlFor="image-input"
         data-testid="image-input-label"
       >
         Imagem

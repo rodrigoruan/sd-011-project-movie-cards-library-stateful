@@ -11,8 +11,8 @@ import TittleCard from './TittleCard';
 // import Data from '../data';
 
 class AddMovie extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       subtitle: '',
@@ -42,7 +42,7 @@ class AddMovie extends React.Component {
       subtitle: '',
       title: '',
       imagePath: '',
-      storyline: '',
+      storyLine: '',
       rating: 0,
       genre: 'action',
     });
@@ -59,7 +59,7 @@ class AddMovie extends React.Component {
         <StoryLine handlerChange={ this.handlerChange } value={ storyLine } />
         <Assessment handlerChange={ this.handlerChange } value={ rating } />
         <Genre handlerChange={ this.handlerChange } value={ genre } />
-        <Button handlerClick={ this.handlerClick } />
+        <Button onClick={ this.handlerClick } />
       </form>
     );
   }
