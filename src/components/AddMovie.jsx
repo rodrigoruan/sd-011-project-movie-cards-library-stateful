@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import MovieTitle from './MovieTitle';
 import MovieSubtitle from './MovieSubtitle';
 import MovieImage from './MovieImage';
