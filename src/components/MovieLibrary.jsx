@@ -7,7 +7,7 @@ import AddMovie from './AddMovie';
 
 class MovieLibrary extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     // this.state = {
     //   subtitle: '',
     //   title: '',
@@ -22,30 +22,22 @@ class MovieLibrary extends Component {
       bookmarkedOnly: false,
       selectedGenre: '',
       movies: props.movies,
-    }
+    };
 
     this.resetFields = this.resetFields.bind(this);
   }
 
-  resetFields() {
-    this.setState(
-      this.state = {
-        subtitle: '',
-        title: '',
-        imagePath: '',
-        storyline: '',
-        rating: 0,
-        genre: 'action',
-    })
+  resetFields(newMovies) {
+    this.setState((previousState) => ({ movies: [...previousState, newMovies] }));
   }
 
   render() {
     const { movies } = this.props;
-    const { searchText,  bookmarkedOnly, selectedGenre } = this.state;
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <div>
         <h2> My awesome movie library </h2>
-        <SearchBar 
+        <SearchBar
           searchText={ searchText }
           bookmarkedOnly={ bookmarkedOnly }
           selectedGenre={ selectedGenre }
@@ -53,7 +45,7 @@ class MovieLibrary extends Component {
         <MovieList
           movies={ movies }
         />
-        <AddMovie onClick={ this.resetFields }/>
+        <AddMovie onClick={ this.resetFields } />
       </div>
     );
   }
