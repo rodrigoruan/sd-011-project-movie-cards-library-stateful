@@ -27,13 +27,12 @@ class MovieLibrary extends React.Component {
     }
   }
 
-
   render() {
-      const { searchText, bookmarkedOnly, selectedGenre} = this.setState;
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <div>
         <SearchBar
-          searchText={ searchText } 
+          searchText={ searchText }
           onSearchTextChange={ this.changeCall }
           bookmarkedOnly={ bookmarkedOnly }
           onBookmarkedChange={ this.changeCall }
