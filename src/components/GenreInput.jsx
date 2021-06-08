@@ -1,45 +1,38 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class GenreSelector extends Component {
+class GenreInput extends Component {
   render() {
     const { value, handler } = this.props;
     return (
       <label
-        htmlFor="genreSelector"
-        data-testid="select-input-label"
+        htmlFor="genreInput"
+        data-testid="genre-input-label"
       >
-        Filtrar por gênero
+        Gênero
         <select
-          name="genreSelector"
+          name="genreInput"
           value={ value }
           onChange={ handler }
-          data-testid="select-input"
+          data-testid="genre-input"
         >
           <option
-            value=""
-            data-testid="select-option"
-          >
-            Todos
-          </option>
-
-          <option
             value="action"
-            data-testid="select-option"
+            data-testid="genre-option"
           >
             Ação
           </option>
 
           <option
             value="comedy"
-            data-testid="select-option"
+            data-testid="genre-option"
           >
             Comédia
           </option>
 
           <option
             value="thriller"
-            data-testid="select-option"
+            data-testid="genre-option"
           >
             Suspense
           </option>
@@ -50,9 +43,9 @@ class GenreSelector extends Component {
   }
 }
 
-GenreSelector.propTypes = {
+GenreInput.propTypes = {
   handler: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
 };
 
-export default GenreSelector;
+export default GenreInput;

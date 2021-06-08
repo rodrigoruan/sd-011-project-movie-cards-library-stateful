@@ -9,9 +9,10 @@ class InputText extends Component {
       inputTestId,
       labelTestId,
       value,
-      onChange,
+      handler,
       className,
     } = this.props;
+
     return (
       <label
         className="label"
@@ -24,7 +25,7 @@ class InputText extends Component {
           name={ name }
           type="text"
           value={ value }
-          onChange={ onChange }
+          onChange={ (event) => handler(event) }
           data-testid={ inputTestId }
         />
       </label>
@@ -38,7 +39,7 @@ InputText.propTypes = {
   inputTestId: PropTypes.string.isRequired,
   labelTestId: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+  handler: PropTypes.func.isRequired,
   className: PropTypes.string.isRequired,
 };
 

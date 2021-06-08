@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import InputText from './InputText';
 import InputStoryline from './InputStoryline';
 import InputRating from './InputRating';
-import GenreSelector from './GenreSelector';
+import GenreInput from './GenreInput';
 
 class AddMovie extends Component {
   constructor(props) {
@@ -22,12 +22,13 @@ class AddMovie extends Component {
     this.submitHandler = this.submitHandler.bind(this);
   }
 
-  handleChanges(state) {
-    const { target: { value } } = e;
-    this.setState({ [state]: value });
+  handleChanges(event) {
+    const { target: { name, value } } = event;
+    this.setState({ [name]: value });
   }
 
-  submitHandler(callBack) {
+  submitHandler(event, callBack) {
+    event.preventDefault();
     callBack(this.state);
     this.setState({
       subtitle: '',
@@ -43,45 +44,45 @@ class AddMovie extends Component {
     const { onClick } = this.props;
     const { state } = this;
     return (
-      <form data-testid="add-movie-form" className="input-form">
+      <form
+        data-testid="add-movie-form"
+        className="input-form"
+        onSubmit={ (event) => { this.submitHandler(event, onClick); } }
+      >
         <InputText
-          name="input-title"
+          name="title"
           label="Título"
           inputTestId="title-input"
           labelTestId="title-input-label"
           value={ state.title }
-          onChange={ this.handleChanges('title') }
+          handler={ this.handleChanges }
           className="inputText"
         />
         <InputText
-          name="input-subtitle"
+          name="subtitle"
           label="Subtítulo"
           inputTestId="subtitle-input"
           labelTestId="subtitle-input-label"
           value={ state.subtitle }
-          onChange={ this.handleChanges('subtitle') }
+          handler={ this.handleChanges }
           className="inputText"
         />
         <InputText
-          name="input-img"
+          name="imagePath"
           label="Imagem"
           inputTestId="image-input"
           labelTestId="image-input-label"
           value={ state.imagePath }
-          onChange={ this.handleChanges('imagePath') }
+          handler={ this.handleChanges }
           className="inputText"
         />
         <InputStoryline
           value={ state.storyline }
-          onChange={ this.handleChanges('storyline') }
+          handler={ this.handleChanges }
         />
-        <InputRating value={ state.rating } onChange={ this.handleChanges('rating') } />
-        <GenreSelector value={ state.genre } onChange={ this.handleChanges('rating') } />
-        <button
-          type="submit"
-          data-testid="send-button"
-          onClick={ this.submitHandler(onClick) }
-        >
+        <InputRating value={ state.rating } handler={ this.handleChanges } />
+        <GenreInput value={ state.genre } handler={ this.handleChanges } />
+        <button type="submit" data-testid="send-button">
           Adicionar filme
         </button>
       </form>
