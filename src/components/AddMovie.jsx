@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import addMovieGenre from './addMovieGenre';
 import addMovieImage from './addMovieImage';
 import addMovieRating from './addMovieRating';
 import addMovieStoryline from './addMovieStoryline';
@@ -40,6 +41,7 @@ class AddMovie extends Component {
         <addMovieImage imagePath={ imagePath } handleMovie={ this.handleMovie } />
         <addMovieStoryline storyline={ storyline } handleMovie={ this.handleMovie } />
         <addMovieRating rating={ rating } handleMovie={ this.handleMovie } />
+        <addMovieGenre genre={ genre } handleMovie={ this.handleMovie } />
       </form>
     );
   }
