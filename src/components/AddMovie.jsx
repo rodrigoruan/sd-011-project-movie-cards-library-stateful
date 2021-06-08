@@ -40,6 +40,10 @@ class AddMovie extends Component {
     });
   }
 
+  /**
+   * Consultei o repositório do Luiz Wendel para resolver a o renderInput / LabeledInput.
+   * link: https://github.com/tryber/sd-011-project-movie-cards-library-stateful/pull/7
+   */
   renderInput(labelText, id, type, inputValue) {
     return (
       <LabeledInput

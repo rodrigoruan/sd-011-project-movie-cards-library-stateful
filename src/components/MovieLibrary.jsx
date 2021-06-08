@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import MovieList from './MovieList';
 import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
-import moviesL from '../data';
 
 class MovieLibrary extends Component {
   constructor(props) {
@@ -22,19 +21,14 @@ class MovieLibrary extends Component {
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
     this.addMovie = this.addMovie.bind(this);
-    // this.filterMoviesList = this.filterMoviesList.bind(this);
   }
-
-  // filterMoviesList() {
-  //   moviesL.filter((movie) => `${movie.title} ${movie.subtitle} ${movie.storyline}`.includes(value))
-  // .filter
-  // }
 
   onSearchTextChange({ target }) {
     const { value } = target;
+    const { movies } = this.props;
     this.setState({
       searchText: value,
-      movies: moviesL.filter((movie) => {
+      movies: movies.filter((movie) => {
         const { title, subtitle, storyline } = movie;
         return `${title} ${subtitle} ${storyline}`.includes(value);
       }),
@@ -43,20 +37,26 @@ class MovieLibrary extends Component {
 
   onBookmarkedChange({ target }) {
     const { checked } = target;
+    const { movies } = this.props;
     this.setState({
       bookmarkedOnly: checked,
-      movies: checked ? moviesL.filter((movie) => movie.bookmarked) : moviesL,
+      movies: checked ? movies.filter((movie) => movie.bookmarked) : movies,
     });
   }
 
   onSelectedGenreChange({ target }) {
     const { value } = target;
+    const { movies } = this.props;
     this.setState({
       selectedGenre: value,
-      movies: value ? moviesL.filter((movie) => movie.genre === value) : moviesL,
+      movies: value ? movies.filter((movie) => movie.genre === value) : movies,
     });
   }
 
+  /**
+   * Consultei o repositório do Luiz Wendel para resolver a função addMovie.
+   * link: https://github.com/tryber/sd-011-project-movie-cards-library-stateful/pull/7
+   */
   addMovie(state) {
     this.setState((previousState) => ({
       movies: [
