@@ -1,6 +1,7 @@
 import React from 'react';
 import InputText from './InputText';
 import Textarea from './Textarea';
+import InputNumber from './InputNumber';
 
 class AddMovie extends React.Component {
   constructor(props) {
@@ -58,13 +59,18 @@ class AddMovie extends React.Component {
         <Textarea
           labelText="Sinopse"
           dataTestId="storyline-input"
-          name="imagePath"
+          name="storyline"
           value={ storyline }
           onChange={ this.handleChange }
         />
-        {
-          rating + genre
-        }
+        <InputNumber
+          labelText="Avaliação"
+          dataTestId="rating-input"
+          name="rating"
+          value={ rating }
+          onChange={ this.handleChange }
+        />
+        { genre }
       </form>
     );
   }
