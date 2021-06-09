@@ -6,7 +6,7 @@ class SearchBar extends Component {
       <>
         <p>SearchBar</p>
         <form data-testid="search-bar-form">
-          <label htmlFor="text-input" id="text-input">
+          <label htmlFor="text-input" data-testid="text-input-label">
             Inclui o texto
             <input id="text-input" type="text" data-testid="text-input" />
           </label>
