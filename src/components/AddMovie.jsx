@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import Titles from './Titles';
 import Subtitle from './Subtitle';
 import Image from './Image';
-import Gender from './Gender';
+import Sinopse from './Sinopse';
+import Avaliacao from './Avaliacao';
 
 const stateInit = {
   subtitle: '',
@@ -42,32 +43,38 @@ class AddMovie extends React.Component {
       <form
         data-testid="add-movie-form"
       >
-        <Titles functionOnChange={ this.addState } value={ title } />
-        <Subtitle functionOnChange={ this.addState } value={ subtitle } />
-        <Image functionOnChange={ this.addState } value={ imagePath } />
-        <label
-          htmlFor="storyline-input-label"
-          data-testid="storyline-input-label"
-        >
-          Sinopse
-          <textarea
-            value={ storyline }
-            data-testid="storyline-input"
-          />
+        <Titles functionOnChange={ this.actualState } value={ title } />
+        <Subtitle functionOnChange={ this.actualState } value={ subtitle } />
+        <Image functionOnChange={ this.actualState } value={ imagePath } />
+        <Sinopse functionOnChange={ this.actualState } value={ storyline } />
+        <Avaliacao functionOnChange={ this.actualState } value={ rating } />
+        <label htmlFor="genre-input-label" data-testid="genre-input-label">
+          Gênero
+          <select
+            value={ genre }
+            onChange={ this.actualState }
+            data-testid="genre-input"
+          >
+            <option
+              data-testid="genre-option"
+              value="action"
+            >
+              Ação
+            </option>
+            <option
+              data-testid="genre-option"
+              value="comedy"
+            >
+              Comédia
+            </option>
+            <option
+              data-testid="genre-option"
+              value="thriller"
+            >
+              Suspense
+            </option>
+          </select>
         </label>
-        <label
-          htmlFor="rating-input-label"
-          data-testid="rating-input-label"
-        >
-          Avaliação
-          <input
-            name="rating"
-            value={ rating }
-            type="number"
-            data-testid="rating-input"
-          />
-        </label>
-        <Gender functionOnChange={ this.addState } value={ genre } />
         <button
           type="button"
           data-testid="send-button"
