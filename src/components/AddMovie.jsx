@@ -82,7 +82,7 @@ class AddMovie extends React.Component {
         <Button
           text="Adicionar filme"
           test="send-button"
-          onClick={ () => { click(); sendMovie(); } }
+          onClick={ () => { click(); sendMovie(this.state); } }
         />
       </form>
     );

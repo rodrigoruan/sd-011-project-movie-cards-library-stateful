@@ -24,10 +24,21 @@ class MovieLibrary extends Component {
     this.setState({
       [target.name]: value,
     });
+    this.moviesFiltered();
   }
 
-  handleAddMovieClick() {
-    console.log('a');
+  handleAddMovieClick({ subtitle, title, imagePath, storyline, rating, genre }) {
+    const { movies } = this.state;
+    const newMovie = {
+      title,
+      subtitle,
+      storyline,
+      rating,
+      imagePath,
+      bookmarked: false,
+      genre,
+    };
+    this.setState({ movies: [...movies, newMovie] });
   }
 
   moviesFiltered() {
@@ -51,6 +62,7 @@ class MovieLibrary extends Component {
 
   render() {
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+    const movies = this.moviesFiltered();
     return (
       <div>
         <h2> My awesome movie library </h2>
@@ -62,7 +74,7 @@ class MovieLibrary extends Component {
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.handleChange }
         />
-        <MovieList movies={ this.moviesFiltered() } />
+        <MovieList movies={ movies } />
         <AddMovie onClick={ this.handleAddMovieClick } />
       </div>
     );
