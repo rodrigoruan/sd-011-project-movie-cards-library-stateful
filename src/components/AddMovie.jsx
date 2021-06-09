@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class AddMovie extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       subtitle: '',
       title: '',
@@ -12,26 +12,23 @@ class AddMovie extends React.Component {
       rating: 0,
       genre: 'action',
     };
+    this.stateSet = this.stateSet.bind(this);
   }
 
+  stateSet() {
+    const { onClick } = this.props;
+    onClick();
+  }
 
   render() {
-    const { onClick } = this.props;
     return (
-      console.log(this.state)
-      <form>
-      </form>
-    )
+      <form data-testid="add-movie-form">a</form>
+    );
   }
 }
 
 AddMovie.propTypes = {
-  subtitle: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  imagePath: PropTypes.string.isRequired,
-  storyline: PropTypes.string.isRequired,
-  rating: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default AddMovie;
