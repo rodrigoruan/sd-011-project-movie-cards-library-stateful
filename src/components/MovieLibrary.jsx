@@ -18,6 +18,17 @@ class MovieLibrary extends Component {
     };
 
     this.addMovie = this.addMovie.bind(this);
+    this.onChangeHandle = this.onChangeHandle.bind(this);
+  }
+
+  onChangeHandle({ target }) {
+    const { id, type, checked } = target;
+
+    const value = type === 'checkbox' ? checked : target.value;
+
+    this.setState({
+      [id]: value,
+    });
   }
 
   addMovie(newMovie) {
@@ -35,11 +46,11 @@ class MovieLibrary extends Component {
       <div>
         <SearchBar
           searchText={ searchText }
-          onSearchTextChange={ () => console.log('onSearchTextChange callback') }
+          onSearchTextChange={ this.onChangeHandle }
           bookmarkedOnly={ bookmarkedOnly }
-          onBookmarkedChange={ () => console.log('onBookmarkedChange callback') }
+          onBookmarkedChange={ this.onChangeHandle }
           selectedGenre={ selectedGenre }
-          onSelectedGenreChange={ () => console.log('onSelectedGenreChange callback') }
+          onSelectedGenreChange={ this.onChangeHandle }
         />
         <MovieList movies={ movies } />
         <AddMovie onClick={ this.addMovie } />
