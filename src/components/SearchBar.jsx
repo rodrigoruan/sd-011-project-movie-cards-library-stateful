@@ -20,22 +20,12 @@ class SearchBar extends React.Component {
   // }
 
   render() {
-    const { searchText, onSearchTextChange,
-      bookmarkedOnly, onBookmarkedChange } = this.props;
-    // const { movie: {
-    //   searchText,
-    //   onSearchTextChange,
-    //   bookmarkedOnly,
-    //   onBookmarkedChange,
-    //   selectedGenre,
-    //   onSelectedGenreChange,
-
-    // },
-    // } = this.state;
+    const {
+      searchText, onSearchTextChange, bookmarkedOnly,
+      onBookmarkedChange, selectedGenre, onSelectedGenreChange } = this.props;
 
     return (
       <div>
-
         <form data-testid="search-bar-form">
           <label htmlFor="onSearchTextChange" data-testid="text-input-label">
             Inclui o texto:
@@ -60,8 +50,22 @@ class SearchBar extends React.Component {
               id="bookmarkedOnly"
             />
           </label>
-        </form>
 
+          <label htmlFor="select-input" data-testid="select-input-label">
+            Filtrar por gênero
+            <select
+              value={ selectedGenre }
+              onChange={ onSelectedGenreChange }
+              checked={ bookmarkedOnly }
+              data-testid="select-input"
+            >
+              <option value="" data-testid="select-option">Todos</option>
+              <option value="action" data-testid="select-option">Ação</option>
+              <option value="comedy" data-testid="select-option">Comédia</option>
+              <option value="thriller" data-testid="select-option">Suspense</option>
+            </select>
+          </label>
+        </form>
       </div>
     );
   }
@@ -72,8 +76,8 @@ SearchBar.propTypes = {
   onSearchTextChange: PropTypes.func,
   bookmarkedOnly: PropTypes.bool,
   onBookmarkedChange: PropTypes.func,
-  // selectedGenre: PropTypes.string,
-  // onSelectedGenreChange: PropTypes.func,
+  selectedGenre: PropTypes.string,
+  onSelectedGenreChange: PropTypes.func,
 };
 
 SearchBar.defaultProps = {
@@ -81,8 +85,8 @@ SearchBar.defaultProps = {
   onSearchTextChange: '',
   bookmarkedOnly: '',
   onBookmarkedChange: '',
-  // selectedGenre: '',
-  // onSelectedGenreChange: '',
+  selectedGenre: '',
+  onSelectedGenreChange: '',
 };
 
 export default SearchBar;
