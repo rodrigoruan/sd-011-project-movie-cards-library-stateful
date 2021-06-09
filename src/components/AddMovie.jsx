@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Titles from './Titles';
 import Subtitle from './Subtitle';
-import Gender from './Gender';
 import Imagem from './Image';
+import Gender from './Gender';
 
 const stateInit = {
   subtitle: '',
