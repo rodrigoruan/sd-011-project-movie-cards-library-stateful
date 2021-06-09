@@ -7,8 +7,8 @@ export default class StoryLine extends Component {
     return (
       <label htmlFor="storyline-input" data-testid="storyline-input-label">
         Sinopse
-        <input
-          type="textarea"
+        <textarea
+          type="text"
           name="storyLine"
           data-testid="storyline-input"
           value={ value }

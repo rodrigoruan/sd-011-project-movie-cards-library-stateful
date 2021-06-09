@@ -31,20 +31,22 @@ export default class MovieLibrary extends Component {
   /* Realizado consulta no plantão de estudo e colegas para realizar a função filterMovies} */
   filterMovies(target) {
     const { name, value } = target;
-    const { movies } = this.props;
-    let results = movies;
+    const { movies } = this.state;
     const { bookmarkedOnly } = this.state;
+    let results = movies;
     if (name === 'searchText') {
-      results = movies.filter(({
-        title,
-        subtitle,
-        storyLine }) => `${title}${subtitle}${storyLine}`.includes(value));
+      results = movies.filter((movie) => movie.title
+        .includes(value)
+        || movie.subtitle
+          .includes(value)
+        || movie.storyLine
+          .includes(value));
     }
     if (bookmarkedOnly) {
-      results = results.filter(({ bookmarked }) => bookmarked);
+      results = results.filter(({ bookmarked }) => bookmarked === true);
     }
     if (name === 'selectedGenre') {
-      results = results.filter(({ genre }) => genre === 'selectedGenre');
+      results = results.filter(({ genre }) => genre.includes(value));
     }
     this.setState({
       [name]: value,
