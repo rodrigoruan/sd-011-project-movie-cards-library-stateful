@@ -13,7 +13,7 @@ class InputStoryline extends Component {
         <textarea
           name="storyline"
           value={ value }
-          onChange={ (event) => handler(event) }
+          onChange={ handler }
           data-testid="storyline-input"
         />
       </label>

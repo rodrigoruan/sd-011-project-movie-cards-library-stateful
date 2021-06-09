@@ -24,7 +24,9 @@ class AddMovie extends Component {
 
   handleChanges(event) {
     const { target: { name, value } } = event;
-    this.setState({ [name]: value });
+    this.setState(name === 'rating'
+      ? { [name]: parseFloat(value) }
+      : { [name]: value });
   }
 
   submitHandler(event, callBack) {

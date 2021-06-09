@@ -22,7 +22,10 @@ class MovieLibrary extends Component {
   }
 
   onClick(state) {
-    console.log(state);
+    const { movielist } = this.state;
+    const newMovie = state;
+    movielist.push(newMovie);
+    this.createMovieList();
   }
 
   async genericHandler(event) {

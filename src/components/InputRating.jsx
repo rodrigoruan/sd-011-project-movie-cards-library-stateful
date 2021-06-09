@@ -15,7 +15,7 @@ class InputRating extends Component {
           type="number"
           name="rating"
           value={ value }
-          onChange={ (event) => { handler(event); } }
+          onChange={ handler }
           className="rating"
           data-testid="rating-input"
         />
