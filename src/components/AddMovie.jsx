@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Input from './Input';
 import Textarea from './Textarea';
 import Select from './Select';
+import Button from './Button';
 import filterOptions from '../data2';
 
 class AddMovie extends React.Component {
@@ -16,6 +18,7 @@ class AddMovie extends React.Component {
       genre: '',
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange({ target }) {
@@ -23,10 +26,22 @@ class AddMovie extends React.Component {
     this.setState({ [target.name]: value });
   }
 
+  handleClick() {
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: '',
+    });
+  }
+
   render() {
+    const { handleChange: change, handleClick: click } = this;
+    const { onClick: sendMovie } = this.props;
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
     const newMovieOptions = [];
-    const handle = this.handleChange;
     filterOptions.forEach((option) => {
       const { text, value } = option;
       if (text !== 'Todos') {
@@ -35,41 +50,47 @@ class AddMovie extends React.Component {
     });
     return (
       <form data-testid="add-movie-form">
-        <Input text="Título" name="title" value={ title } change={ handle } />
-        <Input text="Subtítulo" name="subtitle" value={ subtitle } change={ handle } />
+        <Input text="Título" name="title" value={ title } change={ change } />
+        <Input text="Subtítulo" name="subtitle" value={ subtitle } change={ change } />
         <Input
           text="Imagem"
           test="image-input"
           name="imagePath"
           value={ imagePath }
-          change={ handle }
+          change={ change }
         />
         <Textarea
-          labelText="Sinopse"
-          dataTestId="storyline-input"
+          text="Sinopse"
           name="storyline"
           value={ storyline }
-          onChange={ handle }
+          change={ change }
         />
         <Input
           type="number"
           text="Avaliação"
           name="rating"
           value={ rating }
-          change={ handle }
+          change={ change }
         />
         <Select
-          labelText="Gênero"
-          labelDataTestId="genre-input-label"
+          text="Gênero"
           name="genre"
           value={ genre }
-          onChange={ handle }
-          selectDataTestId="genre-input"
+          change={ change }
           options={ newMovieOptions }
+        />
+        <Button
+          text="Adicionar filme"
+          test="send-button"
+          onClick={ () => { click(); sendMovie(); } }
         />
       </form>
     );
   }
 }
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 export default AddMovie;

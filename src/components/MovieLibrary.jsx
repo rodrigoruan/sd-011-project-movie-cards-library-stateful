@@ -15,6 +15,7 @@ class MovieLibrary extends Component {
       movies,
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleAddMovieClick = this.handleAddMovieClick.bind(this);
   }
 
   handleChange({ target }) {
@@ -22,6 +23,10 @@ class MovieLibrary extends Component {
     this.setState({
       [target.name]: value,
     });
+  }
+
+  handleAddMovieClick() {
+    console.log('a');
   }
 
   render() {
@@ -38,7 +43,7 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={ this.handleChange }
         />
         <MovieList movies={ movies } />
-        <AddMovie />
+        <AddMovie onClick={ this.handleAddMovieClick } />
       </div>
     );
   }

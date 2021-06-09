@@ -4,24 +4,23 @@ import PropTypes from 'prop-types';
 class Textarea extends React.Component {
   render() {
     const {
-      labelText,
-      dataTestId,
+      text,
       name,
       value,
-      onChange,
+      change,
     } = this.props;
     return (
       <label
         htmlFor={ name }
-        data-testid={ `${dataTestId}-label` }
+        data-testid={ `${name}-input-label` }
       >
-        { labelText }
+        { text }
         <textarea
           id={ name }
           name={ name }
           value={ value }
-          onChange={ onChange }
-          data-testid={ dataTestId }
+          onChange={ change }
+          data-testid={ `${name}-input` }
         />
       </label>
     );
@@ -29,11 +28,10 @@ class Textarea extends React.Component {
 }
 
 Textarea.propTypes = {
-  labelText: PropTypes.string.isRequired,
-  dataTestId: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+  change: PropTypes.func.isRequired,
 };
 
 export default Textarea;

@@ -5,26 +5,25 @@ import Option from './Option';
 class Select extends React.Component {
   render() {
     const {
-      labelText,
-      labelDataTestId,
+      text,
+      test,
       name,
       value,
-      onChange,
-      selectDataTestId,
+      change,
       options,
     } = this.props;
     return (
       <label
         htmlFor={ name }
-        data-testid={ labelDataTestId }
+        data-testid={ (test === '') ? `${name}-input-label` : `${test}-input-label` }
       >
-        { labelText }
+        { text }
         <select
           id={ name }
           name={ name }
           value={ value }
-          onChange={ onChange }
-          data-testid={ selectDataTestId }
+          onChange={ change }
+          data-testid={ (test === '') ? `${name}-input` : `${test}-input` }
         >
           {
             options.map((option, index) => (
@@ -41,17 +40,20 @@ class Select extends React.Component {
 }
 
 Select.propTypes = {
-  labelText: PropTypes.string.isRequired,
-  labelDataTestId: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  test: PropTypes.string,
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  selectDataTestId: PropTypes.string.isRequired,
+  change: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(PropTypes.shape({
     text: PropTypes.string,
     value: PropTypes.string,
     dataTestId: PropTypes.string,
   })).isRequired,
+};
+
+Select.defaultProps = {
+  test: '',
 };
 
 export default Select;
