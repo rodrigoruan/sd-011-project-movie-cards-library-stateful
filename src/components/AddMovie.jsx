@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
+import StoryLine from './StoryLine';
+import RatingInput from './RatingInput';
+import Genre from './Genre';
 
 export default class AddMovie extends Component {
   constructor(props) {
     super(props);
 
-    this.handleChange = this.handleChange.bind(this);
-
     this.state = {
       subtitle: '',
       title: '',
       imagePath: '',
-      /* imagePath: '',
       storyLine: '',
       rating: 0,
       genre: 'action',
- */
+
     };
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange({ target }) {
@@ -28,7 +29,7 @@ export default class AddMovie extends Component {
   }
 
   render() {
-    const { title, subtitle, imagePath } = this.state;
+    const { title, subtitle, imagePath, storyLine, rating, genre } = this.state;
 
     return (
       <form data-testid="add-movie-form">
@@ -63,6 +64,11 @@ export default class AddMovie extends Component {
             onChange={ this.handleChange }
           />
         </label>
+
+        <StoryLine value={ storyLine } handleChange={ this.handleChange } />
+        <RatingInput value={ rating } handleChange={ this.handleChange } />
+        <Genre value={ genre } handleChange={ this.handleChange } />
+
       </form>
     );
   }
