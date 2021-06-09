@@ -16,6 +16,8 @@ class MovieLibrary extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.initMovies = this.initMovies.bind(this);
+    this.filterMovies = this.filterMovies.bind(this);
+    this.newMovie = this.newMovie.bind(this);
   }
 
   componentDidMount() {
@@ -45,6 +47,18 @@ class MovieLibrary extends Component {
     return findText && findGenre && findFav;
   }
 
+  newMovie({ subtitle, title, imagePath, storyline, rating, genre }) {
+    const movie = {
+      title,
+      subtitle,
+      storyline,
+      rating,
+      imagePath,
+      genre,
+    };
+    this.setState((prevState) => ({ movies: [...prevState.movies, movie] }));
+  }
+
   render() {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
     const filtedMovies = movies.filter((movie) => this.filterMovies(movie));
@@ -60,7 +74,7 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={ this.handleChange }
         />
         <MovieList movies={ filtedMovies } />
-        <AddMovie />
+        <AddMovie onClick={ this.newMovie } />
       </div>
     );
   }

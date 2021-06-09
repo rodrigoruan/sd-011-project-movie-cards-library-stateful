@@ -21,7 +21,7 @@ class Avaliacao extends React.Component {
 }
 
 Avaliacao.propTypes = {
-  value: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired,
   handleChange: PropTypes.func.isRequired,
 };
 
