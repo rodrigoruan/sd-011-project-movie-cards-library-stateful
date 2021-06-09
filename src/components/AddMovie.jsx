@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Titles from './Titles';
 import Subtitle from './Subtitle';
-import Imagem from './Image';
+import Image from './Image';
 import Gender from './Gender';
 
 const stateInit = {
@@ -44,7 +44,7 @@ class AddMovie extends React.Component {
       >
         <Titles functionOnChange={ this.addState } value={ title } />
         <Subtitle functionOnChange={ this.addState } value={ subtitle } />
-        <Imagem functionOnChange={ this.addState } value={ imagePath } />
+        <Image functionOnChange={ this.addState } value={ imagePath } />
         <label
           htmlFor="storyline-input-label"
           data-testid="storyline-input-label"

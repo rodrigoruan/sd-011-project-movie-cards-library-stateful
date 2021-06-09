@@ -22,14 +22,13 @@ class MovieLibrary extends React.Component {
 
   onSearchTextChange({ target }) {
     const { movies } = this.props;
-    const { value } = this.props;
+    const { value } = target;
     this.setState({
       searchText: value,
-      movies: movies.filter((movie) => movie.title.includes(value)
-      || movie.subtitle.includes(value)
-      || movie.storyline.includes(value)),
+      movies: movies.filter((el) => el.title.includes(value)
+      || el.subtitle.includes(value)
+      || el.storyline.includes(value)),
     });
-    console.log(target);
   }
 
   onBookmarkedChange({ target }) {
@@ -79,7 +78,6 @@ class MovieLibrary extends React.Component {
   }
 }
 MovieLibrary.propTypes = {
-  value: PropTypes.string.isRequired,
   movies: PropTypes.arrayOf(
     PropTypes.object.isRequired,
   ).isRequired,
