@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
+import MovieList from './MovieList';
 
 class MovieLibrary extends Component {
   constructor(props) {
@@ -10,6 +11,9 @@ class MovieLibrary extends Component {
     const { movies } = this.props;
 
     this.state = {
+      searchText: '',
+      bookmarkedOnly: false,
+      selectedGenre: '',
       movies,
     };
 
@@ -25,17 +29,19 @@ class MovieLibrary extends Component {
   }
 
   render() {
+    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+
     return (
       <div>
         <SearchBar
-          searchText="Final Fantasy"
+          searchText={ searchText }
           onSearchTextChange={ () => console.log('onSearchTextChange callback') }
-          bookmarkedOnly={ false }
+          bookmarkedOnly={ bookmarkedOnly }
           onBookmarkedChange={ () => console.log('onBookmarkedChange callback') }
-          selectedGenre="comedy"
+          selectedGenre={ selectedGenre }
           onSelectedGenreChange={ () => console.log('onSelectedGenreChange callback') }
         />
-
+        <MovieList movies={ movies } />
         <AddMovie onClick={ this.addMovie } />
       </div>
     );
