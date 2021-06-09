@@ -24,13 +24,14 @@ class AddMovie extends Component {
 
   handleChanges(event) {
     const { target: { name, value } } = event;
-    this.setState(name === 'rating'
-      ? { [name]: parseFloat(value) }
-      : { [name]: value });
+    this.setState(
+      name === 'rating'
+        ? { [name]: parseFloat(value) }
+        : { [name]: value },
+    );
   }
 
-  submitHandler(event, callBack) {
-    event.preventDefault();
+  submitHandler(callBack) {
     callBack(this.state);
     this.setState({
       subtitle: '',
@@ -49,7 +50,6 @@ class AddMovie extends Component {
       <form
         data-testid="add-movie-form"
         className="input-form"
-        onSubmit={ (event) => { this.submitHandler(event, onClick); } }
       >
         <InputText
           name="title"
@@ -78,13 +78,14 @@ class AddMovie extends Component {
           handler={ this.handleChanges }
           className="inputText"
         />
-        <InputStoryline
-          value={ state.storyline }
-          handler={ this.handleChanges }
-        />
+        <InputStoryline value={ state.storyline } handler={ this.handleChanges } />
         <InputRating value={ state.rating } handler={ this.handleChanges } />
         <GenreInput value={ state.genre } handler={ this.handleChanges } />
-        <button type="submit" data-testid="send-button">
+        <button
+          type="button"
+          data-testid="send-button"
+          onClick={ () => this.submitHandler(onClick) }
+        >
           Adicionar filme
         </button>
       </form>

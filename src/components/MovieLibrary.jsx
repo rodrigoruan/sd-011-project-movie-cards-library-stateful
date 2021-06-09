@@ -12,7 +12,6 @@ class MovieLibrary extends Component {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
-      movielist: movies,
       movies,
     };
 
@@ -22,10 +21,9 @@ class MovieLibrary extends Component {
   }
 
   onClick(state) {
-    const { movielist } = this.state;
+    const { movies } = this.state;
     const newMovie = state;
-    movielist.push(newMovie);
-    this.createMovieList();
+    this.setState({ movies: [...movies, newMovie] });
   }
 
   async genericHandler(event) {
@@ -36,12 +34,11 @@ class MovieLibrary extends Component {
         : { bookmarkedOnly: checked },
     );
     await this.createMovieList();
-    console.log(this.state);
   }
 
-  async createMovieList() {
-    const { bookmarkedOnly, selectedGenre, searchText, movielist } = this.state;
-    let list = movielist;
+  createMovieList() {
+    const { bookmarkedOnly, selectedGenre, searchText, movies } = this.state;
+    let list = movies;
     if (bookmarkedOnly) {
       list = list.filter((value) => value.bookmarked);
     }
@@ -58,7 +55,7 @@ class MovieLibrary extends Component {
       ));
     }
 
-    await this.setState({ movies: list });
+    return list;
   }
 
   render() {
@@ -66,7 +63,6 @@ class MovieLibrary extends Component {
       searchText,
       bookmarkedOnly,
       selectedGenre,
-      movies,
     } = this.state;
 
     return (
@@ -80,7 +76,7 @@ class MovieLibrary extends Component {
           onSearchTextChange={ this.genericHandler }
         />
 
-        <MovieList movies={ movies } />
+        <MovieList movies={ this.createMovieList() } />
 
         <AddMovie onClick={ this.onClick } />
       </div>
