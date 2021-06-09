@@ -25,7 +25,7 @@ class InputText extends Component {
           name={ name }
           type="text"
           value={ value }
-          onChange={ (event) => handler(event) }
+          onChange={ handler }
           data-testid={ inputTestId }
         />
       </label>

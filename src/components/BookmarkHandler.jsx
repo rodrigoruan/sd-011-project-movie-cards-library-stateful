@@ -17,7 +17,7 @@ class BookmarkHandler extends Component {
           name="bookmarkedOnly"
           checked={ bookmarkedOnly }
           data-testid="checkbox-input"
-          onChange={ (event) => onChange(event) }
+          onChange={ onChange }
           className="bookmark"
         />
       </label>

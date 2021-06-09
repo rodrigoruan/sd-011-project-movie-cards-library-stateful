@@ -6,14 +6,14 @@ class GenreSelector extends Component {
     const { value, handler } = this.props;
     return (
       <label
-        htmlFor="genreSelector"
+        htmlFor="selectedGenre"
         data-testid="select-input-label"
       >
         Filtrar por gênero
         <select
           name="selectedGenre"
           value={ value }
-          onChange={ (event) => handler(event) }
+          onChange={ handler }
           data-testid="select-input"
         >
           <option

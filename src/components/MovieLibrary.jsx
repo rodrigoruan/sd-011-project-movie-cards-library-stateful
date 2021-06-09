@@ -12,26 +12,50 @@ class MovieLibrary extends Component {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
+      movielist: movies,
       movies,
     };
 
     this.onClick = this.onClick.bind(this);
-    this.bookmarkHandler = this.bookmarkHandler.bind(this);
     this.genericHandler = this.genericHandler.bind(this);
+    this.createMovieList = this.createMovieList.bind(this);
   }
 
   onClick(state) {
     console.log(state);
   }
 
-  bookmarkHandler(event) {
-    const { target: { checked } } = event;
-    this.setState({ bookmarkedOnly: checked });
+  async genericHandler(event) {
+    const { target: { value, name, checked } } = event;
+    await this.setState(
+      name !== 'bookmarkedOnly'
+        ? { [name]: value }
+        : { bookmarkedOnly: checked },
+    );
+    await this.createMovieList();
+    console.log(this.state);
   }
 
-  genericHandler(event) {
-    const { target: { value, name } } = event;
-    this.setState({ [name]: value });
+  async createMovieList() {
+    const { bookmarkedOnly, selectedGenre, searchText, movielist } = this.state;
+    let list = movielist;
+    if (bookmarkedOnly) {
+      list = list.filter((value) => value.bookmarked);
+    }
+
+    if (selectedGenre !== '') {
+      list = list.filter((value) => value.genre === selectedGenre);
+    }
+
+    if (searchText !== '') {
+      list = list.filter((object) => (
+        object.title.toUpperCase().includes(searchText.toUpperCase())
+          || object.subtitle.toUpperCase().includes(searchText.toUpperCase())
+          || object.storyline.toUpperCase().includes(searchText.toUpperCase())
+      ));
+    }
+
+    await this.setState({ movies: list });
   }
 
   render() {
@@ -48,7 +72,7 @@ class MovieLibrary extends Component {
           searchText={ searchText }
           bookmarkedOnly={ bookmarkedOnly }
           selectedGenre={ selectedGenre }
-          onBookmarkedChange={ this.bookmarkHandler }
+          onBookmarkedChange={ this.genericHandler }
           onSelectedGenreChange={ this.genericHandler }
           onSearchTextChange={ this.genericHandler }
         />
