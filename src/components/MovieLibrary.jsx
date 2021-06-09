@@ -1,5 +1,6 @@
 // implement AddMovie component here
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
 import AddMovie from './AddMovie';
@@ -12,20 +13,19 @@ class MovieLibrary extends Component {
 
     this.state = {
       searchText: '',
-      bookmarkedOnly: false,
-      selectedGenre: '',
+      // bookmarkedOnly: false,
+      // selectedGenre: '',
       movies,
-    }
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.newMovie = this.newMovie.bind(this);
   }
 
   handleChange({ target }) {
-    
-    const { name, value } = target;
+    const { name } = target;
 
-    // const value = target.type === 'checkbox' ? target.checked : target.value;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
 
     this.setState({
       [name]: value,
@@ -33,32 +33,40 @@ class MovieLibrary extends Component {
   }
 
   newMovie(object) {
-
     this.setState((prevState) => ({
       movies: [...prevState.movies, object],
-    }))
+    }));
   }
 
   render() {
-    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;  
+    const { searchText, movies } = this.state;
 
     return (
       <div>
         <h2> My awesome movie library </h2>
         <SearchBar
-        searchText={searchText}
-        onSearchTextChange={this.handleChange}
+          searchText={ searchText }
+          onSearchTextChange={ this.handleChange }
         // bookmarkedOnly={bookmarkedOnly}
         // onBookmarkedChange={this.handleChange}
         // selectedGenre={selectedGenre}
         // onSelectedGenreChange={this.handleChange}
         />
         <MovieList movies={ movies } />
-        <AddMovie onClick={this.newMovie} />
-
+        <AddMovie onClick={ this.newMovie } />
       </div>
     );
   }
 }
+
+MovieLibrary.propTypes = {
+  movies: PropTypes.shape({
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    storyline: PropTypes.string,
+    rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    imagePath: PropTypes.string,
+  }).isRequired,
+};
 
 export default MovieLibrary;
