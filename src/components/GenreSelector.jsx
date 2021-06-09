@@ -8,6 +8,7 @@ class GenreSelector extends Component {
       <label
         htmlFor="selectedGenre"
         data-testid="select-input-label"
+        className="label"
       >
         Filtrar por gênero
         <select
@@ -15,6 +16,7 @@ class GenreSelector extends Component {
           value={ value }
           onChange={ handler }
           data-testid="select-input"
+          className="select"
         >
           <option
             value=""

@@ -4,6 +4,7 @@ import InputText from './InputText';
 import InputStoryline from './InputStoryline';
 import InputRating from './InputRating';
 import GenreInput from './GenreInput';
+import './Styles/AddMovie.css';
 
 class AddMovie extends Component {
   constructor(props) {
@@ -58,7 +59,7 @@ class AddMovie extends Component {
           labelTestId="title-input-label"
           value={ state.title }
           handler={ this.handleChanges }
-          className="inputText"
+          className="input-text"
         />
         <InputText
           name="subtitle"
@@ -67,7 +68,7 @@ class AddMovie extends Component {
           labelTestId="subtitle-input-label"
           value={ state.subtitle }
           handler={ this.handleChanges }
-          className="inputText"
+          className="input-text"
         />
         <InputText
           name="imagePath"
@@ -76,7 +77,7 @@ class AddMovie extends Component {
           labelTestId="image-input-label"
           value={ state.imagePath }
           handler={ this.handleChanges }
-          className="inputText"
+          className="input-text"
         />
         <InputStoryline value={ state.storyline } handler={ this.handleChanges } />
         <InputRating value={ state.rating } handler={ this.handleChanges } />
@@ -85,6 +86,7 @@ class AddMovie extends Component {
           type="button"
           data-testid="send-button"
           onClick={ () => this.submitHandler(onClick) }
+          className="submit"
         >
           Adicionar filme
         </button>

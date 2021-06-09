@@ -11,15 +11,16 @@ class BookmarkHandler extends Component {
         data-testid="checkbox-input-label"
         className="label"
       >
-        Mostrar somente favoritos
         <input
           type="checkbox"
           name="bookmarkedOnly"
+          id="bookmarkedOnly"
           checked={ bookmarkedOnly }
           data-testid="checkbox-input"
           onChange={ onChange }
           className="bookmark"
         />
+        Mostrar somente favoritos
       </label>
     );
   }

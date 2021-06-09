@@ -15,6 +15,7 @@ class GenreInput extends Component {
           value={ value }
           onChange={ handler }
           data-testid="genre-input"
+          className="select"
         >
           <option
             value="action"

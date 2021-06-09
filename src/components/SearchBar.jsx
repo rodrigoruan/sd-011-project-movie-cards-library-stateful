@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import InputText from './InputText';
 import BookmarkHandler from './BookmarkHandler';
 import GenreSelector from './GenreSelector';
+import './Styles/SearchBar.css';
 
 class SearchBar extends Component {
   render() {
@@ -15,7 +16,7 @@ class SearchBar extends Component {
       onSelectedGenreChange,
     } = this.props;
     return (
-      <form data-testid="search-bar-form">
+      <form data-testid="search-bar-form" className="input-form">
         <InputText
           name="searchText"
           label="Inclui o texto:"
@@ -23,7 +24,7 @@ class SearchBar extends Component {
           labelTestId="text-input-label"
           value={ searchText }
           handler={ onSearchTextChange }
-          className="searchText"
+          className="input-text"
         />
 
         <BookmarkHandler
