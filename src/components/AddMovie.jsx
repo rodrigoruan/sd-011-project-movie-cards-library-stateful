@@ -1,18 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Titles from './Titles';
+import Subtitle from './Subtitle';
+import Gender from './Gender';
+import Imagem from './Image';
+
+const stateInit = {
+  subtitle: '',
+  title: '',
+  imagePath: '',
+  storyline: '',
+  rating: 0,
+  genre: 'action',
+};
 
 class AddMovie extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      subtitle: '',
-      title: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
-    };
+    this.state = stateInit;
+    this.handleClick = this.handleClick.bind(this);
+    this.actualState = this.actualState.bind(this);
+  }
+
+  handleClick() {
+    const { onClick } = this.props;
+    const state = this;
+    onClick(state);
+    this.setState(stateInit);
+  }
+
+  actualState({ target }) {
+    const { name, value } = target;
+    this.setState({
+      [name]: value,
+    });
   }
 
   render() {
@@ -21,23 +42,16 @@ class AddMovie extends React.Component {
       <form
         data-testid="add-movie-form"
       >
-        <Titles />
-        <label
-          htmlFor="image-input-label"
-          data-testid="image-input-label"
-        >
-          Imagem
-          <input
-            type="text"
-            data-testid="image-input"
-          />
-        </label>
+        <Titles functionOnChange={ this.addState } value={ title } />
+        <Subtitle functionOnChange={ this.addState } value={ subtitle } />
+        <Imagem functionOnChange={ this.addState } value={ imagePath } />
         <label
           htmlFor="storyline-input-label"
           data-testid="storyline-input-label"
         >
           Sinopse
           <textarea
+            value={ storyline }
             data-testid="storyline-input"
           />
         </label>
@@ -48,11 +62,19 @@ class AddMovie extends React.Component {
           Avaliação
           <input
             name="rating"
+            value={ rating }
             type="number"
             data-testid="rating-input"
           />
         </label>
-
+        <Gender functionOnChange={ this.addState } value={ genre } />
+        <button
+          type="button"
+          data-testid="send-button"
+          onClick={ this.handleClick }
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }
