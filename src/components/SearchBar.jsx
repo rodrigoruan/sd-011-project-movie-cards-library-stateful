@@ -6,7 +6,9 @@ class SearchBar extends Component {
       // operador de fragmento
       <>
         <p>SearchBar</p>
-        <form data-testid="search-bar-form" />
+        <form data-testid="search-bar-form">
+          <input type="text" data-testid="text-input" />
+        </form>
       </>
     );
   }
