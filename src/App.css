@@ -81,3 +81,19 @@ body {
   justify-content: flex-end;
   padding: 12px 20px;
 }
+
+.form-all {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.form-search {
+  margin-top: 2%;
+}
+
+input, textarea, button {
+  border-radius: 10px;
+  margin-left: 5px;
+}

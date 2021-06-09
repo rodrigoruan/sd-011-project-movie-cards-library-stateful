@@ -8,6 +8,7 @@ class AddSinopse extends React.Component {
       <label
         htmlFor="sinopse"
         data-testid="storyline-input-label"
+        className="form-all"
       >
         Sinopse
         <textarea
