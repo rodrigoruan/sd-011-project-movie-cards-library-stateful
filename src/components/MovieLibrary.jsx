@@ -26,33 +26,28 @@ export default class MovieLibrary extends Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
-    }, () => this.filterMovies(target));
+    });
   }
 
-  /* Realizado consulta no plantão de estudo e colegas para realizar a função filterMovies} */
-  filterMovies(target) {
-    const { name, value } = target;
-    const { movies } = this.state;
-    const { bookmarkedOnly } = this.state;
+  filterMovies() {
+    // const { name, value } = target;
+    const { movies, searchText, selectedGenre, bookmarkedOnly } = this.state;
     let results = movies;
-    if (name === 'searchText') {
+    if (searchText) {
       results = movies.filter((movie) => movie.title
-        .includes(value)
+        .includes(searchText)
         || movie.subtitle
-          .includes(value)
-        || movie.storyLine
-          .includes(value));
+          .includes(searchText)
+        || movie.storyline
+          .includes(searchText));
     }
     if (bookmarkedOnly) {
       results = results.filter(({ bookmarked }) => bookmarked);
     }
-    if (name === 'selectedGenre') {
-      results = results.filter(({ genre }) => genre.includes(value));
+    if (selectedGenre) {
+      results = results.filter(({ genre }) => genre.includes(selectedGenre));
     }
-    this.setState({
-      [name]: value,
-      movies: results,
-    });
+    return results;
   }
 
   renderMovies(addMovie) {
@@ -63,7 +58,7 @@ export default class MovieLibrary extends Component {
   }
 
   render() {
-    const { searchText, bookmarkedOnly, selectedGenre, movies: movie } = this.state;
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <>
         <SearchBar
@@ -74,7 +69,7 @@ export default class MovieLibrary extends Component {
           onSearchTextChange={ this.handlerChange }
           onSelectedGenreChange={ this.handlerChange }
         />
-        <MovieList movies={ movie } />
+        <MovieList movies={ this.filterMovies() } />
         <AddMovie onClick={ this.renderMovies } />
       </>
     );
