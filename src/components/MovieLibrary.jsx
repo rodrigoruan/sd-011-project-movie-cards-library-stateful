@@ -23,11 +23,12 @@ class MovieLibrary extends React.Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
-    });
+    }, () => this.handleFilter());
   }
 
   handleFilter() {
-    const { movies, searchText, bookmarkedOnly, selectedGenre } = this.state;
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+    const { movies } = this.props;
     let filtered = movies;
 
     if (searchText) {
@@ -45,7 +46,9 @@ class MovieLibrary extends React.Component {
       filtered = movies.filter(({ genre }) => genre === selectedGenre);
     }
 
-    return filtered;
+    this.setState({
+      movies: filtered,
+    });
   }
 
   renderMovie(movie) {
