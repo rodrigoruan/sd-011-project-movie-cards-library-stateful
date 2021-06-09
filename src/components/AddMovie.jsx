@@ -1,48 +1,58 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 export default class AddMovie extends Component {
   constructor(props) {
     super(props);
 
+    this.handleChange = this.handleChange.bind(this);
+
     this.state = {
       subtitle: '',
       title: '',
       imagePath: '',
-      storyline: '',
+      storyLine: '',
       rating: 0,
       genre: 'action',
 
     };
-    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  handleInputChange(event) {
+  handleChange({ target }) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+
     this.setState({
-      title: event.target.value,
+      [name]: value,
     });
   }
 
   render() {
-    const { onClick } = this.props;
-    const { title } = this.state;
+    const { title, subtitle } = this.state;
+
     return (
       <form data-testid="add-movie-form">
         <label htmlFor="title-input" data-testid="title-input-label">
           Título
           <input
+            name="title"
             type="text"
             value={ title }
-            onChange={ this.handleInputChange }
             data-testid="title-input"
+            onChange={ this.handleChange }
+          />
+        </label>
+        <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
+          Subtítulo
+          <input
+            name="subtitle"
+            type="text"
+            value={ subtitle }
+            data-testid="subtitle-input"
+            onChange={ this.handleChange }
+
           />
         </label>
       </form>
-
     );
   }
 }
-
-AddMovie.prototype = {
-  onClick: PropTypes.func.isRequired,
-};
