@@ -10,10 +10,11 @@ export default class AddMovie extends Component {
       subtitle: '',
       title: '',
       imagePath: '',
+      /* imagePath: '',
       storyLine: '',
       rating: 0,
       genre: 'action',
-
+ */
     };
   }
 
@@ -27,7 +28,7 @@ export default class AddMovie extends Component {
   }
 
   render() {
-    const { title, subtitle } = this.state;
+    const { title, subtitle, imagePath } = this.state;
 
     return (
       <form data-testid="add-movie-form">
@@ -50,6 +51,16 @@ export default class AddMovie extends Component {
             data-testid="subtitle-input"
             onChange={ this.handleChange }
 
+          />
+        </label>
+        <label htmlFor="image-input" data-testid="image-input-label">
+          Imagem
+          <input
+            name="imagePath"
+            type="text"
+            data-testid="image-input"
+            value={ imagePath }
+            onChange={ this.handleChange }
           />
         </label>
       </form>
