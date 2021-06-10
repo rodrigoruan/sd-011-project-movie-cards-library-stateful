@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class SearchBar extends Component {
   render() {
@@ -12,7 +13,9 @@ class SearchBar extends Component {
     } = this.props;
 
     return (
-      <p>asad</p>
+      <form data-testid="search-bar-form">
+
+      </form>
     );
   }
 }
