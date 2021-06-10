@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
-import AddMovie from './components/AddMovie';
+import MovieLibrary from './components/MovieLibrary';
 import './App.css';
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <Header />
       <SearchBar />
-      <AddMovie />
+      <MovieLibrary movies={ movies } />
     </div>
   );
 }
