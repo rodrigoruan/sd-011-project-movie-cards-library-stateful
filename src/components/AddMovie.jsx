@@ -48,7 +48,6 @@ class AddMovie extends Component {
   render() {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
-
       // 8 - Renderize um input do tipo texto para obter título do novo
       <form data-testid="add-movie-form">
         <LabelInput
@@ -59,7 +58,6 @@ class AddMovie extends Component {
           valueInput={ title }
           funcInput={ this.handleChange }
         />
-
         {/* 9 - Renderize um input do tipo texto para obter subtítulo do novo fime */}
         <LabelInput
           id="subtitle-input-label"
@@ -69,7 +67,6 @@ class AddMovie extends Component {
           valueInput={ subtitle }
           funcInput={ this.handleChange }
         />
-
         {/* 10 - Renderize um input do tipo texto para obter imagem do novo fime */}
         <LabelInput
           id="image-input-label"
@@ -79,13 +76,8 @@ class AddMovie extends Component {
           valueInput={ imagePath }
           funcInput={ this.handleChange }
         />
-
         {/* 11 - Renderize uma textarea para obter a sinopse do novo filme */}
-        <LabelTextArea
-          valueInput={ storyline }
-          func={ this.handleChange }
-        />
-
+        <LabelTextArea valueInput={ storyline } func={ this.handleChange } />
         {/* 12 - Renderize um input do tipo number para obter avaliação do novo filme */}
         <LabelNumber
           id="rating-input-label"
@@ -95,13 +87,8 @@ class AddMovie extends Component {
           valueInput={ rating }
           funcInput={ this.handleChange }
         />
-
         {/* 13 - Renderize um select para selecionar o gênero do novo filme */}
-        <LabelSelect
-          valueSelect={ genre }
-          func={ this.handleChange }
-        />
-
+        <LabelSelect valueSelect={ genre } func={ this.handleChange } />
         {/* 14 - Renderize um botão para fazer uso dos dados do novo filme */}
         <Button clickFunction={ this.handleSubmit } />
       </form>
