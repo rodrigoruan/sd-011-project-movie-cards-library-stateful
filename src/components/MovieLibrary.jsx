@@ -10,6 +10,7 @@ class MovieLibrary extends Component {
   // }
 
   render() {
+    // const { movies } = this.props;
     return (
       <div>
         <h2> My awesome movie library </h2>
@@ -20,5 +21,13 @@ class MovieLibrary extends Component {
     );
   }
 }
+
+MovieLibrary.propTypes = {
+  // movies: PropTypes.arrayOf,
+};
+
+MovieLibrary.defaultProps = {
+  movies: {},
+};
 
 export default MovieLibrary;
