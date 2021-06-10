@@ -4,26 +4,33 @@ import GenericFormInput from './GenericFormInput';
 import AddMovieGenreSelect from './AddMovieGenreSelect';
 import AddMovieTextarea from './AddMovieTextarea';
 
+const initialState = {
+  subtitle: '',
+  title: '',
+  imagePath: '',
+  storyline: '',
+  rating: 0,
+  genre: 'action',
+};
+
 export default class AddMovie extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      subtitle: '',
-      title: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
-    };
-
+    this.state = { ...initialState };
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleInputChange({ target }) {
     const { value } = target;
     const name = target.name === 'image' ? 'imagePath' : target.name;
     this.setState({ [name]: value });
+  }
+
+  handleClick() {
+    const { onClick } = this.props;
+    onClick(this.state);
+    this.setState({ ...initialState });
   }
 
   render() {
@@ -64,6 +71,9 @@ export default class AddMovie extends React.Component {
           selectedGenre={ genre }
           onChange={ this.handleInputChange }
         />
+        <button type="button" data-testid="send-button" onClick={ this.handleClick }>
+          Adicionar filme
+        </button>
       </form>
     );
   }
