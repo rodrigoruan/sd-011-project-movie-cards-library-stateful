@@ -2,50 +2,46 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 
 class AddMovie extends React.Component {
-  // constructor
-
-  // this.state
-  // subtitle: PropTypes.string,
-  // title: PropTypes.string,
-  // imagePath: PropTypes.string,
-  // storyline: PropTypes.string,
-  // rating: PropTypes.number,
-  // genre: PropTypes.string,
-
-  // defaultstate
-  // subtitle: '',
-  // title: '',
-  // imagePath: '',
-  // storyline: '',
-  // rating: 0,
-  // genre: 'action',
+  constructor() {
+    super();
+    this.state = {
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    };
+  }
 
   render() {
+    // const { onClick } = this.props;
+    const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
         <label htmlFor="title-input" data-testid="title-input-label">
           Título
-          <input type="text" data-testid="title-input" />
+          <input type="text" value={ title } data-testid="title-input" />
         </label>
         <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
           Subtítulo
-          <input type="text" data-testid="subtitle-input" />
+          <input type="text" value={ subtitle } data-testid="subtitle-input" />
         </label>
         <label htmlFor="image-input" data-testid="image-input-label">
           Imagem
-          <input type="text" data-testid="image-input" />
+          <input type="text" value={ imagePath } data-testid="image-input" />
         </label>
         <label htmlFor="storyline-input" data-testid="storyline-input-label">
           Sinopse
-          <textarea data-testid="storyline-input" />
+          <textarea value={ storyline } data-testid="storyline-input" />
         </label>
         <label htmlFor="rating-input" data-testid="rating-input-label">
           Avaliação
-          <input type="number" data-testid="rating-input" />
+          <input type="number" value={ rating } data-testid="rating-input" />
         </label>
         <label htmlFor="storyline-input" data-testid="genre-input-label">
           Gênero
-          <select data-testid="genre-input">
+          <select value={ genre } data-testid="genre-input">
             <option value="action" data-testid="genre-option">Ação</option>
             <option value="comedy" data-testid="genre-option">Comédia</option>
             <option value="thriller" data-testid="genre-option">Suspense</option>
@@ -57,12 +53,15 @@ class AddMovie extends React.Component {
   }
 }
 
+export default AddMovie;
+
 AddMovie.propTypes = {
   // onClick: PropTypes.func,
 };
 
 AddMovie.defaultProps = {
-  onClick: '()',
+  onClick: () => {},
 };
 
-export default AddMovie;
+// Fontes consultadas:
+// https://www.pluralsight.com/guides/how-to-use-react-to-set-the-value-of-an-input
