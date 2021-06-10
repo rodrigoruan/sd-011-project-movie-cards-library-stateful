@@ -1,6 +1,6 @@
-/* eslint-disable max-lines-per-function */
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import SearchBarGenreSelect from './SearchBarGenreSelect';
 
 export default function SearchBar(props) {
   const {
@@ -36,21 +36,19 @@ export default function SearchBar(props) {
           onChange={ onBookmarkedChange }
         />
       </label>
-      <label htmlFor="genreFilter" data-testid="select-input-label">
-        Filtrar por gênero
-        <select
-          name="genreFilter"
-          id="genreFilter"
-          data-testid="select-input"
-          value={ selectedGenre }
-          onChange={ onSelectedGenreChange }
-        >
-          <option data-testid="select-option" value="">Todos</option>
-          <option data-testid="select-option" value="action">Ação</option>
-          <option data-testid="select-option" value="comedy">Comédia</option>
-          <option data-testid="select-option" value="thriller">Suspense</option>
-        </select>
-      </label>
+      <SearchBarGenreSelect
+        selectedGenre={ selectedGenre }
+        onSelectedGenreChange={ onSelectedGenreChange }
+      />
     </form>
   );
 }
+
+SearchBar.propTypes = {
+  searchText: PropTypes.string.isRequired,
+  onSearchTextChange: PropTypes.func.isRequired,
+  bookmarkedOnly: PropTypes.bool.isRequired,
+  onBookmarkedChange: PropTypes.func.isRequired,
+  selectedGenre: PropTypes.string.isRequired,
+  onSelectedGenreChange: PropTypes.func.isRequired,
+};
