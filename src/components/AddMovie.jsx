@@ -5,6 +5,7 @@ import Subtitle from './Subtitle';
 import Image from './Image';
 import Sinopse from './Sinopse';
 import Avaliacao from './Avaliacao';
+import GenreInput from './GenreInput';
 
 const stateInit = {
   subtitle: '',
@@ -30,8 +31,8 @@ class AddMovie extends React.Component {
     this.setState(stateInit);
   }
 
-  actualState({ target }) {
-    const { name, value } = target;
+  actualState(event) {
+    const { name, value } = event.target;
     this.setState({
       [name]: value,
     });
@@ -48,33 +49,7 @@ class AddMovie extends React.Component {
         <Image onChange={ this.actualState } value={ imagePath } />
         <Sinopse onChange={ this.actualState } value={ storyline } />
         <Avaliacao onChange={ this.actualState } value={ rating } />
-        <label htmlFor="genre-input-label" data-testid="genre-input-label">
-          Gênero
-          <select
-            value={ genre }
-            onChange={ this.actualState }
-            data-testid="genre-input"
-          >
-            <option
-              data-testid="genre-option"
-              value="action"
-            >
-              Ação
-            </option>
-            <option
-              data-testid="genre-option"
-              value="comedy"
-            >
-              Comédia
-            </option>
-            <option
-              data-testid="genre-option"
-              value="thriller"
-            >
-              Suspense
-            </option>
-          </select>
-        </label>
+        <GenreInput onChange={ this.actualState } value={ genre } />
         <button
           type="submit"
           data-testid="send-button"
