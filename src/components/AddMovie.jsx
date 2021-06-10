@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import GenericFormInput from './GenericFormInput';
 import AddMovieGenreSelect from './AddMovieGenreSelect';
+import AddMovieTextarea from './AddMovieTextarea';
 
 export default class AddMovie extends React.Component {
   constructor(props) {
@@ -51,16 +52,7 @@ export default class AddMovie extends React.Component {
           labelText="Imagem"
           onChange={ this.handleInputChange }
         />
-        <label htmlFor="storyline" data-testid="storyline-input-label">
-          Sinopse
-          <textarea
-            name="storyline"
-            id="storyline"
-            data-testid="storyline-input"
-            value={ storyline }
-            onChange={ this.handleInputChange }
-          />
-        </label>
+        <AddMovieTextarea value={ storyline } onChange={ this.handleInputChange } />
         <GenericFormInput
           type="number"
           name="rating"
