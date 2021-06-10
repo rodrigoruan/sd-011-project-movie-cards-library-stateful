@@ -6,7 +6,16 @@ class AddMovie extends Component {
     return (
       <div>
         <p>Add Movie</p>
-        <form data-testid="add-movie-form" />
+        <form data-testid="add-movie-form">
+          <label htmlFor="title-input" data-testid="title-input-label">
+            Título
+            <input id="title-input" data-testid="title-input" />
+          </label>
+          <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
+            Subtítulo
+            <input id="subtitle-input" data-testid="subtitle-input" />
+          </label>
+        </form>
       </div>
     );
   }
