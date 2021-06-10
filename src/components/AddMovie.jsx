@@ -30,6 +30,24 @@ class AddMovie extends Component {
     });
   }
 
+  AddInput(name, type, value, onChange) {
+    let id;
+    if (name === 'imagePath') {
+      id = 'image-input';
+    } else {
+      id = `${name}-input`;
+    }
+    return (
+      <input
+        name={ name }
+        type={ type }
+        value={ value }
+        onChange={ onChange }
+        data-testid={ id }
+      />
+    );
+  }
+
   render() {
     const { addMovie } = this.props;
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
