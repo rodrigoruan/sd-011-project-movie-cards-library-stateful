@@ -20,7 +20,7 @@ class AddMovie extends React.Component {
     onClick(this.state);
   }
 
-  inputTitle() {
+  inputTitle(title) {
     return (
       <label data-testid="title-input-label" htmlFor="text">
         Título
@@ -34,7 +34,7 @@ class AddMovie extends React.Component {
     );
   }
 
-  inputSubtitle() {
+  inputSubtitle(subtitle) {
     return (
       <label data-testid="subtitle-input-label" htmlFor="text">
         Subtítulo
@@ -48,7 +48,7 @@ class AddMovie extends React.Component {
     );
   }
 
-  inputStoryline() {
+  inputStoryline(storyline) {
     return (
       <label data-testid="storyline-input-label" htmlFor="text">
         Sinopse
@@ -61,7 +61,7 @@ class AddMovie extends React.Component {
     );
   }
 
-  inputImage() {
+  inputImage(imagePath) {
     return (
       <label data-testid="image-input-label" htmlFor="text">
         Imagem
@@ -116,7 +116,13 @@ class AddMovie extends React.Component {
         {this.inputImage(imagePath)}
         {this.inputRating(rating)}
         {this.inputGenre(genre)}
-        <button type="button" data-testid="send-button">Adicionar filme</button>
+        <button
+          type="button"
+          data-testid="send-button"
+          onClick={ this.stateSet }
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }
