@@ -25,8 +25,7 @@ class AddMovie extends React.Component {
 
   handleClick() {
     const { onClick } = this.props;
-    const state = this;
-    onClick(state);
+    onClick(this.state);
     this.setState(stateInit);
   }
 
@@ -52,7 +51,7 @@ class AddMovie extends React.Component {
           Gênero
           <select
             value={ genre }
-            onChange={ this.actualState }
+            functionOnChange={ this.actualState }
             data-testid="genre-input"
           >
             <option
@@ -76,7 +75,7 @@ class AddMovie extends React.Component {
           </select>
         </label>
         <button
-          type="button"
+          type="submit"
           data-testid="send-button"
           onClick={ this.handleClick }
         >
@@ -86,6 +85,7 @@ class AddMovie extends React.Component {
     );
   }
 }
+
 AddMovie.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
