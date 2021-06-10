@@ -25,7 +25,8 @@ class AddMovie extends React.Component {
 
   handleClick() {
     const { onClick } = this.props;
-    onClick(this.state);
+    const { state } = this;
+    onClick(state);
     this.setState(stateInit);
   }
 
@@ -42,16 +43,16 @@ class AddMovie extends React.Component {
       <form
         data-testid="add-movie-form"
       >
-        <Titles functionOnChange={ this.actualState } value={ title } />
-        <Subtitle functionOnChange={ this.actualState } value={ subtitle } />
-        <Image functionOnChange={ this.actualState } value={ imagePath } />
-        <Sinopse functionOnChange={ this.actualState } value={ storyline } />
-        <Avaliacao functionOnChange={ this.actualState } value={ rating } />
+        <Titles onChange={ this.actualState } value={ title } />
+        <Subtitle onChange={ this.actualState } value={ subtitle } />
+        <Image onChange={ this.actualState } value={ imagePath } />
+        <Sinopse onChange={ this.actualState } value={ storyline } />
+        <Avaliacao onChange={ this.actualState } value={ rating } />
         <label htmlFor="genre-input-label" data-testid="genre-input-label">
           Gênero
           <select
             value={ genre }
-            functionOnChange={ this.actualState }
+            onChange={ this.actualState }
             data-testid="genre-input"
           >
             <option
