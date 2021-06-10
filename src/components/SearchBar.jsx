@@ -17,11 +17,22 @@ export default function SearchBar(props) {
         Inclui o texto:
         <input
           type="text"
-          name="includes"
-          id="includes"
+          name="selectedGenre"
+          id="selectedGenre"
           data-testid="text-input"
           value={ searchText }
           onChange={ onSearchTextChange }
+        />
+      </label>
+      <label htmlFor="bookmarkedOnly" data-testid="checkbox-input-label">
+        Mostrar somente favoritos
+        <input
+          type="checkbox"
+          name="bookmarkedOnly"
+          id="bookmarkedOnly"
+          data-testid="checkbox-input"
+          checked={ bookmarkedOnly }
+          onChange={ onBookmarkedChange }
         />
       </label>
     </form>
