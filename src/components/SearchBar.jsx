@@ -34,6 +34,23 @@ class SearchBar extends Component {
     );
   }
 
+  renderSelectedInput() {
+    const { selectedGenre, onSelectedGenreChange } = this.props;
+    return (
+      <label htmlFor="select-input" data-testid="select-input-label">
+        Filtrar por gênero
+        <select
+          id="select-input"
+          data-testid="select-input-label"
+          value={ selectedGenre }
+          onChange={ onSelectedGenreChange }
+        >
+          <option value="">Padrão</option>
+        </select>
+      </label>
+    );
+  }
+
   render() {
     return (
       <>
@@ -41,6 +58,7 @@ class SearchBar extends Component {
         <form data-testid="search-bar-form">
           {this.renderTextInput()}
           {this.renderCheckboxInput()}
+          {this.renderSelectedInput()}
         </form>
       </>
     );
@@ -52,7 +70,8 @@ SearchBar.propTypes = {
   onSearchTextChange: PropTypes.func,
   bookmarkedOnly: PropTypes.bool,
   onBookmarkedChange: PropTypes.func,
-
+  selectedGenre: PropTypes.string,
+  onSelectedGenreChange: PropTypes.func,
 }.isRequired;
 
 export default SearchBar;
