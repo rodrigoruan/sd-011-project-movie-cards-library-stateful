@@ -1,9 +1,15 @@
 // implement AddMovie component here
-import React from 'react';
-import PropTypes from 'prop-types';
-import Label from './inputs/Labels';
 
-const defaultState = {
+// 6 - Crie um componente chamado <AddMovie />
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import LabelInput from './inputs/LabelInput';
+import LabelSelect from './inputs/LabelSelect';
+import LabelTextArea from './inputs/LabelTextArea';
+import LabelNumber from './inputs/LabelNumber';
+import Button from './inputs/Button';
+
+const objeto = {
   subtitle: '',
   title: '',
   imagePath: '',
@@ -12,85 +18,99 @@ const defaultState = {
   genre: 'action',
 };
 
-class AddMovie extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = defaultState;
-    this.handleGenre = this.handleGenre.bind(this);
-    this.handleState = this.handleState.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+class AddMovie extends Component {
+  constructor() {
+    super();
+    this.state = objeto;
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.resetState = this.resetState.bind(this);
   }
 
-  handleClick() {
+  handleChange({ target }) {
+    const { name, value } = target;
+    this.setState({
+      [name]: value,
+    });
+  }
+
+  handleSubmit() {
     const { onClick } = this.props;
     onClick(this.state);
-    this.setState(defaultState);
+    this.resetState();
   }
 
-  handleGenre({ target }) {
-    console.log(target.value);
-    this.setState({ genre: target.value });
+  resetState() {
+    this.setState(objeto);
   }
 
-  handleState(e) {
-    console.log(e.target.name);
-    this.setState({ [e.target.name]: e.target.value });
-  }
-
+  // 7 - Renderize um formulário dentro de <AddMovie />
   render() {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
-      <form data-testid="add-movie-form" action="">
-        <Label alias="title" text="Título" value={ title } func={ this.handleState } />
-        <Label
-          alias="subtitle"
-          text="Subtítulo"
-          value={ subtitle }
-          func={ this.handleState }
+
+      // 8 - Renderize um input do tipo texto para obter título do novo
+      <form data-testid="add-movie-form">
+        <LabelInput
+          id="title-input-label"
+          name="Título"
+          idInput="title-input"
+          nameInput="title"
+          valueInput={ title }
+          funcInput={ this.handleChange }
         />
-        <Label
-          alias="image"
-          text="Imagem"
-          value={ imagePath }
-          func={ this.handleState }
+
+        {/* 9 - Renderize um input do tipo texto para obter subtítulo do novo fime */}
+        <LabelInput
+          id="subtitle-input-label"
+          name="Subtítulo"
+          idInput="subtitle-input"
+          nameInput="subtitle"
+          valueInput={ subtitle }
+          funcInput={ this.handleChange }
         />
-        <label data-testid="storyline-input-label" htmlFor="storyline-input">
-          Sinopse
-          <textarea
-            data-testid="storyline-input"
-            onChange={ this.handleState }
-          >
-            { storyline }
-          </textarea>
-        </label>
-        <Label
-          alias="rating"
-          text="Avaliação"
-          value={ rating }
-          func={ this.handleState }
+
+        {/* 10 - Renderize um input do tipo texto para obter imagem do novo fime */}
+        <LabelInput
+          id="image-input-label"
+          name="Imagem"
+          idInput="image-input"
+          nameInput="imagePath"
+          valueInput={ imagePath }
+          funcInput={ this.handleChange }
         />
-        <label data-testid="genre-input-label" htmlFor="genre-input">
-          Gênero
-          <select data-testid="genre-input" value={ genre } onChange={ this.handleGenre }>
-            <option data-testid="genre-option" value="action">Ação</option>
-            <option data-testid="genre-option" value="comedy">Comédia</option>
-            <option data-testid="genre-option" value="thriller">Suspense</option>
-          </select>
-        </label>
-        <button
-          type="button"
-          data-testid="send-button"
-          onClick={ this.handleClick }
-        >
-          Adicionar filme
-        </button>
+
+        {/* 11 - Renderize uma textarea para obter a sinopse do novo filme */}
+        <LabelTextArea
+          valueInput={ storyline }
+          func={ this.handleChange }
+        />
+
+        {/* 12 - Renderize um input do tipo number para obter avaliação do novo filme */}
+        <LabelNumber
+          id="rating-input-label"
+          name="Avaliação"
+          idInput="rating-input"
+          nameInput="rating"
+          valueInput={ rating }
+          funcInput={ this.handleChange }
+        />
+
+        {/* 13 - Renderize um select para selecionar o gênero do novo filme */}
+        <LabelSelect
+          valueSelect={ genre }
+          func={ this.handleChange }
+        />
+
+        {/* 14 - Renderize um botão para fazer uso dos dados do novo filme */}
+        <Button clickFunction={ this.handleSubmit } />
       </form>
     );
   }
 }
 
+export default AddMovie;
+
 AddMovie.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
-
-export default AddMovie;

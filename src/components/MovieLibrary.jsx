@@ -1,75 +1,91 @@
 // implement AddMovie component here
+
+// 15 - Crie um componente chamado <MovieLibrary />
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import MovieList from './MovieList';
 import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
 
+// 16 - Configure o estado inicial do componente MovieLibray
 class MovieLibrary extends Component {
   constructor(props) {
     super(props);
-    const { movies } = this.props;
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
-      movies,
+      movies: props.movies,
     };
-
-    this.addNewMovie = this.addNewMovie.bind(this);
-    this.handleState = this.handleState.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleFilter = this.handleFilter.bind(this);
+    this.renderCardMovie = this.renderCardMovie.bind(this);
   }
 
-  handleState({ target }) {
-    const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-
+  handleChange({ target }) {
+    const { name, value } = target;
     this.setState({
-      [name]: value,
+      // Alberto - Course.
+      [name]: target.type === 'checkbox' ? target.checked : value,
+    }, () => this.handleFilter());
+  }
+
+  handleFilter() {
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+    const { movies } = this.props; // Alberto
+
+    const filteredMovies = movies.filter((movie) => movie.title.includes(searchText) // Tales Coelho
+    || movie.subtitle.includes(searchText)
+    || movie.storyline.includes(searchText));
+
+    if (bookmarkedOnly === true) {
+      const favoriteMovie = filteredMovies.filter((movie) => movie.bookmarked === true);
+      return this.setState({
+        movies: favoriteMovie.filter((movie) => movie.genre.includes(selectedGenre)),
+      });
+    }
+    return this.setState({
+      movies: filteredMovies.filter((movie) => movie.genre.includes(selectedGenre)),
     });
   }
 
-  addNewMovie(e) {
-    this.setState((previousState) => ({
-      movies: [...previousState.movies, e],
-    }));
+  renderCardMovie(newMovie) {
+    const { movies } = this.state;
+    this.setState({
+      movies: [...movies, newMovie],
+    });
   }
 
-  filterMovies() {
-    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
-    if (selectedGenre) return movies.filter(({ genre }) => genre === selectedGenre);
-    if (bookmarkedOnly) return movies.filter(({ bookmarked }) => bookmarked);
-    if (searchText) {
-      return movies
-        .filter(({ title, subtitle, storyline }) => `${title} ${subtitle} ${storyline}`
-          .includes(searchText));
-    }
-    return movies;
-  }
-
+  // 18 - Renderize <MovieList /> dentro de <MovieLibrary />
   render() {
-    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+    const { movies, searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <div>
-        <h2> My awesome movie library </h2>
+        <h2>My awesome movie library</h2>
+
+        {/* // 17 - Renderize <SearchBar /> dentro de <MovieLibrary /> */}
         <SearchBar
-          onSelectedGenreChange={ this.handleState }
-          selectedGenre={ selectedGenre }
-          onBookmarkedChange={ this.handleState }
-          bookmarkedOnly={ bookmarkedOnly }
-          onSearchTextChange={ this.handleState }
           searchText={ searchText }
+          onSearchTextChange={ this.handleChange }
+          bookmarkedOnly={ bookmarkedOnly }
+          onBookmarkedChange={ this.handleChange }
+          selectedGenre={ selectedGenre }
+          onSelectedGenreChange={ this.handleChange }
         />
-        <MovieList movies={ this.filterMovies() } />
-        <AddMovie onClick={ this.addNewMovie } />
+
+        {/* 18 - Renderize <MovieList /> dentro de <MovieLibrary /> */}
+        <MovieList movies={ movies } />
+
+        {/* 19 - Renderize <AddMovie /> dentro de <MovieLibrary /> */}
+        <AddMovie onClick={ this.renderCardMovie } />
       </div>
     );
   }
 }
+export default MovieLibrary;
 
 MovieLibrary.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+  movies: PropTypes.arrayOf(
+    PropTypes.object,
+  ).isRequired,
 };
-
-export default MovieLibrary;
