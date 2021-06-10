@@ -17,7 +17,7 @@ class AddMovie extends React.Component {
 
   stateSet() {
     const { onClick } = this.props;
-    onClick();
+    onClick(this.state);
   }
 
   inputTitle() {
@@ -116,6 +116,7 @@ class AddMovie extends React.Component {
         {this.inputImage(imagePath)}
         {this.inputRating(rating)}
         {this.inputGenre(genre)}
+        <button type="button" data-testid="send-button">Adicionar filme</button>
       </form>
     );
   }
