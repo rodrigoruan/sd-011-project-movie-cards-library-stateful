@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function SearchBarGenreSelect(props) {
-  const { selectedGenre, onSelectedGenreChange } = props;
+  const { selectedGenre, onChange } = props;
 
   return (
     <label htmlFor="genreFilter" data-testid="select-input-label">
@@ -12,7 +12,7 @@ export default function SearchBarGenreSelect(props) {
         id="genreFilter"
         data-testid="select-input"
         value={ selectedGenre }
-        onChange={ onSelectedGenreChange }
+        onChange={ onChange }
       >
         <option data-testid="select-option" value="">Todos</option>
         <option data-testid="select-option" value="action">Ação</option>
@@ -25,5 +25,5 @@ export default function SearchBarGenreSelect(props) {
 
 SearchBarGenreSelect.propTypes = {
   selectedGenre: PropTypes.string.isRequired,
-  onSelectedGenreChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
 };

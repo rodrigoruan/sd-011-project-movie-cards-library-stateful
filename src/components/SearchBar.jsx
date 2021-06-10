@@ -38,7 +38,7 @@ export default function SearchBar(props) {
       </label>
       <SearchBarGenreSelect
         selectedGenre={ selectedGenre }
-        onSelectedGenreChange={ onSelectedGenreChange }
+        onChange={ onSelectedGenreChange }
       />
     </form>
   );

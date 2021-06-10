@@ -7,7 +7,7 @@ export default function GenericFormInput(props) {
     name,
     value,
     labelText,
-    handleInputChange,
+    onChange,
   } = props;
 
   return (
@@ -19,7 +19,7 @@ export default function GenericFormInput(props) {
         id={ name }
         data-testid={ `${name}-input` }
         value={ value }
-        onChange={ handleInputChange }
+        onChange={ onChange }
       />
     </label>
   );
@@ -33,5 +33,5 @@ GenericFormInput.propTypes = {
     PropTypes.number,
   ]).isRequired,
   labelText: PropTypes.string.isRequired,
-  handleInputChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
 };

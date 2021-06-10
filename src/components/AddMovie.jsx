@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import GenericFormInput from './GenericFormInput';
+import AddMovieGenreSelect from './AddMovieGenreSelect';
 
 export default class AddMovie extends React.Component {
   constructor(props) {
@@ -34,21 +35,21 @@ export default class AddMovie extends React.Component {
           name="title"
           value={ title }
           labelText="Título"
-          handleInputChange={ this.handleInputChange }
+          onChange={ this.handleInputChange }
         />
         <GenericFormInput
           type="text"
           name="subtitle"
           value={ subtitle }
           labelText="Subtítulo"
-          handleInputChange={ this.handleInputChange }
+          onChange={ this.handleInputChange }
         />
         <GenericFormInput
           type="text"
           name="image"
           value={ imagePath }
           labelText="Imagem"
-          handleInputChange={ this.handleInputChange }
+          onChange={ this.handleInputChange }
         />
         <label htmlFor="storyline" data-testid="storyline-input-label">
           Sinopse
@@ -65,7 +66,11 @@ export default class AddMovie extends React.Component {
           name="rating"
           value={ rating }
           labelText="Avaliação"
-          handleInputChange={ this.handleInputChange }
+          onChange={ this.handleInputChange }
+        />
+        <AddMovieGenreSelect
+          selectedGenre={ genre }
+          onChange={ this.handleInputChange }
         />
       </form>
     );
