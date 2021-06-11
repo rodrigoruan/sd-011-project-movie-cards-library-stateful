@@ -63,7 +63,7 @@ export default class AddMovie extends React.Component {
         <GenericFormInput
           type="number"
           name="rating"
-          value={ Number(rating) }
+          value={ rating }
           labelText="Avaliação"
           onChange={ this.handleInputChange }
         />

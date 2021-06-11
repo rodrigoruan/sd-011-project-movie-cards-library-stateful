@@ -5,11 +5,11 @@ export default function SearchBarGenreSelect(props) {
   const { selectedGenre, onChange } = props;
 
   return (
-    <label htmlFor="genreFilter" data-testid="select-input-label">
+    <label htmlFor="selectedGenre" data-testid="select-input-label">
       Filtrar por gênero
       <select
-        name="genreFilter"
-        id="genreFilter"
+        name="selectedGenre"
+        id="selectedGenre"
         data-testid="select-input"
         value={ selectedGenre }
         onChange={ onChange }
