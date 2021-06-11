@@ -26,7 +26,8 @@ MovieCard.propTypes = {
     subtitle: PropTypes.string,
     storyline: PropTypes.string,
     imagePath: PropTypes.string,
-  }).isRequired,
+    rating: PropTypes.number,
+  }),
 };
 
 MovieCard.defaultProps = {
@@ -35,6 +36,7 @@ MovieCard.defaultProps = {
     title: 'Title undefined',
     subtitle: 'Subtitle undefined',
     storyline: 'Storyline undefined',
+    rating: null,
   }),
 };
 

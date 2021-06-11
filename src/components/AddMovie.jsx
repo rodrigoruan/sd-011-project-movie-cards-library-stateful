@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ExtendsInput from './ExtendsInput';
 
 const initialState = {
   subtitle: '',
@@ -8,109 +9,94 @@ const initialState = {
   storyline: '',
   rating: 0,
   genre: 'action',
-}
+};
 
 class AddMovie extends React.Component {
   constructor(props) {
-    super(props)
-    
+    super(props);
+
     this.state = initialState;
-    
-    this.handleChange = this.handleChange.bind(this)
-    this.handleClick = this.handleClick.bind(this)
-  };
-  
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
   handleChange({ target }) {
     const { name, value } = target;
     this.setState({
       [name]: value,
     });
   }
-  
-  handleClick(){
+
+  handleClick() {
     const { onClick } = this.props;
-    onClick(this.state)
+    onClick(this.state);
     this.setState(initialState);
   }
-  
+
   render() {
-    
+    const { title, subtitle,
+      storyline, rating,
+      imagePath, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <label data-testid="title-input-label">
-        Título
+        <ExtendsInput
+          title={ title }
+          subtitle={ subtitle }
+          imagePath={ imagePath }
+          storyline={ storyline }
+          handleChange={ this.handleChange }
+        />
+        <label data-testid="rating-input-label" htmlFor="rating-input">
+          Avaliação
           <input
-          data-testid="title-input"
-          name="title"
-          value={this.state.title}
-          onChange={this.handleChange}/>
+            data-testid="rating-input"
+            name="rating"
+            type="number"
+            value={ rating }
+            onChange={ this.handleChange }
+          />
         </label>
-        <label data-testid="subtitle-input-label">
-        Subtítulo
-        <input
-          data-testid="subtitle-input"
-          name="subtitle"
-          value={this.state.subtitle}
-          onChange={this.handleChange}/>
-        </label>
-        <label data-testid="image-input-label">
-        Imagem
-          <input
-          data-testid="image-input"
-          name="imagePath"
-          value={this.state.imagePath}
-          onChange={this.handleChange}/>
-        </label>
-        <label data-testid="storyline-input-label">
-        Sinopse
-          <textarea
-          data-testid="storyline-input"
-          name="storyline"
-          value={this.state.storyline}
-          onChange={this.handleChange}/>
-        </label>
-        <label data-testid="rating-input-label">
-        Avaliação
-          <input
-          data-testid="rating-input"
-          name="rating"
-          type="number"
-          value={this.state.rating}
-          onChange={this.handleChange}/>
-        </label>
-        <label data-testid="genre-input-label">
-        Gênero
+        <label data-testid="genre-input-label" htmlFor="genre-input">
+          Gênero
           <select
             data-testid="genre-input"
             name="genre"
-            value={this.state.genre}
-            onChange={this.handleChange}>
-              <option value="action" data-testid="genre-option">Ação</option>
-              <option value="comedy" data-testid="genre-option">Comédia</option>
-              <option value="thriller" data-testid="genre-option">Suspense</option>
+            value={ genre }
+            onChange={ this.handleChange }
+          >
+            <option value="action" data-testid="genre-option">Ação</option>
+            <option value="comedy" data-testid="genre-option">Comédia</option>
+            <option value="thriller" data-testid="genre-option">Suspense</option>
           </select>
         </label>
-        <button data-testid="send-button" onClick={this.handleClick}> Adicionar filme </button>
+        <button
+          data-testid="send-button"
+          onClick={ this.handleClick }
+          type="button"
+        >
+          Adicionar filme
+        </button>
       </form>
-      )
-    }
+    );
   }
-  
-  AddMovie.propTypes = {
-      title: PropTypes.string,
-      subtitle: PropTypes.string,
-      storyline: PropTypes.string,
-      rating: PropTypes.number,
-      imagePath: PropTypes.string,
-      onclick: PropTypes.func,
-    }.isRequired;
-  
-  AddMovie.defaultProps = {
-    imagePath: 'Image undefined',
-    title: 'Title undefined',
-    subtitle: 'Subtitle undefined',
-    storyline: 'Storyline undefined',
-    rating: null,
-  };
-  
-  export default AddMovie;
+}
+
+AddMovie.propTypes = {
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  storyline: PropTypes.string,
+  rating: PropTypes.number,
+  imagePath: PropTypes.string,
+  onclick: PropTypes.func,
+}.isRequired;
+
+AddMovie.defaultProps = {
+  imagePath: 'Image undefined',
+  title: 'Title undefined',
+  subtitle: 'Subtitle undefined',
+  storyline: 'Storyline undefined',
+  rating: null,
+};
+
+export default AddMovie;
