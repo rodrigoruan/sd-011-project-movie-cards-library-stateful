@@ -5,7 +5,7 @@ class AddMovie extends Component {
     return (
       <label htmlFor="title-input" data-testid="title-input-label">
         Título
-        <input id="title-input" type="text" data-testid="title-input" />
+        <input type="text" id="title-input" data-testid="title-input" />
       </label>
     );
   }
@@ -23,7 +23,7 @@ class AddMovie extends Component {
     return (
       <label htmlFor="image-input" data-testid="image-input-label">
         Imagem
-        <input id="image-input" type="text" data-testid="image-input" />
+        <input type="text" id="image-input" data-testid="image-input" />
       </label>
     );
   }
@@ -32,7 +32,7 @@ class AddMovie extends Component {
     return (
       <label htmlFor="storyline-input" data-testid="storyline-input-label">
         Sinopse
-        <input type="text" id="storyline-input" data-testid="storyline-input" />
+        <textarea id="storyline-input" data-testid="storyline-input" />
       </label>
     );
   }
@@ -44,7 +44,7 @@ class AddMovie extends Component {
         <form data-testid="add-movie-form">
           {this.renderTitleInput()}
           {this.renderSubTitleInput()}
-          {this.renderimagemInput()}
+          {this.renderImagemInput()}
           {this.renderTextAreaInput()}
         </form>
       </>
