@@ -136,7 +136,7 @@ class AddMovie extends Component {
     return (
       <button
         type="button"
-        onClick={ this.handleChange }
+        onClick={ this.handleClear }
         data-testid="send-button"
       >
         Adicionar filme
