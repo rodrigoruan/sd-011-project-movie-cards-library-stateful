@@ -1,17 +1,7 @@
 // implement AddMovie component here
 import React, { Component } from 'react';
 
-// const InitialState = {
-//   title: '',
-//   subtitle: '',
-//   storyline: '',
-//   rating: 0,
-//   imagePath: '',
-//   genre: 'action',
-// };
-
 class AddMovie extends Component {
-
   render() {
     return (
       <div>
