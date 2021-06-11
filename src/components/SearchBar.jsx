@@ -18,8 +18,8 @@ export default function SearchBar(props) {
         Inclui o texto:
         <input
           type="text"
-          name="selectedGenre"
-          id="selectedGenre"
+          name="searchText"
+          id="searchText"
           data-testid="text-input"
           value={ searchText }
           onChange={ onSearchTextChange }
