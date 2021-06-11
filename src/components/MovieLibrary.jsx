@@ -12,7 +12,6 @@ export default class MovieLibrary extends React.Component {
       bookmarkedOnly: false,
       selectedGenre: '',
       movies: [...props.movies],
-      currentMovies: [...props.movies],
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.addMovie = this.addMovie.bind(this);
