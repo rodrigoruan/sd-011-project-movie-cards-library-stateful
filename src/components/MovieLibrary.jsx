@@ -11,11 +11,12 @@ export default class MovieLibrary extends React.Component {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
-      movies: props.movies,
+      movies: [...props.movies],
     };
     this.filterSearchText = this.filterSearchText.bind(this);
     this.filterBookmark = this.filterBookmark.bind(this);
     this.filterGenre = this.filterGenre.bind(this);
+    this.addMovie = this.addMovie.bind(this);
   }
 
   filterSearchText({ target }) {
@@ -53,6 +54,15 @@ export default class MovieLibrary extends React.Component {
     this.setState({ selectedGenre: value, movies: filteredMovies });
   }
 
+  addMovie(movie) {
+    this.setState((state) => {
+      const { movies: completeMovieList } = state;
+      const newMovieList = [...completeMovieList, movie];
+
+      return { movies: newMovieList };
+    });
+  }
+
   render() {
     const {
       searchText,
@@ -71,7 +81,7 @@ export default class MovieLibrary extends React.Component {
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.filterGenre }
         />
-        <AddMovie />
+        <AddMovie onClick={ this.addMovie } />
         <MovieList movies={ currentMovies } />
       </section>
     );

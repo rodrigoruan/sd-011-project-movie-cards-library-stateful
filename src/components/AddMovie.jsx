@@ -5,8 +5,8 @@ import AddMovieGenreSelect from './AddMovieGenreSelect';
 import AddMovieTextarea from './AddMovieTextarea';
 
 const initialState = {
-  subtitle: '',
   title: '',
+  subtitle: '',
   imagePath: '',
   storyline: '',
   rating: 0,
@@ -63,7 +63,7 @@ export default class AddMovie extends React.Component {
         <GenericFormInput
           type="number"
           name="rating"
-          value={ rating }
+          value={ Number(rating) }
           labelText="Avaliação"
           onChange={ this.handleInputChange }
         />
@@ -71,7 +71,11 @@ export default class AddMovie extends React.Component {
           selectedGenre={ genre }
           onChange={ this.handleInputChange }
         />
-        <button type="button" data-testid="send-button" onClick={ this.handleClick }>
+        <button
+          type="button"
+          data-testid="send-button"
+          onClick={ () => this.handleClick(this.state) }
+        >
           Adicionar filme
         </button>
       </form>
