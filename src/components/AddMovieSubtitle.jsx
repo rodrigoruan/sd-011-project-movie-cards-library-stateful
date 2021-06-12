@@ -21,13 +21,8 @@ class AddMovieSubtitle extends Component {
 }
 
 AddMovieSubtitle.propTypes = {
-  value: PropTypes.string,
-  handleInputs: PropTypes.func,
-};
-
-AddMovieSubtitle.defaultProps = {
-  value: '',
-  handleInputs: () => {},
+  value: PropTypes.string.isRequired,
+  handleInputs: PropTypes.func.isRequired,
 };
 
 export default AddMovieSubtitle;

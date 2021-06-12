@@ -29,7 +29,7 @@ class AddMovie extends Component {
     });
   }
 
-  handleSubmit = () => {
+  handleSubmit() {
     const { onClick } = this.props;
     onClick(this.state);
     this.setState({
@@ -55,7 +55,7 @@ class AddMovie extends Component {
           <MovieGenre value={ genre } handleInputs={ this.handleInputs } />
           <button
             data-testid="send-button"
-            type="submit"
+            type="button"
             onClick={ this.handleSubmit }
           >
             Adicionar filme

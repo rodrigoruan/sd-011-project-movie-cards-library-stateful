@@ -3,17 +3,16 @@ import PropTypes from 'prop-types';
 
 class AddMovieRating extends Component {
   render() {
-    const { value, handleInputs } = this.props;
-
+    const { handleInputs, value } = this.props;
     return (
-      <label data-testid="rating-input-label" htmlFor="rating-input">
+      <label data-testid="rating-input-label" htmlFor="input">
         Avaliação
         <input
-          type="number"
-          name="rating"
-          value={ value }
-          onChange={ handleInputs }
           data-testid="rating-input"
+          type="number"
+          value={ value }
+          name="rating"
+          onChange={ handleInputs }
         />
       </label>
     );
@@ -21,13 +20,8 @@ class AddMovieRating extends Component {
 }
 
 AddMovieRating.propTypes = {
-  value: PropTypes.number,
-  handleInputs: PropTypes.func,
-};
-
-AddMovieRating.defaultProps = {
-  value: '',
-  handleInputs: () => {},
+  handleInputs: PropTypes.func.isRequired,
+  value: PropTypes.number.isRequired,
 };
 
 export default AddMovieRating;

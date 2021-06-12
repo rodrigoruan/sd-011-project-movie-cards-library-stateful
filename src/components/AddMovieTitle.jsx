@@ -13,7 +13,6 @@ class AddMovieTitle extends Component {
           name="title"
           value={ value }
           onChange={ handleInputs }
-          data-testid="title-input"
         />
       </label>
     );
@@ -21,13 +20,8 @@ class AddMovieTitle extends Component {
 }
 
 AddMovieTitle.propTypes = {
-  value: PropTypes.string,
-  handleInputs: PropTypes.func,
-};
-
-AddMovieTitle.defaultProps = {
-  value: '',
-  handleInputs: () => {},
+  value: PropTypes.string.isRequired,
+  handleInputs: PropTypes.func.isRequired,
 };
 
 export default AddMovieTitle;
