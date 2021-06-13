@@ -14,7 +14,6 @@ class RatingInput extends React.Component {
           value={ stateValue }
         />
       </label>
-
     );
   }
 }
