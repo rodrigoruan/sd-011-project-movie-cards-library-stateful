@@ -5,6 +5,7 @@ import SubtitleInput from './SubtitleInput';
 import ImageInput from './ImageInput';
 import StorylineInput from './StorylineInput';
 import RatingInput from './RatingInput';
+import SelectInputText from './SelectInput';
 
 class AddMovie extends React.Component {
   render() {
@@ -18,6 +19,7 @@ class AddMovie extends React.Component {
           <ImageInput />
           <StorylineInput />
           <RatingInput />
+          <SelectInputText />
         </form>
       </div>
     );

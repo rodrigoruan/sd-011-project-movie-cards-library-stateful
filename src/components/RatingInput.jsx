@@ -5,9 +5,11 @@ class RatingInput extends React.Component {
   render() {
     const { funcValue, stateValue } = this.props;
     return (
-      <label htmlFor="input" data-testid="rating-input-label">
+      <label htmlFor="rating" data-testid="rating-input-label">
         Avaliação
         <input
+          id="rating"
+          name="rating"
           type="number"
           data-testid="rating-input"
           onChange={ funcValue }
