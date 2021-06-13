@@ -13,6 +13,16 @@ class MovieLibrary extends Component {
       bookmarkedOnly: false,
       selectedGenre: '',
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.addMovieOnClick = this.addMovieOnClick.bind(this);
+  }
+
+  handleChange({ target }) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({
+      [name]: value,
+    });
   }
 
   addMovieOnClick(movie) {
@@ -30,6 +40,9 @@ class MovieLibrary extends Component {
           searchText={ searchText }
           bookmarkedOnly={ bookmarkedOnly }
           selectedGenre={ selectedGenre }
+          onSearchChange={ this.handleChange }
+          onBookMarkedChange={ this.handleChange }
+          onSelectedGenreChange={ this.handleChange }
         />
         <MovieList movies={ movies } />
         <AddMovie onClick={ this.addMovieOnClick } />
