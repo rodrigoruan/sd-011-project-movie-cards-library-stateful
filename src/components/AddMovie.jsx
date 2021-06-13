@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Subtitle from './Subtitle';
 import Storyline from './Storyline';
-import RatingComponent from './RatingComponent';
 import Genre from './Genre';
 
 class AddMovie extends Component {
@@ -28,7 +28,8 @@ class AddMovie extends Component {
   }
 
   onClickComand() {
-    // const { onClick } = this.props;
+    const { onClick } = this.props;
+    onClick(this.state);
     this.setState({
       subtitle: '',
       title: '',
@@ -53,16 +54,7 @@ class AddMovie extends Component {
             onChange={ this.handleState }
           />
         </label>
-        <label htmlFor="subtitle" data-testid="subtitle-input-label">
-          Subtítulo
-          <input
-            name="subtitle"
-            type="text"
-            data-testid="subtitle-input"
-            value={ subtitle }
-            onChange={ this.handleState }
-          />
-        </label>
+        <Subtitle value={ subtitle } handleState={ this.handleState } />
         <label htmlFor="image" data-testid="image-input-label">
           Imagem
           <input
@@ -73,9 +65,18 @@ class AddMovie extends Component {
             onChange={ this.handleState }
           />
         </label>
-        <Storyline value={ storyline } onChange={ this.handleState } />
-        <RatingComponent value={ rating } onChange={ this.handleState } />
-        <Genre value={ genre } onChange={ this.handleState } />
+        <Storyline value={ storyline } handleState={ this.handleState } />
+        <label htmlFor="rating" data-testid="rating-input-label">
+          Avaliação
+          <input
+            name="rating"
+            type="number"
+            data-testid="rating-input"
+            value={ rating }
+            onChange={ this.handleState }
+          />
+        </label>
+        <Genre value={ genre } handleState={ this.handleState } />
         <button type="button" data-testid="send-button" onClick={ this.onClickComand }>
           Adicionar filme
         </button>
