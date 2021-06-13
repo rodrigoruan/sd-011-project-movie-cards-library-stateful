@@ -1,23 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class SearchBar extends Component {
-/*
- searchText, uma string
-bookmarkedOnly, um boolean
-onBookmarkedChange, uma callback
-selectedGenre, uma string
-onSelectedGenreChange, uma callback
- */
-  // onSearchTextChange, uma callback: acho q no material tem um exempl q se encaixa aqui..
-  onSearchTextChange() {
-    return 1 + 1;
-  }
-
   render() {
     return (
       <form data-testid="search-bar-form">
-        Inclui o texto
         <label data-testid="text-input-label" htmlFor="text-input">
+          Inclui o texto
           <input
             type="text"
             value={ searchText }
@@ -25,8 +14,8 @@ onSelectedGenreChange, uma callback
             data-testid="text-input"
           />
         </label>
-        Mostrar somente favoritos
         <label data-testid="checkbox-input-label" htmlFor="checkbox-input">
+          Mostrar somente favoritos
           <input
             type="checkbox"
             checked={ bookmarkedOnly }
@@ -34,9 +23,30 @@ onSelectedGenreChange, uma callback
             data-testid="checkbox-input"
           />
         </label>
+        <label data-testid="select-input-label" htmlFor="selected-input">
+          Filtrar por gênero
+          <select
+            value={ selectedGenre }
+            onChange={ onSelectedGenreChange }
+            data-testid="select-input"
+          >
+            <option data-testid="select-option" value="">Todos</option>
+            <option data-testid="select-option" value="action">Ação</option>
+            <option data-testid="select-option" value="comedy">Comédia</option>
+            <option data-testid="select-option" value="thriller">Suspense</option>
+          </select>
+        </label>
       </form>
     );
   }
 }
+
+SearchBar.propTypes = {
+  searchText: PropTypes.string,
+  bookmarkedOnly: PropTypes.bool,
+  onBookmarkedChange: PropTypes.func,
+  selectedGenre: PropTypes.string,
+  onSelectedGenreChange: PropTypes.func,
+};
 
 export default SearchBar;
