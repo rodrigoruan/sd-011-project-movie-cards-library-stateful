@@ -6,17 +6,24 @@ class AddMovie extends React.Component {
     super();
     this.state = {
       title: '',
+      subtitle: '',
     };
-    this.textInput = this.textInput.bind(this);
+
+    this.textInputTitle = this.textInputTitle.bind(this);
+    this.textInputSubtitle = this.textInputSubtitle.bind(this);
   }
 
-  textInput({ target }) {
+  textInputTitle({ target }) {
     this.setState({ title: target.value });
+  }
+
+  textInputSubtitle({ target }) {
+    this.setState({ subtitle: target.value });
   }
 
   render() {
     const { onClick } = this.props;
-    const { title } = this.state;
+    const { title, subtitle } = this.state;
     return (
       <div>
         <form data-testid="add-movie-form">
@@ -26,8 +33,17 @@ class AddMovie extends React.Component {
             <input
               type="text"
               data-testid="title-input"
-              onChange={ this.textInput }
+              onChange={ this.textInputTitle }
               value={ title }
+            />
+          </label>
+          <label htmlFor="input" data-testid="subtitle-input-label">
+            Subtítulo
+            <input
+              type="text"
+              data-testid="subtitle-input"
+              onChange={ this.textInputSubtitle }
+              value={ subtitle }
             />
           </label>
         </form>
