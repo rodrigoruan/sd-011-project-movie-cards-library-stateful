@@ -7,7 +7,6 @@ import Genre from './Genre';
 class AddMovie extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       subtitle: '',
       title: '',
@@ -17,7 +16,7 @@ class AddMovie extends Component {
       genre: 'action',
     };
     this.handleState = this.handleState.bind(this);
-    this.onClickComand = this.onClickComand.bind(this);
+    this.clickComand = this.clickComand.bind(this);
   }
 
   handleState({ target }) {
@@ -27,7 +26,7 @@ class AddMovie extends Component {
     });
   }
 
-  onClickComand() {
+  clickComand() {
     const { onClick } = this.props;
     onClick(this.state);
     this.setState({
@@ -77,7 +76,7 @@ class AddMovie extends Component {
           />
         </label>
         <Genre value={ genre } handleState={ this.handleState } />
-        <button type="button" data-testid="send-button" onClick={ this.onClickComand }>
+        <button type="button" data-testid="send-button" onClick={ this.clickComand }>
           Adicionar filme
         </button>
       </form>
@@ -85,8 +84,12 @@ class AddMovie extends Component {
   }
 }
 
-AddMovie.propTypes = ({
+AddMovie.propTypes = {
   onClick: PropTypes.func,
-}).isRequired;
+};
+
+AddMovie.defaultProps = {
+  onClick: () => {},
+};
 
 export default AddMovie;
