@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import TitleInput from './TitleInput';
 import SubtitleInput from './SubtitleInput';
@@ -21,14 +22,27 @@ export default class AddMovie extends Component {
 
     };
     this.handleChange = this.handleChange.bind(this);
+    this.initialState = this.initialState.bind(this);
   }
 
   handleChange({ target }) {
     const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-
+    /* const value = target.type === 'checkbox' ? target.checked : target.value; // sujeito a retirada */
     this.setState({
       [name]: value,
+    });
+  }
+
+  initialState() {
+    const { onClick } = this.props;
+    onClick(this.state);
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyLine: '',
+      rating: 0,
+      genre: 'action',
     });
   }
 
@@ -45,9 +59,19 @@ export default class AddMovie extends Component {
         <StoryLineInput value={ storyLine } handleChange={ this.handleChange } />
         <RatingInput value={ rating } handleChange={ this.handleChange } />
         <GenreInput value={ genre } handleChange={ this.handleChange } />
-
+        <button
+          type="submit"
+          data-testid="send-button"
+          onClick={ this.initialState }
+        >
+          Adicionar filme
+        </button>
       </form>
 
     );
   }
 }
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
