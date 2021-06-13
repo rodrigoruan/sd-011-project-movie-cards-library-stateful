@@ -27,7 +27,7 @@ export default class AddMovie extends Component {
 
   handleChange({ target }) {
     const { name } = target;
-    /* const value = target.type === 'checkbox' ? target.checked : target.value; // sujeito a retirada */
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
     });
