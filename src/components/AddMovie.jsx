@@ -10,6 +10,10 @@ class AddMovie extends React.Component {
     this.textInput = this.textInput.bind(this);
   }
 
+  textInput({ target }) {
+    this.setState({ title: target.value });
+  }
+
   render() {
     const { onClick } = this.props;
     const { title } = this.state;
