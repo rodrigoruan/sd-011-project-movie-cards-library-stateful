@@ -9,6 +9,9 @@ class MovieLibrary extends Component {
     super(props);
     this.state = {
       movies: props.movies,
+      searchText: '',
+      bookmarkedOnly: false,
+      selectedGenre: '',
     };
   }
 
@@ -19,12 +22,15 @@ class MovieLibrary extends Component {
   }
 
   render() {
-    const { movies } = this.state;
-
+    const { movies, searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <div>
         <h2> My awesome movie library </h2>
-        <SearchBar />
+        <SearchBar
+          searchText={ searchText }
+          bookmarkedOnly={ bookmarkedOnly }
+          selectedGenre={ selectedGenre }
+        />
         <MovieList movies={ movies } />
         <AddMovie onClick={ this.addMovieOnClick } />
       </div>
