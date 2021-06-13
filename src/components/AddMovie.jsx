@@ -75,7 +75,6 @@ class AddMovie extends React.Component {
               onChange={ this.textInputStoryline }
               value={ storyline }
             />
-
           </label>
         </form>
       </div>
