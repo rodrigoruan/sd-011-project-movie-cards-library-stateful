@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-export default class Genre extends Component {
+export default class GenreInput extends Component {
   render() {
     const { value, handleChange } = this.props;
     return (
@@ -22,7 +22,7 @@ export default class Genre extends Component {
   }
 }
 
-Genre.propTypes = {
+GenreInput.propTypes = {
   value: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
 
