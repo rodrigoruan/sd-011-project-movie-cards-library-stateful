@@ -10,11 +10,10 @@ class AddMovie extends React.Component {
       imagePath: '',
       storyline: '',
     };
-
     this.textInputTitle = this.textInputTitle.bind(this);
     this.textInputSubtitle = this.textInputSubtitle.bind(this);
     this.imagePathAdd = this.imagePathAdd.bind(this);
-    this.textInputStoryline = this.textInputStoryline(this);
+    this.textAreaInput = this.textAreaInput.bind(this);
   }
 
   textInputTitle({ target }) {
@@ -29,7 +28,7 @@ class AddMovie extends React.Component {
     this.setState({ imagePath: target.value });
   }
 
-  textInputStoryline({ target }) {
+  textAreaInput({ target }) {
     this.setState({ storyline: target.value });
   }
 
@@ -67,12 +66,12 @@ class AddMovie extends React.Component {
               value={ imagePath }
             />
           </label>
-          <label htmlFor="input-textarea" data-testid="storyline-input-label">
+          <label htmlFor="input" data-testid="storyline-input-label">
             Sinopse
             <input
               type="textarea"
               data-testid="storyline-input"
-              onChange={ this.textInputStoryline }
+              onChange={ this.textAreaInput }
               value={ storyline }
             />
           </label>
