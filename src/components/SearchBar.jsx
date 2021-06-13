@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import SelectedInputGenre from './SelectedInputGenre';
 
 export default class SearchBar extends Component {
   render() {
@@ -17,6 +18,7 @@ export default class SearchBar extends Component {
         <label htmlFor="text-input" data-testid="text-input-label">
           Inclui o texto:
           <input
+            name="searchText"
             data-testid="text-input"
             type="text"
             value={ searchText }
@@ -27,6 +29,7 @@ export default class SearchBar extends Component {
         <label htmlFor="checkbox-input" data-testid="checkbox-input-label">
           Mostrar somente favoritos
           <input
+            name=" bookmarkedOnly"
             type="checkbox"
             checked={ bookmarkedOnly }
             onChange={ onBookmarkedChange }
@@ -34,21 +37,10 @@ export default class SearchBar extends Component {
 
           />
         </label>
-
-        <label htmlFor="selected-input" data-testid="select-input-label">
-          Filtrar por gênero
-          <select
-            data-testid="select-input"
-            value={ selectedGenre }
-            onChange={ onSelectedGenreChange }
-          >
-            <option data-testid="select-option" value="">Todos</option>
-            <option data-testid="select-option" value="action">Ação</option>
-            <option data-testid="select-option" value="comedy">Comédia</option>
-            <option data-testid="select-option" value="thriller">Suspense</option>
-          </select>
-        </label>
-
+        <SelectedInputGenre
+          selectedGenre={ selectedGenre }
+          onChange={ onSelectedGenreChange }
+        />
       </form>
     );
   }
