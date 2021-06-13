@@ -25,8 +25,14 @@ onSelectedGenreChange, uma callback
             data-testid="text-input"
           />
         </label>
-        <label>
-          <input type="checkbox" name="" id="" />
+        Mostrar somente favoritos
+        <label data-testid="checkbox-input-label" htmlFor="checkbox-input">
+          <input
+            type="checkbox"
+            checked={ bookmarkedOnly }
+            onChange={ onBookmarkedChange }
+            data-testid="checkbox-input"
+          />
         </label>
       </form>
     );
