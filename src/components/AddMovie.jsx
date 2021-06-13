@@ -4,7 +4,13 @@ import PropTypes from 'prop-types';
 class AddMovie extends React.Component {
   render() {
     const { onClick } = this.props;
-    return (<div>{ onClick }</div>);
+    return (
+      <div>
+        <form data-testid="add-movie-form">
+          { onClick }
+        </form>
+      </div>
+    );
   }
 }
 
