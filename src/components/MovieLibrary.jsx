@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
+import MovieList from './MovieList';
 
 export default class MovieLibrary extends Component {
   constructor(props) {
@@ -13,11 +14,12 @@ export default class MovieLibrary extends Component {
       selectedGenre: '',
       movies: props.movies,
     };
-    this.checked = this.checked.bind(this);
+    this.checkSearchBar = this.checkSearchBar.bind(this);
     this.addMovie = this.addMovie.bind(this);
+    this.filterMovie = this.filterMovie.bind(this);
   }
 
-  checked({ target }) {
+  checkSearchBar({ target }) {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
 
@@ -32,6 +34,27 @@ export default class MovieLibrary extends Component {
     }));
   }
 
+  filterMovie() {
+    const { bookmarkedOnly, searchText, selectedGenre, movies } = this.state;
+    let apliedFilter = movies;
+    if (bookmarkedOnly === true) {
+      apliedFilter = movies.filter((movie) => movie.bookmarked === true);
+    }
+
+    if (searchText !== '') {
+      apliedFilter = movies.filter((movie) => movie.title
+        .toLowerCase().includes(searchText)
+        || movie.subtitle.toLowerCase().includes(searchText)
+        || movie.storyline.toLowerCase().includes(searchText));
+    }
+
+    if (selectedGenre !== '') {
+      apliedFilter = movies.filter((movie) => movie.genre === selectedGenre);
+    }
+
+    return apliedFilter;
+  }
+
   render() {
     const { searchText, boomarkedOnly, selectedGenre } = this.state;
 
@@ -39,12 +62,13 @@ export default class MovieLibrary extends Component {
       <div>
         <SearchBar
           searchText={ searchText }
-          onSearchTextChange={ this.checked }
+          onSearchTextChange={ this.checkSearchBar }
           boomarkedOnly={ boomarkedOnly }
-          onBookmarkedChange={ this.checked }
+          onBookmarkedChange={ this.checkSearchBar }
           selectedGenre={ selectedGenre }
-          onSelectedGenreChange={ this.checked }
+          onSelectedGenreChange={ this.checkSearchBar }
         />
+        <MovieList movies={ this.filterMovie() } />
         <AddMovie onClick={ this.addMovie } />
       </div>
     );
