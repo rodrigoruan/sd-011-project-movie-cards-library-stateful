@@ -15,7 +15,7 @@ class MovieLibrary extends Component {
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.filtered = this.filtered.bind(this);
-    this.card = this.card.bind(this);
+    this.addMovie = this.addMovie.bind(this);
   }
 
   handleInputChange({ target }) {
@@ -39,10 +39,12 @@ class MovieLibrary extends Component {
     return object;
   }
 
-  card(newcard) {
-    this.setState((previous) => ({
-      movies: [...previous.movies, newcard],
-    }));
+  addMovie(newMovie) {
+    const { movies } = this.state;
+
+    this.setState({
+      movies: [...movies, newMovie],
+    });
   }
 
   render() {
@@ -58,7 +60,7 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={ this.handleInputChange }
         />
         <MovieList movies={ this.filtered() } />
-        <AddMovie onClick={ this.card } />
+        <AddMovie onClick={ this.addMovie } />
       </>
     );
   }

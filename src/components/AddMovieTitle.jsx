@@ -13,6 +13,7 @@ class AddMovieTitle extends Component {
           name="title"
           value={ value }
           onChange={ handleInputs }
+          data-testid="title-input"
         />
       </label>
     );
