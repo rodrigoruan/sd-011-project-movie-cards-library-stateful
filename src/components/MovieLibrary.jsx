@@ -59,5 +59,4 @@ MovieLibrary.defaultProps = {
   movies: {},
 };
 
-
 export default MovieLibrary;
