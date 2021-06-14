@@ -18,7 +18,6 @@ class MovieLibrary extends React.Component {
 
   changeTracker({ target }) {
     const { type, value } = target;
-
     if (type === 'text') {
       this.setState({ searchText: value });
     } else if (type === 'checkbox') {
