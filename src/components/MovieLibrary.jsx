@@ -17,11 +17,15 @@ class MovieLibrary extends React.Component {
   }
 
   changeTracker({ target }) {
-    const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState({
-      [name]: value,
-    });
+    const { type, value } = target;
+
+    if (type === 'text') {
+      this.setState({ searchText: value });
+    } else if (type === 'checkbox') {
+      this.setState({ bookmarkedOnly: target.checked });
+    } else {
+      this.setState({ selectedGenre: value });
+    }
   }
 
   render() {
