@@ -8,6 +8,19 @@ import RatingInput from './RatingInput';
 import SelectInputText from './SelectInput';
 
 class AddMovie extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
   render() {
     const { onClick } = this.props;
     return (
@@ -20,6 +33,13 @@ class AddMovie extends React.Component {
           <StorylineInput />
           <RatingInput />
           <SelectInputText />
+          <button
+            type="button"
+            data-testid="send-button"
+            onClick={ () => this.handleClick(this.state) }
+          >
+            Adicionar filme
+          </button>
         </form>
       </div>
     );
