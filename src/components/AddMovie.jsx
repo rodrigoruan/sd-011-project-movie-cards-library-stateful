@@ -1,11 +1,11 @@
 // implement AddMovie component here
 import React from 'react';
-import PropTypes from 'prop-types';
-import { render } from 'enzyme';
+// import PropTypes from 'prop-types';
 import InputTitle from './InputTitle';
 import InputSubtitle from './InputSubtitle';
 import InputImage from './InputImage';
 import InputStoryline from './InputStoryline';
+import InputRating from './InputRating';
 
 class AddMovie extends React.Component {
     constructor(props){
@@ -36,13 +36,14 @@ class AddMovie extends React.Component {
                 <InputSubtitle value={ subtitle } handleChange={ this.handleChange } />
                 <InputImage value={ imagePath } handleChange={ this.handleChange } />
                 <InputStoryline value={ storyline } handleChange={ this.handleChange } />
+                <InputRating value={ rating } handleChange={ this.handleChange } />
             </form>
         );
     }
 }
 
-AddMovie.propTypes = {
+// AddMovie.propTypes = {
 
-};
+// };
 
 export default AddMovie;
