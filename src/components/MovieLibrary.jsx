@@ -21,7 +21,7 @@ class MovieLibrary extends React.Component {
         return(
             <div>
                 <SearchBar />
-                <AddMovie onClick= {  } />
+                <AddMovie />
             </div>
         );
     }

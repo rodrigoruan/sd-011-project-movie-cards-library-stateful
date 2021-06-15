@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class InputSubtitle extends Component {
+class InputStoryline extends Component {
     render() {
         const { value, handleChange } = this.props;
         return(
-            <label htmlFor="subtitle" data-testid="subtitle-input-label">
-            Subtítulo
-            <input type="text" data-testid="subtitle-input"
+            <label htmlFor="subtitle" data-testid="storyline-input-label">
+            Storyline
+            <input type="text" data-testid="storyline-input"
                 value={ value } onChange= { handleChange }    
             />
         </label> 
@@ -15,9 +15,9 @@ class InputSubtitle extends Component {
     }
 }
 
-InputSubtitle.propTypes = {
+InputStoryline.propTypes = {
     value: PropTypes.string.isRequired,
     handleChange: PropTypes.func.isRequired,
 };
 
-export default InputSubtitle;
+export default InputStoryline;
