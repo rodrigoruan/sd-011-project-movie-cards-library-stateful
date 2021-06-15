@@ -49,7 +49,6 @@ class MovieLibrary extends Component {
       selectedGenre: value,
       movies: movies.filter((movie) => movie.genre === value),
     });
-
   }
 
   addMovie() {
@@ -71,7 +70,7 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={ this.onSelectedGenreChange }
         />
         <MovieList movies={ movies } />
-        <AddMovie onClick={ (a) => console.log('oi') } />
+        <AddMovie onClick={ (a) => console.log(a) } />
       </div>
     );
   }
