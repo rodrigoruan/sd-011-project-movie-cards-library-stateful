@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import Title from './Title';
-// import Subtitle from './Subtitle';
+import Subtitle from './Subtitle';
 // import ImagePath from './ImagePath';
 // import StoryLine from './StoryLine';
 // import Rating from './Rating';
@@ -15,14 +15,17 @@ class AddMovie extends Component {
       title: '',
     };
 
-    this.handleChange = this.handleChange.bind(this);
-    // this.afterTheChange = this.afterTheChange(this);
+    this.handleChangeTitle = this.handleChangeTitle.bind(this);
+    this.handleChangeSubtitle = this.handleChangeSubtitle.bind(this);
   }
 
-  handleChange({ target }) {
+  handleChangeTitle({ target }) {
     this.setState({ title: target.value });
   }
 
+  handleChangeSubtitle({ target }) {
+    this.setState({ subtitle: target.value });
+  }
   // afterTheChange() {
   //   const { onClick } = this.props;
   //   onClick(this.state);
@@ -38,16 +41,11 @@ class AddMovie extends Component {
 
   render() {
     // const { onClick } = this.props;
-    const { title } = this.state;
+    const { title, subtitle } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <Title title={ title } handleChange={ this.handleChange } />
-        {/* <p>{subtitle}</p>
-        <p>{imagePath}</p>
-        <p>{storyLine}</p>
-        <p>{rating}</p>
-        <p>{genre}</p> */}
-
+        <Title title={ title } handleChangeTitle={ this.handleChangeTitle } />
+        <Subtitle value={ subtitle } handleChangeSubtitle={ this.handleChangeSubtitle } />
       </form>
     );
   }
