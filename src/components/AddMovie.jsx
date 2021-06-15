@@ -6,6 +6,7 @@ import InputSubtitle from './InputSubtitle';
 import InputImage from './InputImage';
 import InputStoryline from './InputStoryline';
 import InputRating from './InputRating';
+import InputGenre from './InputGenre';
 
 class AddMovie extends React.Component {
     constructor(props){
@@ -37,6 +38,7 @@ class AddMovie extends React.Component {
                 <InputImage value={ imagePath } handleChange={ this.handleChange } />
                 <InputStoryline value={ storyline } handleChange={ this.handleChange } />
                 <InputRating value={ rating } handleChange={ this.handleChange } />
+                <InputGenre value={ genre } handleChange={ this.handleChange } />
             </form>
         );
     }
