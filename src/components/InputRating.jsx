@@ -7,7 +7,7 @@ class InputRating extends Component {
         return(
             <label htmlFor="rating" data-testid="rating-input-label">
             Avaliação
-            <input type="number" data-testid="rating-input"
+            <input type="number" data-testid="rating-input" name="rating"
                 value={ value } onChange= { handleChange }    
             />
         </label> 

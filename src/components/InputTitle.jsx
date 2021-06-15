@@ -7,7 +7,7 @@ class InputTitle extends Component {
         return(
             <label htmlFor="title" data-testid="title-input-label">
             Título
-            <input type="text" data-testid="title-input"
+            <input type="text" data-testid="title-input" name="title"
                 value={ value } onChange= { handleChange }    
             />
         </label> 
