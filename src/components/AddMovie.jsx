@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class AddMovie extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       subtitle: '',
       title: '',
@@ -13,12 +13,18 @@ class AddMovie extends React.Component {
       genre: 'action',
     };
     this.stateSet = this.stateSet.bind(this);
-    this.onClick = this.bonClick.bind(this);
+    this.bonClick = this.bonClick.bind(this);
   }
 
   bonClick() {
     const { onClick } = this.props;
     onClick(this.state);
+    this.setState({ subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action' });
   }
 
   stateSet({ target }) {
@@ -133,7 +139,7 @@ class AddMovie extends React.Component {
         <button
           type="button"
           data-testid="send-button"
-          onClick={ this.onClick }
+          onClick={ this.bonClick }
         >
           Adicionar filme
         </button>
