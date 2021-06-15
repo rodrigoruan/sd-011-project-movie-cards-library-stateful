@@ -15,6 +15,7 @@ class MovieLibrary extends React.Component {
     };
     this.changeTracker = this.changeTracker.bind(this);
     this.filter = this.filter.bind(this);
+    this.adddingMovie = this.adddingMovie.bind(this);
   }
 
   changeTracker({ target }) {
@@ -46,6 +47,13 @@ class MovieLibrary extends React.Component {
     return filtedmovies;
   }
 
+  adddingMovie(newMovie) {
+    const { movies } = this.state;
+    this.setState({
+      movies: [...movies, newMovie],
+    });
+  }
+
   render() {
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
@@ -59,7 +67,7 @@ class MovieLibrary extends React.Component {
           onSelectedGenreChange={ this.changeTracker }
         />
         <MovieList movies={ this.filter() } />
-        <AddMovie />
+        <AddMovie onClick={ (newMovie) => this.adddingMovie(newMovie) } />
       </div>
     );
   }
