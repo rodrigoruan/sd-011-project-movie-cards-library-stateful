@@ -8,6 +8,16 @@ export default class SearchBar extends Component {
         <label htmlFor="myLabel" data-testid="search-bar-form">
           <input name="name" type="text" placeholder="escreva algo" />
         </label>
+        <label
+          htmlFor="label"
+          data-testid="text-input-label"
+          value={ this.props }
+        >
+          <input name="name" type="text" placeholder="escreva algo" />
+        </label>
+        <label htmlFor="label">
+          <input name="name" type="text" placeholder="3° input" />
+        </label>
       </form>
     );
   }
