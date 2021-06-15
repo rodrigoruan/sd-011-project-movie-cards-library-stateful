@@ -6,7 +6,7 @@ class Title extends React.Component {
     const { title, handleChange } = this.props;
     return (
       <label data-testid="title-input-label" htmlFor="title-input">
-        Titulo
+        Título
         <input
           data-testid="title-input"
           name="title"
