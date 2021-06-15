@@ -4,8 +4,8 @@ import Title from './Title';
 import Subtitle from './Subtitle';
 import ImagePath from './ImagePath';
 import StoryLine from './StoryLine';
-// import Rating from './Rating';
-// import Genre from './Genre';
+import Rating from './Rating';
+import Genre from './Genre';
 
 class AddMovie extends Component {
   constructor() {
@@ -16,12 +16,16 @@ class AddMovie extends Component {
       subtitle: '',
       imagePath: '',
       storyline: '',
+      rating: 0,
+      genre: 'action',
     };
 
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
     this.handleChangeSubtitle = this.handleChangeSubtitle.bind(this);
     this.handleChangeImagePath = this.handleChangeImagePath.bind(this);
     this.handleChangeStoryLine = this.handleChangeStoryLine.bind(this);
+    this.handleChangeRating = this.handleChangeRating.bind(this);
+    this.handleChangeGenre = this.handleChangeGenre.bind(this);
   }
 
   handleChangeTitle({ target }) {
@@ -40,9 +44,17 @@ class AddMovie extends Component {
     this.setState({ storyline: target.value });
   }
 
+  handleChangeRating({ target }) {
+    this.setState({ rating: target.value });
+  }
+
+  handleChangeGenre({ target }) {
+    this.setState({ genre: target.value });
+  }
+
   render() {
     // const { onClick } = this.props;
-    const { title, subtitle, imagePath, storyline } = this.state;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
         <Title title={ title } handleChangeTitle={ this.handleChangeTitle } />
@@ -58,6 +70,8 @@ class AddMovie extends Component {
           storyLine={ storyline }
           handleChangeStoryLine={ this.handleChangeStoryLine }
         />
+        <Rating rating={ rating } handleChangeRating={ this.handleChangeRating } />
+        <Genre genre={ genre } handleChangeGenre={ this.handleChangeGenre } />
       </form>
     );
   }
