@@ -30,10 +30,10 @@ class AddMovie extends Component {
 
   handleClear() {
     const { onClick } = this.props;
+    onClick(this.state);
     this.setState({
       ...initialState,
     });
-    onClick();
   }
 
   renderTitleInput() {
