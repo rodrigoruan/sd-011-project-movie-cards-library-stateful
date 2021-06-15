@@ -45,29 +45,15 @@ class AddMovie extends Component {
     // const { onClick } = this.props;
     const { subtitle, title, imagePath, storyLine, rating, genre } = this.state;
     return (
-      <div>
+      <form data-testid="add-movie-form">
         <p>{subtitle}</p>
         <p>{title}</p>
         <p>{imagePath}</p>
         <p>{storyLine}</p>
         <p>{rating}</p>
         <p>{genre}</p>
-        {/* <form data-testid="add-movie-form">
-          <label htmlFor="title" data-testid="title-input-label">
-            Título
-            <input
-              type="text"
-              name="title"
-              id="title"
-              data-testid="title-input"
-              value={ title }
-              onChange={ this.handleChange } */}
-        {/* />
-          </label>
-        </form> */}
 
-      </div>
-
+      </form>
     );
   }
 }
