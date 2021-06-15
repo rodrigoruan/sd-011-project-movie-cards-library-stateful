@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 class AddMovie extends React.Component {
   constructor(props) {
@@ -15,9 +15,11 @@ class AddMovie extends React.Component {
     this.stateSet = this.stateSet.bind(this);
   }
 
-  stateSet() {
-    const { onClick } = this.props;
-    onClick(this.state);
+  stateSet({ target }) {
+    const { name } = target;
+    this.setState({
+      [name]: target.value,
+    });
   }
 
   inputTitle(title) {
@@ -25,6 +27,7 @@ class AddMovie extends React.Component {
       <label data-testid="title-input-label" htmlFor="text">
         Título
         <input
+          name="title"
           value={ title }
           data-testid="title-input"
           type="text"
@@ -39,6 +42,7 @@ class AddMovie extends React.Component {
       <label data-testid="subtitle-input-label" htmlFor="text">
         Subtítulo
         <input
+          name="subtitle"
           value={ subtitle }
           data-testid="subtitle-input"
           type="text"
@@ -53,6 +57,7 @@ class AddMovie extends React.Component {
       <label data-testid="storyline-input-label" htmlFor="text">
         Sinopse
         <textarea
+          name="storyline"
           value={ storyline }
           data-testid="storyline-input"
           onChange={ this.stateSet }
@@ -66,6 +71,7 @@ class AddMovie extends React.Component {
       <label data-testid="image-input-label" htmlFor="text">
         Imagem
         <input
+          name="imagePath"
           value={ imagePath }
           data-testid="image-input"
           type="text"
@@ -80,6 +86,7 @@ class AddMovie extends React.Component {
       <label data-testid="rating-input-label" htmlFor="text">
         Avaliação
         <input
+          name="rating"
           value={ rating }
           data-testid="rating-input"
           type="text"
@@ -94,6 +101,7 @@ class AddMovie extends React.Component {
       <label data-testid="genre-input-label" htmlFor="genre-input">
         Gênero
         <select
+          name="genre"
           value={ genre }
           data-testid="genre-input"
           onChange={ this.stateSet }
@@ -128,8 +136,8 @@ class AddMovie extends React.Component {
   }
 }
 
-AddMovie.propTypes = {
-  onClick: PropTypes.func.isRequired,
-};
+// AddMovie.propTypes = {
+//   onClick: PropTypes.func.isRequired,
+// };
 
 export default AddMovie;
