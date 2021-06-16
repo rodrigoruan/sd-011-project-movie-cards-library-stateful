@@ -1,23 +1,52 @@
-// implement AddMovie component here
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 
 export default class SearchBar extends Component {
   render() {
+    const {
+      searchText,
+      onSearchTextChange,
+      bookmarkedOnly,
+      onBookmarkedChange,
+      selectedGenre,
+      onSelectedGenreChange,
+    } = this.props;
+
     return (
-      <form>
-        <label htmlFor="myLabel" data-testid="search-bar-form">
-          <input name="name" type="text" placeholder="escreva algo" />
+      <form data-testid="search-bar-form">
+        <label htmlFor="input" data-testid="text-input-label">
+          Inclui o texto
+          <input
+            type="text"
+            data-testid="text-input"
+            value={ searchText }
+            onChange={onSearchTextChange }
+          />
         </label>
-        <label
-          htmlFor="label"
-          data-testid="text-input-label"
-          value={ this.props }
-        >
-          <input name="name" type="text" placeholder="escreva algo" />
+        <label data-testid="checkbox-input-label">
+        Mostrar somente favoritos
+        < input
+          type="checkbox"
+          checked={bookmarkedOnly} 
+          onChange={onBookmarkedChange}
+          data-testid="checkbox-input"
+          
+          />
         </label>
-        <label htmlFor="label">
-          <input name="name" type="text" placeholder="3° input" />
-        </label>
+
+       
+          <label data-testid="select-input-label">
+            Filtrar por gênero
+            <select 
+            data-testid="select-input"
+            value={selectedGenre} 
+            onChange={ onSelectedGenreChange }>
+              <option data-testid="select-option" value=''>Todos</option>        
+              <option data-testid="select-option" value="action">Ação</option>        
+              <option data-testid="select-option" value='comedy'>Comédia</option>        
+              <option data-testid="select-option" value='thriller'>Suspense</option>        
+            </select>
+         </label>
       </form>
     );
   }
