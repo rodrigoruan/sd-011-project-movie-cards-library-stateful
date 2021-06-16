@@ -5,8 +5,8 @@ class InputStoryline extends Component {
     render() {
         const { value, handleChange } = this.props;
         return(
-            <label htmlFor="subtitle" data-testid="storyline-input-label">
-            Storyline
+            <label htmlFor="storyline" data-testid="storyline-input-label">
+            Sinopse
             <textarea type="text" data-testid="storyline-input" name="storyline"
                 value={ value } onChange= { handleChange }    
             />
