@@ -22,12 +22,24 @@ class AddMovie extends React.Component {
             genre: 'action',
         }
 
+        this.clear = this.clear.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
 
     handleChange({target}) {
         const { name, value } = target;
         this.setState({[name]: value});
+    }
+
+    clear() {
+        this.setState({
+            subtitle: '',
+            title: '',
+            imagePath: '',
+            storyline: '',
+            rating: 0,
+            genre: 'action',
+        });
     }
 
     render() {
@@ -41,7 +53,7 @@ class AddMovie extends React.Component {
                 <InputStoryline value={ storyline } handleChange={ this.handleChange } />
                 <InputRating value={ rating } handleChange={ this.handleChange } />
                 <InputGenre value={ genre } handleChange={ this.handleChange } />
-                <AddMovieButton onClick={ onClick } />
+                <AddMovieButton onClick={ onClick } clear={ this.clear } />
             </form>
         );
     }
