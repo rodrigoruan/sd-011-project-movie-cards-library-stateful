@@ -15,13 +15,22 @@ class MovieLibrary extends React.Component {
             selectedGenre: '',
             movies,
         }
+
+        this.onClickMovie = this.onClickMovie.bind(this);
     }
+
+    onClickMovie(movie) {
+        const { movies } = this.state;
+        this.setState({
+          movies: [...movies, movie],
+        });
+      }
 
     render() {
         return(
             <div>
                 <SearchBar />
-                <AddMovie />
+                <AddMovie onClick={ this.onClickMovie } />
             </div>
         );
     }
