@@ -4,6 +4,7 @@
 // https://app.betrybe.com/course/live-lectures/sd-cohort-8#aula-122-formularios-em-react
 // https://reactjs.org/docs/forms.html
 // Baseada na resolução do arquivo SearchBar.jsx
+// Alterações realizadas após participação nos plantões
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -33,7 +34,7 @@ class AddMovie extends React.Component {
 
   newMovie = () => {
     const { onClick } = this.props;
-    onClick();
+    onClick(this.state);
     this.setState(
       {
         rating: 0,
