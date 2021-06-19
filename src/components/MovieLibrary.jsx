@@ -5,13 +5,29 @@ import MovieList from './MovieList';
 import AddMovie from './AddMovie';
 
 export default class MovieLibrary extends Component {
-  render() {
+  constructor(props) {
+    super(props);
     const { movies } = this.props;
+    this.state = {
+      movies,
+    };
+    this.handleAddMovie = this.handleAddMovie.bind(this);
+  }
+
+  handleAddMovie(newMovie) {
+    const { movies } = this.state;
+    this.setState({
+      movies: [...movies, newMovie],
+    });
+  }
+
+  render() {
+    const { movies } = this.state;
     return (
       <div>
         <SearchBar />
         <MovieList movies={ movies } />
-        <AddMovie />
+        <AddMovie onClick={ this.handleAddMovie } />
       </div>
     );
   }
