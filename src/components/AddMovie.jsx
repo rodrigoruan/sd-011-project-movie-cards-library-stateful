@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Avaliação from './Avaliação';
 
 export default class AddMovie extends Component {
   constructor() {
@@ -8,6 +9,7 @@ export default class AddMovie extends Component {
       subtitle: '',
       imagePath: '',
       storyline: '',
+      rating: 0,
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -21,7 +23,7 @@ export default class AddMovie extends Component {
   }
 
   render() {
-    const { title, subtitle, imagePath, storyline } = this.state;
+    const { title, subtitle, imagePath, storyline, rating } = this.state;
     return (
       <form data-testid="add-movie-form">
         <label htmlFor="title-input-label" data-testid="title-input-label">
@@ -63,7 +65,7 @@ export default class AddMovie extends Component {
             onChange={ this.handleChange }
           />
         </label>
-
+        <Avaliação value={ rating } handleChange={ this.handleChange } />
       </form>
     );
   }
