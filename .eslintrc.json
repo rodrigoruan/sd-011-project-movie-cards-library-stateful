@@ -14,5 +14,7 @@
   "rules": {
     "import/extensions": "off"
   },
-  "plugins": ["react", "sonarjs"]
+  "plugins": ["react", "sonarjs", "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript"]
 }
