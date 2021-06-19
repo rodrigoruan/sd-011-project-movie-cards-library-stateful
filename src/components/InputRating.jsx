@@ -22,6 +22,6 @@ class InputRating extends Component {
 export default InputRating;
 
 InputRating.propTypes = {
-  value: PropTypes.number.isRequired,
+  value: PropTypes.string.isRequired,
   handleChanges: PropTypes.func.isRequired,
 };

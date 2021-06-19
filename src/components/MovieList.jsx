@@ -20,7 +20,7 @@ class MovieList extends React.Component {
       ? movie.genre === selectedGenre : {}
     );
 
-    const filtredMovies = movies.filter((movie) => ( // criei o filtro e coloquei as condicoes que defini usando ternario ali em cima
+    const filtredMovies = movies.filter((movie) => ( // criei o filtro e coloquei as condicoes que defini usando ternario ali em cima /
       bookmarkedFilter(movie) && textFilter(movie) && genreFilter(movie)
     ));
 
@@ -35,10 +35,13 @@ class MovieList extends React.Component {
   }
 }
 
-MovieList.propTypes = {
-  movies: PropTypes.arrayOf(
-    PropTypes.object,
-  ).isRequired,
-};
+MovieList.propTypes = ({
+  searchText: PropTypes.string,
+  onSearchTextChange: PropTypes.string,
+  bookmarkedOnly: PropTypes.bool,
+  onBookmarkedChange: PropTypes.bool,
+  selectedGenre: PropTypes.string,
+  onSelectedGenreChange: PropTypes.string,
+}).isRequired;
 
 export default MovieList;
