@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
+import MovieList from './MovieList';
 
 class MovieLibrary extends React.Component {
     constructor(props) {
@@ -13,24 +14,45 @@ class MovieLibrary extends React.Component {
             searchText: '',
             bookmarkedOnly: false,
             selectedGenre: '',
-            movies,
+            moviesList: movies,
         }
 
         this.onClickMovie = this.onClickMovie.bind(this);
+        this.handleSearchInput = this.handleSearchInput.bind(this);
     }
 
+    // for the req 18 I consulted Bruno's repository
+    // https://github.com/tryber/sd-011-project-movie-cards-library-stateful/blob/brunoarduarte-movie-cards-library-stateful/src/components/MovieLibrary.jsx
+
     onClickMovie(movie) {
-        const { movies } = this.state;
+        const { moviesList } = this.state;
         this.setState({
-          movies: [...movies, movie],
+        movies: [...moviesList, movie],
         });
-      }
+    }
+
+    handleSearchInput({target}) {
+        const { value } = target;
+        this.setState({ searchText: value });
+    }
+
+    handleSearchTextFilter() {
+        const { searchText, moviesList } = this.state;
+        return moviesList.filter((movie) => movie
+            .title.toLowerCase().includes(searchText)
+            || movie.subtitle.toLowerCase().includes(searchText)
+            || movie.storyline.toLowerCase().includes(searchText));
+    }
 
     render() {
+        const { moviesList, searchText } = this.state;
+        console.log(searchText);
+        console.log(moviesList);
         return(
             <div>
-                <SearchBar />
+                <SearchBar onSearchTextChange={ this.handleSearchInput } />
                 <AddMovie onClick={ this.onClickMovie } />
+                <MovieList movies={ this.handleSearchTextFilter() }/>
             </div>
         );
     }
