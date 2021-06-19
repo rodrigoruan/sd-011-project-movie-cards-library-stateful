@@ -6,11 +6,13 @@ class SearchBar extends Component {
     const { searchText, onSearchTextChange,
       bookmarkedOnly, onBookmarkedChange,
       onSelectedGenreChange, selectedGenre } = this.props;
+
     return (
       <form data-testid="search-bar-form">
         <label htmlFor="input-text" data-testid="text-input-label">
           Inclui o texto:
           <input
+            name="searchText"
             id="input-text"
             type="text"
             data-testid="text-input"
@@ -34,6 +36,7 @@ class SearchBar extends Component {
           Filtrar por gênero
           <select
             id="sla"
+            name="selectedGenre"
             value={ selectedGenre }
             onChange={ onSelectedGenreChange }
             data-testid="select-input"
