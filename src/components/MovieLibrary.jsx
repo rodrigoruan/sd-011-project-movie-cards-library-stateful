@@ -2,32 +2,26 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
+import AddMovie from './AddMovie';
 
 export default class MovieLibrary extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      movies: props.movies,
-      searchText: '',
-      bookmarkedOnly: false,
-      selectedGenre: '',
-    };
-  }
-
   render() {
     const { movies } = this.props;
     return (
       <div>
         <SearchBar />
-        <MovieList />
+        <MovieList movies={ movies } />
+        <AddMovie />
       </div>
     );
   }
 }
 
 MovieLibrary.propTypes = {
-  movies: PropTypes.array,
-  searchText: PropTypes.string,
-  bookmarkedOnly: PropTypes.bool,
-  selectedGenre: PropTypes.string,
+  movies: PropTypes.arrayOf(
+    PropTypes.object,
+  ).isRequired,
+  // searchText: PropTypes.string,
+  // bookmarkedOnly: PropTypes.bool,
+  // selectedGenre: PropTypes.string,
 }.isRequired;
