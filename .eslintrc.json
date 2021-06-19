@@ -11,10 +11,5 @@
     },
     "sourceType": "module"
   },
-  "rules": {
-    "import/extensions": "off"
-  },
-  "plugins": ["react", "sonarjs", "plugin:import/errors",
-    "plugin:import/warnings",
-    "plugin:import/typescript"]
+  "plugins": ["react", "sonarjs"]
 }
