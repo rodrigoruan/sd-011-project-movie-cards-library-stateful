@@ -54,7 +54,7 @@ class AddMovie extends React.Component {
     this.setState({ genre: newGenre });
   }
 
-  onButtonClick = (event) => {
+  onButtonClick = () => {
     const { onClick } = this.props;
     onClick(this.state);
     this.setState(defaultState);
