@@ -1,5 +1,10 @@
 import React from 'react';
 import AddMovieRating from './AddMovieRating';
+import AddMovieTitle from './AddMovieTitle';
+import AddMovieSubtitle from './AddMovieSubtitle';
+import AddMovieImage from './AddMovieImage';
+import AddMovieStoryline from './AddMovieStoryline';
+import AddMovieSelect from './AddMovieSelect';
 // import PropTypes from 'prop-types';
 
 class AddMovie extends React.Component {
@@ -12,7 +17,7 @@ class AddMovie extends React.Component {
       imagePath: '',
       storyline: '',
       rating: 0,
-    //   genre: 'action',
+      genre: 'action',
     };
   }
 
@@ -41,51 +46,25 @@ class AddMovie extends React.Component {
     this.setState({ rating: newRating });
   }
 
+  onSelectChange = (event) => {
+    const newGenre = event.target.value;
+    this.setState({ genre: newGenre });
+  }
+
   render() {
     const {
       title, subtitle, imagePath,
-      storyline, rating,
+      storyline, rating, genre,
     } = this.state;
 
     return (
       <form data-testid="add-movie-form">
-        <label htmlFor="AddMovie__title" data-testid="title-input-label">
-          Título
-          <input
-            id="AddMovie__title"
-            data-testid="title-input"
-            value={ title }
-            onChange={ this.onTitleChange }
-          />
-        </label>
-        <label htmlFor="AddMovie__subtitle" data-testid="subtitle-input-label">
-          Subtítulo
-          <input
-            id="AddMovie__subtitle"
-            data-testid="subtitle-input"
-            value={ subtitle }
-            onChange={ this.onSubtitleChange }
-          />
-        </label>
-        <label htmlFor="AddMovie__image" data-testid="image-input-label">
-          Imagem
-          <input
-            id="AddMovie__image"
-            data-testid="image-input"
-            value={ imagePath }
-            onChange={ this.onImageChange }
-          />
-        </label>
-        <label htmlFor="AddMovie__storyline" data-testid="storyline-input-label">
-          Sinopse
-          <textarea
-            id="AddMovie__storyline"
-            data-testid="storyline-input"
-            value={ storyline }
-            onChange={ this.onStorylineChange }
-          />
-        </label>
+        <AddMovieTitle value={ title } onChange={ this.onTitleChange } />
+        <AddMovieSubtitle value={ subtitle } onChange={ this.onSubtitleChange } />
+        <AddMovieImage value={ imagePath } onChange={ this.onImageChange } />
+        <AddMovieStoryline value={ storyline } onChange={ this.onStorylineChange } />
         <AddMovieRating value={ rating } onChange={ this.onRatingChange } />
+        <AddMovieSelect value={ genre } onChange={ this.onSelectChange } />
       </form>
     );
   }
