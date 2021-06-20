@@ -1,4 +1,5 @@
 import React from 'react';
+import AddMovieRating from './AddMovieRating';
 // import PropTypes from 'prop-types';
 
 class AddMovie extends React.Component {
@@ -10,42 +11,41 @@ class AddMovie extends React.Component {
       subtitle: '',
       imagePath: '',
       storyline: '',
-    //   rating: 0,
+      rating: 0,
     //   genre: 'action',
     };
-
-    this.onTitleChange = this.onTitleChange.bind(this);
-    this.onSubtitleChange = this.onSubtitleChange.bind(this);
-    this.onImageChange = this.onImageChange.bind(this);
-    this.onStorylineChange = this.onStorylineChange.bind(this);
   }
 
-  onTitleChange(event) {
+  onTitleChange = (event) => {
     const newTitle = event.target.value;
     this.setState({ title: newTitle });
   }
 
-  onSubtitleChange(event) {
+  onSubtitleChange = (event) => {
     const newSubtitle = event.target.value;
     this.setState({ subtitle: newSubtitle });
   }
 
-  onImageChange(event) {
+  onImageChange = (event) => {
     const newImage = event.target.value;
     this.setState({ imagePath: newImage });
   }
 
-  onStorylineChange(event) {
+  onStorylineChange = (event) => {
     const newStoryline = event.target.value;
     this.setState({ storyline: newStoryline });
   }
 
+  onRatingChange = (event) => {
+    const newRating = event.target.value;
+    this.setState({ rating: newRating });
+  }
+
   render() {
-    const { title } = this.state;
-    const { subtitle } = this.state;
-    const { imagePath } = this.state;
-    const { storyline } = this.state;
-    // const { onClick } = this.props;
+    const {
+      title, subtitle, imagePath,
+      storyline, rating,
+    } = this.state;
 
     return (
       <form data-testid="add-movie-form">
@@ -85,6 +85,7 @@ class AddMovie extends React.Component {
             onChange={ this.onStorylineChange }
           />
         </label>
+        <AddMovieRating value={ rating } onChange={ this.onRatingChange } />
       </form>
     );
   }
