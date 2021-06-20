@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import Title from './Title';
 import Subtitle from './Subtitle';
 import ImagePath from './ImagePath';
@@ -26,6 +26,7 @@ class AddMovie extends Component {
     this.handleChangeStoryLine = this.handleChangeStoryLine.bind(this);
     this.handleChangeRating = this.handleChangeRating.bind(this);
     this.handleChangeGenre = this.handleChangeGenre.bind(this);
+    this.AddMovieButton = this.AddMovieButton.bind(this);
   }
 
   handleChangeTitle({ target }) {
@@ -52,32 +53,51 @@ class AddMovie extends Component {
     this.setState({ genre: target.value });
   }
 
+  AddMovieButton() {
+    const { onClick } = this.props;
+    onClick(this.state);
+    this.setState({
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
+
   render() {
-    // const { onClick } = this.props;
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <Title title={ title } handleChangeTitle={ this.handleChangeTitle } />
+        <Title handleChangeTitle={ this.handleChangeTitle } title={ title } />
         <Subtitle
-          subtitle={ subtitle }
           handleChangeSubtitle={ this.handleChangeSubtitle }
+          subtitle={ subtitle }
         />
         <ImagePath
-          imagePath={ imagePath }
           handleChangeImagePath={ this.handleChangeImagePath }
+          imagePath={ imagePath }
         />
         <StoryLine
-          storyLine={ storyline }
           handleChangeStoryLine={ this.handleChangeStoryLine }
+          storyLine={ storyline }
         />
-        <Rating rating={ rating } handleChangeRating={ this.handleChangeRating } />
-        <Genre genre={ genre } handleChangeGenre={ this.handleChangeGenre } />
+        <Rating handleChangeRating={ this.handleChangeRating } rating={ rating } />
+        <Genre handleChangeGenre={ this.handleChangeGenre } genre={ genre } />
+        <button
+          type="button"
+          data-testid="send-button"
+          onClick={ this.AddMovieButton }
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }
 }
 
 export default AddMovie;
-// AddMovie.propTypes = {
-//   onClick: PropTypes.func.isRequired,
-// };
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};

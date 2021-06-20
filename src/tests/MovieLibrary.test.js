@@ -42,13 +42,13 @@ const movieCardTestId = 'movie-card';
 const movieCardTitleId = 'movie-card-title';
 
 describe('15 - Crie um componente chamado `<MovieLibrary />`', () => {
-  it.skip('Renderize o componente', () => {
+  it('Renderize o componente', () => {
     render(<MovieLibrary movies={ movies } />);
   });
 });
 
 describe('16 - Configure o estado inicial do componente `<MovieLibrary />`', () => {
-  it.skip('Defina o estado inicial de `searchText` como uma string vazia', () => {
+  it('Defina o estado inicial de `searchText` como uma string vazia', () => {
     const { getByTestId } = render(<MovieLibrary movies={ movies } />);
     const searchText = getByTestId(textTestId);
     expect(searchText).toHaveValue('');

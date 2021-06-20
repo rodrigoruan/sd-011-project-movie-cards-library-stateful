@@ -23,8 +23,4 @@ StoryLine.propTypes = {
   handleChangeStoryLine: PropTypes.func,
 }.isRequired;
 
-// StoryLine.defaultProps = {
-//   storyLine: '',
-//   handleChangeStoryLine: () => {},
-// };
 export default StoryLine;
