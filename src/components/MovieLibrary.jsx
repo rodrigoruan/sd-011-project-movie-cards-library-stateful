@@ -24,7 +24,7 @@ class MovieLibrary extends Component {
   }
 
   render() {
-    const { movies } = this.state;
+    // const { movies } = this.state;
     return (
       <>
         <p>Mivie Library</p>
