@@ -29,8 +29,10 @@ class MovieLibrary extends Component {
       <>
         <p>Mivie Library</p>
         <SearchBar />
-        <MovieList movies={ movies } />
-        <AddMovie onCLick={ this.handleAddMovie } />
+        <MovieList />
+        <AddMovie />
+        {/* <MovieList movies={ movies } /> */}
+        {/* <AddMovie onCLick={ this.handleAddMovie } /> */}
       </>
     );
   }
