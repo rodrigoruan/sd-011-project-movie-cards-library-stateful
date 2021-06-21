@@ -33,19 +33,12 @@ class MovieLibrary extends Component {
 
   handleFilter() {
     const { searchText, movies, bookmarkedOnly, selectedGenre } = this.state;
-    let returnArray = movies;
-    if (bookmarkedOnly === true) {
-      returnArray = returnArray.filter((movie) => movie.bookmarked === true);
-    }
-    if (selectedGenre !== '') {
-      returnArray = returnArray.filter((movie) => movie.genre === selectedGenre);
-    }
-    if (searchText !== '') {
-      returnArray = returnArray.filter((movie) => (
-        movie.title.includes(searchText)
-        || movie.subtitle.includes(searchText)
-        || movie.storyline.includes(searchText)));
-    }
+    const returnArray = movies
+      .filter((movie) => (bookmarkedOnly ? movie.bookmarked === true : movie))
+      .filter((movie) => (movie.genre.includes(selectedGenre)))
+      .filter((movie) => (movie.title.toLowerCase().includes(searchText)
+    || movie.subtitle.toLowerCase().includes(searchText)
+    || movie.storyline.toLowerCase().includes(searchText)));
     return returnArray;
   }
 
