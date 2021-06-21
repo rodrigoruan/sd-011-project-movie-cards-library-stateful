@@ -1,73 +1,87 @@
-// implement AddMovie component here
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
 import MovieList from './MovieList';
+import SearchBar from './SearchBar';
 
-class MovieLibrary extends React.Component {
-    constructor(props) {
-        super(props);
+class MovieLibrary extends Component {
+  constructor(props) {
+    super(props);
 
-        const { movies } = this.props;
-        this.state = {
-            searchText: '',
-            bookmarkedOnly: false,
-            selectedGenre: '',
-            moviesList: movies,
-        }
+    const { movies } = this.props;
+    this.state = {
+    searchText: '',
+    bookmarkedOnly: false,
+    selectedGenre: '',
+    movies,
+    };
+    this.handleChangeInput = this.handleChangeInput.bind(this);
+    this.handleFilterInput = this.handleFilterInput.bind(this);
+    this.handleStateMovie = this.handleStateMovie.bind(this);
+  }
 
-        this.onClickMovie = this.onClickMovie.bind(this);
-        this.handleSearchInput = this.handleSearchInput.bind(this);
+// for the req 18 I consulted Bruno's repository
+// https://github.com/tryber/sd-011-project-movie-cards-library-stateful/blob/brunoarduarte-movie-cards-library-stateful/src/components/MovieLibrary.jsx
+
+  handleChangeInput({ target }) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({
+      [name]: value,
+    });
+    console.log(this.state)
+  }
+
+  handleFilterInput() {
+    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+    let filtered = movies;
+
+    if (searchText) {
+      filtered = movies
+        .filter((movie) => movie.title.includes(searchText) 
+            || movie.subtitle.includes(searchText)
+            || movie.storyline.includes(searchText))
     }
 
-    // for the req 18 I consulted Bruno's repository
-    // https://github.com/tryber/sd-011-project-movie-cards-library-stateful/blob/brunoarduarte-movie-cards-library-stateful/src/components/MovieLibrary.jsx
-
-    onClickMovie(movie) {
-        const { moviesList } = this.state;
-        this.setState({
-        movies: [...moviesList, movie],
-        });
+    if (bookmarkedOnly) {
+      filtered = movies.filter((movie) => movie.bookmarked);
     }
 
-    handleSearchInput({target}) {
-        const { value } = target;
-        this.setState({ searchText: value });
+    if (selectedGenre) {
+      filtered = movies.filter((movie) => movie.genre === selectedGenre);
     }
 
-    handleSearchTextFilter() {
-        const { searchText, moviesList } = this.state;
-        return moviesList.filter((movie) => movie
-            .title.toLowerCase().includes(searchText)
-            || movie.subtitle.toLowerCase().includes(searchText)
-            || movie.storyline.toLowerCase().includes(searchText));
-    }
+    return filtered;
+  }
 
-    render() {
-        const { moviesList, searchText } = this.state;
-        console.log(searchText);
-        console.log(moviesList);
-        return(
-            <div>
-                <SearchBar onSearchTextChange={ this.handleSearchInput } />
-                <AddMovie onClick={ this.onClickMovie } />
-                <MovieList movies={ this.handleSearchTextFilter() }/>
-            </div>
-        );
-    }
+  handleStateMovie(movie) {
+    const { movies } = this.state;
+    this.setState({
+      movies: [...movies, movie],
+    });
+  }
+
+  render() {
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+    return (
+      <>
+        <SearchBar
+          searchText={ searchText }
+          onSearchTextChange={ this.handleChangeInput }
+          bookmarkedOnly={ bookmarkedOnly }
+          onBookmarkedChange={ this.handleChangeInput }
+          selectedGenre={ selectedGenre }
+          onSelectedGenreChange={ this.handleChangeInput }
+        />
+        <AddMovie onClick={ this.renderMovie } />
+        <MovieList movies={ this.handleFilterInput() } />
+      </>
+    );
+  }
 }
 
 MovieLibrary.propTypes = {
-    movies: PropTypes.arrayOf(
-        PropTypes.shape({
-        title: PropTypes.string,
-        subtitle: PropTypes.string,
-        storyline: PropTypes.string,
-        rating: PropTypes.number,
-        imagePath: PropTypes.string,
-        }),
-    ).isRequired,
+  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default MovieLibrary;

@@ -24,6 +24,7 @@ class AddMovie extends React.Component {
 
         this.clear = this.clear.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleNewMovie = this.handleNewMovie.bind(this);
     }
 
     handleChange({target}) {
@@ -31,6 +32,7 @@ class AddMovie extends React.Component {
         this.setState({[name]: value});
     }
 
+    
     clear() {
         this.setState({
             subtitle: '',
@@ -42,9 +44,15 @@ class AddMovie extends React.Component {
         });
     }
 
+    handleNewMovie() {
+        const { onClickMovie } = this.props;
+        onClickMovie(this.state);
+        this.clear();
+    }
+
     render() {
-        const { onClick } = this.props;
         const { title, subtitle, storyline, imagePath, rating, genre } = this.state;
+        console.log(title, subtitle, storyline, imagePath, rating, genre);
         return(
             <form data-testid="add-movie-form">
                 <InputTitle value={ title } handleChange={ this.handleChange }/>
@@ -53,14 +61,14 @@ class AddMovie extends React.Component {
                 <InputStoryline value={ storyline } handleChange={ this.handleChange } />
                 <InputRating value={ rating } handleChange={ this.handleChange } />
                 <InputGenre value={ genre } handleChange={ this.handleChange } />
-                <AddMovieButton onClick={ onClick } clear={ this.clear } />
+                <AddMovieButton onClick={ this.handleNewMovie } />
             </form>
         );
     }
 }
 
 AddMovie.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  onClickMovie: PropTypes.func.isRequired,
 };
 
 export default AddMovie;

@@ -8,7 +8,7 @@ class InputImage extends Component {
             <label htmlFor="image" data-testid="image-input-label">
             Imagem
             <input type="text" data-testid="image-input" name="imagePath"
-                value={ value } onChange= { handleChange }    
+                value={ value } onChange={ handleChange }    
             />
         </label> 
         );

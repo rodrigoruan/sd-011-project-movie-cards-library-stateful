@@ -8,7 +8,7 @@ class InputStoryline extends Component {
             <label htmlFor="storyline" data-testid="storyline-input-label">
             Sinopse
             <textarea type="text" data-testid="storyline-input" name="storyline"
-                value={ value } onChange= { handleChange }    
+                value={ value } onChange={ handleChange }    
             />
         </label> 
         );
