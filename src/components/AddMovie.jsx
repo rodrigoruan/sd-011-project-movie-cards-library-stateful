@@ -4,7 +4,10 @@ import PropTypes from 'prop-types';
 class AddMovie extends Component {
   renderTitleInput() {
     return (
-      <label htmlFor="title-input" data-testid="title-input-label">
+      <label
+        htmlFor="title-input"
+        data-testid="title-input-label"
+      >
         Título
         <input
           type="text"
@@ -17,7 +20,10 @@ class AddMovie extends Component {
 
   renderSubTitleInput() {
     return (
-      <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
+      <label
+        htmlFor="subtitle-input"
+        data-testid="subtitle-input-label"
+      >
         Subtítulo
         <input
           id="subtitle-input"
@@ -30,7 +36,10 @@ class AddMovie extends Component {
 
   renderImagemInput() {
     return (
-      <label htmlFor="image-input" data-testid="image-input-label">
+      <label
+        htmlFor="image-input"
+        data-testid="image-input-label"
+      >
         Imagem
         <input
           type="text"
@@ -43,7 +52,10 @@ class AddMovie extends Component {
 
   renderStoryLine() {
     return (
-      <label htmlFor="storyline-input" data-testid="storyline-input-label">
+      <label
+        htmlFor="storyline-input"
+        data-testid="storyline-input-label"
+      >
         Sinopse
         <input
           type="text"
@@ -56,7 +68,10 @@ class AddMovie extends Component {
 
   renderRatingInput() {
     return (
-      <label htmlFor="rating-input" data-testid="rating-input-label">
+      <label
+        htmlFor="rating-input"
+        data-testid="rating-input-label"
+      >
         Avaliação
         <input
           type="number"
@@ -70,15 +85,18 @@ class AddMovie extends Component {
 
   renderGenderInput() {
     return (
-      <label htmlFor="genre-input" data-testid="genre-input-label">
+      <label
+        htmlFor="genre-input"
+        data-testid="genre-input-label"
+      >
         Gênero
         <select
           id="genre-input"
           data-testid="genre-input"
         >
-          <option value="action" data-testid="select-option">Ação</option>
-          <option value="comedy" data-testid="select-option">Comédia</option>
-          <option value="thriller" data-testid="select-option">Suspense</option>
+          <option value="action" data-testid="genre-option">Ação</option>
+          <option value="comedy" data-testid="genre-option">Comédia</option>
+          <option value="thriller" data-testid="genre-option">Suspense</option>
         </select>
       </label>
     );
