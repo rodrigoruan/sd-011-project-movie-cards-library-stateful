@@ -45,8 +45,8 @@ class AddMovie extends React.Component {
     }
 
     handleNewMovie() {
-        const { onClickMovie } = this.props;
-        onClickMovie(this.state);
+        const { onClick } = this.props;
+        onClick(this.state);
         this.clear();
     }
 
