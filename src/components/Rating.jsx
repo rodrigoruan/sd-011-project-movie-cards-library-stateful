@@ -27,4 +27,9 @@ Rating.propTypes = {
   handleChangeRating: PropTypes.func,
 }.isRequired;
 
+Rating.defaultProps = {
+  rating: 'undefined',
+
+};
+
 export default Rating;
