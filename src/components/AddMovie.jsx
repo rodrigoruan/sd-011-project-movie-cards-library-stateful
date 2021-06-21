@@ -1,25 +1,27 @@
+ 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Title from './AddMovie/Title';
-import Subtitle from './AddMovie/Subtitle';
-import ImagePath from './AddMovie/ImagePath';
+import Button from './AddMovie/Button';
 import Genre from './AddMovie/Genre';
+import ImagePath from './AddMovie/ImagePath';
 import Rating from './AddMovie/Rating';
 import StoryLine from './AddMovie/StoryLine';
-import Button from './AddMovie/Button';
+import Subtitle from './AddMovie/Subtitle';
+import Title from './AddMovie/Title';
 
 class AddMovie extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      subtitle: '',
       title: '',
-      image: '',
+      subtitle: '',
       storyline: '',
+      imagePath: '',
       rating: 0,
       genre: 'action',
     };
+
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
@@ -40,20 +42,13 @@ class AddMovie extends Component {
       storyline: '',
       imagePath: '',
       rating: 0,
-      genre: '',
+      genre: 'action',
     });
   }
 
   render() {
     const { onClick } = this.props;
-    const {
-      title,
-      subtitle,
-      image,
-      storyline,
-      rating,
-      genre,
-    } = this.state;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
         <Title
@@ -67,7 +62,7 @@ class AddMovie extends Component {
         />
 
         <ImagePath
-          image={ image }
+          image={ imagePath }
           onImageTextChange={ this.handleChange }
         />
 
@@ -85,9 +80,8 @@ class AddMovie extends Component {
           genre={ genre }
           onGenreChange={ this.handleChange }
         />
-        <Button
-          onButtonClick={ () => this.handleClick(onClick) }
-        />
+
+        <Button onButtonClick={ () => this.handleClick(onClick) } />
       </form>
     );
   }
@@ -95,4 +89,6 @@ class AddMovie extends Component {
 
 export default AddMovie;
 
-AddMovie.propTypes = { onClick: PropTypes.func.isRequired };
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};

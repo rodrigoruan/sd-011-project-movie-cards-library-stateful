@@ -19,7 +19,7 @@ class Title extends Component {
   }
 }
 
-export default AddMovieTitle;
+export default Title;
 
 Title.propTypes = {
   title: PropTypes.string.isRequired,
