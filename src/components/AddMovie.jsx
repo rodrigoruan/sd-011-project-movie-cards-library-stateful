@@ -1,8 +1,31 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+const initialState = {
+  subtitle: '',
+  title: '',
+  imagePath: '',
+  storyline: '',
+  rating: 0,
+  genre: 'action',
+};
+
 class AddMovie extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      ...initialState,
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange({ target }) {
+    const { name, value } = target;
+    this.setState({ [name]: value });
+  }
+
   renderTitleInput() {
+    const { title } = this.state;
     return (
       <label
         htmlFor="title-input"
@@ -10,15 +33,19 @@ class AddMovie extends Component {
       >
         Título
         <input
+          name="title"
           type="text"
           id="title-input"
           data-testid="title-input"
+          value={ title }
+          onChange={ this.handleChange }
         />
       </label>
     );
   }
 
   renderSubTitleInput() {
+    const { subtitle } = this.state;
     return (
       <label
         htmlFor="subtitle-input"
@@ -26,15 +53,19 @@ class AddMovie extends Component {
       >
         Subtítulo
         <input
+          name="subtitle"
           id="subtitle-input"
           type="text"
           data-testid="subtitle-input"
+          value={ subtitle }
+          onChange={ this.handleChange }
         />
       </label>
     );
   }
 
   renderImagemInput() {
+    const { image } = this.state;
     return (
       <label
         htmlFor="image-input"
@@ -42,15 +73,19 @@ class AddMovie extends Component {
       >
         Imagem
         <input
+          name="imagePath"
           type="text"
           id="image-input"
           data-testid="image-input"
+          value={ image }
+          onChange={ this.handleChange }
         />
       </label>
     );
   }
 
   renderStoryLine() {
+    const { storyline } = this.state;
     return (
       <label
         htmlFor="storyline-input"
@@ -58,15 +93,19 @@ class AddMovie extends Component {
       >
         Sinopse
         <input
+          name="storyline"
           type="text"
           id="storyline-input"
           data-testid="storyline-input"
+          value={ storyline }
+          onChange={ this.handleChange }
         />
       </label>
     );
   }
 
   renderRatingInput() {
+    const { rating } = this.state;
     return (
       <label
         htmlFor="rating-input"
@@ -74,16 +113,19 @@ class AddMovie extends Component {
       >
         Avaliação
         <input
+          name="rating"
           type="number"
           id="rating-input"
           data-testid="rating-input"
-          defaultValue={ 0 }
+          value={ rating }
+          onChange={ this.handleChange }
         />
       </label>
     );
   }
 
   renderGenderInput() {
+    const { genre } = this.state;
     return (
       <label
         htmlFor="genre-input"
@@ -91,8 +133,11 @@ class AddMovie extends Component {
       >
         Gênero
         <select
+          name="genre"
           id="genre-input"
           data-testid="genre-input"
+          value={ genre }
+          onChange={ this.handleChange }
         >
           <option value="action" data-testid="genre-option">Ação</option>
           <option value="comedy" data-testid="genre-option">Comédia</option>
