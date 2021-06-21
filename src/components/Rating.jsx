@@ -10,11 +10,11 @@ class Rating extends React.Component {
         <label data-testid="rating-input-label" htmlFor="rating-input">
           Avaliação
           <input
+            onChange={ handleChangeRating }
             data-testid="rating-input"
             name="rating"
             type="number"
             value={ rating }
-            onChange={ handleChangeRating }
           />
         </label>
       </div>
