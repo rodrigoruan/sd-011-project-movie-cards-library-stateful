@@ -4,6 +4,9 @@ import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
 import MovieList from './MovieList';
 
+function onClick() {
+}
+
 class MovieLibrary extends Component {
   constructor(props) {
     super(props);
@@ -16,41 +19,57 @@ class MovieLibrary extends Component {
     };
 
     this.updateSearchText = this.updateSearchText.bind(this);
-    this.updateBookmarked = this.updateBookmarked.bind(this);
-    this.updateSeletedGenre = this.updateSeletedGenre.bind(this);
+    this.filterMovies = this.filterMovies.bind(this);
   }
 
-  updateSearchText({ target }) {
-    this.setState({ searchText: target.value });
+  updateSearchText(event) {
+    const { name } = event.target;
+    const newValue = event.target.type === 'checkbox' ? event.target.checked
+      : event.target.value;
+    this.setState({
+      [name]: newValue,
+    });
   }
 
-  updateBookmarked({ target }) {
-    this.setState({ bookmarkedOnly: target.value });
-  }
-
-  updateSeletedGenre({ target }) {
-    this.setState({ selectedGenre: target.value });
+  filterMovies() {
+    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+    let arrayMovies = movies;
+    if (searchText) {
+      arrayMovies = movies.filter((movie) => (
+        movie.title.includes(searcText)
+        || movie.subtitle.includes(searchText)
+        || movie.storyline.includes(searchText)
+      ));
+      if (bookmarkedOnly) {
+        arrayMovies = movies.filter((movieOne) => movieOne.bookmarked);
+      }
+      if (selectedGenre) {
+        arrayMovies = movies.filter((movieTwo) => movieTwo.genre.includes(selectedGenre));
+      }
+      return arrayMovies;
+    }
   }
 
   render() {
-    const {
-      searchText,
-      bookmarkedOnly,
-      selectedGenre,
-      movies: uptadeMovies,
-    } = this.state;
+    AddMovie.defaultProps = {
+      onClick: PropTypes.func,
+    };
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <div>
         <SearchBar
           searchText={ searchText }
           onSearchTextChange={ this.updateSearchText }
           bookmarked={ bookmarkedOnly }
-          onBookmarkedChange={ this.updateBookmarked }
-          selectedGenre={ selectedGenre }
-          onSelectedGenreChange={ this.updateSeletedGenre }
+          onBookmarkedChange={ this.updateSearchText }
+          selectGenre={ selectedGenre }
+          onSelectedGenreChange={ this.updateSearchText }
         />
-        <MovieList movies={ uptadeMovies } />
-        <AddMovie />
+        <MovieList
+          movies={ this.filterMovies() }
+
+        />
+        <AddMovie onClick={ onClick } />
       </div>
     );
   }
@@ -58,5 +77,7 @@ class MovieLibrary extends Component {
 
 export default MovieLibrary;
 MovieLibrary.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+  movies: PropTypes.arrayOf(
+    PropTypes.object,
+  ).isRequired,
 };
