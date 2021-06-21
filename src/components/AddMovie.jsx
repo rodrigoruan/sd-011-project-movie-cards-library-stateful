@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
 import Title from './Title';
 import Subtitle from './Subtitle';
 import ImagePath from './ImagePath';
@@ -61,7 +62,7 @@ class AddMovie extends Component {
       subtitle: '',
       imagePath: '',
       storyline: '',
-      rating: 0,
+      rating: '',
       genre: 'action',
     });
   }
