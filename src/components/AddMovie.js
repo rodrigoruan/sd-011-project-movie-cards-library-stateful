@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchInput from './SearchInput';
 import InputSubitile from './InputSubitile';
+import InputImage from './InputImage';
 
 // const [ title, setTitle ] = React.useState('')
 export default class AddMovie extends Component {
@@ -13,6 +14,7 @@ export default class AddMovie extends Component {
       <form data-testid="add-movie-form">
         <SearchInput handleChange={ this.handleChange } />
         <InputSubitile />
+        <InputImage />
       </form>
     );
   }
