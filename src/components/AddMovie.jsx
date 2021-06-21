@@ -81,7 +81,7 @@ class AddMovie extends Component {
         />
         <StoryLine
           handleChangeStoryLine={ this.handleChangeStoryLine }
-          storyLine={ storyline }
+          storyline={ storyline }
         />
         <Rating handleChangeRating={ this.handleChangeRating } rating={ rating } />
         <Genre handleChangeGenre={ this.handleChangeGenre } genre={ genre } />
@@ -103,5 +103,5 @@ AddMovie.propTypes = {
 };
 
 AddMovie.defaultProps = {
-  onClick: () => {},
+  onClick: PropTypes.func,
 };

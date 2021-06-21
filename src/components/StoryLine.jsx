@@ -19,7 +19,7 @@ class StoryLine extends React.Component {
   }
 }
 StoryLine.propTypes = {
-  storyLine: PropTypes.string,
+  storyline: PropTypes.string,
   handleChangeStoryLine: PropTypes.func,
 }.isRequired;
 
