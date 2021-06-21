@@ -26,9 +26,9 @@ class AddMovie extends Component {
     this.setState({ [name]: newValue });
   }
 
-  handleClear(event) {
+  handleClear() {
     const { onClick } = this.props;
-    onClick(event);
+    onClick(this.state);
     this.setState = ({
       ...initialState,
     });
