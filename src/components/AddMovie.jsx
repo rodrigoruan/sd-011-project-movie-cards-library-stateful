@@ -12,35 +12,57 @@ class AddMovie extends Component {
       rating: 0,
       genre: 'action',
     };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange({ target }) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({
+      [name]: value,
+    });
   }
 
   render() {
     const { onClick } = this.props;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <label htmlFor="title">
-          Titulo
-          <input id="title" />
+        <label htmlFor="title" data-testid="title-input-label">
+          Título
+          <input
+            name="title"
+            value={ title }
+            data-testid="title-input"
+            onChange={ this.handleChange }
+          />
         </label>
-        <label htmlFor="title">
+
+        <label htmlFor="subtitle">
           Subtítulo
-          <input id="title" />
+          <input
+            name="subtitle"
+          />
         </label>
-        <label htmlFor="title">
+
+        <label htmlFor="imagePath">
           Imagem
-          <input id="title" />
+          <input name="imagePath" />
         </label>
-        <label htmlFor="title">
+
+        <label htmlFor="storyline">
           Sinopse
-          <input id="title" />
+          <input name="storyline" />
         </label>
-        <label htmlFor="title">
+
+        <label htmlFor="rating">
           Avaliação
-          <input id="title" />
+          <input name="rating" />
         </label>
-        <label htmlFor="title">
+
+        <label htmlFor="genre">
           Gênero
-          <input id="title" />
+          <input name="genre" />
         </label>
       </form>
     );
