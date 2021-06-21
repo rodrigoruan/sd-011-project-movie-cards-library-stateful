@@ -9,6 +9,8 @@ class SearchBar extends Component {
       <label htmlFor="select-input" data-testid="select-input-label">
         Filtrar por gênero
         <select
+          name="selectedGenre"
+          className="input"
           value={ selectedGenre }
           onChange={ onSelectedGenreChange }
           data-testid="select-input"
@@ -19,23 +21,6 @@ class SearchBar extends Component {
           <option data-testid="select-option" value="comedy">Comédia</option>
           <option data-testid="select-option" value="thriller">Suspense</option>
         </select>
-      </label>
-    );
-  }
-
-  renderSearch() {
-    const { searchText, onSearchTextChange } = this.props;
-    return (
-      <label htmlFor="searchText" data-testid="text-input-label" className="label">
-        Inclui o texto:
-        <input
-          type="text"
-          data-testid="text-input"
-          className="input"
-          value={ searchText }
-          name="searchText"
-          onChange={ onSearchTextChange }
-        />
       </label>
     );
   }

@@ -81,6 +81,7 @@ class AddMovie extends Component {
         />
 
         <Button onButtonClick={ () => this.handleClick(onClick) } />
+        {}
       </form>
     );
   }
