@@ -6,6 +6,7 @@ class Title extends Component {
     const { title, onTitleTextChange } = this.props;
     return (
       <label htmlFor="title" data-testid="title-input-label">
+        Título
         <input
           type="text"
           data-testid="title-input"
@@ -18,7 +19,7 @@ class Title extends Component {
   }
 }
 
-export default Title;
+export default AddMovieTitle;
 
 Title.propTypes = {
   title: PropTypes.string.isRequired,

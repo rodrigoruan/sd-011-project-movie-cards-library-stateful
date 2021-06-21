@@ -86,7 +86,7 @@ class AddMovie extends Component {
           onGenreChange={ this.handleChange }
         />
         <Button
-          handleClick={ () => this.handleClick(onClick) }
+          onButtonClick={ () => this.handleClick(onClick) }
         />
       </form>
     );
