@@ -24,15 +24,13 @@ class MovieLibrary extends Component {
   }
 
   render() {
-    // const { movies } = this.state;
+    const { movies } = this.state;
     return (
       <>
-        <p>Mivie Library</p>
+        <p>Movie Library</p>
         <SearchBar />
-        <MovieList />
-        <AddMovie />
-        {/* <MovieList movies={ movies } /> */}
-        {/* <AddMovie onCLick={ this.handleAddMovie } /> */}
+        <MovieList movies={ movies } />
+        <AddMovie onCLick={ this.handleAddMovie } />
       </>
     );
   }
