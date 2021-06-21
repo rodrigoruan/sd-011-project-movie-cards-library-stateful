@@ -41,7 +41,7 @@ class AddMovie extends Component {
 
         <Subtitle
           subtitle={ subtitle }
-          onChangeHandler={ this.handleChange }
+          onSubtitleTextChange={ this.handleChange }
         />
 
         <ImagePath
