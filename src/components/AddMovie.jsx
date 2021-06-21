@@ -5,8 +5,8 @@ import Title from './Title';
 import Subtitle from './Subtitle';
 import ImagePath from './ImagePath';
 import StoryLine from './StoryLine';
-import Rating from './Rating';
 import Genre from './Genre';
+import Rating from './Rating';
 
 class AddMovie extends Component {
   constructor() {
@@ -62,7 +62,7 @@ class AddMovie extends Component {
       subtitle: '',
       imagePath: '',
       storyline: '',
-      rating: '',
+      rating: 0,
       genre: 'action',
     });
   }
@@ -84,7 +84,10 @@ class AddMovie extends Component {
           handleChangeStoryLine={ this.handleChangeStoryLine }
           storyline={ storyline }
         />
-        <Rating handleChangeRating={ this.handleChangeRating } rating={ rating } />
+        <Rating
+          handleChangeRating={ this.handleChangeRating }
+          rating={ rating }
+        />
         <Genre handleChangeGenre={ this.handleChangeGenre } genre={ genre } />
         <button
           type="button"
