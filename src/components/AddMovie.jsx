@@ -18,8 +18,8 @@ const defaultState = {
 };
 
 class AddMovie extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = defaultState;
   }
