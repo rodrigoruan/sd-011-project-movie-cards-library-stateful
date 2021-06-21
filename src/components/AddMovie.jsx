@@ -9,8 +9,8 @@ import StoryLine from './AddMovie/StoryLine';
 import Button from './AddMovie/Button';
 
 class AddMovie extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       subtitle: '',
@@ -20,6 +20,28 @@ class AddMovie extends Component {
       rating: 0,
       genre: 'action',
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleChange({ target }) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({
+      [name]: value,
+    });
+  }
+
+  handleClick(callback) {
+    callback(this.state);
+    this.setState({
+      title: '',
+      subtitle: '',
+      storyline: '',
+      imagePath: '',
+      rating: 0,
+      genre: '',
+    });
   }
 
   render() {
