@@ -17,11 +17,21 @@ class AddMovie extends Component {
       ...initialState,
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleClear = this.handleClear.bind(this);
   }
 
   handleChange({ target }) {
-    const { name, value } = target;
-    this.setState({ [name]: value });
+    const { name, value, type } = target;
+    const newValue = type === 'number' ? +value : value;
+    this.setState({ [name]: newValue });
+  }
+
+  handleClear(event) {
+    const { onClick } = this.props;
+    onClick(event);
+    this.setState = ({
+      ...initialState,
+    });
   }
 
   renderTitleInput() {
@@ -65,7 +75,7 @@ class AddMovie extends Component {
   }
 
   renderImagemInput() {
-    const { image } = this.state;
+    const { imagePath } = this.state;
     return (
       <label
         htmlFor="image-input"
@@ -77,7 +87,7 @@ class AddMovie extends Component {
           type="text"
           id="image-input"
           data-testid="image-input"
-          value={ image }
+          value={ imagePath }
           onChange={ this.handleChange }
         />
       </label>
