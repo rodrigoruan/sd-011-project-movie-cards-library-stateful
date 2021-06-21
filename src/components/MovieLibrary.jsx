@@ -5,7 +5,7 @@
 // import SearchBar from './SearchBar';
 // import AddMovie from './AddMovie';
 
-// const { movies } = this.props;
+// // const { movies } = this.props;
 
 // class MovieLibrary extends Component {
 //   // constructor(props) {
