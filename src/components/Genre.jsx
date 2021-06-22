@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class Genre extends React.Component {
   render() {
-    const { genre, handleChange } = this.props;
+    const { genre, onChange } = this.props;
 
     return (
       <label data-testid="genre-input-label" htmlFor="text6">
@@ -14,7 +14,7 @@ class Genre extends React.Component {
           type="text"
           name="genre"
           value={ genre }
-          onChange={ handleChange }
+          onChange={ onChange }
         >
           <option data-testid="genre-option" value="action">Ação</option>
           <option data-testid="genre-option" value="comedy">Comédia</option>
@@ -27,7 +27,7 @@ class Genre extends React.Component {
 
 Genre.propTypes = {
   genre: PropTypes.string,
-  handleChange: PropTypes.func,
+  onChange: PropTypes.func,
 }.isRequired;
 
 export default Genre;

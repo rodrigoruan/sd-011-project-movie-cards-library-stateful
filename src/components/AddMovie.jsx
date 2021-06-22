@@ -20,13 +20,13 @@ class AddMovie extends React.Component {
   constructor() {
     super();
 
-    this.handleChange = this.handleChange.bind(this);
+    this.onChange = this.onChange.bind(this);
     this.resetState = this.resetState.bind(this);
 
     this.state = initialState;
   }
 
-  handleChange({ target }) {
+  onChange({ target }) {
     const { name, value } = target;
     this.setState({
       [name]: value,
@@ -43,12 +43,12 @@ class AddMovie extends React.Component {
 
     return (
       <form data-testid="add-movie-form">
-        <Title title={ title } handleChange={ this.handleChange } />
-        <Subtitle subtitle={ subtitle } handleChange={ this.handleChange } />
-        <ImagePath imagePath={ imagePath } handleChange={ this.handleChange } />
-        <Genre genre={ genre } handleChange={ this.handleChange } />
-        <Rating rating={ rating } handleChange={ this.handleChange } />
-        <Sinopse storyline={ storyline } handleChange={ this.handleChange } />
+        <Title title={ title } onChange={ this.onChange } />
+        <Subtitle subtitle={ subtitle } onChange={ this.onChange } />
+        <ImagePath imagePath={ imagePath } onChange={ this.onChange } />
+        <Genre genre={ genre } onChange={ this.onChange } />
+        <Rating rating={ rating } onChange={ this.onChange } />
+        <Sinopse storyline={ storyline } onChange={ this.onChange } />
         <Button onClick={ onClick } resetState={ this.resetState } />
       </form>
     );

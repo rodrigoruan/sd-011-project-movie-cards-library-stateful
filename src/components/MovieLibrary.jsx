@@ -5,15 +5,13 @@ import MovieList from './MovieList';
 import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
 
-function onClick() {
-}
-
 class MovieLibrary extends Component {
   constructor(props) {
     super(props);
 
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
     this.filterMovies = this.filterMovies.bind(this);
+    this.newMovie = this.newMovie.bind(this);
 
     this.state = {
       searchText: '',
@@ -52,8 +50,15 @@ class MovieLibrary extends Component {
     return arrayMovies;
   }
 
+  newMovie(movieData) {
+    this.setState((previousState) => ({
+      movies: [...previousState.movies, movieData],
+    }));
+  }
+
   render() {
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+    const arrayMovies = this.filterMovies();
     return (
       <div>
         <h2> My awesome movie library </h2>
@@ -66,9 +71,9 @@ class MovieLibrary extends Component {
           selectedGenre={ selectedGenre }
         />
         <MovieList
-          movies={ this.filterMovies() }
+          movies={ arrayMovies }
         />
-        <AddMovie onClick={ onClick } />
+        <AddMovie onClick={ (movieData) => this.newMovie(movieData) } />
       </div>
     );
   }
