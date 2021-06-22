@@ -28,7 +28,7 @@ Rating.propTypes = {
 }.isRequired;
 
 Rating.defaultProps = {
-  rating: 'undefined',
+  rating: 0,
 
 };
 

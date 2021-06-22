@@ -12,7 +12,7 @@ const initialState = {
   subtitle: '',
   title: '',
   imagePath: '',
-  storyLine: '',
+  storyline: '',
   rating: 0,
   genre: 'action',
 };
@@ -39,7 +39,7 @@ class AddMovie extends React.Component {
 
   render() {
     const { onClick } = this.props;
-    const { title, subtitle, imagePath, storyLine, rating, genre } = this.state;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
 
     return (
       <form data-testid="add-movie-form">
@@ -48,7 +48,7 @@ class AddMovie extends React.Component {
         <ImagePath imagePath={ imagePath } handleChange={ this.handleChange } />
         <Genre genre={ genre } handleChange={ this.handleChange } />
         <Rating rating={ rating } handleChange={ this.handleChange } />
-        <Sinopse storyLine={ storyLine } handleChange={ this.handleChange } />
+        <Sinopse storyline={ storyline } handleChange={ this.handleChange } />
         <Button onClick={ onClick } resetState={ this.resetState } />
       </form>
     );

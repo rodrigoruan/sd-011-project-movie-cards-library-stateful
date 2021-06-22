@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class Sinopse extends React.Component {
   render() {
-    const { storyLine, handleChange } = this.props;
+    const { storyline, handleChange } = this.props;
     return (
       <label data-testid="storyline-input-label" htmlFor="text4">
         Sinopse
@@ -12,7 +12,7 @@ class Sinopse extends React.Component {
           id="text4"
           type="text"
           name="storyLine"
-          value={ storyLine }
+          value={ storyline }
           onChange={ handleChange }
         />
       </label>
@@ -22,7 +22,7 @@ class Sinopse extends React.Component {
 
 Sinopse.propTypes = {
   handleChange: PropTypes.func,
-  storyLine: PropTypes.string,
+  storyline: PropTypes.string,
 }.isRequired;
 
 export default Sinopse;
