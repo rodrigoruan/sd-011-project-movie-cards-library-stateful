@@ -16,7 +16,18 @@ export default class SearchBar extends Component {
         onBookmarkedChange={ onBookmarkedChange }
         selectedGenre={ selectedGenre }
         onSelectedGenreChange={ onSelectedGenreChange }
-      />
+      >
+        <label htmlFor="input" data-testid="text-input-label">
+          Inclui o texto:
+          <input
+            data-testid="text-input"
+            id="input"
+            type="text"
+            value={ searchText }
+            onChange={ onSearchTextChange }
+          />
+        </label>
+      </form>
     );
   }
 }
