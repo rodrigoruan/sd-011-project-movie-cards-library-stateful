@@ -4,6 +4,7 @@ import InputSubitile from './InputSubitile';
 import InputImage from './InputImage';
 import InputTextArea from './InputTextArea';
 import InputNumber from './InputNumber';
+import InputSelect from './InputSelect';
 
 // const [ title, setTitle ] = React.useState('')
 export default class AddMovie extends Component {
@@ -19,6 +20,7 @@ export default class AddMovie extends Component {
         <InputImage />
         <InputTextArea />
         <InputNumber />
+        <InputSelect />
       </form>
     );
   }
