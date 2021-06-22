@@ -7,13 +7,25 @@ import MovieList from './MovieList';
 export default class MovieLibrary extends Component {
   constructor(props) {
     super(props);
+
     const { movies } = props;
+
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
       movies,
     };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange({ target }) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState(() => ({
+      [name]: value,
+    }));
   }
 
   render() {
@@ -22,11 +34,11 @@ export default class MovieLibrary extends Component {
       <div>
         <SearchBar
           searchText={ searchText }
-          onSearchTextChange={ this.onSearchTextChange }
+          onSearchTextChange={ this.handleChange }
           bookmarkedOnly={ bookmarkedOnly }
-          onBookmarkedChange={ this.onBookmarkedChange }
+          onBookmarkedChange={ this.handleChange }
           selectedGenre={ selectedGenre }
-          onSelectedGenreChange={ this.onSelectedGenreChange }
+          onSelectedGenreChange={ this.handleChange }
         />
         <MovieList movies={ movies } />
       </div>

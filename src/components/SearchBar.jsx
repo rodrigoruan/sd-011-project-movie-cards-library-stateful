@@ -17,6 +17,7 @@ export default class SearchBar extends Component {
             data-testid="text-input"
             id="input-text"
             type="text"
+            name="searchText"
             value={ searchText }
             onChange={ onSearchTextChange }
           />
@@ -27,6 +28,7 @@ export default class SearchBar extends Component {
             data-testid="checkbox-input"
             id="input-checkbox"
             type="checkbox"
+            name="bookmarkedOnly"
             checked={ bookmarkedOnly }
             onChange={ onBookmarkedChange }
           />
@@ -36,6 +38,7 @@ export default class SearchBar extends Component {
           <select
             data-testid="select-input"
             id="select-input"
+            name="selectedGenre"
             value={ selectedGenre }
             onChange={ onSelectedGenreChange }
           >
