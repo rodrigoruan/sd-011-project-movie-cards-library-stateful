@@ -68,9 +68,8 @@ export default class MovieLibrary extends Component {
     }
   }
 
-  onClick(state) {
-    const { title, subtitle, storyline, imagePath, rating, genre } = state;
-    const { movies } = this.props;
+  onClick(myState) {
+    const { title, subtitle, storyline, imagePath, rating, genre } = myState;
     const newMovie = {
       title,
       subtitle,
@@ -79,7 +78,9 @@ export default class MovieLibrary extends Component {
       rating,
       genre,
     };
-    movies.push(newMovie);
+    this.setState((oldState) => ({
+      movies: [...oldState.movies, newMovie],
+    }));
   }
 
   render() {
