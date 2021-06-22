@@ -7,6 +7,7 @@ import ImagePath from './ImagePath';
 import Storyline from './Storyline';
 import Rating from './Rating';
 import Genre from './Genre';
+import ButtonAdd from './ButtonAdd';
 
 export default class AddMovie extends Component {
   constructor(props) {
@@ -22,6 +23,7 @@ export default class AddMovie extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.resetState = this.resetState.bind(this);
   }
 
   handleChange({ target }) {
@@ -29,6 +31,18 @@ export default class AddMovie extends Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState(() => ({
       [name]: value,
+    }));
+  }
+
+  resetState(click) {
+    click();
+    this.setState(() => ({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
     }));
   }
 
@@ -43,6 +57,7 @@ export default class AddMovie extends Component {
         <Storyline storyline={ storyline } handleChange={ this.handleChange } />
         <Rating rating={ rating } handleChange={ this.handleChange } />
         <Genre genre={ genre } handleChange={ this.handleChange } />
+        <ButtonAdd resetState={ () => this.resetState(onClick) } />
       </form>
     );
   }
