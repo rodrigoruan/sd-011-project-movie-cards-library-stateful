@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-export default class Storyline extends Component {
+export default class AddMovieStoryline extends Component {
   render() {
     const { storyline, handleChange } = this.props;
     return (
@@ -19,7 +19,7 @@ export default class Storyline extends Component {
   }
 }
 
-Storyline.propTypes = {
+AddMovieStoryline.propTypes = {
   storyline: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
 };

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-export default class ButtonAdd extends Component {
+export default class AddMovieButton extends Component {
   render() {
     const { resetState } = this.props;
     return (
@@ -16,6 +16,6 @@ export default class ButtonAdd extends Component {
   }
 }
 
-ButtonAdd.propTypes = {
+AddMovieButton.propTypes = {
   resetState: PropTypes.func.isRequired,
 };

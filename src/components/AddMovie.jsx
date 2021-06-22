@@ -1,13 +1,13 @@
 // implement AddMovie component here
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Title from './Title';
-import Subtitle from './Subtitle';
-import ImagePath from './ImagePath';
-import Storyline from './Storyline';
-import Rating from './Rating';
-import Genre from './Genre';
-import ButtonAdd from './ButtonAdd';
+import AddMovieTitle from './AddMovieTitle';
+import AddMovieSubtitle from './AddMovieSubtitle';
+import AddMovieImagePath from './AddMovieImagePath';
+import AddMovieStoryline from './AddMovieStoryline';
+import AddMovieRating from './AddMovieRating';
+import AddMovieGenre from './AddMovieGenre';
+import AddMovieButton from './AddMovieButton';
 
 export default class AddMovie extends Component {
   constructor(props) {
@@ -29,15 +29,9 @@ export default class AddMovie extends Component {
   handleChange({ target }) {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    if (target.type === 'number') {
-      this.setState(() => ({
-        [name]: parseFloat(value),
-      }));
-    } else {
-      this.setState(() => ({
-        [name]: value,
-      }));
-    }
+    this.setState({
+      [name]: value,
+    });
   }
 
   resetState() {
@@ -57,13 +51,13 @@ export default class AddMovie extends Component {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <Title title={ title } handleChange={ this.handleChange } />
-        <Subtitle subtitle={ subtitle } handleChange={ this.handleChange } />
-        <ImagePath imagePath={ imagePath } handleChange={ this.handleChange } />
-        <Storyline storyline={ storyline } handleChange={ this.handleChange } />
-        <Rating rating={ rating } handleChange={ this.handleChange } />
-        <Genre genre={ genre } handleChange={ this.handleChange } />
-        <ButtonAdd resetState={ this.resetState } />
+        <AddMovieTitle title={ title } handleChange={ this.handleChange } />
+        <AddMovieSubtitle subtitle={ subtitle } handleChange={ this.handleChange } />
+        <AddMovieImagePath imagePath={ imagePath } handleChange={ this.handleChange } />
+        <AddMovieStoryline storyline={ storyline } handleChange={ this.handleChange } />
+        <AddMovieRating rating={ rating } handleChange={ this.handleChange } />
+        <AddMovieGenre genre={ genre } handleChange={ this.handleChange } />
+        <AddMovieButton resetState={ this.resetState } />
       </form>
     );
   }
