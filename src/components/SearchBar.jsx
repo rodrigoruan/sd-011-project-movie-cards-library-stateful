@@ -15,7 +15,16 @@ class SearchBar extends React.Component {
         onBookmarkedChange={ onBookmarkedChange }
         selectedGenre={ selectedGenre }
         onSelectedGenreChange={ onSelectedGenreChange }
-      />
+      >
+        <label htmlFor="input" data-testid="text-input-label">
+          Inclui o texto:
+          <input
+            data-testid="text-input"
+            value={ searchText }
+            onChange={ onSearchTextChange }
+          />
+        </label>
+      </form>
     );
   }
 }
