@@ -17,15 +17,52 @@ export default class MovieLibrary extends Component {
       movies,
     };
 
-    this.handleChange = this.handleChange.bind(this);
+    this.onSearchTextChange = this.onSearchTextChange.bind(this);
+    this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
+    this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
   }
 
-  handleChange({ target }) {
-    const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+  onSearchTextChange({ target }) {
+    const { name, value } = target;
+    const { movies } = this.props;
     this.setState(() => ({
       [name]: value,
+      movies: movies.filter((movie) => movie.title.includes(value)
+      || movie.subtitle.includes(value)
+      || movie.storyline.includes(value)),
     }));
+  }
+
+  onBookmarkedChange({ target }) {
+    const { name, checked } = target;
+    const { movies } = this.props;
+    if (checked) {
+      this.setState(() => ({
+        [name]: checked,
+        movies: movies.filter((movie) => movie.bookmarked),
+      }));
+    } else {
+      this.setState(() => ({
+        [name]: checked,
+        movies,
+      }));
+    }
+  }
+
+  onSelectedGenreChange({ target }) {
+    const { name, value } = target;
+    const { movies } = this.props;
+    if (value !== '') {
+      this.setState(() => ({
+        [name]: value,
+        movies: movies.filter((movie) => movie.genre === value),
+      }));
+    } else {
+      this.setState(() => ({
+        [name]: value,
+        movies,
+      }));
+    }
   }
 
   render() {
@@ -34,11 +71,11 @@ export default class MovieLibrary extends Component {
       <div>
         <SearchBar
           searchText={ searchText }
-          onSearchTextChange={ this.handleChange }
+          onSearchTextChange={ this.onSearchTextChange }
           bookmarkedOnly={ bookmarkedOnly }
-          onBookmarkedChange={ this.handleChange }
+          onBookmarkedChange={ this.onBookmarkedChange }
           selectedGenre={ selectedGenre }
-          onSelectedGenreChange={ this.handleChange }
+          onSelectedGenreChange={ this.onSelectedGenreChange }
         />
         <MovieList movies={ movies } />
       </div>
