@@ -21,8 +21,8 @@ class Button extends React.Component {
 }
 
 Button.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  resetState: PropTypes.func.isRequired,
-};
+  onClick: PropTypes.func,
+  resetState: PropTypes.func,
+}.isRequired;
 
 export default Button;

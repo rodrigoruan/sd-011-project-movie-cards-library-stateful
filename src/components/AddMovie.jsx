@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Title from './Title';
+import Subtitle from './Subtitle';
+import ImagePath from './ImagePath';
 import Button from './Button';
 import Genre from './Genre';
 import Sinopse from './Sinopse';
-import Avaliacao from './Avaliacao';
+// import Avaliacao from './Avaliacao';
+import Rating from './Rating';
 
 const initialState = {
   subtitle: '',
@@ -40,41 +44,11 @@ class AddMovie extends React.Component {
 
     return (
       <form data-testid="add-movie-form">
-        <label data-testid="title-input-label" htmlFor="text1">
-          Título
-          <input
-            data-testid="title-input"
-            id="text1"
-            type="text"
-            name="title"
-            value={ title }
-            onChange={ this.handleChange }
-          />
-        </label>
-        <label data-testid="subtitle-input-label" htmlFor="text2">
-          Subtítulo
-          <input
-            data-testid="subtitle-input"
-            id="text2"
-            type="text"
-            name="subtitle"
-            value={ subtitle }
-            onChange={ this.handleChange }
-          />
-        </label>
-        <label data-testid="image-input-label" htmlFor="text3">
-          Imagem
-          <input
-            data-testid="image-input"
-            id="text3"
-            type="text"
-            name="imagePath"
-            value={ imagePath }
-            onChange={ this.handleChange }
-          />
-        </label>
+        <Title title={ title } handleChange={ this.handleChange } />
+        <Subtitle subtitle={ subtitle } handleChange={ this.handleChange } />
+        <ImagePath imagePath={ imagePath } handleChange={ this.handleChange } />
         <Genre genre={ genre } handleChange={ this.handleChange } />
-        <Avaliacao rating={ rating } handleChange={ this.handleChange } />
+        <Rating rating={ rating } handleChange={ this.handleChange } />
         <Sinopse storyLine={ storyLine } handleChange={ this.handleChange } />
         <Button onClick={ onClick } resetState={ this.resetState } />
       </form>
