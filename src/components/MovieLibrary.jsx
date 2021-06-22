@@ -95,7 +95,7 @@ export default class MovieLibrary extends Component {
           onSelectedGenreChange={ this.onSelectedGenreChange }
         />
         <MovieList movies={ movies } />
-        <AddMovie onClick={ () => this.onClick } />
+        <AddMovie onClick={ this.onClick } />
       </div>
     );
   }

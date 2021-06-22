@@ -26,7 +26,3 @@ Rating.propTypes = {
   rating: PropTypes.number.isRequired,
   handleChange: PropTypes.func.isRequired,
 };
-
-// Rating.defaultProps = {
-//   rating: 0,
-// };
