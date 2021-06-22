@@ -57,3 +57,5 @@ SearchBar.propTypes = {
 };
 
 export default SearchBar;
+
+// Source: auxílio do amigo Anderson dos Santos Silva
