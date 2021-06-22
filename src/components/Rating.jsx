@@ -27,9 +27,9 @@ Rating.propTypes = {
   onChange: PropTypes.func,
 }.isRequired;
 
-Rating.defaultProps = {
-  rating: 0,
+// Rating.defaultProps = {
+//   rating: 0,
 
-};
+// };
 
 export default Rating;
