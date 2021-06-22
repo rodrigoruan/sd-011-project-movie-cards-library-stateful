@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import GenericInput from './GenericInput';
 
 class AddMovie extends Component {
   constructor() {
     super();
     this.state = {
-      // subtitle: '',
+      subtitle: '',
       title: '',
       // imagePath: '',
       // storyline: '',
@@ -25,45 +25,26 @@ class AddMovie extends Component {
 
   render() {
     // const { onClick } = this.props;
-    const { title } = this.state;
+    const { title, subtitle } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <label htmlFor="title" data-testid="title-input-label">
-          Título
-          <input
-            name="title"
-            value={ title }
-            data-testid="title-input"
-            onChange={ this.handleChange }
-          />
-        </label>
+        <GenericInput
+          labelDataTestId="title-input-label"
+          labelText="Título"
+          inputDataTestId="title-input"
+          inputName="title"
+          inputValue={ title }
+          handleChange={ this.handleChange }
+        />
 
-        <label htmlFor="subtitle">
-          Subtítulo
-          <input
-            name="subtitle"
-          />
-        </label>
-
-        <label htmlFor="imagePath">
-          Imagem
-          <input name="imagePath" />
-        </label>
-
-        <label htmlFor="storyline">
-          Sinopse
-          <input name="storyline" />
-        </label>
-
-        <label htmlFor="rating">
-          Avaliação
-          <input name="rating" />
-        </label>
-
-        <label htmlFor="genre">
-          Gênero
-          <input name="genre" />
-        </label>
+        <GenericInput
+          labelDataTestId="subtitle-input-label"
+          labelText="Subtítulo"
+          inputDataTestId="subtitle-input"
+          inputName="subtitle"
+          inputValue={ subtitle }
+          handleChange={ this.handleChange }
+        />
       </form>
     );
   }
