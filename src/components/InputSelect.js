@@ -1,21 +1,32 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class InputSelect extends Component {
   constructor(props) {
     super(props);
     this.state = {
       action: 'action',
+      // imagePath: '',
+      // storyline: '',
+      // genre: 'action',
     };
   }
 
   render() {
     const { action } = this.state;
+    const { selectGenre } = this.props;
+    const { onSelectedGenreChange } = this.props;
 
     return (
       <div>
         <label htmlFor="select-input" data-testid="genre-input-label">
           Gênero
-          <select id="select-input" data-testid="genre-input">
+          <select
+            onChange={ onSelectedGenreChange }
+            value={ selectGenre }
+            id="select-input"
+            data-testid="genre-input"
+          >
             <option data-testid="genre-option" value={ action }>
               Ação
             </option>
@@ -31,3 +42,8 @@ export default class InputSelect extends Component {
     );
   }
 }
+
+InputSelect.propTypes = {
+  selectGenre: PropTypes.string.isRequired,
+  onSelectedGenreChange: PropTypes.string.isRequired,
+};

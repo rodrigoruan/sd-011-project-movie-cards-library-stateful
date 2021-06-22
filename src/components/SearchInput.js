@@ -12,7 +12,7 @@ export default class SearchInput extends Component {
 
   render() {
     const { title } = this.state;
-    const { handleChange } = this.props;
+    const { onSearchTextChange } = this.props;
     return (
       <div>
         <label htmlFor="inputName" data-testid="title-input-label">
@@ -20,9 +20,9 @@ export default class SearchInput extends Component {
           <input
             id="inputName"
             type="text"
-            onChange={ handleChange }
+            onChange={ onSearchTextChange }
             data-testid="title-input"
-            defaulValue={ title }
+            defaulvalue={ title }
           />
         </label>
       </div>
@@ -31,5 +31,5 @@ export default class SearchInput extends Component {
 }
 
 SearchInput.propTypes = {
-  handleChange: PropTypes.string.isRequired,
+  onSearchTextChange: PropTypes.string.isRequired,
 };

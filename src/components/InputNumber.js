@@ -4,12 +4,12 @@ export default class InputNumber extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      start: 0,
+      rating: 0,
     };
   }
 
   render() {
-    const { start } = this.state;
+    const { rating } = this.state;
     return (
       <div>
         <label htmlFor="input-number" data-testid="rating-input-label">
@@ -18,7 +18,7 @@ export default class InputNumber extends Component {
             id="input-number"
             type="number"
             data-testid="rating-input"
-            defaultValue={ start }
+            defaultValue={ rating }
           />
         </label>
       </div>
