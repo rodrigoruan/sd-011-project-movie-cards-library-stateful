@@ -6,7 +6,6 @@ import ImagePath from './ImagePath';
 import Button from './Button';
 import Genre from './Genre';
 import Sinopse from './Sinopse';
-// import Avaliacao from './Avaliacao';
 import Rating from './Rating';
 
 const initialState = {
