@@ -1,6 +1,7 @@
+// precisa de implementação
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
+// Req.01
 class SearchBar extends Component {
   render() {
     const {
@@ -12,16 +13,19 @@ class SearchBar extends Component {
       onSelectedGenreChange,
     } = this.props;
     return (
+      // Req.02
       <form data-testid="search-bar-form">
-        {/* O htmlFor refere-se ao id do elemento ao qual este rótulo está associado. Fonte: https://stackoverflow.com/questions/12894169/what-is-the-html-for-attribute-in-label */}
+        {/* Req.03 */}
         <label htmlFor="text-input" data-testid="text-input-label">
           Inclui o texto:
           <input
+            type="text"
             value={ searchText }
             onChange={ onSearchTextChange }
             data-testid="text-input"
           />
         </label>
+        {/* Req.04 */}
         <label htmlFor="checkbox-input" data-testid="checkbox-input-label">
           Mostrar somente favoritos
           <input
@@ -31,25 +35,26 @@ class SearchBar extends Component {
             data-testid="checkbox-input"
           />
         </label>
+        {/* Req.05 */}
         <label htmlFor="select-input" data-testid="select-input-label">
           Filtrar por gênero
           <select
             value={ selectedGenre }
             onChange={ onSelectedGenreChange }
-            checked={ bookmarkedOnly }
             data-testid="select-input"
           >
-            <option value="" data-testid="select-option">Todos</option>
-            <option value="action" data-testid="select-option">Ação</option>
-            <option value="comedy" data-testid="select-option">Comédia</option>
-            <option value="thriller" data-testid="select-option">Suspense</option>
+            <option data-testid="select-option" value="">Todos</option>
+            <option data-testid="select-option" value="action">Ação</option>
+            <option data-testid="select-option" value="comedy">Comédia</option>
+            <option data-testid="select-option" value="thriller">Suspense</option>
           </select>
         </label>
       </form>
+
     );
   }
 }
-
+// Req.01
 SearchBar.propTypes = {
   searchText: PropTypes.string,
   onSearchTextChange: PropTypes.func,
