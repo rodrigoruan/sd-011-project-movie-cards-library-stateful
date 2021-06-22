@@ -20,7 +20,7 @@ class RatingAddCard extends Component {
 }
 
 RatingAddCard.propTypes = {
-  title: PropTypes.string,
+  rating: PropTypes.string,
   handleChange: PropTypes.func,
 }.isRequired;
 
