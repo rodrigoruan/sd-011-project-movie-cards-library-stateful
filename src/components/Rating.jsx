@@ -12,6 +12,9 @@ export default class Rating extends React.Component {
           id="add-movie-rating-input"
           name="rating"
           type="number"
+          min={ 0 }
+          max={ 5 }
+          step={ 0.1 }
           value={ rating }
           onChange={ handleChange }
         />

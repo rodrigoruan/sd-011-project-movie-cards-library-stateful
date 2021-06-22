@@ -29,13 +29,20 @@ export default class AddMovie extends Component {
   handleChange({ target }) {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState(() => ({
-      [name]: value,
-    }));
+    if (target.type === 'number') {
+      this.setState(() => ({
+        [name]: parseFloat(value),
+      }));
+    } else {
+      this.setState(() => ({
+        [name]: value,
+      }));
+    }
   }
 
-  resetState(click) {
-    click();
+  resetState() {
+    const { onClick } = this.props;
+    onClick(this.state);
     this.setState(() => ({
       subtitle: '',
       title: '',
@@ -47,7 +54,6 @@ export default class AddMovie extends Component {
   }
 
   render() {
-    const { onClick } = this.props;
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
@@ -57,7 +63,7 @@ export default class AddMovie extends Component {
         <Storyline storyline={ storyline } handleChange={ this.handleChange } />
         <Rating rating={ rating } handleChange={ this.handleChange } />
         <Genre genre={ genre } handleChange={ this.handleChange } />
-        <ButtonAdd resetState={ () => this.resetState(onClick) } />
+        <ButtonAdd resetState={ this.resetState } />
       </form>
     );
   }
