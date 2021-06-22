@@ -22,7 +22,7 @@ export default class SearchBar extends Component {
           />
         </label>
         <label htmlFor="input-checkbox" data-testid="checkbox-input-label">
-          Mostrar seus filmes favoritos
+          Mostrar somente favoritos
           <input
             data-testid="checkbox-input"
             id="input-checkbox"
@@ -32,7 +32,7 @@ export default class SearchBar extends Component {
           />
         </label>
         <label htmlFor="select-input" data-testid="select-input-label">
-          Escolha o gênero
+          Filtrar por gênero
           <select
             data-testid="select-input"
             id="select-input"
