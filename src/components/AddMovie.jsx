@@ -1,6 +1,10 @@
 // implement AddMovie component here
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Title from './Title';
+import Subtitle from './Subtitle';
+import ImagePath from './ImagePath';
+import Storyline from './Storyline';
 
 export default class AddMovie extends Component {
   constructor(props) {
@@ -28,41 +32,13 @@ export default class AddMovie extends Component {
 
   render() {
     const { onClick } = this.props;
-    const { title, subtitle, imagePath } = this.state;
+    const { title, subtitle, imagePath, storyline } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <label htmlFor="add-movie-title-input" data-testid="title-input-label">
-          Título
-          <input
-            data-testid="title-input"
-            name="title"
-            id="add-movie-title-input"
-            value={ title }
-            onChange={ this.handleChange }
-          />
-        </label>
-
-        <label htmlFor="add-movie-subtitle-input" data-testid="subtitle-input-label">
-          Subtítulo
-          <input
-            data-testid="subtitle-input"
-            id="add-movie-subtitle-input"
-            name="subtitle"
-            value={ subtitle }
-            onChange={ this.handleChange }
-          />
-        </label>
-
-        <label htmlFor="add-movie-image-input" data-testid="image-input-label">
-          Imagem
-          <input
-            data-testid="image-input"
-            id="add-movie-image-input"
-            name="imagePath"
-            value={ imagePath }
-            onChange={ this.handleChange }
-          />
-        </label>
+        <Title title={ title } handleChange={ this.handleChange } />
+        <Subtitle subtitle={ subtitle } handleChange={ this.handleChange } />
+        <ImagePath imagePath={ imagePath } handleChange={ this.handleChange } />
+        <Storyline storyline={ storyline } handleChange={ this.handleChange } />
       </form>
     );
   }
@@ -70,11 +46,4 @@ export default class AddMovie extends Component {
 
 AddMovie.propTypes = {
   onClick: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
-  imagepath: PropTypes.string.isRequired,
-  storyline: PropTypes.string.isRequired,
-  ratign: PropTypes.number.isRequired,
-  genre: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired,
 };
