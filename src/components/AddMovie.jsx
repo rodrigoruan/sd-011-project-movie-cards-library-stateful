@@ -158,7 +158,6 @@ class AddMovie extends Component {
   }
 
   renderButton() {
-    // const { onClick } = this.props;
     return (
       <button
         type="button"

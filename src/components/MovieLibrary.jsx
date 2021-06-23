@@ -15,7 +15,7 @@ class MovieLibrary extends Component {
       movies,
       searchText: '',
       bookmarkedOnly: false,
-      selectedGenre: 'all',
+      selectedGenre: '',
     };
 
     this.handleAddMovie = this.handleAddMovie.bind(this);
@@ -39,9 +39,10 @@ class MovieLibrary extends Component {
       (title.includes(searchText)
         || subtitle.includes(searchText)
         || storyline.includes(searchText))
-        && (genre === '' || genre === selectedGenre)
+        && (selectedGenre === '' || genre === selectedGenre)
     ));
-    if (bookmarkedOnly) resultado = result.filter((movie) => movie.bookmarked);
+    // eslint-disable-next-line no-const-assign
+    if (bookmarkedOnly) result = result.filter((movie) => movie.bookmarked);
     return result;
   }
 
