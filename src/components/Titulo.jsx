@@ -1,63 +1,102 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class Titulo extends React.Component {
-  render() {
-    const { title, subtitle, imagePath, storyline, salvarAlteracao } = this.props;
+export default class Lab extends Component {
+  convert = (dtid) => {
+    const split = dtid.split('-');
+    const converted = [split[0], split[1]];
+    return converted.join('-');
+  };
+
+  returnChildren = (props) => {
+    const { children } = props;
+    return children;
+  }
+
+  stringInputMethod = (name, dtid, arr) => {
+    const { children } = this.props;
     return (
-      <div>
-        <label htmlFor="title" data-testid="title-input-label">
-          Título
-          <input
-            type="text"
-            value={ title }
-            data-testid="title-input"
-            onChange={ salvarAlteracao }
-            name="title"
-          />
-        </label>
-        <label htmlFor="subtitle" data-testid="subtitle-input-label">
-          Subtítulo
-          <input
-            type="text"
-            data-testid="subtitle-input"
-            onChange={ salvarAlteracao }
-            value={ subtitle }
-            name="subtitle"
-          />
-        </label>
-        <label htmlFor="imagePath" data-testid="image-input-label">
-          Imagem
-          <input
-            type="text"
-            value={ imagePath }
-            data-testid="image-input"
-            onChange={ salvarAlteracao }
-            name="imagePath"
-          />
-        </label>
-        <label htmlFor="storyline" data-testid="storyline-input-label">
-          Sinopse
-          <textarea
-            name="storyline"
-            value={ storyline }
-            cols="30"
-            rows="10"
-            data-testid="storyline-input"
-            onChange={ salvarAlteracao }
-          />
-        </label>
-      </div>
+      <label htmlFor={ dtid } data-testid={ dtid }>
+        { children }
+        <input
+          type="text"
+          id={ dtid }
+          name={ name }
+          value={ arr[0] }
+          data-testid={ this.convert(dtid) }
+          onChange={ (e) => arr[1](e) }
+        />
+      </label>
     );
+  }
+
+  anyInputMethod = (name, dtid, arr) => {
+    switch (dtid) {
+    case 'storyline-input-label':
+      return (
+        <label htmlFor={ dtid } data-testid={ dtid }>
+          {this.returnChildren(this.props)}
+          <textarea
+            name={ name }
+            id={ dtid }
+            value={ arr[0] }
+            data-testid={ this.convert(dtid) }
+            onChange={ (e) => arr[1](e) }
+          />
+        </label>
+      );
+    case 'rating-input-label':
+      return (
+        <label htmlFor={ dtid } data-testid={ dtid }>
+          {this.returnChildren(this.props)}
+          <input
+            type="number"
+            step="0.1"
+            id={ dtid }
+            name={ name }
+            value={ arr[0] }
+            data-testid={ this.convert(dtid) }
+            onChange={ (e) => arr[1](e) }
+          />
+        </label>
+      );
+    case 'genre-input-label':
+      return (
+        <label htmlFor={ dtid } data-testid={ dtid }>
+          {this.returnChildren(this.props)}
+          <select
+            name={ name }
+            id={ dtid }
+            onChange={ (e) => arr[1](e) }
+            data-testid={ this.convert(dtid) }
+            value={ arr[0] }
+          >
+            <option value="action" data-testid="genre-option">Ação</option>
+            <option value="comedy" data-testid="genre-option">Comédia</option>
+            <option value="thriller" data-testid="genre-option">Suspense</option>
+          </select>
+        </label>);
+    default:
+      break;
+    }
+  }
+
+  render() {
+    const { name, dtid, arr } = this.props;
+    const textInputList = [
+      'title-input-label',
+      'subtitle-input-label',
+      'image-input-label',
+    ];
+    if (textInputList.includes(dtid)) {
+      return this.stringInputMethod(name, dtid, arr);
+    }
+    return this.anyInputMethod(name, dtid, arr);
   }
 }
 
-Titulo.propTypes = {
-  salvarAlteracao: PropTypes.func.isRequired,
-  title: PropTypes.string,
-  subtitle: PropTypes.string,
-  imagePath: PropTypes.string,
-  storyline: PropTypes.string,
-}.isRequired;
-
-export default Titulo;
+Lab.propTypes = PropTypes.shape({
+  name: PropTypes.string,
+  dtid: PropTypes.string,
+  arr: PropTypes.instanceOf(Array),
+}).isRequired;
