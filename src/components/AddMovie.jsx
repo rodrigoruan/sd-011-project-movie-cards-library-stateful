@@ -5,7 +5,7 @@ import Titulo from './Titulo';
 class AddMovie extends React.Component {
   constructor(props) {
     super(props);
-    this.salvarAlteracao = this.salvarAlteracao.bind(this);
+    this.saveState = this.saveState.bind(this);
     this.state = {
       subtitle: '',
       title: '',
@@ -16,7 +16,7 @@ class AddMovie extends React.Component {
     };
   }
 
-  addUpdateState() {
+  addUpdateState= () => {
     const { onClick } = this.props;
     onClick(this.state);
     this.setState({
@@ -29,7 +29,7 @@ class AddMovie extends React.Component {
     });
   }
 
-  salvarAlteracao({ target }) {
+  saveState =({ target }) => {
     const { name } = target;
     this.setState({
       [name]: target.value,
@@ -49,7 +49,7 @@ class AddMovie extends React.Component {
             name="rating"
             data-testid="rating-input"
             value={ rating }
-            onChange={ this.salvarAlteracao }
+            onChange={ this.saveState }
           />
         </label>
         <label htmlFor="select" data-testid="genre-input-label">
@@ -58,7 +58,7 @@ class AddMovie extends React.Component {
             data-testid="genre-input"
             name="genre"
             value={ genre }
-            onChange={ this.salvarAlteracao }
+            onChange={ this.saveState() }
           >
             <option data-testid="genre-option" value="action">Ação</option>
             <option data-testid="genre-option" value="comedy">Comédia</option>
@@ -68,7 +68,7 @@ class AddMovie extends React.Component {
         <button
           type="submit"
           data-testid="send-button"
-          onClick={ this.addUpdateState }
+          onClick={ this.addUpdateState() }
         >
           Adicionar filme
         </button>
