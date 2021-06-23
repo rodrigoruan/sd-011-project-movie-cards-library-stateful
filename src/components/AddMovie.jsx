@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import Title from './Inputs/Title';
 import Subtitle from './Inputs/Subtitle';
 import Image from './Inputs/Image';
-import StoryLine from './Inputs/Storyline';
+import Storyline from './Inputs/Storyline';
 import AddRating from './Inputs/RatingAdd';
 import Genre from './Inputs/Genre';
-import AddButton from './Inputs/ButtonAdd';
+import ButtonAdd from './Inputs/ButtonAdd';
 
 class AddMovie extends Component {
   constructor(props) {
@@ -50,10 +50,10 @@ class AddMovie extends Component {
         <Title title={ title } handleFunction={ this.handleFunction } />
         <Subtitle subtitle={ subtitle } handleFunction={ this.handleFunction } />
         <Image imagePath={ imagePath } handleFunction={ this.handleFunction } />
-        <StoryLine storyline={ storyline } handleFunction={ this.handleFunction } />
+        <Storyline storyline={ storyline } handleFunction={ this.handleFunction } />
         <AddRating rating={ rating } handleFunction={ this.handleFunction } />
         <Genre genre={ genre } handleFunction={ this.handleFunction } />
-        <AddButton newMovie={ this.newMovie } />
+        <ButtonAdd newMovie={ this.newMovie } />
       </form>
     );
   }
