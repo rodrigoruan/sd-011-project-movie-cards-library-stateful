@@ -27,8 +27,8 @@ class Genre extends React.Component {
 export default Genre;
 
 Genre.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-};
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+}.isRequired;
 
 // Source: consulta ao repositório https://github.com/tryber/sd-011-project-movie-cards-library-stateful/pull/173/

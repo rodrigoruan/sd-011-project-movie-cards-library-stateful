@@ -19,6 +19,7 @@ class AddMovie extends React.Component {
       genre: 'action',
     };
     this.handleChange = this.handleChange.bind(this); // o bind passa o this para a função handleChange
+    this.newMovie = this.newMovie.bind(this);
   }
 
   handleChange(event) { // revisar essa função
@@ -72,3 +73,5 @@ export default AddMovie;
 AddMovie.propTypes = {
   onClick: PropTypes.func,
 }.isRequired;
+
+// Source: auxílio do colega Anderson do Santos Silva, consulta ao repositório: https://github.com/tryber/sd-011-project-movie-cards-library-stateful/pull/173/
