@@ -4,7 +4,7 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import Subtitle from './Subtitle';
 import Image from './Image';
-import TextArea from './TextArea'
+import TextArea from './TextArea';
 
 class AddMovie extends React.Component {
   constructor() {
