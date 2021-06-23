@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
 import AddMovie from './AddMovie';
@@ -49,15 +48,18 @@ class MovieLibrary extends Component {
     const filtered = this.filterAddMovies();
     return (
       <>
-        {}
         <p>Movie Library</p>
         <SearchBar
           onSelectedGenreChange={ this.handleChange }
           onBookmarkedChange={ this.handleChange }
           onSearchTextChange={ this.handleChange }
         />
-        <MovieList movies={ filtered } />
-        <AddMovie onCLick={ this.handleAddMovie } />
+        <MovieList
+          movies={ filtered }
+        />
+        <AddMovie
+          onCLick={ this.handleAddMovie }
+        />
       </>
     );
   }
