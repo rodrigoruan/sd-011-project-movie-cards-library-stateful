@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AddMovieButton from './AddMovieButton'
+import AddMovieButton from './AddMovieButton';
 
 /* Requisito 6 */
 class AddMovie extends React.Component {
@@ -18,26 +18,27 @@ class AddMovie extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-/*  */
-handleChange(event) {
-  const { name, value } = event.target;
-  this.setState({
-    [name]: value,
-  });
-}
-/*  */
-handleClick() {
-  const { onClick } = this.props;
-  const { movie } = this.state;
-  this.setState({
-    subtitle:'',
-    title:'',
-    imagePath:'',
-    rating: 0,
-    genre: 'action',
-  });
-  onClick(movie);
-}
+  /*  */
+  handleChange(event) {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value,
+    });
+  }
+
+  /*  */
+  handleClick() {
+    const { onClick } = this.props;
+    const { movie } = this.state;
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      rating: 0,
+      genre: 'action',
+    });
+    onClick(movie);
+  }
 
   /* Requisito 7,8 */
   render() {
@@ -91,7 +92,7 @@ handleClick() {
             name="storyline"
             id="storyline"
           >
-          {storyline}
+            {storyline}
           </textarea>
         </label>
         <label data-testid="rating-input-label" htmlFor="rating">
@@ -117,7 +118,7 @@ handleClick() {
             <option value="thriller" data-testid="genre-option">Suspense</option>
           </select>
         </label>
-        <AddMovieButton handleClick={ handleClick } />
+        <AddMovieButton handleClick={handleClick} />
       </form>
     );
   }
