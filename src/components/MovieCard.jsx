@@ -27,7 +27,13 @@ MovieCard.propTypes = {
     storyline: PropTypes.string,
     rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     imagePath: PropTypes.string,
-  }).isRequired,
+  }),
+};
+
+MovieCard.defaultProps = {
+  movie: {
+    ratting: '',
+  },
 };
 
 export default MovieCard;
