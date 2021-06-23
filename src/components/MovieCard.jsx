@@ -30,4 +30,8 @@ MovieCard.propTypes = {
   }).isRequired,
 };
 
+MovieCard.defaultProps = {
+  movie: {},
+}.isRequired;
+
 export default MovieCard;

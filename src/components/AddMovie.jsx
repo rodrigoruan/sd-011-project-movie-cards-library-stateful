@@ -41,7 +41,7 @@ class AddMovie extends React.Component {
       rating: 0,
       genre: 'action',
     });
-    onClick(movie);
+    onClick(() => movie);
   }
 
   render() {

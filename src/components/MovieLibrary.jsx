@@ -19,6 +19,7 @@ class MovieLibrary extends Component {
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
     this.filtersMovies = this.filtersMovies.bind(this);
+    this.addMoviesInThePage = this.addMoviesInThePage.bind(this);
   }
 
   onSearchTextChange({ target }) {
@@ -62,9 +63,9 @@ class MovieLibrary extends Component {
     return result;
   }
 
-  // addMoviesInThePage() {
-
-  // }
+  addMoviesInThePage(movie) {
+    this.setState(({ movies }) => ({ movies: [...movies, movie] }));
+  }
 
   render() {
     const {
@@ -86,7 +87,7 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={ onSelectedGenreChange }
         />
         <MovieList movies={ filtersMovies() } />
-        <AddMovie onclick={ () => {} } />
+        <AddMovie onclick={ this.addMoviesInThePage } />
       </div>
     );
   }
