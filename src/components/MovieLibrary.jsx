@@ -41,8 +41,7 @@ class MovieLibrary extends Component {
         || storyline.includes(searchText))
         && (selectedGenre === '' || genre === selectedGenre)
     ));
-    // eslint-disable-next-line no-const-assign
-    if (bookmarkedOnly) result = result.filter((movie) => movie.bookmarked);
+    if (bookmarkedOnly) result.filter((movie) => movie.bookmarked);
     return result;
   }
 
