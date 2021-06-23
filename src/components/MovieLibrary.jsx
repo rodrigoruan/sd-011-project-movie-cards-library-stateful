@@ -13,6 +13,11 @@ class MovieLibrary extends Component {
     };
   }
 
+  addMovieData(x) {
+    this.setState((viw) => (
+      { ...viw, moviesList: [...viw.movies, x] }));
+  }
+
   render() {
     const { movies } = this.props;
     const { moviesList } = this.state;
