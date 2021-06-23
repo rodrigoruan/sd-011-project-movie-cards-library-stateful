@@ -5,17 +5,77 @@ import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
 
 export default class MovieLibrary extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      searchText: '',
+      bookmarkedOnly: false,
+      selectGenre: '',
+      movies: props.movies,
+    };
+
+    this.onSearchTextChange = this.onSearchTextChange.bind(this);
+    this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
+    this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
+    this.renderNewMovie = this.renderNewMovie.bind(this);
+  }
+
+  onSearchTextChange(event) {
+    this.setState({
+      searchText: event.target.value,
+    });
+  }
+
+  onBookmarkedChange(event) {
+    this.setState({
+      bookmarkedOnly: event.target.checked,
+    });
+  }
+
+  onSelectedGenreChange(event) {
+    this.setState({
+      selectGenre: event.target.value,
+    });
+  }
+
+  renderNewMovie(param) {
+    this.setState((prevState) => ({
+      movies: [...prevState.movies, param],
+    }));
+  }
 
   render() {
+    const { searchText, bookmarkedOnly, selectGenre, movies } = this.state;
+    const filteredMovies = movies
+      .filter((movie) => (
+        movie.title.includes(searchText)
+        || movie.subtitle.includes(searchText)
+        || movie.storyline.includes(searchText)));
+
+    const bookmarkedFilter = filteredMovies
+      .filter((movie) => ((bookmarkedOnly === false) ? true : movie.bookmarked));
+
+    const filterByGenre = bookmarkedFilter
+      .filter((movie) => movie.genre.includes(selectGenre));
+
     return (
       <div>
         <h2> My awesome movie library </h2>
-        <SearchBar />
-        <MovieList />
-        <AddMovie />
+        <SearchBar
+          searchText={ searchText }
+          onSearchTextChange={ this.onSearchTextChange }
+          bookmarkedOnly={ bookmarkedOnly }
+          onBookmarkedChange={ this.onBookmarkedChange }
+          selectGenre={ selectGenre }
+          onSelectedGenreChange={ this.onSelectedGenreChange }
+        />
+        <MovieList
+          movies={ filterByGenre }
+        />
+        <AddMovie
+          onClick={ this.renderNewMovie }
+        />
       </div>
     );
   }
