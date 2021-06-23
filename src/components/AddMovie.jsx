@@ -58,7 +58,7 @@ class AddMovie extends React.Component {
             data-testid="genre-input"
             name="genre"
             value={ genre }
-            onChange={ this.saveState() }
+            onChange={ this.saveState }
           >
             <option data-testid="genre-option" value="action">Ação</option>
             <option data-testid="genre-option" value="comedy">Comédia</option>
@@ -68,7 +68,7 @@ class AddMovie extends React.Component {
         <button
           type="submit"
           data-testid="send-button"
-          onClick={ this.addUpdateState() }
+          onClick={ this.addUpdateState }
         >
           Adicionar filme
         </button>
