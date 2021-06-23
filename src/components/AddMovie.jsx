@@ -3,6 +3,12 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Title from './AddMoviesFormItens/Title';
+import Subtitle from './AddMoviesFormItens/Subtitle';
+import ImagePath from './AddMoviesFormItens/ImagePath';
+import Storyline from './AddMoviesFormItens/Storyline';
+import Rating from './AddMoviesFormItens/Rating';
+
 // Req.06
 class AddMovie extends Component {
   constructor() {
@@ -80,32 +86,17 @@ class AddMovie extends Component {
     return (
       // Req.07
       <form data-testid="add-movie-form">
-        {/* // Req.08 */}
-        <label htmlFor="title-input" data-testid="title-input-label">
-          Título
-          <input type="text" value={ title } data-testid="title-input" onChange={ this.newTitle } />
-        </label>
-        {/* // Req.09 */}
-        <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
-          Subtítulo
-          <input type="text" value={ subtitle } data-testid="subtitle-input" onChange={ this.newSubtitle } />
-        </label>
-        {/* // Req.10 */}
-        <label htmlFor="image-input-label" data-testid="image-input-label">
-          Imagem
-          <input type="text" value={ imagePath } data-testid="image-input" onChange={ this.newImage } />
-        </label>
-        {/* // Req.11 */}
-        <label htmlFor="storyline-input" data-testid="storyline-input-label">
-          Sinopse
-          <textarea value={ storyline } data-testid="storyline-input" onChange={ this.newSinopse } />
-        </label>
-        {/* // Req.12 */}
-        <label htmlFor="rating-input" data-testid="rating-input-label">
-          Avaliação
-          <input type="number" value={ rating } data-testid="rating-input" onChange={ this.newRating } />
-        </label>
-        {/* // Req.13 */}
+        {/* Req.08 */}
+        <Title title={ title } newTitle={ this.newTitle } />
+        {/* Req.09 */}
+        <Subtitle subtitle={ subtitle } newSubtitle={ this.newSubtitle } />
+        {/* Req.10 */}
+        <ImagePath imagePath={ imagePath } newImage={ this.newImage } />
+        {/* Req.11 */}
+        <Storyline storyline={ storyline } newSinopse={ this.newSinopse } />
+        {/* Req.12 */}
+        <Rating rating={ rating } newRating={ this.newRating } />
+        {/* Req.13 */}
         <label htmlFor="rating-input" data-testid="genre-input-label">
           Gênero
           <select value={ genre } data-testid="genre-input" onChange={ this.newGenre }>
@@ -114,8 +105,14 @@ class AddMovie extends Component {
             <option data-testid="genre-option" value="thriller">Suspense</option>
           </select>
         </label>
-        {/* // Req.14 */}
-        <button type="button" data-testid="send-button" onClick={ this.insertNewMovie }>Adicionar filme</button>
+        {/* Req.14 */}
+        <button
+          type="button"
+          data-testid="send-button"
+          onClick={ this.insertNewMovie }
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }

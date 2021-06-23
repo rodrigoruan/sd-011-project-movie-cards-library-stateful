@@ -24,6 +24,7 @@ class MovieLibrary extends Component {
     this.addMovie = this.addMovie.bind(this);
   }
 
+  // As funções desenvolvidas entre as linhas 26 e 61 foram elaboradas após estudar o repositório dos colegas @Robson Cardozo, @Samuel Melo e @Teófilo Brandão.
   filteredMovies() {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
     if (bookmarkedOnly) {
