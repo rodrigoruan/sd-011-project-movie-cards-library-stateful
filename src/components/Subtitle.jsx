@@ -26,3 +26,5 @@ Subtitle.propTypes = {
 };
 
 export default Subtitle;
+
+// Source: auxílio do colega Anderson do Santos Silva, consulta ao repositório: https://github.com/tryber/sd-011-project-movie-cards-library-stateful/pull/173/
