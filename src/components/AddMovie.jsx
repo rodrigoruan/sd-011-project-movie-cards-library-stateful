@@ -36,6 +36,7 @@ class AddMovie extends React.Component {
       imagePath: '',
       rating: 0,
       genre: 'action',
+      storyline: '',
     });
     onClick(movie);
   }
