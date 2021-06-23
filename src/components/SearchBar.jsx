@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-
 import PropTypes from 'prop-types';
-// import MovieList from './MovieList';
-// import AddMovie from './AddMovie';
 
 class SearchBar extends Component {
   render() {
@@ -15,8 +12,10 @@ class SearchBar extends Component {
           <label htmlFor="text" data-testid="text-input-label">
             Inclui o texto:
             <input
+              name="searchText"
               type="text"
               value={ searchText }
+              id="text-input-form"
               onChange={ onSearchTextChange }
               data-testid="text-input"
             />
@@ -24,6 +23,7 @@ class SearchBar extends Component {
           <label htmlFor="checkbox" data-testid="checkbox-input-label">
             Mostrar somente favoritos
             <input
+              name="bookmarkedOnly"
               type="checkbox"
               checked={ bookmarkedOnly }
               onChange={ onBookmarkedChange }
@@ -33,7 +33,9 @@ class SearchBar extends Component {
           <label htmlFor="selectedGenre" data-testid="select-input-label">
             Filtrar por gênero
             <select
+              name="selectedGenre"
               onChange={ onSelectedGenreChange }
+              id="select-input-form"
               value={ selectedGenre }
               data-testid="select-input"
             >
