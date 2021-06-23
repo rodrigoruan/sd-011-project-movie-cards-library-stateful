@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
 import AddMovie from './AddMovie';
 
-class MovieLibrary extends Component {
+class MovieLibrary extends React.Component {
   constructor(props) {
     super(props);
 
@@ -34,13 +34,13 @@ class MovieLibrary extends Component {
 
   filterAddMovies() {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
-    const result = movies.filter(({ title, subtitle, storyline, genre }) => (
+    let result = movies.filter(({ title, subtitle, storyline, genre }) => (
       (title.includes(searchText)
         || subtitle.includes(searchText)
         || storyline.includes(searchText))
         && (selectedGenre === '' || genre === selectedGenre)
     ));
-    if (bookmarkedOnly) result.filter((movie) => movie.bookmarked);
+    if (bookmarkedOnly) result = result.filter((movie) => movie.bookmarked);
     return result;
   }
 

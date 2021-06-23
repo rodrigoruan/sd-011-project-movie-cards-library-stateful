@@ -16,6 +16,7 @@ class AddMovie extends Component {
     this.state = {
       ...initialState,
     };
+
     this.handleChange = this.handleChange.bind(this);
     this.handleClear = this.handleClear.bind(this);
   }
@@ -165,7 +166,8 @@ class AddMovie extends Component {
         data-testid="send-button"
       >
         Adicionar filme
-      </button>);
+      </button>
+    );
   }
 
   render() {
