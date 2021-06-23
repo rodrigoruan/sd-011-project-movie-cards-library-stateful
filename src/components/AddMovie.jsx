@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Genre from './Genre';
+import ImagePath from './ImagePath';
+import Storyline from './StoryLine';
+import Subtitle from './Subtitle';
+import Title from './Title';
+import Rating from './Rating';
 
 class AddMovie extends Component {
   constructor() {
@@ -29,42 +35,12 @@ class AddMovie extends Component {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <label htmlFor="title">
-          Titulo
-          <input
-            name="title"
-            id="add-movie-title-input"
-            data-testid="title-input"
-            value={ title }
-            onChange={ this.handleChange }
-          />
-        </label>
-        <label htmlFor="subtitle" data-testid="subtitle-input-label">
-          Subtítulo
-          <input
-            name="subtitle"
-            id="add-movie-title-input"
-            data-testid="subtitle-input"
-            value={ subtitle }
-            onChange={ this.handleChange }
-          />
-        </label>
-        <label htmlFor="title">
-          Imagem
-          <input id="title" />
-        </label>
-        <label htmlFor="title">
-          Sinopse
-          <input id="title" />
-        </label>
-        <label htmlFor="title">
-          Avaliação
-          <input id="title" />
-        </label>
-        <label htmlFor="title">
-          Gênero
-          <input id="title" />
-        </label>
+        <Title title={ title } stateChange={ this.handleChange } />
+        <Genre genre={ genre } stateChange={ this.handleChange } />
+        <Subtitle subtitle={ subtitle } stateChange={ this.handleChange } />
+        <ImagePath imagePath={ imagePath } stateChange={ this.handleChange } />
+        <Storyline storyline={ storyline } stateChange={ this.handleChange } />
+        <Rating rating={ rating } stateChange={ this.handleChange } />
       </form>
     );
   }
@@ -72,11 +48,5 @@ class AddMovie extends Component {
 
 AddMovie.propTypes = {
   onClick: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
-  imagepath: PropTypes.string.isRequired,
-  storyline: PropTypes.string.isRequired,
-  ratign: PropTypes.number.isRequired,
-  genre: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired,
 };
+// https://pt-br.reactjs.org/docs/dom-elements.html
