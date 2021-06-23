@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import SearchBar from './SearchBar';
 import MovieList from './MovieList';
+import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
 
-class MovieLibrary extends React.Component {
+class MovieLibrary extends Component {
   constructor(props) {
     super(props);
 
@@ -28,6 +28,12 @@ class MovieLibrary extends React.Component {
     });
   }
 
+  handleAddMovie=(param, movies) => {
+    this.setState({
+      movies: [...movies, param],
+    });
+  }
+
   handleChange({ target: { name, value, type, checked } }) {
     this.setState({ [name]: type === 'checkbox' ? checked : value });
   }
@@ -48,7 +54,7 @@ class MovieLibrary extends React.Component {
     const filtered = this.filterAddMovies();
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
-      <>
+      <div>
         <p>Movie Library</p>
         <SearchBar
           searchText={ searchText }
@@ -62,9 +68,9 @@ class MovieLibrary extends React.Component {
           movies={ filtered }
         />
         <AddMovie
-          onCLick={ this.handleAddMovie }
+          onClick={ this.handleAddMovie }
         />
-      </>
+      </div>
     );
   }
 }
