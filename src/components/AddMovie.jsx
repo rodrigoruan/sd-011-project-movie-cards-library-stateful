@@ -68,3 +68,5 @@ AddMovie.propTypes = {
 };
 // https://pt-br.reactjs.org/docs/dom-elements.html
 // https://forum.betrybe.com/t/projeto-movie-cards-library-stateful-requisito-14/879
+// https://pt-br.reactjs.org/docs/forms.html
+// https://www.youtube.com/watch?v=P65RJTTqkN4
