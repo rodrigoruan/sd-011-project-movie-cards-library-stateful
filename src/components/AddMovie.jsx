@@ -56,7 +56,7 @@ class AddMovie extends Component {
         <ImagePath imagePath={ imagePath } stateChange={ this.handleChange } />
         <Storyline storyline={ storyline } stateChange={ this.handleChange } />
         <Rating rating={ rating } stateChange={ this.handleChange } />
-        <SendButton SendButtonFunc={ this.SendButtonFunc }/>
+        <SendButton SendButtonFunc={ this.SendButtonFunc } />
 
       </form>
     );
