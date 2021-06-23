@@ -3,6 +3,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import Subtitle from './Subtitle';
+import Image from './Image';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -10,7 +11,7 @@ class AddMovie extends React.Component {
     this.state = {
       subtitle: '',
       title: '',
-      // imagePath: '',
+      imagePath: '',
       // storyline: '',
       // rating: '0',
       // genre: 'action',
@@ -27,7 +28,7 @@ class AddMovie extends React.Component {
 
   render() {
     // const { onClick } = this.props;
-    const { title, subtitle } = this.state;
+    const { title, subtitle, imagePath } = this.state;
     return (
       <form data-testid="add-movie-form">
         <label data-testid="title-input-label" htmlFor="titleID">
@@ -42,6 +43,7 @@ class AddMovie extends React.Component {
           />
         </label>
         <Subtitle value={ subtitle } onChange={ this.handleChange } />
+        <Image value={ imagePath } onChange={ this.handleChange } />
       </form>
     );
   }
