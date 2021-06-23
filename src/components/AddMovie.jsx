@@ -56,9 +56,9 @@ class AddMovie extends React.Component {
         <label data-testid="title-input-label" htmlFor="title">
           Título
           <input
-            value={title}
+            value={ title }
             data-testid="title-input"
-            onChange={handleChange}
+            onChange={ handleChange }
             type="text"
             name="title"
           />
@@ -66,9 +66,9 @@ class AddMovie extends React.Component {
         <label data-testid="subtitle-input-label" htmlFor="subtitle">
           Subtítulo
           <input
-            value={subtitle}
+            value={ subtitle }
             data-testid="subtitle-input"
-            onChange={handleChange}
+            onChange={ handleChange }
             type="text"
             name="subtitle"
           />
@@ -76,9 +76,9 @@ class AddMovie extends React.Component {
         <label data-testid="image-input-label" htmlFor="imagePath">
           Imagem
           <input
-            value={imagePath}
+            value={ imagePath }
             data-testid="image-input"
-            onChange={handleChange}
+            onChange={ handleChange }
             type="text"
             name="imagePath"
           />
@@ -86,9 +86,9 @@ class AddMovie extends React.Component {
         <label data-testid="storyline-input-label" htmlFor="storyline">
           Sinopse
           <textarea
-            value={storyline}
+            value={ storyline }
             data-testid="storyline-input"
-            onChange={handleChange}
+            onChange={ handleChange }
             name="storyline"
             id="storyline"
           >
@@ -98,9 +98,9 @@ class AddMovie extends React.Component {
         <label data-testid="rating-input-label" htmlFor="rating">
           Avaliação
           <input
-            value={rating}
+            value={ rating }
             data-testid="rating-input"
-            onChange={handleChange}
+            onChange={ handleChange }
             type="number"
             name="rating"
           />
@@ -108,9 +108,9 @@ class AddMovie extends React.Component {
         <label data-testid="genre-input-label" htmlFor="genre">
           Gênero
           <select
-            value={genre}
+            value={ genre }
             data-testid="genre-input"
-            onChange={handleChange}
+            onChange={ handleChange }
             name="genre"
           >
             <option value="action" data-testid="genre-option">Ação</option>
@@ -118,7 +118,7 @@ class AddMovie extends React.Component {
             <option value="thriller" data-testid="genre-option">Suspense</option>
           </select>
         </label>
-        <AddMovieButton handleClick={handleClick} />
+        <AddMovieButton handleClick={ handleClick } />
       </form>
     );
   }
