@@ -50,12 +50,12 @@ class AddMovie extends Component {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <Title title={ title } stateChange={ this.handleChange } />
-        <Genre genre={ genre } stateChange={ this.handleChange } />
-        <Subtitle subtitle={ subtitle } stateChange={ this.handleChange } />
-        <ImagePath imagePath={ imagePath } stateChange={ this.handleChange } />
-        <Storyline storyline={ storyline } stateChange={ this.handleChange } />
-        <Rating rating={ rating } stateChange={ this.handleChange } />
+        <Title title={ title } handleChange={ this.handleChange } />
+        <Genre genre={ genre } handleChange={ this.handleChange } />
+        <Subtitle subtitle={ subtitle } handleChange={ this.handleChange } />
+        <ImagePath imagePath={ imagePath } handleChange={ this.handleChange } />
+        <Storyline storyline={ storyline } handleChange={ this.handleChange } />
+        <Rating rating={ rating } handleChange={ this.handleChange } />
         <SendButton SendButtonFunc={ this.SendButtonFunc } />
 
       </form>
