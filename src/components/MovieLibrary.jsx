@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import SearchBar from './SearchBar';
+import MovieList from './MovieList';
 
 class MovieLibrary extends Component {
   render() {
     return (
       <div>
-        <p>a</p>
+        <SearchBar />
+        <MovieList />
       </div>
     );
   }
