@@ -59,7 +59,7 @@ class AddMovie extends React.Component {
       <form data-testid="add-movie-form">
         { this.renderForm('title', 'text', 'Título', title)}
         { this.renderForm('subtitle', 'text', 'Subtítulo', subtitle)}
-        { this.renderForm('imagePath', 'text', 'Imagem', imagePath)}
+        { this.renderForm('image', 'text', 'Imagem', imagePath)}
         { this.renderForm('storyline', 'textarea', 'Sinopse', storyline)}
         <p>{ genre + rating + storyline }</p>
       </form>
