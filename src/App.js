@@ -5,6 +5,9 @@ import SearchBar from './components/SearchBar';
 import AddMovie from './components/AddMovie';
 
 function App() {
+  function teste(state) {
+    console.log(state);
+  }
   return (
     <div className="App">
       <Header />
@@ -16,7 +19,7 @@ function App() {
         selectedGenre=""
         onSelectedGenreChange={ () => {} }
       />
-      <AddMovie onClick={ () => {} } />
+      <AddMovie onClick={ teste } />
     </div>
   );
 }
