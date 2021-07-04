@@ -16,7 +16,7 @@ class AddMovie extends React.Component {
   }
 
   handleFormChange(event) {
-    const name = event.target.id;
+    const name = event.target.id === 'image' ? 'imagePath' : event.target.id;
     const { target: { value } } = event;
 
     this.setState((oldState) => ({
