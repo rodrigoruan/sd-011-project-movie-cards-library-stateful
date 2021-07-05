@@ -14,10 +14,10 @@ class MovieLibrary extends React.Component {
       selectedGenre: '',
       movies,
     };
-    this.onClick = this.onClick.bind(this);
     this.handleTextSearch = this.handleTextSearch.bind(this);
     this.handleBookmarkedSearch = this.handleBookmarkedSearch.bind(this);
     this.handleGenrerSearch = this.handleGenrerSearch.bind(this);
+    this.handleNewMovie = this.handleNewMovie.bind(this);
   }
 
   handleTextSearch(event) {
@@ -80,8 +80,19 @@ class MovieLibrary extends React.Component {
     }
   }
 
-  onClick(state) {
-    console.log(state);
+  handleNewMovie(state) {
+    const { subtitle, title, imagePath, storyline, rating, genre } = state;
+    this.setState((oldState) => ({
+      ...oldState,
+      movies: oldState.movies.concat({
+        title,
+        subtitle,
+        imagePath,
+        storyline,
+        rating,
+        genre,
+      }),
+    }));
   }
 
   render() {
@@ -97,7 +108,7 @@ class MovieLibrary extends React.Component {
           onSelectedGenreChange={ this.handleGenrerSearch }
         />
         <MovieList movies={ movies } />
-        <AddMovie onClick={ this.onClick } />
+        <AddMovie onClick={ this.handleNewMovie } />
       </>
     );
   }
