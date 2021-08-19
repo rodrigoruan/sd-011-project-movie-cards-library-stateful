@@ -6,7 +6,7 @@ import InputTitle from './InputTitle';
 import InputSubTitle from './InputSubTitle';
 import InputImage from './InputImage';
 import InputStoryLine from './InputStoryLine';
-import '../css/Movie.css'
+import '../css/Movie.css';
 
 class AddMovie extends React.Component {
   constructor() {
