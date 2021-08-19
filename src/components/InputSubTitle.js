@@ -15,6 +15,7 @@ class InputSubTitle extends React.Component {
           data-testid="subtitle-input"
           name="subtitle"
           onChange={ handleValue }
+          className="add-movie-subtitle"
         />
       </label>
     );

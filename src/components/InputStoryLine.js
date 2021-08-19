@@ -14,6 +14,8 @@ class InputStoryLine extends React.Component {
           data-testid="storyline-input"
           name="storyline"
           onChange={ handleValue }
+          cols="20"
+          className="add-movie-inputs"
         />
       </label>
     );

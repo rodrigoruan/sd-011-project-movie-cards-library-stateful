@@ -15,6 +15,7 @@ class InputImage extends React.Component {
           data-testid="image-input"
           name="imagePath"
           onChange={ handleValue }
+          className="add-movie-image"
         />
       </label>
     );

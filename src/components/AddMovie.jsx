@@ -6,6 +6,7 @@ import InputTitle from './InputTitle';
 import InputSubTitle from './InputSubTitle';
 import InputImage from './InputImage';
 import InputStoryLine from './InputStoryLine';
+import '../css/Movie.css'
 
 class AddMovie extends React.Component {
   constructor() {
@@ -46,7 +47,8 @@ class AddMovie extends React.Component {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <div>
-        <form data-testid="add-movie-form">
+        <form data-testid="add-movie-form" className="add-movie-container">
+          <h5>Incluir Filme</h5>
           <InputTitle title={ title } handleValue={ this.handleValue } />
 
           <InputSubTitle subtitle={ subtitle } handleValue={ this.handleValue } />
@@ -64,6 +66,7 @@ class AddMovie extends React.Component {
               data-testid="rating-input"
               name="rating"
               onChange={ this.handleValue }
+              className="add-movie-rating"
             />
           </label>
           <label htmlFor="ex13" data-testid="genre-input-label">
@@ -74,6 +77,7 @@ class AddMovie extends React.Component {
               name="genre"
               onChange={ this.handleValue }
               data-testid="genre-input"
+              className="add-movie-inputs"
             >
               <option data-testid="genre-option" value="action">Ação</option>
               <option data-testid="genre-option" value="comedy">Comédia</option>
@@ -84,6 +88,7 @@ class AddMovie extends React.Component {
             type="submit"
             data-testid="send-button"
             onClick={ (event) => this.buttonClick(event) }
+            className="add-movie-button"
           >
             Adicionar filme
           </button>

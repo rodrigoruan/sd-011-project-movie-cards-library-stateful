@@ -1,0 +1,53 @@
+.search-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+.search-bar-input {
+  margin-left: 10px;
+}
+
+.search-bar-checkfavorites {
+  margin-left: 10px; 
+}
+
+.search-bar-selectgenre {
+  margin-left: 10px;
+}
+
+.add-movie-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-movie-inputs {
+  margin-left: 10px;
+}
+
+.add-movie-image {
+  margin-left: 10px;
+  width: 269px;
+}
+
+.add-movie-subtitle {
+  margin-left: 10px;
+  width: 260px;
+}
+
+.add-movie-rating {
+  margin-left: 10px;
+  width: 259px;
+}
+
+.add-movie-title {
+  margin-left: 10px;
+  width: 285px;
+}
+
+.add-movie-button {
+  margin-bottom: 10px;
+}

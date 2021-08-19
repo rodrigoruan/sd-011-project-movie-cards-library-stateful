@@ -2,6 +2,7 @@
 // implement AddMovie component here
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../css/Movie.css'
 
 class SearchBar extends React.Component {
   render() {
@@ -15,15 +16,17 @@ class SearchBar extends React.Component {
         {onBookmarkedChange}
         {selectedGenre}
         {onSelectedGenreChange}
-        <form data-testid="search-bar-form">
+        <form data-testid="search-bar-form" className="search-bar">
+          <h5>Pequisar Filmes</h5>
           <label htmlFor="ex3" data-testid="text-input-label">
-            Inclui o texto:
+            Inclui o texto
             <input
               id="ex3"
               type="text"
               value={ searchText }
               onChange={ onSearchTextChange }
               data-testid="text-input"
+              className="search-bar-input"
             />
           </label>
           <label htmlFor="ex4" data-testid="checkbox-input-label">
@@ -34,6 +37,7 @@ class SearchBar extends React.Component {
               checked={ bookmarkedOnly }
               onChange={ onBookmarkedChange }
               data-testid="checkbox-input"
+              className="search-bar-checkfavorites"
             />
           </label>
           <label htmlFor="ex5" data-testid="select-input-label">
@@ -43,6 +47,7 @@ class SearchBar extends React.Component {
               value={ selectedGenre }
               onChange={ onSelectedGenreChange }
               data-testid="select-input"
+              className="search-bar-selectgenre"
             >
               <option data-testid="select-option" value="">Todos</option>
               <option data-testid="select-option" value="action">Ação</option>
